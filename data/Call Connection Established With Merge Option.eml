@@ -1,0 +1,135 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:adf:ecc9:0:b0:3a0:b206:c10d with SMTP id s9csp1815164wro;
+        Mon, 12 May 2025 16:35:56 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEyOgDpIPY92jtZ4xcfxE4mYJzSy+7xyC8u2Byj/T94xqK3QaOmGcM4LeqkFOfdIbYD84cW
+X-Received: by 2002:a05:622a:294:b0:48d:50eb:91df with SMTP id d75a77b69052e-49452737129mr189551271cf.15.1747092955820;
+        Mon, 12 May 2025 16:35:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747092955; cv=none;
+        d=google.com; s=arc-20240605;
+        b=aAaZpFVX3KRUz+fGvuTRmIx+1u4WVc32dUQupzJnaweXwqyv308gVLe4RSrCFa6svS
+         /oVPyWh5+ZoiGoq9Vvxv1ZtF8ZGTIGMqiCLAHPUXveZNvcI83Ack0M05e4Lr00fXniI3
+         uan7ozpcBXLfpJc+busL0awyewmLnUfr7Xv0z6NlcJyG0cDuh+JM/Pq+MbD3xcdOA3GE
+         s8oU+6r598GSRe4wXOpy6bibT3ijeGwxJdewLbLSKEP1PpdurcgYrW7peP5fQXZXT0RU
+         fTqqpoLGNEwF9YQab1v9UFjYb87f3DDhOT5vu5qcYljUrXzFljxIi7oCfTfHhrRuyvfw
+         exVA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=XcKyesYPQz+iD1zysjFh2NMOKLrLmIFuFq1oDAIL0mk=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=eqO8qbE+xxskp4JCfZ9W+2YC1yw5bVJPwIvcmi1FdAET/zZeAgk4LIlaKkDAKPLQqr
+         4qFvnQaLjgYHdHK8LPZBg35EpA0JHnz9JkrS6M7UcQEl8wdgtX8bU/QxzF61Lfvukx3y
+         nZ+tgHrstmkIibqlEORqnR/DHIM0b/m9DCm10Hm7zkmtA85mcIPhOyGS3dLaQPkxMnlY
+         5OEX7NV3C13GHrHQXXyKj5R17ge7cKNpF2dBDUCtU4Yyc1gLbWv43UXCmbZxIPgOzqr2
+         UQMKYTf1ncdH2Zx9yVgFxWKpSOEcmRuI/e5wjI0KnVmDadtc92Hnm4Wrw9qTSx/y94o0
+         ONJA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b="n83jb/00";
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=HVh175ab;
+       spf=pass (google.com: domain of 01000196c6dae07a-a139c13c-05ab-4d0b-b93c-4e0eb1eb262c-000000@send.email.wave.co designates 54.240.9.30 as permitted sender) smtp.mailfrom=01000196c6dae07a-a139c13c-05ab-4d0b-b93c-4e0eb1eb262c-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <01000196c6dae07a-a139c13c-05ab-4d0b-b93c-4e0eb1eb262c-000000@send.email.wave.co>
+Received: from a9-30.smtp-out.amazonses.com (a9-30.smtp-out.amazonses.com. [54.240.9.30])
+        by mx.google.com with ESMTPS id d75a77b69052e-4945259a711si106751591cf.517.2025.05.12.16.35.55
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 12 May 2025 16:35:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 01000196c6dae07a-a139c13c-05ab-4d0b-b93c-4e0eb1eb262c-000000@send.email.wave.co designates 54.240.9.30 as permitted sender) client-ip=54.240.9.30;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b="n83jb/00";
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=HVh175ab;
+       spf=pass (google.com: domain of 01000196c6dae07a-a139c13c-05ab-4d0b-b93c-4e0eb1eb262c-000000@send.email.wave.co designates 54.240.9.30 as permitted sender) smtp.mailfrom=01000196c6dae07a-a139c13c-05ab-4d0b-b93c-4e0eb1eb262c-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1747092955;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=XcKyesYPQz+iD1zysjFh2NMOKLrLmIFuFq1oDAIL0mk=;
+	b=n83jb/00zNwyhDAYpYY3eNkJP1Ga1CtlhVrgywH481OpSsdcJuHPz+B8F6ALWXrF
+	hHQInEazCxirA9jBc8kR8a9wXHj9xRFom64Sn+0WUZuHuTyF/mf9BIIyKsU13zcXGn6
+	dfBWh190zZXYxZxthMY8sm220UX59NTxe2+c9h14=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1747092955;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=XcKyesYPQz+iD1zysjFh2NMOKLrLmIFuFq1oDAIL0mk=;
+	b=HVh175abFkPEoSDl7u3f03butuK8dNlhd5LQ6V9/1tjdKNE0StAtWmsoZkR0Tp5B
+	TE8Izdn0zymq9/SsYVZMU92GOg5iZfRSm28y+asJ8qFZI+WF7tP1JRtHSsmYVlDOt0B
+	7zG3dwfgz0kF7MfjorSRPriLESHaj36hE5ZGZ2/w=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Call Connection Established With Merge Option
+Message-ID: <01000196c6dae07a-a139c13c-05ab-4d0b-b93c-4e0eb1eb262c-000000@email.amazonses.com>
+Date: Mon, 12 May 2025 23:35:55 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-8dd171c3025efde9-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.05.12-54.240.9.30
+
+----_NmP-8dd171c3025efde9-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Call Connection Established With Merge Option
+
+Connection has been =
+established and the option to merge calls is available when ready.
+
+Transcript:
+0:00
+You are now connected. You can merge your calls when ready.
+----_NmP-8dd171c3025efde9-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Call =
+Connection Established With Merge Option</h1></td></tr></table></div><div =
+style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/CAef041a7c7704034186331cc8f22d0669?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><p>Connection has been established and the=
+ option to merge calls is available when ready.</p>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0,=
+ 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex;align-i=
+tems:center;gap:8px"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</=
+span>Transcription</h3><div style=3D"margin-bottom:0;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">System</span><span=
+ style=3D"color:#64748b;font-size:14px">0:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You are now =
+connected. You can merge your calls when ready.</div></div></div><div =
+style=3D"margin-top:36px;text-align:center;color:#64748b;font-size:14px;pad=
+ding:20px;border-top:1px solid #e2e8f0"><p style=3D"margin:0;margin-bottom:=
+8px">Captured with Wave AI Note Taker</p><p style=3D"margin:0;font-size:12p=
+x">Your AI-powered companion</p></div></div></div></div></html>
+----_NmP-8dd171c3025efde9-Part_1--

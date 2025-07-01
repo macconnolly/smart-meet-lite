@@ -1,0 +1,482 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:adf:ecc9:0:b0:3a0:b206:c10d with SMTP id s9csp2636354wro;
+        Wed, 14 May 2025 08:37:47 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF4mRLVV/bXfX87Jm7E3r8UD4LH+tduVNshs8X3lDC8cz4sfwTXZF3ue94ZuG2ATH0n842C
+X-Received: by 2002:ad4:5bae:0:b0:6f4:cbcf:5d46 with SMTP id 6a1803df08f44-6f896e56e74mr56471956d6.20.1747237066739;
+        Wed, 14 May 2025 08:37:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747237066; cv=none;
+        d=google.com; s=arc-20240605;
+        b=PIZBZOJpZ/m3lLsLtL2wULCNJyNI345xcyqeaMV8wCvqJVd3cX3mXO4cFYQynZEhgm
+         b3WU+T6FietFmBUo9n3TmhSjnjboQDzIAubqqqm09kuqxMbP/EIZAxiLjNyjdqbV9Ng8
+         ciX/r3z7FgJZaB+QRa2T17WDDuSvCox55Wbp6KDmmAOJdVwMA8MXpPXMWvxOFCrNIyGu
+         gaUa+3UwW40LXChRm8yTcdnUlCzNR5HWWY4bpSpmDBBogLGM5uTbw/Whpxd5X6k1XQ/o
+         H/MOSZdD1PNX0vJbtEaWgXm7x1sn2zX/HazSKq92qKC7x3ILfMVHqoHFRgKRdiD2US5m
+         fOiw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=EFCJc46zd5cgdQ2K7640xjISfJYG01m49qt0M003eQg=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=cBEhAt32RWJpoCFwSYN6q8eUDCYqr8RF35fhuAqn9RN2lHH9AMQJG7RnCR1nrD9EeK
+         PQjMnuIh+DnVDAsYzOpOVEcgxLj6rmf0W0W5kaXHrU0qkIq8EA9i09haIpH51wbvPW21
+         VQgZv9nKiJkXtGGe8/hubWAFKORQJF58dPFD2SoIJaP7Ejrl4S0DqmX058tucwG+WOY+
+         GYgV4ZIZKJrpIwqnETPOi1VAnd8wQjPlxXVJb+s2MqbzRCLxQEBTyHLHbX1PLOiLaRRN
+         3XZ4Rn/oNTvfEqY6DYEunQR+ZRNGTehAoy4Aq8VJWTsZxhKTPjklD+km+TMv/LyKrPiv
+         DPNQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=RXjxkapI;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=fsa9XzxK;
+       spf=pass (google.com: domain of 01000196cf71d5f6-09abd916-eb87-451a-a5e5-875069983869-000000@send.email.wave.co designates 54.240.9.37 as permitted sender) smtp.mailfrom=01000196cf71d5f6-09abd916-eb87-451a-a5e5-875069983869-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <01000196cf71d5f6-09abd916-eb87-451a-a5e5-875069983869-000000@send.email.wave.co>
+Received: from a9-37.smtp-out.amazonses.com (a9-37.smtp-out.amazonses.com. [54.240.9.37])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e697baacsi125498026d6.409.2025.05.14.08.37.46
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 14 May 2025 08:37:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 01000196cf71d5f6-09abd916-eb87-451a-a5e5-875069983869-000000@send.email.wave.co designates 54.240.9.37 as permitted sender) client-ip=54.240.9.37;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=RXjxkapI;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=fsa9XzxK;
+       spf=pass (google.com: domain of 01000196cf71d5f6-09abd916-eb87-451a-a5e5-875069983869-000000@send.email.wave.co designates 54.240.9.37 as permitted sender) smtp.mailfrom=01000196cf71d5f6-09abd916-eb87-451a-a5e5-875069983869-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1747237066;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=q5VgT9Q4l2L8y7JfCGk9+d9QnfzaKvuxzAalG4RAklU=;
+	b=RXjxkapIOtFBmSCCAhePAMoB95ohykI+J2KwxqhIq3jUsj0bPqr6Qlw1tISj91Zf
+	5FsT20j5LOZ4WizrELQLEoyp49kVGSnKJQRMV9EQvLZ4IVRyY342Mc0pfT7IfMnuEBK
+	mGcOVaBs8IBw5C+AZUhsUIvKgbOXMGrWG/KlwoTQ=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1747237066;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=q5VgT9Q4l2L8y7JfCGk9+d9QnfzaKvuxzAalG4RAklU=;
+	b=fsa9XzxKytDa35Ak2WrYofm5zp4yoavi1aKsrIAsBwjyxSIMFjcDp2k1EcpsuZhg
+	Ten9oKQ19XfXMF3Y4wCmyKLv6FMKsl3xh2XEYpV7BmFvG9heSMAskfkYnHujgVZNRJq
+	556uDXJWrbPMcIX3H59Hh3Qh73sHtwv+vISOeuDQ=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: BRV BRB Readiness Business Process Changes
+Message-ID: <01000196cf71d5f6-09abd916-eb87-451a-a5e5-875069983869-000000@email.amazonses.com>
+Date: Wed, 14 May 2025 15:37:46 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-a8a5ac5edddf08e2-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.05.14-54.240.9.37
+
+----_NmP-a8a5ac5edddf08e2-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+BRV BRB Readiness Business Process Changes
+
+**Main Topics Discussed:**
+
+1. **Business Process Changes and BRV/BRB Scope**
+   - Rakesh explained =
+that each function identifies which of their business processes will change=
+ for BRV, particularly those effective August 1st.
+   - For processes with =
+changes, there may be associated system changes, though this is not =
+guaranteed.
+
+2. **ERP and System Changes**
+   - The ERP system is not =
+expected to undergo significant process changes during this transition.
+   - The plan is for the ERP to largely function as usual, with only minor =
+data modifications (removals or additions).
+   - Most business processes =
+themselves will continue as-is, with limited expected impact on supporting =
+systems.
+
+3. **User Acceptance Testing (UAT) and Readiness**
+   - The scale and depth of UAT will be influenced by the extent of =
+business and system changes, and the need for knowledge transfer (KT), =
+especially for newly hired staff.
+   - UAT readiness is being considered =
+from a holistic BRB perspective, not just IT.
+
+4. **Knowledge Transfer and =
+New Hires**
+   - A key challenge lies in ensuring adequate training and =
+knowledge transfer for new employees joining due to process changes.
+
+5. **Legal Entity Data**
+   - Debate exists around the significance of =
+legal entity data changes versus process changes.
+   - Rakesh emphasizes =
+legal entity considerations, while others are uncertain about its =
+centrality.
+
+6. **Next Steps and Uncertainties**
+   - Some participants are=
+ not fully informed yet and plan to connect with Rakesh for clarification.
+   - Objectives include clarifying UAT scope, identifying participants, and=
+ determining tactical execution plans.
+   - An upcoming working session, =
+led by Rakesh, aims to resolve open questions and define immediate actions.
+
+**Action Items / Follow-Ups:**
+
+- Reach out to Rakesh for clarification on=
+ the relationship between business process changes, system changes, and =
+legal entity data implications.
+- Confirm the detailed scope of UAT, =
+including which processes, systems, and personnel will be involved.
+- Attend the working session to help finalize tactical plans and next steps=
+ for BRV/BRB readiness, focused on the August 1st changes.
+
+Transcript:
+0:00
+Their business. So the way that Rakesh is explaining it is that, you =
+know, for all the, you know, if we start with the business process, the, =
+the different functions will have X amount of different processes that they=
+ have in their scope and they will identify which of those processes are =
+changing on for BRV or for August 1st based on those process changes. There=
+ may or may not most likely will have system changes. So based off of the, =
+the process change, if there's any system change, if there's KT needed for,=
+ you know, if people need to be, you know, new, New Athens people need to =
+be hired, there's a whole list of how intense or how kind of, you know, =
+CHILL the, the UAT needs to be. That's kind of a 30, 000 foot level. Does =
+that, does that make sense?
+
+0:52
+Yep.
+
+0:54
+So how did the, Rakesh, how do=
+.
+
+0:56
+The, how do the business processes that you're talking about, like =
+the processes that are going to change for day one, like how is that =
+related to the ERP system?
+
+1:06
+Yeah. So basically it's not just erp, =
+Right. It's all the applications that are in BRB scope. But for the most =
+part with erp, we're not really doing any. There shouldn't really be any =
+any process changes. Right. We're essentially just saying this system is =
+going to operate the way it's operating today, is going to operate the same=
+ tomorrow. We're just taking out some information and we're adding in some =
+information that's at a high level what we're doing. The business process =
+itself that's, you know, the business will have to determine what is =
+changing, what is not changing. And you know, for the most part there =
+shouldn't be too much of a system change to it. So I would expect it to be =
+minimal. I think what's to be a more of a, a sticking point. And it's not =
+just uat. This kind of holistic kind of BRB readiness is knowledge transfer=
+ for new people that are being hired. Right. So again, this is where I'm, =
+I'm getting a little fuzzy. I don't understand how this relates to the IT =
+side as much because if a business process is changing and you have a new =
+person being hired, sure you have to train that person up and, and =
+everything.
+
+2:09
+But I think it ties back to the, I think it ties back to =
+the legal entity piece.
+
+2:17
+Say that again.
+
+2:18
+I think it ties back to the legal entity piece.
+
+2:22
+Why do you say that?
+
+2:24
+When I talked to Rakesh, that was what he was big harping on, was.
+
+2:31
+I don't know about that, not you. But I don't think. I don't agree =
+with Rakesh as much because, yeah, there's going to be legal entity data =
+that is changing, but the actual process itself is. I. I don't know. Let's =
+talk to him. Yeah, he's been driving this for the last few weeks. I don't =
+want to give you wrong information. I'm, you know, just got pulled into =
+this literally yesterday. Okay. So still trying to understand exactly what =
+they. What they need here, but essentially they're just trying to be able =
+to scope out what they need to do for uat, who are the people that need to =
+be involved, and how they're gonna actually, you know, tactically do it. =
+That's kind of the plan for Tom of cool, but it seems like he wants to make=
+ this more of a working session than anything else. But let's connect with =
+him and figure out what his. His next steps are.
+
+3:18
+Cool.
+
+3:19
+Cool. All right, man. Appreciate it.
+
+3:21
+Okay, thanks.
+
+3:22
+See you.
+
+3:22
+Appreciate it. Bye.
+----_NmP-a8a5ac5edddf08e2-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">BRV BRB =
+Readiness Business Process Changes</h1></td></tr></table></div><div =
+style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/8DCC60E2-73CF-4E04-847E-1D351C00F668?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><p><strong style=3D"font-weight:bold">Main=
+ Topics Discussed:</strong></p>
+<ol>
+<li><p><strong =
+style=3D"font-weight:bold">Business Process Changes and BRV/BRB =
+Scope</strong></p>
+<ul>
+<li>Rakesh explained that each function identifies =
+which of their business processes will change for BRV, particularly those =
+effective August 1st.</li>
+<li>For processes with changes, there may be =
+associated system changes, though this is not guaranteed.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">ERP and System =
+Changes</strong></p>
+<ul>
+<li>The ERP system is not expected to undergo =
+significant process changes during this transition.</li>
+<li>The plan is for the ERP to largely function as usual, with only minor =
+data modifications (removals or additions).</li>
+<li>Most business =
+processes themselves will continue as-is, with limited expected impact on =
+supporting systems.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">User Acceptance Testing (UAT) and =
+Readiness</strong></p>
+<ul>
+<li>The scale and depth of UAT will be =
+influenced by the extent of business and system changes, and the need for =
+knowledge transfer (KT), especially for newly hired staff.</li>
+<li>UAT readiness is being considered from a holistic BRB perspective, not =
+just IT.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Knowled=
+ge Transfer and New Hires</strong></p>
+<ul>
+<li>A key challenge lies in =
+ensuring adequate training and knowledge transfer for new employees joining=
+ due to process changes.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Legal Entity Data</strong></p>
+<ul>
+<li>Debate exists around the significance of legal entity data changes =
+versus process changes.</li>
+<li>Rakesh emphasizes legal entity =
+considerations, while others are uncertain about its centrality.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Next Steps and =
+Uncertainties</strong></p>
+<ul>
+<li>Some participants are not fully =
+informed yet and plan to connect with Rakesh for clarification.</li>
+<li>Objectives include clarifying UAT scope, identifying participants, and =
+determining tactical execution plans.</li>
+<li>An upcoming working session,=
+ led by Rakesh, aims to resolve open questions and define immediate actions=
+.</li>
+</ul>
+</li>
+</ol>
+<p><strong style=3D"font-weight:bold">Action Items=
+ / Follow-Ups:</strong></p>
+<ul>
+<li>Reach out to Rakesh for clarification =
+on the relationship between business process changes, system changes, and =
+legal entity data implications.</li>
+<li>Confirm the detailed scope of UAT,=
+ including which processes, systems, and personnel will be involved.</li>
+<li>Attend the working session to help finalize tactical plans and next =
+steps for BRV/BRB readiness, focused on the August 1st changes.</li>
+</ul>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0,=
+ 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex;align-i=
+tems:center;gap:8px"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</=
+span>Transcription</h3><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">0:00</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Their business=
+. So the way that Rakesh is explaining it is that, you know, for all the, =
+you know, if we start with the business process, the, the different =
+functions will have X amount of different processes that they have in their=
+ scope and they will identify which of those processes are changing on for =
+BRV or for August 1st based on those process changes. There may or may not =
+most likely will have system changes. So based off of the, the process =
+change, if there&#x27;s any system change, if there&#x27;s KT needed for, =
+you know, if people need to be, you know, new, New Athens people need to be=
+ hired, there&#x27;s a whole list of how intense or how kind of, you know, =
+CHILL the, the UAT needs to be. That&#x27;s kind of a 30, 000 foot level. =
+Does that, does that make sense?</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unident=
+ified Speaker</span><span style=3D"color:#64748b;font-size:14px">0:52</span=
+></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yep.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">0:54</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">So how did the=
+, Rakesh, how do.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">0:56</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">The, how do =
+the business processes that you&#x27;re talking about, like the processes =
+that are going to change for day one, like how is that related to the ERP =
+system?</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">1:06</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So =
+basically it&#x27;s not just erp, Right. It&#x27;s all the applications =
+that are in BRB scope. But for the most part with erp, we&#x27;re not =
+really doing any. There shouldn&#x27;t really be any any process changes. =
+Right. We&#x27;re essentially just saying this system is going to operate =
+the way it&#x27;s operating today, is going to operate the same tomorrow. =
+We&#x27;re just taking out some information and we&#x27;re adding in some =
+information that&#x27;s at a high level what we&#x27;re doing. The business=
+ process itself that&#x27;s, you know, the business will have to determine =
+what is changing, what is not changing. And you know, for the most part =
+there shouldn&#x27;t be too much of a system change to it. So I would =
+expect it to be minimal. I think what&#x27;s to be a more of a, a sticking =
+point. And it&#x27;s not just uat. This kind of holistic kind of BRB =
+readiness is knowledge transfer for new people that are being hired. Right.=
+ So again, this is where I&#x27;m, I&#x27;m getting a little fuzzy. I =
+don&#x27;t understand how this relates to the IT side as much because if a =
+business process is changing and you have a new person being hired, sure =
+you have to train that person up and, and everything.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified Speaker</span><span style=3D"color:#64748b;f=
+ont-size:14px">2:09</span></div><div style=3D"color:#475569;font-size:16px;=
+line-height:1.6">But I think it ties back to the, I think it ties back to =
+the legal entity piece.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">2:17</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Say that again=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">2:18</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">I think it =
+ties back to the legal entity piece.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified Speaker</span><span style=3D"color:#64748b;f=
+ont-size:14px">2:22</span></div><div style=3D"color:#475569;font-size:16px;=
+line-height:1.6">Why do you say that?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified Speaker</span><span style=3D"color:#64748b;f=
+ont-size:14px">2:24</span></div><div style=3D"color:#475569;font-size:16px;=
+line-height:1.6">When I talked to Rakesh, that was what he was big harping =
+on, was.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">2:31</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">I don&#x27;t =
+know about that, not you. But I don&#x27;t think. I don&#x27;t agree with =
+Rakesh as much because, yeah, there&#x27;s going to be legal entity data =
+that is changing, but the actual process itself is. I. I don&#x27;t know. =
+Let&#x27;s talk to him. Yeah, he&#x27;s been driving this for the last few =
+weeks. I don&#x27;t want to give you wrong information. I&#x27;m, you know,=
+ just got pulled into this literally yesterday. Okay. So still trying to =
+understand exactly what they. What they need here, but essentially =
+they&#x27;re just trying to be able to scope out what they need to do for =
+uat, who are the people that need to be involved, and how they&#x27;re =
+gonna actually, you know, tactically do it. That&#x27;s kind of the plan =
+for Tom of cool, but it seems like he wants to make this more of a working =
+session than anything else. But let&#x27;s connect with him and figure out =
+what his. His next steps are.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unident=
+ified Speaker</span><span style=3D"color:#64748b;font-size:14px">3:18</span=
+></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Cool.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">3:19</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Cool. All =
+right, man. Appreciate it.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">3:21</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, thanks.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">3:22</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">See you.=
+</div></div><div style=3D"margin-bottom:0;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">3:22</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Appreciate it.=
+ Bye.</div></div></div><div style=3D"margin-top:36px;text-align:center;colo=
+r:#64748b;font-size:14px;padding:20px;border-top:1px solid #e2e8f0"><p =
+style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note Taker</p><p=
+ style=3D"margin:0;font-size:12px">Your AI-powered companion</p></div></div=
+></div></div></html>
+----_NmP-a8a5ac5edddf08e2-Part_1--

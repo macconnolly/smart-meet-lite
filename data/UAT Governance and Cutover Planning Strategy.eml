@@ -1,0 +1,1450 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a05:6000:1106:b0:3a4:dc5b:9678 with SMTP id z6csp894166wrw;
+        Tue, 27 May 2025 10:51:02 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFRcW9X8Ky+AM8PjC9kVv5gMHj93YsE9nUizJO4kN3vjgae92Du5gwhT+LBvvbDuD2mLxGo
+X-Received: by 2002:a05:620a:430f:b0:7ce:b782:8931 with SMTP id af79cd13be357-7cf06d18327mr242159285a.2.1748368261810;
+        Tue, 27 May 2025 10:51:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748368261; cv=none;
+        d=google.com; s=arc-20240605;
+        b=OsGP021T7DYrl7IK7YFx+LHZM/MRv4mRIi0D2FoTimzpOyW6xN4TYR5SCmshQF8FkO
+         hXFQyXGvYE0TV57sJfNbP4lICdE7dpcGlLlLcRGSb8tjuALVhGh70HpvmmDcebKvHbAd
+         /W/9i3NyNq5lDoiY3ntLAeKVC1sJ694qRhHj+hbvcPcjd3eZPfQNen4IkJxpAqAZdfDV
+         AfhLVyRCdYk2bWaS+T8QOvAyUihekCOrNyJB6tdkdmlIRyMA4aQuwl7gN+nPC14dz2lO
+         py9W5S3Kd1G7ORSNm6UBqjCDxGOvdEzwjfVsEg/PQmxG61V6jpxMxVYbUgXwRFXao4a5
+         IOUA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=s1qcNUFprPN0OQBLiQJc7gu63acX6Rn7ERbuiv2bI8Q=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=UUN9UfSO08YF6a0aR6Qpm+jI8kb+cieH7I6s5ZaytDR6I+6VBX+QFwINMz/Crg287w
+         RYEx8buuvaM6ji1/dY6Ev4y0R/9skMh8BozG3XETBmuHlBHClLLRurXEvixiNrPnZhAY
+         ag7gyFoXpVxpUKBF//rnhNI8cjEOeAxGWiFxtE5ri7N8fm+tOJOB30dXKDJWnpssR+mE
+         aDo34H+VOWYX+HDqAG/HN1CRPVGUtyoxyQIrR2CVMOVnOlXp+LvK8/TosXgwjf17y4Ks
+         uOiWB08Nt/KpftKWeqq4HGNyISWH9yJKQIHNTk45LlWBUTRVkBxCtd7cY2TW+aMG3tQc
+         +MoQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=mCoK3Ppl;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=s4xAh+3R;
+       spf=pass (google.com: domain of 0100019712de8032-d3ed95c3-8d81-4bfb-9aa7-4e3cac7e83ee-000000@send.email.wave.co designates 54.240.9.99 as permitted sender) smtp.mailfrom=0100019712de8032-d3ed95c3-8d81-4bfb-9aa7-4e3cac7e83ee-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <0100019712de8032-d3ed95c3-8d81-4bfb-9aa7-4e3cac7e83ee-000000@send.email.wave.co>
+Received: from a9-99.smtp-out.amazonses.com (a9-99.smtp-out.amazonses.com. [54.240.9.99])
+        by mx.google.com with ESMTPS id af79cd13be357-7cd468ccc56si2661052485a.479.2025.05.27.10.51.01
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 27 May 2025 10:51:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 0100019712de8032-d3ed95c3-8d81-4bfb-9aa7-4e3cac7e83ee-000000@send.email.wave.co designates 54.240.9.99 as permitted sender) client-ip=54.240.9.99;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=mCoK3Ppl;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=s4xAh+3R;
+       spf=pass (google.com: domain of 0100019712de8032-d3ed95c3-8d81-4bfb-9aa7-4e3cac7e83ee-000000@send.email.wave.co designates 54.240.9.99 as permitted sender) smtp.mailfrom=0100019712de8032-d3ed95c3-8d81-4bfb-9aa7-4e3cac7e83ee-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1748368261;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=svo+45059oqNWszoSVmAxxtQcG6+lsnJYGS1+MQK62Q=;
+	b=mCoK3PplP2L/xmJbz36uzbpgotUnHgW8NsLmdKt8kXHdzPWgtFhD19UXKm0wxv3u
+	cjomaCVgDbie8JjpXhPWskGob63PdiZgHUcHGixup/e3/Y1vBk9NQpcMxLTfGJBge0/
+	lUC8O2pNU8rdiYcVDMdBfkBnhVyuwWTjxfXBk3J8=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1748368261;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=svo+45059oqNWszoSVmAxxtQcG6+lsnJYGS1+MQK62Q=;
+	b=s4xAh+3RqruO4oo+hQjNBCqux4mzkQy68i/0udol4zAlqZ0XjcU3962g09BcOCnU
+	VGP2cI5LWNHAeduOOKqjBtsGdmlJOJgLR+2zLoAtnnwCoy7AznGm87K3wjBhuxLJ4NU
+	I5GXPka9c8wPp30W+6QEWdAXoGiYKsfY5h4aw8EY=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: UAT Governance and Cutover Planning Strategy
+Message-ID: <0100019712de8032-d3ed95c3-8d81-4bfb-9aa7-4e3cac7e83ee-000000@email.amazonses.com>
+Date: Tue, 27 May 2025 17:51:01 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-6f62c132f0276c82-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.05.27-54.240.9.99
+
+----_NmP-6f62c132f0276c82-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+UAT Governance and Cutover Planning Strategy
+
+## Main Topics Discussed
+
+### 1. Cutover Planning for Sales and Purchase Orders =20
+- **Responsibility Split**: Functional (supply chain) teams handle the =
+practical aspects of cutting over sales and purchase orders, while =
+IT=E2=80=99s main responsibility is to support the systems and application =
+ecosystem, especially as legal entity changes impact ERP and related =
+systems.
+- **Timing and Phasing**:=20
+  - Applications are in various =
+phases of move/build-back:
+    - Some are moving =E2=80=9Cas is=E2=80=9D in=
+ June and July.
+    - Others (notably 8.1 related) are going live to =
+support legal entity readiness.
+    - Further cutovers scheduled during =
+July, August, September, aiming for completion before October.
+  - All applications must be cut over before November 1st to avoid reliance=
+ on the TSA (Transition Services Agreement).
+- **Types of Cutover**: Clones=
+, build-backs, and =E2=80=9Cmove as is=E2=80=9D migrations.
+
+### 2. UAT (User Acceptance Testing) Readiness and Governance =20
+- **Purpose**: UAT is where end users validate the business functionality =
+of new or changed systems before full cutover.
+- **Timing**: UAT is =
+occurring in tandem with cutover efforts.
+- **Scope**: =20
+  - IT is tasked with supporting UAT, developing a framework, and sharing =
+past approaches.
+  - Need to present to Sukai on Friday (exact date not set=
+ but slides needed by end of the current week).
+- **Deck Requirements**:
+  - Develop 9=E2=80=9310 slides detailing:
+    - The process for running =
+UAT
+    - Governance structure
+    - Defect management and escalation =
+processes
+    - Reporting cadence and tools (e.g., JIRA)
+    - PMO structure and escalation paths
+
+#### UAT Process: =20
+- **Kickoff**: UAT planning has started, focusing on end-to-end business =
+processes. Some processes, people, or systems are changing, some remain the=
+ same.
+- **Change Mapping**: A matrix is being formed:
+    - What=E2=80=99s changing: process, people, or systems?
+    - Level of testing required (full UAT, regression/smoke test, or =
+minimal test).
+    - Out of ~300 applications, only 20+ are significantly =
+changing for 8.1; these changes intersect with several business processes.
+
+- **Testing Scope Selection** (=E2=80=98Down Selection=E2=80=99): =20
+    - Out of all business processes, only those impacted by change need =
+full testing.
+    - Unchanged processes/systems get minimal/regression =
+testing.
+    - Aim is to focus testing resources efficiently on what truly =
+needs validation.
+
+- **Test Coordination**: =20
+    - Structure to include =
+functional UAT coordinators (IT, supply chain, HR, etc.) and test leads for=
+ both IT systems and business areas.
+    - Entry/exit criteria needed for =
+each process or system change.
+    - Need to track UAT readiness at each =
+step.
+
+- **Defect and Escalation Management**: =20
+    - Clear roles and =
+escalation paths when issues are discovered in UAT.
+    - Mechanisms for retesting, reporting, and resolution (potentially =
+using tools like JIRA).
+
+- **Reporting & Dashboards**: =20
+    - Need for reporting on UAT progress, readiness tracking, and =
+dashboarding.=20
+    - Expectation is to leverage existing tools (e.g., =
+JIRA) for automated reports for stakeholders and steering committees.
+
+### 3. Knowledge and Tools Sourcing
+- **Reuse of Past Materials**:=20
+  - The team is looking to repurpose content from previous projects (such =
+as 3M, GE, or Residio) to accelerate deck creation.
+  - Queries about where to find UAT materials within EY (EY=E2=80=99s =
+internal resources).
+
+- **Tool Discussion**:=20
+  - JIRA and other systems =
+may be used for logging test cases, tracking defects, and generating =
+reports.
+
+### 4. Miscellaneous / Other Action Items
+
+- **Immediate Next Steps**:
+    - Develop UAT governance/framework slides =
+by Friday for Sukai.
+    - Pull and adapt past UAT/testing materials from =
+earlier projects and internal resources.
+    - Reach out to colleagues (e.g=
+., Skip, Harry) for additional examples or documentation if needed.
+ =20
+- **Project Dependencies and Decisions**:
+    - A decision on Microsoft =
+renewal is due in the next two to three days.
+    - Meeting with Peterson =
+will clarify the decision-making process for that renewal and provide =
+additional clarity for the deck to be presented.
+
+## Action Items / =
+Follow-ups
+
+- Team members to document and begin structuring the UAT =
+framework deck immediately (June 12=E2=80=9314 assumed timeframe).
+- Gather and review existing UAT materials within EY and from peer =
+organizations (3M, GE, Residio).
+- Set up or confirm the meeting with Sukai=
+ for feedback on the proposed UAT framework.
+- Clarify application/system =
+changes and feed them into the test scope "down selection".
+- Evaluate and confirm the tools (JIRA, others) for UAT execution, =
+reporting, and dashboarding.
+- Coordinate with PMO and function leads (like=
+ Peers) for overall alignment and reporting.
+- Monitor the Microsoft =
+renewal timeline and ensure required input for the decision is obtained.
+
+---
+
+**Key Dates Mentioned**: =20
+- Applications moving as-is: June-July =
+2024 =20
+- Cutover completions required before: October 2024 (preferably =
+before Nov 1, 2024) =20
+- Slides for Sukai due: by Friday (week of June 12,=
+ 2024)
+- Microsoft renewal decision: within next 2-3 days from the meeting =
+=20
+- Ongoing: Outreach for past materials, UAT planning, and readiness =
+tracking
+
+**Key Figures Involved**: =20
+- Sukai, Jeff (stakeholders)
+- Peers (main IT PMO, UAT coordinator)
+- Skip, Harry, Asha, Garrett =
+(contacts for prior material)
+- Srijiv, Bill (ERP/test script contacts)
+
+---
+
+This discussion provides a comprehensive overview of planning, =
+governance, coordination, and immediate actions required to drive =
+successful UAT and application cutover in a complex legal entity transition=
+, with clear timelines, deliverables, decision points, and internal =
+dependencies.
+
+Transcript:
+0:00
+How do I cut over sales order, how do I cut=
+ over purchase orders? That's all function related, supply chain related. =
+IT will help out where we can with putting a view into how the cutover will=
+ happen but where IT impacts is on systems. So ERP and ecosystem will get =
+impacted by by legal entity changes. Right. So the rest of it and we'll get=
+ into a bit more of that. Let's start at the high level operational =
+separation from an application perspective. You're going to have =
+applications that are moving over continuously. So there'll be some =
+applications that are getting built back and move as is in the June time =
+frame and July time frame. So those are actually happening now. There'll be=
+ some applications that are 8.1 related where they go live to support the =
+legal entity readiness like prp. There'll be some applications that are =
+getting cut over sometime in July, August, September before the October =
+time frame. So, so those are regular cutovers, they're clones, they're =
+build backs, they're move as is. So those have to go through our migration =
+path and have to cut over. So there's work here in terms of driving and =
+defining what cut over, what testing is going to look like, how it's going =
+to work, etc. So our scope of UAT that we need to support, that we've been =
+asked to support is around then you've got some other apps non IT that are =
+happening in this time frame. And this time frame every app is expected to =
+get cut over before 111 because that's otherwise it's on TSA at that point.
+
+2:07
+So.
+
+2:11
+Kato uat. So apps are getting developed, built =
+functionality tested in sit, they're going into uat. You know all of that =
+SDLC work is happening in this time frame. What we need to do from an IT =
+perspective is peers is a main IT PMO person but we need to work with peers=
+ to understand and help him and put together, help him Honeywell put =
+together a view of how we run uat. So what does a UAT process look like? =
+What is the governance and structure on uat? How do defects get resolved? =
+He's hung up. He and Jeff are hung up on defects management and escalation.=
+ The defects are just one part of an overall part of how to run uat. So =
+what we need to present to Sukai on Friday is a point of view on how we've =
+run UAT before. So over the next, literally tomorrow and Thursday, today, =
+tomorrow, Thursday we need to develop a deck that has a view on how do we =
+run uat, how do we set it up, how do we govern it, how do we establish the =
+cadence of reporting on things, how do we set up? Trackers and dashboarding=
+ need not be the actual things but a view on because they would want to =
+double click and triple click on the overall. So we need to give a view on =
+how is UAT governance set up, how is that cutover happening, how do we tie =
+into the rest of cutover and how do we run uat. So that's the essence of =
+what we need to do for Deck for Friday for Sukai. So I'm having a =
+conversation in the meantime, we need to have also trackers of how we're =
+tracking to UAT readiness. So again, if you guys are taking notes, you want=
+ may want to, you know, start documenting this because we'll start =
+developing those over the next.
+
+4:17
+I am, yeah.
+
+4:19
+Right. So the idea here is Sukhai and Jeff want to view on. Okay. We see it=
+ simply from an IT perspective. How do you guys run uat? Because UAT is =
+where the end user testing happens. So until now IT has built its systems, =
+they do sit, it's all IT led. But at this point you're going to have to ask=
+ business users to come test the systems. So what happens if a user tests =
+and things don't work? So they're more concerned, right or wrong about, =
+well, how do you coordinate and be the connected. How does that connective =
+tissue work of. I got UAT coordinators across the functions, so I've got a.=
+ I've got an IT UAT coordinator, so across functions I've got UAT =
+coordinators, so I'll have IT supply chain hr. I'm going to have test leads=
+ that's across both IT systems as well as functions.
+
+5:22
+Do they already know what they need.
+
+5:23
+To test or is that okay, so =
+that's all part of the evolving discovery right now. Okay, so we're going =
+through a process where we kicked off UAT planning and we've said for this =
+engagement we've got a set of processes, business processes, end to end =
+processes that are in play. There are aspects of those processes that are =
+changing. So let's say order to cash, procure to pay is an end to end =
+process. Not everything there is changing because some processes are moving=
+ as is, some people are moving as is. But they may end up using new systems=
+. So if they end up using a new. So you can think of it as a matrix of, you=
+ know, process changing, people changing and systems changing. And it's =
+almost like, you know, test or no test or minimal test. So if the process =
+is not changing, let's say it's a dedicated process and it's moving as is, =
+or the process has not. There's not really any change to the process, then =
+there's probably very little to test. It may have new people taking on the =
+role to do the process tomorrow, in which case I might have to hire the =
+people and do knowledge transfer, so I'll need to track that. It may also =
+have systems that are live without or it's a new system that's being put in=
+ place, in which case I have to do a full technical UAT on that system. I =
+may not have a functional UAT on the process, but I'm going to have =
+business users test the system for the scenarios. So we've had this initial=
+ discussion about, okay, we think these are the universal processes. We're =
+looking at understanding what is a down selection of those systems in play =
+and within that context what is truly changing and what needs to test.
+
+7:22
+Down selection of systems in play, meaning.
+
+7:24
+Sound selection of processes and systems. Okay, so we have a view of the =
+systems. It's really more processes. We have a view of the systems that are=
+ touching every process. We have a view of the systems that are changing =
+for 8.1 and systems changing for 11.1. If we're to just focus on 8.1 for =
+now, there's only a subset of systems that are truly changing. Out of 300 =
+apps in the landscape, I think there's 20 something of them that are =
+changing. But however, from a process perspective, they may be touching =
+seven or eight systems. We may only have four or five systems changing. So =
+what we're trying to understand is okay, I've got these processes, the =
+process owners, they're touching, let's say I have to do just going to pick=
+ up something. Logistics management and supply chain. For logistics =
+management, they're going to have to do a view of supply planning. They may=
+ touch erp. For transportation management, they may be touching another =
+system. That process may not change. They may have new vendors, for example=
+. But the point is if they have new vendors, they'll have to get the =
+contracts from vendors, etc. But the process itself may not change. Yeah, =
+the system may or may not change. What we're trying to find out is one, the=
+ system may not change, but two, there may be a system in play that is =
+still being used and we need to understand what needs to be tested there. =
+We're starting work with each function between it and the functions to =
+define. And this is the second part of the tracker. We'll need to develop, =
+but to have a view of what is truly changing in a process or what's truly =
+changing in a system so that we can mark off what needs to be tested.
+
+9:14
+Yeah.
+
+9:15
+I mean, is that how you get.
+
+9:17
+To all of the like unique =
+scenarios that you were talking about that are ultimately tested?
+
+9:23
+Yes. So you have to down select the scenarios.
+
+9:26
+Yeah.
+
+9:27
+And the way you do that is.
+
+9:28
+I don't know what you mean by down select=
+.
+
+9:30
+Down select, meaning I got a thousand processes in play. If 900 of =
+them are not changing, I only need to test the other 100.
+
+9:38
+Okay, yeah, sure.
+
+9:39
+Yes. So I have to down select and understand what =
+is in scope for my testing.
+
+9:43
+Okay.
+
+9:44
+And the down selection also =
+is there are certain things where I might need to do cursory testing and =
+not a full blown UAT as a process. So if the process is not changing, but =
+I'm touching something else, I may just go in and do some regression =
+testing or smoke testing on that process. Actually from that's more of a =
+system perspective, but from a process perspective, I may just do some =
+basic. Yeah, smoke test.
+
+10:11
+Maybe the legal entity changed. The system =
+is staying the same. You need to.
+
+10:15
+Or I see the name there. Right. So=
+ my legal entity has changed the process. If I go through the process of =
+six steps there. Yeah, I see the new legal entity show up.
+
+10:23
+Yeah.
+
+10:24
+Okay, I'm done. I don't need to test anything per se. Right. So =
+there's very cursed minimal testing there. The second piece of this is full=
+ blown testing of a process because the process has truly changed. So the =
+down selection happens when I've got out of the thousand processes, I'm =
+selecting what is truly changing and to select that I need to go back and =
+look at what is changing and sync up between systems and processes.
+
+10:52
+Yeah.
+
+10:53
+So that in a nutshell is the scope of testing. But what we =
+need to do is define a framework for these guys and help define a framework=
+ of here's what I need to test. Here's how we're going to track that you're=
+ ready for this testing. Because the testing timelines are the testing =
+timelines that will come up when the systems are ready to test. The =
+question is, how do we plan that? How do we define a governance model? How =
+do we plan, how do we suggest the execution of this and managing of this. =
+We may not be physically doing it, but we need to give them a framework and=
+ an approach that we've used in the past to say here's how you run uat, =
+here's how as coordinators you work with other coordinators to do this. =
+Here's how you set up the governance, here's how defects and issues are =
+resolved. If, let's say I have a test lead that's testing that scenario and=
+ it fails, how does that get escalated to be retested? How does that, you =
+know, who escalates? So they want to know a bit more on how that all =
+stitches together. Yeah, so it shouldn't be too different than what we've =
+done in the past. We should have content for it. We need to what? At least =
+for the first pass, I'm looking to repurpose some of the content and say, =
+here's how we think you should run uat. Here's how it should do work, =
+here's how other functions and PMO should do the work, sort of roles and =
+responsibilities. And this is what we want to look, to give to you, to say,=
+ this is how we're thinking through things. They can poke holes at it, they=
+ can break it out and tell us, no, we want more details here, we want to =
+triple click, etc. Then we can get into, okay, let's out a full blown UAT =
+testing thing that will sync up with the cutover testing team, that will =
+sync up with other teams, etc. Etc. But let's start with, you know, a view =
+on here's how you should run uat.
+
+12:52
+Do they have a tool like JIRA or =
+something?
+
+12:55
+So we should also give them tools on logistics as well. =
+So, you know, so the point would be, you know, there are things around, =
+okay, I have some maybe testing Windows. I first maybe may be doing it =
+virtually or physically in a location. I may be giving people laptops to =
+come test this because it may be on an Athens laptop instead of a Honeywell=
+ laptop. Or I may have test laptops and test periods where people come in =
+at a particular function, come in and do the testing and report out on it. =
+There are things like entry and exit criteria. So there's all the =
+governance around. Here's how I would define an entry and exit criteria for=
+ this testing scope. I need, I need to pass these things or I need to sign =
+off on these. So there's a lot, all the logistics around. How do you run =
+the test, how do you pass the test? How do you sign off on the test? What =
+tools do you use? Example jira. How do you document that? Because prior to =
+all of that, part of this is understanding what the scenarios are and then =
+saying, okay, I've got a thousand tests, I've got thousand processes =
+changing or 1000 processes in scope. I only have 147 of them changing. And =
+for those 147, I need to test the scenarios. Maybe there are three =
+scenarios per process or something to the effect I come up with 500 test =
+scenarios. I now need to then go back and say for these 500 scenarios, what=
+ test scripts do you guys already have? The point you're talking about with=
+ Srijiv and Bill are defining for 5 ERP, what test scripts do they already =
+have? If they don't have it, they have to go create these to support these =
+processes or even systems. If they do have it but it doesn't fit, then =
+they'll have to go adjust these test scripts so that it fits what the =
+process of the scenario being tested. So that's what we want to help them =
+get to and say, here's a scope, here's how you want to run it, here's how =
+you want to find these out, here's how you have to execute on it and give =
+them a framework. So it's a bit, you know, so it's, it's really top down, =
+double click into it and perhaps one level down the minutiae of it. We can =
+work on it after we talk to Sukai Friday. But Pierce needs this view to be =
+able to because he's also lost. Yeah, he needs, as UAT it, UAT coordinator,=
+ he needs these things and more importantly, he will need reporting as to =
+what is the readiness of it. How do you run reports, how do you show? Maybe=
+ a lot of this is in JIRA already and you get automated reports from JIRA =
+that comes up. But we just need to provide an approach to say, okay, if =
+Jeff wants us steerco update and he says, well, what is your testing =
+progress? We should be able to provide some dashboard to say across these =
+functions and these scenarios.
+
+15:52
+Yes. Before we move on real quick. So=
+ I know the Microsoft renewal is.
+
+15:56
+Coming up very soon.
+
+15:58
+Is that a decision that we need.
+
+15:59
+To come to within the next two or =
+three days? But at least first I want to get a view of what is this? What =
+is this? All right, so talking to Peterson. Okay, thank you. Just is it =
+three?
+
+16:11
+But isn't that mean that you were mentioned? Yes, yes, three,=
+ two.
+
+16:15
+Okay, so we'll talk to him, understand that and make sure that=
+ we understand what we're providing for Friday. That meeting with Suka =
+hasn't been set up yet. Okay. But the idea would be we quickly pivot and =
+get a framework and approach in a few slides, say nine to 10 slides on. =
+Here's how the UAT should be run Here are the double clicks that you want =
+into it. All these, you know, six topics. Let's double click on each topic.
+
+16:41
+Yeah.
+
+16:41
+And here's how we think the structure. PMO structure =
+should be an escalation.
+
+16:47
+Should be.
+
+16:48
+Yeah. So if he's getting =
+any other and reporting more importantly reporting from.
+
+16:53
+You know how they did Essex by chance.
+
+16:56
+Essex is not.
+
+16:57
+It was an ugly then maybe residio or hi or do you have anything from your =
+past projects we should have within Ey. Yeah.
+
+17:07
+I just asked the deal tech librarian and it's not very helpful.
+
+17:10
+Yeah.
+
+17:11
+Librarian for what?
+
+17:12
+For UAT materials.
+
+17:14
+Yeah, I even look through some of the.
+
+17:16
+So what about 3M you guys. =
+Who is working on 3M?
+
+17:20
+I can get that from Skip.
+
+17:22
+Skip be a good example. I think.
+
+17:27
+Garrett Sean gave me something.
+
+17:29
+From 3M or GE because they went through it. Did we?
+
+17:40
+Yeah.
+
+17:41
+You know Asha Garrett or Harry by chance.
+
+17:47
+No, I don't know either from now.
+
+17:48
+All right. I can reach out to them=
+. I think they were reach out to hurry.
+
+17:51
+Yeah. You may have something=
+ on uat.
+
+17:53
+Yeah, I think he did cut over stuff.
+
+17:56
+This is a bit more than cut.
+
+17:57
+Okay, here's a cutover plan.
+
+18:00
+I wouldn't say cut over plan as much. I would assume part of the cutover =
+was uat.
+
+18:17
+It.
+----_NmP-6f62c132f0276c82-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">UAT =
+Governance and Cutover Planning Strategy</h1></td></tr></table></div><div =
+style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/a59d99ee-a954-46db-87f6-f94ae449099a?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h2 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2rem">Main Topics Discussed</h2><h3 style=3D"font-weight:500;=
+padding-top:20px;font-size:1.75rem">1. Cutover Planning for Sales and =
+Purchase Orders</h3><ul>
+<li><strong style=3D"font-weight:bold">Responsibil=
+ity Split</strong>: Functional (supply chain) teams handle the practical =
+aspects of cutting over sales and purchase orders, while IT=E2=80=99s main =
+responsibility is to support the systems and application ecosystem, =
+especially as legal entity changes impact ERP and related systems.</li>
+<li><strong style=3D"font-weight:bold">Timing and Phasing</strong>: <ul>
+<li>Applications are in various phases of move/build-back:<ul>
+<li>Some are moving =E2=80=9Cas is=E2=80=9D in June and July.</li>
+<li>Others (notably 8.1 related) are going live to support legal entity =
+readiness.</li>
+<li>Further cutovers scheduled during July, August, =
+September, aiming for completion before October.</li>
+</ul>
+</li>
+<li>All applications must be cut over before November 1st to avoid reliance=
+ on the TSA (Transition Services Agreement).</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Types of Cutover</strong>: Clones, =
+build-backs, and =E2=80=9Cmove as is=E2=80=9D migrations.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">2. UAT =
+(User Acceptance Testing) Readiness and Governance</h3><ul>
+<li><strong style=3D"font-weight:bold">Purpose</strong>: UAT is where end =
+users validate the business functionality of new or changed systems before =
+full cutover.</li>
+<li><strong style=3D"font-weight:bold">Timing</strong>: =
+UAT is occurring in tandem with cutover efforts.</li>
+<li><strong style=3D"font-weight:bold">Scope</strong>:  <ul>
+<li>IT is tasked with supporting UAT, developing a framework, and sharing =
+past approaches.</li>
+<li>Need to present to Sukai on Friday (exact date =
+not set but slides needed by end of the current week).</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Deck Requirements</strong>:<ul>
+<li>Develop 9=E2=80=9310 slides detailing:<ul>
+<li>The process for running =
+UAT</li>
+<li>Governance structure</li>
+<li>Defect management and escalation=
+ processes</li>
+<li>Reporting cadence and tools (e.g., JIRA)</li>
+<li>PMO structure and escalation paths</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem">UAT =
+Process:</h4><ul>
+<li><p><strong style=3D"font-weight:bold">Kickoff</strong=
+>: UAT planning has started, focusing on end-to-end business processes. =
+Some processes, people, or systems are changing, some remain the same.</p>
+</li>
+<li><p><strong style=3D"font-weight:bold">Change Mapping</strong>: A =
+matrix is being formed:</p>
+<ul>
+<li>What=E2=80=99s changing: process, =
+people, or systems?</li>
+<li>Level of testing required (full UAT, =
+regression/smoke test, or minimal test).</li>
+<li>Out of ~300 applications,=
+ only 20+ are significantly changing for 8.1; these changes intersect with =
+several business processes.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Testing Scope Selection</strong> (=E2=80=98Down =
+Selection=E2=80=99):  </p>
+<ul>
+<li>Out of all business processes, only =
+those impacted by change need full testing.</li>
+<li>Unchanged =
+processes/systems get minimal/regression testing.</li>
+<li>Aim is to focus testing resources efficiently on what truly needs =
+validation.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Test=
+ Coordination</strong>:  </p>
+<ul>
+<li>Structure to include functional UAT =
+coordinators (IT, supply chain, HR, etc.) and test leads for both IT =
+systems and business areas.</li>
+<li>Entry/exit criteria needed for each =
+process or system change.</li>
+<li>Need to track UAT readiness at each step=
+.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Defect and =
+Escalation Management</strong>:  </p>
+<ul>
+<li>Clear roles and escalation =
+paths when issues are discovered in UAT.</li>
+<li>Mechanisms for retesting,=
+ reporting, and resolution (potentially using tools like JIRA).</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Reporting &amp; =
+Dashboards</strong>:  </p>
+<ul>
+<li>Need for reporting on UAT progress, =
+readiness tracking, and dashboarding. </li>
+<li>Expectation is to leverage =
+existing tools (e.g., JIRA) for automated reports for stakeholders and =
+steering committees.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;pa=
+dding-top:20px;font-size:1.75rem">3. Knowledge and Tools Sourcing</h3><ul>
+<li><p><strong style=3D"font-weight:bold">Reuse of Past Materials</strong>:=
+ </p>
+<ul>
+<li>The team is looking to repurpose content from previous =
+projects (such as 3M, GE, or Residio) to accelerate deck creation.</li>
+<li>Queries about where to find UAT materials within EY (EY=E2=80=99s =
+internal resources).</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Tool Discussion</strong>: </p>
+<ul>
+<li>JIRA and other systems may be used for logging test cases, tracking =
+defects, and generating reports.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">4. =
+Miscellaneous / Other Action Items</h3><ul>
+<li><p><strong =
+style=3D"font-weight:bold">Immediate Next Steps</strong>:</p>
+<ul>
+<li>Develop UAT governance/framework slides by Friday for Sukai.</li>
+<li>Pull and adapt past UAT/testing materials from earlier projects and =
+internal resources.</li>
+<li>Reach out to colleagues (e.g., Skip, Harry) =
+for additional examples or documentation if needed.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Project Dependencies and =
+Decisions</strong>:</p>
+<ul>
+<li>A decision on Microsoft renewal is due in =
+the next two to three days.</li>
+<li>Meeting with Peterson will clarify the=
+ decision-making process for that renewal and provide additional clarity =
+for the deck to be presented.</li>
+</ul>
+</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Action Items =
+/ Follow-ups</h2><ul>
+<li>Team members to document and begin structuring =
+the UAT framework deck immediately (June 12=E2=80=9314 assumed timeframe).=
+</li>
+<li>Gather and review existing UAT materials within EY and from peer =
+organizations (3M, GE, Residio).</li>
+<li>Set up or confirm the meeting =
+with Sukai for feedback on the proposed UAT framework.</li>
+<li>Clarify application/system changes and feed them into the test scope =
+&quot;down selection&quot;.</li>
+<li>Evaluate and confirm the tools (JIRA, =
+others) for UAT execution, reporting, and dashboarding.</li>
+<li>Coordinate with PMO and function leads (like Peers) for overall =
+alignment and reporting.</li>
+<li>Monitor the Microsoft renewal timeline =
+and ensure required input for the decision is obtained.</li>
+</ul>
+<hr />
+<p><strong style=3D"font-weight:bold">Key Dates Mentioned</strong>:  </p>
+<ul>
+<li>Applications moving as-is: June-July 2024  </li>
+<li>Cutover completions required before: October 2024 (preferably before =
+Nov 1, 2024)  </li>
+<li>Slides for Sukai due: by Friday (week of June 12, =
+2024)</li>
+<li>Microsoft renewal decision: within next 2-3 days from the =
+meeting  </li>
+<li>Ongoing: Outreach for past materials, UAT planning, and =
+readiness tracking</li>
+</ul>
+<p><strong style=3D"font-weight:bold">Key =
+Figures Involved</strong>:  </p>
+<ul>
+<li>Sukai, Jeff (stakeholders)</li>
+<li>Peers (main IT PMO, UAT coordinator)</li>
+<li>Skip, Harry, Asha, =
+Garrett (contacts for prior material)</li>
+<li>Srijiv, Bill (ERP/test =
+script contacts)</li>
+</ul>
+<hr />
+<p>This discussion provides a =
+comprehensive overview of planning, governance, coordination, and immediate=
+ actions required to drive successful UAT and application cutover in a =
+complex legal entity transition, with clear timelines, deliverables, =
+decision points, and internal dependencies.</p>
+</div></div></div><div =
+style=3D"background-color:#ffffff;padding:28px;border-radius:12px;border:1p=
+x solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 =
+rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-size:20px;font-weight:=
+600;margin-top:0;margin-bottom:20px;display:flex;align-items:center;gap:8px=
+"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription<=
+/h3><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified IT =
+Lead</span><span style=3D"color:#64748b;font-size:14px">0:00</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">How do I cut over=
+ sales order, how do I cut over purchase orders? That&#x27;s all function =
+related, supply chain related. IT will help out where we can with putting a=
+ view into how the cutover will happen but where IT impacts is on systems. =
+So ERP and ecosystem will get impacted by by legal entity changes. Right. =
+So the rest of it and we&#x27;ll get into a bit more of that. Let&#x27;s =
+start at the high level operational separation from an application =
+perspective. You&#x27;re going to have applications that are moving over =
+continuously. So there&#x27;ll be some applications that are getting built =
+back and move as is in the June time frame and July time frame. So those =
+are actually happening now. There&#x27;ll be some applications that are 8.1=
+ related where they go live to support the legal entity readiness like prp.=
+ There&#x27;ll be some applications that are getting cut over sometime in =
+July, August, September before the October time frame. So, so those are =
+regular cutovers, they&#x27;re clones, they&#x27;re build backs, =
+they&#x27;re move as is. So those have to go through our migration path and=
+ have to cut over. So there&#x27;s work here in terms of driving and =
+defining what cut over, what testing is going to look like, how it&#x27;s =
+going to work, etc. So our scope of UAT that we need to support, that =
+we&#x27;ve been asked to support is around then you&#x27;ve got some other =
+apps non IT that are happening in this time frame. And this time frame =
+every app is expected to get cut over before 111 because that&#x27;s =
+otherwise it&#x27;s on TSA at that point.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified Team Member</span><span =
+style=3D"color:#64748b;font-size:14px">2:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified IT Lead</span><span style=3D"color:#64748b;f=
+ont-size:14px">2:11</span></div><div style=3D"color:#475569;font-size:16px;=
+line-height:1.6">Kato uat. So apps are getting developed, built =
+functionality tested in sit, they&#x27;re going into uat. You know all of =
+that SDLC work is happening in this time frame. What we need to do from an =
+IT perspective is peers is a main IT PMO person but we need to work with =
+peers to understand and help him and put together, help him Honeywell put =
+together a view of how we run uat. So what does a UAT process look like? =
+What is the governance and structure on uat? How do defects get resolved? =
+He&#x27;s hung up. He and Jeff are hung up on defects management and =
+escalation. The defects are just one part of an overall part of how to run =
+uat. So what we need to present to Sukai on Friday is a point of view on =
+how we&#x27;ve run UAT before. So over the next, literally tomorrow and =
+Thursday, today, tomorrow, Thursday we need to develop a deck that has a =
+view on how do we run uat, how do we set it up, how do we govern it, how do=
+ we establish the cadence of reporting on things, how do we set up? =
+Trackers and dashboarding need not be the actual things but a view on =
+because they would want to double click and triple click on the overall. So=
+ we need to give a view on how is UAT governance set up, how is that =
+cutover happening, how do we tie into the rest of cutover and how do we run=
+ uat. So that&#x27;s the essence of what we need to do for Deck for Friday =
+for Sukai. So I&#x27;m having a conversation in the meantime, we need to =
+have also trackers of how we&#x27;re tracking to UAT readiness. So again, =
+if you guys are taking notes, you want may want to, you know, start =
+documenting this because we&#x27;ll start developing those over the next.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified Team =
+Member</span><span style=3D"color:#64748b;font-size:14px">4:17</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">I am, yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified IT =
+Lead</span><span style=3D"color:#64748b;font-size:14px">4:19</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Right. So the =
+idea here is Sukhai and Jeff want to view on. Okay. We see it simply from =
+an IT perspective. How do you guys run uat? Because UAT is where the end =
+user testing happens. So until now IT has built its systems, they do sit, =
+it&#x27;s all IT led. But at this point you&#x27;re going to have to ask =
+business users to come test the systems. So what happens if a user tests =
+and things don&#x27;t work? So they&#x27;re more concerned, right or wrong =
+about, well, how do you coordinate and be the connected. How does that =
+connective tissue work of. I got UAT coordinators across the functions, so =
+I&#x27;ve got a. I&#x27;ve got an IT UAT coordinator, so across functions =
+I&#x27;ve got UAT coordinators, so I&#x27;ll have IT supply chain hr. =
+I&#x27;m going to have test leads that&#x27;s across both IT systems as =
+well as functions.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+Team Member</span><span style=3D"color:#64748b;font-size:14px">5:22</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Do they =
+already know what they need.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified=
+ IT Lead</span><span style=3D"color:#64748b;font-size:14px">5:23</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">To test or is=
+ that okay, so that&#x27;s all part of the evolving discovery right now. =
+Okay, so we&#x27;re going through a process where we kicked off UAT =
+planning and we&#x27;ve said for this engagement we&#x27;ve got a set of =
+processes, business processes, end to end processes that are in play. There=
+ are aspects of those processes that are changing. So let&#x27;s say order =
+to cash, procure to pay is an end to end process. Not everything there is =
+changing because some processes are moving as is, some people are moving as=
+ is. But they may end up using new systems. So if they end up using a new. =
+So you can think of it as a matrix of, you know, process changing, people =
+changing and systems changing. And it&#x27;s almost like, you know, test or=
+ no test or minimal test. So if the process is not changing, let&#x27;s say=
+ it&#x27;s a dedicated process and it&#x27;s moving as is, or the process =
+has not. There&#x27;s not really any change to the process, then =
+there&#x27;s probably very little to test. It may have new people taking on=
+ the role to do the process tomorrow, in which case I might have to hire =
+the people and do knowledge transfer, so I&#x27;ll need to track that. It =
+may also have systems that are live without or it&#x27;s a new system =
+that&#x27;s being put in place, in which case I have to do a full technical=
+ UAT on that system. I may not have a functional UAT on the process, but =
+I&#x27;m going to have business users test the system for the scenarios. So=
+ we&#x27;ve had this initial discussion about, okay, we think these are the=
+ universal processes. We&#x27;re looking at understanding what is a down =
+selection of those systems in play and within that context what is truly =
+changing and what needs to test.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unident=
+ified Team Member</span><span style=3D"color:#64748b;font-size:14px">7:22</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Down=
+ selection of systems in play, meaning.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified IT Lead</span><span style=3D"color:#64748b;f=
+ont-size:14px">7:24</span></div><div style=3D"color:#475569;font-size:16px;=
+line-height:1.6">Sound selection of processes and systems. Okay, so we have=
+ a view of the systems. It&#x27;s really more processes. We have a view of =
+the systems that are touching every process. We have a view of the systems =
+that are changing for 8.1 and systems changing for 11.1. If we&#x27;re to =
+just focus on 8.1 for now, there&#x27;s only a subset of systems that are =
+truly changing. Out of 300 apps in the landscape, I think there&#x27;s 20 =
+something of them that are changing. But however, from a process =
+perspective, they may be touching seven or eight systems. We may only have =
+four or five systems changing. So what we&#x27;re trying to understand is =
+okay, I&#x27;ve got these processes, the process owners, they&#x27;re =
+touching, let&#x27;s say I have to do just going to pick up something. =
+Logistics management and supply chain. For logistics management, =
+they&#x27;re going to have to do a view of supply planning. They may touch =
+erp. For transportation management, they may be touching another system. =
+That process may not change. They may have new vendors, for example. But =
+the point is if they have new vendors, they&#x27;ll have to get the =
+contracts from vendors, etc. But the process itself may not change. Yeah, =
+the system may or may not change. What we&#x27;re trying to find out is one=
+, the system may not change, but two, there may be a system in play that is=
+ still being used and we need to understand what needs to be tested there. =
+We&#x27;re starting work with each function between it and the functions to=
+ define. And this is the second part of the tracker. We&#x27;ll need to =
+develop, but to have a view of what is truly changing in a process or =
+what&#x27;s truly changing in a system so that we can mark off what needs =
+to be tested.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified Team =
+Member</span><span style=3D"color:#64748b;font-size:14px">9:14</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified IT =
+Lead</span><span style=3D"color:#64748b;font-size:14px">9:15</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">I mean, is that =
+how you get.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified Team =
+Member</span><span style=3D"color:#64748b;font-size:14px">9:17</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">To all of the =
+like unique scenarios that you were talking about that are ultimately =
+tested?</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified IT =
+Lead</span><span style=3D"color:#64748b;font-size:14px">9:23</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Yes. So you have =
+to down select the scenarios.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unident=
+ified Team Member</span><span style=3D"color:#64748b;font-size:14px">9:26</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified IT =
+Lead</span><span style=3D"color:#64748b;font-size:14px">9:27</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">And the way you =
+do that is.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified Team =
+Member</span><span style=3D"color:#64748b;font-size:14px">9:28</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">I don&#x27;t =
+know what you mean by down select.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Uniden=
+tified IT Lead</span><span style=3D"color:#64748b;font-size:14px">9:30</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Down =
+select, meaning I got a thousand processes in play. If 900 of them are not =
+changing, I only need to test the other 100.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified Team Member</span><span =
+style=3D"color:#64748b;font-size:14px">9:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, yeah, sure.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified IT =
+Lead</span><span style=3D"color:#64748b;font-size:14px">9:39</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Yes. So I have to=
+ down select and understand what is in scope for my testing.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified Team =
+Member</span><span style=3D"color:#64748b;font-size:14px">9:43</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified IT =
+Lead</span><span style=3D"color:#64748b;font-size:14px">9:44</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">And the down =
+selection also is there are certain things where I might need to do cursory=
+ testing and not a full blown UAT as a process. So if the process is not =
+changing, but I&#x27;m touching something else, I may just go in and do =
+some regression testing or smoke testing on that process. Actually from =
+that&#x27;s more of a system perspective, but from a process perspective, I=
+ may just do some basic. Yeah, smoke test.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified Team Member</span><span =
+style=3D"color:#64748b;font-size:14px">10:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Maybe the legal =
+entity changed. The system is staying the same. You need to.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified IT =
+Lead</span><span style=3D"color:#64748b;font-size:14px">10:15</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">Or I see the =
+name there. Right. So my legal entity has changed the process. If I go =
+through the process of six steps there. Yeah, I see the new legal entity =
+show up.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified Team =
+Member</span><span style=3D"color:#64748b;font-size:14px">10:23</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified IT =
+Lead</span><span style=3D"color:#64748b;font-size:14px">10:24</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, I&#x27;m =
+done. I don&#x27;t need to test anything per se. Right. So there&#x27;s =
+very cursed minimal testing there. The second piece of this is full blown =
+testing of a process because the process has truly changed. So the down =
+selection happens when I&#x27;ve got out of the thousand processes, =
+I&#x27;m selecting what is truly changing and to select that I need to go =
+back and look at what is changing and sync up between systems and processes=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified Team =
+Member</span><span style=3D"color:#64748b;font-size:14px">10:52</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified IT =
+Lead</span><span style=3D"color:#64748b;font-size:14px">10:53</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">So that in a =
+nutshell is the scope of testing. But what we need to do is define a =
+framework for these guys and help define a framework of here&#x27;s what I =
+need to test. Here&#x27;s how we&#x27;re going to track that you&#x27;re =
+ready for this testing. Because the testing timelines are the testing =
+timelines that will come up when the systems are ready to test. The =
+question is, how do we plan that? How do we define a governance model? How =
+do we plan, how do we suggest the execution of this and managing of this. =
+We may not be physically doing it, but we need to give them a framework and=
+ an approach that we&#x27;ve used in the past to say here&#x27;s how you =
+run uat, here&#x27;s how as coordinators you work with other coordinators =
+to do this. Here&#x27;s how you set up the governance, here&#x27;s how =
+defects and issues are resolved. If, let&#x27;s say I have a test lead =
+that&#x27;s testing that scenario and it fails, how does that get escalated=
+ to be retested? How does that, you know, who escalates? So they want to =
+know a bit more on how that all stitches together. Yeah, so it =
+shouldn&#x27;t be too different than what we&#x27;ve done in the past. We =
+should have content for it. We need to what? At least for the first pass, =
+I&#x27;m looking to repurpose some of the content and say, here&#x27;s how =
+we think you should run uat. Here&#x27;s how it should do work, here&#x27;s=
+ how other functions and PMO should do the work, sort of roles and =
+responsibilities. And this is what we want to look, to give to you, to say,=
+ this is how we&#x27;re thinking through things. They can poke holes at it,=
+ they can break it out and tell us, no, we want more details here, we want =
+to triple click, etc. Then we can get into, okay, let&#x27;s out a full =
+blown UAT testing thing that will sync up with the cutover testing team, =
+that will sync up with other teams, etc. Etc. But let&#x27;s start with, =
+you know, a view on here&#x27;s how you should run uat.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified Team Member</span><span =
+style=3D"color:#64748b;font-size:14px">12:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Do they have a tool =
+like JIRA or something?</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+IT Lead</span><span style=3D"color:#64748b;font-size:14px">12:55</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">So we should =
+also give them tools on logistics as well. So, you know, so the point would=
+ be, you know, there are things around, okay, I have some maybe testing =
+Windows. I first maybe may be doing it virtually or physically in a =
+location. I may be giving people laptops to come test this because it may =
+be on an Athens laptop instead of a Honeywell laptop. Or I may have test =
+laptops and test periods where people come in at a particular function, =
+come in and do the testing and report out on it. There are things like =
+entry and exit criteria. So there&#x27;s all the governance around. =
+Here&#x27;s how I would define an entry and exit criteria for this testing =
+scope. I need, I need to pass these things or I need to sign off on these. =
+So there&#x27;s a lot, all the logistics around. How do you run the test, =
+how do you pass the test? How do you sign off on the test? What tools do =
+you use? Example jira. How do you document that? Because prior to all of =
+that, part of this is understanding what the scenarios are and then saying,=
+ okay, I&#x27;ve got a thousand tests, I&#x27;ve got thousand processes =
+changing or 1000 processes in scope. I only have 147 of them changing. And =
+for those 147, I need to test the scenarios. Maybe there are three =
+scenarios per process or something to the effect I come up with 500 test =
+scenarios. I now need to then go back and say for these 500 scenarios, what=
+ test scripts do you guys already have? The point you&#x27;re talking about=
+ with Srijiv and Bill are defining for 5 ERP, what test scripts do they =
+already have? If they don&#x27;t have it, they have to go create these to =
+support these processes or even systems. If they do have it but it =
+doesn&#x27;t fit, then they&#x27;ll have to go adjust these test scripts so=
+ that it fits what the process of the scenario being tested. So that&#x27;s=
+ what we want to help them get to and say, here&#x27;s a scope, here&#x27;s=
+ how you want to run it, here&#x27;s how you want to find these out, =
+here&#x27;s how you have to execute on it and give them a framework. So =
+it&#x27;s a bit, you know, so it&#x27;s, it&#x27;s really top down, double =
+click into it and perhaps one level down the minutiae of it. We can work on=
+ it after we talk to Sukai Friday. But Pierce needs this view to be able to=
+ because he&#x27;s also lost. Yeah, he needs, as UAT it, UAT coordinator, =
+he needs these things and more importantly, he will need reporting as to =
+what is the readiness of it. How do you run reports, how do you show? Maybe=
+ a lot of this is in JIRA already and you get automated reports from JIRA =
+that comes up. But we just need to provide an approach to say, okay, if =
+Jeff wants us steerco update and he says, well, what is your testing =
+progress? We should be able to provide some dashboard to say across these =
+functions and these scenarios.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unident=
+ified Person Mentioning Microsoft Renewal</span><span =
+style=3D"color:#64748b;font-size:14px">15:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes. Before we move =
+on real quick. So I know the Microsoft renewal is.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified IT Lead</span><span style=3D"color:#64748b;f=
+ont-size:14px">15:56</span></div><div style=3D"color:#475569;font-size:16px=
+;line-height:1.6">Coming up very soon.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified Person Mentioning Microsoft =
+Renewal</span><span style=3D"color:#64748b;font-size:14px">15:58</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">Is that a =
+decision that we need.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+IT Lead</span><span style=3D"color:#64748b;font-size:14px">15:59</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">To come to =
+within the next two or three days? But at least first I want to get a view =
+of what is this? What is this? All right, so talking to Peterson. Okay, =
+thank you. Just is it three?</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified=
+ Person Discussing Past Projects and UAT Materials</span><span =
+style=3D"color:#64748b;font-size:14px">16:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">But isn&#x27;t that =
+mean that you were mentioned? Yes, yes, three, two.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified IT Lead</span><span style=3D"color:#64748b;f=
+ont-size:14px">16:15</span></div><div style=3D"color:#475569;font-size:16px=
+;line-height:1.6">Okay, so we&#x27;ll talk to him, understand that and make=
+ sure that we understand what we&#x27;re providing for Friday. That meeting=
+ with Suka hasn&#x27;t been set up yet. Okay. But the idea would be we =
+quickly pivot and get a framework and approach in a few slides, say nine to=
+ 10 slides on. Here&#x27;s how the UAT should be run Here are the double =
+clicks that you want into it. All these, you know, six topics. Let&#x27;s =
+double click on each topic.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+Person Discussing Past Projects and UAT Materials</span><span =
+style=3D"color:#64748b;font-size:14px">16:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified IT =
+Lead</span><span style=3D"color:#64748b;font-size:14px">16:41</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">And here&#x27;s =
+how we think the structure. PMO structure should be an escalation.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified Team =
+Member</span><span style=3D"color:#64748b;font-size:14px">16:47</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Should be.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified IT =
+Lead</span><span style=3D"color:#64748b;font-size:14px">16:48</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So if =
+he&#x27;s getting any other and reporting more importantly reporting from.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+Person Discussing Past Projects and UAT Materials</span><span =
+style=3D"color:#64748b;font-size:14px">16:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You know how they =
+did Essex by chance.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+IT Lead</span><span style=3D"color:#64748b;font-size:14px">16:56</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">Essex is not.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+Person Discussing Past Projects and UAT Materials</span><span =
+style=3D"color:#64748b;font-size:14px">16:57</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It was an ugly then =
+maybe residio or hi or do you have anything from your past projects we =
+should have within Ey. Yeah.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified=
+ Team Member</span><span style=3D"color:#64748b;font-size:14px">17:07</span=
+></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">I just =
+asked the deal tech librarian and it&#x27;s not very helpful.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+Person Discussing Past Projects and UAT Materials</span><span =
+style=3D"color:#64748b;font-size:14px">17:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified IT =
+Lead</span><span style=3D"color:#64748b;font-size:14px">17:11</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">Librarian for =
+what?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified Team =
+Member</span><span style=3D"color:#64748b;font-size:14px">17:12</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">For UAT =
+materials.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+Person Discussing Past Projects and UAT Materials</span><span =
+style=3D"color:#64748b;font-size:14px">17:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I even look =
+through some of the.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+IT Lead</span><span style=3D"color:#64748b;font-size:14px">17:16</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">So what about=
+ 3M you guys. Who is working on 3M?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified Team Member</span><span =
+style=3D"color:#64748b;font-size:14px">17:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I can get that from =
+Skip.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified IT =
+Lead</span><span style=3D"color:#64748b;font-size:14px">17:22</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">Skip be a good =
+example. I think.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+Person Discussing Past Projects and UAT Materials</span><span =
+style=3D"color:#64748b;font-size:14px">17:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Garrett Sean gave me=
+ something.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified IT =
+Lead</span><span style=3D"color:#64748b;font-size:14px">17:29</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">From 3M or GE =
+because they went through it. Did we?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified Team Member</span><span =
+style=3D"color:#64748b;font-size:14px">17:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+Person Discussing Past Projects and UAT Materials</span><span =
+style=3D"color:#64748b;font-size:14px">17:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You know Asha =
+Garrett or Harry by chance.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+Team Member</span><span style=3D"color:#64748b;font-size:14px">17:47</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">No, I =
+don&#x27;t know either from now.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unident=
+ified Person Discussing Past Projects and UAT Materials</span><span =
+style=3D"color:#64748b;font-size:14px">17:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right. I can =
+reach out to them. I think they were reach out to hurry.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified IT Lead</span><span style=3D"color:#64748b;f=
+ont-size:14px">17:51</span></div><div style=3D"color:#475569;font-size:16px=
+;line-height:1.6">Yeah. You may have something on uat.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified Person Discussing Past Projects and UAT =
+Materials</span><span style=3D"color:#64748b;font-size:14px">17:53</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I =
+think he did cut over stuff.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified=
+ IT Lead</span><span style=3D"color:#64748b;font-size:14px">17:56</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">This is a =
+bit more than cut.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+Team Member</span><span style=3D"color:#64748b;font-size:14px">17:57</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, =
+here&#x27;s a cutover plan.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+Person Discussing Past Projects and UAT Materials</span><span =
+style=3D"color:#64748b;font-size:14px">18:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I wouldn&#x27;t say =
+cut over plan as much. I would assume part of the cutover was uat.=
+</div></div><div style=3D"margin-bottom:0;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified IT =
+Lead</span><span style=3D"color:#64748b;font-size:14px">18:17</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">It.=
+</div></div></div><div style=3D"margin-top:36px;text-align:center;color:#64=
+748b;font-size:14px;padding:20px;border-top:1px solid #e2e8f0"><p =
+style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note Taker</p><p=
+ style=3D"margin:0;font-size:12px">Your AI-powered companion</p></div></div=
+></div></div></html>
+----_NmP-6f62c132f0276c82-Part_1--

@@ -1,0 +1,935 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a05:6000:154a:b0:391:3c18:836e with SMTP id 10csp702421wry;
+        Thu, 20 Mar 2025 06:45:39 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGj+NRhmy9fFYULvk16cnTU8yuWaicsdlW+X4OkGFLHBagED2qr3R/U54ApQPXWLBgVFHgI
+X-Received: by 2002:a05:6122:6603:b0:523:dd87:fe86 with SMTP id 71dfb90a1353d-525891d2bd7mr5861675e0c.6.1742478339076;
+        Thu, 20 Mar 2025 06:45:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742478339; cv=none;
+        d=google.com; s=arc-20240605;
+        b=B//9NUHo+eseVwt7pVZGnSM9FphbI26nf4elxLXc794i4nRhm3RSMMDRP7TqGqRUww
+         oU6JKc45Vol3jEh0q9bjaidSHxKYS+hfejO0Gxb904+QYPQCf5JdBg7r+RQcNEHKNShz
+         L3l4Sa31nISqmfF+pZGlGP0Q21QCM0eMS3xLI96T31rXBYQrMmwi42kMAWqv9/mzsSXt
+         VHqzxdU962Kt1z2JKY+le6xztXXAVNe0J7rpCigFWFEevY7hQrNkz+xfZZS9+glRLXpV
+         japJ4M2z89HxDX24yLwyn/zF6V3AiAdhokNT2zl2eyFJGaMvOfgvgM80lsJyJo1k5gUV
+         OmcQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=2yZAlrq3T6x0cLa08HkbjH2QI4Z9e5I9+KXWmqR+LbU=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=JT+SxWMUTpbdV+xXoj6fxAIXotkYlRU0jeVSHtX476OuxoTNqZy+Qi11R1yCV9HrPV
+         iNR1oebsao2XePKEQ5U48MUpPHARKd6eY18vl9dnevudj95+7Ri6Ob0lw1Mkz+kkAC7q
+         0eJvH3ZHbKtMS97VC4LlkER7jUVr6arBrGd1nwzJVmh+bTUIB+TLmMGJw1EUfrNgq0d7
+         tU2kXr7GB5X/Sgpi1qU3lNOBoz3HPatQm7LCRHuDqUmGpVb1hFULfpwe9SobIz2n5KX3
+         92kVeMOOqxTXIHDfqr1/5pCTFWocgMNcs7PmyW4NJw7soaWOacSyt5kDOPacn06zc8gD
+         +hpw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=bzE9d6vq;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=UxYvmRPo;
+       spf=pass (google.com: domain of 01000195b3cd6933-7df15cd3-0a9a-4fa5-8b05-e03eddced7d0-000000@send.email.wave.co designates 54.240.9.30 as permitted sender) smtp.mailfrom=01000195b3cd6933-7df15cd3-0a9a-4fa5-8b05-e03eddced7d0-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <01000195b3cd6933-7df15cd3-0a9a-4fa5-8b05-e03eddced7d0-000000@send.email.wave.co>
+Received: from a9-30.smtp-out.amazonses.com (a9-30.smtp-out.amazonses.com. [54.240.9.30])
+        by mx.google.com with ESMTPS id 71dfb90a1353d-5243a57e319si4477573e0c.14.2025.03.20.06.45.38
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 20 Mar 2025 06:45:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 01000195b3cd6933-7df15cd3-0a9a-4fa5-8b05-e03eddced7d0-000000@send.email.wave.co designates 54.240.9.30 as permitted sender) client-ip=54.240.9.30;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=bzE9d6vq;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=UxYvmRPo;
+       spf=pass (google.com: domain of 01000195b3cd6933-7df15cd3-0a9a-4fa5-8b05-e03eddced7d0-000000@send.email.wave.co designates 54.240.9.30 as permitted sender) smtp.mailfrom=01000195b3cd6933-7df15cd3-0a9a-4fa5-8b05-e03eddced7d0-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1742478338;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=4B2b+OaCe8Bamp8ZAqf/DGWQl3Haq6kUqvoPSbTY80Q=;
+	b=bzE9d6vqBhQ8tGKI1B9Pq1wrglx+Jt6pi1m97WOHRTafT1Njke9x1DFuq3HJuW7o
+	oR/mLjgOCxVQfnpIpe0R45XhhMtAT8ONyakmKE3Wsq986qeMpLZXlZ5CXvl4tpWpZdn
+	U1TA3oG8PNBtn1V7nO+bxQ1F+W0T6BIBa5GvzwDM=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1742478338;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=4B2b+OaCe8Bamp8ZAqf/DGWQl3Haq6kUqvoPSbTY80Q=;
+	b=UxYvmRPo+V5ILq9nD+EUvdJ6hck7aVT42lN5rC/x2w1TuShqHSJY5j2M+LovXy96
+	LZH9zgseFugPGD9pSXMlVJS/6eJTJQInFP9Ld8XU5jtlX+BrAG66Py+E2ATsB569i/0
+	mFGrfxm+wi+edfMuCWhfHiB6lldjeVl6ptuRe6ig=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Project Update: Deadlines, Risks, and Key Actions
+Message-ID: <01000195b3cd6933-7df15cd3-0a9a-4fa5-8b05-e03eddced7d0-000000@email.amazonses.com>
+Date: Thu, 20 Mar 2025 13:45:38 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-7ad9f623cf8e0c00-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.03.20-54.240.9.30
+
+----_NmP-7ad9f623cf8e0c00-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Project Update: Deadlines, Risks, and Key Actions
+
+### Project Update =
+Meeting Summary
+
+#### **1. Connectivity and Communication**
+- **Initial Check**: Participants confirmed connectivity and communication =
+channels were functioning.
+- **Commitment**: Emphasis on maintaining open =
+lines; team members encouraged to reach out if issues arise, especially if =
+unable to attend meetings.
+
+#### **2. ADX User IDs and Application =
+Upgrades**
+- **Current Status**: ADX user IDs not being moved for actuation=
+ personnel.
+- **Future Upgrades**:
+  - **Tableau**: Upgrade scheduled for =
+end of June impacting ADX access.
+  - **Participants Involved**: Breton and=
+ Zach are included in relevant meetings.
+
+#### **3. Project Timeline and =
+Deadlines**
+- **Countdown**: 52 days remaining until the critical date of =
+May 30th (referred to as 5:30).
+- **Focus**: Completion of tasks within the=
+ next approximately 10 weeks.
+- **UAT Phase**: Ongoing, with collaboration =
+between DT and non-DT teams.
+
+#### **4. SAP Cutover and Day One Strategy**
+- **Cutover Date**: May 30th remains the fixed go-live date.
+- **Implementation Options**:
+  - All SAP and non-SAP cutovers, including =
+plant coast company codes, will proceed simultaneously on May 30th.
+- **Coordination**:
+  - Mark is overseeing alignment with the 6768 =
+timeframe.
+  - Heat maps, roadmaps, and work plans in Confluence and =
+PowerPoint will be updated to reflect any changes.
+
+#### **5. Regulatory Approvals and Risks**
+- **EU Approval Delays**:
+  - Helen raised concerns about potential risks due to delayed EU approvals=
+.
+  - Response: Delays are considered part of the normal process, with =
+ongoing communications with Martin, Global Trade, and legal teams.
+- **Stability of Wolverhampton Environment**:
+  - Notification received to =
+halt changes for four to six weeks due to instability.
+  - Impact: Restrictions on data movement and cleansing; potential risk to =
+meeting day one targets.
+  - Current Actions: Awaiting resolution to =
+proceed with support for day one targets.
+
+#### **6. Data Storage and =
+Security Concerns**
+- **Incident**:
+  - Notification of inability to modify=
+ the Wolverhampton environment.
+  - Concerns about the lack of backup for =
+92 terabytes of data.
+  - Installation of an additional storage array is in=
+ progress, currently held at East Midlands Airport awaiting customs =
+clearance.
+- **Reassurance**:
+  - Clarified that issues are not caused by =
+Redwood; avoiding association of problems with the Redwood team.
+
+#### **7. Action Items and Next Steps**
+- **Heat Maps Alignment**: Teams to=
+ align heat maps with updated schedules.
+- **Discussion on Peripherals**:
+  - Helen requested clarification on permissible peripherals (e.g., =
+keyboards, webcams).
+  - Action: Schedule a dedicated discussion to address=
+ these concerns.
+- **Risk Mitigation**:
+  - Monitor and address risks =
+related to the Wolverhampton environment and data stability.
+  - Ensure timely support once restrictions are lifted to meet project =
+deadlines.
+
+#### **8. Open Floor for Questions**
+- Addressed queries about =
+the normalcy of approval delays and the impact on the project timeline.
+- Emphasized ongoing efforts to adhere to the May 30th deadline despite =
+challenges.
+
+---
+
+**Key Dates:**
+- **End of June**: Tableau upgrade =
+affecting ADX user IDs.
+- **May 30th (5:30)**: Fixed go-live date for SAP =
+and non-SAP cutovers.
+
+**Participants Mentioned:**
+- Breton, Zach, Janice, =
+Nicole, Markus, Jason, Jen, Helen, Allen, Richard Mapstone.
+
+---
+
+**Note**: Ensure all team members review the updated roadmaps and =
+communicate any potential risks promptly to maintain alignment and meet the=
+ project=E2=80=99s critical deadlines.
+
+Transcript:
+0:00
+You are now connected. You can merge your calls when ready.
+
+0:05
+Can you hear me okay?
+
+0:06
+Yeah, I can hear you.
+
+0:08
+Yeah. I'm not ignoring you. Not coming to your meetings. I figured if you =
+need me, you'd reach out.
+
+0:14
+Of course.
+
+0:17
+Just want to know you're =
+in my heart. I just can't make your meeting sometimes. You got a lot of =
+them.
+
+0:24
+Thank you.
+
+0:28
+Just reach out if you do. If there's an issue =
+comes up and everything, please do. Don't hesitate.
+
+0:36
+Later today. Mark, something did come up this. This week on ADX user IDs.
+
+0:43
+Oh, yeah, we're not moving the actuation people in though the adx.
+
+0:51
+Yeah, we'll want to see if there's any upgrades to other apps during =
+the DT period that would require ADX user IDs for access. We do have one =
+for Tableau coming in end of June.
+
+1:09
+That.
+
+1:09
+That's going to have some impact.
+
+1:11
+So you will then Breton and Zach in=
+ that meeting as well.
+
+1:18
+They're already looped in. We had a =
+conversation yesterday.
+
+1:26
+Yeah.
+
+1:29
+Are we good to get started? Yes, =
+please. All right, let me share my screen. Okay, perfect. So we're gonna =
+pull up screen, pull up compliments. All right. And I don't see a lot of =
+awkward people on, but I'm gonna guess that they have other things that are=
+ going on there. So we can just fill them in and maybe they'll just. =
+They'll jump in. Hopefully. Janice, so of your pms, like, I don't see =
+Nicole on at least that we have someone else sub for getting settled. Okay.=
+ Yeah, we. I can. We can have her. We can skip over and have her join a =
+little bit too. Okay, perfect. That's okay. All right. So 52 days left, you=
+ guys. So I know we had our team meeting on Tuesday when we have our. Our =
+items that were up with the number of days. And you know, it's kind of like=
+ one of those. You blink and the days, the weeks, the months are already =
+flying by. So I understand everyone's working very hard and I know we have =
+a lot of things that are going on. So everyone right now is juggling a lot =
+of falls and I appreciate everyone's help to be able to get us over the go =
+line. So please, definitely, like Marcus started off, if you meet us and =
+we're not at your meeting, that definitely reach out to be able to help =
+escalate any concerns or issues that you guys have. Like I said, I know you=
+ guys are working hard to be able to complete items. And I know obviously =
+DT gets a lot of the brunt of everything that we're doing. Please, you know=
+, just if, if you need us, make sure that you're reaching out. If we can't =
+be at your attendance, it's only because we have a number of different =
+meetings that are on our plate as well. As part of UAT which kicked off =
+this week and the remaining, you know, 10 weeks worth of work, we're going =
+to be working very closely with the non dt, right. And so if we're =
+escalating to myself, Jason, the workstream leads on the rsi. We want to =
+make sure that our partners are also escalating on the non DT as well. So =
+then therefore our partners are also being able to hear the message and =
+when we're meeting with the smo, they're hearing it twofold, they're =
+hearing it from the call inside actually the actuation side and then =
+they're also hearing about issues from our side as well. Does that make =
+sense? I know that there's going to be a lot of positives and a lot of big =
+things and changes that are happening or over the next few weeks. So I =
+wanna be able to use the time to be able to communicate those things that =
+are happening within our program to each other as well. And prior to us =
+being able to kick off this week's session, I do wanna talk about a new =
+item that had just popped and I know everyone's been hearing about us being=
+ able to do the point of view cutover that we've been talking about, right.=
+ And that we've had three options that had been sitting on the. And that is=
+ in regards to our SAP changes, right. So we have our day one date which =
+has not changed, it's still 5:30 and that's what we're marching to. So when=
+ you hear me mention like 52 days left, that's 52 days to 5:30, right. That=
+ we will be doing the day one or the sale of the Saffron. The options that =
+we had on the table were the items that were part of new SAP company code =
+changes that we were working for the 67 weekend which would have been the =
+weekend after. So how we would implement those, do we do it before the go =
+live, do we do it after the day one or do we do it the same time? Right. =
+And we know that month end was happening. Right. Which is a financial =
+aspect of it. The key concern not only for calling and Heritage Youth has, =
+but also for RTX just in general. And there was discussions this week and =
+we had the approval from corporate and RTX to be able to go all at once. So=
+ everyone is going together on 5:30. Right. So that means that our day one,=
+ our SAP and non SAP cutovers and plant coast company codes we're all =
+working to that 5:30 day to be able to go together as one. So that is a =
+change and we are going to have to look at the schedules that we have. Mark=
+, I know that you're working with your team to be able to look to the 6768 =
+time frame to be able to pull that in and making sure that we're all =
+aligned and if there's any risks that we're working to mitigate those. Does=
+ anybody have any questions in regards to that? Jen, you have a question? I=
+ would add that we're going to reach out to the teams to start getting the =
+heat maps aligned with that. Make sure we are the roadmaps and the work =
+plan because I know some of them have that 6869 date. That's a good point. =
+So that's a future activity. Yeah. So anything that has a 6768 state I =
+don't know Hans on but we'll have him pull the tap edge work plans to see =
+if there's anything greater than 5:30 and if there is he'll be working with=
+ the PMs and the workstream lease in order for those dates to be pulled =
+back in the heat maps and the roadmaps that are in confluence as well as =
+the PowerPoint will also be updated to be able to have those dates. Okay, =
+so that is a good point.
+
+7:19
+I do have. I've had some questions around =
+the day one date and if there's any risk because of the EU approval that =
+was delayed. Is this something that's normal? Does it normally happen with =
+a divestiture and is there anything to be concerned about?
+
+7:39
+Helen, I don't know. Like you said the word normal. I don't know what's =
+normal.
+
+7:44
+Yeah, redwood's not normal.
+
+7:47
+A few years later and we're=
+ still here but I think that those approvals and waivers and the what we're=
+ seeing is part of the normalcy. So we did reach out to Martin and Global =
+Trade and the legal folks and we're still marching to 5:30. So as far as we=
+ know the date is 5:30 and we're continuing to march. Like if something =
+happens and it's part of the government approvals then we'll have to wait =
+and see. But 5:30 is the date.
+
+8:20
+Allen and I would add this normal =
+being subjective but this is common. Right. The timeline that our Collins =
+legal and RTX legal team have told us is 5:30, and that includes the time =
+to get the necessary legal and regulatory approvals. So in general, I think=
+ between now and day one, we're going to hear repeated lack of a better =
+term voice from the press around what might or might not be the fastest =
+path to close. But from our perspective, our guidance should always be =
+directed by the folks that have their leader.
+
+8:56
+Yeah.
+
+8:57
+All right. Okay, thank you.
+
+9:00
+Thank you for bringing that up, Helen.
+
+9:02
+Yeah, great, great, great point.
+
+9:02
+I've seen the news come out, =
+right, so people are wondering, we'll do a draft.
+
+9:06
+Yeah, great question, Helen.
+
+9:10
+Then, Helen, I think I did see another =
+email from you too, in regards to the peripherals and, like, what people =
+can take with them and what they can't take with them on keyboards and like=
+ webcams, et cetera. So we'll set up some time to be able to reconvene and =
+have that discussion.
+
+9:29
+All right, that'd be great, thank you. Because =
+they are escalating, saying that they'll have downtime in Bangalore. So. =
+Yeah, that would be good. I think the note that I've just sent you and you =
+probably haven't had a chance to read it, is more of a risk. The fact that =
+we got notification today that we can't make any more changes to the =
+Wolverhampton environment for four to six weeks. They don't want us moving =
+anything into Wolverhampton. They don't want us copying any data or they =
+don't want us cleansing any of the Electras data. They're putting us on =
+hold for four weeks because of the issues that they've had. And it's still =
+not a stable environment. So I have just sent you a note on that. So I know=
+ you haven't had time to digest it, but it does impact a few things and we =
+just asked that. Okay, we understand, but as soon as it's lifted, we need =
+to have the support to make sure that we can meet our targets for day one.
+
+10:35
+Hey, Helen, do they think Redwood did this?
+
+10:38
+No, no, no, not at all. They're just. They are really, really nervous, Mark=
+. I've never seen Richard Mapstone so nervous, to be honest, because they =
+basically haven't got a backup of 92 terabytes of data. They're trying to =
+install an additional storage array. It's apparently sitting at East =
+Midlands Airport today trying to get through customs. So they, they, =
+they're frightened to touch it, basically because they'd lose.
+
+11:14
+We got to be very careful that we do not associate this problem with =
+Redwood. Right. What I'm saying, for it, it's not our problem. We didn't =
+cause it. We don't want finger from actuation. Right.
+
+11:23
+We don't. They're not blaming redwood, but they don't want.
+
+11:28
+What's the idea in anybody's head.
+
+11:30
+Yeah, they. They just.
+----_NmP-7ad9f623cf8e0c00-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><div style=3D"font-family:-apple-system, =
+BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, =
+sans-serif;margin:0;padding:0;background-color:#f4f4f4"><div =
+style=3D"width:100%;max-width:604px;margin:0 auto;background-color:#ffffff"=
+><div style=3D"background-image:url(https://upcdn.io/W142iax/raw/email/bann=
+er_clean.png);background-size:cover;background-position:center;width:604px;=
+height:297px;margin:0 auto;position:relative"><table cellPadding=3D"0" =
+cellSpacing=3D"0" border=3D"0" width=3D"100%" height=3D"100%"><tr><td =
+valign=3D"center" align=3D"center" style=3D"padding:0"><img =
+src=3D"https://upcdn.io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI =
+Logo" style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><=
+h1 style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Project =
+Update: Deadlines, Risks, and Key Actions</h1></td></tr></table></div><div =
+style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/CA01997a3538c18a4aeee5d07e742dc9e4?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View and Edit Your session on the Wave Web App</a></div><div =
+style=3D"text-align:center;margin-bottom:36px"></div><div =
+style=3D"background-color:#ffffff;padding:28px;border-radius:12px;border:1p=
+x solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 =
+rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex;align-i=
+tems:center;gap:8px"><span style=3D"font-size:24px">=F0=9F=93=9D</span>Summ=
+ary</h3><div style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h3 style=3D"font-weight:500;padding-top:2=
+0px;font-size:1.75rem">Project Update Meeting Summary</h3><h4 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.5rem"><strong =
+style=3D"font-weight:bold">1. Connectivity and Communication</strong></h4><=
+ul>
+<li><strong style=3D"font-weight:bold">Initial Check</strong>: =
+Participants confirmed connectivity and communication channels were =
+functioning.</li>
+<li><strong style=3D"font-weight:bold">Commitment</strong=
+>: Emphasis on maintaining open lines; team members encouraged to reach out=
+ if issues arise, especially if unable to attend meetings.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem"><strong =
+style=3D"font-weight:bold">2. ADX User IDs and Application =
+Upgrades</strong></h4><ul>
+<li><strong style=3D"font-weight:bold">Current =
+Status</strong>: ADX user IDs not being moved for actuation personnel.</li>
+<li><strong style=3D"font-weight:bold">Future Upgrades</strong>:<ul>
+<li><strong style=3D"font-weight:bold">Tableau</strong>: Upgrade scheduled =
+for end of June impacting ADX access.</li>
+<li><strong =
+style=3D"font-weight:bold">Participants Involved</strong>: Breton and Zach =
+are included in relevant meetings.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem"><strong =
+style=3D"font-weight:bold">3. Project Timeline and Deadlines</strong></h4><=
+ul>
+<li><strong style=3D"font-weight:bold">Countdown</strong>: 52 days =
+remaining until the critical date of May 30th (referred to as 5:30).</li>
+<li><strong style=3D"font-weight:bold">Focus</strong>: Completion of tasks =
+within the next approximately 10 weeks.</li>
+<li><strong =
+style=3D"font-weight:bold">UAT Phase</strong>: Ongoing, with collaboration =
+between DT and non-DT teams.</li>
+</ul>
+<h4 style=3D"font-weight:500;paddin=
+g-top:20px;font-size:1.5rem"><strong style=3D"font-weight:bold">4. SAP =
+Cutover and Day One Strategy</strong></h4><ul>
+<li><strong =
+style=3D"font-weight:bold">Cutover Date</strong>: May 30th remains the =
+fixed go-live date.</li>
+<li><strong style=3D"font-weight:bold">Implementat=
+ion Options</strong>:<ul>
+<li>All SAP and non-SAP cutovers, including plant=
+ coast company codes, will proceed simultaneously on May 30th.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Coordination</strong>:<ul>
+<li>Mark is overseeing alignment with the 6768 timeframe.</li>
+<li>Heat maps, roadmaps, and work plans in Confluence and PowerPoint will =
+be updated to reflect any changes.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem"><strong =
+style=3D"font-weight:bold">5. Regulatory Approvals and =
+Risks</strong></h4><ul>
+<li><strong style=3D"font-weight:bold">EU Approval =
+Delays</strong>:<ul>
+<li>Helen raised concerns about potential risks due to=
+ delayed EU approvals.</li>
+<li>Response: Delays are considered part of the=
+ normal process, with ongoing communications with Martin, Global Trade, and=
+ legal teams.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Stabi=
+lity of Wolverhampton Environment</strong>:<ul>
+<li>Notification received =
+to halt changes for four to six weeks due to instability.</li>
+<li>Impact: Restrictions on data movement and cleansing; potential risk to =
+meeting day one targets.</li>
+<li>Current Actions: Awaiting resolution to =
+proceed with support for day one targets.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem"><strong =
+style=3D"font-weight:bold">6. Data Storage and Security =
+Concerns</strong></h4><ul>
+<li><strong style=3D"font-weight:bold">Incident<=
+/strong>:<ul>
+<li>Notification of inability to modify the Wolverhampton =
+environment.</li>
+<li>Concerns about the lack of backup for 92 terabytes of=
+ data.</li>
+<li>Installation of an additional storage array is in progress,=
+ currently held at East Midlands Airport awaiting customs clearance.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Reassurance</strong>:<ul=
+>
+<li>Clarified that issues are not caused by Redwood; avoiding association=
+ of problems with the Redwood team.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem"><strong =
+style=3D"font-weight:bold">7. Action Items and Next Steps</strong></h4><ul>
+<li><strong style=3D"font-weight:bold">Heat Maps Alignment</strong>: Teams =
+to align heat maps with updated schedules.</li>
+<li><strong =
+style=3D"font-weight:bold">Discussion on Peripherals</strong>:<ul>
+<li>Helen requested clarification on permissible peripherals (e.g., =
+keyboards, webcams).</li>
+<li>Action: Schedule a dedicated discussion to =
+address these concerns.</li>
+</ul>
+</li>
+<li><strong =
+style=3D"font-weight:bold">Risk Mitigation</strong>:<ul>
+<li>Monitor and address risks related to the Wolverhampton environment and =
+data stability.</li>
+<li>Ensure timely support once restrictions are lifted=
+ to meet project deadlines.</li>
+</ul>
+</li>
+</ul>
+<h4 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.5rem"><strong =
+style=3D"font-weight:bold">8. Open Floor for Questions</strong></h4><ul>
+<li>Addressed queries about the normalcy of approval delays and the impact =
+on the project timeline.</li>
+<li>Emphasized ongoing efforts to adhere to =
+the May 30th deadline despite challenges.</li>
+</ul>
+<hr />
+<p><strong style=3D"font-weight:bold">Key Dates:</strong></p>
+<ul>
+<li><strong style=3D"font-weight:bold">End of June</strong>: Tableau =
+upgrade affecting ADX user IDs.</li>
+<li><strong style=3D"font-weight:bold"=
+>May 30th (5:30)</strong>: Fixed go-live date for SAP and non-SAP cutovers.=
+</li>
+</ul>
+<p><strong style=3D"font-weight:bold">Participants =
+Mentioned:</strong></p>
+<ul>
+<li>Breton, Zach, Janice, Nicole, Markus, =
+Jason, Jen, Helen, Allen, Richard Mapstone.</li>
+</ul>
+<hr />
+<p><strong style=3D"font-weight:bold">Note</strong>: Ensure all team =
+members review the updated roadmaps and communicate any potential risks =
+promptly to maintain alignment and meet the project=E2=80=99s critical =
+deadlines.</p>
+</div></div></div><div style=3D"background-color:#ffffff;pad=
+ding:28px;border-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px =
+0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription</h3><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Meeting Host</span><span style=3D"color:#64748b;font-siz=
+e:14px">0:00</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">You are now connected. You can merge your calls when ready.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mark</span><span =
+style=3D"color:#64748b;font-size:14px">0:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Can you hear me okay=
+?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">0:06</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I can hear =
+you.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mark</span><span =
+style=3D"color:#64748b;font-size:14px">0:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. I&#x27;m not =
+ignoring you. Not coming to your meetings. I figured if you need me, =
+you&#x27;d reach out.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Breton</span>=
+<span style=3D"color:#64748b;font-size:14px">0:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Of course.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mark</span><span =
+style=3D"color:#64748b;font-size:14px">0:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Just want to know =
+you&#x27;re in my heart. I just can&#x27;t make your meeting sometimes. You=
+ got a lot of them.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">0:24</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Thank you.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mark</span><span =
+style=3D"color:#64748b;font-size:14px">0:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Just reach out if =
+you do. If there&#x27;s an issue comes up and everything, please do. =
+Don&#x27;t hesitate.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Breton</span>=
+<span style=3D"color:#64748b;font-size:14px">0:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Later today. Mark, =
+something did come up this. This week on ADX user IDs.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Meeting Host</span><span style=3D"color:#64748b;font-size=
+:14px">0:43</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">Oh, yeah, we&#x27;re not moving the actuation people in though the=
+ adx.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Breton</span><span=
+ style=3D"color:#64748b;font-size:14px">0:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, we&#x27;ll =
+want to see if there&#x27;s any upgrades to other apps during the DT period=
+ that would require ADX user IDs for access. We do have one for Tableau =
+coming in end of June.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Helen</span><=
+span style=3D"color:#64748b;font-size:14px">1:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Breton</span><span=
+ style=3D"color:#64748b;font-size:14px">1:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;s going to=
+ have some impact.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">1:11</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">So you will then =
+Breton and Zach in that meeting as well.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Breton</span><span style=3D"color:#64748b;font-size:14px"=
+>1:18</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">They&#x27;re already looped in. We had a conversation yesterday.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mark</span><span =
+style=3D"color:#64748b;font-size:14px">1:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">1:29</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Are we good to =
+get started? Yes, please. All right, let me share my screen. Okay, perfect.=
+ So we&#x27;re gonna pull up screen, pull up compliments. All right. And I =
+don&#x27;t see a lot of awkward people on, but I&#x27;m gonna guess that =
+they have other things that are going on there. So we can just fill them in=
+ and maybe they&#x27;ll just. They&#x27;ll jump in. Hopefully. Janice, so =
+of your pms, like, I don&#x27;t see Nicole on at least that we have someone=
+ else sub for getting settled. Okay. Yeah, we. I can. We can have her. We =
+can skip over and have her join a little bit too. Okay, perfect. =
+That&#x27;s okay. All right. So 52 days left, you guys. So I know we had =
+our team meeting on Tuesday when we have our. Our items that were up with =
+the number of days. And you know, it&#x27;s kind of like one of those. You =
+blink and the days, the weeks, the months are already flying by. So I =
+understand everyone&#x27;s working very hard and I know we have a lot of =
+things that are going on. So everyone right now is juggling a lot of falls =
+and I appreciate everyone&#x27;s help to be able to get us over the go line=
+. So please, definitely, like Marcus started off, if you meet us and =
+we&#x27;re not at your meeting, that definitely reach out to be able to =
+help escalate any concerns or issues that you guys have. Like I said, I =
+know you guys are working hard to be able to complete items. And I know =
+obviously DT gets a lot of the brunt of everything that we&#x27;re doing. =
+Please, you know, just if, if you need us, make sure that you&#x27;re =
+reaching out. If we can&#x27;t be at your attendance, it&#x27;s only =
+because we have a number of different meetings that are on our plate as =
+well. As part of UAT which kicked off this week and the remaining, you know=
+, 10 weeks worth of work, we&#x27;re going to be working very closely with =
+the non dt, right. And so if we&#x27;re escalating to myself, Jason, the =
+workstream leads on the rsi. We want to make sure that our partners are =
+also escalating on the non DT as well. So then therefore our partners are =
+also being able to hear the message and when we&#x27;re meeting with the =
+smo, they&#x27;re hearing it twofold, they&#x27;re hearing it from the call=
+ inside actually the actuation side and then they&#x27;re also hearing =
+about issues from our side as well. Does that make sense? I know that =
+there&#x27;s going to be a lot of positives and a lot of big things and =
+changes that are happening or over the next few weeks. So I wanna be able =
+to use the time to be able to communicate those things that are happening =
+within our program to each other as well. And prior to us being able to =
+kick off this week&#x27;s session, I do wanna talk about a new item that =
+had just popped and I know everyone&#x27;s been hearing about us being able=
+ to do the point of view cutover that we&#x27;ve been talking about, right.=
+ And that we&#x27;ve had three options that had been sitting on the. And =
+that is in regards to our SAP changes, right. So we have our day one date =
+which has not changed, it&#x27;s still 5:30 and that&#x27;s what we&#x27;re=
+ marching to. So when you hear me mention like 52 days left, that&#x27;s 52=
+ days to 5:30, right. That we will be doing the day one or the sale of the =
+Saffron. The options that we had on the table were the items that were part=
+ of new SAP company code changes that we were working for the 67 weekend =
+which would have been the weekend after. So how we would implement those, =
+do we do it before the go live, do we do it after the day one or do we do =
+it the same time? Right. And we know that month end was happening. Right. =
+Which is a financial aspect of it. The key concern not only for calling and=
+ Heritage Youth has, but also for RTX just in general. And there was =
+discussions this week and we had the approval from corporate and RTX to be =
+able to go all at once. So everyone is going together on 5:30. Right. So =
+that means that our day one, our SAP and non SAP cutovers and plant coast =
+company codes we&#x27;re all working to that 5:30 day to be able to go =
+together as one. So that is a change and we are going to have to look at =
+the schedules that we have. Mark, I know that you&#x27;re working with your=
+ team to be able to look to the 6768 time frame to be able to pull that in =
+and making sure that we&#x27;re all aligned and if there&#x27;s any risks =
+that we&#x27;re working to mitigate those. Does anybody have any questions =
+in regards to that? Jen, you have a question? I would add that we&#x27;re =
+going to reach out to the teams to start getting the heat maps aligned with=
+ that. Make sure we are the roadmaps and the work plan because I know some =
+of them have that 6869 date. That&#x27;s a good point. So that&#x27;s a =
+future activity. Yeah. So anything that has a 6768 state I don&#x27;t know =
+Hans on but we&#x27;ll have him pull the tap edge work plans to see if =
+there&#x27;s anything greater than 5:30 and if there is he&#x27;ll be =
+working with the PMs and the workstream lease in order for those dates to =
+be pulled back in the heat maps and the roadmaps that are in confluence as =
+well as the PowerPoint will also be updated to be able to have those dates.=
+ Okay, so that is a good point.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Helen</=
+span><span style=3D"color:#64748b;font-size:14px">7:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I do have. I&#x27;ve=
+ had some questions around the day one date and if there&#x27;s any risk =
+because of the EU approval that was delayed. Is this something that&#x27;s =
+normal? Does it normally happen with a divestiture and is there anything to=
+ be concerned about?</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">7:39</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Helen, I =
+don&#x27;t know. Like you said the word normal. I don&#x27;t know =
+what&#x27;s normal.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Helen</span><=
+span style=3D"color:#64748b;font-size:14px">7:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, redwood&#x27;s=
+ not normal.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">7:47</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">A few years later=
+ and we&#x27;re still here but I think that those approvals and waivers and=
+ the what we&#x27;re seeing is part of the normalcy. So we did reach out to=
+ Martin and Global Trade and the legal folks and we&#x27;re still marching =
+to 5:30. So as far as we know the date is 5:30 and we&#x27;re continuing to=
+ march. Like if something happens and it&#x27;s part of the government =
+approvals then we&#x27;ll have to wait and see. But 5:30 is the date.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Allen</span><span =
+style=3D"color:#64748b;font-size:14px">8:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Allen and I would =
+add this normal being subjective but this is common. Right. The timeline =
+that our Collins legal and RTX legal team have told us is 5:30, and that =
+includes the time to get the necessary legal and regulatory approvals. So =
+in general, I think between now and day one, we&#x27;re going to hear =
+repeated lack of a better term voice from the press around what might or =
+might not be the fastest path to close. But from our perspective, our =
+guidance should always be directed by the folks that have their leader.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">8:56</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Helen</span><span =
+style=3D"color:#64748b;font-size:14px">8:57</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right. Okay, =
+thank you.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">9:00</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Thank you for =
+bringing that up, Helen.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Allen</span><=
+span style=3D"color:#64748b;font-size:14px">9:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, great, great, =
+great point.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">9:02</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;ve seen =
+the news come out, right, so people are wondering, we&#x27;ll do a draft.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Allen</span><span =
+style=3D"color:#64748b;font-size:14px">9:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, great question=
+, Helen.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">9:10</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Then, Helen, I =
+think I did see another email from you too, in regards to the peripherals =
+and, like, what people can take with them and what they can&#x27;t take =
+with them on keyboards and like webcams, et cetera. So we&#x27;ll set up =
+some time to be able to reconvene and have that discussion.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Helen</span><span style=3D"color:#64748b;font-size:14px"=
+>9:29</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">All right, that&#x27;d be great, thank you. Because they are escalating,=
+ saying that they&#x27;ll have downtime in Bangalore. So. Yeah, that would =
+be good. I think the note that I&#x27;ve just sent you and you probably =
+haven&#x27;t had a chance to read it, is more of a risk. The fact that we =
+got notification today that we can&#x27;t make any more changes to the =
+Wolverhampton environment for four to six weeks. They don&#x27;t want us =
+moving anything into Wolverhampton. They don&#x27;t want us copying any =
+data or they don&#x27;t want us cleansing any of the Electras data. =
+They&#x27;re putting us on hold for four weeks because of the issues that =
+they&#x27;ve had. And it&#x27;s still not a stable environment. So I have =
+just sent you a note on that. So I know you haven&#x27;t had time to digest=
+ it, but it does impact a few things and we just asked that. Okay, we =
+understand, but as soon as it&#x27;s lifted, we need to have the support to=
+ make sure that we can meet our targets for day one.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mark</span><span style=3D"color:#64748b;font-size:14px">1=
+0:35</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Hey, Helen, do they think Redwood did this?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Helen</span><span style=3D"color:#64748b;font-size:14px">=
+10:38</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">No, no, no, not at all. They&#x27;re just. They are really, really =
+nervous, Mark. I&#x27;ve never seen Richard Mapstone so nervous, to be =
+honest, because they basically haven&#x27;t got a backup of 92 terabytes of=
+ data. They&#x27;re trying to install an additional storage array. =
+It&#x27;s apparently sitting at East Midlands Airport today trying to get =
+through customs. So they, they, they&#x27;re frightened to touch it, =
+basically because they&#x27;d lose.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Meeting Host</span><span style=3D"color:#64748b;font-size=
+:14px">11:14</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">We got to be very careful that we do not associate this problem =
+with Redwood. Right. What I&#x27;m saying, for it, it&#x27;s not our =
+problem. We didn&#x27;t cause it. We don&#x27;t want finger from actuation.=
+ Right.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Helen</span><span =
+style=3D"color:#64748b;font-size:14px">11:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We don&#x27;t. =
+They&#x27;re not blaming redwood, but they don&#x27;t want.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Meeting Host</span><span style=3D"color:#64748b;font-siz=
+e:14px">11:28</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">What&#x27;s the idea in anybody&#x27;s head.</div></div><div =
+style=3D"margin-bottom:0;padding:16px;background-color:#f8fafc;border-radiu=
+s:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-items=
+:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Helen</span><span style=3D"color:#64748b;font-size:14px">11:=
+30</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, they. They just.</div></div></div><div style=3D"margin-top:36px;te=
+xt-align:center;color:#64748b;font-size:14px;padding:20px;border-top:1px =
+solid #e2e8f0"><p style=3D"margin:0;margin-bottom:8px">Captured with Wave =
+AI Note Taker</p><p style=3D"margin:0;font-size:12px">Your AI-powered =
+companion</p></div></div></div></div></html>
+----_NmP-7ad9f623cf8e0c00-Part_1--

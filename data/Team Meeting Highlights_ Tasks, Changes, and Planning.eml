@@ -1,0 +1,3111 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a05:6000:c48:b0:391:3c18:836e with SMTP id do8csp103606wrb;
+        Tue, 15 Apr 2025 06:24:33 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHHDgEllVZtdXdNqzvc9AfMdvNDtwEC3DT1drnaBdCjp6LwXB9Cwc1alctyeGMeOl/J2qvX
+X-Received: by 2002:a05:6102:801a:b0:4bb:baa0:370b with SMTP id ada2fe7eead31-4cb42de392dmr2067140137.7.1744723472934;
+        Tue, 15 Apr 2025 06:24:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744723472; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Ml6hFCEIEwpw10A6cRFD/XY515TxxHKs9Dq4Zx0GbB3RK3iQTs2ZwWJS4X/SmpZva5
+         9HJf0SjiKjGBghjlodXxxMNtCVUcNryiVslI6AlRkBAjL47ckXilggE5I4GlrokIvAZV
+         QsI/mcZs2PX+3c0b39kV/FEU1EZndJ94n3ZbjBkmDAH1WcDSCQErfdUpjJfIhdHL/ge1
+         /Rdu+5UaNCEtYIoNg7/nDO24DaO9MvEjjFtW+ZlM9uXcm/brZoTmehqnCTEmRB0WnB8P
+         ebSysOFcJDXWpB83PBGf4/URXmsNeBiQdwnBDOfVFpaPb+/WQqIAPNRMMrhAdvwTU49F
+         k9Ow==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=l7yEUZGh9HSJzWuEgqSQUr9d/G2bNLxlqKUdoE5aMKA=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=Qr5TdckeTatjthRVUN0rss0IMjklfZvK9qJPCLfGLI5J1nsC5Rv3g5HjOMpRi27R0X
+         FMnrY2a02HmcHazp036B37BpZ5WxKQS2NH+/Q903pQ6Q7QpQvET2cklUCwShLVK2RDux
+         m/NRX6qeffBxrAx5I9/AwQz93ddn/YiwIq1xdM7d6jjptHPDHA2yeDgPqpSmCKPeBp8s
+         KoT4QVy8pNEGDds4dF4BbtXXGst/JU0IreTCTvgaS+ZRDy5JBxrMS9nirzkCF5EsaS7M
+         HA8Kygq/HQE2AnfScxjygNvqZsXgfAo8AjS8J15PdqMXuTy7ca2JFwU8nlfzBk71Wqq5
+         5ruA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b="otZTh/18";
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=YMSRHyXy;
+       spf=pass (google.com: domain of 01000196399f6c1d-120474d0-45bf-4341-be89-b1317f5bee92-000000@send.email.wave.co designates 54.240.9.46 as permitted sender) smtp.mailfrom=01000196399f6c1d-120474d0-45bf-4341-be89-b1317f5bee92-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <01000196399f6c1d-120474d0-45bf-4341-be89-b1317f5bee92-000000@send.email.wave.co>
+Received: from a9-46.smtp-out.amazonses.com (a9-46.smtp-out.amazonses.com. [54.240.9.46])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4c9c98fc56dsi4723420137.548.2025.04.15.06.24.32
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 15 Apr 2025 06:24:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 01000196399f6c1d-120474d0-45bf-4341-be89-b1317f5bee92-000000@send.email.wave.co designates 54.240.9.46 as permitted sender) client-ip=54.240.9.46;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b="otZTh/18";
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=YMSRHyXy;
+       spf=pass (google.com: domain of 01000196399f6c1d-120474d0-45bf-4341-be89-b1317f5bee92-000000@send.email.wave.co designates 54.240.9.46 as permitted sender) smtp.mailfrom=01000196399f6c1d-120474d0-45bf-4341-be89-b1317f5bee92-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1744723471;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=VjClyEdT1xeLjKKbtX62xzhqDaiu0W1pytinvXLRVrw=;
+	b=otZTh/18vMOy/j1+oQqXP6Bebp2qYqnEoAChhZ/ESOT40qexAugJ9/GB7xLshgvm
+	DasPVtuH+LIOl9CUGUMiQZbq5urSnmmxq1NWCSw661dgt0+a0CleCYQ0zpVEw2BMVrh
+	ThiUKPxOVzk5XgPsB32r/rpykmKgGyg6I3s2IY80=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1744723471;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=VjClyEdT1xeLjKKbtX62xzhqDaiu0W1pytinvXLRVrw=;
+	b=YMSRHyXyKOCI4mcGjsYNPy7RNJlSJ+ELEN7ghwHJXfbzGgocsc33K3wNkUA9BVNB
+	Co3WS8BsN3XdC02KUvjln4YeCyek/nqzxykzm/8W1OdTgfondDvigAMT7YSntWmUlXR
+	YakEGULzbxVdntebqOhnH3g+YUDaIc5G7iYHZwyg=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Team Meeting Highlights: Tasks, Changes, and Planning
+Message-ID: <01000196399f6c1d-120474d0-45bf-4341-be89-b1317f5bee92-000000@email.amazonses.com>
+Date: Tue, 15 Apr 2025 13:24:31 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-fea0253dd61edd3e-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.04.15-54.240.9.46
+
+----_NmP-fea0253dd61edd3e-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Team Meeting Highlights: Tasks, Changes, and Planning
+
+## Summary of Team Meeting
+
+### Date and Time
+- **Meeting Time:** Not =
+explicitly stated, but references to ongoing and upcoming calls.
+
+### Attendees
+- **Primary Participants:** Jason, Espina (Despina), Parry, =
+Tory (Tori), Tim, Amber, Mac, Josh, Andy, Alex, Stevie, Colin, Adam =
+Crandall.
+
+## Main Topics Discussed
+
+### 1. Task Management and Counting
+- **Current Status:**
+  - **364 Tasks:** Concerns about delays and tasks =
+behind schedule.
+  - **441 Tasks:** Ongoing discussions to reduce task =
+count.
+  - **71 and 364:** Upcoming tasks needing cleanup.
+- **Tools Used:**
+  - **Capital Edge:** Primary tool for tracking tasks.
+- **Issues Identified:**
+  - Overloaded task counts leading to confusion.
+  - Need for accurate dispositions and updating trackers regularly.
+
+### 2. Application Removal and Change Control
+- **Applications Removed:**
+  - Three engineering tools agreed upon by Tory to be removed.
+  - Three web apps already removed; a fourth under review.
+- **Change Control Process:**
+  - Removed apps still appearing in the =
+master list but deleted from Capital Edge.
+  - Need to ensure consistency =
+between master list and Capital Edge.
+
+### 3. Hosting Zone Finalization
+- **Finalized Hosting:**
+  - **22 Applications:** Tied to equipment with =
+landing zones at current sites.
+  - **66 Applications:** Pending landing =
+zone identification, due this week.
+- **Future State Hosting:**
+  - Distinction between current state and future state hosting.
+  - Importance of dedicated servers vs. PC hosting to avoid disruptions =
+post "Day One."
+
+### 4. Contract Updates and Freeware Status
+- **Contract Management:**
+  - Pending applications without confirmed =
+contracts to receive email notifications.
+  - Deadline set for =
+confirmations to avoid access issues on "Day One."
+- **Freeware =
+Reclassification:**
+  - Some applications reclassified from perpetual =
+licenses to freeware.
+  - Updates to task sheets to mark freeware =
+appropriately.
+
+### 5. Super User Assignments and Handoff Procedures
+- **Super Users:**
+  - Identification and confirmation of super users for =
+tool sign-offs.
+  - Importance of handoff to super users to manage access =
+for all end-users.
+- **Handoff Process:**
+  - Super users responsible for =
+distributing access and managing communications.
+
+### 6. Change Request =
+Tracker Improvements
+- **Current Challenges:**
+  - Existing change request =
+tracker lacks necessary details.
+  - Need for a new tracker to include =
+scope changes and approval statuses.
+- **Proposed Solutions:**
+  - Create a new tab for change requests with comprehensive details.
+  - Utilize existing templates from James Wang for consistency.
+
+### 7. Communication with Jason and Espina
+- **Upcoming Communication:**
+  - Send screenshots and updates to Jason and Espina about task counts.
+  - Ensure clarity and readiness to answer any change-related questions =
+confidently.
+- **Email Campaign:**
+  - Alex to coordinate with Stevie and =
+Andy to send out emails regarding pending applications and contract =
+confirmations.
+
+### 8. Task Overload and Capital Edge Management
+- **Current Task Load:**
+  - **Total Tasks:** 2,297 with an expectation to =
+reach 3,000.
+  - Allocation of tasks among team members to manage workload.
+- **Management Strategies:**
+  - Regularly review and update Capital Edge =
+to monitor task progression.
+  - Consider co-locating team members to =
+improve efficiency.
+
+### 9. Planning for Upcoming Milestones
+- **"Day One" Preparation:**
+  - Six weeks out from "Day One" with =
+significant task management underway.
+  - Emphasis on staying organized and=
+ maintaining clear communication.
+- **Testing Sessions:**
+  - Scheduled testing session for Bangalore on Thursday.
+  - Coordination with Tori to include testers in the call.
+
+## Action Items
+
+1. **Mac:**
+   - Provide an overview of outstanding tasks and plans for =
+managing 71 and 364 tasks.
+   - Coordinate with Tim on hosting location =
+validations.
+  =20
+2. **Parry:**
+   - Assist in cleaning up task counts and=
+ updating dispositions.
+   - Work with the team to ensure accurate =
+recording of change requests.
+  =20
+3. **Amber:**
+   - Email confirmation =
+on freeware status.
+   - Update task sheets to mark freeware as "NA."
+  =20
+4. **Alex:**
+   - Coordinate with Stevie and Andy to send out contract =
+confirmation emails.
+   - Ensure follow-up on responses to pending =
+applications.
+  =20
+5. **Josh:**
+   - Fill out the Excel tracker for =
+application locations on the team site.
+   - Confirm access to the =
+appropriate team sites for shared applications.
+  =20
+6. **Tim:**
+   - Validate hosting locations and finalize landing zones.
+   - Review and confirm the feasibility of tasks by Friday.
+  =20
+7. **All Team Members:**
+   - Update Capital Edge daily to monitor task =
+progression.
+   - Stay diligent with task management to handle the high =
+volume effectively.
+
+## Follow-up Points
+
+- **Upcoming Call:**
+  - Another meeting scheduled at **10:00 AM** today to review progress and =
+plans.
+ =20
+- **Testing Session:**
+  - Bangalore testing session scheduled =
+for Thursday, involving adding testers to the call.
+ =20
+- **Change Request Review:**
+  - Parry to review the new change request =
+tracker in the afternoon.
+ =20
+- **Super User Confirmation:**
+  - Tim to double-check the list of super users with Andy Rag.
+
+- **Future Planning:**
+  - Discussion on co-location and improving team =
+efficiency in upcoming meetings.
+
+## Notes
+
+- **"Day One":** Refers to a =
+significant project milestone or launch date.
+- **Capital Edge:** Project =
+management tool used for tracking tasks and dispositions.
+- **Freeware vs. Perpetual License:** Reclassification impacts task counts =
+and contract management.
+- **EMEA Bangalore:** Regional focus for certain =
+tasks and hosting considerations.
+- **Consistency:** Emphasis on =
+maintaining consistency between master lists and task trackers to avoid =
+confusion.
+
+Transcript:
+0:00
+Standard capital H colors and numbers are =
+fixed. This page will. Will talk about summary task as well as task. This =
+page will talk only about the task. And at the bottom, I have given the =
+note as well that this particular tab does not include any summary task =
+count. So this is like true task count, which are behind schedule or delay.
+
+0:23
+I want to send a screenshot to Jason and the spina, but that 364 =
+scares me, so I'm not going to.
+
+0:31
+Well, or if you go to the day one =
+dispositions tab, that's what Spinas wants, right?
+
+0:39
+Yeah.
+
+0:39
+This is linked to our master. This is. This is nothing to do with capital.
+
+0:43
+H. Yeah, this is linked to. This is just positioning.
+
+0:47
+Yeah, dispositioning.
+
+0:48
+Yeah.438. Oh, because we removed those three =
+apps.
+
+0:54
+Yes, we removed those three apps, but those will show up here =
+because we have not removed those from our master. But I have removed those=
+ from capital H. No, that.
+
+1:06
+That's cool. And this is where Parry. I =
+might just need your help on. We've communicated 441 for a long time. Well,=
+ not a long time, but for quite a while. And we are gonna slowly go down =
+now. So we definitely went down to three because of Tori. We'll go down =
+another four and then even more because of Tim's dt. I think you're =
+chopping about six, Tim. So I guess what we just need to make sure of is, =
+like, we know our story and we can all speak to because Jason and Espina =
+will be like, well, what changed? Right. And if you have, like, a very =
+confident, correct answer, they don't ask any more questions. But if you, =
+like, fumble around and have no clue. All right, let's have a call. That's =
+weird. Like, we try to avoid those things. So this is really good, man. So =
+just for context, guys, the three apps we have removed are engineering =
+tools that Tory has agreed to remove.
+
+2:10
+And for that I have.
+
+2:15
+Yeah.
+
+2:15
+And there is fourth one as well, this one which is not present =
+in this particular list.
+
+2:25
+Let me look at that. Yeah. Okay.
+
+2:29
+What about the three that we already put through change control? Right. So =
+we've removed the three that we did earlier. Like what? Like at this point,=
+ two, three weeks ago. Right. And then additionally, we removed these web =
+app ones. And then there's one more that you're reviewing now. Right? =
+Another one.
+
+2:48
+So we can't take. We can't take it out of the columns =
+inventory. So I guess. Amber, which file. This is like, this is. This is a =
+cleanup activity. I think the one thing we need to discuss. It's important =
+but what we need to discuss right now is that task count because we're. =
+We're ballooned again. Okay so if we look at this one here. So I guess Matt=
+, can you provide an overview of what's still outstanding and what our plan=
+ is for the 71 and 364.
+
+3:20
+These are upcoming so we might not need to =
+worry about this. But I think 71 and 24 needs cleanup. This can be easy one=
+ if let's say Tim says that okay, obtain local contract and POA review is =
+in progress. I will just flip this to in progress and we are good. This =
+will become zero. Should we do that? I'll blow up this so that you can view=
+ and most of these are contract related so opt in contracts TSA rights =
+secured by contracts team and yeah it's one is related to CC Draft act to =
+finalize and provide sign off. And this one is one of the four apps which =
+is still there. The web app from supply chain 3 we remove this one is still=
+ there because this was not in the list. So I have not deleted this. If I'm=
+ not clear then I am talking about this thing I've removed. Mm web app, =
+saving web app and transfer web app. The fourth one is listed as project =
+server web app but it is not present in capital H in our pan. Instead we =
+are having supply chain escalation web app. Which is this one. Which is =
+this one.
+
+4:50
+Yeah. So this is the plan. So it's the ones that. These =
+ones I'm I'm less worried about. It's the stuff that's coming due.
+
+5:00
+Okay. So stuff that is due. So this is the stuff that is due.
+
+5:05
+So if you look at past due.
+
+5:07
+Yeah, this is. These are the past due.
+
+5:12
+We had extract data in April.
+
+5:28
+What does that extract tied to?
+
+5:31
+CC drive.
+
+5:33
+CC draft.
+
+5:35
+All right, let me work with the team =
+on that one today.
+
+5:43
+And then these are the finalized actuation landing=
+ zones for EMEA Bangalore.
+
+5:55
+Harry, do you mind pinging Gopi and just =
+ask if any of the. Well, we should have it in our inventory even around the=
+ tech data. Yeah, like I'm just thinking can we. If we can use teams, I =
+think we can set up the team site and put them there and then essentially =
+make Shankar and Mohan owners and then let them run it from there. And =
+that's kind of a handoff. Yeah, but I just, I'm wondering if any of those =
+are. Yeah. And I guess you can just put it onto that chat that you've got =
+with the Bangalore team. Oh, Redwood Tools. That's it. And just maybe Look.=
+ Hey guys. Just like there are delays in DT setting up the folder =
+structures. Do we think it's feasible to use a teams folder for all =
+Bangalore copied apps?
+
+7:07
+Yeah. Sorry, I was just writing. I'm typing it=
+. Should I just. I'm just gonna ask.
+
+7:23
+So that clears identity landing =
+zone. She wants identify and then it's my.
+
+7:39
+Solution.
+
+7:43
+To buy a solution. Why are you identifying a landing zone?
+
+7:49
+So some of them, 22 of them are equipment tied ABS that have identified a =
+landing zone. Those aren't the buyer solution ones, but those are the =
+dedicated. Right. They're tied to equipment. So I had 88 finalized hosting =
+and then 66 then need the infrastructure team's input.
+
+8:20
+So maybe I don't know what you're referring to.
+
+8:23
+So the buyer solution ones are buyer solution data extract.
+
+8:26
+Oh yeah.
+
+8:33
+You still have to create a copy for buyer solution data extract.
+
+8:39
+Yeah. We still need a landing zone.
+
+8:41
+Exactly.
+
+8:48
+Do we. Or we just put it into move it. Well, I guess if we're having the =
+conversation. So. And are these actual data extracts like they have. Do =
+they have data? That's where I think.
+
+9:15
+The HR one definitely does.
+
+9:19
+Is that coming out of the. I guess the. The HO one. I'm struggling a =
+little bit with Tim because. Can you do that pre day one or do you need to =
+wait until day one to do this? Wow, sorry. The landing zone bit. Yes, 14th =
+of April. So that's. That's fair. So is this identify landing zone or is =
+this like identified like transfer approach.
+
+9:52
+This is more along the =
+landing zone aspect itself. Like where are we going to put this information=
+?
+
+9:59
+But it's going to.
+
+10:00
+Specifically we want to. These is =
+Simscape Simulink, one of the ones we want to descope or. No.
+
+10:11
+Let'S.
+
+10:13
+No, never mind. Oh no, it's one data whatchamacallit.
+
+10:22
+Colin actually accepted it for tsa.
+
+10:29
+My double check that too. That's=
+ why it was so salient in my head. I was like, why do I actively remember. =
+That's good. I can find the.
+
+10:53
+So I guess the one thing team, if you =
+could just make sure that your dispositions are accurate in here. Because =
+now we've had a couple changes.
+
+11:09
+Yeah. That falls within enterprise =
+engineering and it's part of EN01. This one is Stemscape Simulink. Yes.
+
+11:26
+So Pari, I think we need to look at that file that you're generating =
+for EN01 and I think we just need a very clean page of all the change =
+requests either in progress or that have been approved.
+
+11:40
+I agree. Yeah. It's starting to get Confusing because of everything that =
+I've. Yeah, I agree. Yes.
+
+11:48
+And I think we need like the one we had =
+for when we're doing dispositioning, that was okay, but we need a bit more =
+detail. Right. What was the disposition? What is the new disposition and =
+the why? I think we need that. James Wang actually has like a pretty good =
+template that I think we need to leverage because I don't think we can wait=
+ until the 25th to move forward because there's some. There's some =
+inconsistencies here that like, I think we can walk through. But when you =
+show Despina and Jason like, well, that's changed. Oh, actually has that =
+one. This one has as well. They lose a lot of confidence in. In what's =
+behind. So if we could maybe just set that up, that would be good. So, Mac,=
+ do we have a plan for these ones? Have you worked with Hari and Tim?
+
+12:51
+I worked with Tim last night. There's like five main buckets.
+
+13:00
+But we.
+
+13:01
+Have a plan for each of them. Yeah, we have all of the =
+upcoming tasks for this week tied to an action and I think we have a good =
+view of what's feasible and what's not. And then a bunch are pending.
+
+13:20
+Okay, can you share what's not feasible?
+
+13:29
+Yeah, the tr.
+
+13:36
+Because they've kind of have got us and this is honestly how they should be=
+ running it. But. So any changes not feasible are going to get reviewed.
+
+13:48
+I mean they're. The two big categories are identify the hosting type.
+
+14:01
+We just. Let's just look at the detail. Let's just look at the line =
+items.
+
+14:30
+Hold on.
+
+14:35
+We can hear you, Mac.
+
+14:37
+Yeah, hold on one second. I have to switch.
+
+14:41
+While he's doing that. =
+Anthony, I just want to give you an update on contracts. So anything that =
+we. We haven't found. Alex is going to ask Stevie and Andy to send an email=
+ out with. Hey guys, this is the pending applications where we cannot find =
+contracts. We've exhausted every, every possible way of doing that. Please =
+confirm that they're in use. If you cannot confirm that they're in use and =
+are and provide a contract latest PO or tie it to specific machinery, we =
+are going to remove them from our list and you will not have access to it. =
+Day one. So we've done agreed with.
+
+15:19
+We've got new to that.
+
+15:21
+That's what Alex's plan is. Because it's just, it's how it's got to be at =
+this point in time.
+
+15:26
+If people can't agree. I just am kind of =
+gobsmacked, I guess. Yeah, we'll see what that does? Yeah, because like, as=
+ you know, we can't take it off. We can't go and uninstall an app from a =
+Centuan test rig. Like, oh, completely agree.
+
+15:47
+And I'm not worried about, I'm not worried about the stuff that's tied to =
+test rigs.
+
+15:51
+Yeah.
+
+15:51
+But when someone's told me it's perpetual =
+license and someone comes back and tells me, no, it's not a perpetual =
+license, it's freeware, I can't, I can't be running around in circles like =
+that. So, yeah, on actuation to do the work and, and get it figured out, =
+because there's no way that we can continue to just putz around and have =
+them figure the shit out. Like, I, I, I like my job, but this has just been=
+ frustration of how the, do these people not know what the hell they have?
+
+16:21
+Yeah, yeah, no, and that's a great outcome. I appreciate us getting =
+there. I'm just, I hope they actually happens because yeah, it might be =
+just a bit of a scare tactic that won't have a lot behind it, but hopefully=
+ the scare tactic kicks us in to get another 10:15 back.
+
+16:43
+Right, exactly.
+
+16:46
+No, no, that, that sounds good. So hopefully that =
+works and we get some movement. But yeah, to your point. Right, like, I =
+don't respond to emails, but then a SRI sends one out saying, hey guys, do =
+this or this. Then I respond. So it's, it's, yeah, that's. No, I, I agree. =
+I, I think that's also. Timmy, do you mind just, I said to, I don't know if=
+ you're on the call last night I said to Despina I'd draft her a note to =
+send to about the, like, essentially it's a forward of the email that we've=
+ already sent that Disbina is going to just reply on top of.
+
+17:33
+Okay.
+
+17:34
+And I would just. Actually, I can do it. Let me just share it with =
+you before it's, before it goes out. Because that latest bit, I would just =
+want to, if you could confirm to Alex that's happening, because I don't =
+want to say it's happening and it doesn't happen because that's a pretty =
+big statement they're going to make by doing that. And if we say it =
+happened, it's going to happen and it doesn't, then it's on us to chase =
+down.
+
+18:02
+So, yeah, no, no worries. Alex and I talked about it at the =
+8:00.
+
+18:11
+Yeah.
+
+18:12
+So let me make sure when he talks to Stevie today=
+, they're apparently dealing with another outage and Wolverhampton. So let =
+me talk to. I will get it in writing that he's going to talk to Stevie =
+about that. And when we have another meeting later on today at 10, we'll =
+basically say, chris, this is our plan. Are you good with that? And see =
+what he says as well. So Chris will get Andy on board, Alex will get Stevie=
+ on board, and I'll make sure that I'm cc'd on that email saying that we =
+need to do this.
+
+18:45
+Yeah. Nice. Yeah. Cool. All right, man. Thank you. =
+Solid update. Did you get any more come in? I stream not.
+
+18:53
+I've got confirmation that some stuff is freeware now instead of a =
+perpetual license. So it doesn't it our number, but not drastically.
+
+19:03
+Yeah, because we already had it changes the percentage. So that's good for =
+the better.
+
+19:07
+Yeah. Yep. So I've got to make those updates today. I've=
+ got the email confirmation on all of those. So if they say, oh, it's a =
+contract now, then it's on them because the person told me. So. Yeah, I =
+will track that. But yeah.
+
+19:27
+Okay.
+
+19:27
+Yeah.
+
+19:27
+What are you doing for the freeware? Are you recategorizing it or are you =
+just marking it as received?
+
+19:32
+I'm marking it as NA in our sheet and =
+we'll have to recategorize it in our masters freeware.
+
+19:39
+Yeah, I can. Right. All righty. All right, Max, so run us through this one.=
+ So what number of tasks feasible? All right, let's talk about the =
+finalized hosting.
+
+19:54
+So for finalized hosting, there's 22 that are =
+tied to equipment. And so that we know that the landing zone will be the =
+current site that that equipment is at. And Tim can mark those complete =
+this week. So we know that those are feasible. There's 66 that are left =
+that are pending the landing zone. So this is the activity identify the =
+landing zone or hosting. And so we need.
+
+20:35
+And that's due this week. =
+Yeah. And this is.
+
+20:41
+Well, is this due in the next seven days?
+
+20:43
+Finalized hosting? Are you talking about current state or future state?
+
+20:48
+It's a combination of both.
+
+20:51
+Well, we've got row seven is =
+landing zone. Row two is hosting. I assume they're not the same.
+
+21:00
+The landing zone. I mean, this is just how they're categorized in Capital =
+Edge. They're broken out because it was broken out in the way that we're =
+talking about them. Really. And so this is finalize the landing zone are =
+the ones that specifically say finalize the landing zone. And then we have =
+a separate chunk that are finalized, the hosting zone. So that includes =
+TSAs or logical separations.
+
+21:31
+So this is current state number two.
+
+21:34
+Yeah, exactly. And then seven is future state.
+
+21:40
+So it might make sense how many of those. So if we just stay on one row at =
+a time. Finalized hosting, current state. I think Parry got a bit of detail=
+ back from Colin yesterday. Does this include Parry's stuff?
+
+21:57
+No, I haven't gotten feedback from Par yet.
+
+22:01
+I'm sorry. Back. Yeah, =
+we can connect.
+
+22:04
+So let's. Let's just look at. So if you go to the =
+tasks, we're saying the tasks tab. Sorry. And just filter on hosting. =
+Scroll to the left.
+
+22:44
+Left this one and make it smaller.
+
+23:04
+Keep going down. Going down. So these look like they're all transfers, all =
+of them. So Tim, I think the question on this one is more around validating=
+ that they are on a dedicated thing. That they're dedicated like a. Because=
+ I think if you look at like what we don't want to have have happen is this=
+. These CATIA ones as example, sit on a license server in Maidstone and =
+that gets cut off on day one.
+
+23:59
+Yeah. So I think I've got confirmation=
+. I'll double check my notes, but I believe I have confirmation that all of=
+ them are on the test rigs themselves. These are one of those.
+
+24:11
+Are they commenting?
+
+24:15
+No, there's not. At least not that I've seen.
+
+24:18
+Ambar.
+
+24:21
+Sorry, what's the question?
+
+24:23
+Are they comments?
+
+24:26
+Comments? Yes. So comments column is there but nothing is populated. =
+I populated it with dispositions of application.
+
+24:35
+So the comments columns being used then?
+
+24:38
+Yes.
+
+24:52
+Look, that's fine. I think what we just want to update this is these need =
+to tie to essentially columns in the inventory. This one just needs to have=
+ current state hosting. And then we just need to have a few options here =
+because I just want to make sure that if we ever get a question on. Hey, =
+Sephram Link is actually hosted in Maidstone. We can say no, it's actually =
+hosted in here.
+
+25:26
+Yeah, Amara and I connected about that this morning.=
+ He said it will take some time to get the. I think what we need at the =
+core is the application ID tied to the task ID so that we can get =
+information out of our inventory. Inventory?
+
+25:44
+Yeah, we can just vlook up the work plan. Well, I guess we just need to =
+like. I guess what I'm just trying to say is like I think we've got tasks =
+in cap Edge that essentially can be columns in our inventory. If that makes=
+ sense. Matt. Yeah, so like this one, review application hosting =
+requirements, transfer of deck, space, desk, whatever that is. Could be =
+like. Like local dash, Antoine or wherever it is for this one, I don't know=
+. Or it could be shared something. But I think that's. We just want to make=
+ sure that we don't just get all this done and then have like no, nothing =
+to back it up.
+
+26:32
+Yeah, exactly.
+
+26:33
+Because questions will come =
+post day one when ship breaks. So like that's what we just need to be =
+prepared for. Paris saw it a little bit in Hornet. Right. You get the most =
+random rogue questions that you expected to have answers for. Like they =
+will say moba Extern. Where is that hosted? It's not working anymore and we=
+ need to answer it just as a heads up. The other thing as well is some of =
+this probably was in the initial SMO file.
+
+27:12
+It had PC or server.
+
+27:17
+Okay, okay. Okay. Well if it's on PC.
+
+27:25
+PC, I'm much worried =
+about it, especially at the site location.
+
+27:29
+Yeah, maybe we think =
+about. I'm just trying to make sure that we hand over a very clean. Well we=
+ have like our story very buttoned up. Okay. So Tim, are these feasible by =
+Friday? There's a lot here. Yeah.
+
+27:52
+So I'm working with the team to =
+kind of get that. That pulled together in the actuation calls that we're on=
+. So that's our key tasks for the day are basically or for the week are =
+contracts. Of course, hosting locations. Anything that's on a server is =
+what we're worried about. Anything that's on a PC, not so much. We still =
+want that information as to. Yes, it's on this PC specifically, but if it =
+says PC and it's at a site. Emily, to kind of mark that as complete, =
+especially for all these transfers. And then it's the hosting locations for=
+ each of these as well as getting any current hosting locations and then =
+finalizing where we're going to land these. I think once we have if it's =
+the PCs, then that's going to stay the landing zone. So that'll knock those=
+. But if it's a server, those are the ones we just going to have to dig in =
+and look at.
+
+28:50
+Yeah, okay. Yeah, let's just have a quick like =
+conversation on like on the on team, just around what we want to put as the=
+. The options. Because I think to your point, server dash dedicated server =
+dash local. Sorry. Well, let's pick one I guess is what I'm trying to say.
+
+29:08
+Yep.
+
+29:09
+And then let's just make that consistent throughout. Okay=
+. All right, Mac, what's the next one? Sorry, I know we're running over, =
+but this, this is pretty important. What's the next milestone activity we =
+need to review through the next. So these are feasible. Tim. Sorry.
+
+29:24
+Here, I just put the expanded one in here. This is the one with the full =
+set of columns that we got out of the export. Let me just filter for the =
+next one. And these have the actions that I discussed yesterday with Tim.
+
+29:43
+Okay. And then I guess because. So these sort of. So the dedicated is=
+ where we don't know the current state and we're just trying to find =
+gotchas in there. Right. Like that's the purpose. Right. Like, oh shit, =
+this is actually hosted in somewhere else. It's going to be cut off from =
+day one, finalize those things, determine authentication method. Can you =
+click on that one?
+
+30:14
+There's a bunch of these. 52 of them.
+
+30:23
+Yeah, A lot of these are transfers.
+
+30:25
+And it's just basically =
+confident this is local versus identity. Right, Tim?
+
+30:31
+Yes, exactly. So how are they accessing the application? Right. If it's. If=
+ they need to log in with their. This is more of a day two activity than =
+anything else. But if anything breaks on day one, well, it's.
+
+30:46
+It's kind of not though, right? Because to your point, if anything is =
+somehow tied to. Well, I guess workday is not changing. Nothing should =
+break on. We should just know it. Anyway, I guess they'll still be tied.
+
+31:07
+To their Collins email address though, so. Right. Like if they're not=
+ using SSO and they want to reset their password, it will go to their =
+Collins email address, right?
+
+31:20
+Well, it depends. Like applications =
+authenticate multiple different ways. I'm assuming that 95% of these are =
+just ping me and I'll give you an account. I'll spell your name wrong. Like=
+ there's no rhyme or reason. Sorry. There's no traceability back to your =
+RTX id, I guess is what I'm trying to say. I think that would make sense. I=
+ assume these and some of these probably don't even have an authentication =
+method. Like, correct.
+
+31:54
+I mean, if it's tied to the PC, if it's =
+posted on a PC, it's probably not something that multiple people need to =
+log into.
+
+32:01
+Right, Right. Because it's a. Yeah, it's a. It's token. =
+Wow. Token with it. Anyway, I think we just need to work through that. I =
+think the. Shit, I can't. We can't push all these back.
+
+32:15
+Well, I think we have a good story, especially on certain things like =
+landing zones and other information, because we literally shared the =
+dispositions with them on Thursday of last week and we warned everyone that=
+ if we couldn't share the dispositions, things were going to get pushed =
+back because they didn't have the information to provide this. So I'm not =
+saying we're not at risk or it's not a concern, but I'm saying there is =
+justification for why these are pushed back.
+
+32:47
+I regret putting so much in Cap edge now. It's always fucked ya.
+
+32:52
+I can eat that tool.
+
+32:56
+Okay, and then. So if we keep just scrolling =
+down slowly. Matt. Yeah, Copy the landing zone. Barry, these. Can we get =
+this done for these? If we agree on teams which Josh already has set up.
+
+33:12
+Yeah. So that's where the ones. Yeah, the copy. The ones that are =
+Josh's. I sent him an email last week and we have a call this weekend. I =
+followed up yesterday, but he hasn't responded back. Basically in Excel =
+being like, okay, where do they live that way I'm like, like, okay, they =
+live on this team site and it's been shared. Then we have like an actual. =
+Like, each line item has a location verified. But hopefully he can get that=
+ to us today, in which case we can start saying that it's already copied in=
+ there. You get what I mean?
+
+33:59
+Sort of.
+
+34:04
+So these are. Majority of these are all Josh's. So I already gave him a =
+list of. Here are all your copied applications. Can you give me where they =
+live and if they're already on the team site that's been separated and =
+where he was like, okay, I'm adding in Chase Johnson and Adam Crandall.
+
+34:28
+Are you on that team, sir?
+
+34:30
+I am not. But you said you are.
+
+34:33
+Am I?
+
+34:35
+You said it on the call, but I'll get that confirmation.=
+ I want to be on that team site.
+
+34:41
+So Maple agreements. Maple. What do=
+ you think he called it? Just ping him and ask him to add us both. He gave =
+me access to something.
+
+34:56
+Yeah.
+
+34:57
+And I'm just looking at my =
+teams on the Colin side. Nothing. There's also so many teams that I might =
+just be missing it. But what about identifying is asking to add us? Parry. =
+We'll get in there and then we'll see what's already in there. And. And I =
+saw. Is there a testing session for Rockford Bangalore's Thursday or.
+
+35:26
+No, the existing session for Bangalore is Thursday. Is that what you =
+asked?
+
+35:32
+Yeah. Is the testing.
+
+35:35
+Yeah, I want. So I wanted to =
+send out that email to Tori before I. I already sent out the email to the =
+tester saying that, hey, we're gonna be adding you to a Call of Duty =
+Thursday so that you can help scope and verify the applications that we'll =
+be copying over. Specifically Homegrown. So, yeah, they. Yeah. And then now=
+ that we've also sent that to Tori. I feel a lot more comfortable adding =
+them to the Thursday call.
+
+36:04
+Okay. And so Parry, there is a page the =
+Matt put together and we're gonna have to test it, which is around copy =
+sign off.
+
+36:14
+Okay. Yeah.
+
+36:16
+And essentially It's. It's in =
+PowerPoint and Mac. If you can share it with Parry, that'd be good. We're =
+gonna need essentially like. Yeah, if you could just fill that out and. And=
+ then we'll just. That's what we use to get sign off. We ran Andy Rag =
+through it very quickly, but ideally, like we can't say an app's done until=
+ actuation signed off and then they take ownership of the team site.
+
+36:54
+That makes sense. Yeah.
+
+36:56
+Yeah. Let me find a link. I think once we =
+give it and I think maybe we'll just add a sentence pair. If you could take=
+ a note of this. Our handoff is not giving it to everyone, it's giving it =
+to the super user.
+
+37:09
+Yeah.
+
+37:10
+So if they've got 300 people that =
+use it, we're giving it to the super user. The super user needs to give it =
+to the 300 people. Yeah. And there might just need to be some comms and =
+whatnot, but I'll let them manage that. Okay, cool. All right. And if you =
+keep scrolling down Max Identify active user. Use super user to sign off on=
+ tool. I thought we've done all this.
+
+37:38
+No, we have. I just want to go=
+ back and mark it as such and I want to make sure that it is the right =
+applications. But yeah.
+
+37:49
+Tim, did we ever get an updated listing from=
+ Andy Rag on who they want as the super users or the ones we're using were =
+fine.
+
+37:58
+The ones we were using were pretty much fine. They basically =
+took the SMO file and plugged in the. The app owners from that file. So I'm=
+ going to look through that and double check all of those. But there are =
+some. Some separations on this one. But I think for the most part that that=
+ one should be pretty well set.
+
+38:20
+Like employment separations, you =
+mean?
+
+38:26
+No, no. For any actuation super users that we needed. I didn't=
+ say anything about separation.
+
+38:36
+Oh, okay. So I think we're good on =
+these ones here. And then identify. Yeah, that's next one. Identify. Keep =
+going down Current sa. We discussed that. Keep scrolling down M. Yeah, let =
+me switch my corner.
+
+38:59
+Yeah, and that's the Excel that I want Excel =
+Josh to fill out, right? Yeah.
+
+39:08
+And then Excel. Do you want Josh to =
+fill out? Oh, look. Yeah, okay. Yeah, keep going down. These are mostly =
+transfers. Yeah, Keep Going down. Application hosting, keep going down. =
+Okay. All right, so team, let's see where we end up. I think as long as =
+we're, we're pushing this as best we can. Please update Cap Edge as like at=
+ the end of the day we're going to need to look at do this review like =
+every morning now. Just because there's so many tasks coming coming up this=
+ week that we're just gonna have to watch this burn down unfortunately. =
+Makes sense. I think once we get over this hump we'll get like. Once we get=
+ over this hump we'll be. I think we'll be in a lot better position because=
+ I'm looking at Amber's chart. If you look at the word plan summary. Once =
+we get over. This is a seven day look. So let's go to an extra. Once we get=
+ over the 22nd. Once we get over the 21st. Well, we've got another 129 next=
+ Friday. All right, well I guess we're, we're six weeks out from day one. =
+This is what it's like so. All right, so team, let's stay super tight on =
+this. Please be very diligent with Cap Edge. Ari, if you could please have =
+a take a shot at the change request tracker and I, I think we almost hide =
+the old one that we had and put in a, a new one. It's just painful because =
+we've got cot staging tab. We've got things in other places. Yeah. Just =
+ping me if you want to sort of chat through the approach on that. But I =
+think that's pretty important today because there's going to be work plan =
+impacts.
+
+41:04
+Yeah. Especially since we're changing dispositions across. =
+So I'm going to take a shot at creating and so the change request is =
+separate. You're talking about like actual. The changes that we want to =
+like track. Right. Internally and then the change request form is whatever =
+that gets filled out. How it gets filled out.
+
+41:27
+Yeah. I think to be honest, is it almost one of the same thing? Like it's =
+just the approval status that will change right on the change request form =
+or does that not have everything you think we need?
+
+41:41
+I don't think it has everything we need. It's more so costing and cost =
+changes than it is worried about scope changes. Yeah. Which is why like =
+they're like oh, if it's like what's the costing impact and stuff. Which is=
+ why I'd rather just create a new tab and have like our like here are all =
+the changes, this is why and a breakdown and who we're getting approval =
+from and I think it'll be a lot clearer and then we can go back and just =
+fill out that form for the formality of it.
+
+42:13
+Yeah, okay. I'm just =
+thinking, I'm saying a few tasks and if you put that together. Parry. Let's=
+ review this afternoon because I want to clear some of the noise. Like I'm =
+seeing Team Center France pop up a couple times. Team Center Italy stuff. =
+We know we're descoping. So I'm almost thinking that we can pull it =
+together.
+
+42:38
+Let's have a look at it.
+
+42:39
+Because there's kind of a =
+strength of knowing it's going to. These are all changing. So I guess =
+anyway if you can pull it together, then review or review. Because I don't =
+want to keep looking at stuff that we know is not going to be in here =
+anymore.
+
+42:55
+100%. And all of these also get attached to their parent =
+tasks. So it's like numerous tasks, numerous numbers that change for each =
+app. So.
+
+43:07
+Right, right, yeah. For example, like if we get rid of like=
+ Team Center France, we clear five apps. Like we could potentially be =
+removing 200 tasks today, which is going to cause a scene. What's that?
+
+43:21
+Sorry, Tim, what's the total task number again?
+
+43:24
+2297.
+
+43:28
+So 3000 tasks for three people. A thousand tasks.
+
+43:32
+Okay.
+
+43:33
+A person basically.
+
+43:37
+Think about it that way.
+
+43:40
+3 or 4 like pair Mac and I kind of running through that stuff. You get to =
+clear some of the tasks but you're not assigned any ownership in capital =
+Edge.
+
+43:50
+You can give me some just for.
+
+43:55
+Feel good about himself =
+contracts, going over.
+
+43:59
+To it.
+
+44:03
+Dealing with different. I'll =
+happily exchange with you. I'll happily exchange. You can deal with the =
+spina and you can take other folks. No, no, I get it guys. I do get it. And=
+ this is honestly what like there is a ton in here and we dispositioned so =
+quickly and like Mac was like grinding to get all this done that we knew =
+that there were going to be changes. Right. And the changes are coming. So =
+we expected this. And now I think we just need to try and keep ourselves =
+because I think to the other point Tim, is you don't want another set of =
+hands in cap edge playing around with these tasks. Like we're already =
+getting a bit messy just because there's so many tasks and I guess that's =
+so it's a fair point though. So let's chat through like what's the best way=
+ to manage this? Right. So we all need to update tasks. Like I think a lot =
+of work we had Amber doing is now done. Right. Like in terms of like this =
+dashboarding is just off the charts and it's awesome. And so I think now =
+that we've got through this bit, how do we best use Amber in his time? =
+Right. Like Parry, there's Bangalore stuff for sure. But what's the. The =
+best use? Like. But I'm thinking, let me think through it man. Because I =
+want to get you to like fully like you've owned this, you've crushed it. I =
+want to sort of get you something else to. To own and run. Let me sort of =
+get back to you this afternoon. Well tomorrow, tomorrow morning your time. =
+Yeah, sure.
+
+45:58
+Anthony. We can connect on the email. I usually just =
+send an email and a day our day which then you'll see in the morning. So =
+we'll just, we can just talk as to what we want to send.
+
+46:14
+Cool. All right guys. So let's, let's catch up. But Tim, I do hear your =
+point, right? It is a ton and I, I think we just need to stay tired at the =
+hip and I will try and see if we can do a co location sometime soon. Let me=
+ sort of chat to the team and then see where things are at. I'll also see =
+where will's that as well, to be honest because we might do Miami. Does =
+anyone oppose to Miami? Sorry, what's that?
+
+46:49
+It's so dreary in New =
+York. Take me to Miami for sure.
+
+46:53
+Okay.
+
+46:54
+There's apparently snowing in Boston so.
+
+46:58
+Dude, it was. I went to my =
+fiance's parents house and it was literally snow up there on Saturday. It's=
+ mid April. Where is she from? It's the New York, New Jersey border.
+----_NmP-fea0253dd61edd3e-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Team =
+Meeting Highlights: Tasks, Changes, and Planning</h1></td></tr></table></di=
+v><div style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/EE67BB83-4C48-4190-AE82-6188AD84BFC1?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h2 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2rem">Summary of Team Meeting</h2><h3 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">Date and =
+Time</h3><ul>
+<li><strong style=3D"font-weight:bold">Meeting Time:</strong>=
+ Not explicitly stated, but references to ongoing and upcoming calls.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">Attendees</h3><ul>
+<li><strong style=3D"font-weight:bold">Primary =
+Participants:</strong> Jason, Espina (Despina), Parry, Tory (Tori), Tim, =
+Amber, Mac, Josh, Andy, Alex, Stevie, Colin, Adam Crandall.</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Main Topics =
+Discussed</h2><h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">1. Task Management and Counting</h3><ul>
+<li><strong =
+style=3D"font-weight:bold">Current Status:</strong><ul>
+<li><strong style=3D"font-weight:bold">364 Tasks:</strong> Concerns about =
+delays and tasks behind schedule.</li>
+<li><strong style=3D"font-weight:bol=
+d">441 Tasks:</strong> Ongoing discussions to reduce task count.</li>
+<li><strong style=3D"font-weight:bold">71 and 364:</strong> Upcoming tasks =
+needing cleanup.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">To=
+ols Used:</strong><ul>
+<li><strong style=3D"font-weight:bold">Capital =
+Edge:</strong> Primary tool for tracking tasks.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Issues Identified:</strong><ul>
+<li>Overloaded task counts leading to confusion.</li>
+<li>Need for accurate dispositions and updating trackers regularly.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1=
+.75rem">2. Application Removal and Change Control</h3><ul>
+<li><strong style=3D"font-weight:bold">Applications Removed:</strong><ul>
+<li>Three engineering tools agreed upon by Tory to be removed.</li>
+<li>Three web apps already removed; a fourth under review.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Change Control Process:</strong><ul>
+<li>Removed apps still appearing in the master list but deleted from =
+Capital Edge.</li>
+<li>Need to ensure consistency between master list and =
+Capital Edge.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-t=
+op:20px;font-size:1.75rem">3. Hosting Zone Finalization</h3><ul>
+<li><strong style=3D"font-weight:bold">Finalized Hosting:</strong><ul>
+<li><strong style=3D"font-weight:bold">22 Applications:</strong> Tied to =
+equipment with landing zones at current sites.</li>
+<li><strong style=3D"font-weight:bold">66 Applications:</strong> Pending =
+landing zone identification, due this week.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Future State Hosting:</strong><ul>
+<li>Distinction between current state and future state hosting.</li>
+<li>Importance of dedicated servers vs. PC hosting to avoid disruptions =
+post &quot;Day One.&quot;</li>
+</ul>
+</li>
+</ul>
+<h3 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">4. Contract =
+Updates and Freeware Status</h3><ul>
+<li><strong style=3D"font-weight:bold"=
+>Contract Management:</strong><ul>
+<li>Pending applications without =
+confirmed contracts to receive email notifications.</li>
+<li>Deadline set for confirmations to avoid access issues on &quot;Day One.=
+&quot;</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Freeware =
+Reclassification:</strong><ul>
+<li>Some applications reclassified from =
+perpetual licenses to freeware.</li>
+<li>Updates to task sheets to mark =
+freeware appropriately.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500=
+;padding-top:20px;font-size:1.75rem">5. Super User Assignments and Handoff =
+Procedures</h3><ul>
+<li><strong style=3D"font-weight:bold">Super =
+Users:</strong><ul>
+<li>Identification and confirmation of super users for =
+tool sign-offs.</li>
+<li>Importance of handoff to super users to manage =
+access for all end-users.</li>
+</ul>
+</li>
+<li><strong =
+style=3D"font-weight:bold">Handoff Process:</strong><ul>
+<li>Super users responsible for distributing access and managing =
+communications.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding=
+-top:20px;font-size:1.75rem">6. Change Request Tracker =
+Improvements</h3><ul>
+<li><strong style=3D"font-weight:bold">Current =
+Challenges:</strong><ul>
+<li>Existing change request tracker lacks =
+necessary details.</li>
+<li>Need for a new tracker to include scope changes=
+ and approval statuses.</li>
+</ul>
+</li>
+<li><strong =
+style=3D"font-weight:bold">Proposed Solutions:</strong><ul>
+<li>Create a new tab for change requests with comprehensive details.</li>
+<li>Utilize existing templates from James Wang for consistency.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">7. Communication with Jason and Espina</h3><ul>
+<li><strong style=3D"font-weight:bold">Upcoming Communication:</strong><ul>
+<li>Send screenshots and updates to Jason and Espina about task counts.=
+</li>
+<li>Ensure clarity and readiness to answer any change-related =
+questions confidently.</li>
+</ul>
+</li>
+<li><strong =
+style=3D"font-weight:bold">Email Campaign:</strong><ul>
+<li>Alex to coordinate with Stevie and Andy to send out emails regarding =
+pending applications and contract confirmations.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">8. Task =
+Overload and Capital Edge Management</h3><ul>
+<li><strong =
+style=3D"font-weight:bold">Current Task Load:</strong><ul>
+<li><strong style=3D"font-weight:bold">Total Tasks:</strong> 2,297 with an =
+expectation to reach 3,000.</li>
+<li>Allocation of tasks among team members=
+ to manage workload.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold=
+">Management Strategies:</strong><ul>
+<li>Regularly review and update =
+Capital Edge to monitor task progression.</li>
+<li>Consider co-locating =
+team members to improve efficiency.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">9. =
+Planning for Upcoming Milestones</h3><ul>
+<li><strong =
+style=3D"font-weight:bold">&quot;Day One&quot; Preparation:</strong><ul>
+<li>Six weeks out from &quot;Day One&quot; with significant task management=
+ underway.</li>
+<li>Emphasis on staying organized and maintaining clear =
+communication.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Test=
+ing Sessions:</strong><ul>
+<li>Scheduled testing session for Bangalore on =
+Thursday.</li>
+<li>Coordination with Tori to include testers in the call.=
+</li>
+</ul>
+</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:20px;font-=
+size:2rem">Action Items</h2><ol>
+<li><p><strong style=3D"font-weight:bold">=
+Mac:</strong></p>
+<ul>
+<li>Provide an overview of outstanding tasks and =
+plans for managing 71 and 364 tasks.</li>
+<li>Coordinate with Tim on =
+hosting location validations.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Parry:</strong></p>
+<ul>
+<li>Assist in cleaning up task counts and updating dispositions.</li>
+<li>Work with the team to ensure accurate recording of change requests.=
+</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Amber:</strong>=
+</p>
+<ul>
+<li>Email confirmation on freeware status.</li>
+<li>Update task sheets to mark freeware as &quot;NA.&quot;</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Alex:</strong></p>
+<ul>
+<li>Coordinate with Stevie and Andy to send out contract confirmation =
+emails.</li>
+<li>Ensure follow-up on responses to pending applications.=
+</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Josh:</strong><=
+/p>
+<ul>
+<li>Fill out the Excel tracker for application locations on the =
+team site.</li>
+<li>Confirm access to the appropriate team sites for shared=
+ applications.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">T=
+im:</strong></p>
+<ul>
+<li>Validate hosting locations and finalize landing =
+zones.</li>
+<li>Review and confirm the feasibility of tasks by Friday.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">All Team =
+Members:</strong></p>
+<ul>
+<li>Update Capital Edge daily to monitor task =
+progression.</li>
+<li>Stay diligent with task management to handle the high=
+ volume effectively.</li>
+</ul>
+</li>
+</ol>
+<h2 style=3D"font-weight:500;pa=
+dding-top:20px;font-size:2rem">Follow-up Points</h2><ul>
+<li><p><strong style=3D"font-weight:bold">Upcoming Call:</strong></p>
+<ul>
+<li>Another meeting scheduled at <strong style=3D"font-weight:bold">10:00 =
+AM</strong> today to review progress and plans.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Testing Session:</strong></p>
+<ul>
+<li>Bangalore testing session scheduled for Thursday, involving adding=
+ testers to the call.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Change Request Review:</strong></p>
+<ul>
+<li>Parry to review the new change request tracker in the afternoon.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Super User =
+Confirmation:</strong></p>
+<ul>
+<li>Tim to double-check the list of super =
+users with Andy Rag.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Future Planning:</strong></p>
+<ul>
+<li>Discussion on co-location and improving team efficiency in upcoming =
+meetings.</li>
+</ul>
+</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2rem">Notes</h2><ul>
+<li><strong style=3D"font-weight:bold">&=
+quot;Day One&quot;:</strong> Refers to a significant project milestone or =
+launch date.</li>
+<li><strong style=3D"font-weight:bold">Capital =
+Edge:</strong> Project management tool used for tracking tasks and =
+dispositions.</li>
+<li><strong style=3D"font-weight:bold">Freeware vs. =
+Perpetual License:</strong> Reclassification impacts task counts and =
+contract management.</li>
+<li><strong style=3D"font-weight:bold">EMEA =
+Bangalore:</strong> Regional focus for certain tasks and hosting =
+considerations.</li>
+<li><strong style=3D"font-weight:bold">Consistency:</s=
+trong> Emphasis on maintaining consistency between master lists and task =
+trackers to avoid confusion.</li>
+</ul>
+</div></div></div><div =
+style=3D"background-color:#ffffff;padding:28px;border-radius:12px;border:1p=
+x solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 =
+rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-size:20px;font-weight:=
+600;margin-top:0;margin-bottom:20px;display:flex;align-items:center;gap:8px=
+"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription<=
+/h3><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">0:00</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Standard capital =
+H colors and numbers are fixed. This page will. Will talk about summary =
+task as well as task. This page will talk only about the task. And at the =
+bottom, I have given the note as well that this particular tab does not =
+include any summary task count. So this is like true task count, which are =
+behind schedule or delay.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">0:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I want to send a =
+screenshot to Jason and the spina, but that 364 scares me, so I&#x27;m not =
+going to.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">0:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Well, or if you go =
+to the day one dispositions tab, that&#x27;s what Spinas wants, right?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">0:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">0:39</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">This is linked to=
+ our master. This is. This is nothing to do with capital.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-siz=
+e:14px">0:43</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">H. Yeah, this is linked to. This is just positioning.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">0:47</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, =
+dispositioning.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">0:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.438. Oh, =
+because we removed those three apps.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Meeting Host</span><span style=3D"color:#64748b;font-size=
+:14px">0:54</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">Yes, we removed those three apps, but those will show up here =
+because we have not removed those from our master. But I have removed those=
+ from capital H. No, that.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">1:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;s cool. =
+And this is where Parry. I might just need your help on. We&#x27;ve =
+communicated 441 for a long time. Well, not a long time, but for quite a =
+while. And we are gonna slowly go down now. So we definitely went down to =
+three because of Tori. We&#x27;ll go down another four and then even more =
+because of Tim&#x27;s dt. I think you&#x27;re chopping about six, Tim. So I=
+ guess what we just need to make sure of is, like, we know our story and we=
+ can all speak to because Jason and Espina will be like, well, what changed=
+? Right. And if you have, like, a very confident, correct answer, they =
+don&#x27;t ask any more questions. But if you, like, fumble around and have=
+ no clue. All right, let&#x27;s have a call. That&#x27;s weird. Like, we =
+try to avoid those things. So this is really good, man. So just for context=
+, guys, the three apps we have removed are engineering tools that Tory has =
+agreed to remove.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">2:10</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">And for that I =
+have.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">2:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">2:15</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">And there is =
+fourth one as well, this one which is not present in this particular list.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">2:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Let me look at that.=
+ Yeah. Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+3</span><span style=3D"color:#64748b;font-size:14px">2:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">What about the three=
+ that we already put through change control? Right. So we&#x27;ve removed =
+the three that we did earlier. Like what? Like at this point, two, three =
+weeks ago. Right. And then additionally, we removed these web app ones. And=
+ then there&#x27;s one more that you&#x27;re reviewing now. Right? Another =
+one.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">2:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So we can&#x27;t =
+take. We can&#x27;t take it out of the columns inventory. So I guess. Amber=
+, which file. This is like, this is. This is a cleanup activity. I think =
+the one thing we need to discuss. It&#x27;s important but what we need to =
+discuss right now is that task count because we&#x27;re. We&#x27;re =
+ballooned again. Okay so if we look at this one here. So I guess Matt, can =
+you provide an overview of what&#x27;s still outstanding and what our plan =
+is for the 71 and 364.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">3:20</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">These are =
+upcoming so we might not need to worry about this. But I think 71 and 24 =
+needs cleanup. This can be easy one if let&#x27;s say Tim says that okay, =
+obtain local contract and POA review is in progress. I will just flip this =
+to in progress and we are good. This will become zero. Should we do that? =
+I&#x27;ll blow up this so that you can view and most of these are contract =
+related so opt in contracts TSA rights secured by contracts team and yeah =
+it&#x27;s one is related to CC Draft act to finalize and provide sign off. =
+And this one is one of the four apps which is still there. The web app from=
+ supply chain 3 we remove this one is still there because this was not in =
+the list. So I have not deleted this. If I&#x27;m not clear then I am =
+talking about this thing I&#x27;ve removed. Mm web app, saving web app and =
+transfer web app. The fourth one is listed as project server web app but it=
+ is not present in capital H in our pan. Instead we are having supply chain=
+ escalation web app. Which is this one. Which is this one.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-siz=
+e:14px">4:50</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">Yeah. So this is the plan. So it&#x27;s the ones that. These ones=
+ I&#x27;m I&#x27;m less worried about. It&#x27;s the stuff that&#x27;s =
+coming due.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">5:00</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. So stuff =
+that is due. So this is the stuff that is due.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-siz=
+e:14px">5:05</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">So if you look at past due.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Meeting Host</span><span style=3D"color:#64748b;font-size=
+:14px">5:07</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">Yeah, this is. These are the past due.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-siz=
+e:14px">5:12</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">We had extract data in April.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 2</span><span style=3D"color:#64748b;font-siz=
+e:14px">5:28</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">What does that extract tied to?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-siz=
+e:14px">5:31</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">CC drive.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">5:33</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">CC draft.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">5:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right, let me =
+work with the team on that one today.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Meeting Host</span><span style=3D"color:#64748b;font-size=
+:14px">5:43</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">And then these are the finalized actuation landing zones for EMEA =
+Bangalore.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">5:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Harry, do you mind =
+pinging Gopi and just ask if any of the. Well, we should have it in our =
+inventory even around the tech data. Yeah, like I&#x27;m just thinking can =
+we. If we can use teams, I think we can set up the team site and put them =
+there and then essentially make Shankar and Mohan owners and then let them =
+run it from there. And that&#x27;s kind of a handoff. Yeah, but I just, =
+I&#x27;m wondering if any of those are. Yeah. And I guess you can just put =
+it onto that chat that you&#x27;ve got with the Bangalore team. Oh, Redwood=
+ Tools. That&#x27;s it. And just maybe Look. Hey guys. Just like there are =
+delays in DT setting up the folder structures. Do we think it&#x27;s =
+feasible to use a teams folder for all Bangalore copied apps?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+3</span><span style=3D"color:#64748b;font-size:14px">7:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Sorry, I was =
+just writing. I&#x27;m typing it. Should I just. I&#x27;m just gonna ask.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">7:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So that clears =
+identity landing zone. She wants identify and then it&#x27;s my.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">7:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Solution.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">7:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">To buy a solution. =
+Why are you identifying a landing zone?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 4</span><span style=3D"color:#64748b;font-siz=
+e:14px">7:49</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">So some of them, 22 of them are equipment tied ABS that have =
+identified a landing zone. Those aren&#x27;t the buyer solution ones, but =
+those are the dedicated. Right. They&#x27;re tied to equipment. So I had 88=
+ finalized hosting and then 66 then need the infrastructure team&#x27;s =
+input.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">8:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So maybe I =
+don&#x27;t know what you&#x27;re referring to.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 2</span><span style=3D"color:#64748b;font-siz=
+e:14px">8:23</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">So the buyer solution ones are buyer solution data extract.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">8:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+4</span><span style=3D"color:#64748b;font-size:14px">8:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You still have to =
+create a copy for buyer solution data extract.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 2</span><span style=3D"color:#64748b;font-siz=
+e:14px">8:39</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">Yeah. We still need a landing zone.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 4</span><span style=3D"color:#64748b;font-siz=
+e:14px">8:41</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">Exactly.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">8:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Do we. Or we just =
+put it into move it. Well, I guess if we&#x27;re having the conversation. =
+So. And are these actual data extracts like they have. Do they have data? =
+That&#x27;s where I think.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">9:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The HR one =
+definitely does.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">9:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Is that coming out =
+of the. I guess the. The HO one. I&#x27;m struggling a little bit with Tim =
+because. Can you do that pre day one or do you need to wait until day one =
+to do this? Wow, sorry. The landing zone bit. Yes, 14th of April. So =
+that&#x27;s. That&#x27;s fair. So is this identify landing zone or is this =
+like identified like transfer approach.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 2</span><span style=3D"color:#64748b;font-siz=
+e:14px">9:52</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">This is more along the landing zone aspect itself. Like where are=
+ we going to put this information?</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Partic=
+ipant 1</span><span style=3D"color:#64748b;font-size:14px">9:59</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">But it&#x27;s =
+going to.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+3</span><span style=3D"color:#64748b;font-size:14px">10:00</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Specifically we =
+want to. These is Simscape Simulink, one of the ones we want to descope or.=
+ No.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">10:11</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Let&#x27;S.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+3</span><span style=3D"color:#64748b;font-size:14px">10:13</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">No, never mind. Oh =
+no, it&#x27;s one data whatchamacallit.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-siz=
+e:14px">10:22</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Colin actually accepted it for tsa.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 3</span><span style=3D"color:#64748b;font-siz=
+e:14px">10:29</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">My double check that too. That&#x27;s why it was so salient in =
+my head. I was like, why do I actively remember. That&#x27;s good. I can =
+find the.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">10:53</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">So I guess the one =
+thing team, if you could just make sure that your dispositions are accurate=
+ in here. Because now we&#x27;ve had a couple changes.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 3</span><span style=3D"color:#64748b;font-siz=
+e:14px">11:09</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Yeah. That falls within enterprise engineering and it&#x27;s =
+part of EN01. This one is Stemscape Simulink. Yes.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-siz=
+e:14px">11:26</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">So Pari, I think we need to look at that file that you&#x27;re =
+generating for EN01 and I think we just need a very clean page of all the =
+change requests either in progress or that have been approved.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+3</span><span style=3D"color:#64748b;font-size:14px">11:40</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">I agree. Yeah. =
+It&#x27;s starting to get Confusing because of everything that I&#x27;ve. =
+Yeah, I agree. Yes.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">11:48</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">And I think we need=
+ like the one we had for when we&#x27;re doing dispositioning, that was =
+okay, but we need a bit more detail. Right. What was the disposition? What =
+is the new disposition and the why? I think we need that. James Wang =
+actually has like a pretty good template that I think we need to leverage =
+because I don&#x27;t think we can wait until the 25th to move forward =
+because there&#x27;s some. There&#x27;s some inconsistencies here that like=
+, I think we can walk through. But when you show Despina and Jason like, =
+well, that&#x27;s changed. Oh, actually has that one. This one has as well.=
+ They lose a lot of confidence in. In what&#x27;s behind. So if we could =
+maybe just set that up, that would be good. So, Mac, do we have a plan for =
+these ones? Have you worked with Hari and Tim?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 4</span><span style=3D"color:#64748b;font-siz=
+e:14px">12:51</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">I worked with Tim last night. There&#x27;s like five main =
+buckets.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">13:00</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">But we.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+4</span><span style=3D"color:#64748b;font-size:14px">13:01</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Have a plan for =
+each of them. Yeah, we have all of the upcoming tasks for this week tied to=
+ an action and I think we have a good view of what&#x27;s feasible and =
+what&#x27;s not. And then a bunch are pending.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-siz=
+e:14px">13:20</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Okay, can you share what&#x27;s not feasible?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 4</span><span style=3D"color:#64748b;font-siz=
+e:14px">13:29</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Yeah, the tr.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">13:36</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Because =
+they&#x27;ve kind of have got us and this is honestly how they should be =
+running it. But. So any changes not feasible are going to get reviewed.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+4</span><span style=3D"color:#64748b;font-size:14px">13:48</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">I mean they&#x27;re=
+. The two big categories are identify the hosting type.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-siz=
+e:14px">14:01</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">We just. Let&#x27;s just look at the detail. Let&#x27;s just =
+look at the line items.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+4</span><span style=3D"color:#64748b;font-size:14px">14:30</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Hold on.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+3</span><span style=3D"color:#64748b;font-size:14px">14:35</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">We can hear you, =
+Mac.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+4</span><span style=3D"color:#64748b;font-size:14px">14:37</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, hold on one =
+second. I have to switch.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">14:41</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">While he&#x27;s =
+doing that. Anthony, I just want to give you an update on contracts. So =
+anything that we. We haven&#x27;t found. Alex is going to ask Stevie and =
+Andy to send an email out with. Hey guys, this is the pending applications =
+where we cannot find contracts. We&#x27;ve exhausted every, every possible =
+way of doing that. Please confirm that they&#x27;re in use. If you cannot =
+confirm that they&#x27;re in use and are and provide a contract latest PO =
+or tie it to specific machinery, we are going to remove them from our list =
+and you will not have access to it. Day one. So we&#x27;ve done agreed with=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">15:19</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">We&#x27;ve got new =
+to that.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">15:21</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;s what =
+Alex&#x27;s plan is. Because it&#x27;s just, it&#x27;s how it&#x27;s got to=
+ be at this point in time.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">15:26</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">If people =
+can&#x27;t agree. I just am kind of gobsmacked, I guess. Yeah, we&#x27;ll =
+see what that does? Yeah, because like, as you know, we can&#x27;t take it =
+off. We can&#x27;t go and uninstall an app from a Centuan test rig. Like, =
+oh, completely agree.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">15:47</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">And I&#x27;m not =
+worried about, I&#x27;m not worried about the stuff that&#x27;s tied to =
+test rigs.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">15:51</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">15:51</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">But when =
+someone&#x27;s told me it&#x27;s perpetual license and someone comes back =
+and tells me, no, it&#x27;s not a perpetual license, it&#x27;s freeware, I =
+can&#x27;t, I can&#x27;t be running around in circles like that. So, yeah, =
+on actuation to do the work and, and get it figured out, because =
+there&#x27;s no way that we can continue to just putz around and have them =
+figure the shit out. Like, I, I, I like my job, but this has just been =
+frustration of how the, do these people not know what the hell they have?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">16:21</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, no, and=
+ that&#x27;s a great outcome. I appreciate us getting there. I&#x27;m just,=
+ I hope they actually happens because yeah, it might be just a bit of a =
+scare tactic that won&#x27;t have a lot behind it, but hopefully the scare =
+tactic kicks us in to get another 10:15 back.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 2</span><span style=3D"color:#64748b;font-siz=
+e:14px">16:43</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Right, exactly.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">16:46</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">No, no, that, that =
+sounds good. So hopefully that works and we get some movement. But yeah, to=
+ your point. Right, like, I don&#x27;t respond to emails, but then a SRI =
+sends one out saying, hey guys, do this or this. Then I respond. So =
+it&#x27;s, it&#x27;s, yeah, that&#x27;s. No, I, I agree. I, I think =
+that&#x27;s also. Timmy, do you mind just, I said to, I don&#x27;t know if =
+you&#x27;re on the call last night I said to Despina I&#x27;d draft her a =
+note to send to about the, like, essentially it&#x27;s a forward of the =
+email that we&#x27;ve already sent that Disbina is going to just reply on =
+top of.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">17:33</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">17:34</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">And I would just. =
+Actually, I can do it. Let me just share it with you before it&#x27;s, =
+before it goes out. Because that latest bit, I would just want to, if you =
+could confirm to Alex that&#x27;s happening, because I don&#x27;t want to =
+say it&#x27;s happening and it doesn&#x27;t happen because that&#x27;s a =
+pretty big statement they&#x27;re going to make by doing that. And if we =
+say it happened, it&#x27;s going to happen and it doesn&#x27;t, then =
+it&#x27;s on us to chase down.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Partici=
+pant 2</span><span style=3D"color:#64748b;font-size:14px">18:02</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">So, yeah, no, =
+no worries. Alex and I talked about it at the 8:00.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-siz=
+e:14px">18:11</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">18:12</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">So let me make sure=
+ when he talks to Stevie today, they&#x27;re apparently dealing with =
+another outage and Wolverhampton. So let me talk to. I will get it in =
+writing that he&#x27;s going to talk to Stevie about that. And when we have=
+ another meeting later on today at 10, we&#x27;ll basically say, chris, =
+this is our plan. Are you good with that? And see what he says as well. So =
+Chris will get Andy on board, Alex will get Stevie on board, and I&#x27;ll =
+make sure that I&#x27;m cc&#x27;d on that email saying that we need to do =
+this.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">18:45</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Nice. Yeah. =
+Cool. All right, man. Thank you. Solid update. Did you get any more come in=
+? I stream not.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">18:53</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;ve got =
+confirmation that some stuff is freeware now instead of a perpetual license=
+. So it doesn&#x27;t it our number, but not drastically.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-siz=
+e:14px">19:03</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Yeah, because we already had it changes the percentage. So =
+that&#x27;s good for the better.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Partici=
+pant 2</span><span style=3D"color:#64748b;font-size:14px">19:07</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Yep. So =
+I&#x27;ve got to make those updates today. I&#x27;ve got the email =
+confirmation on all of those. So if they say, oh, it&#x27;s a contract now,=
+ then it&#x27;s on them because the person told me. So. Yeah, I will track =
+that. But yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">19:27</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">19:27</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">19:27</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">What are you doing =
+for the freeware? Are you recategorizing it or are you just marking it as =
+received?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">19:32</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m marking it=
+ as NA in our sheet and we&#x27;ll have to recategorize it in our masters =
+freeware.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">19:39</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I can. Right.=
+ All righty. All right, Max, so run us through this one. So what number of =
+tasks feasible? All right, let&#x27;s talk about the finalized hosting.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+4</span><span style=3D"color:#64748b;font-size:14px">19:54</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">So for finalized =
+hosting, there&#x27;s 22 that are tied to equipment. And so that we know =
+that the landing zone will be the current site that that equipment is at. =
+And Tim can mark those complete this week. So we know that those are =
+feasible. There&#x27;s 66 that are left that are pending the landing zone. =
+So this is the activity identify the landing zone or hosting. And so we =
+need.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">20:35</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">And that&#x27;s due=
+ this week. Yeah. And this is.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Partici=
+pant 4</span><span style=3D"color:#64748b;font-size:14px">20:41</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Well, is this =
+due in the next seven days?</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">20:43</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Finalized hosting? =
+Are you talking about current state or future state?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 4</span><span style=3D"color:#64748b;font-siz=
+e:14px">20:48</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">It&#x27;s a combination of both.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-siz=
+e:14px">20:51</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Well, we&#x27;ve got row seven is landing zone. Row two is =
+hosting. I assume they&#x27;re not the same.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 4</span><span style=3D"color:#64748b;font-siz=
+e:14px">21:00</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">The landing zone. I mean, this is just how they&#x27;re =
+categorized in Capital Edge. They&#x27;re broken out because it was broken =
+out in the way that we&#x27;re talking about them. Really. And so this is =
+finalize the landing zone are the ones that specifically say finalize the =
+landing zone. And then we have a separate chunk that are finalized, the =
+hosting zone. So that includes TSAs or logical separations.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-si=
+ze:14px">21:31</span></div><div style=3D"color:#475569;font-size:16px;line-=
+height:1.6">So this is current state number two.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 4</span><span style=3D"color:#64748b;font-siz=
+e:14px">21:34</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Yeah, exactly. And then seven is future state.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-siz=
+e:14px">21:40</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">So it might make sense how many of those. So if we just stay on =
+one row at a time. Finalized hosting, current state. I think Parry got a =
+bit of detail back from Colin yesterday. Does this include Parry&#x27;s =
+stuff?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+4</span><span style=3D"color:#64748b;font-size:14px">21:57</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">No, I haven&#x27;t =
+gotten feedback from Par yet.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Partici=
+pant 3</span><span style=3D"color:#64748b;font-size:14px">22:01</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m sorry=
+. Back. Yeah, we can connect.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Partici=
+pant 1</span><span style=3D"color:#64748b;font-size:14px">22:04</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">So let&#x27;s.=
+ Let&#x27;s just look at. So if you go to the tasks, we&#x27;re saying the =
+tasks tab. Sorry. And just filter on hosting. Scroll to the left.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+4</span><span style=3D"color:#64748b;font-size:14px">22:44</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Left this one and =
+make it smaller.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">23:04</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Keep going down. =
+Going down. So these look like they&#x27;re all transfers, all of them. So =
+Tim, I think the question on this one is more around validating that they =
+are on a dedicated thing. That they&#x27;re dedicated like a. Because I =
+think if you look at like what we don&#x27;t want to have have happen is =
+this. These CATIA ones as example, sit on a license server in Maidstone and=
+ that gets cut off on day one.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Partici=
+pant 2</span><span style=3D"color:#64748b;font-size:14px">23:59</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So I =
+think I&#x27;ve got confirmation. I&#x27;ll double check my notes, but I =
+believe I have confirmation that all of them are on the test rigs =
+themselves. These are one of those.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-siz=
+e:14px">24:11</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Are they commenting?</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Partici=
+pant 2</span><span style=3D"color:#64748b;font-size:14px">24:15</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">No, =
+there&#x27;s not. At least not that I&#x27;ve seen.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-siz=
+e:14px">24:18</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Ambar.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">24:21</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">Sorry, =
+what&#x27;s the question?</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">24:23</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Are they comments?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">24:26</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">Comments? Yes. =
+So comments column is there but nothing is populated. I populated it with =
+dispositions of application.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">24:35</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">So the comments =
+columns being used then?</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">24:38</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">Yes.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">24:52</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Look, that&#x27;s =
+fine. I think what we just want to update this is these need to tie to =
+essentially columns in the inventory. This one just needs to have current =
+state hosting. And then we just need to have a few options here because I =
+just want to make sure that if we ever get a question on. Hey, Sephram Link=
+ is actually hosted in Maidstone. We can say no, it&#x27;s actually hosted =
+in here.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+4</span><span style=3D"color:#64748b;font-size:14px">25:26</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, Amara and I =
+connected about that this morning. He said it will take some time to get =
+the. I think what we need at the core is the application ID tied to the =
+task ID so that we can get information out of our inventory. Inventory?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">25:44</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, we can just =
+vlook up the work plan. Well, I guess we just need to like. I guess what =
+I&#x27;m just trying to say is like I think we&#x27;ve got tasks in cap =
+Edge that essentially can be columns in our inventory. If that makes sense.=
+ Matt. Yeah, so like this one, review application hosting requirements, =
+transfer of deck, space, desk, whatever that is. Could be like. Like local =
+dash, Antoine or wherever it is for this one, I don&#x27;t know. Or it =
+could be shared something. But I think that&#x27;s. We just want to make =
+sure that we don&#x27;t just get all this done and then have like no, =
+nothing to back it up.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+4</span><span style=3D"color:#64748b;font-size:14px">26:32</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, exactly.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">26:33</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Because questions =
+will come post day one when ship breaks. So like that&#x27;s what we just =
+need to be prepared for. Paris saw it a little bit in Hornet. Right. You =
+get the most random rogue questions that you expected to have answers for. =
+Like they will say moba Extern. Where is that hosted? It&#x27;s not working=
+ anymore and we need to answer it just as a heads up. The other thing as =
+well is some of this probably was in the initial SMO file.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 2</span><span style=3D"color:#64748b;font-siz=
+e:14px">27:12</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">It had PC or server.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Partici=
+pant 1</span><span style=3D"color:#64748b;font-size:14px">27:17</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, okay. =
+Okay. Well if it&#x27;s on PC.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Partici=
+pant 2</span><span style=3D"color:#64748b;font-size:14px">27:25</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">PC, I&#x27;m =
+much worried about it, especially at the site location.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-siz=
+e:14px">27:29</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Yeah, maybe we think about. I&#x27;m just trying to make sure =
+that we hand over a very clean. Well we have like our story very buttoned =
+up. Okay. So Tim, are these feasible by Friday? There&#x27;s a lot here. =
+Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">27:52</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">So I&#x27;m working=
+ with the team to kind of get that. That pulled together in the actuation =
+calls that we&#x27;re on. So that&#x27;s our key tasks for the day are =
+basically or for the week are contracts. Of course, hosting locations. =
+Anything that&#x27;s on a server is what we&#x27;re worried about. Anything=
+ that&#x27;s on a PC, not so much. We still want that information as to. =
+Yes, it&#x27;s on this PC specifically, but if it says PC and it&#x27;s at =
+a site. Emily, to kind of mark that as complete, especially for all these =
+transfers. And then it&#x27;s the hosting locations for each of these as =
+well as getting any current hosting locations and then finalizing where =
+we&#x27;re going to land these. I think once we have if it&#x27;s the PCs, =
+then that&#x27;s going to stay the landing zone. So that&#x27;ll knock =
+those. But if it&#x27;s a server, those are the ones we just going to have =
+to dig in and look at.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">28:50</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, okay. Yeah, =
+let&#x27;s just have a quick like conversation on like on the on team, just=
+ around what we want to put as the. The options. Because I think to your =
+point, server dash dedicated server dash local. Sorry. Well, let&#x27;s =
+pick one I guess is what I&#x27;m trying to say.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 2</span><span style=3D"color:#64748b;font-siz=
+e:14px">29:08</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Yep.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">29:09</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">And then let&#x27;s=
+ just make that consistent throughout. Okay. All right, Mac, what&#x27;s =
+the next one? Sorry, I know we&#x27;re running over, but this, this is =
+pretty important. What&#x27;s the next milestone activity we need to review=
+ through the next. So these are feasible. Tim. Sorry.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 4</span><span style=3D"color:#64748b;font-siz=
+e:14px">29:24</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Here, I just put the expanded one in here. This is the one with =
+the full set of columns that we got out of the export. Let me just filter =
+for the next one. And these have the actions that I discussed yesterday =
+with Tim.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">29:43</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. And then I =
+guess because. So these sort of. So the dedicated is where we don&#x27;t =
+know the current state and we&#x27;re just trying to find gotchas in there.=
+ Right. Like that&#x27;s the purpose. Right. Like, oh shit, this is =
+actually hosted in somewhere else. It&#x27;s going to be cut off from day =
+one, finalize those things, determine authentication method. Can you click =
+on that one?</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+4</span><span style=3D"color:#64748b;font-size:14px">30:14</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">There&#x27;s a =
+bunch of these. 52 of them.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">30:23</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, A lot of =
+these are transfers.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">30:25</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">And it&#x27;s just =
+basically confident this is local versus identity. Right, Tim?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">30:31</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yes, exactly. So =
+how are they accessing the application? Right. If it&#x27;s. If they need =
+to log in with their. This is more of a day two activity than anything else=
+. But if anything breaks on day one, well, it&#x27;s.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-siz=
+e:14px">30:46</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">It&#x27;s kind of not though, right? Because to your point, if =
+anything is somehow tied to. Well, I guess workday is not changing. Nothing=
+ should break on. We should just know it. Anyway, I guess they&#x27;ll =
+still be tied.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+4</span><span style=3D"color:#64748b;font-size:14px">31:07</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">To their Collins =
+email address though, so. Right. Like if they&#x27;re not using SSO and =
+they want to reset their password, it will go to their Collins email =
+address, right?</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">31:20</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Well, it depends. =
+Like applications authenticate multiple different ways. I&#x27;m assuming =
+that 95% of these are just ping me and I&#x27;ll give you an account. =
+I&#x27;ll spell your name wrong. Like there&#x27;s no rhyme or reason. =
+Sorry. There&#x27;s no traceability back to your RTX id, I guess is what =
+I&#x27;m trying to say. I think that would make sense. I assume these and =
+some of these probably don&#x27;t even have an authentication method. Like,=
+ correct.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">31:54</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">I mean, if =
+it&#x27;s tied to the PC, if it&#x27;s posted on a PC, it&#x27;s probably =
+not something that multiple people need to log into.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-siz=
+e:14px">32:01</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Right, Right. Because it&#x27;s a. Yeah, it&#x27;s a. It&#x27;s =
+token. Wow. Token with it. Anyway, I think we just need to work through =
+that. I think the. Shit, I can&#x27;t. We can&#x27;t push all these back.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">32:15</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Well, I think we =
+have a good story, especially on certain things like landing zones and =
+other information, because we literally shared the dispositions with them =
+on Thursday of last week and we warned everyone that if we couldn&#x27;t =
+share the dispositions, things were going to get pushed back because they =
+didn&#x27;t have the information to provide this. So I&#x27;m not saying =
+we&#x27;re not at risk or it&#x27;s not a concern, but I&#x27;m saying =
+there is justification for why these are pushed back.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-siz=
+e:14px">32:47</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">I regret putting so much in Cap edge now. It&#x27;s always =
+fucked ya.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">32:52</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">I can eat that tool=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">32:56</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, and then. So =
+if we keep just scrolling down slowly. Matt. Yeah, Copy the landing zone. =
+Barry, these. Can we get this done for these? If we agree on teams which =
+Josh already has set up.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+3</span><span style=3D"color:#64748b;font-size:14px">33:12</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So =
+that&#x27;s where the ones. Yeah, the copy. The ones that are Josh&#x27;s. =
+I sent him an email last week and we have a call this weekend. I followed =
+up yesterday, but he hasn&#x27;t responded back. Basically in Excel being =
+like, okay, where do they live that way I&#x27;m like, like, okay, they =
+live on this team site and it&#x27;s been shared. Then we have like an =
+actual. Like, each line item has a location verified. But hopefully he can =
+get that to us today, in which case we can start saying that it&#x27;s =
+already copied in there. You get what I mean?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-siz=
+e:14px">33:59</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Sort of.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+3</span><span style=3D"color:#64748b;font-size:14px">34:04</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">So these are. =
+Majority of these are all Josh&#x27;s. So I already gave him a list of. =
+Here are all your copied applications. Can you give me where they live and =
+if they&#x27;re already on the team site that&#x27;s been separated and =
+where he was like, okay, I&#x27;m adding in Chase Johnson and Adam Crandall=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">34:28</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Are you on that =
+team, sir?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+3</span><span style=3D"color:#64748b;font-size:14px">34:30</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">I am not. But you =
+said you are.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">34:33</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Am I?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+3</span><span style=3D"color:#64748b;font-size:14px">34:35</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">You said it on the =
+call, but I&#x27;ll get that confirmation. I want to be on that team site.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">34:41</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">So Maple agreements=
+. Maple. What do you think he called it? Just ping him and ask him to add =
+us both. He gave me access to something.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 3</span><span style=3D"color:#64748b;font-siz=
+e:14px">34:56</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">34:57</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">And I&#x27;m just =
+looking at my teams on the Colin side. Nothing. There&#x27;s also so many =
+teams that I might just be missing it. But what about identifying is asking=
+ to add us? Parry. We&#x27;ll get in there and then we&#x27;ll see =
+what&#x27;s already in there. And. And I saw. Is there a testing session =
+for Rockford Bangalore&#x27;s Thursday or.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 3</span><span style=3D"color:#64748b;font-siz=
+e:14px">35:26</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">No, the existing session for Bangalore is Thursday. Is that what=
+ you asked?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">35:32</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Is the =
+testing.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+3</span><span style=3D"color:#64748b;font-size:14px">35:35</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I want. So I =
+wanted to send out that email to Tori before I. I already sent out the =
+email to the tester saying that, hey, we&#x27;re gonna be adding you to a =
+Call of Duty Thursday so that you can help scope and verify the =
+applications that we&#x27;ll be copying over. Specifically Homegrown. So, =
+yeah, they. Yeah. And then now that we&#x27;ve also sent that to Tori. I =
+feel a lot more comfortable adding them to the Thursday call.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">36:04</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. And so Parry,=
+ there is a page the Matt put together and we&#x27;re gonna have to test it=
+, which is around copy sign off.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Partici=
+pant 3</span><span style=3D"color:#64748b;font-size:14px">36:14</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">36:16</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">And essentially =
+It&#x27;s. It&#x27;s in PowerPoint and Mac. If you can share it with Parry,=
+ that&#x27;d be good. We&#x27;re gonna need essentially like. Yeah, if you =
+could just fill that out and. And then we&#x27;ll just. That&#x27;s what we=
+ use to get sign off. We ran Andy Rag through it very quickly, but ideally,=
+ like we can&#x27;t say an app&#x27;s done until actuation signed off and =
+then they take ownership of the team site.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 3</span><span style=3D"color:#64748b;font-siz=
+e:14px">36:54</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">That makes sense. Yeah.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Partic=
+ipant 1</span><span style=3D"color:#64748b;font-size:14px">36:56</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Let me =
+find a link. I think once we give it and I think maybe we&#x27;ll just add =
+a sentence pair. If you could take a note of this. Our handoff is not =
+giving it to everyone, it&#x27;s giving it to the super user.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+3</span><span style=3D"color:#64748b;font-size:14px">37:09</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">37:10</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">So if they&#x27;ve =
+got 300 people that use it, we&#x27;re giving it to the super user. The =
+super user needs to give it to the 300 people. Yeah. And there might just =
+need to be some comms and whatnot, but I&#x27;ll let them manage that. Okay=
+, cool. All right. And if you keep scrolling down Max Identify active user.=
+ Use super user to sign off on tool. I thought we&#x27;ve done all this.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+3</span><span style=3D"color:#64748b;font-size:14px">37:38</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">No, we have. I just=
+ want to go back and mark it as such and I want to make sure that it is the=
+ right applications. But yeah.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Partici=
+pant 1</span><span style=3D"color:#64748b;font-size:14px">37:49</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Tim, did we =
+ever get an updated listing from Andy Rag on who they want as the super =
+users or the ones we&#x27;re using were fine.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 2</span><span style=3D"color:#64748b;font-siz=
+e:14px">37:58</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">The ones we were using were pretty much fine. They basically =
+took the SMO file and plugged in the. The app owners from that file. So =
+I&#x27;m going to look through that and double check all of those. But =
+there are some. Some separations on this one. But I think for the most part=
+ that that one should be pretty well set.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-siz=
+e:14px">38:20</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Like employment separations, you mean?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 2</span><span style=3D"color:#64748b;font-siz=
+e:14px">38:26</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">No, no. For any actuation super users that we needed. I =
+didn&#x27;t say anything about separation.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-siz=
+e:14px">38:36</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Oh, okay. So I think we&#x27;re good on these ones here. And =
+then identify. Yeah, that&#x27;s next one. Identify. Keep going down =
+Current sa. We discussed that. Keep scrolling down M. Yeah, let me switch =
+my corner.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+3</span><span style=3D"color:#64748b;font-size:14px">38:59</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, and =
+that&#x27;s the Excel that I want Excel Josh to fill out, right? Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">39:08</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">And then Excel. Do =
+you want Josh to fill out? Oh, look. Yeah, okay. Yeah, keep going down. =
+These are mostly transfers. Yeah, Keep Going down. Application hosting, =
+keep going down. Okay. All right, so team, let&#x27;s see where we end up. =
+I think as long as we&#x27;re, we&#x27;re pushing this as best we can. =
+Please update Cap Edge as like at the end of the day we&#x27;re going to =
+need to look at do this review like every morning now. Just because =
+there&#x27;s so many tasks coming coming up this week that we&#x27;re just =
+gonna have to watch this burn down unfortunately. Makes sense. I think once=
+ we get over this hump we&#x27;ll get like. Once we get over this hump =
+we&#x27;ll be. I think we&#x27;ll be in a lot better position because =
+I&#x27;m looking at Amber&#x27;s chart. If you look at the word plan =
+summary. Once we get over. This is a seven day look. So let&#x27;s go to an=
+ extra. Once we get over the 22nd. Once we get over the 21st. Well, =
+we&#x27;ve got another 129 next Friday. All right, well I guess we&#x27;re,=
+ we&#x27;re six weeks out from day one. This is what it&#x27;s like so. All=
+ right, so team, let&#x27;s stay super tight on this. Please be very =
+diligent with Cap Edge. Ari, if you could please have a take a shot at the =
+change request tracker and I, I think we almost hide the old one that we =
+had and put in a, a new one. It&#x27;s just painful because we&#x27;ve got =
+cot staging tab. We&#x27;ve got things in other places. Yeah. Just ping me =
+if you want to sort of chat through the approach on that. But I think =
+that&#x27;s pretty important today because there&#x27;s going to be work =
+plan impacts.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+3</span><span style=3D"color:#64748b;font-size:14px">41:04</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Especially =
+since we&#x27;re changing dispositions across. So I&#x27;m going to take a =
+shot at creating and so the change request is separate. You&#x27;re talking=
+ about like actual. The changes that we want to like track. Right. =
+Internally and then the change request form is whatever that gets filled =
+out. How it gets filled out.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">41:27</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. I think to be=
+ honest, is it almost one of the same thing? Like it&#x27;s just the =
+approval status that will change right on the change request form or does =
+that not have everything you think we need?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 3</span><span style=3D"color:#64748b;font-siz=
+e:14px">41:41</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">I don&#x27;t think it has everything we need. It&#x27;s more so =
+costing and cost changes than it is worried about scope changes. Yeah. =
+Which is why like they&#x27;re like oh, if it&#x27;s like what&#x27;s the =
+costing impact and stuff. Which is why I&#x27;d rather just create a new =
+tab and have like our like here are all the changes, this is why and a =
+breakdown and who we&#x27;re getting approval from and I think it&#x27;ll =
+be a lot clearer and then we can go back and just fill out that form for =
+the formality of it.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">42:13</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, okay. =
+I&#x27;m just thinking, I&#x27;m saying a few tasks and if you put that =
+together. Parry. Let&#x27;s review this afternoon because I want to clear =
+some of the noise. Like I&#x27;m seeing Team Center France pop up a couple =
+times. Team Center Italy stuff. We know we&#x27;re descoping. So I&#x27;m =
+almost thinking that we can pull it together.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Meeting Host</span><span style=3D"color:#64748b;font-size=
+:14px">42:38</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">Let&#x27;s have a look at it.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 1</span><span style=3D"color:#64748b;font-siz=
+e:14px">42:39</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Because there&#x27;s kind of a strength of knowing it&#x27;s =
+going to. These are all changing. So I guess anyway if you can pull it =
+together, then review or review. Because I don&#x27;t want to keep looking =
+at stuff that we know is not going to be in here anymore.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 3</span><span style=3D"color:#64748b;font-siz=
+e:14px">42:55</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">100%. And all of these also get attached to their parent tasks. =
+So it&#x27;s like numerous tasks, numerous numbers that change for each app=
+. So.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">43:07</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Right, right, yeah.=
+ For example, like if we get rid of like Team Center France, we clear five =
+apps. Like we could potentially be removing 200 tasks today, which is going=
+ to cause a scene. What&#x27;s that?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 2</span><span style=3D"color:#64748b;font-siz=
+e:14px">43:21</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Sorry, Tim, what&#x27;s the total task number again?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">43:24</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">2297.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">43:28</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">So 3000 tasks for =
+three people. A thousand tasks.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Partici=
+pant 1</span><span style=3D"color:#64748b;font-size:14px">43:32</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">43:33</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">A person basically.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+3</span><span style=3D"color:#64748b;font-size:14px">43:37</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Think about it that=
+ way.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">43:40</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">3 or 4 like pair =
+Mac and I kind of running through that stuff. You get to clear some of the =
+tasks but you&#x27;re not assigned any ownership in capital Edge.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">43:50</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">You can give me =
+some just for.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+3</span><span style=3D"color:#64748b;font-size:14px">43:55</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Feel good about =
+himself contracts, going over.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Partici=
+pant 4</span><span style=3D"color:#64748b;font-size:14px">43:59</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">To it.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">44:03</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Dealing with =
+different. I&#x27;ll happily exchange with you. I&#x27;ll happily exchange.=
+ You can deal with the spina and you can take other folks. No, no, I get it=
+ guys. I do get it. And this is honestly what like there is a ton in here =
+and we dispositioned so quickly and like Mac was like grinding to get all =
+this done that we knew that there were going to be changes. Right. And the =
+changes are coming. So we expected this. And now I think we just need to =
+try and keep ourselves because I think to the other point Tim, is you =
+don&#x27;t want another set of hands in cap edge playing around with these =
+tasks. Like we&#x27;re already getting a bit messy just because =
+there&#x27;s so many tasks and I guess that&#x27;s so it&#x27;s a fair =
+point though. So let&#x27;s chat through like what&#x27;s the best way to =
+manage this? Right. So we all need to update tasks. Like I think a lot of =
+work we had Amber doing is now done. Right. Like in terms of like this =
+dashboarding is just off the charts and it&#x27;s awesome. And so I think =
+now that we&#x27;ve got through this bit, how do we best use Amber in his =
+time? Right. Like Parry, there&#x27;s Bangalore stuff for sure. But =
+what&#x27;s the. The best use? Like. But I&#x27;m thinking, let me think =
+through it man. Because I want to get you to like fully like you&#x27;ve =
+owned this, you&#x27;ve crushed it. I want to sort of get you something =
+else to. To own and run. Let me sort of get back to you this afternoon. =
+Well tomorrow, tomorrow morning your time. Yeah, sure.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 3</span><span style=3D"color:#64748b;font-siz=
+e:14px">45:58</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Anthony. We can connect on the email. I usually just send an =
+email and a day our day which then you&#x27;ll see in the morning. So =
+we&#x27;ll just, we can just talk as to what we want to send.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">46:14</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Cool. All right =
+guys. So let&#x27;s, let&#x27;s catch up. But Tim, I do hear your point, =
+right? It is a ton and I, I think we just need to stay tired at the hip and=
+ I will try and see if we can do a co location sometime soon. Let me sort =
+of chat to the team and then see where things are at. I&#x27;ll also see =
+where will&#x27;s that as well, to be honest because we might do Miami. =
+Does anyone oppose to Miami? Sorry, what&#x27;s that?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Participant 3</span><span style=3D"color:#64748b;font-siz=
+e:14px">46:49</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">It&#x27;s so dreary in New York. Take me to Miami for sure.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+1</span><span style=3D"color:#64748b;font-size:14px">46:53</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Participant =
+2</span><span style=3D"color:#64748b;font-size:14px">46:54</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">There&#x27;s =
+apparently snowing in Boston so.</div></div><div style=3D"margin-bottom:0;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Partici=
+pant 1</span><span style=3D"color:#64748b;font-size:14px">46:58</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Dude, it was. =
+I went to my fiance&#x27;s parents house and it was literally snow up there=
+ on Saturday. It&#x27;s mid April. Where is she from? It&#x27;s the New =
+York, New Jersey border.</div></div></div><div style=3D"margin-top:36px;tex=
+t-align:center;color:#64748b;font-size:14px;padding:20px;border-top:1px =
+solid #e2e8f0"><p style=3D"margin:0;margin-bottom:8px">Captured with Wave =
+AI Note Taker</p><p style=3D"margin:0;font-size:12px">Your AI-powered =
+companion</p></div></div></div></div></html>
+----_NmP-fea0253dd61edd3e-Part_1--

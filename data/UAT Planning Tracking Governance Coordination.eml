@@ -1,0 +1,1499 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a05:6000:1106:b0:3a4:dc5b:9678 with SMTP id z6csp938480wrw;
+        Tue, 27 May 2025 12:30:57 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFOhyy4ilkS6lltB830aiNmt82qojjCsKySfXjWJXhbhJ01LnElqX+sizCrhSM3vLueSMQG
+X-Received: by 2002:a05:6102:6c4:b0:4bb:d45c:7f4b with SMTP id ada2fe7eead31-4e4240f9b9amr12121576137.11.1748374257517;
+        Tue, 27 May 2025 12:30:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748374257; cv=none;
+        d=google.com; s=arc-20240605;
+        b=XXsQerIzCVF41zzuQkWDb7Qe5U+t5shTn92/SUZmg36rNl5jLG6K19w+gUzNDrxDgr
+         8VvA5LUueYnS+6Hs7Vb1xsC8YqbFLMtg1ef7WmS55HSZ5ZerWFgfLf2EyMpYraMW1V+k
+         D3ckC8kzFPGZkygn1Ddb6ldT9TeJxXN9LWLXqsPU0DwuaSUyikkg+TRfKjA6Cg5Fbhbi
+         xxTdy5JQ40fr0QbEoWQj8aoeerriT9Bn5LgT3Oidi8VMAbw7VLKACGJSOd4NPcN/lW9g
+         8Bje+7UcaaxfgkPCN1WuWO10AH/0BjNmg2VbALkAwkLTDBX2vjedo68KP68oGAsDbJ6J
+         ypOA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=ahGlIhAJq+HJyMzbYSkUxccU64nySP+s6hwzOBS3XgQ=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=kl4W0vgQB96xh9K+SxgCivU/Y88wFuEjML4D0zLCkJR/cR0arClnRpX+8HvsYSwMKg
+         FCZrGxzjy3+/0l7+08q8dN9DMXqiCUfgyICs7XaRuysQjR4whH3yXZh/rOuMlLpltDpW
+         ficOiCTsTBDCae/d50J9FOf0q1ZcHWapDL41oIlAN1b5d2bZzNDSoG5S/jeUK+DYjcFW
+         K6ySG75sq26Lx+gfV5UU0J7gXXOa4zVW5gF9OZLzXVnBYqEsdrC5SIMgwB/cQMMXmvpi
+         y1law9jI/VH9myGU7oBMkQIafpULCd/kgWtx9DGmBU0xMc/wjS6AndOq8nPjdNn5A4Hg
+         vDAw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=KUbCRka+;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=ZcUhKBso;
+       spf=pass (google.com: domain of 010001971339fccc-0fcf0fcf-9ed0-4b28-9dad-052d85ba3f7f-000000@send.email.wave.co designates 54.240.9.114 as permitted sender) smtp.mailfrom=010001971339fccc-0fcf0fcf-9ed0-4b28-9dad-052d85ba3f7f-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <010001971339fccc-0fcf0fcf-9ed0-4b28-9dad-052d85ba3f7f-000000@send.email.wave.co>
+Received: from a9-114.smtp-out.amazonses.com (a9-114.smtp-out.amazonses.com. [54.240.9.114])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4e59d03886asi20384137.329.2025.05.27.12.30.57
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 27 May 2025 12:30:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 010001971339fccc-0fcf0fcf-9ed0-4b28-9dad-052d85ba3f7f-000000@send.email.wave.co designates 54.240.9.114 as permitted sender) client-ip=54.240.9.114;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=KUbCRka+;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=ZcUhKBso;
+       spf=pass (google.com: domain of 010001971339fccc-0fcf0fcf-9ed0-4b28-9dad-052d85ba3f7f-000000@send.email.wave.co designates 54.240.9.114 as permitted sender) smtp.mailfrom=010001971339fccc-0fcf0fcf-9ed0-4b28-9dad-052d85ba3f7f-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1748374257;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=9GqdL6+Lc891b1UzshTzRg8NUzybZmNNIFxSXkXJ9Ss=;
+	b=KUbCRka+tCkhMhx5JL2HVZAzzip+tJs2CFIFsFLXwB4b78KwRuzXve+ro2krs+A+
+	SqBShIlHJnBG6rUYVdnYAX9eNsRqDSDzl9nGKA3yUz+ou9UOhrUSavlc7SFg4p/4pLG
+	sEtQXUM+M9T+OsLhCoCSq7vbgiLoAfx0DQ6LR52E=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1748374257;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=9GqdL6+Lc891b1UzshTzRg8NUzybZmNNIFxSXkXJ9Ss=;
+	b=ZcUhKBsocO0cxVFjqL0lp5J2JHlylcmxxGtAECpbCr7n7XwW4WBZ5v/PKhobeWsZ
+	vUOM/qs+p7eBvaXd6Vv/Gvn1M2nRA3D2b+vzRLoBouqIMgCghCjFN6cOo4hqwZYm3s6
+	vWJn0qplGmze1P2C2hZpO14HhQ9B12LZMDBO6kd0=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: UAT Planning Tracking Governance Coordination
+Message-ID: <010001971339fccc-0fcf0fcf-9ed0-4b28-9dad-052d85ba3f7f-000000@email.amazonses.com>
+Date: Tue, 27 May 2025 19:30:56 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-e43bab6541e85b9c-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.05.27-54.240.9.114
+
+----_NmP-e43bab6541e85b9c-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+UAT Planning Tracking Governance Coordination
+
+# Meeting Summary: UAT =
+Planning, Tracking, and Governance Discussion
+
+**Date/Time discussed:** =20
+- Tracker to be sent out by tomorrow morning (relative to meeting, specific=
+ date not provided)
+- Draft slide content/structure for Sukai to be ready =
+by Thursday afternoon (relative to meeting)
+- Meeting with Sukai scheduled =
+for Friday for review/discussion
+
+---
+
+## Main Topics Discussed
+
+### 1. Approach and Structure for UAT (User Acceptance Testing)
+- **Past Experience:** Team intends to share their experience and typical =
+approaches to UAT execution, including how coordinators and teams are =
+structured, common escalation paths, and frequently used tools.
+- **Planned Discussion for Friday:** The team will present slideware to =
+Sukai that outlines their methodology for UAT, covering:
+    - How UAT is executed at a high level.
+    - Details on planning, =
+coordination, escalation, and tool usage (such as Jira).
+    - Process for readiness and execution tracking.
+    - Gaps and areas for improvement identified in current readiness and =
+planning.
+- **Levels of Tracking Discussed:**
+    - **High-Level Tracker:**=
+ Tracks what each Honeywell function/employee owes to the program (e.g., =
+focal points, test scripts submitted).
+    - **Granular Tracker:** Focused =
+on alignment of scenarios at the process mapping and script level.
+- **Key Metrics to Track (tentative list):**
+    - Identification of roles =
+and focal points.
+    - Submission of test scripts and scenarios.
+    - Closure of process mapping to systems gaps.
+    - Overall readiness =
+for UAT execution.
+
+### 2. Readiness and Gap Analysis
+- **Tracker Deliverable:** A readiness tracker to be provided by tomorrow =
+morning to give a current state view and support follow-ups.
+    - Enables workstream leads to identify missing focal points, pending =
+scripts/scenarios, or cross-team alignment gaps.
+    - Supports driving =
+closure on open items.
+- **High-Level vs. Granular Tracking:** Both =
+approaches are required:
+    - High-level for leadership visibility and =
+cross-team accountability.
+    - Granular for ensuring actual test coverage=
+ and scenario completeness.
+
+### 3. Execution and Escalation Process
+- **Drafting of Execution Model (MOS):**=20
+    - A high-level draft of the=
+ Management Operating System (MOS) for UAT execution is to be developed by =
+Thursday for team review.
+    - This includes: what happens if issues arise=
+, escalation steps, and cross-functional coordination mechanisms.
+    - Emphasized need for iterative refinement; initial draft is not =
+expected to be final.
+    - Inclusion of governance structures and command =
+center concepts (the latter to be discussed further in the future).
+    - Noted pain point: Historic breakage in coordination from one function=
+ to another (e.g., from Finance to IT to HR).
+- **Role of PMO:**=20
+    - PMO involvement is required to properly govern and align on the MOS =
+and key processes.
+    - Specific mention of involving Hopkins (from PMO).
+    - The approach will be collaborative, not just "handing over" =
+responsibilities to PMO.
+
+### 4. Governance, Coordination, and Reporting
+- **Governance Structure:**=20
+    - Needs clear documentation: roles, =
+responsibilities, escalation points, and cross-team alignment.
+    - Reference to existing governance/reporting templates (e.g., BRB =
+readiness tracker from OPSEP call).
+    - Plan to connect with Jennifer =
+(PMO) to leverage and adapt these templates for UAT.
+- **Reporting and Dashboarding:**=20
+    - Will be included in the Thursday=
+ draft and refined for Friday's meeting.
+
+### 5. Tooling for UAT Tracking =
+and Defect Management
+- **Primary Tool:** Jira is currently planned as the =
+main tool for UAT defect tracking.
+- **Access Concerns:**=20
+    - Not all users may have Jira access.
+    - Consideration of =
+alternative (SharePoint) for those without Jira, to ensure ease of use and =
+universal access.
+    - Need for training and maintaining consistency in =
+defect logging across all functions.
+- **Next Steps:**=20
+    - Avinash and others to review both Jira and SharePoint options this =
+week.
+    - Recommendation(s) to be brought to Hopkins/leadership for a =
+decision.
+    - Documentation and presentation of solution(s) expected this=
+ week.
+
+### 6. Hypercare & Cutover Planning
+- **Hypercare Not =
+Forgotten:**=20
+    - Recognized that cutover and ongoing support =
+(=E2=80=9Chypercare=E2=80=9D) governance must be addressed after UAT =
+planning.
+    - IT will play a support (but not leadership) role.
+    - Alignment needed with the PMO and the broader business cutover team, =
+led by Evan.
+    - Importance of not defaulting all hypercare =
+responsibility to IT.
+    - Desire to raise awareness and be proactive in =
+defining roles and responsibilities for hypercare.
+
+### 7. Roles and Distribution of Responsibilities
+- **Involving Project =
+Managers from All Towers:**
+    - Each project manager will be asked to =
+track and gather UAT readiness information within their tower.
+    - Responsibility is distributed across towers to avoid overload at the =
+program level.
+
+---
+
+## Action Items
+
+1. **Readiness Tracker**
+    - Distribute high-level tracker by tomorrow morning to enable immediate=
+ follow-up and closure of gaps.
+    - Tracker to include focal points, test=
+ scripts, scenario status, and process mapping completeness.
+2. **MOS/Execution Model Draft**
+    - Circulate a draft of the MOS for UAT=
+ execution by Thursday afternoon to enable review before Friday=E2=80=99s =
+meeting.
+    - Include governance structure, escalation paths, and =
+cross-functional process.
+3. **Tooling Evaluation**
+    - Review both Jira and SharePoint as defect and test tracker options.
+    - Schedule time (this week) for key team members (Avinash, Prakash, etc=
+.) to compare tool suitability.
+    - Document pros/cons and bring =
+recommendations to Hopkins/leadership before end of week.
+4. **Leverage Existing Governance/Reporting Templates**
+    - Connect with Jennifer (PMO) to obtain and adapt existing BRB =
+readiness tracker and reporting templates for UAT.
+5. **Weekly/Bi-weekly =
+Tracking Rhythm**
+    - Decide on regular meeting cadence for program-level=
+ UAT status tracking (weekly/bi-weekly), leaning away from monthly =
+frequency.
+    - Coordinate with PMO on ownership and operating rhythm.
+6. **Hypercare and Cutover**
+    - Begin documenting IT=E2=80=99s =
+recommendations and role in hypercare.
+    - Coordinate with Evan=E2=80=99s=
+ cutover team and prepare to align with broader program hypercare model.
+7. **Documentation**
+    - Start drafting documentation for all above =
+topics in anticipation of leadership review.
+
+---
+
+## Follow-up
+
+- **Thursday afternoon:** Team review of the tracker, MOS, and draft =
+material for Sukai.
+- **Friday:** Discussion with Sukai=E2=80=94present =
+draft, collect feedback, and clarify expectations.
+- **This week:** Tooling=
+ review for Jira vs. SharePoint and present findings to Hopkins/leadership.
+- **Future:** Further iterations (double/triple click) on the MOS, =
+governance structure, and dashboarding as feedback is received and =
+processes are refined.
+- **Ongoing:** Continue to press for clarity and =
+proactive governance around hypercare and cutover support; ensure IT is not=
+ defaulted as sole owner.
+
+---
+
+## Additional Notes
+
+- Emphasis on tracking both high-level and granular UAT readiness and =
+execution items.
+- Strong focus on cross-functional alignment and avoiding =
+historic failures in handoffs between functions (e.g., Finance, IT, HR).
+- Recognition that training and tool access (especially for defect =
+tracking) must not be a bottleneck.
+- Commitment that each =
+conversation/iteration will move material closer to a Honeywell-specific, =
+effective UAT operating model.
+- Appreciation for leveraging existing =
+tools/templates (e.g., BRB tracker) to ensure familiarity and minimize =
+change management issues.
+
+---
+
+**End of Summary**
+
+Transcript:
+0:00
+Preferably Thursday afternoon. But our intent on the Friday conversation =
+would be to lay out how we've done UAT in the past. Just our experience, =
+our point of view on how does UAT execution typically work? How do we want =
+to plan for it? You know, how do the coordinators work with each other, how=
+ is the mos and the structure set up, how does escalation work? You know, =
+and then what, what sort of tools are typically used? In this case, we're =
+going with jira, you know, how will that process work? So at a high level =
+and a first level double click, that's our intent in terms of the slideware=
+ to share with Sukai on Friday. Now, as part of that, I think one of the =
+things is how do we want to track stuff? So there's even the readiness =
+tracking as well as later on execution tracking. But to the point you made =
+earlier on, where are we with the readiness and planning for it? What are =
+the gaps today? What meetings have we held? How do we close the gaps on =
+identifying or narrowing down the scope? Identifying, narrowing down test =
+scenarios, working to identify test scripts. So I think there's a tracker =
+we'll get by tomorrow morning to you that should have a view of at least =
+the metrics we're tracking to and then get a view of what's there. I think =
+that should help you and us drive each of the work streams to say what is =
+in play, have you developed the scenarios, have you connected with each =
+other, do you know the systems in scope, where are the gaps, etc. So that's=
+ what we're thinking as a parallel track. One, to get you that tracker so =
+that we can drive closure of that tracker. And two, get the, the content =
+for the deck that I suspect will be a double triple click later on next =
+week as well. But at least the first step, have the story there and the =
+talk track around. Here's how we typically would run UATs and or how UAT is=
+ run and all those things I mentioned earlier. So let me take a pause there=
+, see if that you're aligned to that thinking.
+
+2:22
+Yeah, I mean that comes close to what I was thinking for the way I was =
+looking at it was obviously I need two different trackers, right. One that =
+we're going to need obviously is on a high level of Honeywell employees and=
+ functions in it. What is owed to us as the program. So like the focal =
+points, right? Has everybody given us a focal point for it? Have they =
+provided test scripts? So at a high level we need a tracker to make sure =
+that. Go back to Jeff or sky say, hey, you know, finance owes us a scenario=
+.
+
+2:56
+Yeah.
+
+2:56
+They haven't included the test script. Right. So I need=
+ that high level. That way when we need a push, they can all see it. Then =
+we, the next tracker is, you know, do we all have those in alignment on the=
+ granular level? What are the scenarios for? What does the process mapping =
+look like? And now we can do that. And that kind of goes into what you =
+talked about, what you guys already have, what you guys have done in the =
+past. But I think that's how my brain's looking at it is Those are the two =
+levels of the 90. The top level and then the granular.
+
+3:25
+Yeah, the top level. We'll get you that tomorrow morning because that is =
+part of the workshop follow ups and everything else. So that. Yes, we're, =
+we're brainstorming right now just to think of the metrics to track as part=
+ of what you said, you know, test. Identifying roles is one, Identifying =
+test scripts and scenarios is another. Closing the gaps on process maps to =
+systems is another. So there are five or six metrics we need to track to =
+closing. So that will get you a view of state of play by tomorrow. So we =
+can chase that down. The other part of this is the double click. How does, =
+you know if something, and this comes as part of the execution, you know =
+that the double click into it as okay, if something is not working. How do =
+you, you know, how do you go about discovering it? How do you escalate =
+things? I think that will be part of the mos that's, that's also being =
+developed.
+
+4:17
+And that's what we're going to get like a high level rush =
+draft that by Thursday review. I know we won't have a final copy, but =
+that's our intent. Right. It's not like a draft of that on Thursday. Yeah, =
+we can all kind of brainstorm and make sure it aligns because we did commit=
+ to giving them to giving Sakai a rough draft on Friday.
+
+4:35
+On Friday, yes.
+
+4:37
+Yeah. I told her it wouldn't be finalized because we =
+know there's still a lot of work to go through it. But I would like to be =
+able to show her a draft of what happens in this scenario and then who is =
+in alignment, who we need to coordinate between because that's probably the=
+ biggest gap I see within Honeywell. How we're put together is from a =
+function to another function. We do not align well, you know, from function=
+ to it. We don't align well. You know, there is a better correspondence =
+between it and say finance, but if finance has to go to it, then it has to =
+go to hr. There's always a breakage there in how money will operate. So =
+that's where the coordination and those UAT coordinators and focal points =
+are really vital to make this work.
+
+5:18
+Yes, totally with you. And I =
+think what we'll look to get is a view on how does that stitching and =
+coordination work. We can beat up on it and make it Honeywell centric, but =
+at least a general guideline or a general process on what happens if things=
+ don't work. How is the governance structure and the team structure that =
+will be set up to run UAT and potentially command center? You know, how =
+will that command center I don't want to bring in yet because there's a =
+broader discussion on this whole POS and sos and how that will be cut over =
+by the business, etc. But at least for UAT, work through what you're =
+specifically asking for there on what happens if something breaks, how does=
+ that cross functional coordination work? So that governance structure and =
+that MOS and that should help start addressing some of those questions. For=
+ Sukhai and Jeff, it will need. To your point, it will need a double click =
+or a refinement with several cycles, but at least they can react to that as=
+ part of the conversation Friday.
+
+6:25
+Yeah, and on that note too, so that=
+ the highlights the tracker, how we're going to do with the scenarios. But =
+I don't know if we've really thought this as well too. How do we actually =
+do this? Right. From a MOS perspective, we know what they are, we know the =
+scripts are going to go, but from a program level, we need to be able to =
+track it. Right. We need to be able to look at it. So do we hold like a =
+weekly meeting on which ones we are? Do we host, you know, bi weekly? Is it=
+ monthly? Monthly's too far out. Right. But I don't want to just throw a =
+meeting on the calendar for the sake of having a calendar. So we gotta =
+figure out a legitimate MOS on how we operate and manage this from a =
+program perspective. Right. How do we track and make sure that we're =
+coordinating the functions, we're talking to each other, not just when this=
+ didn't go well.
+
+7:09
+Right, understood.
+
+7:10
+And everyone went through =
+it. How do we line up for that?
+
+7:14
+So some of that we'll have to bring =
+in pmo, because I think the expectation as well is yes, there's UAT and =
+you'll have the IT UAT coordinator role, but there's a lot of PMO =
+governance in here and that structure should help define some of that mos =
+for us. So I don't think we can do that in isolation. I think we absolutely=
+ need the PMO as part of that conversation.
+
+7:40
+Yeah. So we bring in =
+Hopkins and we have that alignment. I think we should have some ideals. =
+Yeah. I don't want to just throw this over the fence and say, hey, Jeff, =
+you know, this is PMO kind of thing. I think we should kind of pitch it =
+directly saying, this is where involvement goes. This is where we're going =
+to need alignment and support from PMO to make sure that we do this right. =
+So I just want to make sure we cover all the bases for any questions that =
+might get come up, make sure that we're doing our part from it, but also =
+understanding that we're a big wheel on the machine to get moving agreement=
+.
+
+8:12
+So I think we're aligned. So immediate tracker for readiness and =
+where we are so we can drive closure. The other one is the mos and how we =
+want to operate this and execute on it. That will come up as part of the =
+roles, responsibilities across the teams and where we'll need PMO and =
+support there. And then the third part is overall governance structure. =
+Double click into how UAT is typically run. What is the. What is the =
+governance? What are the processes in play? Now there were some trackers =
+from a BRV readiness tracker that a PMO put out in the OPSEP call. So I'll =
+connect with Jennifer and leverage some of those in terms of reporting and =
+dashboarding that may need to be there for, you know, how this governance =
+and process would work. So, so yeah, so I'll. We'll connect with her, but =
+we should have a view into that Thursday, or at least her draft and then =
+coming into Friday, we should have a view of all of these things that will,=
+ that will inform the conversation.
+
+9:20
+Okay, so yeah, actually that line=
+, because that's what I actually was searching. I was looking for that BRB =
+tracker in the background right now because I remember that was a template =
+that they already are used to seeing. So keeping similarities is always =
+good. The last piece that I have and then we can open to see what else you =
+guys have. Was the hyper care. Right. That's not our first priority. We =
+gotta get through uat, but I don't want that to drop off. We do need to =
+make sure that we get some governance and some, you know, mos and plans =
+around that as well.
+
+9:52
+Yeah, and that would be. Yeah, so there's a =
+portion of it. Again, we need to talk to about cutover and hypercare model =
+that the PMO will bring in. And I think that is part of a broader cutover =
+team that they're looking to stand up. Evan is looking to stand up and we =
+need to align with them on. I get the cutover from an IT perspective and =
+you know, the hypercare model from an IT perspective. I think there's a =
+broader conversation on having a hypercare model that stood up for across =
+the program and particularly around the POSO cutover on all of that =
+happening. So we'll need to line up with them or at least align with them =
+first on that topic of hypercare as part of cutover and then bring that =
+into the conversation with Jeff because that's also a centralized process =
+that where IT will have to play a part. But I don't think it will be IT LED=
+ per se.
+
+10:53
+Yeah, no, that's what I said. When Chicago set up our =
+meeting last week, you had that hypercare in the agenda. We didn't really =
+go into it too much, but I know it's still in the back of everybody's mind,=
+ so I don't want it to get dumped on and say, hey, okay, it, your program =
+is going to run everything because that's not the way it should be designed=
+ for.
+
+11:12
+Yeah.
+
+11:13
+So I just want to make sure we're preemptive. =
+This area. Here's our recommendations. This is how we're viewing it from =
+our side of the house. And then now we can keep a good alignment because =
+otherwise it will turn around and get dumped on it. It's an easier =
+mechanism for Honeywell and for some of the functions just to give it. Oh =
+well, it's IT related. So it's, it's. So I just want to make sure that =
+we're diligent about how we handle this.
+
+11:37
+Understood. Noted. I'm =
+aligned with you on that. Avinash, I know you joined in a couple of minutes=
+ late on that. Any questions, clarifications or thoughts from your end on =
+some of the conversation here?
+
+11:53
+Just curious when Peers and you both =
+kind of agreed on it is not an IT job or it is not just it's responsibility=
+ out here, but when we talk of UAB on a tools perspective, it is an IT node=
+, right? And this. I'm missing something?
+
+12:08
+No, no. UAT is as far as =
+what we're doing, making sure it works. The scenarios are the =
+responsibilities of the functions. So what they test and what they actually=
+ make sure works. And then the linkage for it is more on the sip. What we =
+were just more linked in was More on the hyperparamet would be more of the =
+functions but it is an easy but. So you know, it's always. That's why we're=
+ just making sure we're preempting it and talking about it at the time. =
+That way we don't get behind the wheel.
+
+12:40
+Yeah.
+
+12:41
+Just one additional thought process out there is there are assigned project=
+ managers for each of the stream of towers within or there are multiple =
+project managers depending on which tower you speak to. So if you, if you =
+were to ask all these project managers to say hey, go get this information =
+mapped out by X date, start with identify the number of test case scenarios=
+, identify who the business focus are, who's going to be testing again, =
+they can in turn chase the loop within the tower itself and then by when =
+are they expected to start whatever as in they could put up that =
+information, the project manager should be able to gather that information =
+or go figure out who to chase within the business to say hey, we need all =
+of this information, get us this information. They can start chasing it so =
+that that way the task gets distributed across all the towers individually =
+rather than trying to chase this across the whole board. I'm just out loud.
+
+13:44
+No, that's a good point. That's things we've already started. That's=
+ we're. I don't know if you caught the first part of the conversation. =
+We're looking at a high level tracker and that is what the functions are =
+going to owe us already and that's something we're putting together for =
+tomorrow. We're going to replicate the VRV tracker but essentially we've =
+already gone to all the towers and we've gone to all the leaders to do that=
+. Some of them have been very responsive and I have a couple emails as you =
+sent me one from one of the groups that we have focal points. They gave us =
+six names. We're going to go commercial, they gave us a bunch of names, =
+we're going to go, there's a few other ones that we haven't seen. So that's=
+ why we want the high level tracker to say hey finance, you haven't given =
+us your local points yet, you haven't given us the PMs who are going to =
+actually run these and make sure that the testing scenarios are done. And =
+I'm just picking on finance. I go back and look to see if they're there, =
+but that's the high level board. And then right after that we'll run =
+through and make sure that they counterpart with the IT to make sure all =
+the UAT is correlated.
+
+14:42
+Yep. The one key thing is going to be how do =
+you want to track defects across all functions. Is it a SharePoint site? Is=
+ it something else? Is it a Jira? I don't know.
+
+14:53
+I think it's all Jira. Right, Prakash? I think that's what they talked =
+about.
+
+14:56
+Yeah. So we spoke about JIRA as a tool of choice.
+
+14:59
+Jira is. May not. Not all the users may have access to it. So there might =
+be a limitation on the access to jira. I don't know. Again, please validate=
+ that.
+
+15:09
+No, but that's part of the conversation to be had is how do =
+we do that? What is a tool of choice and how do we get people trained on it=
+? Right. So as part of the readiness for testing, we have to do that too. =
+What we do want is a consistent way of testing all of this in that, you =
+know, as in not just.
+
+15:29
+Consistency, but look at it from a cross =
+functional true. You need to have a visibility because if you're going to =
+go through jira, Fluency, Finance, Finance ISE or any other work streams, =
+it's going to be a challenge. While I'm just thinking out loud here, not =
+trying to shoot you down.
+
+15:47
+No, it's a valid question and that's the =
+part of the conversation is we.
+
+15:51
+Need to decide on it on a tool might=
+ be. Yeah, I should have pointed to say if you already have enough =
+sharepoints out there, you just have to create one out there where each =
+function can come in out there and create their entry. That way you do not =
+have any restrictions, you do not provide too much of overhead training or =
+anything to say this is how you create it. As in it's a simple form that =
+you could have on a SharePoint and say log a ticket and each and every user=
+, let's say for example, if I'm testing a purchase order and there is a =
+finance deposit dependency in the erp, they could go ahead and log that =
+defect on there instead of trying to figure out where do I lock this defect=
+ which is transferring it over.
+
+16:34
+So it's a good point you're making. =
+I think I'd like to hear more of your thoughts on it and if there's a point=
+ of view of how Honeywell has done it in the past, that's simple enough. =
+Again, we don't want to over engineer this and so I think you're bringing =
+up good points. So if there's a point of view you have already as to what =
+may work well for Honeywell and what people are used to, let's leverage =
+that and so I think. I don't know, Pier, I would look to you then, Avinash,=
+ is to provide that point of view as to how do we simplify life for =
+everyone and have that end to end visibility. Right. We can always run.
+
+17:12
+Let's start with the high level first and then like the. Maybe we can=
+ start with the SharePoint. Just make sure we get the tracker and the high =
+level going. We can circle that tomorrow. I think I'm okay with looking at =
+multiple options. The only reason I know that Jira was pushed was one, it =
+was an IT implementation already, but it's also what the aura GDM was ran =
+off of. So Emo and Ben and a couple of those guys already used to seeing it=
+. Bimble's already used to seeing it, the core implementation. So I think =
+that's one of the scenarios that they were going to use because JIRA was =
+already that platform. Now I don't have objective one way or the other. I =
+just want to make sure that we're able to visually see it and it's a common=
+ frame. Grounded. What not from the functions, but also from leadership. So=
+, Avantachi, I'm perfectly okay. Maybe we can spend some time this week =
+looking at some different scenarios and figure out what fits best. I'll =
+find some time on your calendar. We can look at it and Ricassa will just =
+kind of put our heads together and say, hey, what works? Yeah, maybe we =
+pitch both ideals to Hopkins and then say, hey, how do we want to present =
+this? And then that way they make that decision of what's best for the =
+program as a whole. Because we got thing too. It's not just on the IT side.=
+ They're going to replicate this across all and possibly, you know, =
+replicate this into winner.
+
+18:31
+True.
+
+18:34
+So it's all good points. I =
+just think we need to start documenting it, putting it, you know, on paper,=
+ and then getting the leadership to make some decisions. And they'll have =
+to make them this week.
+
+18:45
+Yeah, agree. So, all right, so we have our =
+action items here. So we'll send you the tracker for tomorrow, and then the=
+ rest of it we'll have a view for us to share with you on Thursday =
+afternoon, and then we can talk to Sukai on Friday.
+
+19:03
+Sounds good.
+
+19:05
+All right. Anything else from the room here?
+
+19:08
+Think we're good.
+
+19:09
+I think we're good. Okay. All right. Anything else from you, Avinash=
+? But good points, good points. So I think, yeah, I think we'll. We'll =
+certainly leverage your insights in Honeywell and IT to develop some of =
+that stuff. All right. Thanks. All right.
+
+19:28
+Thank you. Take care.
+
+19:33
+I got off a call with Ben and Trinibas. Okay. And UAT came up. Sure.
+----_NmP-e43bab6541e85b9c-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">UAT =
+Planning Tracking Governance Coordination</h1></td></tr></table></div><div =
+style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/9CCBFF2F-D5EF-4B8E-86DC-06FF6F742288?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h1 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2.5rem">Meeting Summary: UAT Planning, Tracking, and =
+Governance Discussion</h1><p><strong style=3D"font-weight:bold">Date/Time =
+discussed:</strong>  </p>
+<ul>
+<li>Tracker to be sent out by tomorrow =
+morning (relative to meeting, specific date not provided)</li>
+<li>Draft slide content/structure for Sukai to be ready by Thursday =
+afternoon (relative to meeting)</li>
+<li>Meeting with Sukai scheduled for =
+Friday for review/discussion</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500=
+;padding-top:20px;font-size:2rem">Main Topics Discussed</h2><h3 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">1. Approach =
+and Structure for UAT (User Acceptance Testing)</h3><ul>
+<li><strong style=3D"font-weight:bold">Past Experience:</strong> Team =
+intends to share their experience and typical approaches to UAT execution, =
+including how coordinators and teams are structured, common escalation =
+paths, and frequently used tools.</li>
+<li><strong style=3D"font-weight:bol=
+d">Planned Discussion for Friday:</strong> The team will present slideware =
+to Sukai that outlines their methodology for UAT, covering:<ul>
+<li>How UAT is executed at a high level.</li>
+<li>Details on planning, =
+coordination, escalation, and tool usage (such as Jira).</li>
+<li>Process for readiness and execution tracking.</li>
+<li>Gaps and areas for improvement identified in current readiness and =
+planning.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Levels of=
+ Tracking Discussed:</strong><ul>
+<li><strong style=3D"font-weight:bold">Hi=
+gh-Level Tracker:</strong> Tracks what each Honeywell function/employee =
+owes to the program (e.g., focal points, test scripts submitted).</li>
+<li><strong style=3D"font-weight:bold">Granular Tracker:</strong> Focused =
+on alignment of scenarios at the process mapping and script level.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Key Metrics to Track =
+(tentative list):</strong><ul>
+<li>Identification of roles and focal points=
+.</li>
+<li>Submission of test scripts and scenarios.</li>
+<li>Closure of process mapping to systems gaps.</li>
+<li>Overall readiness for UAT execution.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">2. =
+Readiness and Gap Analysis</h3><ul>
+<li><strong style=3D"font-weight:bold">=
+Tracker Deliverable:</strong> A readiness tracker to be provided by =
+tomorrow morning to give a current state view and support follow-ups.<ul>
+<li>Enables workstream leads to identify missing focal points, pending =
+scripts/scenarios, or cross-team alignment gaps.</li>
+<li>Supports driving closure on open items.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">High-Level vs. Granular =
+Tracking:</strong> Both approaches are required:<ul>
+<li>High-level for leadership visibility and cross-team accountability.=
+</li>
+<li>Granular for ensuring actual test coverage and scenario =
+completeness.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-t=
+op:20px;font-size:1.75rem">3. Execution and Escalation Process</h3><ul>
+<li><strong style=3D"font-weight:bold">Drafting of Execution Model =
+(MOS):</strong> <ul>
+<li>A high-level draft of the Management Operating =
+System (MOS) for UAT execution is to be developed by Thursday for team =
+review.</li>
+<li>This includes: what happens if issues arise, escalation =
+steps, and cross-functional coordination mechanisms.</li>
+<li>Emphasized need for iterative refinement; initial draft is not expected=
+ to be final.</li>
+<li>Inclusion of governance structures and command =
+center concepts (the latter to be discussed further in the future).</li>
+<li>Noted pain point: Historic breakage in coordination from one function =
+to another (e.g., from Finance to IT to HR).</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Role of PMO:</strong> <ul>
+<li>PMO involvement is required to properly govern and align on the MOS and=
+ key processes.</li>
+<li>Specific mention of involving Hopkins (from PMO).=
+</li>
+<li>The approach will be collaborative, not just &quot;handing =
+over&quot; responsibilities to PMO.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">4. =
+Governance, Coordination, and Reporting</h3><ul>
+<li><strong =
+style=3D"font-weight:bold">Governance Structure:</strong> <ul>
+<li>Needs clear documentation: roles, responsibilities, escalation points, =
+and cross-team alignment.</li>
+<li>Reference to existing =
+governance/reporting templates (e.g., BRB readiness tracker from OPSEP =
+call).</li>
+<li>Plan to connect with Jennifer (PMO) to leverage and adapt =
+these templates for UAT.</li>
+</ul>
+</li>
+<li><strong =
+style=3D"font-weight:bold">Reporting and Dashboarding:</strong> <ul>
+<li>Will be included in the Thursday draft and refined for Friday&#39;s =
+meeting.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20=
+px;font-size:1.75rem">5. Tooling for UAT Tracking and Defect =
+Management</h3><ul>
+<li><strong style=3D"font-weight:bold">Primary =
+Tool:</strong> Jira is currently planned as the main tool for UAT defect =
+tracking.</li>
+<li><strong style=3D"font-weight:bold">Access =
+Concerns:</strong> <ul>
+<li>Not all users may have Jira access.</li>
+<li>Consideration of alternative (SharePoint) for those without Jira, to =
+ensure ease of use and universal access.</li>
+<li>Need for training and =
+maintaining consistency in defect logging across all functions.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Next Steps:</strong> <ul>
+<li>Avinash and others to review both Jira and SharePoint options this week=
+.</li>
+<li>Recommendation(s) to be brought to Hopkins/leadership for a =
+decision.</li>
+<li>Documentation and presentation of solution(s) expected =
+this week.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:=
+20px;font-size:1.75rem">6. Hypercare &amp; Cutover Planning</h3><ul>
+<li><strong style=3D"font-weight:bold">Hypercare Not Forgotten:</strong> =
+<ul>
+<li>Recognized that cutover and ongoing support =
+(=E2=80=9Chypercare=E2=80=9D) governance must be addressed after UAT =
+planning.</li>
+<li>IT will play a support (but not leadership) role.</li>
+<li>Alignment needed with the PMO and the broader business cutover team, =
+led by Evan.</li>
+<li>Importance of not defaulting all hypercare =
+responsibility to IT.</li>
+<li>Desire to raise awareness and be proactive =
+in defining roles and responsibilities for hypercare.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">7. =
+Roles and Distribution of Responsibilities</h3><ul>
+<li><strong style=3D"font-weight:bold">Involving Project Managers from All =
+Towers:</strong><ul>
+<li>Each project manager will be asked to track and =
+gather UAT readiness information within their tower.</li>
+<li>Responsibility is distributed across towers to avoid overload at the =
+program level.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;p=
+adding-top:20px;font-size:2rem">Action Items</h2><ol>
+<li><strong style=3D"font-weight:bold">Readiness Tracker</strong><ul>
+<li>Distribute high-level tracker by tomorrow morning to enable immediate =
+follow-up and closure of gaps.</li>
+<li>Tracker to include focal points, =
+test scripts, scenario status, and process mapping completeness.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">MOS/Execution Model =
+Draft</strong><ul>
+<li>Circulate a draft of the MOS for UAT execution by =
+Thursday afternoon to enable review before Friday=E2=80=99s meeting.</li>
+<li>Include governance structure, escalation paths, and cross-functional =
+process.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Tooling =
+Evaluation</strong><ul>
+<li>Review both Jira and SharePoint as defect and =
+test tracker options.</li>
+<li>Schedule time (this week) for key team =
+members (Avinash, Prakash, etc.) to compare tool suitability.</li>
+<li>Document pros/cons and bring recommendations to Hopkins/leadership =
+before end of week.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold"=
+>Leverage Existing Governance/Reporting Templates</strong><ul>
+<li>Connect with Jennifer (PMO) to obtain and adapt existing BRB readiness =
+tracker and reporting templates for UAT.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Weekly/Bi-weekly Tracking =
+Rhythm</strong><ul>
+<li>Decide on regular meeting cadence for program-level=
+ UAT status tracking (weekly/bi-weekly), leaning away from monthly =
+frequency.</li>
+<li>Coordinate with PMO on ownership and operating rhythm.=
+</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Hypercare and =
+Cutover</strong><ul>
+<li>Begin documenting IT=E2=80=99s recommendations and=
+ role in hypercare.</li>
+<li>Coordinate with Evan=E2=80=99s cutover team =
+and prepare to align with broader program hypercare model.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Documentation</strong><ul>
+<li>Start drafting documentation for all above topics in anticipation of =
+leadership review.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 =
+style=3D"font-weight:500;padding-top:20px;font-size:2rem">Follow-up</h2><ul=
+>
+<li><strong style=3D"font-weight:bold">Thursday afternoon:</strong> Team =
+review of the tracker, MOS, and draft material for Sukai.</li>
+<li><strong style=3D"font-weight:bold">Friday:</strong> Discussion with =
+Sukai=E2=80=94present draft, collect feedback, and clarify expectations.=
+</li>
+<li><strong style=3D"font-weight:bold">This week:</strong> Tooling =
+review for Jira vs. SharePoint and present findings to Hopkins/leadership.=
+</li>
+<li><strong style=3D"font-weight:bold">Future:</strong> Further =
+iterations (double/triple click) on the MOS, governance structure, and =
+dashboarding as feedback is received and processes are refined.</li>
+<li><strong style=3D"font-weight:bold">Ongoing:</strong> Continue to press =
+for clarity and proactive governance around hypercare and cutover support; =
+ensure IT is not defaulted as sole owner.</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Additional =
+Notes</h2><ul>
+<li>Emphasis on tracking both high-level and granular UAT =
+readiness and execution items.</li>
+<li>Strong focus on cross-functional =
+alignment and avoiding historic failures in handoffs between functions (e.g=
+., Finance, IT, HR).</li>
+<li>Recognition that training and tool access =
+(especially for defect tracking) must not be a bottleneck.</li>
+<li>Commitment that each conversation/iteration will move material closer =
+to a Honeywell-specific, effective UAT operating model.</li>
+<li>Appreciation for leveraging existing tools/templates (e.g., BRB =
+tracker) to ensure familiarity and minimize change management issues.</li>
+</ul>
+<hr />
+<p><strong style=3D"font-weight:bold">End of =
+Summary</strong></p>
+</div></div></div><div style=3D"background-color:#ffff=
+ff;padding:28px;border-radius:12px;border:1px solid #e2e8f0;box-shadow:0 =
+1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription</h3><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Prakash</span><span style=3D"color:#64748b;font-size:14p=
+x">0:00</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Preferably Thursday afternoon. But our intent on the Friday =
+conversation would be to lay out how we&#x27;ve done UAT in the past. Just =
+our experience, our point of view on how does UAT execution typically work?=
+ How do we want to plan for it? You know, how do the coordinators work with=
+ each other, how is the mos and the structure set up, how does escalation =
+work? You know, and then what, what sort of tools are typically used? In =
+this case, we&#x27;re going with jira, you know, how will that process work=
+? So at a high level and a first level double click, that&#x27;s our intent=
+ in terms of the slideware to share with Sukai on Friday. Now, as part of =
+that, I think one of the things is how do we want to track stuff? So =
+there&#x27;s even the readiness tracking as well as later on execution =
+tracking. But to the point you made earlier on, where are we with the =
+readiness and planning for it? What are the gaps today? What meetings have =
+we held? How do we close the gaps on identifying or narrowing down the =
+scope? Identifying, narrowing down test scenarios, working to identify test=
+ scripts. So I think there&#x27;s a tracker we&#x27;ll get by tomorrow =
+morning to you that should have a view of at least the metrics we&#x27;re =
+tracking to and then get a view of what&#x27;s there. I think that should =
+help you and us drive each of the work streams to say what is in play, have=
+ you developed the scenarios, have you connected with each other, do you =
+know the systems in scope, where are the gaps, etc. So that&#x27;s what =
+we&#x27;re thinking as a parallel track. One, to get you that tracker so =
+that we can drive closure of that tracker. And two, get the, the content =
+for the deck that I suspect will be a double triple click later on next =
+week as well. But at least the first step, have the story there and the =
+talk track around. Here&#x27;s how we typically would run UATs and or how =
+UAT is run and all those things I mentioned earlier. So let me take a pause=
+ there, see if that you&#x27;re aligned to that thinking.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:14px">2=
+:22</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, I mean that comes close to what I was thinking for the way I was =
+looking at it was obviously I need two different trackers, right. One that =
+we&#x27;re going to need obviously is on a high level of Honeywell =
+employees and functions in it. What is owed to us as the program. So like =
+the focal points, right? Has everybody given us a focal point for it? Have =
+they provided test scripts? So at a high level we need a tracker to make =
+sure that. Go back to Jeff or sky say, hey, you know, finance owes us a =
+scenario.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prakash</span><spa=
+n style=3D"color:#64748b;font-size:14px">2:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">2:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">They haven&#x27;t =
+included the test script. Right. So I need that high level. That way when =
+we need a push, they can all see it. Then we, the next tracker is, you know=
+, do we all have those in alignment on the granular level? What are the =
+scenarios for? What does the process mapping look like? And now we can do =
+that. And that kind of goes into what you talked about, what you guys =
+already have, what you guys have done in the past. But I think that&#x27;s =
+how my brain&#x27;s looking at it is Those are the two levels of the 90. =
+The top level and then the granular.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prakash</span><span style=3D"color:#64748b;font-size:14px=
+">3:25</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah, the top level. We&#x27;ll get you that tomorrow morning because =
+that is part of the workshop follow ups and everything else. So that. Yes, =
+we&#x27;re, we&#x27;re brainstorming right now just to think of the metrics=
+ to track as part of what you said, you know, test. Identifying roles is =
+one, Identifying test scripts and scenarios is another. Closing the gaps on=
+ process maps to systems is another. So there are five or six metrics we =
+need to track to closing. So that will get you a view of state of play by =
+tomorrow. So we can chase that down. The other part of this is the double =
+click. How does, you know if something, and this comes as part of the =
+execution, you know that the double click into it as okay, if something is =
+not working. How do you, you know, how do you go about discovering it? How =
+do you escalate things? I think that will be part of the mos that&#x27;s, =
+that&#x27;s also being developed.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</s=
+pan><span style=3D"color:#64748b;font-size:14px">4:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And that&#x27;s what=
+ we&#x27;re going to get like a high level rush draft that by Thursday =
+review. I know we won&#x27;t have a final copy, but that&#x27;s our intent.=
+ Right. It&#x27;s not like a draft of that on Thursday. Yeah, we can all =
+kind of brainstorm and make sure it aligns because we did commit to giving =
+them to giving Sakai a rough draft on Friday.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prakash</span><span style=3D"color:#64748b;font-size:14px=
+">4:35</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">On Friday, yes.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><s=
+pan style=3D"color:#64748b;font-size:14px">4:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. I told her it =
+wouldn&#x27;t be finalized because we know there&#x27;s still a lot of work=
+ to go through it. But I would like to be able to show her a draft of what =
+happens in this scenario and then who is in alignment, who we need to =
+coordinate between because that&#x27;s probably the biggest gap I see =
+within Honeywell. How we&#x27;re put together is from a function to another=
+ function. We do not align well, you know, from function to it. We =
+don&#x27;t align well. You know, there is a better correspondence between =
+it and say finance, but if finance has to go to it, then it has to go to hr=
+. There&#x27;s always a breakage there in how money will operate. So =
+that&#x27;s where the coordination and those UAT coordinators and focal =
+points are really vital to make this work.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prakash</span><span style=3D"color:#64748b;font-size:14px=
+">5:18</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yes, totally with you. And I think what we&#x27;ll look to get is a =
+view on how does that stitching and coordination work. We can beat up on it=
+ and make it Honeywell centric, but at least a general guideline or a =
+general process on what happens if things don&#x27;t work. How is the =
+governance structure and the team structure that will be set up to run UAT =
+and potentially command center? You know, how will that command center I =
+don&#x27;t want to bring in yet because there&#x27;s a broader discussion =
+on this whole POS and sos and how that will be cut over by the business, =
+etc. But at least for UAT, work through what you&#x27;re specifically =
+asking for there on what happens if something breaks, how does that cross =
+functional coordination work? So that governance structure and that MOS and=
+ that should help start addressing some of those questions. For Sukhai and =
+Jeff, it will need. To your point, it will need a double click or a =
+refinement with several cycles, but at least they can react to that as part=
+ of the conversation Friday.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><=
+span style=3D"color:#64748b;font-size:14px">6:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, and on that =
+note too, so that the highlights the tracker, how we&#x27;re going to do =
+with the scenarios. But I don&#x27;t know if we&#x27;ve really thought this=
+ as well too. How do we actually do this? Right. From a MOS perspective, we=
+ know what they are, we know the scripts are going to go, but from a =
+program level, we need to be able to track it. Right. We need to be able to=
+ look at it. So do we hold like a weekly meeting on which ones we are? Do =
+we host, you know, bi weekly? Is it monthly? Monthly&#x27;s too far out. =
+Right. But I don&#x27;t want to just throw a meeting on the calendar for =
+the sake of having a calendar. So we gotta figure out a legitimate MOS on =
+how we operate and manage this from a program perspective. Right. How do we=
+ track and make sure that we&#x27;re coordinating the functions, we&#x27;re=
+ talking to each other, not just when this didn&#x27;t go well.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prakash</span><spa=
+n style=3D"color:#64748b;font-size:14px">7:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right, understood.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">7:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And everyone went =
+through it. How do we line up for that?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prakash</span><span style=3D"color:#64748b;font-size:14px=
+">7:14</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">So some of that we&#x27;ll have to bring in pmo, because I think the =
+expectation as well is yes, there&#x27;s UAT and you&#x27;ll have the IT =
+UAT coordinator role, but there&#x27;s a lot of PMO governance in here and =
+that structure should help define some of that mos for us. So I don&#x27;t =
+think we can do that in isolation. I think we absolutely need the PMO as =
+part of that conversation.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><s=
+pan style=3D"color:#64748b;font-size:14px">7:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So we bring in=
+ Hopkins and we have that alignment. I think we should have some ideals. =
+Yeah. I don&#x27;t want to just throw this over the fence and say, hey, =
+Jeff, you know, this is PMO kind of thing. I think we should kind of pitch =
+it directly saying, this is where involvement goes. This is where =
+we&#x27;re going to need alignment and support from PMO to make sure that =
+we do this right. So I just want to make sure we cover all the bases for =
+any questions that might get come up, make sure that we&#x27;re doing our =
+part from it, but also understanding that we&#x27;re a big wheel on the =
+machine to get moving agreement.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prakash=
+</span><span style=3D"color:#64748b;font-size:14px">8:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So I think =
+we&#x27;re aligned. So immediate tracker for readiness and where we are so =
+we can drive closure. The other one is the mos and how we want to operate =
+this and execute on it. That will come up as part of the roles, =
+responsibilities across the teams and where we&#x27;ll need PMO and support=
+ there. And then the third part is overall governance structure. Double =
+click into how UAT is typically run. What is the. What is the governance? =
+What are the processes in play? Now there were some trackers from a BRV =
+readiness tracker that a PMO put out in the OPSEP call. So I&#x27;ll =
+connect with Jennifer and leverage some of those in terms of reporting and =
+dashboarding that may need to be there for, you know, how this governance =
+and process would work. So, so yeah, so I&#x27;ll. We&#x27;ll connect with =
+her, but we should have a view into that Thursday, or at least her draft =
+and then coming into Friday, we should have a view of all of these things =
+that will, that will inform the conversation.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:14px">9=
+:20</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay, so yeah, actually that line, because that&#x27;s what I actually =
+was searching. I was looking for that BRB tracker in the background right =
+now because I remember that was a template that they already are used to =
+seeing. So keeping similarities is always good. The last piece that I have =
+and then we can open to see what else you guys have. Was the hyper care. =
+Right. That&#x27;s not our first priority. We gotta get through uat, but I =
+don&#x27;t want that to drop off. We do need to make sure that we get some =
+governance and some, you know, mos and plans around that as well.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prakash</span><spa=
+n style=3D"color:#64748b;font-size:14px">9:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, and that would=
+ be. Yeah, so there&#x27;s a portion of it. Again, we need to talk to about=
+ cutover and hypercare model that the PMO will bring in. And I think that =
+is part of a broader cutover team that they&#x27;re looking to stand up. =
+Evan is looking to stand up and we need to align with them on. I get the =
+cutover from an IT perspective and you know, the hypercare model from an IT=
+ perspective. I think there&#x27;s a broader conversation on having a =
+hypercare model that stood up for across the program and particularly =
+around the POSO cutover on all of that happening. So we&#x27;ll need to =
+line up with them or at least align with them first on that topic of =
+hypercare as part of cutover and then bring that into the conversation with=
+ Jeff because that&#x27;s also a centralized process that where IT will =
+have to play a part. But I don&#x27;t think it will be IT LED per se.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">10:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, no, =
+that&#x27;s what I said. When Chicago set up our meeting last week, you had=
+ that hypercare in the agenda. We didn&#x27;t really go into it too much, =
+but I know it&#x27;s still in the back of everybody&#x27;s mind, so I =
+don&#x27;t want it to get dumped on and say, hey, okay, it, your program is=
+ going to run everything because that&#x27;s not the way it should be =
+designed for.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prakash</span><spa=
+n style=3D"color:#64748b;font-size:14px">11:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">11:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So I just want to =
+make sure we&#x27;re preemptive. This area. Here&#x27;s our recommendations=
+. This is how we&#x27;re viewing it from our side of the house. And then =
+now we can keep a good alignment because otherwise it will turn around and =
+get dumped on it. It&#x27;s an easier mechanism for Honeywell and for some =
+of the functions just to give it. Oh well, it&#x27;s IT related. So =
+it&#x27;s, it&#x27;s. So I just want to make sure that we&#x27;re diligent =
+about how we handle this.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prakash</span=
+><span style=3D"color:#64748b;font-size:14px">11:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Understood. Noted. =
+I&#x27;m aligned with you on that. Avinash, I know you joined in a couple =
+of minutes late on that. Any questions, clarifications or thoughts from =
+your end on some of the conversation here?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Avinash</span><span style=3D"color:#64748b;font-size:14px=
+">11:53</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Just curious when Peers and you both kind of agreed on it is not an IT=
+ job or it is not just it&#x27;s responsibility out here, but when we talk =
+of UAB on a tools perspective, it is an IT node, right? And this. I&#x27;m =
+missing something?</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><s=
+pan style=3D"color:#64748b;font-size:14px">12:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, no. UAT is as =
+far as what we&#x27;re doing, making sure it works. The scenarios are the =
+responsibilities of the functions. So what they test and what they actually=
+ make sure works. And then the linkage for it is more on the sip. What we =
+were just more linked in was More on the hyperparamet would be more of the =
+functions but it is an easy but. So you know, it&#x27;s always. That&#x27;s=
+ why we&#x27;re just making sure we&#x27;re preempting it and talking about=
+ it at the time. That way we don&#x27;t get behind the wheel.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prakash</span><spa=
+n style=3D"color:#64748b;font-size:14px">12:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Avinash</span><spa=
+n style=3D"color:#64748b;font-size:14px">12:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Just one additional =
+thought process out there is there are assigned project managers for each =
+of the stream of towers within or there are multiple project managers =
+depending on which tower you speak to. So if you, if you were to ask all =
+these project managers to say hey, go get this information mapped out by X =
+date, start with identify the number of test case scenarios, identify who =
+the business focus are, who&#x27;s going to be testing again, they can in =
+turn chase the loop within the tower itself and then by when are they =
+expected to start whatever as in they could put up that information, the =
+project manager should be able to gather that information or go figure out =
+who to chase within the business to say hey, we need all of this =
+information, get us this information. They can start chasing it so that =
+that way the task gets distributed across all the towers individually =
+rather than trying to chase this across the whole board. I&#x27;m just out =
+loud.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">13:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, that&#x27;s a =
+good point. That&#x27;s things we&#x27;ve already started. That&#x27;s =
+we&#x27;re. I don&#x27;t know if you caught the first part of the =
+conversation. We&#x27;re looking at a high level tracker and that is what =
+the functions are going to owe us already and that&#x27;s something =
+we&#x27;re putting together for tomorrow. We&#x27;re going to replicate the=
+ VRV tracker but essentially we&#x27;ve already gone to all the towers and =
+we&#x27;ve gone to all the leaders to do that. Some of them have been very =
+responsive and I have a couple emails as you sent me one from one of the =
+groups that we have focal points. They gave us six names. We&#x27;re going =
+to go commercial, they gave us a bunch of names, we&#x27;re going to go, =
+there&#x27;s a few other ones that we haven&#x27;t seen. So that&#x27;s why=
+ we want the high level tracker to say hey finance, you haven&#x27;t given =
+us your local points yet, you haven&#x27;t given us the PMs who are going =
+to actually run these and make sure that the testing scenarios are done. =
+And I&#x27;m just picking on finance. I go back and look to see if =
+they&#x27;re there, but that&#x27;s the high level board. And then right =
+after that we&#x27;ll run through and make sure that they counterpart with =
+the IT to make sure all the UAT is correlated.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Avinash</span><span style=3D"color:#64748b;font-size:14px=
+">14:42</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yep. The one key thing is going to be how do you want to track defects=
+ across all functions. Is it a SharePoint site? Is it something else? Is it=
+ a Jira? I don&#x27;t know.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><s=
+pan style=3D"color:#64748b;font-size:14px">14:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think it&#x27;s =
+all Jira. Right, Prakash? I think that&#x27;s what they talked about.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prakash</span><spa=
+n style=3D"color:#64748b;font-size:14px">14:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So we spoke =
+about JIRA as a tool of choice.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Avinash=
+</span><span style=3D"color:#64748b;font-size:14px">14:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Jira is. May not. =
+Not all the users may have access to it. So there might be a limitation on =
+the access to jira. I don&#x27;t know. Again, please validate that.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prakash</span><spa=
+n style=3D"color:#64748b;font-size:14px">15:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, but that&#x27;s =
+part of the conversation to be had is how do we do that? What is a tool of =
+choice and how do we get people trained on it? Right. So as part of the =
+readiness for testing, we have to do that too. What we do want is a =
+consistent way of testing all of this in that, you know, as in not just.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Avinash</span><spa=
+n style=3D"color:#64748b;font-size:14px">15:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Consistency, but =
+look at it from a cross functional true. You need to have a visibility =
+because if you&#x27;re going to go through jira, Fluency, Finance, Finance =
+ISE or any other work streams, it&#x27;s going to be a challenge. While =
+I&#x27;m just thinking out loud here, not trying to shoot you down.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prakash</span><spa=
+n style=3D"color:#64748b;font-size:14px">15:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, it&#x27;s a =
+valid question and that&#x27;s the part of the conversation is we.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Avinash</span><spa=
+n style=3D"color:#64748b;font-size:14px">15:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Need to decide on it=
+ on a tool might be. Yeah, I should have pointed to say if you already have=
+ enough sharepoints out there, you just have to create one out there where =
+each function can come in out there and create their entry. That way you do=
+ not have any restrictions, you do not provide too much of overhead =
+training or anything to say this is how you create it. As in it&#x27;s a =
+simple form that you could have on a SharePoint and say log a ticket and =
+each and every user, let&#x27;s say for example, if I&#x27;m testing a =
+purchase order and there is a finance deposit dependency in the erp, they =
+could go ahead and log that defect on there instead of trying to figure out=
+ where do I lock this defect which is transferring it over.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Prakash</span><span style=3D"color:#64748b;font-size:14p=
+x">16:34</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">So it&#x27;s a good point you&#x27;re making. I think I&#x27;d like =
+to hear more of your thoughts on it and if there&#x27;s a point of view of =
+how Honeywell has done it in the past, that&#x27;s simple enough. Again, we=
+ don&#x27;t want to over engineer this and so I think you&#x27;re bringing =
+up good points. So if there&#x27;s a point of view you have already as to =
+what may work well for Honeywell and what people are used to, let&#x27;s =
+leverage that and so I think. I don&#x27;t know, Pier, I would look to you =
+then, Avinash, is to provide that point of view as to how do we simplify =
+life for everyone and have that end to end visibility. Right. We can always=
+ run.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">17:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Let&#x27;s start =
+with the high level first and then like the. Maybe we can start with the =
+SharePoint. Just make sure we get the tracker and the high level going. We =
+can circle that tomorrow. I think I&#x27;m okay with looking at multiple =
+options. The only reason I know that Jira was pushed was one, it was an IT =
+implementation already, but it&#x27;s also what the aura GDM was ran off of=
+. So Emo and Ben and a couple of those guys already used to seeing it. =
+Bimble&#x27;s already used to seeing it, the core implementation. So I =
+think that&#x27;s one of the scenarios that they were going to use because =
+JIRA was already that platform. Now I don&#x27;t have objective one way or =
+the other. I just want to make sure that we&#x27;re able to visually see it=
+ and it&#x27;s a common frame. Grounded. What not from the functions, but =
+also from leadership. So, Avantachi, I&#x27;m perfectly okay. Maybe we can =
+spend some time this week looking at some different scenarios and figure =
+out what fits best. I&#x27;ll find some time on your calendar. We can look =
+at it and Ricassa will just kind of put our heads together and say, hey, =
+what works? Yeah, maybe we pitch both ideals to Hopkins and then say, hey, =
+how do we want to present this? And then that way they make that decision =
+of what&#x27;s best for the program as a whole. Because we got thing too. =
+It&#x27;s not just on the IT side. They&#x27;re going to replicate this =
+across all and possibly, you know, replicate this into winner.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prakash</span><spa=
+n style=3D"color:#64748b;font-size:14px">18:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">True.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">18:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So it&#x27;s all =
+good points. I just think we need to start documenting it, putting it, you =
+know, on paper, and then getting the leadership to make some decisions. And=
+ they&#x27;ll have to make them this week.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prakash</span><span style=3D"color:#64748b;font-size:14px=
+">18:45</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah, agree. So, all right, so we have our action items here. So =
+we&#x27;ll send you the tracker for tomorrow, and then the rest of it =
+we&#x27;ll have a view for us to share with you on Thursday afternoon, and =
+then we can talk to Sukai on Friday.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:14px">1=
+9:03</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Sounds good.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prakash</span=
+><span style=3D"color:#64748b;font-size:14px">19:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right. Anything =
+else from the room here?</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><s=
+pan style=3D"color:#64748b;font-size:14px">19:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Think we&#x27;re =
+good.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prakash</span><spa=
+n style=3D"color:#64748b;font-size:14px">19:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think we&#x27;re =
+good. Okay. All right. Anything else from you, Avinash? But good points, =
+good points. So I think, yeah, I think we&#x27;ll. We&#x27;ll certainly =
+leverage your insights in Honeywell and IT to develop some of that stuff. =
+All right. Thanks. All right.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</s=
+pan><span style=3D"color:#64748b;font-size:14px">19:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Thank you. Take care=
+.</div></div><div style=3D"margin-bottom:0;padding:16px;background-color:#f=
+8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prakash</span><spa=
+n style=3D"color:#64748b;font-size:14px">19:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I got off a call =
+with Ben and Trinibas. Okay. And UAT came up. Sure.</div></div></div><div =
+style=3D"margin-top:36px;text-align:center;color:#64748b;font-size:14px;pad=
+ding:20px;border-top:1px solid #e2e8f0"><p style=3D"margin:0;margin-bottom:=
+8px">Captured with Wave AI Note Taker</p><p style=3D"margin:0;font-size:12p=
+x">Your AI-powered companion</p></div></div></div></div></html>
+----_NmP-e43bab6541e85b9c-Part_1--

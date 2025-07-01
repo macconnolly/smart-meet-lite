@@ -1,0 +1,1737 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:adf:a403:0:b0:3a4:dc5b:9678 with SMTP id d3csp2220452wra;
+        Mon, 2 Jun 2025 09:59:39 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG29H9o1EeED4Ozq3FKIjBGoGkmhZEF/VDnHzcuOnHYHV75TW++a8/6Bx4Bqut57lkw068U
+X-Received: by 2002:a05:6214:2524:b0:6f8:f1a5:e6a4 with SMTP id 6a1803df08f44-6facebec8bbmr208815186d6.22.1748883578770;
+        Mon, 02 Jun 2025 09:59:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748883578; cv=none;
+        d=google.com; s=arc-20240605;
+        b=RW706/pWhz6FVCKCB/MaixubHfAc/a+rUIbfwG4uXz1YdDjc9euRLAkeq8Amdm3NZR
+         /7QAMgSmoBKkVLm8EBEaw+wLHYK6lnSZT5rxy9kV1YLCUPsNlfH3zA7eq9Lme4gSD2CK
+         cl3xx0oGIa/s+aeB7wKd2mvFAwNCHL0CtTaAC91J6a8VS1OO7RK2jAB6mlx77pBgfBX/
+         FurdElX4zcGQxCWPtAUDBWtc7wuK6DSlYCFoUuHtcx5BasQt/XNXCA4rGCQYFeXJWDPM
+         wxWZXi1Kw8c7oblVbEQ5Miqo8Jg072dwukYtgG/BAQmRqTggmq3FfKEgzgICP4fn3wEA
+         behA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=h2n1poaA9JUluIVhbEPgEv+XyU8Swu/f7HpcJymLZGI=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=iIygZrT3wYbcU6M5q8rbnRtIx+RyQNe17Kk03ny7vH7wjA38qKCcWHES5vA74Qhy0L
+         InKZgJAvKeC+YbbKsB2DE0qjqqcGNdr5qxX8zwjQggjou0eUh93Vb9ZLCQuuwnJhifTv
+         DaJ3RTcwHkpJwXi4e/eFqsjy6BHIOibFqNhsxgwuf01lR9CAC0x/bg4Ypsck8qow1n5w
+         9r6rs3GqrNNlSFC57drP/heNLQG13zDq2lsIt1QBoxnX+qkYsGsoyb9RvrOQ8AWKhnUb
+         jfazoXc2cNnR9AkkS+4qABluW5zpp97sRbKbaB2blOKjl1OhmVAHN8pvowmn+jmIdEwg
+         6Lpw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=LDTAXNuS;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=MDVda3UW;
+       spf=pass (google.com: domain of 0100019731959ced-750654b3-5b71-4872-aa82-c1cdf7005442-000000@send.email.wave.co designates 54.240.9.46 as permitted sender) smtp.mailfrom=0100019731959ced-750654b3-5b71-4872-aa82-c1cdf7005442-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <0100019731959ced-750654b3-5b71-4872-aa82-c1cdf7005442-000000@send.email.wave.co>
+Received: from a9-46.smtp-out.amazonses.com (a9-46.smtp-out.amazonses.com. [54.240.9.46])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fac6dabb00si105423256d6.20.2025.06.02.09.59.38
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 02 Jun 2025 09:59:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 0100019731959ced-750654b3-5b71-4872-aa82-c1cdf7005442-000000@send.email.wave.co designates 54.240.9.46 as permitted sender) client-ip=54.240.9.46;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=LDTAXNuS;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=MDVda3UW;
+       spf=pass (google.com: domain of 0100019731959ced-750654b3-5b71-4872-aa82-c1cdf7005442-000000@send.email.wave.co designates 54.240.9.46 as permitted sender) smtp.mailfrom=0100019731959ced-750654b3-5b71-4872-aa82-c1cdf7005442-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1748883578;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=zH0ytGKeh7O7rm1uqTUEl2ARCiE6E9OveNyeQW6l0Kk=;
+	b=LDTAXNuSyCvuaT0sAoO66333rsW37JppRDNTIbuvzmkFcscddW/9Kv9PygLb2njO
+	0/hDnW9UMjULt613RyDQs3fcTa2ZICXj+coQulLssrD44TgwbWtbVFpkeVLBTh01rMN
+	4g6CVKDpote3c+nwXsGDJMLmk8V5834sEsSQ1VEg=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1748883578;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=zH0ytGKeh7O7rm1uqTUEl2ARCiE6E9OveNyeQW6l0Kk=;
+	b=MDVda3UWET6q/XDs1kKbG8/0ZKc/dgqF5ORg4+mX2SWzFVdWFSubWz0hK6dKl/az
+	BiHoLoVB1oCukJBC4Wc64oyKaokfiENb0sjPgvSVFuEowgBjsPbHgYiWyAPwj3xhjOS
+	NOmG5dReilH113Bhyr16R267Uc2AMopt0QMQ0FoQ=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: UAT Readiness Accountability and Coordination Plan
+Message-ID: <0100019731959ced-750654b3-5b71-4872-aa82-c1cdf7005442-000000@email.amazonses.com>
+Date: Mon, 2 Jun 2025 16:59:38 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-9c9724816fe9b760-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.06.02-54.240.9.46
+
+----_NmP-9c9724816fe9b760-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+UAT Readiness Accountability and Coordination Plan
+
+# Meeting Summary: UAT Readiness Review and Coordination =20
+**Date:** June 2, 2025 =20
+**Attendees:** Rakesh, Pierce, Avinash, and =
+others referenced (Jeff, Sky, Sukhai, Sriram, Harry Tong, John, Steve Brown=
+, Pramod, etc.) =20
+**Purpose:** Immediate review and action planning for =
+the upcoming UAT phase, readiness dashboard, identifying gaps, and defining=
+ clear next steps ahead of the All IT call.
+
+---
+
+## Main Topics Discussed
+
+### 1. **Status of UAT Readiness and Current Deliverables**
+- **Objective:** Move from presentation/preparation phase to actionable =
+execution.
+- **Discussion Points:**
+  - Review of the readiness =
+presentation and feedback that leadership now needs actual execution, not =
+further discussion or deck reviews.
+  - Specific concern expressed about =
+overdue deliverables; names and responsibilities for UAT roles were due on =
+May 23 and remain incomplete by June 2.
+  - Emphasis on accountability: If =
+deliverables aren=E2=80=99t provided, issues will be escalated directly to =
+leadership (Jeff, Sky) as no further extensions are possible.
+
+### 2. **Review of UAT Tracker and Dashboard**
+- **Objective:** Ensure =
+completeness and usability of the tracker and readiness dashboard.
+- **Discussion Points:**
+  - Excel tracker contains a roster of UAT =
+functional coordinators, POCs, and IT leads, but contains =
+gaps=E2=80=94especially among IT support roles for various subfunctions.
+  - Calls for the inclusion of a more granular breakdown, such as specific =
+IT resource names under each subfunction (e.g., Finance=E2=80=99s =
+transaction flow, T&E cards, etc.).
+  - Heat map/dashboard visualizations =
+were discussed; current versions insufficient since they do not reflect =
+full subfunction coverage.
+
+### 3. **Alignment and Role Clarifications**
+- **Objective:** Identify points of contact and ensure all subfunctions =
+have clear owners.
+- **Discussion Points:**
+  - Need to clarify if some =
+business focal points are also acting as IT focal points and identify =
+missing names in key areas (e.g., ISC, supply chain, finance).
+  - Discussion of the need for explicit callouts in the tracker for blank =
+roles and missing points of contact.
+  - Suggestions to add further columns=
+ such as =E2=80=9Csubfunction IT POC=E2=80=9D for better clarity and =
+escalation.
+
+### 4. **Immediate Actions and Communication**
+- **Objective:** Mobilize required teams to populate tracker and identify =
+testing windows.
+- **Discussion Points:**
+  - Decision to email all =
+responsible parties with a link to the tracker, explicit instructions, and =
+an end-of-day deadline for completion.
+  - If no response, escalation =
+protocol will be enacted.
+  - Ensured tracker is accessible (renamed to =
+"UAT Readiness Tracker" with no dates for version consistency), and link =
+will be distributed via chat and email.
+  - Emphasis on a single-threaded =
+approach to communications to avoid confusion among multiple leadership and=
+ teams.
+
+### 5. **Calendar and Testing Windows Coordination**
+- **Objective:** Gather and align SIT/UAT windows for all workstreams and =
+functions.
+- **Discussion Points:**
+  - Recognition that several teams (ERP=
+, supply chain) have set windows for SIT and UAT, but this information is =
+fragmented and not formally collected.
+  - Need for MOS (meetings of =
+status) calendaring to bridge the gaps and clarify dependencies between =
+functions (e.g., ERP, finance, supply chain).
+  - Plan to ask for explicit =
+SIT/UAT dates via formal requests as previous calls did not yield =
+structured data.
+
+### 6. **Dashboard and Reporting Evolution**
+- **Objective:** Develop a live dashboard to communicate readiness and =
+outstanding gaps.
+- **Discussion Points:**
+  - After roster completion, =
+focus will shift to a dashboard for executive visibility; key columns to =
+include: names identified, business/IT alignment, SIT/UAT status.
+  - Plan to develop this dashboard for review by midweek (target: Wednesday=
+, June 4).
+
+---
+
+## Action Items
+
+1. **Immediate Completion of UAT Roster**
+   - All subfunction IT and business contacts must update the UAT Readiness=
+ Tracker with named owners by *end of day today*, June 2, 2025.
+   - Deadline is final; escalation to leadership will occur for any =
+continued gaps.
+   - Pierce will send the tracker link via chat; official =
+communication will go out to all responsible parties.
+
+2. **Renaming of Current Tracker**
+   - Sheet to be renamed "UAT Readiness =
+Tracker" (no date references) for clarity and currency.
+
+3. **Template/Tracker Finalization**
+   - Avinash to review the sheet for =
+missing areas, formatting issues, and required columns for POCs.
+   - Additional column to be added for subfunction IT POCs (where =
+applicable).
+
+4. **Request for Testing Dates**
+   - Formal email to be sent=
+ requesting each function/team to provide specific SIT/UAT dates for their =
+workstreams.
+   - Collect all available dates for SIT/UAT and publish in =
+tracker, using placeholders where necessary.
+
+5. **MOS Calendar =
+Scheduling**
+   - Avinash to assist in scheduling alignment calls (MOS) =
+with all workstream leads to clarify testing windows and close any gaps.
+
+6. **Dashboard Development**
+   - Begin development of readiness dashboard =
+after roster completion.
+   - Pierce and Avinash to review and refine =
+dashboard by Wednesday, June 4.
+
+---
+
+## Follow-Up Points and Upcoming =
+Meetings
+
+- **All IT Connect Call:** Tracker and action points to be =
+communicated within the next 20 minutes during the broader All IT call.
+- **Internal Reviews:** Dashboard for UAT readiness to be reviewed =
+internally by Wednesday, June 4, with iterations as required.
+- **Further Email Communications:** Subsequent reminder/follow-up emails to=
+ be sent if teams do not provide SIT/UAT dates after initial requests.
+- **Regular MOS Alignment Meetings:** To be calendarized throughout the =
+week to match functional and IT readiness.
+
+---
+
+## Key Risks and Gaps =
+Highlighted
+
+- **Ownership Gaps:** Several subfunctions lack clearly named =
+IT/business leads or points of contact.
+- **Data/Status Gaps:** Lack of =
+formal collection of SIT/UAT windows across teams; prior requests largely =
+informal or incomplete.
+- **Accountability:** Multiple teams have had two =
+weeks to provide information; further delays will impact UAT schedule =
+(starts in 8 days).
+
+---
+
+## Summary Statement
+
+The meeting focused on =
+shifting from preparation to execution for UAT readiness, establishing =
+accountability for unresolved gaps, accelerating completion of UAT rosters =
+(names and POCs), and initiating immediate coordination to gather all =
+required SIT/UAT windows. A critical deadline of end-of-day June 2 is set =
+for these deliverables, leveraging escalation where required, with further =
+internal tracking and executive dashboarding to follow. Regular alignment =
+and follow-up meetings will ensure remaining issues are resolved ahead of =
+UAT commencement.
+
+Transcript:
+0:00
+Yeah, sure is. Hey, Rakesh. So I think =
+we just wanted to set up some time to talk through. I know that we haven't =
+personally had the opportunity to debrief after the call on Friday, but I =
+think the pressing matter is a review for the all IT call. UAT readiness is=
+ up on the agenda. Just an overall view of what we're putting together and =
+then what are the gaps and the risks and the immediate actions. Like what, =
+what do we need from folks this week and what are we working on? And we =
+wanted to review this with you before we put it in front of that audience =
+and then hopefully, if we have time, talk about actions for the week, =
+things where, where our priorities are at. Really.
+
+0:52
+Yeah.
+
+0:52
+And I did want to talk to this because. So here's my $0.02 on it and I'm =
+gonna be pretty blunt on here just so that we're on the same page for it. =
+The presentation and what we have going on is great. It's right where we =
+need to hit it. To me, Rakesh spoke on this earlier last week. Everything =
+that we have lined up is exactly where we needed to go. But now we need to =
+take it from doing a PowerPoint presentation to we have to do this now. So =
+like the deck is the high level. It's great for leadership, but now we have=
+ to get into it where that dashboard has to go through it, who owes me what=
+? And that needs to go to Sky. So if we don't have a name, it's going to =
+Sky Jeff today. Like we're out of time. There's no more deck, no more =
+discussion on this thing. If someone owes us something, it's going to Jeff =
+sky today saying, hey, they've had two weeks. Because Rakesh, I know some =
+of those stuff they're supposed to have to list on 23rd.
+
+1:46
+23Rd, right?
+
+1:47
+Yeah. We're in June. We're, we're screwed. So it needs to get to that=
+ point of, you know, we're going to talk about today on the call, but if =
+you owe me something, it's going directly to your leadership now. And then =
+what does it look like moving forward? Like the dashboard. You know, I know=
+ we've talked about it and we showed a slide on it, but what does the =
+dashboard actually look like? What is it live view for it to where we can =
+actually show leadership for. Do we have that available?
+
+2:14
+Not this morning. We're mocking something up and we'll look to get it =
+midweek.
+
+2:22
+So I think that's where like Jeff and Sky, they like where =
+we're going. They like the direction, unfortunately, UAT starts in eight =
+days.
+
+2:31
+Yeah, no, so. Yeah, no, fair, Fair enough. So I think there are=
+ a couple of things. I think. So the other table there. Can you go to slide=
+ 3? So I think we have a bit of roster. So I think where we need to start =
+filling up our stuff, Pierce, is we've got the names, every name that we've=
+ gotten, we've put that in Excel. So if you go to the Excel, I think what =
+we don't have is, yes, the name, some of the names starting with that, but =
+the rest of the dashboarding that Sukhai was talking about on. I need to =
+understand when KT is happening. I need to understand the people status. I =
+need to understand when SIT is happening. That stuff will add it into a =
+template here and very quickly do it today. I think the other piece, like =
+all of these Excel. I think it's the other Excel you are sharing. Hey, =
+Avinash. So we have some names. I think we need to start looking at what is=
+ truly missing. And I was hoping we have that.
+
+3:37
+Yeah, let me. I'm just pulling that up right now.
+
+3:39
+Yep, yep, yep, yep. No worries.
+
+3:41
+Yeah, I agree, like I said, and =
+seeing the names and seeing where our gaps are, but then we got to start =
+putting the two and two, like, you know, now we have the Excel, now we need=
+ to get this aligned for it. And Avinash, thanks for joining. That's where =
+I'm gonna need some of your help to start bridging some of these gaps like =
+ISC Tree and all them are starting to really start to message us and ask me=
+ about the overall view on how we're going to look at this. And I think =
+that's where that dashboard is going to come in handy of saying, okay, ERP =
+is doing their testing right now for sip. Now we do, you know, UAT and it's=
+ going to start what functions are aligned for it. Because ISC is =
+incremental into multiple different work streams. So they're going to be =
+touching base on it. But now we really got to start hitting the meat of =
+coordination between everybody.
+
+4:29
+Yeah, so this is so two points here. =
+So these are the names we've put and everything we've gotten from all of =
+the sources is here. Avinash as well. So We've got the UAT functional =
+coordinator names and POCs from each of the functions. There are some that =
+are certainly ISC will have to understand if there is a business focal or =
+if it's the same person like Laura is the same saying, well, I think you =
+Gave a ccx but I think there was something for Sriram as well where he's =
+given all these names and I think the other part of this is from an IT =
+perspective is Pramod. So we need to get if there's additional IT person =
+that is supporting sub function in here for Sriram like a CX or procurement=
+ or logistics. So I think that's the next step here. But here's. This is =
+really where we have all the gaps now we also have in the context of this, =
+the other It's. If you go on up and this probably needs to. This table =
+probably will need to change and modify a bit. Do we have stuff around IT =
+who is. Okay, so we've got IT focal but we don't have a. An IT lead per se =
+or like promote. If he's got certain people supporting him on. On supply =
+chain sub functions, we don't have any of those. So I think this is where. =
+So at this point this is the name. These are the names we have and all the =
+names we've gotten, we've put it in here. I think we now need to start =
+understanding what the gap is so that we can then start lighting these up. =
+So Avinash, question for you. Are you able to follow this tracker?
+
+6:23
+Yes, I can take it a quick. I have not looked at it.
+
+6:27
+Okay. Because I want to make sure that our rows are right and you know =
+where that's not applicable. We can populate those but I want to make sure =
+that we're capturing the right rows and then the columns for each of these.=
+ Then talk about the readiness. So okay, have you identified the names? =
+Have you aligned with the IT function like Sriram has been asking for in =
+the couple of meetings? Those are all the calendaring of the MOS peers that=
+ we need to start doing. So Avinash, maybe we work with you to calendar =
+these touch points. You know the case in point last week we had a very good=
+. Go ahead sorry.
+
+7:12
+Put this Excel in front of all of our leads to say =
+that hey, this is what they expect me to.
+
+7:20
+We're doing that this in =
+the all it connect in another 30 minutes, 20 minutes.
+
+7:25
+Okay? Yeah, I think till we are not going to Congress, I don't think you'll=
+ get anything spared out here.
+
+7:31
+Okay.
+
+7:32
+I think that's our first =
+step to say hey, here is a special. The best that we know of right now. But=
+ we would want you to populate all of this information. Once we have it =
+populated, you can see where the gaps are.
+
+7:46
+So let's do this Mac, =
+let's take this sheet and put this in a PowerPoint. And then we'll also =
+send them the Honeywell link to this readiness. And then we should ask the =
+ask the call to action slide should be, I need this populated by, you know,=
+ end of day today. Yep. Because to Pierce's point, we're out of time.
+
+8:12
+Because that is that realistic, I think.
+
+8:15
+Well, you know, they've had =
+two for two weeks. Yeah, yeah, but you know, they've had, I mean, well, to =
+be fair, we've asked them for two weeks. They've not sent us anything. And =
+if they're excuses, oh, we don't have a template to fill. Okay, we do have =
+a template. So go fill. So we can at least give them till end of the day =
+and tomorrow morning to go, you know, to sort this out.
+
+8:40
+So that's what I think we can do that, I think because we only have 20 =
+minutes. I'm not sure where we're at in the agenda, but this heat map on =
+the slide points to that. Oops, this is the wrong deck. But the heat map on=
+ the slide that we have points to that. So these are mapped. We changed the=
+ titles a minute ago. But these are mapped to where do we have gaps in the =
+four columns in the Excel. So Op Zep, Lead Functional Coordinator, Business=
+ focal, IT focal. This is mapped to these. And we could just make the call =
+to action more clear. If you see red, go to this link and populate it.
+
+9:27
+Well, here's my other part. This is where I have and I don't know =
+Piers, if this is. These are the four things we should track because for =
+example, we have Harry Tong as the IT focal for Finance. He may have one or=
+ two people he designates as leads and a focal for, you know, he's, he's =
+probably, he's Athens IT focal now. So is there an equivalent Honeywell? I =
+do not know. Does he, does he have a couple of people that will support the=
+ sub functions in finance? I do not know. Those are the names we need. So =
+right now I'm reading it as finances clean, but it's not because the Excel =
+says differently. So that's why we need to change that Excel to Let's not, =
+let's not show the dashboard. But we need the Excel here saying, Harry, go =
+in and give me a name for each of these sub line items here. Who's doing =
+the transaction flow? Who's doing the TNE cards? Is it one person across =
+these? If so, put the name there. If not, give me the five names. That's =
+what we need by End of.
+
+10:35
+Day in the same way that John sent us those =
+first.
+
+10:38
+John and yeah, for ccex. Yeah. Or Sriram for supply chain. =
+Yeah.
+
+10:45
+Okay.
+
+10:47
+I need to get really the ask. So copy this table =
+in there and then we'll send them the link and call to action to say listen=
+, this is all blank for it. This is an IT audience. We need you guys to =
+give us all the names for it because then we will go back in and say, okay,=
+ if it's an end to end process, we're going to get business testers. What =
+about for some of these apps that are not BRB, like the 10 move as is apps =
+and stuff. You know you're doing sit right now. Who are your testers for =
+those as well? You know, who are your leads? You know, Harry's got a few =
+apps that are non BRV that are going live. So what's he doing about them? =
+So that's the other piece of it we need. So this dashboard is again, I =
+think we need to adjust the dashboard so perhaps show this, show the first =
+slide and then give the table at the second. And then the call to action is=
+ they need this filled out today, no more. Because tomorrow, in fact, to =
+Pierce's point, this needs to go out by end of day today to Jeff and others=
+ and Sukai and say we've got gaps. So call really is guys, get on it, fill =
+this names out. Perhaps that's step number one. And then immediately after =
+we can then talk about what the dashboard for Friday should look like so =
+that we can start developing. One of the columns is names identified. =
+Another column is, you know, key, you know, business names identified and =
+KT done alignment and done sit status, UAT status. So that dashboard we =
+could develop right after for a review with peers on Wednesday. But I think=
+ the call to action today is this is not done. Go fill this out. Actually, =
+after Harry Tong, I would leave the other. You need to include the rows =
+that are blank.
+
+12:54
+You've got 15 minutes here before your next call. =
+Rakesh, you shoot out an email with the link for everyone and say, hey, =
+here's the template. We'll discuss this in the call. But this is what we =
+expect because if you're not going to put an email.
+
+13:09
+Yeah, if you're not going to put. Yeah, that's fine. So let me do that, let=
+ me. Okay, so actually, you know what, it may be easier coming from you, =
+Pierce. It may resonate better. So.
+
+13:23
+Would you, you have the link.
+
+13:26
+For this and I can send it out? Yes, Yep. I, we have max. Let's send =
+The Honeywell link here.
+
+13:31
+Yeah, I'm going to drop it in the chat =
+right now.
+
+13:33
+Okay.
+
+13:34
+Yeah, drop it in the chat and then what I'll=
+ do is I'll put on email to the broader audience and let them know that I =
+need, you know, everyone to confirm the existing names in here and fill in =
+the blanks by end of day today.
+
+13:47
+Let's, and if you don't mind, let's =
+rename the thing. Just call it UAT Ready. You know, UAT Roster. Let's not =
+put a date on it.
+
+13:59
+Where.
+
+14:03
+It'S not UAT readiness tracker 527. =
+Let's call it UAT readiness tracker. Just no date.
+
+14:13
+Okay. You have on the Excel.
+
+14:19
+Yes, on the Excel.
+
+14:20
+Yeah. Let me rename it.
+
+14:21
+Yeah. So we will ask of it from the teams at=
+ one, we'll see where we are in parallel. We'll start developing the =
+dashboard. That and again we'll, we'll look to send a read to you tomorrow,=
+ if not before Wednesday, Pierce and Avinash. So that way we can at least =
+refine that. We've got a few cycles to refine what we need and then we can =
+see where the data flows in from the other part of all of this is. So the =
+next piece of this, Avinash, is we need to have this calendar. What I'm =
+realizing, for example, is in the calls from last week, supply chain Pramod=
+ and his team shared when their sit is happening and for all their systems =
+and some of the sits happening now and you know, UAT windows for them from =
+a business perspective, Sriram and the business process teams are looking =
+at a view of the calendar that they need to support testing in. What we =
+also heard is the ERP team already has calendar windows that Srinivas and =
+Srijib have. Bill Ponsetty have developed that they are reaching out and =
+asking, excuse me, support for, for ERP testing for uat. So this is where =
+the, the connect the dots and coordination that we need to do is to say, =
+okay, I've got so many of these windows coming up. How do we show this end =
+to end and how do we have this alignment with, between IT work streams and =
+the functions to say, well, ERP is ready, the system is ready in these two =
+windows. The supply chain systems are ready prior in these windows or they =
+overlap, you know, finance is ready in a little bit later perhaps. So I =
+think we need to do that marrying up so that we, we understand all the =
+windows that each function, each work stream is ready. So you know, =
+functions can go then plan the Scenarios and end to end scenarios and start=
+ collaborating there. So that's against the, the next step on it. But I =
+think that that's why these alignment calls are needed now. So we'll send =
+you an MOS calendar. So if you can help calendar this with all the work =
+streams throughout this week, then we can start, you know, developing, you =
+know, talking points for each of these and understanding and closing the =
+gaps.
+
+16:56
+Yeah. And Rakesh, just a quick question to backtrack real =
+quick. Your to your comment about needing to include the blank rows. Could =
+we add just another column that's like this is the default IT focal and =
+names if, if they like for Harry Tong, if he wants to nominate like IT =
+folks some delegate.
+
+17:18
+Yeah, yeah, include that column there. Include =
+another column in here that says, you know, sub function or you know, sub =
+function coordinator. POC it poc.
+
+17:50
+And that was these folks really I =
+think like from that we got from John.
+
+17:58
+So Steve Brown may say I've =
+got six people. So. So yeah, I know not to take up too much of this call. =
+Anything else? Avinash or Pierce, I know we've talked this to death. Let's =
+just put it to action. And Avinash, please take a look at the sheet as well=
+. See what may be missing or how we can reformat the sheet. Sorry.
+
+18:29
+Do you have a sheet where you track the timelines that you're talking about=
+? Have you created a new sheet?
+
+18:37
+Yeah, we do have. Yeah, yeah, yeah, =
+we do. Yeah, we'll send that to you as well as in.
+
+18:44
+Is that not captured there in terms.
+
+18:46
+Of on the right hand side. So, =
+so on the right hand side we need to fill in some dates here because like =
+we need to schedule the itmos. We need to schedule when these scenarios are=
+ aligned. We can put some placeholder dates. Maybe that's what we start =
+with instead of T minus.
+
+19:04
+Rakesh, my question is have you asked the =
+team, have they given you the dates? Have they put up dates right now or. =
+We've not asked of that information as yet.
+
+19:18
+Some of it we've asked =
+some of it. No. So that's the other piece is we can ask on the call today =
+and formalize it. So to Pierce's point earlier point we've asked them =
+during these meetings and such, but it's not been like a formal email, give=
+ me this date. So I think that's what is needed as well.
+
+19:37
+Yeah, calls are not something, yes, it's important. But then without having=
+ sent out templates or emails to be focused and saying that this is what I =
+need from you in this template, we are not going to get it. There are so =
+many things that are happening. The calls can reinforce that messaging =
+saying that we've sent this out, we've not heard back. We're going to =
+escalate this.
+
+19:58
+We'll send it. Yeah. So we'll do that and then send =
+out the template as well.
+
+20:02
+Yeah, I have an email that's going to go =
+out right now that's to all the points, just talking about this. And I =
+basically took some of our normal. James, Howita, Yonji, you know, Avinash,=
+ you're on here. But then I also took all the names off of this list right =
+here. I took Harry off here, took three and threw all them on the email. =
+And then I'm gonna ask them to make sure I don't miss anybody and tell them=
+ they have something today, today, and then they're gonna have to get it =
+through it. Yeah, I could probably give them till tomorrow morning. But =
+like I said, it's just. Just a name at this stage. And they've been =
+discussed on it with. It connects with Sakai directly. Chris has brought it=
+ up. So I think we're at the stage now where they should have this.
+
+20:42
+Yeah. And then we'll follow up. Avinash, your point with another email that=
+ says provide the test dates and the windows you've already defined in here=
+ in the same template. So we'll, we'll do that.
+
+20:53
+So that way you're able to generate an overall overall and whoever is =
+running that MOS with the business portals or in any conversation, you have=
+ one access workflow to say, here are the names, here are the dates that we=
+ are looking at when SID is happening for which function, when UAT is going=
+ to kick in for which function. So it's an easy conversation.
+
+21:19
+Question for you. Is there a ready made will create something. We'll put =
+that together. Is there something that Honeywell typically uses?
+
+21:30
+There's nothing typical.
+
+21:32
+Okay, all right. Or something you've used. =
+Okay. Just not nothing format. Okay. All right, so we'll just use an.
+
+21:39
+Excel Gantt that you can create to say, list the same list of =
+applications or processes and say, give me put the dates and then say when =
+is this idea occurring and when is UAT going to start?
+
+21:51
+We have that actually in their app tracker. So I think it's just generating=
+ the app tracker, really. So we'll do that. We'll just pull that into a =
+sheet. See the problem, Avinash, is a lot of it is generic. They break =
+broad dates and teams haven't updated their work Plans. And so that's a =
+hygiene issue. But yes, I think at this point, point we will send an update=
+.
+
+22:23
+I don't know who because I don't want to start shooting any emails=
+ because people are going to get confused. There are too many leaders out =
+here in this entire program and the last thing that they need is another =
+focus. Sending out 10 different emails to say, what the heck are you guys =
+doing? Understanding it's going to create more confusion for them.
+
+22:43
+Understood.
+
+22:44
+Whether it is peers, whether it is somebody on EY or =
+whoever it is, they should continue to take the lead and hammer this to say=
+ that this is not done. This is what I'm escalating.
+
+23:00
+Yep.
+
+23:01
+I'm sure they'll go figure out a way to get this done if they have that =
+information.
+
+23:05
+Right. All right, so we will put that into a tracker. =
+So we will get the exact dates today that we have in our inventory and =
+we'll start publishing that. And if it's wrong, then that shows up and =
+people have to go update it anyway. So we'll force the issue.
+
+23:24
+Yep.
+
+23:25
+Cool. All right, so we've got action items over the next hours. So =
+we'll get working on it and then we'll talk to the IT team and then another=
+ four minutes.
+
+23:37
+For another meeting. Thank you.
+
+23:39
+Thank you. Rakesh. Rakesh, do you have a second to stay on?
+
+23:44
+Yeah, I do.
+
+23:45
+I just wanted to add a background to this.
+
+23:49
+Sure.
+
+23:50
+Like what are. What exactly are we asking them?
+
+23:52
+I suppose so we're asking I need to be too fancy. But no, it's names needed=
+ or IT resources and points of contact needed for each sub function. So =
+just say IT roster point of contact needed for, you know, sub function as =
+applicable. Right. So yeah, you can remove the key takeaway text. Yep. So =
+backup, you could kill all the backup. There's no backup there on the right=
+ hand side. Right. It's, you know, just format is not an email. It's go put=
+ that information there. Right. Is update the Excel. Sorry, I've got to =
+step out for this thing. So let me. I'll connect with you in a couple of =
+minutes.
+
+25:06
+Okay, thanks, Rakesh. Thank you so much. Thanks, Bye.
+----_NmP-9c9724816fe9b760-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">UAT =
+Readiness Accountability and Coordination Plan</h1></td></tr></table></div>=
+<div style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/4E982CF7-700F-4B35-84D6-6D828F369DAE?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h1 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2.5rem">Meeting Summary: UAT Readiness Review and =
+Coordination</h1><p><strong style=3D"font-weight:bold">Date:</strong> June =
+2, 2025<br /><strong style=3D"font-weight:bold">Attendees:</strong> Rakesh,=
+ Pierce, Avinash, and others referenced (Jeff, Sky, Sukhai, Sriram, Harry =
+Tong, John, Steve Brown, Pramod, etc.)<br /><strong =
+style=3D"font-weight:bold">Purpose:</strong> Immediate review and action =
+planning for the upcoming UAT phase, readiness dashboard, identifying gaps,=
+ and defining clear next steps ahead of the All IT call.</p>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Main Topics =
+Discussed</h2><h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">1. <strong style=3D"font-weight:bold">Status of UAT Readiness and =
+Current Deliverables</strong></h3><ul>
+<li><strong style=3D"font-weight:bol=
+d">Objective:</strong> Move from presentation/preparation phase to =
+actionable execution.</li>
+<li><strong style=3D"font-weight:bold">Discussio=
+n Points:</strong><ul>
+<li>Review of the readiness presentation and =
+feedback that leadership now needs actual execution, not further discussion=
+ or deck reviews.</li>
+<li>Specific concern expressed about overdue =
+deliverables; names and responsibilities for UAT roles were due on May 23 =
+and remain incomplete by June 2.</li>
+<li>Emphasis on accountability: If =
+deliverables aren=E2=80=99t provided, issues will be escalated directly to =
+leadership (Jeff, Sky) as no further extensions are possible.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">2. <strong style=3D"font-weight:bold">Review of UAT Tracker and =
+Dashboard</strong></h3><ul>
+<li><strong style=3D"font-weight:bold">Objectiv=
+e:</strong> Ensure completeness and usability of the tracker and readiness =
+dashboard.</li>
+<li><strong style=3D"font-weight:bold">Discussion =
+Points:</strong><ul>
+<li>Excel tracker contains a roster of UAT functional =
+coordinators, POCs, and IT leads, but contains gaps=E2=80=94especially =
+among IT support roles for various subfunctions.</li>
+<li>Calls for the inclusion of a more granular breakdown, such as specific =
+IT resource names under each subfunction (e.g., Finance=E2=80=99s =
+transaction flow, T&amp;E cards, etc.).</li>
+<li>Heat map/dashboard =
+visualizations were discussed; current versions insufficient since they do =
+not reflect full subfunction coverage.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">3. <strong=
+ style=3D"font-weight:bold">Alignment and Role Clarifications</strong></h3>=
+<ul>
+<li><strong style=3D"font-weight:bold">Objective:</strong> Identify =
+points of contact and ensure all subfunctions have clear owners.</li>
+<li><strong style=3D"font-weight:bold">Discussion Points:</strong><ul>
+<li>Need to clarify if some business focal points are also acting as IT =
+focal points and identify missing names in key areas (e.g., ISC, supply =
+chain, finance).</li>
+<li>Discussion of the need for explicit callouts in =
+the tracker for blank roles and missing points of contact.</li>
+<li>Suggestions to add further columns such as =E2=80=9Csubfunction IT =
+POC=E2=80=9D for better clarity and escalation.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">4. <strong=
+ style=3D"font-weight:bold">Immediate Actions and Communication</strong></h=
+3><ul>
+<li><strong style=3D"font-weight:bold">Objective:</strong> Mobilize =
+required teams to populate tracker and identify testing windows.</li>
+<li><strong style=3D"font-weight:bold">Discussion Points:</strong><ul>
+<li>Decision to email all responsible parties with a link to the tracker, =
+explicit instructions, and an end-of-day deadline for completion.</li>
+<li>If no response, escalation protocol will be enacted.</li>
+<li>Ensured tracker is accessible (renamed to &quot;UAT Readiness =
+Tracker&quot; with no dates for version consistency), and link will be =
+distributed via chat and email.</li>
+<li>Emphasis on a single-threaded =
+approach to communications to avoid confusion among multiple leadership and=
+ teams.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20p=
+x;font-size:1.75rem">5. <strong style=3D"font-weight:bold">Calendar and =
+Testing Windows Coordination</strong></h3><ul>
+<li><strong =
+style=3D"font-weight:bold">Objective:</strong> Gather and align SIT/UAT =
+windows for all workstreams and functions.</li>
+<li><strong =
+style=3D"font-weight:bold">Discussion Points:</strong><ul>
+<li>Recognition that several teams (ERP, supply chain) have set windows for=
+ SIT and UAT, but this information is fragmented and not formally collected=
+.</li>
+<li>Need for MOS (meetings of status) calendaring to bridge the gaps=
+ and clarify dependencies between functions (e.g., ERP, finance, supply =
+chain).</li>
+<li>Plan to ask for explicit SIT/UAT dates via formal requests=
+ as previous calls did not yield structured data.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">6. <strong=
+ style=3D"font-weight:bold">Dashboard and Reporting =
+Evolution</strong></h3><ul>
+<li><strong style=3D"font-weight:bold">Objectiv=
+e:</strong> Develop a live dashboard to communicate readiness and =
+outstanding gaps.</li>
+<li><strong style=3D"font-weight:bold">Discussion =
+Points:</strong><ul>
+<li>After roster completion, focus will shift to a =
+dashboard for executive visibility; key columns to include: names =
+identified, business/IT alignment, SIT/UAT status.</li>
+<li>Plan to develop this dashboard for review by midweek (target: Wednesday=
+, June 4).</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;paddi=
+ng-top:20px;font-size:2rem">Action Items</h2><ol>
+<li><p><strong =
+style=3D"font-weight:bold">Immediate Completion of UAT Roster</strong></p>
+<ul>
+<li>All subfunction IT and business contacts must update the UAT =
+Readiness Tracker with named owners by <em style=3D"font-style:italic">end =
+of day today</em>, June 2, 2025.</li>
+<li>Deadline is final; escalation to =
+leadership will occur for any continued gaps.</li>
+<li>Pierce will send the=
+ tracker link via chat; official communication will go out to all =
+responsible parties.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Renaming of Current Tracker</strong></p>
+<ul>
+<li>Sheet to be renamed &quot;UAT Readiness Tracker&quot; (no date =
+references) for clarity and currency.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Template/Tracker =
+Finalization</strong></p>
+<ul>
+<li>Avinash to review the sheet for missing =
+areas, formatting issues, and required columns for POCs.</li>
+<li>Additional column to be added for subfunction IT POCs (where =
+applicable).</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Req=
+uest for Testing Dates</strong></p>
+<ul>
+<li>Formal email to be sent =
+requesting each function/team to provide specific SIT/UAT dates for their =
+workstreams.</li>
+<li>Collect all available dates for SIT/UAT and publish =
+in tracker, using placeholders where necessary.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">MOS Calendar =
+Scheduling</strong></p>
+<ul>
+<li>Avinash to assist in scheduling alignment =
+calls (MOS) with all workstream leads to clarify testing windows and close =
+any gaps.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Dashbo=
+ard Development</strong></p>
+<ul>
+<li>Begin development of readiness =
+dashboard after roster completion.</li>
+<li>Pierce and Avinash to review =
+and refine dashboard by Wednesday, June 4.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Follow-Up =
+Points and Upcoming Meetings</h2><ul>
+<li><strong style=3D"font-weight:bold=
+">All IT Connect Call:</strong> Tracker and action points to be =
+communicated within the next 20 minutes during the broader All IT call.=
+</li>
+<li><strong style=3D"font-weight:bold">Internal Reviews:</strong> =
+Dashboard for UAT readiness to be reviewed internally by Wednesday, June 4,=
+ with iterations as required.</li>
+<li><strong style=3D"font-weight:bold">F=
+urther Email Communications:</strong> Subsequent reminder/follow-up emails =
+to be sent if teams do not provide SIT/UAT dates after initial requests.=
+</li>
+<li><strong style=3D"font-weight:bold">Regular MOS Alignment =
+Meetings:</strong> To be calendarized throughout the week to match =
+functional and IT readiness.</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500=
+;padding-top:20px;font-size:2rem">Key Risks and Gaps Highlighted</h2><ul>
+<li><strong style=3D"font-weight:bold">Ownership Gaps:</strong> Several =
+subfunctions lack clearly named IT/business leads or points of contact.=
+</li>
+<li><strong style=3D"font-weight:bold">Data/Status Gaps:</strong> =
+Lack of formal collection of SIT/UAT windows across teams; prior requests =
+largely informal or incomplete.</li>
+<li><strong style=3D"font-weight:bold"=
+>Accountability:</strong> Multiple teams have had two weeks to provide =
+information; further delays will impact UAT schedule (starts in 8 days).=
+</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:=
+2rem">Summary Statement</h2><p>The meeting focused on shifting from =
+preparation to execution for UAT readiness, establishing accountability for=
+ unresolved gaps, accelerating completion of UAT rosters (names and POCs), =
+and initiating immediate coordination to gather all required SIT/UAT =
+windows. A critical deadline of end-of-day June 2 is set for these =
+deliverables, leveraging escalation where required, with further internal =
+tracking and executive dashboarding to follow. Regular alignment and =
+follow-up meetings will ensure remaining issues are resolved ahead of UAT =
+commencement.</p>
+</div></div></div><div style=3D"background-color:#ffffff;=
+padding:28px;border-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px =
+3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription</h3><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Pierce</span><span style=3D"color:#64748b;font-size:14px=
+">0:00</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah, sure is. Hey, Rakesh. So I think we just wanted to set up some =
+time to talk through. I know that we haven&#x27;t personally had the =
+opportunity to debrief after the call on Friday, but I think the pressing =
+matter is a review for the all IT call. UAT readiness is up on the agenda. =
+Just an overall view of what we&#x27;re putting together and then what are =
+the gaps and the risks and the immediate actions. Like what, what do we =
+need from folks this week and what are we working on? And we wanted to =
+review this with you before we put it in front of that audience and then =
+hopefully, if we have time, talk about actions for the week, things where, =
+where our priorities are at. Really.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>0:52</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhai</span><span=
+ style=3D"color:#64748b;font-size:14px">0:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And I did want to =
+talk to this because. So here&#x27;s my $0.02 on it and I&#x27;m gonna be =
+pretty blunt on here just so that we&#x27;re on the same page for it. The =
+presentation and what we have going on is great. It&#x27;s right where we =
+need to hit it. To me, Rakesh spoke on this earlier last week. Everything =
+that we have lined up is exactly where we needed to go. But now we need to =
+take it from doing a PowerPoint presentation to we have to do this now. So =
+like the deck is the high level. It&#x27;s great for leadership, but now we=
+ have to get into it where that dashboard has to go through it, who owes me=
+ what? And that needs to go to Sky. So if we don&#x27;t have a name, =
+it&#x27;s going to Sky Jeff today. Like we&#x27;re out of time. =
+There&#x27;s no more deck, no more discussion on this thing. If someone =
+owes us something, it&#x27;s going to Jeff sky today saying, hey, =
+they&#x27;ve had two weeks. Because Rakesh, I know some of those stuff =
+they&#x27;re supposed to have to list on 23rd.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>1:46</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">23Rd, right?</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhai</span>=
+<span style=3D"color:#64748b;font-size:14px">1:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. We&#x27;re in =
+June. We&#x27;re, we&#x27;re screwed. So it needs to get to that point of, =
+you know, we&#x27;re going to talk about today on the call, but if you owe =
+me something, it&#x27;s going directly to your leadership now. And then =
+what does it look like moving forward? Like the dashboard. You know, I know=
+ we&#x27;ve talked about it and we showed a slide on it, but what does the =
+dashboard actually look like? What is it live view for it to where we can =
+actually show leadership for. Do we have that available?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>2:14</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Not this morning. We&#x27;re mocking something up and we&#x27;ll look to=
+ get it midweek.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhai</span>=
+<span style=3D"color:#64748b;font-size:14px">2:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So I think =
+that&#x27;s where like Jeff and Sky, they like where we&#x27;re going. They=
+ like the direction, unfortunately, UAT starts in eight days.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">2:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, no, so. Yeah, =
+no, fair, Fair enough. So I think there are a couple of things. I think. So=
+ the other table there. Can you go to slide 3? So I think we have a bit of =
+roster. So I think where we need to start filling up our stuff, Pierce, is =
+we&#x27;ve got the names, every name that we&#x27;ve gotten, we&#x27;ve put=
+ that in Excel. So if you go to the Excel, I think what we don&#x27;t have =
+is, yes, the name, some of the names starting with that, but the rest of =
+the dashboarding that Sukhai was talking about on. I need to understand =
+when KT is happening. I need to understand the people status. I need to =
+understand when SIT is happening. That stuff will add it into a template =
+here and very quickly do it today. I think the other piece, like all of =
+these Excel. I think it&#x27;s the other Excel you are sharing. Hey, =
+Avinash. So we have some names. I think we need to start looking at what is=
+ truly missing. And I was hoping we have that.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Pierce</span><span style=3D"color:#64748b;font-size:14px"=
+>3:37</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, let me. I&#x27;m just pulling that up right now.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>3:39</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yep, yep, yep, yep. No worries.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhai=
+</span><span style=3D"color:#64748b;font-size:14px">3:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I agree, like =
+I said, and seeing the names and seeing where our gaps are, but then we got=
+ to start putting the two and two, like, you know, now we have the Excel, =
+now we need to get this aligned for it. And Avinash, thanks for joining. =
+That&#x27;s where I&#x27;m gonna need some of your help to start bridging =
+some of these gaps like ISC Tree and all them are starting to really start =
+to message us and ask me about the overall view on how we&#x27;re going to =
+look at this. And I think that&#x27;s where that dashboard is going to come=
+ in handy of saying, okay, ERP is doing their testing right now for sip. =
+Now we do, you know, UAT and it&#x27;s going to start what functions are =
+aligned for it. Because ISC is incremental into multiple different work =
+streams. So they&#x27;re going to be touching base on it. But now we really=
+ got to start hitting the meat of coordination between everybody.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">4:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, so this is so =
+two points here. So these are the names we&#x27;ve put and everything =
+we&#x27;ve gotten from all of the sources is here. Avinash as well. So =
+We&#x27;ve got the UAT functional coordinator names and POCs from each of =
+the functions. There are some that are certainly ISC will have to =
+understand if there is a business focal or if it&#x27;s the same person =
+like Laura is the same saying, well, I think you Gave a ccx but I think =
+there was something for Sriram as well where he&#x27;s given all these =
+names and I think the other part of this is from an IT perspective is =
+Pramod. So we need to get if there&#x27;s additional IT person that is =
+supporting sub function in here for Sriram like a CX or procurement or =
+logistics. So I think that&#x27;s the next step here. But here&#x27;s. This=
+ is really where we have all the gaps now we also have in the context of =
+this, the other It&#x27;s. If you go on up and this probably needs to. This=
+ table probably will need to change and modify a bit. Do we have stuff =
+around IT who is. Okay, so we&#x27;ve got IT focal but we don&#x27;t have a=
+. An IT lead per se or like promote. If he&#x27;s got certain people =
+supporting him on. On supply chain sub functions, we don&#x27;t have any of=
+ those. So I think this is where. So at this point this is the name. These =
+are the names we have and all the names we&#x27;ve gotten, we&#x27;ve put =
+it in here. I think we now need to start understanding what the gap is so =
+that we can then start lighting these up. So Avinash, question for you. Are=
+ you able to follow this tracker?</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Avinash=
+</span><span style=3D"color:#64748b;font-size:14px">6:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes, I can take it a=
+ quick. I have not looked at it.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh<=
+/span><span style=3D"color:#64748b;font-size:14px">6:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. Because I want=
+ to make sure that our rows are right and you know where that&#x27;s not =
+applicable. We can populate those but I want to make sure that we&#x27;re =
+capturing the right rows and then the columns for each of these. Then talk =
+about the readiness. So okay, have you identified the names? Have you =
+aligned with the IT function like Sriram has been asking for in the couple =
+of meetings? Those are all the calendaring of the MOS peers that we need to=
+ start doing. So Avinash, maybe we work with you to calendar these touch =
+points. You know the case in point last week we had a very good. Go ahead =
+sorry.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Avinash</span><spa=
+n style=3D"color:#64748b;font-size:14px">7:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Put this Excel in =
+front of all of our leads to say that hey, this is what they expect me to.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">7:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We&#x27;re doing =
+that this in the all it connect in another 30 minutes, 20 minutes.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Avinash</span><spa=
+n style=3D"color:#64748b;font-size:14px">7:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay? Yeah, I think =
+till we are not going to Congress, I don&#x27;t think you&#x27;ll get =
+anything spared out here.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">7:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Avinash</span><spa=
+n style=3D"color:#64748b;font-size:14px">7:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think that&#x27;s =
+our first step to say hey, here is a special. The best that we know of =
+right now. But we would want you to populate all of this information. Once =
+we have it populated, you can see where the gaps are.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>7:46</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So let&#x27;s do this Mac, let&#x27;s take this sheet and put this in a =
+PowerPoint. And then we&#x27;ll also send them the Honeywell link to this =
+readiness. And then we should ask the ask the call to action slide should =
+be, I need this populated by, you know, end of day today. Yep. Because to =
+Pierce&#x27;s point, we&#x27;re out of time.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Avinash</span><span style=3D"color:#64748b;font-size:14px=
+">8:12</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Because that is that realistic, I think.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>8:15</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Well, you know, they&#x27;ve had two for two weeks. Yeah, yeah, but you =
+know, they&#x27;ve had, I mean, well, to be fair, we&#x27;ve asked them for=
+ two weeks. They&#x27;ve not sent us anything. And if they&#x27;re excuses,=
+ oh, we don&#x27;t have a template to fill. Okay, we do have a template. So=
+ go fill. So we can at least give them till end of the day and tomorrow =
+morning to go, you know, to sort this out.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Pierce</span><span style=3D"color:#64748b;font-size:14px"=
+>8:40</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So that&#x27;s what I think we can do that, I think because we only have=
+ 20 minutes. I&#x27;m not sure where we&#x27;re at in the agenda, but this =
+heat map on the slide points to that. Oops, this is the wrong deck. But the=
+ heat map on the slide that we have points to that. So these are mapped. We=
+ changed the titles a minute ago. But these are mapped to where do we have =
+gaps in the four columns in the Excel. So Op Zep, Lead Functional =
+Coordinator, Business focal, IT focal. This is mapped to these. And we =
+could just make the call to action more clear. If you see red, go to this =
+link and populate it.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">9:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Well, here&#x27;s my=
+ other part. This is where I have and I don&#x27;t know Piers, if this is. =
+These are the four things we should track because for example, we have =
+Harry Tong as the IT focal for Finance. He may have one or two people he =
+designates as leads and a focal for, you know, he&#x27;s, he&#x27;s =
+probably, he&#x27;s Athens IT focal now. So is there an equivalent =
+Honeywell? I do not know. Does he, does he have a couple of people that =
+will support the sub functions in finance? I do not know. Those are the =
+names we need. So right now I&#x27;m reading it as finances clean, but =
+it&#x27;s not because the Excel says differently. So that&#x27;s why we =
+need to change that Excel to Let&#x27;s not, let&#x27;s not show the =
+dashboard. But we need the Excel here saying, Harry, go in and give me a =
+name for each of these sub line items here. Who&#x27;s doing the =
+transaction flow? Who&#x27;s doing the TNE cards? Is it one person across =
+these? If so, put the name there. If not, give me the five names. =
+That&#x27;s what we need by End of.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Pierce</span><span style=3D"color:#64748b;font-size:14px"=
+>10:35</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Day in the same way that John sent us those first.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>10:38</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">John and yeah, for ccex. Yeah. Or Sriram for supply chain. Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">10:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">10:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I need to get really=
+ the ask. So copy this table in there and then we&#x27;ll send them the =
+link and call to action to say listen, this is all blank for it. This is an=
+ IT audience. We need you guys to give us all the names for it because then=
+ we will go back in and say, okay, if it&#x27;s an end to end process, =
+we&#x27;re going to get business testers. What about for some of these apps=
+ that are not BRB, like the 10 move as is apps and stuff. You know =
+you&#x27;re doing sit right now. Who are your testers for those as well? =
+You know, who are your leads? You know, Harry&#x27;s got a few apps that =
+are non BRV that are going live. So what&#x27;s he doing about them? So =
+that&#x27;s the other piece of it we need. So this dashboard is again, I =
+think we need to adjust the dashboard so perhaps show this, show the first =
+slide and then give the table at the second. And then the call to action is=
+ they need this filled out today, no more. Because tomorrow, in fact, to =
+Pierce&#x27;s point, this needs to go out by end of day today to Jeff and =
+others and Sukai and say we&#x27;ve got gaps. So call really is guys, get =
+on it, fill this names out. Perhaps that&#x27;s step number one. And then =
+immediately after we can then talk about what the dashboard for Friday =
+should look like so that we can start developing. One of the columns is =
+names identified. Another column is, you know, key, you know, business =
+names identified and KT done alignment and done sit status, UAT status. So =
+that dashboard we could develop right after for a review with peers on =
+Wednesday. But I think the call to action today is this is not done. Go =
+fill this out. Actually, after Harry Tong, I would leave the other. You =
+need to include the rows that are blank.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Avinash</span><span style=3D"color:#64748b;font-size:14px=
+">12:54</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">You&#x27;ve got 15 minutes here before your next call. Rakesh, you =
+shoot out an email with the link for everyone and say, hey, here&#x27;s the=
+ template. We&#x27;ll discuss this in the call. But this is what we expect =
+because if you&#x27;re not going to put an email.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>13:09</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah, if you&#x27;re not going to put. Yeah, that&#x27;s fine. So let =
+me do that, let me. Okay, so actually, you know what, it may be easier =
+coming from you, Pierce. It may resonate better. So.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sukhai</span><span style=3D"color:#64748b;font-size:14px"=
+>13:23</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Would you, you have the link.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh<=
+/span><span style=3D"color:#64748b;font-size:14px">13:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">For this and I can =
+send it out? Yes, Yep. I, we have max. Let&#x27;s send The Honeywell link =
+here.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">13:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I&#x27;m going=
+ to drop it in the chat right now.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh=
+</span><span style=3D"color:#64748b;font-size:14px">13:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhai</span><span=
+ style=3D"color:#64748b;font-size:14px">13:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, drop it in the=
+ chat and then what I&#x27;ll do is I&#x27;ll put on email to the broader =
+audience and let them know that I need, you know, everyone to confirm the =
+existing names in here and fill in the blanks by end of day today.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">13:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Let&#x27;s, and if =
+you don&#x27;t mind, let&#x27;s rename the thing. Just call it UAT Ready. =
+You know, UAT Roster. Let&#x27;s not put a date on it.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Pierce</span><span style=3D"color:#64748b;font-size:14px"=
+>13:59</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Where.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">14:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;S not UAT =
+readiness tracker 527. Let&#x27;s call it UAT readiness tracker. Just no =
+date.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">14:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. You have on =
+the Excel.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">14:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes, on the Excel.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">14:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Let me rename =
+it.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-col=
+or:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">14:21</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So we will ask=
+ of it from the teams at one, we&#x27;ll see where we are in parallel. =
+We&#x27;ll start developing the dashboard. That and again we&#x27;ll, =
+we&#x27;ll look to send a read to you tomorrow, if not before Wednesday, =
+Pierce and Avinash. So that way we can at least refine that. We&#x27;ve got=
+ a few cycles to refine what we need and then we can see where the data =
+flows in from the other part of all of this is. So the next piece of this, =
+Avinash, is we need to have this calendar. What I&#x27;m realizing, for =
+example, is in the calls from last week, supply chain Pramod and his team =
+shared when their sit is happening and for all their systems and some of =
+the sits happening now and you know, UAT windows for them from a business =
+perspective, Sriram and the business process teams are looking at a view of=
+ the calendar that they need to support testing in. What we also heard is =
+the ERP team already has calendar windows that Srinivas and Srijib have. =
+Bill Ponsetty have developed that they are reaching out and asking, excuse =
+me, support for, for ERP testing for uat. So this is where the, the connect=
+ the dots and coordination that we need to do is to say, okay, I&#x27;ve =
+got so many of these windows coming up. How do we show this end to end and =
+how do we have this alignment with, between IT work streams and the =
+functions to say, well, ERP is ready, the system is ready in these two =
+windows. The supply chain systems are ready prior in these windows or they =
+overlap, you know, finance is ready in a little bit later perhaps. So I =
+think we need to do that marrying up so that we, we understand all the =
+windows that each function, each work stream is ready. So you know, =
+functions can go then plan the Scenarios and end to end scenarios and start=
+ collaborating there. So that&#x27;s against the, the next step on it. But =
+I think that that&#x27;s why these alignment calls are needed now. So =
+we&#x27;ll send you an MOS calendar. So if you can help calendar this with =
+all the work streams throughout this week, then we can start, you know, =
+developing, you know, talking points for each of these and understanding =
+and closing the gaps.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span>=
+<span style=3D"color:#64748b;font-size:14px">16:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. And Rakesh, =
+just a quick question to backtrack real quick. Your to your comment about =
+needing to include the blank rows. Could we add just another column =
+that&#x27;s like this is the default IT focal and names if, if they like =
+for Harry Tong, if he wants to nominate like IT folks some delegate.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">17:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, include =
+that column there. Include another column in here that says, you know, sub =
+function or you know, sub function coordinator. POC it poc.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Pierce</span><span style=3D"color:#64748b;font-size:14px=
+">17:50</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">And that was these folks really I think like from that we got from =
+John.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">17:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So Steve Brown may =
+say I&#x27;ve got six people. So. So yeah, I know not to take up too much =
+of this call. Anything else? Avinash or Pierce, I know we&#x27;ve talked =
+this to death. Let&#x27;s just put it to action. And Avinash, please take a=
+ look at the sheet as well. See what may be missing or how we can reformat =
+the sheet. Sorry.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Avinash</span=
+><span style=3D"color:#64748b;font-size:14px">18:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Do you have a sheet =
+where you track the timelines that you&#x27;re talking about? Have you =
+created a new sheet?</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">18:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, we do have. =
+Yeah, yeah, yeah, we do. Yeah, we&#x27;ll send that to you as well as in.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Avinash</span><spa=
+n style=3D"color:#64748b;font-size:14px">18:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Is that not captured=
+ there in terms.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">18:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Of on the right hand=
+ side. So, so on the right hand side we need to fill in some dates here =
+because like we need to schedule the itmos. We need to schedule when these =
+scenarios are aligned. We can put some placeholder dates. Maybe that&#x27;s=
+ what we start with instead of T minus.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Avinash</span><span style=3D"color:#64748b;font-size:14px=
+">19:04</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Rakesh, my question is have you asked the team, have they given you =
+the dates? Have they put up dates right now or. We&#x27;ve not asked of =
+that information as yet.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">19:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Some of it =
+we&#x27;ve asked some of it. No. So that&#x27;s the other piece is we can =
+ask on the call today and formalize it. So to Pierce&#x27;s point earlier =
+point we&#x27;ve asked them during these meetings and such, but it&#x27;s =
+not been like a formal email, give me this date. So I think that&#x27;s =
+what is needed as well.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Avinash</span=
+><span style=3D"color:#64748b;font-size:14px">19:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, calls are not =
+something, yes, it&#x27;s important. But then without having sent out =
+templates or emails to be focused and saying that this is what I need from =
+you in this template, we are not going to get it. There are so many things =
+that are happening. The calls can reinforce that messaging saying that =
+we&#x27;ve sent this out, we&#x27;ve not heard back. We&#x27;re going to =
+escalate this.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">19:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We&#x27;ll send it. =
+Yeah. So we&#x27;ll do that and then send out the template as well.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhai</span><span=
+ style=3D"color:#64748b;font-size:14px">20:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I have an =
+email that&#x27;s going to go out right now that&#x27;s to all the points, =
+just talking about this. And I basically took some of our normal. James, =
+Howita, Yonji, you know, Avinash, you&#x27;re on here. But then I also took=
+ all the names off of this list right here. I took Harry off here, took =
+three and threw all them on the email. And then I&#x27;m gonna ask them to =
+make sure I don&#x27;t miss anybody and tell them they have something today=
+, today, and then they&#x27;re gonna have to get it through it. Yeah, I =
+could probably give them till tomorrow morning. But like I said, it&#x27;s =
+just. Just a name at this stage. And they&#x27;ve been discussed on it with=
+. It connects with Sakai directly. Chris has brought it up. So I think =
+we&#x27;re at the stage now where they should have this.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>20:42</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah. And then we&#x27;ll follow up. Avinash, your point with another =
+email that says provide the test dates and the windows you&#x27;ve already =
+defined in here in the same template. So we&#x27;ll, we&#x27;ll do that.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Avinash</span><spa=
+n style=3D"color:#64748b;font-size:14px">20:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So that way =
+you&#x27;re able to generate an overall overall and whoever is running that=
+ MOS with the business portals or in any conversation, you have one access =
+workflow to say, here are the names, here are the dates that we are looking=
+ at when SID is happening for which function, when UAT is going to kick in =
+for which function. So it&#x27;s an easy conversation.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>21:19</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Question for you. Is there a ready made will create something. =
+We&#x27;ll put that together. Is there something that Honeywell typically =
+uses?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Avinash</span><spa=
+n style=3D"color:#64748b;font-size:14px">21:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">There&#x27;s nothing=
+ typical.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">21:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, all right. Or =
+something you&#x27;ve used. Okay. Just not nothing format. Okay. All right,=
+ so we&#x27;ll just use an.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Avinash</span=
+><span style=3D"color:#64748b;font-size:14px">21:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Excel Gantt that you=
+ can create to say, list the same list of applications or processes and say=
+, give me put the dates and then say when is this idea occurring and when =
+is UAT going to start?</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">21:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We have that =
+actually in their app tracker. So I think it&#x27;s just generating the app=
+ tracker, really. So we&#x27;ll do that. We&#x27;ll just pull that into a =
+sheet. See the problem, Avinash, is a lot of it is generic. They break =
+broad dates and teams haven&#x27;t updated their work Plans. And so =
+that&#x27;s a hygiene issue. But yes, I think at this point, point we will =
+send an update.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Avinash</span=
+><span style=3D"color:#64748b;font-size:14px">22:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I don&#x27;t know =
+who because I don&#x27;t want to start shooting any emails because people =
+are going to get confused. There are too many leaders out here in this =
+entire program and the last thing that they need is another focus. Sending =
+out 10 different emails to say, what the heck are you guys doing? =
+Understanding it&#x27;s going to create more confusion for them.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">22:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Understood.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Avinash</span><spa=
+n style=3D"color:#64748b;font-size:14px">22:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Whether it is peers,=
+ whether it is somebody on EY or whoever it is, they should continue to =
+take the lead and hammer this to say that this is not done. This is what =
+I&#x27;m escalating.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">23:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Avinash</span><span style=3D"color:#64748b;font-size:14p=
+x">23:01</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">I&#x27;m sure they&#x27;ll go figure out a way to get this done if =
+they have that information.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">23:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right. All right, so=
+ we will put that into a tracker. So we will get the exact dates today that=
+ we have in our inventory and we&#x27;ll start publishing that. And if =
+it&#x27;s wrong, then that shows up and people have to go update it anyway.=
+ So we&#x27;ll force the issue.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Avinash=
+</span><span style=3D"color:#64748b;font-size:14px">23:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px=
+">23:25</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Cool. All right, so we&#x27;ve got action items over the next hours. =
+So we&#x27;ll get working on it and then we&#x27;ll talk to the IT team and=
+ then another four minutes.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Avinash</span=
+><span style=3D"color:#64748b;font-size:14px">23:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">For another meeting.=
+ Thank you.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">23:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Thank you. Rakesh. =
+Rakesh, do you have a second to stay on?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>23:44</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah, I do.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span>=
+<span style=3D"color:#64748b;font-size:14px">23:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I just wanted to add=
+ a background to this.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">23:49</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sure.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">23:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Like what are. What =
+exactly are we asking them?</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">23:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I suppose so =
+we&#x27;re asking I need to be too fancy. But no, it&#x27;s names needed or=
+ IT resources and points of contact needed for each sub function. So just =
+say IT roster point of contact needed for, you know, sub function as =
+applicable. Right. So yeah, you can remove the key takeaway text. Yep. So =
+backup, you could kill all the backup. There&#x27;s no backup there on the =
+right hand side. Right. It&#x27;s, you know, just format is not an email. =
+It&#x27;s go put that information there. Right. Is update the Excel. Sorry,=
+ I&#x27;ve got to step out for this thing. So let me. I&#x27;ll connect =
+with you in a couple of minutes.</div></div><div style=3D"margin-bottom:0;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce<=
+/span><span style=3D"color:#64748b;font-size:14px">25:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, thanks, Rakesh=
+. Thank you so much. Thanks, Bye.</div></div></div><div =
+style=3D"margin-top:36px;text-align:center;color:#64748b;font-size:14px;pad=
+ding:20px;border-top:1px solid #e2e8f0"><p style=3D"margin:0;margin-bottom:=
+8px">Captured with Wave AI Note Taker</p><p style=3D"margin:0;font-size:12p=
+x">Your AI-powered companion</p></div></div></div></div></html>
+----_NmP-9c9724816fe9b760-Part_1--

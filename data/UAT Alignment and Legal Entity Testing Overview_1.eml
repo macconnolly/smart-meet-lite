@@ -1,0 +1,3047 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a05:6000:1a4e:b0:3a5:23aa:6f43 with SMTP id t14csp799393wry;
+        Fri, 6 Jun 2025 21:54:31 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE2AEAN19Q37fHFjmrZPeNwYW8W6iSckF9tWDZlUASyq6FVTH/GSEeaYygjiowt62CC4gEQ
+X-Received: by 2002:a05:620a:4452:b0:7ce:bdce:e07a with SMTP id af79cd13be357-7d2298b3561mr715357585a.24.1749272070729;
+        Fri, 06 Jun 2025 21:54:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749272070; cv=none;
+        d=google.com; s=arc-20240605;
+        b=d5vBiu8sXqRU7YkbtEImUO2FkVOnZemAWIqFoJR0mg/RjE8IKxFsntlm2O71kgmi0B
+         9aKLUukehWrGRjZcflg2R+j+NGQ3lc42JWJF4o/prVSP7fkR6p0gTyuO/IhKEZUM/cEp
+         GptJfBkL8TKEAO4FBdl4CVmtaeHzbuTnJpMlDfoDrWZAIpExK0S6b5f/QKpVo0mLwvXv
+         it06w1Kkr+wsHZedOPGvYxJZeUHDiNGMB9rTuuO7J4Hb3otKBGaDq378UxpRmS+TDTkX
+         DwX9utKoVdOyAL5lu09fu+z1JSH7exx8r2wc77zjOz9/vqIFSddhdbXFSlFPyC4zs5WA
+         fLww==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=V9AvFIU7rEne1ZGlbaJEIPvDnitvNi0kZAKx3P3OKXo=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=dkj8ckc2FN7uWU1wyMJXyllCCxkpLk9aKwj203IWJlj80kNDfFjlphaTmCxp5AWlfI
+         yC/XSVdlRhNwU1MdYkx758ssdJo7vGaYLdQgF1Khgy6eVgP2DxuQVU3oCudiR9boJMca
+         ABPJLyucqWQiAy4KRin920XSLQwVY9UhnufmyN4wu/Vtb4rxB15bUzlub5hzPGFwSdJJ
+         ySnn0cG05NHQSE2ibilB5qKBrYnvO8q3wQxyDkxFrWWVRPUxJ9YJ3Cft7wNtjZljT9ge
+         HqdjxPSLi02uFCmYGh9RofDkPlfxuazVqHBAfBUnvDsJBsBi+CZaP4V+xFHeqOrydEu1
+         IoFQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=YrWL77Mh;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=Y4Cd5L0f;
+       spf=pass (google.com: domain of 0100019748bd8697-88b85149-f5d5-40a9-8124-ea5e9a2829c2-000000@send.email.wave.co designates 54.240.9.114 as permitted sender) smtp.mailfrom=0100019748bd8697-88b85149-f5d5-40a9-8124-ea5e9a2829c2-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <0100019748bd8697-88b85149-f5d5-40a9-8124-ea5e9a2829c2-000000@send.email.wave.co>
+Received: from a9-114.smtp-out.amazonses.com (a9-114.smtp-out.amazonses.com. [54.240.9.114])
+        by mx.google.com with ESMTPS id af79cd13be357-7d25a60c00asi311396885a.301.2025.06.06.21.54.30
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 06 Jun 2025 21:54:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 0100019748bd8697-88b85149-f5d5-40a9-8124-ea5e9a2829c2-000000@send.email.wave.co designates 54.240.9.114 as permitted sender) client-ip=54.240.9.114;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=YrWL77Mh;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=Y4Cd5L0f;
+       spf=pass (google.com: domain of 0100019748bd8697-88b85149-f5d5-40a9-8124-ea5e9a2829c2-000000@send.email.wave.co designates 54.240.9.114 as permitted sender) smtp.mailfrom=0100019748bd8697-88b85149-f5d5-40a9-8124-ea5e9a2829c2-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1749272070;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=xntsfwDb6mF+6tSyfnJy1Vrp3uyF2kaxB4xwGTlz5Fw=;
+	b=YrWL77MhNqJ1Qz5h97E5PHKmhdxeLwutJx3Vu0I32NOINrI7w6dee4gFWq19HdJ3
+	mxdf8dM9D4C5xvV4tX8ECZDcvjTG6W1sn3pGCEGDU0K2x4GIchUcJX/QJNsY06YSLF+
+	w/yUeHvgQEmng2AU9BUeTdDPpwNxIBMtUyqwgmxk=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1749272070;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=xntsfwDb6mF+6tSyfnJy1Vrp3uyF2kaxB4xwGTlz5Fw=;
+	b=Y4Cd5L0fHnZetSl79Oll/z7fbmBvIgHBq7BGK8CYp71VyuGPhjPxzHoq6+dbY+xt
+	1UPCGf7dcKB6vMlk9rEAkEE9fMQEc4b0bhB5CRpKX+1CFwYoH7iB/tFOpJq5WjA0LQ1
+	bS9qFSv4FEb5DR3oxXF071zz3CdgNigTBKTxtl9o=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: UAT Alignment and Legal Entity Testing Overview
+Message-ID: <0100019748bd8697-88b85149-f5d5-40a9-8124-ea5e9a2829c2-000000@email.amazonses.com>
+Date: Sat, 7 Jun 2025 04:54:29 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-25538abb52a30842-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.06.07-54.240.9.114
+
+----_NmP-25538abb52a30842-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+UAT Alignment and Legal Entity Testing Overview
+
+# Meeting Summary =
+=E2=80=93 June 6, 2025
+
+## Attendees =20
+(Not explicitly named, but =
+reference to Sriram, Finance, ISC, HR, PMO, Justin, Gokul, and other =
+functions.)
+
+---
+
+## Main Topics Discussed
+
+### 1. **User Acceptance =
+Testing (UAT) and System Owner Alignment**
+- **Scope of UAT:** =20
+  - UAT is function-led, spanning 82 (=E2=80=9Cbuild back=E2=80=9D) out of =
+296 total systems. =20
+  - Syncing of test windows and coordination with =
+various function teams is required. =20
+  - System owners need to be =
+clearly identified for every impacted application, especially for "build =
+back" systems.
+
+- **Function Involvement:** =20
+  - Finance, ISC, HR have =
+already provided their lists of system owners and the systems involved.
+  - Process for identifying and collecting owner names to be repeated for =
+other functions.
+
+- **TSA (Transition Service Agreement) Systems:** =20
+  - TSA systems (remaining under Honeywell on Day 1) have unchanged service=
+ owners, but basic access (Athens ID) verification needed.
+  - Only =E2=80=9Cbuild back=E2=80=9D systems (82) specifically require new=
+ owner identification.
+
+- **Inventory Tracker:** =20
+  - An inventory tracker exists (Excel/Smartsheet), functions will be asked=
+ to fill out service owner information for impacted systems.
+  - For clarity, only the 82 =E2=80=9Cbuild back=E2=80=9D systems (not all =
+296) require new assignment and detailed tracking.
+
+---
+
+### 2. **Systems and Processes Impacted by Legal Entity (LE) Changes**
+- **Identifying Affected Systems:** =20
+  - Initial estimate was 22 =
+LE-impacted systems, later corrected to 25.
+  - These are systems required =
+to be tested specifically for Legal Entity and "BRV" (Business Readiness =
+Validation) reasons.
+
+- **Categories of Systems:** =20
+  - **LE-Impacted (BRV) Systems:** ~25 systems spanning ERP, HR (HRM, =
+payroll), Finance, Supply Chain, and others.
+  - **Non-BRV Systems:** Other=
+ 10+52 systems going live in June=E2=80=93Oct (e.g., Microsoft rollout), =
+not directly involved in LE/BRV but need tracking due to overlapping =
+timelines.
+
+- **Downstream Testing:** =20
+  - ERP legal entity changes =
+necessitate downstream validation in connected systems (e.g., data =
+replication to EDW, order processing in Salesforce).
+  - End-to-end processes need to be tested across all systems that interact=
+ due to LE changes.
+
+---
+
+### 3. **Test Planning and Progress Tracking**
+- **Core Data to be Collected per System:** =20
+  - Athens service owner =
+identification.
+  - UAT/SIT start and end dates.
+  - Number/percentage of =
+test scripts/scenarios defined, executed, and completed.
+
+- **Tracking Challenges:** =20
+  - Work plans and Smartsheet bundles do not=
+ map 1:1 with 82 systems; granular tracking required.
+  - Functions likely to enter broad test windows, so additional repository =
+or heat map view will be needed for granular data.
+
+- **Tooling and Data Integration:** =20
+  - Discussion around syncing data =
+between Smartsheet, Excel trackers, and Capital Edge for source of truth.
+  - Possibility to streamline updating and reporting by leveraging already =
+built integrations (Smartsheet =E2=86=94 Capital Edge) but may require =
+model changes.
+
+---
+
+### 4. **Preparation and Logistics for Upcoming =
+Alignment Calls**
+- **Purpose:** =20
+  - Prepare for a series of =
+"alignment" calls with functional stakeholders (Tuesday=E2=80=93Thursday =
+next week, with potential follow-ups).
+  - Calls will finalize owners, =
+validate system-process mappings, align on test planning.
+
+- **Key Agenda Items for Alignment Calls:** =20
+  - Finalize owners, roles,=
+ responsibilities.
+  - Finalize test scenarios and test scripts.
+  - Validate systems in scope.
+  - Finalize test windows and calendar.
+  - Align on entry/exit criteria for UAT.
+  - Align on test logistics =
+(locations, hardware needs, tools: JIRA, ALM, Excel, etc.).
+  - Assign test signoff leads and clarify signoff responsibilities.
+  - Confirm process for capturing test tracking, reporting, and MOS =
+(Measures of Success) cadence post-alignment.
+
+- **Inputs & Outputs:** =20
+  - Inputs: Updated tracking sheets, proposed agenda/templates, lists of =
+owners/scenarios from each function.
+  - Outputs: Aligned tracking, role =
+assignments, clear next steps, set test windows, agreed logistics, action =
+items for any unresolved points.
+
+---
+
+### 5. **Reporting and =
+Dashboarding**
+- **Data Ownership:** =20
+  - Functions are responsible for =
+updating test progress/data.
+  - IT and PMO coordinate reporting structures=
+.
+- **Dashboard Data Sources:** =20
+  - Test completion, scenario coverage,=
+ and process tracking will be pulled from trackers for dashboarding =
+(primarily in Capital Edge).
+
+- **Approach to Test Scenarios & Scripts:** =
+=20
+  - Functions provide business scenarios; IT helps develop detailed =
+test scripts.
+  - Actual test script tracking may be in JIRA for some =
+groups; need to confirm and if so, receive JIRA reporting.
+
+---
+
+### 6. **Call Scheduling and Communication**
+- **Call Logistics:** =20
+  - Placeholder invites to be sent out for alignment calls, final agenda to=
+ be confirmed Monday.
+  - Multiple sessions (Tues-Thurs) split by function,=
+ with follow-ups scheduled as needed.
+  - Slides and bullet-pointed =
+outcomes/expectations to be created for clarity.
+
+- **Slide/Material =
+Preparation:** =20
+  - Content to include tracking requirements, agenda, =
+expected outcomes, and clear action items for each function.
+  - Use of left-to-right input/output visual slide to facilitate discussion=
+.
+
+---
+
+## Action Items
+
+1. **Send Functions the Inventory Tracker** =20
+   - Direct ask for completion of Athens service owner names and other =
+relevant fields for all 82 =E2=80=9Cbuild back=E2=80=9D systems.
+
+2. **Prepare/Refine Granular Tracking Mechanism** =20
+   - Ensure a view or tracker exists for SIT/UAT dates, owners, and status =
+info at an app level (beyond what work plan bundles provide).
+
+3. **Develop and Share Alignment Call Agenda** =20
+   - Draft agenda with =
+bullet points (owners, scenarios, systems in scope, test windows, =
+entry/exit criteria, logistics, signoff).
+
+4. **Create/Update Slides for =
+Monday=E2=80=99s Prep Meeting** =20
+   - Input/output visualization, =
+expected outcomes, and actionable example items.
+
+5. **Placeholder Calendar=
+ Invites** =20
+   - Send initial invites for alignment calls =
+(Tuesday=E2=80=93Thursday), indicate agenda will be finalized Monday.
+
+6. **Coordinate with PMO on Reporting Structure** =20
+   - Confirm who owns tracker/data ingestion and reporting, define process =
+for updating and maintaining test progress.
+
+7. **Confirm =
+Integration/Synchronization Process** =20
+   - Technical validation that =
+Smartsheet, Capital Edge, and Excel trackers are synchronized as designed, =
+with appropriate data model adjustments as required.
+
+8. **Logistics Clarification** =20
+   - For each function, confirm test =
+location, required equipment, tool preference, and align with IT/IAM on any=
+ access or hardware needs.
+
+9. **Action Plan for Alignment Call Outcomes** =
+=20
+   - Ensure each item (owner identification, test windows, logistics, =
+etc.) is assigned a responsible party and tracked to closure.
+
+---
+
+## Follow-Up Points
+
+- **Alignment Calls:** =20
+  - Conduct functional =
+alignment calls Tuesday, Wednesday, Thursday next week, with follow-ups as =
+needed into the following week.
+
+- **Weekly MOS for UAT:** =20
+  - Once alignment achieved, weekly Measures of Success (MOS) calls to =
+monitor UAT progress, issues, and report status.
+
+- **Finalization and =
+Distribution of Materials:** =20
+  - Slides and call content to be =
+finalized by Monday morning, distributed with finalized invite updates.
+
+- **Additional Clarification on Reporting and Logistics:** =20
+  - Separate session with PMO as needed to clarify cross-functional process=
+ for process scenario/test tracking logistics.
+
+---
+
+## Significant Decisions & Discussions
+
+- **Limiting Tracker Data Entry:** =
+=20
+  - Only 82 =E2=80=9Cbuild back=E2=80=9D systems require new owner =
+assignments and UAT granularity, not all 296 systems.
+- **Tracking vs. Reporting:** =20
+  - Recognition of limitations with =
+current work plans/bundling and shift to more granular system-level =
+tracking.
+- **Division of Responsibility:** =20
+  - Functions own business =
+process/scenario definition; IT/PMO support test script creation, tracking,=
+ and reporting.
+- **Benefit of Alignment Calls:** =20
+  - Critical to clarify roles, close gaps, resolve test logistics details, =
+and set up tracking/reporting cadence before UAT begins.
+
+---
+
+**Prepared by:** =20
+(Note-taker on June 6, 2025)
+
+Transcript:
+0:02
+Because technically the UAT is a function led exercise for these 84 systems=
+ or 82, they still need to do some UAT and we need to sync up with our test=
+ windows and all that, but more so spend time. This is a bit of a different=
+ thing. We can talk to Sriram as an example or the equivalent in finance. =
+We've got five names in finance that are going to be talking. Talking to us=
+, but more so around. Yeah, So a lot more around. Two, a bit more around, =
+you know, the third one on top. So that's where. Now all of these are =
+intertwined because we need to get the names. When it's the same system =
+owners that are touching here that they will need to touch here if they're =
+in the same space like erp. But if it's a brand new system here that's not =
+changing but they're touching it, we're going to need the names similar to =
+what this guy said. So the call to action where the outcome of all of this =
+is when we're talking to them Monday, we want to tell them that we've got =
+this inventory tracker that they need to go fill out for these, you know, =
+whatever you have as a tracker that we need to give them very specifically =
+go fill out the owners, the pictures and the catcher names so that this =
+work can happen. Sorry. So that this work can happen.
+
+1:28
+And that. That's across all of the 296, not just the.
+
+1:33
+That would be 296.
+
+1:35
+Technically that's not just across the 82.
+
+1:40
+True. But keep in mind. Well, let's put it this way.
+
+1:47
+I'm just in my mind trying to plan what to give them.
+
+1:50
+Sure. So think of it this way. 82, certainly they need to go fill out. =
+Let's talk about TSAs. TSAs, the owners may be changing, but the processes =
+are by the existing Honeywell. It's on a tsa, so the systems are not =
+changing. Right. So it's still Honeywell.
+
+2:12
+Yeah. Other than does your =
+Athens ID work.
+
+2:14
+And whatever, then it's just it from an access =
+perspective, does your Athens ID work to log in to test?
+
+2:22
+Yeah.
+
+2:22
+But the service owner is still Honeywell. So you're not getting a new =
+service owner.
+
+2:29
+Well, the only ones that we need service owners for =
+are build back, which is the 82.
+
+2:37
+Right. So that's what you're asking =
+them. So going back to your point you made, it's just the 82 mostly.
+
+2:42
+Yeah.
+
+2:44
+Where you will come in here is if they want those systems, we =
+just give them the Honeywell system owners here. If they're in the TSA list=
+.
+
+2:54
+Yeah, exactly, because.
+
+2:58
+So you don't need 296 here, you just =
+need the 82.
+
+3:05
+Yeah. So we need Honeywell and Athens system owner for =
+the AD2 and then we already have the Honeywell system owners for the =
+whatever. Do you want to. Do you think it would be a good idea to develop a=
+ generic version of what promote shared with you for ISC and use that to =
+distribute to the other functions to get them started.
+
+3:41
+The functions have to come and give us that.
+
+3:43
+Yeah.
+
+3:44
+And if you recall, the functions and Finance already gave us that too.
+
+3:49
+Yeah, we have it from Finance, we have it from isc.
+
+3:53
+Okay. And then you have it from HR as well because we know it's those two =
+systems that they touch. HCM and payroll.
+
+4:02
+Exactly.
+
+4:03
+Okay, so you have a view of the systems in touch. The whole point was we =
+thought it's 22 systems. We have to make sure you know what is really =
+getting touched for legal entity and BRV. So it's not 22 but 25. We just =
+need to list that 25 out as systems that are impacted by legal entity and =
+need to be tested for legal entity.
+
+4:29
+What category, what category do =
+those ones like from that ISC list that are not on our. They're not BRV =
+because they're not build back are those.
+
+4:43
+So keep in mind. So two =
+things, build back and move as is has nothing to do with brv. They are =
+generic dispositions that is there for day one.
+
+5:00
+Yeah. Do you know what I'm saying though? Like the.
+
+5:03
+I know what you're saying.
+
+5:04
+Yes.
+
+5:04
+What we need to look at is =
+which of that 82 is specifically legal entity related that get impacted by =
+changes to legal entity. So a case in point, erp. ERP is not a build back. =
+It's not a move as is. It's actually a TSA on day one. But on August 1st =
+you're making legal entity changes in that system that's going to be on a =
+tsa. So you need to test that system and it's in scope for. For brv.
+
+5:42
+Yeah.
+
+5:45
+There are other systems that he has listed like EDW that's also=
+ changing around that time frame. But that's also in scope for BRV because =
+there are data reports that flow out of ERP into it and they'll use those =
+reports and the data and analytics in there and they have to look at it at =
+a legal entity level. So all those systems in supply chain he gave you are =
+getting touched during brv. The question is which one of them you know so =
+we can say this is the impacted systems. Systems in scope for BRV Are these=
+ however many he has in that list, 17 or 18 plus. We need to look at what =
+the finance guys have given. I think they gave us 7 or 8.
+
+6:33
+Yep. And then HR 2 and then plus.
+
+6:35
+The 2 for HR. So you're looking at.=
+ And then I don't know if there's any other, any other function.
+
+6:42
+What about engineering or like dni?
+
+6:44
+Look at engineering. Engineering,=
+ data engineering, R D probably is. We may have one system that I don't =
+know what might be legal entity change related but I doubt there is any. So=
+ it truly is legal entity changes are, you know, I need to meet, I need to =
+pay people out of the right legal entity. So your PayCheck comes on August =
+5th.
+
+7:10
+So is that one. So that's one category of them. Is there another=
+ category of them?
+
+7:14
+No, no, there's only one related to legal entity.
+
+7:19
+I'm saying legal entity is one category of them.
+
+7:23
+For systems.
+
+7:25
+Yes.
+
+7:26
+Yeah. So the rest of this is non legal entity related which=
+ is there are systems going live around the same time that have nothing to =
+do with legal entity. Like I don't know, let's just say Microsoft. Yeah, =
+Microsoft is going live on August 1st and we need to probably add that too =
+because there's a testing on Microsoft as well. If you recall the =
+conversations that these guys were talking about. They talked about pilot =
+users and the PC rollout and all that stuff. We talked, talked about. Yeah,=
+ the pilot users of our, you know, email pilot users and testing and all =
+that. So Microsoft is a good example that they're starting work on August =
+1st to roll out new email and new tenant and OneDrive. All that, that has =
+nothing to do with any legal entity work. It's just happening at the same =
+time. So those are the non BRV systems, if you will. So these other, other =
+10 +52 that we have or however many that are build back and move as non BRV=
+ related but happening around the time frame which is this stuff. So =
+technically Speaking it's actually 10 plus 52. And then we have, you know, =
+there are LE related changes which are probably like the 25 or 27 or =
+whatever it is. So it may not end up being 82, let's say for the sake of =
+this 22 and let's say this is 10. So for whole numbers we will need to =
+validate these. These 10 are going in June and July. These 50 are going in =
+August and September and October.
+
+9:09
+Yeah.
+
+9:10
+So August, September. They have nothing to do with legal entity they just =
+so happen that they need to be built back and move as is and they're going =
+around in that time frame. ERP is the main one that is legal entity and =
+thus this other stuff that. So the changes are made in the ERP in the whole=
+ or on the main coming out of those changes. You can think of all the =
+downstream systems that now need to validate that those changes took place =
+in the erp. So all those supply chain systems, most of them are downstream =
+systems that we'll have to validate that those changes, those legal entity =
+changes that happen in the ERP can now be seen. If I created a new legal =
+entity for Athens in the ERP and I created a new cost center company code, =
+however, that hierarchy is I create new legal entity, then if I'm able to =
+go enter an order against that legal entity in the salesforce, then I know =
+that change took effect.
+
+10:13
+Yeah.
+
+10:15
+And so this end to end process=
+ testing is around that to say okay, can I enter a new order against this =
+new legal entity because it's brand new. So that's where the process =
+cutover happens. So the end to end process testing is around. That is can I=
+ do an end to end of raising an order, raising a sales quote, raising, =
+paying the quote, collecting the cash, delivering the goods. All of that =
+has to happen on the new legal entities that have been set up for Athens.
+
+10:44
+Yeah, exactly.
+
+10:47
+So a lot of them the setup is in erp, erp. But =
+then there's a lot of downstream systems that need to get to reflect that =
+legal entity because the name of the company will change. Like you know, =
+Athens Solzes Hong Kong Inc. Is a brand new company in Hong Kong. Before it=
+ was Honeywell Hong Kong. Now it's holes. Well as. And it may have a new =
+address, it may have a new shipping label, it may have a new tax id. All of=
+ those things will have to get tested as part of this, this end to end =
+process testing. Again, I digress from our main point, which is for Monday,=
+ what do we need to ask them? So if you go back to your list, we're saying =
+we need to ask them for service owners for these applications. We then need=
+ to. The other couple of things on the inventory tracker that we talked =
+about.
+
+11:39
+Hold on, I'm just pulling it back up.
+
+11:41
+Okay.
+
+11:48
+Give me one moment. There we go. Come on. Okay.
+
+12:06
+On your first page, what do you have? You have to ask for service owners.
+
+12:12
+Yeah, I think we were using this one. This is like the, this is the =
+service owners.
+
+12:18
+So server service owner identity and yeah, so it's =
+not identity, but they're essentially going to complete that. Right, so =
+you've already. Okay, then they're going to validate that the sit UAT dates=
+ that are there that are accurate and they need to go update it in the =
+smartsheet work plans. Now, the challenge is the smartsheet work plans =
+don't necessarily consist of 296 apps. They bundle certain apps, they =
+bundled other things. So they don't. Not for 296, but at least for the 82. =
+They don't. They don't necessarily consider they should ideally, but they =
+don't. So we would need a view of the sit uat dates for those 82.
+
+13:04
+Yeah. What? Justin already has that because he has the heat map from =
+smartsheet and the heat map pulls directly from those work plans. So he has=
+. Has a mapping. Yeah, he has a mapping of which apps are in which work =
+plan and where.
+
+13:20
+So we need them to validate that that is accurate, =
+that that heat map is right.
+
+13:26
+Exactly.
+
+13:28
+Now how they do that is we have to give them the heat map and we say go =
+update the work plans because it'll get pulled here. Please go update work =
+plans one by one. Yes. Now the challenge will be they are not going to do =
+that. If you can imagine if. So just think through this and play this out. =
+If I, if I say supply chain and let's say my whole thing is my plans are =
+created differently and say my work plan, what will happen in supply chain?=
+ What I see happening, and I'm using supply chain as an example. If you =
+look at that list that Gokul sent us of the 50 or 16 apps, they all have =
+sit uat dates across a wide range of dates. Some of them are the 2nd of =
+June to the 20th of June and then there's a few stragglers and 2nd of July,=
+ 5th of July, etc.
+
+14:18
+Yeah.
+
+14:19
+So what these guys will go into the =
+work plan and say is 2nd of June to 5th of July. They're not going to give =
+us the granular detail. So work plans will not work for the purposes we're =
+asking for.
+
+14:31
+Hmm, I see what you're saying. So you're assuming that =
+they're gonna give you the. Yeah, yeah, they're gonna give us the broad =
+dates of like the spanning of the whole thing, not down to the granular app=
+ level detail.
+
+14:44
+So you can't use a work plans. Yes, I get it. It goes=
+ into this. But we need a better view of where this is getting tracked. So =
+we may need to create another view of the heat Map or a different version =
+of it where we say, sit uat. Use that as a repository that we can then =
+update. Have a sync to Capital Edge to get updated in Capital Edge.
+
+15:08
+Well, yeah, I mean, it's in our systems tracker. I would just say go update=
+ our systems tracker with it.
+
+15:13
+But people don't have access to =
+Capital Edge. Very few people have access.
+
+15:17
+Not a Capital Edge, our =
+Excel.
+
+15:21
+Yeah, but how often do you have to maintain Excel? I would =
+rather.
+
+15:26
+I would do like one load or.
+
+15:28
+Something, but if the =
+SID date changes or something else changes, like where do they go in and =
+say, okay, I give you these dates, but, oh, I'm delayed.
+
+15:39
+So, for example, ideally in smartsheet.
+
+15:43
+Ideally in smartsheet =
+somewhere, but not in the heat map. It has to be somewhere else Smartsheet,=
+ because in the work plan, they've given you a broad date. So the app may =
+be delayed, but I'm still in the window.
+
+15:55
+I see what you're saying. =
+So we need probably another consolidated place to track the.
+
+16:04
+These test dates and these. These tracker. So either we duplicate the =
+tracker we have in Capital Edge and smartsheet so that it could be a sync =
+that uploads and these guys only update the smartsheets.
+
+16:15
+Yeah, we could do that.
+
+16:15
+So instead of sending Brian port out of =
+Capital Edge.
+
+16:18
+Exactly. Instead of sending Brian, like the Excel, I =
+might just load it into smartsheet, sent him the smartsheet and that =
+connection is already created. And he can handle the. The sync. Like the, =
+the infrastructure to do the sync is already there.
+
+16:33
+Okay. But he may need to change the model. I think he'll need to redo the =
+columns and stuff and do the sync.
+
+16:38
+Yeah, yeah, yeah. I was =
+oversimplifying, but yes, I think that that's actually a great idea. So =
+that then there's like a live source of truth somewhere that they can edit =
+and it gets incrementally updated. In Capital Edge.
+
+16:50
+In Capital Edge. And we don't need to babysit Capital Edge. Yeah, the =
+reporting and the dashboard will still be there. And we run those out of =
+there.
+
+16:57
+Yes.
+
+16:59
+So now these guys, again, I have. I'm in two =
+minds whether to show them these dashboards, because I think after it's in =
+Capital Edge, we can do it. But. So this would be the second ask that they =
+go in and create this tracker. We create the tracker and they go update =
+this at a granular level for these 82 apps.
+
+17:18
+Yeah. And I want to =
+combine what we're asking them to do, because we can capture all of this =
+data in the same place. The Athens service owners. Service owners for build=
+ backs.
+
+17:31
+Non brv.
+
+17:32
+Yes, for non brv.
+
+17:34
+Actually just for all. In fact, put it for the 82.
+
+17:36
+Yeah, right.
+
+17:37
+Or 85 or 90.
+
+17:38
+Yeah. Athens service owners, UAT start, UAT end.
+
+17:43
+And then sit start. Sit end, UAT start, UAT End.
+
+17:47
+Yeah, exactly. And the, I would say the test script counts as well. Number =
+of scripts defined, number build new, number use, existing. We have all of =
+those.
+
+18:03
+I don't know if we get, I don't know if we need to get to =
+that level, but eventually. No, we may not. So we may not need to that =
+level.
+
+18:12
+We did talk about that.
+
+18:14
+How many test scripts? 100 for=
+ this system. How many have you tested on? Yeah, I don't. It doesn't matter=
+ if they've got 99 and 1, they have to create new or they've got 1 and they=
+ got to create 99 new.
+
+18:29
+So can we just say number of test scripts and=
+ then number complete.
+
+18:34
+Yeah. So we should say testing, you know, =
+maybe and then later on we can add percentages if we want. Yeah, because we=
+ should say test scenarios defined, test scope, know test cases defined or =
+test cases developed. Or maybe the total test, you know, maybe scenarios =
+are a business construct. Maybe we say total test cases, you know, against =
+that system and then, you know, total, Total executed.
+
+19:07
+Yeah.
+
+19:09
+Now the problem is they may do that in jira, so they may say we do it in =
+jira, we're not going to do it it here either. But we have to ask, we have =
+to propose that and then let them sort out that everybody's doing it in =
+jira and if it's not, then they have to come and do it here or you know, =
+they, they update it here as well.
+
+19:29
+Yeah, I mean if they're doing it =
+in jira, you, they can come back to us and tell that, tell us that. But =
+until, but we have to get.
+
+19:35
+A report from JIRA then.
+
+19:37
+Yeah, but I mean, I'm just saying I think we can propose this until they =
+tell us. No, no, we already do it somewhere else. Go get it from here.
+
+19:43
+Okay, so that's that. And then the third part then would be. Well, we=
+ may have to look at a few more things in that smartsheet in the, in that =
+tracker. Not the work plan, but it's a smartsheet tracker.
+
+19:59
+Yeah.
+
+20:01
+And then they're going to have to. We need that MOS for the next two =
+weeks aligned on how we will again. The end result would be this alignment =
+call happens and then UAT starts and we need a weekly MOS between The =
+coordinators to understand what's going on with uat. But to get to there, =
+we need to do all those other things I mentioned on aligning on all these =
+things.
+
+20:27
+Yes.
+
+20:28
+And those are the prep calls, the alignment =
+calls that we need for the next two weeks.
+
+20:31
+Okay. To get to those =
+alignment calls for the next two weeks, we need to know what systems the =
+processes touch.
+
+20:42
+Yeah. Or we should just say validate. Just say =
+validate process system mapping. Validate test windows, Validate test =
+scenarios and test scripts. Define, confirm and finalize roles and =
+responsibilities.
+
+20:58
+For the weekly mos.
+
+20:59
+All your agenda. No, not the weekly mos for these alignment calls. That =
+would be your agenda.
+
+21:04
+Yeah, exactly. I mean that's. I think that's =
+pretty much what we have for the agenda. Where didn't. I thought we wrote =
+the agenda together.
+
+21:16
+Let's add that as a bullet point here. Let's =
+just, you know, let's put the bullet points here and call out agenda here. =
+No need for newsletter slide. Just put it as bullet points here and say =
+agenda would be, you know, align on. Align on roles and responsibilities, =
+owners roles and responsibilities. Align on. It won't be that. It's more it=
+ versus business. Like who's going to develop scenarios, who's going to =
+load the scripts, who's going to vary, verify, you know, so align on. You =
+know, somewhere in here we should also add align on test logistics at the =
+bottom. And we should also say align on entry exit criteria. Align on test =
+logistics. Align on. And all of these need content. So we need a slide to =
+develop. So if we set up the call for Monday or Tuesday, we have some work =
+to do that align on entry exit criteria. Align on. Maybe we say finalize =
+instead of align on. Just say finalize owners roles and responsibilities. =
+What else do we need to do that? Finalize test windows and test windows and=
+ calendar. Validate systems, processes and systems in scope. Our systems in=
+ scope. Let's just say systems in scope scope because they're going to come=
+ in with the processes. Systems in scope. You know, finalize entry exit =
+criteria or align on entry exit criteria. What else do you think they need =
+to do in these alignment calls?
+
+23:29
+Owners roles and responsibilities, =
+test windows and calendar, systems in scope, entry exit criteria, test =
+logistics. Where's the. Where's the process.
+
+23:44
+That is the validate systems in scope against those processes.
+
+23:50
+Should we tell them that they need to bring the like come prepared to.
+
+23:54
+Speak to the processes functions already do that.
+
+23:57
+Okay.
+
+23:58
+Writing the functions. Functions will have it. And then we should also say =
+validate, you know, validate test test scenarios Scenarios? Yeah, validate =
+test scenario. That's the third, third bullet.
+
+24:14
+Yeah.
+
+24:17
+Validate test scenarios and test scripts, I would say.
+
+24:22
+I mean they need to provide us with those because the scenarios are based =
+on the processes.
+
+24:30
+No. Yes. So who needs to provide what.
+
+24:37
+Do we have the test scenarios in advance?
+
+24:42
+Functions will share the =
+test scenarios with the IT teams for them to help develop test scripts that=
+ come out of it. So these alignment calls will be for functions to say =
+these are the scenarios we've developed. Who do we meet to get the test =
+scripts for these?
+
+25:03
+Exactly. So it's not like validating what we are =
+bringing. I take validate to mean like, hey, these are the systems that we =
+know for this function are in scope. Is this the full list or is there =
+something that we're missing and anything related like the. The tertiary =
+ones that you mentioned for Schare, that is the opposite of. That's =
+homework for them. Bring these test scenarios to exactly what.
+
+25:34
+You just said, then say align or finalize.
+
+25:37
+Yeah.
+
+25:43
+Finalize test scenarios and test. Actually finalize test scenarios and test=
+ scripts and move that to the third bullet. Actually second second bullet =
+and I would actually move the test windows to the fourth, to the. To the =
+fifth bullet just before test logistics. Now this is going to need a bit of=
+ work because we probably need some templates for these. Either we're =
+tracking them somewhere or we give, you know, we have to prepare some test =
+entry, exit criteria and what into that meeting and say, this is our =
+criteria. Do you all agree? Or we say, you know, here's some basic criteria=
+. See if you guys want to refine this and develop this and come back to us.=
+ So different ways that can go. But we need that conversation.
+
+26:56
+We definitely need to develop. We need to develop the temp or like the, the=
+ templates. Right. For these.
+
+27:09
+What? Depends on what template.
+
+27:11
+I mean, to run the call. Right. So like the test script template and the =
+scenarios template. Here's the scenario.
+
+27:17
+No, we don't. We don't. We =
+are not developing anything. The function will have some Excel or some =
+other way of sharing their scenarios and they may have already shared it =
+with the IT teams for us to.
+
+27:36
+We will need to ingest that data in a =
+standardized format to what to get it into ultimately Capital Edge or =
+whatever we're doing reporting on.
+
+27:51
+No, there's no test scenarios =
+that go into Capital Edge.
+
+27:54
+I'm not saying the test scenarios, but =
+the. To be able to look at a system and say where is the system at in uat, =
+you have to be able to answer the processes that are involved. Or if you're=
+ talking about an end to end process what are all of the systems involved =
+in this end to end process and where is each one of those systems at in =
+their UAT testing?
+
+28:19
+No, that's again you're missing the point. Recall=
+ that I said an app can be on a tsa. There's no UAT for that TSA but it's =
+in an end to end. We talked about Salesforce. So you don't need to track =
+where Salesforce is because nothing is happening to is just that the supply=
+ chain team for an end to end process is using Salesforce as an end input.
+
+28:44
+So then what do we get out of these alignment calls? Like what is the=
+ out, what is the outcome?
+
+28:50
+All of the stuff that we need to get =
+tested. Everything in the row two and row three that I was mentioning.
+
+28:56
+And so to get tested who is going to track that? Like who is going to=
+ act? Who is going to monitor these.
+
+29:05
+The test scenarios Again in the=
+ BRV tracker. That's the BRV process tracker. When we talk about that pre =
+in Capital Edge.
+
+29:12
+But the BRV process tracker doesn't have systems.
+
+29:17
+They you going to use the system inventory. It doesn't matter what =
+system. So they're not going to track that. I touch 15 systems they're just=
+ going to track that. I tested this process using this system. Remember the=
+ conversation again to 296 systems plus there are other rows that the =
+functions will go in and enter.
+
+29:38
+Yeah. So that's it. The functions =
+will go in and enter then. I think that that was my question. Like I, I was=
+ saying. Yeah. So we need a, a way to structure those conversations. Like =
+I'm thinking about what pre work do we need to go into these functional =
+alignment calls and have a coherent conversation with them to drive the =
+output.
+
+30:02
+So it depends on what we are looking at here. The outcomes. =
+So those are again in the logistics. So how are we going to track and =
+report on these things? Those are. We have to work with PMO on It's not for=
+. Because that's across the board.
+
+30:15
+Exactly.
+
+30:15
+The PMO will define and pre has already talked to the functions to say this=
+ is how you're going to track them in the inventory tracker you're going to=
+ go in and add these rows of sriram you're touching these processes in =
+supply chain. You're testing these processes but you're touching these =
+systems. Add a row for every system you touch across every process. That's =
+the row he's done. So when he goes in and says I've completed This process,=
+ that process can touch three systems. So he's going to go and say complete=
+, complete, complete on those three rows.
+
+30:48
+Yeah.
+
+30:50
+Then the dashboard will pull off of that.
+
+30:53
+Exactly.
+
+30:53
+But if we want to talk of logistics here, that's not for this call. That =
+would be a call with pre to talk about how are we going to run the =
+scenarios. This is to get to running those scenarios. What do we need to do=
+? How do we need to talk to each other? What is it that we need to prep up?=
+ How do I define my scenarios and give it to you to do the test cases? How =
+do we meet? Who's going to do what? Like I'm going to run the scenarios, =
+you're going to report on it. I'm going to call you at this time to do this=
+. I'm going to own the inventory. No you're not. I will. So that's the =
+conversation here and then I'm going to say okay, who's going to do the =
+sign off? You've tested on a system, functions are going to sign off on the=
+ UAT was successful. So who are the owners and responses? Who's going to be=
+ the test sign off lead that says okay, I now accept that the UAT was =
+successful, that's all function. But the alignment call here would be the =
+conversation around how do we, you know, who's the named resource against =
+it? Who's got the responsibility? When will this happen? How are we going =
+to check that against the entry and exit criteria? Because whoever's =
+signing off is going to say before you start testing, I'm going to to let =
+you test if I've passed all the entry criteria. And when you, you do the =
+testing then, and then when you're done testing you say okay, you've passed=
+ everything. Is there any defect? No. Is there everything closed? Are all =
+the system you can you see all the scenarios passed, There'll be a criteria=
+ to exit and so the person, he or she who's signing off will look at the =
+exit criteria and say okay, you've passed all the exit criteria. This =
+process scenario, this test is complete, I can sign off. So these are the =
+alignment calls we're going to be having to say what is this criteria? Are =
+we aligned, etc. Etc.
+
+32:46
+Yeah.
+
+32:48
+Okay, so a lot to digest there. =
+But again that's why these alignment calls are important. But we do need to=
+ set them up and get the right people in and have the right call content =
+for it. So this is going to take a bit of a prep work, but we need to tell =
+a prep work, meaning you know, Monday, but we need to say, okay, we're =
+setting up the call starting Tuesday, you know, Tuesday, Wednesday, =
+Thursday, we do this individually and then you know, if we need follow ups =
+we can do, you know, if Tuesday guy wants a follow up on Thursday, we set =
+it up again on Thursday. But we at least propose that we have alignment =
+calls on Tuesday, Wednesday, Thursday with different functions and then =
+maybe a week later.
+
+33:29
+Yeah, that makes sense.
+
+33:33
+So and then the mos can kick off for UAT because some things may be =
+starting in 2nd June, some things may be maybe okay, the system is doing =
+okay, but the function doesn't need to get involved. The functional MOS is =
+really more around this big process stuff that they need to talk about. The=
+ functional MOS for the systems may not be a much of a thing. So again a =
+lot of moving parts here but that's where we need to put some structure =
+around it and have this conversation to tell these people how things are =
+going to go.
+
+34:12
+Yeah, so that's the Monday piece.
+
+34:15
+Yeah, so that's all it connect that we need to tell them that these are the=
+ details that we're going to be discussing. This could all be on a page on =
+itself like here's what's going to be the focus of the alignment calls, =
+here's what's going to be. So we may want to create a slide that says =
+here's the content, here's the expected outcome. Right, A left to right =
+slide that says and I think we've got some of those fairly standard slides =
+that we can, you know, the template of which we can use but the content =
+which we need to fill in, you know, stuff on, you know, here's the inputs =
+coming in to the left hand side, here's the outcomes on the right hand side=
+.
+
+34:54
+Yeah we do. I feel like I've seen at least one of them.
+
+34:59
+One or two, yeah. So we may need to create a slide like that on the Monday =
+call to show with them and we can review that Monday morning. But it's a =
+view to tell them this is the expectation because we'll add that into the =
+meeting invite.
+
+35:13
+Yeah, yeah, definitely.
+
+35:15
+So I'll send placeholder invites but then we can add agenda items later on =
+Monday and we say here's an updated invite, here's what the expected =
+outcome is and you know, people should come prepared. So when we do come in=
+, Sriram will lead with his Excels and say hey guys, you know team A, team =
+B, team C, team D. This is what I have, these are the names I have. I need =
+some Names. So we work through it. They give names, they complete the =
+owners roles, responsibilities. Then they look at, then he says I've got, =
+Listen, I've got 300 scenarios or 120 scenarios I need to talk to somebody =
+about. I've talked to this person but I need for hr, I need to talk to =
+somebody to develop the test scenarios or test cases. Okay. Then the =
+conversation is okay, I'm finding a person. We will work with you and =
+schedule an outcome. Or let's say one of the notes is okay, let's set up a =
+call between, you know, the IT guy is going to set up a call with a, with =
+Sriram's guy to develop test cases and complete it by Thursday. We just =
+capture that as a note. Then they'll say okay, let's align an entry exit =
+criteria. We need a separate call for that. This looks good. Let's take =
+this away. We will come back and give you something back by Thursday. Okay,=
+ that's an action item. We follow up on Thursday. Test windows. They look =
+at it and go okay, this works, this works. This one will have to adjust. =
+Let's work with you. If there's some adjustments we take an action item and=
+ then logistics. They'll say okay, who are we aligning on? Is it Jira, is =
+it alm, is it Excel? So we decide that and we say okay, how would, how our =
+people testing are we getting laptops? Is, are they all going to a room in =
+a Central park location in New Jersey and testing will we have EMEA and =
+APAC testing? So that's the second con there conversation and maybe it's =
+not solved. If it's solved, great. If not we should at least have a point =
+of view. We say okay, this would be laptops here. And you know, something =
+like that. If it's realistic, we do. If they have a better idea, we change =
+it. But then we have the IAM team and others involved to say okay, oh we =
+need three laptops shipped to China with Solstice image so that they can do=
+ this testing or this testing won't involve that. They're going to ask, it =
+doesn't matter. They're just a Solsys user because they're a test user. =
+They are, you know, they're going to test the scenarios. They're Solsys =
+users. They'll be, you know, they'll be given Solstice logins, test login. =
+So when they log into the system they will test it as a Solstice user. So =
+those are the kind of logistic discussions we have logistics discussions we=
+ will have. So it's probably a 60 to 90 minute call Tuesday, Wednesday, =
+Thursday to talk through these things and lay everything out and then say, =
+okay, they have a few follow ups. We close these by the following week and =
+we set up an MOS for how they will conduct the testing and report on it.
+
+38:14
+Yeah, okay.
+
+38:18
+So again, a bit of work for us to do there, but =
+yes, so again, we need some content against these bullets because we need =
+either Excels with names in there or we need, you know, action items for =
+the, you know, the system and scope. Some of that stuff, they will bring =
+some of the stuff we need to repurpose what we have or create a slide that =
+shows that.
+
+38:41
+Okay, so, okay, I'm aligned.
+
+38:45
+Okay, cool. So let me take a pass of.
+
+38:49
+That today, tomorrow for the =
+Monday, all it call and then I think we do need at least one page on the =
+Monday. Here's what that call is going to look like. Here's the inputs, =
+here's the outputs. And then also this with just the calls to action and =
+those examples for each.
+
+39:16
+Okay, yeah, take a pass at that. Send it to=
+ me when you can over the weekend and then we'll finalize it Monday morning=
+.
+
+39:22
+Yeah, yeah, that sounds great.
+
+39:24
+Cool, cool. All righty.
+
+39:25
+Okay, thanks for cash. I'll talk to you later.
+
+39:27
+All right, talk later then. Bye.
+
+39:29
+Bye.
+----_NmP-25538abb52a30842-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">UAT =
+Alignment and Legal Entity Testing Overview</h1></td></tr></table></div><di=
+v style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/20B51E8E-1EE8-4CA0-927A-319413C3EF9E?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h1 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2.5rem">Meeting Summary =E2=80=93 June 6, 2025</h1><h2 =
+style=3D"font-weight:500;padding-top:20px;font-size:2rem">Attendees</h2><p>=
+(Not explicitly named, but reference to Sriram, Finance, ISC, HR, PMO, =
+Justin, Gokul, and other functions.)</p>
+<hr />
+<h2 =
+style=3D"font-weight:500;padding-top:20px;font-size:2rem">Main Topics =
+Discussed</h2><h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">1. <strong style=3D"font-weight:bold">User Acceptance Testing (UAT) =
+and System Owner Alignment</strong></h3><ul>
+<li><p><strong =
+style=3D"font-weight:bold">Scope of UAT:</strong>  </p>
+<ul>
+<li>UAT is function-led, spanning 82 (=E2=80=9Cbuild back=E2=80=9D) out of =
+296 total systems.  </li>
+<li>Syncing of test windows and coordination with=
+ various function teams is required.  </li>
+<li>System owners need to be =
+clearly identified for every impacted application, especially for =
+&quot;build back&quot; systems.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Function Involvement:</strong>  </p>
+<ul>
+<li>Finance, ISC, HR have already provided their lists of system owners and=
+ the systems involved.</li>
+<li>Process for identifying and collecting =
+owner names to be repeated for other functions.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">TSA (Transition Service =
+Agreement) Systems:</strong>  </p>
+<ul>
+<li>TSA systems (remaining under =
+Honeywell on Day 1) have unchanged service owners, but basic access (Athens=
+ ID) verification needed.</li>
+<li>Only =E2=80=9Cbuild back=E2=80=9D =
+systems (82) specifically require new owner identification.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Inventory Tracker:</strong>=
+  </p>
+<ul>
+<li>An inventory tracker exists (Excel/Smartsheet), functions =
+will be asked to fill out service owner information for impacted systems.=
+</li>
+<li>For clarity, only the 82 =E2=80=9Cbuild back=E2=80=9D systems =
+(not all 296) require new assignment and detailed tracking.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:=
+1.75rem">2. <strong style=3D"font-weight:bold">Systems and Processes =
+Impacted by Legal Entity (LE) Changes</strong></h3><ul>
+<li><p><strong style=3D"font-weight:bold">Identifying Affected =
+Systems:</strong>  </p>
+<ul>
+<li>Initial estimate was 22 LE-impacted =
+systems, later corrected to 25.</li>
+<li>These are systems required to be =
+tested specifically for Legal Entity and &quot;BRV&quot; (Business =
+Readiness Validation) reasons.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Categories of Systems:</strong>  </p>
+<ul>
+<li><strong style=3D"font-weight:bold">LE-Impacted (BRV) Systems:</strong> =
+~25 systems spanning ERP, HR (HRM, payroll), Finance, Supply Chain, and =
+others.</li>
+<li><strong style=3D"font-weight:bold">Non-BRV =
+Systems:</strong> Other 10+52 systems going live in June=E2=80=93Oct (e.g.,=
+ Microsoft rollout), not directly involved in LE/BRV but need tracking due =
+to overlapping timelines.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Downstream Testing:</strong>  </p>
+<ul>
+<li>ERP legal entity changes necessitate downstream validation in connected=
+ systems (e.g., data replication to EDW, order processing in Salesforce).=
+</li>
+<li>End-to-end processes need to be tested across all systems that =
+interact due to LE changes.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">3. <strong=
+ style=3D"font-weight:bold">Test Planning and Progress =
+Tracking</strong></h3><ul>
+<li><p><strong style=3D"font-weight:bold">Core =
+Data to be Collected per System:</strong>  </p>
+<ul>
+<li>Athens service owner identification.</li>
+<li>UAT/SIT start and end =
+dates.</li>
+<li>Number/percentage of test scripts/scenarios defined, =
+executed, and completed.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Tracking Challenges:</strong>  </p>
+<ul>
+<li>Work plans and Smartsheet bundles do not map 1:1 with 82 systems; =
+granular tracking required.</li>
+<li>Functions likely to enter broad test =
+windows, so additional repository or heat map view will be needed for =
+granular data.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">T=
+ooling and Data Integration:</strong>  </p>
+<ul>
+<li>Discussion around =
+syncing data between Smartsheet, Excel trackers, and Capital Edge for =
+source of truth.</li>
+<li>Possibility to streamline updating and reporting =
+by leveraging already built integrations (Smartsheet =E2=86=94 Capital =
+Edge) but may require model changes.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">4. <strong=
+ style=3D"font-weight:bold">Preparation and Logistics for Upcoming =
+Alignment Calls</strong></h3><ul>
+<li><p><strong style=3D"font-weight:bold"=
+>Purpose:</strong>  </p>
+<ul>
+<li>Prepare for a series of =
+&quot;alignment&quot; calls with functional stakeholders =
+(Tuesday=E2=80=93Thursday next week, with potential follow-ups).</li>
+<li>Calls will finalize owners, validate system-process mappings, align on =
+test planning.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">K=
+ey Agenda Items for Alignment Calls:</strong>  </p>
+<ul>
+<li>Finalize owners, roles, responsibilities.</li>
+<li>Finalize test =
+scenarios and test scripts.</li>
+<li>Validate systems in scope.</li>
+<li>Finalize test windows and calendar.</li>
+<li>Align on entry/exit =
+criteria for UAT.</li>
+<li>Align on test logistics (locations, hardware =
+needs, tools: JIRA, ALM, Excel, etc.).</li>
+<li>Assign test signoff leads =
+and clarify signoff responsibilities.</li>
+<li>Confirm process for =
+capturing test tracking, reporting, and MOS (Measures of Success) cadence =
+post-alignment.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">=
+Inputs &amp; Outputs:</strong>  </p>
+<ul>
+<li>Inputs: Updated tracking =
+sheets, proposed agenda/templates, lists of owners/scenarios from each =
+function.</li>
+<li>Outputs: Aligned tracking, role assignments, clear next =
+steps, set test windows, agreed logistics, action items for any unresolved =
+points.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-=
+top:20px;font-size:1.75rem">5. <strong style=3D"font-weight:bold">Reporting=
+ and Dashboarding</strong></h3><ul>
+<li><p><strong style=3D"font-weight:bol=
+d">Data Ownership:</strong>  </p>
+<ul>
+<li>Functions are responsible for =
+updating test progress/data.</li>
+<li>IT and PMO coordinate reporting =
+structures.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Dash=
+board Data Sources:</strong>  </p>
+<ul>
+<li>Test completion, scenario =
+coverage, and process tracking will be pulled from trackers for =
+dashboarding (primarily in Capital Edge).</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Approach to Test Scenarios &amp; =
+Scripts:</strong>  </p>
+<ul>
+<li>Functions provide business scenarios; IT =
+helps develop detailed test scripts.</li>
+<li>Actual test script tracking =
+may be in JIRA for some groups; need to confirm and if so, receive JIRA =
+reporting.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;paddi=
+ng-top:20px;font-size:1.75rem">6. <strong style=3D"font-weight:bold">Call =
+Scheduling and Communication</strong></h3><ul>
+<li><p><strong =
+style=3D"font-weight:bold">Call Logistics:</strong>  </p>
+<ul>
+<li>Placeholder invites to be sent out for alignment calls, final agenda to=
+ be confirmed Monday.</li>
+<li>Multiple sessions (Tues-Thurs) split by =
+function, with follow-ups scheduled as needed.</li>
+<li>Slides and bullet-pointed outcomes/expectations to be created for =
+clarity.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Slide/M=
+aterial Preparation:</strong>  </p>
+<ul>
+<li>Content to include tracking =
+requirements, agenda, expected outcomes, and clear action items for each =
+function.</li>
+<li>Use of left-to-right input/output visual slide to =
+facilitate discussion.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Action =
+Items</h2><ol>
+<li><p><strong style=3D"font-weight:bold">Send Functions the=
+ Inventory Tracker</strong>  </p>
+<ul>
+<li>Direct ask for completion of =
+Athens service owner names and other relevant fields for all 82 =
+=E2=80=9Cbuild back=E2=80=9D systems.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Prepare/Refine Granular Tracking =
+Mechanism</strong>  </p>
+<ul>
+<li>Ensure a view or tracker exists for =
+SIT/UAT dates, owners, and status info at an app level (beyond what work =
+plan bundles provide).</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Develop and Share Alignment Call Agenda</strong>=
+  </p>
+<ul>
+<li>Draft agenda with bullet points (owners, scenarios, systems=
+ in scope, test windows, entry/exit criteria, logistics, signoff).</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Create/Update Slides =
+for Monday=E2=80=99s Prep Meeting</strong>  </p>
+<ul>
+<li>Input/output visualization, expected outcomes, and actionable example =
+items.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Placehold=
+er Calendar Invites</strong>  </p>
+<ul>
+<li>Send initial invites for =
+alignment calls (Tuesday=E2=80=93Thursday), indicate agenda will be =
+finalized Monday.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold=
+">Coordinate with PMO on Reporting Structure</strong>  </p>
+<ul>
+<li>Confirm who owns tracker/data ingestion and reporting, define process =
+for updating and maintaining test progress.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Confirm Integration/Synchronizati=
+on Process</strong>  </p>
+<ul>
+<li>Technical validation that Smartsheet, =
+Capital Edge, and Excel trackers are synchronized as designed, with =
+appropriate data model adjustments as required.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Logistics Clarification</strong> =
+ </p>
+<ul>
+<li>For each function, confirm test location, required equipment=
+, tool preference, and align with IT/IAM on any access or hardware needs.=
+</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Action Plan for=
+ Alignment Call Outcomes</strong>  </p>
+<ul>
+<li>Ensure each item (owner =
+identification, test windows, logistics, etc.) is assigned a responsible =
+party and tracked to closure.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Follow-Up =
+Points</h2><ul>
+<li><p><strong style=3D"font-weight:bold">Alignment =
+Calls:</strong>  </p>
+<ul>
+<li>Conduct functional alignment calls Tuesday, =
+Wednesday, Thursday next week, with follow-ups as needed into the following=
+ week.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Weekly =
+MOS for UAT:</strong>  </p>
+<ul>
+<li>Once alignment achieved, weekly =
+Measures of Success (MOS) calls to monitor UAT progress, issues, and report=
+ status.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Finaliz=
+ation and Distribution of Materials:</strong>  </p>
+<ul>
+<li>Slides and call content to be finalized by Monday morning, distributed =
+with finalized invite updates.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Additional Clarification on Reporting and =
+Logistics:</strong>  </p>
+<ul>
+<li>Separate session with PMO as needed to =
+clarify cross-functional process for process scenario/test tracking =
+logistics.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;paddi=
+ng-top:20px;font-size:2rem">Significant Decisions &amp; =
+Discussions</h2><ul>
+<li><strong style=3D"font-weight:bold">Limiting =
+Tracker Data Entry:</strong>  <ul>
+<li>Only 82 =E2=80=9Cbuild back=E2=80=9D=
+ systems require new owner assignments and UAT granularity, not all 296 =
+systems.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Tracking =
+vs. Reporting:</strong>  <ul>
+<li>Recognition of limitations with current =
+work plans/bundling and shift to more granular system-level tracking.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Division of =
+Responsibility:</strong>  <ul>
+<li>Functions own business process/scenario =
+definition; IT/PMO support test script creation, tracking, and reporting.=
+</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Benefit of =
+Alignment Calls:</strong>  <ul>
+<li>Critical to clarify roles, close gaps, =
+resolve test logistics details, and set up tracking/reporting cadence =
+before UAT begins.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p><strong =
+style=3D"font-weight:bold">Prepared by:</strong><br />(Note-taker on June 6=
+, 2025)</p>
+</div></div></div><div style=3D"background-color:#ffffff;paddin=
+g:28px;border-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 =
+rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription</h3><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Sriram</span><span style=3D"color:#64748b;font-size:14px=
+">0:02</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Because technically the UAT is a function led exercise for these 84 =
+systems or 82, they still need to do some UAT and we need to sync up with =
+our test windows and all that, but more so spend time. This is a bit of a =
+different thing. We can talk to Sriram as an example or the equivalent in =
+finance. We&#x27;ve got five names in finance that are going to be talking.=
+ Talking to us, but more so around. Yeah, So a lot more around. Two, a bit =
+more around, you know, the third one on top. So that&#x27;s where. Now all =
+of these are intertwined because we need to get the names. When it&#x27;s =
+the same system owners that are touching here that they will need to touch =
+here if they&#x27;re in the same space like erp. But if it&#x27;s a brand =
+new system here that&#x27;s not changing but they&#x27;re touching it, =
+we&#x27;re going to need the names similar to what this guy said. So the =
+call to action where the outcome of all of this is when we&#x27;re talking =
+to them Monday, we want to tell them that we&#x27;ve got this inventory =
+tracker that they need to go fill out for these, you know, whatever you =
+have as a tracker that we need to give them very specifically go fill out =
+the owners, the pictures and the catcher names so that this work can happen=
+. Sorry. So that this work can happen.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">1=
+:28</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">And that. That&#x27;s across all of the 296, not just the.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">1:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That would be 296.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><span =
+style=3D"color:#64748b;font-size:14px">1:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Technically =
+that&#x27;s not just across the 82.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sriram</span><span style=3D"color:#64748b;font-size:14px"=
+>1:40</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">True. But keep in mind. Well, let&#x27;s put it this way.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><span =
+style=3D"color:#64748b;font-size:14px">1:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m just in my =
+mind trying to plan what to give them.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sriram</span><span style=3D"color:#64748b;font-size:14px"=
+>1:50</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Sure. So think of it this way. 82, certainly they need to go fill out. =
+Let&#x27;s talk about TSAs. TSAs, the owners may be changing, but the =
+processes are by the existing Honeywell. It&#x27;s on a tsa, so the systems=
+ are not changing. Right. So it&#x27;s still Honeywell.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">2=
+:12</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. Other than does your Athens ID work.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sriram</span><span style=3D"color:#64748b;font-size:14px"=
+>2:14</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">And whatever, then it&#x27;s just it from an access perspective, does =
+your Athens ID work to log in to test?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">2=
+:22</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">2:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">But the service =
+owner is still Honeywell. So you&#x27;re not getting a new service owner.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><span =
+style=3D"color:#64748b;font-size:14px">2:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Well, the only ones =
+that we need service owners for are build back, which is the 82.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">2:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right. So =
+that&#x27;s what you&#x27;re asking them. So going back to your point you =
+made, it&#x27;s just the 82 mostly.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">2=
+:42</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">2:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Where you will come =
+in here is if they want those systems, we just give them the Honeywell =
+system owners here. If they&#x27;re in the TSA list.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">2=
+:54</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, exactly, because.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span>=
+<span style=3D"color:#64748b;font-size:14px">2:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So you don&#x27;t =
+need 296 here, you just need the 82.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">3=
+:05</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. So we need Honeywell and Athens system owner for the AD2 and then =
+we already have the Honeywell system owners for the whatever. Do you want =
+to. Do you think it would be a good idea to develop a generic version of =
+what promote shared with you for ISC and use that to distribute to the =
+other functions to get them started.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sriram</span><span style=3D"color:#64748b;font-size:14px"=
+>3:41</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">The functions have to come and give us that.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">3=
+:43</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">3:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And if you recall, =
+the functions and Finance already gave us that too.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">3=
+:49</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, we have it from Finance, we have it from isc.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sriram</span><span style=3D"color:#64748b;font-size:14px"=
+>3:53</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay. And then you have it from HR as well because we know it&#x27;s =
+those two systems that they touch. HCM and payroll.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">4=
+:02</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Exactly.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">4:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so you have a =
+view of the systems in touch. The whole point was we thought it&#x27;s 22 =
+systems. We have to make sure you know what is really getting touched for =
+legal entity and BRV. So it&#x27;s not 22 but 25. We just need to list that=
+ 25 out as systems that are impacted by legal entity and need to be tested =
+for legal entity.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><s=
+pan style=3D"color:#64748b;font-size:14px">4:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">What category, what =
+category do those ones like from that ISC list that are not on our. =
+They&#x27;re not BRV because they&#x27;re not build back are those.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">4:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So keep in mind. So =
+two things, build back and move as is has nothing to do with brv. They are =
+generic dispositions that is there for day one.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">5=
+:00</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. Do you know what I&#x27;m saying though? Like the.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Sriram</span><span style=3D"color:#64748b;font-size:14px=
+">5:03</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">I know what you&#x27;re saying.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">5=
+:04</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yes.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">5:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">What we need to look=
+ at is which of that 82 is specifically legal entity related that get =
+impacted by changes to legal entity. So a case in point, erp. ERP is not a =
+build back. It&#x27;s not a move as is. It&#x27;s actually a TSA on day one=
+. But on August 1st you&#x27;re making legal entity changes in that system =
+that&#x27;s going to be on a tsa. So you need to test that system and =
+it&#x27;s in scope for. For brv.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</s=
+pan><span style=3D"color:#64748b;font-size:14px">5:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">5:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">There are other =
+systems that he has listed like EDW that&#x27;s also changing around that =
+time frame. But that&#x27;s also in scope for BRV because there are data =
+reports that flow out of ERP into it and they&#x27;ll use those reports and=
+ the data and analytics in there and they have to look at it at a legal =
+entity level. So all those systems in supply chain he gave you are getting =
+touched during brv. The question is which one of them you know so we can =
+say this is the impacted systems. Systems in scope for BRV Are these =
+however many he has in that list, 17 or 18 plus. We need to look at what =
+the finance guys have given. I think they gave us 7 or 8.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">6=
+:33</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yep. And then HR 2 and then plus.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sriram</span><span style=3D"color:#64748b;font-size:14px"=
+>6:35</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">The 2 for HR. So you&#x27;re looking at. And then I don&#x27;t know if =
+there&#x27;s any other, any other function.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">6=
+:42</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">What about engineering or like dni?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sriram</span><span style=3D"color:#64748b;font-size:14px"=
+>6:44</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Look at engineering. Engineering, data engineering, R D probably is. We =
+may have one system that I don&#x27;t know what might be legal entity =
+change related but I doubt there is any. So it truly is legal entity =
+changes are, you know, I need to meet, I need to pay people out of the =
+right legal entity. So your PayCheck comes on August 5th.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">7=
+:10</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So is that one. So that&#x27;s one category of them. Is there another =
+category of them?</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span>=
+<span style=3D"color:#64748b;font-size:14px">7:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, no, there&#x27;s=
+ only one related to legal entity.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</=
+span><span style=3D"color:#64748b;font-size:14px">7:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m saying =
+legal entity is one category of them.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sriram</span><span style=3D"color:#64748b;font-size:14px"=
+>7:23</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">For systems.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><s=
+pan style=3D"color:#64748b;font-size:14px">7:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Sriram</span><span style=3D"color:#64748b;font-size:14px=
+">7:26</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah. So the rest of this is non legal entity related which is there =
+are systems going live around the same time that have nothing to do with =
+legal entity. Like I don&#x27;t know, let&#x27;s just say Microsoft. Yeah, =
+Microsoft is going live on August 1st and we need to probably add that too =
+because there&#x27;s a testing on Microsoft as well. If you recall the =
+conversations that these guys were talking about. They talked about pilot =
+users and the PC rollout and all that stuff. We talked, talked about. Yeah,=
+ the pilot users of our, you know, email pilot users and testing and all =
+that. So Microsoft is a good example that they&#x27;re starting work on =
+August 1st to roll out new email and new tenant and OneDrive. All that, =
+that has nothing to do with any legal entity work. It&#x27;s just happening=
+ at the same time. So those are the non BRV systems, if you will. So these =
+other, other 10 +52 that we have or however many that are build back and =
+move as non BRV related but happening around the time frame which is this =
+stuff. So technically Speaking it&#x27;s actually 10 plus 52. And then we =
+have, you know, there are LE related changes which are probably like the 25=
+ or 27 or whatever it is. So it may not end up being 82, let&#x27;s say for=
+ the sake of this 22 and let&#x27;s say this is 10. So for whole numbers we=
+ will need to validate these. These 10 are going in June and July. These 50=
+ are going in August and September and October.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">9=
+:09</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">9:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So August, September=
+. They have nothing to do with legal entity they just so happen that they =
+need to be built back and move as is and they&#x27;re going around in that =
+time frame. ERP is the main one that is legal entity and thus this other =
+stuff that. So the changes are made in the ERP in the whole or on the main =
+coming out of those changes. You can think of all the downstream systems =
+that now need to validate that those changes took place in the erp. So all =
+those supply chain systems, most of them are downstream systems that =
+we&#x27;ll have to validate that those changes, those legal entity changes =
+that happen in the ERP can now be seen. If I created a new legal entity for=
+ Athens in the ERP and I created a new cost center company code, however, =
+that hierarchy is I create new legal entity, then if I&#x27;m able to go =
+enter an order against that legal entity in the salesforce, then I know =
+that change took effect.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><s=
+pan style=3D"color:#64748b;font-size:14px">10:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">10:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And so this end to =
+end process testing is around that to say okay, can I enter a new order =
+against this new legal entity because it&#x27;s brand new. So that&#x27;s =
+where the process cutover happens. So the end to end process testing is =
+around. That is can I do an end to end of raising an order, raising a sales=
+ quote, raising, paying the quote, collecting the cash, delivering the =
+goods. All of that has to happen on the new legal entities that have been =
+set up for Athens.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><s=
+pan style=3D"color:#64748b;font-size:14px">10:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, exactly.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">10:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So a lot of them the=
+ setup is in erp, erp. But then there&#x27;s a lot of downstream systems =
+that need to get to reflect that legal entity because the name of the =
+company will change. Like you know, Athens Solzes Hong Kong Inc. Is a brand=
+ new company in Hong Kong. Before it was Honeywell Hong Kong. Now it&#x27;s=
+ holes. Well as. And it may have a new address, it may have a new shipping =
+label, it may have a new tax id. All of those things will have to get =
+tested as part of this, this end to end process testing. Again, I digress =
+from our main point, which is for Monday, what do we need to ask them? So =
+if you go back to your list, we&#x27;re saying we need to ask them for =
+service owners for these applications. We then need to. The other couple of=
+ things on the inventory tracker that we talked about.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">1=
+1:39</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Hold on, I&#x27;m just pulling it back up.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sriram</span><span style=3D"color:#64748b;font-size:14px"=
+>11:41</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><span =
+style=3D"color:#64748b;font-size:14px">11:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Give me one moment. =
+There we go. Come on. Okay.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span>=
+<span style=3D"color:#64748b;font-size:14px">12:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">On your first page, =
+what do you have? You have to ask for service owners.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">1=
+2:12</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, I think we were using this one. This is like the, this is the =
+service owners.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span>=
+<span style=3D"color:#64748b;font-size:14px">12:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So server service =
+owner identity and yeah, so it&#x27;s not identity, but they&#x27;re =
+essentially going to complete that. Right, so you&#x27;ve already. Okay, =
+then they&#x27;re going to validate that the sit UAT dates that are there =
+that are accurate and they need to go update it in the smartsheet work =
+plans. Now, the challenge is the smartsheet work plans don&#x27;t =
+necessarily consist of 296 apps. They bundle certain apps, they bundled =
+other things. So they don&#x27;t. Not for 296, but at least for the 82. =
+They don&#x27;t. They don&#x27;t necessarily consider they should ideally, =
+but they don&#x27;t. So we would need a view of the sit uat dates for those=
+ 82.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><span =
+style=3D"color:#64748b;font-size:14px">13:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. What? Justin =
+already has that because he has the heat map from smartsheet and the heat =
+map pulls directly from those work plans. So he has. Has a mapping. Yeah, =
+he has a mapping of which apps are in which work plan and where.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">13:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So we need them to =
+validate that that is accurate, that that heat map is right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><span =
+style=3D"color:#64748b;font-size:14px">13:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Exactly.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">13:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Now how they do that=
+ is we have to give them the heat map and we say go update the work plans =
+because it&#x27;ll get pulled here. Please go update work plans one by one.=
+ Yes. Now the challenge will be they are not going to do that. If you can =
+imagine if. So just think through this and play this out. If I, if I say =
+supply chain and let&#x27;s say my whole thing is my plans are created =
+differently and say my work plan, what will happen in supply chain? What I =
+see happening, and I&#x27;m using supply chain as an example. If you look =
+at that list that Gokul sent us of the 50 or 16 apps, they all have sit uat=
+ dates across a wide range of dates. Some of them are the 2nd of June to =
+the 20th of June and then there&#x27;s a few stragglers and 2nd of July, =
+5th of July, etc.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><s=
+pan style=3D"color:#64748b;font-size:14px">14:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">14:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So what these guys =
+will go into the work plan and say is 2nd of June to 5th of July. =
+They&#x27;re not going to give us the granular detail. So work plans will =
+not work for the purposes we&#x27;re asking for.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">1=
+4:31</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Hmm, I see what you&#x27;re saying. So you&#x27;re assuming that =
+they&#x27;re gonna give you the. Yeah, yeah, they&#x27;re gonna give us the=
+ broad dates of like the spanning of the whole thing, not down to the =
+granular app level detail.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span>=
+<span style=3D"color:#64748b;font-size:14px">14:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So you can&#x27;t =
+use a work plans. Yes, I get it. It goes into this. But we need a better =
+view of where this is getting tracked. So we may need to create another =
+view of the heat Map or a different version of it where we say, sit uat. =
+Use that as a repository that we can then update. Have a sync to Capital =
+Edge to get updated in Capital Edge.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">1=
+5:08</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Well, yeah, I mean, it&#x27;s in our systems tracker. I would just say =
+go update our systems tracker with it.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sriram</span><span style=3D"color:#64748b;font-size:14px"=
+>15:13</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">But people don&#x27;t have access to Capital Edge. Very few people have=
+ access.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><span =
+style=3D"color:#64748b;font-size:14px">15:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Not a Capital Edge, =
+our Excel.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">15:21</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, but how often =
+do you have to maintain Excel? I would rather.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">1=
+5:26</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I would do like one load or.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram<=
+/span><span style=3D"color:#64748b;font-size:14px">15:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Something, but if =
+the SID date changes or something else changes, like where do they go in =
+and say, okay, I give you these dates, but, oh, I&#x27;m delayed.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><span =
+style=3D"color:#64748b;font-size:14px">15:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So, for example, =
+ideally in smartsheet.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span>=
+<span style=3D"color:#64748b;font-size:14px">15:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Ideally in =
+smartsheet somewhere, but not in the heat map. It has to be somewhere else =
+Smartsheet, because in the work plan, they&#x27;ve given you a broad date. =
+So the app may be delayed, but I&#x27;m still in the window.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><span =
+style=3D"color:#64748b;font-size:14px">15:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I see what =
+you&#x27;re saying. So we need probably another consolidated place to track=
+ the.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">16:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">These test dates and=
+ these. These tracker. So either we duplicate the tracker we have in =
+Capital Edge and smartsheet so that it could be a sync that uploads and =
+these guys only update the smartsheets.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">1=
+6:15</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, we could do that.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span>=
+<span style=3D"color:#64748b;font-size:14px">16:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So instead of =
+sending Brian port out of Capital Edge.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">1=
+6:18</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Exactly. Instead of sending Brian, like the Excel, I might just load it =
+into smartsheet, sent him the smartsheet and that connection is already =
+created. And he can handle the. The sync. Like the, the infrastructure to =
+do the sync is already there.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram<=
+/span><span style=3D"color:#64748b;font-size:14px">16:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. But he may =
+need to change the model. I think he&#x27;ll need to redo the columns and =
+stuff and do the sync.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><s=
+pan style=3D"color:#64748b;font-size:14px">16:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, yeah. I =
+was oversimplifying, but yes, I think that that&#x27;s actually a great =
+idea. So that then there&#x27;s like a live source of truth somewhere that =
+they can edit and it gets incrementally updated. In Capital Edge.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">16:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">In Capital Edge. And=
+ we don&#x27;t need to babysit Capital Edge. Yeah, the reporting and the =
+dashboard will still be there. And we run those out of there.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><span =
+style=3D"color:#64748b;font-size:14px">16:57</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Sriram</span><span style=3D"color:#64748b;font-size:14px=
+">16:59</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">So now these guys, again, I have. I&#x27;m in two minds whether to =
+show them these dashboards, because I think after it&#x27;s in Capital Edge=
+, we can do it. But. So this would be the second ask that they go in and =
+create this tracker. We create the tracker and they go update this at a =
+granular level for these 82 apps.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</s=
+pan><span style=3D"color:#64748b;font-size:14px">17:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. And I want to =
+combine what we&#x27;re asking them to do, because we can capture all of =
+this data in the same place. The Athens service owners. Service owners for =
+build backs.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">17:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Non brv.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><span =
+style=3D"color:#64748b;font-size:14px">17:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes, for non brv.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">17:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Actually just for =
+all. In fact, put it for the 82.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</s=
+pan><span style=3D"color:#64748b;font-size:14px">17:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">17:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Or 85 or 90.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><span =
+style=3D"color:#64748b;font-size:14px">17:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Athens service=
+ owners, UAT start, UAT end.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span=
+><span style=3D"color:#64748b;font-size:14px">17:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then sit start. =
+Sit end, UAT start, UAT End.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><=
+span style=3D"color:#64748b;font-size:14px">17:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, exactly. And =
+the, I would say the test script counts as well. Number of scripts defined,=
+ number build new, number use, existing. We have all of those.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">18:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I don&#x27;t know if=
+ we get, I don&#x27;t know if we need to get to that level, but eventually.=
+ No, we may not. So we may not need to that level.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">1=
+8:12</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">We did talk about that.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span>=
+<span style=3D"color:#64748b;font-size:14px">18:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">How many test =
+scripts? 100 for this system. How many have you tested on? Yeah, I =
+don&#x27;t. It doesn&#x27;t matter if they&#x27;ve got 99 and 1, they have =
+to create new or they&#x27;ve got 1 and they got to create 99 new.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><span =
+style=3D"color:#64748b;font-size:14px">18:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So can we just say =
+number of test scripts and then number complete.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sriram</span><span style=3D"color:#64748b;font-size:14px"=
+>18:34</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah. So we should say testing, you know, maybe and then later on we =
+can add percentages if we want. Yeah, because we should say test scenarios =
+defined, test scope, know test cases defined or test cases developed. Or =
+maybe the total test, you know, maybe scenarios are a business construct. =
+Maybe we say total test cases, you know, against that system and then, you =
+know, total, Total executed.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><=
+span style=3D"color:#64748b;font-size:14px">19:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">19:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Now the problem is =
+they may do that in jira, so they may say we do it in jira, we&#x27;re not =
+going to do it it here either. But we have to ask, we have to propose that =
+and then let them sort out that everybody&#x27;s doing it in jira and if =
+it&#x27;s not, then they have to come and do it here or you know, they, =
+they update it here as well.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><=
+span style=3D"color:#64748b;font-size:14px">19:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I mean if =
+they&#x27;re doing it in jira, you, they can come back to us and tell that,=
+ tell us that. But until, but we have to get.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sriram</span><span style=3D"color:#64748b;font-size:14px"=
+>19:35</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">A report from JIRA then.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><=
+span style=3D"color:#64748b;font-size:14px">19:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, but I mean, =
+I&#x27;m just saying I think we can propose this until they tell us. No, no=
+, we already do it somewhere else. Go get it from here.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sriram</span><span style=3D"color:#64748b;font-size:14px"=
+>19:43</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Okay, so that&#x27;s that. And then the third part then would be. Well,=
+ we may have to look at a few more things in that smartsheet in the, in =
+that tracker. Not the work plan, but it&#x27;s a smartsheet tracker.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><span =
+style=3D"color:#64748b;font-size:14px">19:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">20:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then =
+they&#x27;re going to have to. We need that MOS for the next two weeks =
+aligned on how we will again. The end result would be this alignment call =
+happens and then UAT starts and we need a weekly MOS between The =
+coordinators to understand what&#x27;s going on with uat. But to get to =
+there, we need to do all those other things I mentioned on aligning on all =
+these things.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><span =
+style=3D"color:#64748b;font-size:14px">20:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Sriram</span><span style=3D"color:#64748b;font-size:14px=
+">20:28</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">And those are the prep calls, the alignment calls that we need for the=
+ next two weeks.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><s=
+pan style=3D"color:#64748b;font-size:14px">20:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. To get to =
+those alignment calls for the next two weeks, we need to know what systems =
+the processes touch.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span>=
+<span style=3D"color:#64748b;font-size:14px">20:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Or we should =
+just say validate. Just say validate process system mapping. Validate test =
+windows, Validate test scenarios and test scripts. Define, confirm and =
+finalize roles and responsibilities.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">2=
+0:58</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">For the weekly mos.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span>=
+<span style=3D"color:#64748b;font-size:14px">20:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All your agenda. No,=
+ not the weekly mos for these alignment calls. That would be your agenda.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><span =
+style=3D"color:#64748b;font-size:14px">21:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, exactly. I =
+mean that&#x27;s. I think that&#x27;s pretty much what we have for the =
+agenda. Where didn&#x27;t. I thought we wrote the agenda together.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">21:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Let&#x27;s add that =
+as a bullet point here. Let&#x27;s just, you know, let&#x27;s put the =
+bullet points here and call out agenda here. No need for newsletter slide. =
+Just put it as bullet points here and say agenda would be, you know, align =
+on. Align on roles and responsibilities, owners roles and responsibilities.=
+ Align on. It won&#x27;t be that. It&#x27;s more it versus business. Like =
+who&#x27;s going to develop scenarios, who&#x27;s going to load the scripts=
+, who&#x27;s going to vary, verify, you know, so align on. You know, =
+somewhere in here we should also add align on test logistics at the bottom.=
+ And we should also say align on entry exit criteria. Align on test =
+logistics. Align on. And all of these need content. So we need a slide to =
+develop. So if we set up the call for Monday or Tuesday, we have some work =
+to do that align on entry exit criteria. Align on. Maybe we say finalize =
+instead of align on. Just say finalize owners roles and responsibilities. =
+What else do we need to do that? Finalize test windows and test windows and=
+ calendar. Validate systems, processes and systems in scope. Our systems in=
+ scope. Let&#x27;s just say systems in scope scope because they&#x27;re =
+going to come in with the processes. Systems in scope. You know, finalize =
+entry exit criteria or align on entry exit criteria. What else do you think=
+ they need to do in these alignment calls?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">2=
+3:29</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Owners roles and responsibilities, test windows and calendar, systems in=
+ scope, entry exit criteria, test logistics. Where&#x27;s the. Where&#x27;s=
+ the process.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">23:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That is the validate=
+ systems in scope against those processes.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">2=
+3:50</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Should we tell them that they need to bring the like come prepared to.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">23:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Speak to the =
+processes functions already do that.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">2=
+3:57</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">23:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Writing the =
+functions. Functions will have it. And then we should also say validate, =
+you know, validate test test scenarios Scenarios? Yeah, validate test =
+scenario. That&#x27;s the third, third bullet.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">2=
+4:14</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">24:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Validate test =
+scenarios and test scripts, I would say.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">2=
+4:22</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I mean they need to provide us with those because the scenarios are =
+based on the processes.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span>=
+<span style=3D"color:#64748b;font-size:14px">24:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No. Yes. So who =
+needs to provide what.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><s=
+pan style=3D"color:#64748b;font-size:14px">24:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Do we have the test =
+scenarios in advance?</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span>=
+<span style=3D"color:#64748b;font-size:14px">24:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Functions will share=
+ the test scenarios with the IT teams for them to help develop test scripts=
+ that come out of it. So these alignment calls will be for functions to say=
+ these are the scenarios we&#x27;ve developed. Who do we meet to get the =
+test scripts for these?</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><s=
+pan style=3D"color:#64748b;font-size:14px">25:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Exactly. So =
+it&#x27;s not like validating what we are bringing. I take validate to mean=
+ like, hey, these are the systems that we know for this function are in =
+scope. Is this the full list or is there something that we&#x27;re missing =
+and anything related like the. The tertiary ones that you mentioned for =
+Schare, that is the opposite of. That&#x27;s homework for them. Bring these=
+ test scenarios to exactly what.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram<=
+/span><span style=3D"color:#64748b;font-size:14px">25:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You just said, then =
+say align or finalize.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><s=
+pan style=3D"color:#64748b;font-size:14px">25:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">25:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Finalize test =
+scenarios and test. Actually finalize test scenarios and test scripts and =
+move that to the third bullet. Actually second second bullet and I would =
+actually move the test windows to the fourth, to the. To the fifth bullet =
+just before test logistics. Now this is going to need a bit of work because=
+ we probably need some templates for these. Either we&#x27;re tracking them=
+ somewhere or we give, you know, we have to prepare some test entry, exit =
+criteria and what into that meeting and say, this is our criteria. Do you =
+all agree? Or we say, you know, here&#x27;s some basic criteria. See if you=
+ guys want to refine this and develop this and come back to us. So =
+different ways that can go. But we need that conversation.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">2=
+6:56</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">We definitely need to develop. We need to develop the temp or like the, =
+the templates. Right. For these.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram<=
+/span><span style=3D"color:#64748b;font-size:14px">27:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">What? Depends on =
+what template.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><span =
+style=3D"color:#64748b;font-size:14px">27:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I mean, to run the =
+call. Right. So like the test script template and the scenarios template. =
+Here&#x27;s the scenario.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span>=
+<span style=3D"color:#64748b;font-size:14px">27:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, we don&#x27;t. =
+We don&#x27;t. We are not developing anything. The function will have some =
+Excel or some other way of sharing their scenarios and they may have =
+already shared it with the IT teams for us to.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">2=
+7:36</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">We will need to ingest that data in a standardized format to what to get=
+ it into ultimately Capital Edge or whatever we&#x27;re doing reporting on.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">27:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, there&#x27;s no =
+test scenarios that go into Capital Edge.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">2=
+7:54</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I&#x27;m not saying the test scenarios, but the. To be able to look at a=
+ system and say where is the system at in uat, you have to be able to =
+answer the processes that are involved. Or if you&#x27;re talking about an =
+end to end process what are all of the systems involved in this end to end =
+process and where is each one of those systems at in their UAT testing?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">28:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, that&#x27;s =
+again you&#x27;re missing the point. Recall that I said an app can be on a =
+tsa. There&#x27;s no UAT for that TSA but it&#x27;s in an end to end. We =
+talked about Salesforce. So you don&#x27;t need to track where Salesforce =
+is because nothing is happening to is just that the supply chain team for =
+an end to end process is using Salesforce as an end input.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">2=
+8:44</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So then what do we get out of these alignment calls? Like what is the =
+out, what is the outcome?</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span>=
+<span style=3D"color:#64748b;font-size:14px">28:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All of the stuff =
+that we need to get tested. Everything in the row two and row three that I =
+was mentioning.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><s=
+pan style=3D"color:#64748b;font-size:14px">28:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And so to get tested=
+ who is going to track that? Like who is going to act? Who is going to =
+monitor these.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">29:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The test scenarios =
+Again in the BRV tracker. That&#x27;s the BRV process tracker. When we talk=
+ about that pre in Capital Edge.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</s=
+pan><span style=3D"color:#64748b;font-size:14px">29:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">But the BRV process =
+tracker doesn&#x27;t have systems.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram=
+</span><span style=3D"color:#64748b;font-size:14px">29:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">They you going to =
+use the system inventory. It doesn&#x27;t matter what system. So =
+they&#x27;re not going to track that. I touch 15 systems they&#x27;re just =
+going to track that. I tested this process using this system. Remember the =
+conversation again to 296 systems plus there are other rows that the =
+functions will go in and enter.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</s=
+pan><span style=3D"color:#64748b;font-size:14px">29:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So that&#x27;s=
+ it. The functions will go in and enter then. I think that that was my =
+question. Like I, I was saying. Yeah. So we need a, a way to structure =
+those conversations. Like I&#x27;m thinking about what pre work do we need =
+to go into these functional alignment calls and have a coherent =
+conversation with them to drive the output.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sriram</span><span style=3D"color:#64748b;font-size:14px"=
+>30:02</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">So it depends on what we are looking at here. The outcomes. So those =
+are again in the logistics. So how are we going to track and report on =
+these things? Those are. We have to work with PMO on It&#x27;s not for. =
+Because that&#x27;s across the board.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">3=
+0:15</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Exactly.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">30:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The PMO will define =
+and pre has already talked to the functions to say this is how you&#x27;re =
+going to track them in the inventory tracker you&#x27;re going to go in and=
+ add these rows of sriram you&#x27;re touching these processes in supply =
+chain. You&#x27;re testing these processes but you&#x27;re touching these =
+systems. Add a row for every system you touch across every process. =
+That&#x27;s the row he&#x27;s done. So when he goes in and says I&#x27;ve =
+completed This process, that process can touch three systems. So he&#x27;s =
+going to go and say complete, complete, complete on those three rows.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><span =
+style=3D"color:#64748b;font-size:14px">30:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">30:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Then the dashboard =
+will pull off of that.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><s=
+pan style=3D"color:#64748b;font-size:14px">30:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Exactly.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">30:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">But if we want to =
+talk of logistics here, that&#x27;s not for this call. That would be a call=
+ with pre to talk about how are we going to run the scenarios. This is to =
+get to running those scenarios. What do we need to do? How do we need to =
+talk to each other? What is it that we need to prep up? How do I define my =
+scenarios and give it to you to do the test cases? How do we meet? =
+Who&#x27;s going to do what? Like I&#x27;m going to run the scenarios, =
+you&#x27;re going to report on it. I&#x27;m going to call you at this time =
+to do this. I&#x27;m going to own the inventory. No you&#x27;re not. I will=
+. So that&#x27;s the conversation here and then I&#x27;m going to say okay,=
+ who&#x27;s going to do the sign off? You&#x27;ve tested on a system, =
+functions are going to sign off on the UAT was successful. So who are the =
+owners and responses? Who&#x27;s going to be the test sign off lead that =
+says okay, I now accept that the UAT was successful, that&#x27;s all =
+function. But the alignment call here would be the conversation around how =
+do we, you know, who&#x27;s the named resource against it? Who&#x27;s got =
+the responsibility? When will this happen? How are we going to check that =
+against the entry and exit criteria? Because whoever&#x27;s signing off is =
+going to say before you start testing, I&#x27;m going to to let you test if=
+ I&#x27;ve passed all the entry criteria. And when you, you do the testing =
+then, and then when you&#x27;re done testing you say okay, you&#x27;ve =
+passed everything. Is there any defect? No. Is there everything closed? Are=
+ all the system you can you see all the scenarios passed, There&#x27;ll be =
+a criteria to exit and so the person, he or she who&#x27;s signing off will=
+ look at the exit criteria and say okay, you&#x27;ve passed all the exit =
+criteria. This process scenario, this test is complete, I can sign off. So =
+these are the alignment calls we&#x27;re going to be having to say what is =
+this criteria? Are we aligned, etc. Etc.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">3=
+2:46</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">32:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so a lot to =
+digest there. But again that&#x27;s why these alignment calls are important=
+. But we do need to set them up and get the right people in and have the =
+right call content for it. So this is going to take a bit of a prep work, =
+but we need to tell a prep work, meaning you know, Monday, but we need to =
+say, okay, we&#x27;re setting up the call starting Tuesday, you know, =
+Tuesday, Wednesday, Thursday, we do this individually and then you know, if=
+ we need follow ups we can do, you know, if Tuesday guy wants a follow up =
+on Thursday, we set it up again on Thursday. But we at least propose that =
+we have alignment calls on Tuesday, Wednesday, Thursday with different =
+functions and then maybe a week later.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">3=
+3:29</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, that makes sense.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span>=
+<span style=3D"color:#64748b;font-size:14px">33:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So and then the mos =
+can kick off for UAT because some things may be starting in 2nd June, some =
+things may be maybe okay, the system is doing okay, but the function =
+doesn&#x27;t need to get involved. The functional MOS is really more around=
+ this big process stuff that they need to talk about. The functional MOS =
+for the systems may not be a much of a thing. So again a lot of moving =
+parts here but that&#x27;s where we need to put some structure around it =
+and have this conversation to tell these people how things are going to go.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><span =
+style=3D"color:#64748b;font-size:14px">34:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, so that&#x27;s=
+ the Monday piece.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span>=
+<span style=3D"color:#64748b;font-size:14px">34:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, so that&#x27;s=
+ all it connect that we need to tell them that these are the details that =
+we&#x27;re going to be discussing. This could all be on a page on itself =
+like here&#x27;s what&#x27;s going to be the focus of the alignment calls, =
+here&#x27;s what&#x27;s going to be. So we may want to create a slide that =
+says here&#x27;s the content, here&#x27;s the expected outcome. Right, A =
+left to right slide that says and I think we&#x27;ve got some of those =
+fairly standard slides that we can, you know, the template of which we can =
+use but the content which we need to fill in, you know, stuff on, you know,=
+ here&#x27;s the inputs coming in to the left hand side, here&#x27;s the =
+outcomes on the right hand side.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</s=
+pan><span style=3D"color:#64748b;font-size:14px">34:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah we do. I feel =
+like I&#x27;ve seen at least one of them.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sriram</span><span style=3D"color:#64748b;font-size:14px"=
+>34:59</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">One or two, yeah. So we may need to create a slide like that on the =
+Monday call to show with them and we can review that Monday morning. But =
+it&#x27;s a view to tell them this is the expectation because we&#x27;ll =
+add that into the meeting invite.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</s=
+pan><span style=3D"color:#64748b;font-size:14px">35:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, =
+definitely.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">35:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So I&#x27;ll send =
+placeholder invites but then we can add agenda items later on Monday and we=
+ say here&#x27;s an updated invite, here&#x27;s what the expected outcome =
+is and you know, people should come prepared. So when we do come in, Sriram=
+ will lead with his Excels and say hey guys, you know team A, team B, team =
+C, team D. This is what I have, these are the names I have. I need some =
+Names. So we work through it. They give names, they complete the owners =
+roles, responsibilities. Then they look at, then he says I&#x27;ve got, =
+Listen, I&#x27;ve got 300 scenarios or 120 scenarios I need to talk to =
+somebody about. I&#x27;ve talked to this person but I need for hr, I need =
+to talk to somebody to develop the test scenarios or test cases. Okay. Then=
+ the conversation is okay, I&#x27;m finding a person. We will work with you=
+ and schedule an outcome. Or let&#x27;s say one of the notes is okay, =
+let&#x27;s set up a call between, you know, the IT guy is going to set up a=
+ call with a, with Sriram&#x27;s guy to develop test cases and complete it =
+by Thursday. We just capture that as a note. Then they&#x27;ll say okay, =
+let&#x27;s align an entry exit criteria. We need a separate call for that. =
+This looks good. Let&#x27;s take this away. We will come back and give you =
+something back by Thursday. Okay, that&#x27;s an action item. We follow up =
+on Thursday. Test windows. They look at it and go okay, this works, this =
+works. This one will have to adjust. Let&#x27;s work with you. If =
+there&#x27;s some adjustments we take an action item and then logistics. =
+They&#x27;ll say okay, who are we aligning on? Is it Jira, is it alm, is it=
+ Excel? So we decide that and we say okay, how would, how our people =
+testing are we getting laptops? Is, are they all going to a room in a =
+Central park location in New Jersey and testing will we have EMEA and APAC =
+testing? So that&#x27;s the second con there conversation and maybe =
+it&#x27;s not solved. If it&#x27;s solved, great. If not we should at least=
+ have a point of view. We say okay, this would be laptops here. And you =
+know, something like that. If it&#x27;s realistic, we do. If they have a =
+better idea, we change it. But then we have the IAM team and others =
+involved to say okay, oh we need three laptops shipped to China with =
+Solstice image so that they can do this testing or this testing won&#x27;t =
+involve that. They&#x27;re going to ask, it doesn&#x27;t matter. =
+They&#x27;re just a Solsys user because they&#x27;re a test user. They are,=
+ you know, they&#x27;re going to test the scenarios. They&#x27;re Solsys =
+users. They&#x27;ll be, you know, they&#x27;ll be given Solstice logins, =
+test login. So when they log into the system they will test it as a =
+Solstice user. So those are the kind of logistic discussions we have =
+logistics discussions we will have. So it&#x27;s probably a 60 to 90 minute=
+ call Tuesday, Wednesday, Thursday to talk through these things and lay =
+everything out and then say, okay, they have a few follow ups. We close =
+these by the following week and we set up an MOS for how they will conduct =
+the testing and report on it.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</s=
+pan><span style=3D"color:#64748b;font-size:14px">38:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">38:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So again, a bit of =
+work for us to do there, but yes, so again, we need some content against =
+these bullets because we need either Excels with names in there or we need,=
+ you know, action items for the, you know, the system and scope. Some of =
+that stuff, they will bring some of the stuff we need to repurpose what we =
+have or create a slide that shows that.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">3=
+8:41</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay, so, okay, I&#x27;m aligned.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sriram</span><span style=3D"color:#64748b;font-size:14px"=
+>38:45</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Okay, cool. So let me take a pass of.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">3=
+8:49</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">That today, tomorrow for the Monday, all it call and then I think we do =
+need at least one page on the Monday. Here&#x27;s what that call is going =
+to look like. Here&#x27;s the inputs, here&#x27;s the outputs. And then =
+also this with just the calls to action and those examples for each.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span=
+ style=3D"color:#64748b;font-size:14px">39:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, yeah, take a =
+pass at that. Send it to me when you can over the weekend and then =
+we&#x27;ll finalize it Monday morning.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Cash</span><span style=3D"color:#64748b;font-size:14px">3=
+9:22</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, yeah, that sounds great.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram<=
+/span><span style=3D"color:#64748b;font-size:14px">39:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Cool, cool. All =
+righty.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><span =
+style=3D"color:#64748b;font-size:14px">39:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, thanks for =
+cash. I&#x27;ll talk to you later.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram=
+</span><span style=3D"color:#64748b;font-size:14px">39:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right, talk =
+later then. Bye.</div></div><div style=3D"margin-bottom:0;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Cash</span><span =
+style=3D"color:#64748b;font-size:14px">39:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Bye.=
+</div></div></div><div style=3D"margin-top:36px;text-align:center;color:#64=
+748b;font-size:14px;padding:20px;border-top:1px solid #e2e8f0"><p =
+style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note Taker</p><p=
+ style=3D"margin:0;font-size:12px">Your AI-powered companion</p></div></div=
+></div></div></html>
+----_NmP-25538abb52a30842-Part_1--

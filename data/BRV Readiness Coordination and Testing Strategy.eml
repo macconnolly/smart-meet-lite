@@ -1,0 +1,1661 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a05:6000:26d2:b0:3a5:23aa:6f43 with SMTP id 18csp829942wrm;
+        Fri, 20 Jun 2025 09:58:06 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGxNhq3ui2wpm7nBAp9aBwes0wouyMmDLRhUvwLVb4XuGn6HK/a8xXswTdW+T4du+KXTiSK
+X-Received: by 2002:a05:6214:2e49:b0:6fa:ccb6:603d with SMTP id 6a1803df08f44-6fd0a4bbdf9mr72078786d6.16.1750438685793;
+        Fri, 20 Jun 2025 09:58:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750438685; cv=none;
+        d=google.com; s=arc-20240605;
+        b=faYknclTyE0aVn7qPEaiSvDNvfkKc4rBgc4mRHh+v99gdxRiWT95skt3autr1lP7Y0
+         96BOABjKkjpW8LnIOoWTtNQmUIM3Ryk3aKNT/hNYzvjWVkeXrMy+/NzXlgqULSqzqLgC
+         Lbe8YhlJMSaqcfSt/XFgorio3yL/o0fja5YOFXTWsmzIriZ2vusLfFAHaCjH2S4dpb5F
+         i4gCg8CFlM1nFX/E5aTFkZCsBaEy8CkSriHj8TlO3/yyrzGQB0VUPupxOZo/a6eoK7sQ
+         Ctsbqtd1KjLpRm4AyriYSEeIyO0ZVSY3nki5yXOJWYH7SJ4D4YEAqQwfCirqYD95aXwO
+         LAwA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=EghWJGviqR+kUxaf9VeRCw3xN13+fpQ4n2IooRy/RcU=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=U+igIxajQ/TrkImjfh415gABLgJptOawWU4rmGCKQOunbDOC8ddK0lin8aCH13T8VW
+         R4kuluH2v4ht1uQZym1z1bKdlkGEXPcd9Wa+HHvPMJp5RkhpZA5lRe60gUXD2KEnvKgq
+         xSU22Y2voWMzmurCtgQPN5RDPDdeqCqICNoP7/+DSjcEc/56xkbY+qLisIbzTkcLGDAn
+         Lc3Uk9Mx/q0U0LzOP9vPLKQ3NbTy0oxmK0HeaikVmPoQSLgbiLkdA2S0a+y+67c4DUfy
+         AXx+A4CqcUZT/0kJ9OtrC2sK48/UhjVLse/5Nj2l3pjPczH58sJ++c4v0mDMgnybmm/d
+         WyXg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=dWUZRANi;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=YYAowInd;
+       spf=pass (google.com: domain of 010001978e46a9d3-4d635d57-f814-4902-922f-d9e5c2f95a76-000000@send.email.wave.co designates 54.240.9.92 as permitted sender) smtp.mailfrom=010001978e46a9d3-4d635d57-f814-4902-922f-d9e5c2f95a76-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <010001978e46a9d3-4d635d57-f814-4902-922f-d9e5c2f95a76-000000@send.email.wave.co>
+Received: from a9-92.smtp-out.amazonses.com (a9-92.smtp-out.amazonses.com. [54.240.9.92])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd0953192csi22944076d6.170.2025.06.20.09.58.05
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 20 Jun 2025 09:58:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 010001978e46a9d3-4d635d57-f814-4902-922f-d9e5c2f95a76-000000@send.email.wave.co designates 54.240.9.92 as permitted sender) client-ip=54.240.9.92;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=dWUZRANi;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=YYAowInd;
+       spf=pass (google.com: domain of 010001978e46a9d3-4d635d57-f814-4902-922f-d9e5c2f95a76-000000@send.email.wave.co designates 54.240.9.92 as permitted sender) smtp.mailfrom=010001978e46a9d3-4d635d57-f814-4902-922f-d9e5c2f95a76-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1750438685;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=inbVSFlzIHvpUvWv9WxN2tcI/XoMJKQarr5OmW5C1yo=;
+	b=dWUZRANiwIFbRmnFYkK6+2C1jQRr70gQe/dFPR730/wLChtbWbzHzBHl3TPe2Y/Z
+	w2CttSPgt8mI+N/siT9pUPNGSLQxQQQYN7/LWZw7SbSXvg8NUQ6y51H6H1bVqc/xtnQ
+	H86nvNVmFcxXDd9o+jFopaW3xWbDwWrEDrynlRis=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1750438685;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=inbVSFlzIHvpUvWv9WxN2tcI/XoMJKQarr5OmW5C1yo=;
+	b=YYAowIndCA0eNRwUNyFkZOGOsEBEIpgTlDR65km202r20wZjmV8/exGB48UwNRak
+	xb6ptibe7EvzsfgBf9N8IkP2t6tuuWOG8iOHPe/GMSpu6R9crTKadCMwZgenRkSd5C0
+	jPqP00hkWxUsUf7/eyc72Rbl5K43bZSJZBFfLysM=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: BRV Readiness Coordination and Testing Strategy
+Message-ID: <010001978e46a9d3-4d635d57-f814-4902-922f-d9e5c2f95a76-000000@email.amazonses.com>
+Date: Fri, 20 Jun 2025 16:58:05 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-7417841af95af816-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.06.20-54.240.9.92
+
+----_NmP-7417841af95af816-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+BRV Readiness Coordination and Testing Strategy
+
+**Detailed Summary of =
+Discussion (June 20th, 2025)**
+
+---
+
+## Main Topics Discussed
+
+### 1. BRV System Readiness and Collaboration
+
+- Readiness for BRV =
+(Business Readiness Verification) is on track.
+- Emphasis on collaboration =
+between ERP Finance, HR, and Integrated Supply Chain (ISC) systems.
+- Robust testing is being prioritized for BRB (Business Readiness Baseline)=
+ enablement.
+- Discussion on including HR in the readiness plans and =
+cleaning up the readiness documentation.
+- Updating the list of key =
+systems: ERP Finance, HR, ISC.
+
+### 2. Process, People, Contract, and =
+System Readiness
+
+- Four focus areas: Process, People, Contract, System.
+- Process:
+    - On track but hypercare process needs finalization, =
+staffing, and communication.
+    - Gen and Pre assigned to prepare the =
+hypercare process for an upcoming VRV readiness workshop.
+    - Action: Homework needed with Paul; Rashid meeting planned to identify=
+ leads for the command center.
+- People:
+    - Dashboard shows 70 hires =
+targeted by July.
+    - Clarification: Resource hiring is to expedite KT =
+(Knowledge Transfer) and readiness for Day 1, not critical for PRB =
+enablement.
+    - Action: Capital Edge tracker for hiring needs updating; =
+clarify that not all hires are critical to PRB.
+    - Discussion on =
+permissions to update the tracker and categorization (BRV, BRV-adjacent, =
+etc.).
+
+### 3. System & Trackers
+
+- Request for updated slide/reporting =
+from Annie Elliot with the latest figures (based on Excel as of June 19th, =
+2025).
+- Discussion on how to categorize and report systems: core, adjacent=
+, and grand totals to be presented for workshop deck.
+- For BRV, clarify whether to track core systems only or include all (e.g.,=
+ 7 core vs. 17 total).
+- ISC currently lists 40 critical systems, which =
+should be validated/upgraded for accuracy.
+
+### 4. Testing/UAT Schedule and=
+ Tracking
+
+- UAT schedules to be finalized, MOS (Management Operating =
+System) in place to track execution for BRB, not just readiness.
+- Discussion on vacation/tester availability and how that risk is being =
+addressed in the schedule.
+- Action: Paul to update documentation after =
+reviewing the PRP portion over the weekend (by June 22nd, 2025).
+- Need to align ISC=E2=80=99s number of critical systems with BRB and =
+BRB-adjacent categorization.
+
+### 5. Testers Analysis & Data Preparation
+
+- Action Item: Lookup testers in scope ("in perimeter") vs. Athens list (3,=
+500+ people), identifying overlap.
+- Data to be broken down by function =
+(supply chain, IT, business testers, etc.).
+- Target to provide a pivoted =
+analysis by end of day.
+- For HCM (Human Capital Management), one testing =
+script per country (26 countries =3D 26 scripts); add as a line item in =
+dashboard reporting.
+
+### 6. Hypercare and Reporting
+
+- Jeff requires hypercare progress to be tracked and presented alongside =
+regular test results.
+- Suggestion to split hypercare reporting for TOSCA =
+(automation), Excel (manual/manual+semi-automated), and ADP (standalone HR)=
+.
+- ADP to report separately on the 10 countries tested, results, and =
+follow-ups.
+- Plan to add UAT method (manual, semi-automated, automated) as=
+ a column in the tracker.
+- Discussion around the split between functional =
+and end-to-end process testing, particularly for finance and supply chain.
+
+### 7. Upcoming Deliverables and Calendar
+
+- Preparation for next =
+week=E2=80=99s (week of June 23rd, 2025) session on key deliverables.
+- Commitments:
+    - Detailed hour-by-hour calendar for execution.
+    - Communication plans.
+    - Daily synchronization meetings.
+    - Deliverables associated with the above to be ready.
+- Noted difficulty in establishing a fixed schedule due to dependencies and=
+ defect rates=E2=80=94plan to build in buffer time and iterate based on =
+test outcomes.
+
+---
+
+## Action Items & Follow-Ups
+
+| Action/Responsibility =
+                     | Owner(s)             | Due Date           |
+|--------------------------------------------|----------------------|------=
+--------------|
+| Cleanup/update BRV system readiness doc    | Assigned =
+individual  | ASAP               |
+| Finalize and staff hypercare process  =
+     | Gen, Pre             | Prior to workshop  |
+| Identify command =
+center leads              | Paul, Rashid         | To schedule        |
+| Update hiring/resource tracker/Capital Edge| Mac, Annie Elliot    | ASAP =
+              |
+| Validate ISC critical systems count        | =
+ISC/Annie/Paul       | ASAP               |
+| Lookup testers in perimeter =
+vs. Athens     | Mac, Paul            | End of day, June 20|
+| Update dashboard (test coverage, UAT)      | Mac + team           | =
+Ongoing            |
+| Provide updated slides/reporting           | Annie =
+Elliot         | ASAP               |
+| Calendar and comms plans for =
+deliverables  | Team                 | Next week          |
+| Refine UAT method breakdown in tracker     | Team                 | This =
+afternoon     |
+| Receive updated roster from Paul           | Mac         =
+         | As soon as received|
+
+---
+
+## Notable Dates
+
+- Today: June 20th, 2025
+- UAT schedule and hiring targeted for July 2025.
+- Next week=E2=80=99s detailed planning session: Week of June 23rd, 2025.
+- Paul's review and updates: Over the weekend (June 21=E2=80=9322, 2025).
+
+---
+
+## Key Discussion Points & Decisions
+
+- Multiple trackers and =
+reporting documents to be synchronized/clarified.
+- Need clear definitions =
+between BRV, BRV-adjacent, and non-BRV systems and resources.
+- Focus on accurate reporting (not overstating criticality of resource =
+hiring).
+- Transition from functional to end-to-end process testing may =
+need further alignment and time.
+- Switch to a reporting view showing =
+manual vs. automated test coverage.
+ =20
+---
+
+The conversation demonstrates=
+ high coordination across functions, careful attention to reporting =
+accuracy and readiness, and ongoing adjustments to testing and staffing =
+plans in preparation for BRB enablement. Key deliverables and process =
+checkpoints are in focus for review and updates before the next =
+week=E2=80=99s session.
+
+Transcript:
+0:00
+For BRV system readiness is on =
+track with strong collaboration plan between ERP Finance and integrated =
+supply chain systems to ensure robust testing for BRB enablement. Those are=
+ the three I've put in. If you feel we put something more generic, we can =
+also do that. But I think these are the key systems. Right?
+
+0:17
+Yeah. And we'll, we should also call HR as well. But, but yes, I'll, I'll. =
+I'll take a pass at cleaning that up as well.
+
+0:25
+I'm going to add that ERP Finance, HR and integrated supply chain. Okay. =
+Second one is then process people contract system. That was the four =
+buckets that they talked about process. The comment Paul made was it's on =
+track with the caveat that hypercare process to be finalized, staffed up =
+and communicated. That's something we need to go go into and we. So Gen and=
+ Pre will be team up the hypercare process in briefly in the VRV readiness =
+workshop there is some homework that I need to do with Paul in the back end=
+. So that's why I want to do the Rashid meeting so that we've got the leads=
+ identified and what it will specifically do in that command center.
+
+1:12
+So I've got the leads for you from Paul. So when we do. Yes, Doug so Scott =
+to help.
+
+1:23
+Okay.
+
+1:23
+So Scott works for Steve Delat so he's going to =
+be pulled into supporting this. Okay so. But Doug is good. I've worked with=
+ him before.
+
+1:35
+Yeah.
+
+1:35
+So he's my.
+
+1:37
+From what I remember he =
+was a very friendly dude.
+
+1:40
+Yeah, yeah, yeah. No he's, he's. He does M =
+A. He was part of the M A team until now. But no, as it relates to us, I =
+think Doug is going to be that person that's going to be the front face to =
+Jeff. So we essentially need not for this call but let's talk when we speak=
+ with Rashid about what Aaron has as materials etc.
+
+2:03
+Yes, indeed. People are on track with people. The comment that we need to =
+make pre brought it up and then Paul also wants to highlight it is that =
+while we're fast tracking resourcing and those resource like BRV readiness =
+people dashboard is showing 70 people to be hired for it. The point to make=
+ is resource hiring is not critical for PRV enablement but it is being done=
+ to expedite KT and catcher readiness for D1. So it's a bit of a mismatch =
+because the PRV readiness Capital Edge dashboard if you've seen talks about=
+ like 70 people being available for or by July and so need to clear up that=
+ none of those are, like, critical to PRB enablement.
+
+2:49
+Right. So a couple of points there. Home housekeeping. I think that that =
+Capital Edge tracker needs to be updated again, because I think this is the=
+ part where Mac. I think at some point when I went in there, I couldn't do =
+it because I don't think I had the permission to change it, even though I =
+thought I should. But this is what we said is brv, non BRV and BRV adjacent=
+.
+
+3:13
+Yeah.
+
+3:14
+So, yeah, we should put it as BRV and everything, =
+perhaps, as you know. But let's talk about that Mac. But yes, I think very =
+quickly that particular dashboard on that system tracker on Capital Edge =
+needs an update. And I don't know if Brian.
+
+3:30
+Yes, the system's there =
+and he actually created a. A slide version of this. And I pinged her a few =
+minutes ago and I asked for it.
+
+3:39
+Who?
+
+3:41
+Annie. Annie Elliot had =
+created a slide version of this and I pinged her a few minutes ago before =
+we got on and asked for an updated copy.
+
+3:52
+Okay.
+
+3:53
+And it's based on our live Excel. Well, I guess the one from yesterday, but=
+ it will have the right counts.
+
+3:58
+Okay. We just need to think through =
+that because for it, it's one deal, but for other functions, we need to =
+talk through that because the point being it's not just a filtering. So, =
+for example, again, not to take on this call, but say even in finance, if =
+they filter, they're going to get seven systems that are core and probably =
+another 10 more that are non core. So for BRV, the question is, do they =
+track the seven or they attack the 17? Perhaps the answer is seven, which =
+means it's just that, you know, critical. Maybe it's. It's more than. Maybe=
+ it's BRB and adjacent. So we just need to talk through that.
+
+4:38
+I. Yeah. So I had a conversation with Annie and Pre yesterday and they =
+broke it out in brv, BRB adjacent and grand total, and said they would put =
+grand totals, the grand total numbers, into the workshop deck view. But =
+they have a breakdown as well.
+
+4:54
+Perfect. That's all that.
+
+4:58
+Okay, so on track systems, on track times. Mac, I need to drop in one and a=
+ half minutes.
+
+5:05
+Sorry.
+
+5:06
+But on track and UAT schedules to be =
+finalized and are finalized and MOS in place to track execution for brb. =
+Right.
+
+5:13
+That's the.
+
+5:13
+That's the comment.
+
+5:15
+Actually track execution for brv, not just readiness or brb. Yeah, yeah, =
+yeah.
+
+5:22
+Okay. So that is fine. Risk is something that Bill has brought =
+up. I've put that in here. Vacations tested, availability due to vacations =
+I know that you guys will address this through the MOS for UAT anyway, but =
+I mean, this is the only one that's kind of come up as a request for E.R.B.=
+ iT wise. Okay, systems. Then it's the double click into it. We've met with=
+ the folks, they've kind of given the commentary. Paul has an action to =
+kind of go do read the PRP portion over the weekend and make updates. But =
+he, he kind of understands what's going on. The one that I'm not =
+comfortable with is the ERP and finance piece. I think we need to reword it=
+ because there's like, it seems like a rant right now, like testing =
+compressed one week.
+
+6:08
+Okay, yeah, no, no, no, that needs to change =
+because that's all changed. Yeah, yeah. Okay, let me take a look. I looked =
+at it, but I glossed over this. I didn't connect the dots here. So I will =
+take a look at that as well and change it.
+
+6:20
+So ERP, Finance and then =
+even the ISC one, because in ISC they've set 40 critical systems identified=
+. So this should match with your BRB plus BRB adjacent number. Right. Like =
+40 seems a bit of an arbitrary number.
+
+6:35
+Not for. Not for day one, not =
+for brb.
+
+6:38
+Yeah. So let's just align on what we need to get put here =
+for like in terms of actual numbers now that we have them from these teams =
+we should update. So those are the three comments that I think we should =
+make. Update that file. Send that to Paul so that he. What he reads is. Is =
+more up to date.
+
+6:54
+Okay, well, Prajan, can you send me this offline =
+copy then? Because Paul is. He's in it right now making changes or he has =
+it open. So.
+
+7:04
+Okay, I think he has it open, but like. Yeah, he won't.
+
+7:07
+You think it's.
+
+7:09
+Yeah, yeah, he was going to work on it over the =
+weekend. Okay. Yes. Still, we should have it.
+
+7:14
+Can I send this to you in the next 30 minutes?
+
+7:15
+Yeah, yeah, yeah, yeah, yeah.
+
+7:18
+All right, thanks man.
+
+7:19
+Cool. Okay. Hey, I know Prashant's going on to the onboarding. Mac.
+
+7:24
+Yeah.
+
+7:24
+So a couple of action items from the Jeff call which I thought =
+compared to last week was like night and day, but again, a bit of work to =
+do there. The couple of points that he mentioned that he wants the number =
+of testers in the perimeter. What I need you help with is do a lookup. I =
+think it's a fairly simple lookup. I'm getting a list of all of the people =
+in the perimeter from Paul. Again, it's A private list. What he wants us to=
+ do and what I think, what I, what I think we need to do is just look that =
+up against all of the testers. And if you've got your 98 unique testers, =
+look, look at that against the 3500 list of the Athens people in perimeter =
+and see which ones are part of Athens.
+
+8:19
+Athens folks are not. Okay.
+
+8:21
+It's a fairly simple straight lookup. And a pivot.
+
+8:24
+Yeah.
+
+8:25
+That maybe, maybe we even do that by function. Maybe we give a table that =
+says function, you know, sub function and then like supply chain, you know,=
+ business tester. Is this. Yeah, IT tester. You would think all of the IT =
+testers are all there. But look at the business names first, of course.
+
+8:46
+Yeah. I'll check it against the list and I'll get the raw count and =
+then we can pull the function up from there. I mean, eventually, like as we=
+ consolidate the test data too, we could get down to the scenario tracker =
+that you were.
+
+9:03
+A 20 or 21 or the 34.
+
+9:05
+Yeah.
+
+9:05
+Or the 20.
+
+9:06
+20, 20.
+
+9:08
+Yeah.
+
+9:09
+Because those, those are the scenarios that =
+those guys are going to run. And I think. Yeah, for the most part for the =
+adjacent. There's 14. Yeah. Actually all 34 we should be tracking. Okay. So=
+ that's one. And I think if we can get that pivot, we'll get back to him. =
+Perhaps end of the day, the apps plus the hcm, the boarding, the, the =
+dashboarding. He wanted to track HCM in one single place. I think we should=
+ just add a line item there similar to ERP finance. Do HCM and we should =
+say script is one per country and do 26. This is where we need to get our =
+support or insight, I think it's. If we want to call it. There's a testing =
+per country and you've got 26 countries. We run 26 reports or 26 scripts.
+
+9:59
+Yeah, I, I think so.
+
+10:01
+Just do that as a line item.
+
+10:03
+Yeah, 20, 26 line items.
+
+10:06
+No, one line item that says number of =
+scripts. 26.
+
+10:10
+Okay. Okay.
+
+10:13
+So at least that would be in slide. =
+Which slide is that? That's got the, the dashboard reporting slide. Ten or =
+nine or whatever it was.
+
+10:20
+Nine. Yeah, yeah.
+
+10:22
+And then obviously the hypercare slide, we've got to split that up against.=
+ We've got to talk a bit about how we want to split that up. So clearly he =
+wants different hypercare and some of it makes, I think from that angle, I =
+see his point. It may be just that I get his. He doesn't want to compete. =
+Apples and oranges. Maybe we give him a hypercare out of Tosca, maybe we =
+give him Excel and then we give ADPs hypercare because that's fairly =
+standoffish. So ADP can say the Iran scripts and test for 10 countries, =
+nine of them pass. I'm chasing down Romania.
+
+11:00
+Yeah, okay, so that's to some degree. I think we could even start with the =
+view because I was thinking about this during the call. Like we could start=
+ with just the, just a combined view of. Let me share this one of my screen=
+. Just like add a column that's like the UAT method. Like is this manual or=
+ automated? And then what's the progress?
+
+11:28
+Where here?
+
+11:29
+Yeah, well, not here, but just like we just need to take this column and =
+add UAT method to our tracker. Exactly. And I think that that would be, =
+that would be a quick and dirty way to get that view because that was =
+effectively the question he was asking.
+
+11:46
+Right.
+
+11:46
+He called Bill out and said for this one trading compliance, which in their=
+ sheet it said manual. I changed it to semi automated because that's what =
+Bill said. But he was like talk me through for trading compliance, is it so=
+ semi automated or automated, how does it work?
+
+12:01
+Is this, is this your read only copy? Because in the main copy in their, in=
+ their online version I've made some updates to Ed. All the counts, yeah, =
+counts are off, but I think this is your offline copy. Yeah, okay. Yeah, =
+just reference that. Yeah, but I, I get your point. Now the question is, I =
+think in Tosca he mentioned that 26 out of the 51 scenarios are automated. =
+And to your point, maybe we do that. Maybe we do. Yeah. So we could do. I'm=
+ tracking you and I think that makes sense. So in slide on slide 9 we say =
+automated, you know, method. Everything in finance is, you know, manual. =
+Everything in our 26 out of the 51 would be automated. So say four out of =
+the eight sub functions and for those four we provide the TOSCA reporting. =
+But the thing is they're not necessarily end to end process related. So =
+even for example, if he wants the way he was slicing it was functional =
+processes, end to end processes and then hr. HR is fairly separate. We can =
+get it the functional processes all of finance, you know, it will be manual=
+ and a few supply chain manual they're not nicely split up. Where I can say=
+ all of supply chain is this or all of finances is because some of the end =
+to end finance processes are also manual.
+
+13:29
+Yeah.
+
+13:29
+So if he wants end to end versus functional, that's a bit of a challenge. =
+We need to Think through.
+
+13:35
+Yeah, I think we can deliver functional =
+fairly quickly. End to end will take more time and. And probably some =
+conversations to I think fit those pieces together in the end to end view =
+where we can start with functional. And then I think that is something that=
+ we can deliver today. Like we can say, how is this tested?
+
+14:04
+Let's look at that. Maybe during the working session with her, I think for =
+the. Sometime this afternoon we can talk through that.
+
+14:10
+Yeah, let me pull those in.
+
+14:13
+And then in the meantime, let me wait =
+for Paul's email on. On this and send you the data that he sent.
+
+14:20
+The roster. The roster, yeah.
+
+14:23
+Did he send me? Did he send me? Did he=
+ send me? Where did he send. Okay, he hasn't sent it to me yet. So as soon =
+as I get that, we'll do perfect.
+
+14:36
+Okay. I'll keep a lookout and I'll =
+start updating the dashboard. And then we also, at some point should talk =
+about the next week, middle of next week session on key deliverables. Like =
+what key deliverables are coming up. And then we'll use that session to =
+develop more detailed plans. But we should start to think through what the =
+key deliverables, at least in our domain, what we committed to.
+
+15:07
+On his notes, right on the call, we said we would have the detail hour by =
+hour calendar, we'd have the comms plans, we'd have to set up the daily =
+sync. But all of that means that these deliverables are associated with it.=
+ Have to be ready as well.
+
+15:25
+Yeah, we got. I mean, the sinks went out =
+the. I think it's gonna be the schedule that's the hard part because to =
+Jessica's point, it is a little bit ambiguous once you get past a certain =
+point on timing, if there's a defect or not. But I think that you can just =
+assume like a middle case scenario and say just build in a little bit of =
+buffer time and assume like a, I don't know, whatever an average defect =
+rate is and build a calendar based on that timing and say this is our =
+assumption. Because she said that was the blocker of what. When she was =
+talking about building out the detailed hour by hour calendar, she said as =
+you get in between some of these, it gets more complicated because if =
+there's a defect, the timing gets extended and it has to go back through. =
+So.
+
+16:24
+Right, right, right. So I don't. So that will absolutely change.=
+ Even as thing, as Sukhai pointed out, the last minute.
+
+16:32
+Yeah.
+
+16:32
+So I think it's just a starting point. We all know that everybody knows it =
+will change, but we start off with something and say, here's the daily plan=
+.
+
+16:43
+Yeah.
+
+16:43
+And we just have to adjust to it.
+
+16:45
+Exactly.
+
+16:46
+Step seven, this one got delayed because the prior one failed or got =
+delayed or whatever. So I think we have what we have. Knowing that =
+dependencies can change and script timing can change and execution success =
+can change. So that one should be okay with what she's developing as a =
+starting point. And even during the execution, between week one and week =
+two, they may change it based on learnings.
+
+17:16
+Yeah.
+
+17:16
+Okay, So I think let's. So whenever we get on with her, we'll see what we =
+need to do. But then I'll send you. I'll have Paul send this file, and then=
+ we can do the lookup there.
+
+17:30
+Okay. Sounds good. Also in the =
+dashboard. Thank you. Thanks, bud.
+
+17:34
+Thank you.
+----_NmP-7417841af95af816-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">BRV =
+Readiness Coordination and Testing Strategy</h1></td></tr></table></div><di=
+v style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/3B441CDC-0CA7-4CA6-B1D7-7B878C0D5263?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><p><strong style=3D"font-weight:bold">Deta=
+iled Summary of Discussion (June 20th, 2025)</strong></p>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Main Topics =
+Discussed</h2><h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">1. BRV System Readiness and Collaboration</h3><ul>
+<li>Readiness for BRV (Business Readiness Verification) is on track.</li>
+<li>Emphasis on collaboration between ERP Finance, HR, and Integrated =
+Supply Chain (ISC) systems.</li>
+<li>Robust testing is being prioritized =
+for BRB (Business Readiness Baseline) enablement.</li>
+<li>Discussion on including HR in the readiness plans and cleaning up the =
+readiness documentation.</li>
+<li>Updating the list of key systems: ERP =
+Finance, HR, ISC.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;=
+font-size:1.75rem">2. Process, People, Contract, and System =
+Readiness</h3><ul>
+<li>Four focus areas: Process, People, Contract, System.=
+</li>
+<li>Process:<ul>
+<li>On track but hypercare process needs =
+finalization, staffing, and communication.</li>
+<li>Gen and Pre assigned to=
+ prepare the hypercare process for an upcoming VRV readiness workshop.</li>
+<li>Action: Homework needed with Paul; Rashid meeting planned to identify =
+leads for the command center.</li>
+</ul>
+</li>
+<li>People:<ul>
+<li>Dashboard shows 70 hires targeted by July.</li>
+<li>Clarification: Resource hiring is to expedite KT (Knowledge Transfer) =
+and readiness for Day 1, not critical for PRB enablement.</li>
+<li>Action: Capital Edge tracker for hiring needs updating; clarify that =
+not all hires are critical to PRB.</li>
+<li>Discussion on permissions to =
+update the tracker and categorization (BRV, BRV-adjacent, etc.).</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">3. System &amp; Trackers</h3><ul>
+<li>Request for updated =
+slide/reporting from Annie Elliot with the latest figures (based on Excel =
+as of June 19th, 2025).</li>
+<li>Discussion on how to categorize and report=
+ systems: core, adjacent, and grand totals to be presented for workshop =
+deck.</li>
+<li>For BRV, clarify whether to track core systems only or =
+include all (e.g., 7 core vs. 17 total).</li>
+<li>ISC currently lists 40 =
+critical systems, which should be validated/upgraded for accuracy.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">4. =
+Testing/UAT Schedule and Tracking</h3><ul>
+<li>UAT schedules to be =
+finalized, MOS (Management Operating System) in place to track execution =
+for BRB, not just readiness.</li>
+<li>Discussion on vacation/tester =
+availability and how that risk is being addressed in the schedule.</li>
+<li>Action: Paul to update documentation after reviewing the PRP portion =
+over the weekend (by June 22nd, 2025).</li>
+<li>Need to align ISC=E2=80=99s=
+ number of critical systems with BRB and BRB-adjacent categorization.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">5. =
+Testers Analysis &amp; Data Preparation</h3><ul>
+<li>Action Item: Lookup =
+testers in scope (&quot;in perimeter&quot;) vs. Athens list (3,500+ people)=
+, identifying overlap.</li>
+<li>Data to be broken down by function (supply =
+chain, IT, business testers, etc.).</li>
+<li>Target to provide a pivoted =
+analysis by end of day.</li>
+<li>For HCM (Human Capital Management), one =
+testing script per country (26 countries =3D 26 scripts); add as a line =
+item in dashboard reporting.</li>
+</ul>
+<h3 style=3D"font-weight:500;paddin=
+g-top:20px;font-size:1.75rem">6. Hypercare and Reporting</h3><ul>
+<li>Jeff requires hypercare progress to be tracked and presented alongside =
+regular test results.</li>
+<li>Suggestion to split hypercare reporting for =
+TOSCA (automation), Excel (manual/manual+semi-automated), and ADP =
+(standalone HR).</li>
+<li>ADP to report separately on the 10 countries =
+tested, results, and follow-ups.</li>
+<li>Plan to add UAT method (manual, =
+semi-automated, automated) as a column in the tracker.</li>
+<li>Discussion around the split between functional and end-to-end process =
+testing, particularly for finance and supply chain.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">7. =
+Upcoming Deliverables and Calendar</h3><ul>
+<li>Preparation for next =
+week=E2=80=99s (week of June 23rd, 2025) session on key deliverables.</li>
+<li>Commitments:<ul>
+<li>Detailed hour-by-hour calendar for execution.</li>
+<li>Communication plans.</li>
+<li>Daily synchronization meetings.</li>
+<li>Deliverables associated with the above to be ready.</li>
+</ul>
+</li>
+<li>Noted difficulty in establishing a fixed schedule due to dependencies =
+and defect rates=E2=80=94plan to build in buffer time and iterate based on =
+test outcomes.</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2rem">Action Items &amp; Follow-Ups</h2><table>
+<thead>
+<tr>
+<th>Action/Responsibility</th>
+<th>Owner(s)</th>
+<th>Due Date</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cleanup/update BRV system readiness doc</td>
+<td>Assigned individual</td>
+<td>ASAP</td>
+</tr>
+<tr>
+<td>Finalize and staff hypercare process</td>
+<td>Gen, Pre</td>
+<td>Prior to workshop</td>
+</tr>
+<tr>
+<td>Identify command center =
+leads</td>
+<td>Paul, Rashid</td>
+<td>To schedule</td>
+</tr>
+<tr>
+<td>Update hiring/resource tracker/Capital Edge</td>
+<td>Mac, Annie Elliot</td>
+<td>ASAP</td>
+</tr>
+<tr>
+<td>Validate ISC critical systems count</td>
+<td>ISC/Annie/Paul</td>
+<td>ASAP</td>
+</tr>
+<tr>
+<td>Lookup testers in perimeter vs. Athens</td>
+<td>Mac, Paul</td>
+<td>End of day, June 20</td>
+</tr>
+<tr>
+<td>Update dashboard (test coverage, UAT)</td>
+<td>Mac + team</td>
+<td>Ongoing</td>
+</tr>
+<tr>
+<td>Provide updated slides/reporting</td>
+<td>Annie Elliot</td>
+<td>ASAP</td>
+</tr>
+<tr>
+<td>Calendar and comms plans=
+ for deliverables</td>
+<td>Team</td>
+<td>Next week</td>
+</tr>
+<tr>
+<td>Refine UAT method breakdown in tracker</td>
+<td>Team</td>
+<td>This afternoon</td>
+</tr>
+<tr>
+<td>Receive updated roster from =
+Paul</td>
+<td>Mac</td>
+<td>As soon as received</td>
+</tr>
+</tbody></table>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Notabl=
+e Dates</h2><ul>
+<li>Today: June 20th, 2025</li>
+<li>UAT schedule and =
+hiring targeted for July 2025.</li>
+<li>Next week=E2=80=99s detailed =
+planning session: Week of June 23rd, 2025.</li>
+<li>Paul&#39;s review and =
+updates: Over the weekend (June 21=E2=80=9322, 2025).</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Key =
+Discussion Points &amp; Decisions</h2><ul>
+<li>Multiple trackers and =
+reporting documents to be synchronized/clarified.</li>
+<li>Need clear definitions between BRV, BRV-adjacent, and non-BRV systems =
+and resources.</li>
+<li>Focus on accurate reporting (not overstating =
+criticality of resource hiring).</li>
+<li>Transition from functional to =
+end-to-end process testing may need further alignment and time.</li>
+<li>Switch to a reporting view showing manual vs. automated test coverage.=
+</li>
+</ul>
+<hr />
+<p>The conversation demonstrates high coordination =
+across functions, careful attention to reporting accuracy and readiness, =
+and ongoing adjustments to testing and staffing plans in preparation for =
+BRB enablement. Key deliverables and process checkpoints are in focus for =
+review and updates before the next week=E2=80=99s session.</p>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0,=
+ 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex;align-i=
+tems:center;gap:8px"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</=
+span>Transcription</h3><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prajan</span><span=
+ style=3D"color:#64748b;font-size:14px">0:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">For BRV system =
+readiness is on track with strong collaboration plan between ERP Finance =
+and integrated supply chain systems to ensure robust testing for BRB =
+enablement. Those are the three I&#x27;ve put in. If you feel we put =
+something more generic, we can also do that. But I think these are the key =
+systems. Right?</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">0:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. And we&#x27;ll=
+, we should also call HR as well. But, but yes, I&#x27;ll, I&#x27;ll. =
+I&#x27;ll take a pass at cleaning that up as well.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prajan</span><span style=3D"color:#64748b;font-size:14px"=
+>0:25</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I&#x27;m going to add that ERP Finance, HR and integrated supply chain. =
+Okay. Second one is then process people contract system. That was the four =
+buckets that they talked about process. The comment Paul made was it&#x27;s=
+ on track with the caveat that hypercare process to be finalized, staffed =
+up and communicated. That&#x27;s something we need to go go into and we. So=
+ Gen and Pre will be team up the hypercare process in briefly in the VRV =
+readiness workshop there is some homework that I need to do with Paul in =
+the back end. So that&#x27;s why I want to do the Rashid meeting so that =
+we&#x27;ve got the leads identified and what it will specifically do in =
+that command center.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">1:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So I&#x27;ve got the=
+ leads for you from Paul. So when we do. Yes, Doug so Scott to help.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prajan</span><span=
+ style=3D"color:#64748b;font-size:14px">1:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">1:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So Scott works for =
+Steve Delat so he&#x27;s going to be pulled into supporting this. Okay so. =
+But Doug is good. I&#x27;ve worked with him before.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prajan</span><span style=3D"color:#64748b;font-size:14px"=
+>1:35</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">1:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So he&#x27;s my.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prajan</span><span=
+ style=3D"color:#64748b;font-size:14px">1:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">From what I remember=
+ he was a very friendly dude.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</sp=
+an><span style=3D"color:#64748b;font-size:14px">1:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, yeah. No=
+ he&#x27;s, he&#x27;s. He does M A. He was part of the M A team until now. =
+But no, as it relates to us, I think Doug is going to be that person =
+that&#x27;s going to be the front face to Jeff. So we essentially need not =
+for this call but let&#x27;s talk when we speak with Rashid about what =
+Aaron has as materials etc.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prajan</span>=
+<span style=3D"color:#64748b;font-size:14px">2:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes, indeed. People =
+are on track with people. The comment that we need to make pre brought it =
+up and then Paul also wants to highlight it is that while we&#x27;re fast =
+tracking resourcing and those resource like BRV readiness people dashboard =
+is showing 70 people to be hired for it. The point to make is resource =
+hiring is not critical for PRV enablement but it is being done to expedite =
+KT and catcher readiness for D1. So it&#x27;s a bit of a mismatch because =
+the PRV readiness Capital Edge dashboard if you&#x27;ve seen talks about =
+like 70 people being available for or by July and so need to clear up that =
+none of those are, like, critical to PRB enablement.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">2:=
+49</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Right. So a couple of points there. Home housekeeping. I think that that=
+ Capital Edge tracker needs to be updated again, because I think this is =
+the part where Mac. I think at some point when I went in there, I =
+couldn&#x27;t do it because I don&#x27;t think I had the permission to =
+change it, even though I thought I should. But this is what we said is brv,=
+ non BRV and BRV adjacent.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prajan</span>=
+<span style=3D"color:#64748b;font-size:14px">3:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">3:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So, yeah, we should =
+put it as BRV and everything, perhaps, as you know. But let&#x27;s talk =
+about that Mac. But yes, I think very quickly that particular dashboard on =
+that system tracker on Capital Edge needs an update. And I don&#x27;t know =
+if Brian.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">3:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes, the =
+system&#x27;s there and he actually created a. A slide version of this. And=
+ I pinged her a few minutes ago and I asked for it.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prajan</span><span style=3D"color:#64748b;font-size:14px"=
+>3:39</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Who?</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">3:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Annie. Annie Elliot =
+had created a slide version of this and I pinged her a few minutes ago =
+before we got on and asked for an updated copy.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">3:=
+52</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">3:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And it&#x27;s based =
+on our live Excel. Well, I guess the one from yesterday, but it will have =
+the right counts.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">3:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. We just need =
+to think through that because for it, it&#x27;s one deal, but for other =
+functions, we need to talk through that because the point being it&#x27;s =
+not just a filtering. So, for example, again, not to take on this call, but=
+ say even in finance, if they filter, they&#x27;re going to get seven =
+systems that are core and probably another 10 more that are non core. So =
+for BRV, the question is, do they track the seven or they attack the 17? =
+Perhaps the answer is seven, which means it&#x27;s just that, you know, =
+critical. Maybe it&#x27;s. It&#x27;s more than. Maybe it&#x27;s BRB and =
+adjacent. So we just need to talk through that.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Paul</span><span style=3D"color:#64748b;font-size:14px">4=
+:38</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I. Yeah. So I had a conversation with Annie and Pre yesterday and they =
+broke it out in brv, BRB adjacent and grand total, and said they would put =
+grand totals, the grand total numbers, into the workshop deck view. But =
+they have a breakdown as well.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</sp=
+an><span style=3D"color:#64748b;font-size:14px">4:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Perfect. That&#x27;s=
+ all that.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prajan</span><span=
+ style=3D"color:#64748b;font-size:14px">4:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so on track =
+systems, on track times. Mac, I need to drop in one and a half minutes.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">5:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sorry.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prajan</span><span=
+ style=3D"color:#64748b;font-size:14px">5:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">But on track and UAT=
+ schedules to be finalized and are finalized and MOS in place to track =
+execution for brb. Right.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">5:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;s the.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prajan</span><span=
+ style=3D"color:#64748b;font-size:14px">5:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;s the =
+comment.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">5:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Actually track =
+execution for brv, not just readiness or brb. Yeah, yeah, yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prajan</span><span=
+ style=3D"color:#64748b;font-size:14px">5:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. So that is =
+fine. Risk is something that Bill has brought up. I&#x27;ve put that in =
+here. Vacations tested, availability due to vacations I know that you guys =
+will address this through the MOS for UAT anyway, but I mean, this is the =
+only one that&#x27;s kind of come up as a request for E.R.B. iT wise. Okay,=
+ systems. Then it&#x27;s the double click into it. We&#x27;ve met with the =
+folks, they&#x27;ve kind of given the commentary. Paul has an action to =
+kind of go do read the PRP portion over the weekend and make updates. But =
+he, he kind of understands what&#x27;s going on. The one that I&#x27;m not =
+comfortable with is the ERP and finance piece. I think we need to reword it=
+ because there&#x27;s like, it seems like a rant right now, like testing =
+compressed one week.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">6:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, yeah, no, no, =
+no, that needs to change because that&#x27;s all changed. Yeah, yeah. Okay,=
+ let me take a look. I looked at it, but I glossed over this. I didn&#x27;t=
+ connect the dots here. So I will take a look at that as well and change it=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prajan</span><span=
+ style=3D"color:#64748b;font-size:14px">6:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So ERP, Finance and =
+then even the ISC one, because in ISC they&#x27;ve set 40 critical systems =
+identified. So this should match with your BRB plus BRB adjacent number. =
+Right. Like 40 seems a bit of an arbitrary number.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">6:=
+35</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Not for. Not for day one, not for brb.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prajan</span><span style=3D"color:#64748b;font-size:14px"=
+>6:38</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. So let&#x27;s just align on what we need to get put here for like =
+in terms of actual numbers now that we have them from these teams we should=
+ update. So those are the three comments that I think we should make. =
+Update that file. Send that to Paul so that he. What he reads is. Is more =
+up to date.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">6:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, well, Prajan, =
+can you send me this offline copy then? Because Paul is. He&#x27;s in it =
+right now making changes or he has it open. So.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prajan</span><span style=3D"color:#64748b;font-size:14px"=
+>7:04</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay, I think he has it open, but like. Yeah, he won&#x27;t.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">7:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You think it&#x27;s.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">7:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, he was =
+going to work on it over the weekend. Okay. Yes. Still, we should have it.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prajan</span><span=
+ style=3D"color:#64748b;font-size:14px">7:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Can I send this to =
+you in the next 30 minutes?</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><s=
+pan style=3D"color:#64748b;font-size:14px">7:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, yeah, =
+yeah, yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prajan</span><span=
+ style=3D"color:#64748b;font-size:14px">7:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right, thanks =
+man.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">7:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Cool. Okay. Hey, I =
+know Prashant&#x27;s going on to the onboarding. Mac.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Paul</span><span style=3D"color:#64748b;font-size:14px">7=
+:24</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">7:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So a couple of =
+action items from the Jeff call which I thought compared to last week was =
+like night and day, but again, a bit of work to do there. The couple of =
+points that he mentioned that he wants the number of testers in the =
+perimeter. What I need you help with is do a lookup. I think it&#x27;s a =
+fairly simple lookup. I&#x27;m getting a list of all of the people in the =
+perimeter from Paul. Again, it&#x27;s A private list. What he wants us to =
+do and what I think, what I, what I think we need to do is just look that =
+up against all of the testers. And if you&#x27;ve got your 98 unique =
+testers, look, look at that against the 3500 list of the Athens people in =
+perimeter and see which ones are part of Athens.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Paul</span><span style=3D"color:#64748b;font-size:14px">8=
+:19</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Athens folks are not. Okay.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</sp=
+an><span style=3D"color:#64748b;font-size:14px">8:21</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;s a fairly =
+simple straight lookup. And a pivot.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Paul</span><span style=3D"color:#64748b;font-size:14px">8=
+:24</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">8:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That maybe, maybe we=
+ even do that by function. Maybe we give a table that says function, you =
+know, sub function and then like supply chain, you know, business tester. =
+Is this. Yeah, IT tester. You would think all of the IT testers are all =
+there. But look at the business names first, of course.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Paul</span><span style=3D"color:#64748b;font-size:14px">8=
+:46</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. I&#x27;ll check it against the list and I&#x27;ll get the raw =
+count and then we can pull the function up from there. I mean, eventually, =
+like as we consolidate the test data too, we could get down to the scenario=
+ tracker that you were.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">9:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">A 20 or 21 or the 34=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">9:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">9:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Or the 20.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">9:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">20, 20.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prajan</span><span=
+ style=3D"color:#64748b;font-size:14px">9:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">9:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Because those, those=
+ are the scenarios that those guys are going to run. And I think. Yeah, for=
+ the most part for the adjacent. There&#x27;s 14. Yeah. Actually all 34 we =
+should be tracking. Okay. So that&#x27;s one. And I think if we can get =
+that pivot, we&#x27;ll get back to him. Perhaps end of the day, the apps =
+plus the hcm, the boarding, the, the dashboarding. He wanted to track HCM =
+in one single place. I think we should just add a line item there similar =
+to ERP finance. Do HCM and we should say script is one per country and do =
+26. This is where we need to get our support or insight, I think it&#x27;s.=
+ If we want to call it. There&#x27;s a testing per country and you&#x27;ve =
+got 26 countries. We run 26 reports or 26 scripts.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Paul</span><span style=3D"color:#64748b;font-size:14px">9=
+:59</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, I, I think so.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">10:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Just do that as a =
+line item.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">10:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, 20, 26 line =
+items.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">10:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, one line item =
+that says number of scripts. 26.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</s=
+pan><span style=3D"color:#64748b;font-size:14px">10:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">10:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So at least that =
+would be in slide. Which slide is that? That&#x27;s got the, the dashboard =
+reporting slide. Ten or nine or whatever it was.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Paul</span><span style=3D"color:#64748b;font-size:14px">1=
+0:20</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Nine. Yeah, yeah.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">10:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then obviously =
+the hypercare slide, we&#x27;ve got to split that up against. We&#x27;ve =
+got to talk a bit about how we want to split that up. So clearly he wants =
+different hypercare and some of it makes, I think from that angle, I see =
+his point. It may be just that I get his. He doesn&#x27;t want to compete. =
+Apples and oranges. Maybe we give him a hypercare out of Tosca, maybe we =
+give him Excel and then we give ADPs hypercare because that&#x27;s fairly =
+standoffish. So ADP can say the Iran scripts and test for 10 countries, =
+nine of them pass. I&#x27;m chasing down Romania.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Paul</span><span style=3D"color:#64748b;font-size:14px">1=
+1:00</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, okay, so that&#x27;s to some degree. I think we could even start =
+with the view because I was thinking about this during the call. Like we =
+could start with just the, just a combined view of. Let me share this one =
+of my screen. Just like add a column that&#x27;s like the UAT method. Like =
+is this manual or automated? And then what&#x27;s the progress?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">11:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Where here?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">11:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, well, not here=
+, but just like we just need to take this column and add UAT method to our =
+tracker. Exactly. And I think that that would be, that would be a quick and=
+ dirty way to get that view because that was effectively the question he =
+was asking.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prajan</span><span=
+ style=3D"color:#64748b;font-size:14px">11:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">11:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">He called Bill out =
+and said for this one trading compliance, which in their sheet it said =
+manual. I changed it to semi automated because that&#x27;s what Bill said. =
+But he was like talk me through for trading compliance, is it so semi =
+automated or automated, how does it work?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">12=
+:01</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Is this, is this your read only copy? Because in the main copy in their,=
+ in their online version I&#x27;ve made some updates to Ed. All the counts,=
+ yeah, counts are off, but I think this is your offline copy. Yeah, okay. =
+Yeah, just reference that. Yeah, but I, I get your point. Now the question =
+is, I think in Tosca he mentioned that 26 out of the 51 scenarios are =
+automated. And to your point, maybe we do that. Maybe we do. Yeah. So we =
+could do. I&#x27;m tracking you and I think that makes sense. So in slide =
+on slide 9 we say automated, you know, method. Everything in finance is, =
+you know, manual. Everything in our 26 out of the 51 would be automated. So=
+ say four out of the eight sub functions and for those four we provide the =
+TOSCA reporting. But the thing is they&#x27;re not necessarily end to end =
+process related. So even for example, if he wants the way he was slicing it=
+ was functional processes, end to end processes and then hr. HR is fairly =
+separate. We can get it the functional processes all of finance, you know, =
+it will be manual and a few supply chain manual they&#x27;re not nicely =
+split up. Where I can say all of supply chain is this or all of finances is=
+ because some of the end to end finance processes are also manual.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">13:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">13:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So if he wants end =
+to end versus functional, that&#x27;s a bit of a challenge. We need to =
+Think through.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">13:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I think we can=
+ deliver functional fairly quickly. End to end will take more time and. And=
+ probably some conversations to I think fit those pieces together in the =
+end to end view where we can start with functional. And then I think that =
+is something that we can deliver today. Like we can say, how is this tested=
+?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">14:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Let&#x27;s look at =
+that. Maybe during the working session with her, I think for the. Sometime =
+this afternoon we can talk through that.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Paul</span><span style=3D"color:#64748b;font-size:14px">1=
+4:10</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, let me pull those in.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</sp=
+an><span style=3D"color:#64748b;font-size:14px">14:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then in the =
+meantime, let me wait for Paul&#x27;s email on. On this and send you the =
+data that he sent.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><s=
+pan style=3D"color:#64748b;font-size:14px">14:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The roster. The =
+roster, yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">14:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Did he send me? Did =
+he send me? Did he send me? Where did he send. Okay, he hasn&#x27;t sent it=
+ to me yet. So as soon as I get that, we&#x27;ll do perfect.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">14:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. I&#x27;ll keep=
+ a lookout and I&#x27;ll start updating the dashboard. And then we also, at=
+ some point should talk about the next week, middle of next week session on=
+ key deliverables. Like what key deliverables are coming up. And then =
+we&#x27;ll use that session to develop more detailed plans. But we should =
+start to think through what the key deliverables, at least in our domain, =
+what we committed to.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">15:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">On his notes, right =
+on the call, we said we would have the detail hour by hour calendar, =
+we&#x27;d have the comms plans, we&#x27;d have to set up the daily sync. =
+But all of that means that these deliverables are associated with it. Have =
+to be ready as well.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><s=
+pan style=3D"color:#64748b;font-size:14px">15:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, we got. I mean=
+, the sinks went out the. I think it&#x27;s gonna be the schedule =
+that&#x27;s the hard part because to Jessica&#x27;s point, it is a little =
+bit ambiguous once you get past a certain point on timing, if there&#x27;s =
+a defect or not. But I think that you can just assume like a middle case =
+scenario and say just build in a little bit of buffer time and assume like =
+a, I don&#x27;t know, whatever an average defect rate is and build a =
+calendar based on that timing and say this is our assumption. Because she =
+said that was the blocker of what. When she was talking about building out =
+the detailed hour by hour calendar, she said as you get in between some of =
+these, it gets more complicated because if there&#x27;s a defect, the =
+timing gets extended and it has to go back through. So.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">16=
+:24</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Right, right, right. So I don&#x27;t. So that will absolutely change. =
+Even as thing, as Sukhai pointed out, the last minute.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Paul</span><span style=3D"color:#64748b;font-size:14px">1=
+6:32</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">16:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So I think it&#x27;s=
+ just a starting point. We all know that everybody knows it will change, =
+but we start off with something and say, here&#x27;s the daily plan.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">16:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">16:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And we just have to =
+adjust to it.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">16:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Exactly.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">16:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Step seven, this one=
+ got delayed because the prior one failed or got delayed or whatever. So I =
+think we have what we have. Knowing that dependencies can change and script=
+ timing can change and execution success can change. So that one should be =
+okay with what she&#x27;s developing as a starting point. And even during =
+the execution, between week one and week two, they may change it based on =
+learnings.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">17:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">17:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, So I think =
+let&#x27;s. So whenever we get on with her, we&#x27;ll see what we need to =
+do. But then I&#x27;ll send you. I&#x27;ll have Paul send this file, and =
+then we can do the lookup there.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</s=
+pan><span style=3D"color:#64748b;font-size:14px">17:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. Sounds good. =
+Also in the dashboard. Thank you. Thanks, bud.</div></div><div =
+style=3D"margin-bottom:0;padding:16px;background-color:#f8fafc;border-radiu=
+s:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-items=
+:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">17:34=
+</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Thank you.</div></div></div><div style=3D"margin-top:36px;text-align:cen=
+ter;color:#64748b;font-size:14px;padding:20px;border-top:1px solid =
+#e2e8f0"><p style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note=
+ Taker</p><p style=3D"margin:0;font-size:12px">Your AI-powered =
+companion</p></div></div></div></div></html>
+----_NmP-7417841af95af816-Part_1--

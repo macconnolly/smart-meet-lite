@@ -1,0 +1,2121 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a05:6000:26d2:b0:3a5:23aa:6f43 with SMTP id 18csp772756wrm;
+        Fri, 20 Jun 2025 08:03:55 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG5D7HQsr4co6YVv93zk8lNLGkybOLMjeSAojK5X6yAV1apuih2qLFM5JFhKexNkrfba4nO
+X-Received: by 2002:a05:6214:1d05:b0:6fb:f19:66f2 with SMTP id 6a1803df08f44-6fd0a46a5eamr57967836d6.8.1750431835297;
+        Fri, 20 Jun 2025 08:03:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750431835; cv=none;
+        d=google.com; s=arc-20240605;
+        b=cLpf6uMMrurwfG5gawZgXBWmF/LeKgDID0yW5G5gQYHgxtZzXXu7KO2S9PHnk4kSNE
+         4ka7UI3TGeaYuzc3GyS6kh9jhf+k4ccJMeQznKyCB0HY/bKo197H/E1xtSef/NhjJV+P
+         NLA9ZBz/ausqZeQso5T7AzqfpNUsKlpKgP9B/01LrokGe6yzeqhBGPT9Z8p1qpKfnyeG
+         +nphF03ODJ8N9KOFwQ26mpzDursdAa5ATIHU5cINBvzKdcu+7eOf90jiFd/XwbJ7JsXX
+         zwwmvjg015l7QLNJDjAFPnTUy+VY2UfqrlZ5FHKi8Y1kZD1TZfXboAfqpqx1UEfJzKjD
+         n3DQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=6JCXrRB2bW/TD1C5IC5MerWM6RXZGDjNAxDzRjHdKEo=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=GIDExL497QTRzSy0PmNVI2PcdqBsJ8LYZFCX4EIN00MudXxyoE5BCv6eb6umhe6ffC
+         tkOqS8m9fl19bZ9sjjS0am35POf/WThV7RvZPsYU8W6gGzQUIvQX4dK/N685wJ1PvOcH
+         IvAexU9a8/feNdJXKCbBfpWoMHtPSIZ+lSp50Esph5z0SWpfmMCtfCjzs2ZkNVbX6l5l
+         O2eVw0eh31RjxVXU02erJshDyeLDoGa3TkSedZ37n6NtMVaXULP/rEFrdwLikaYsq1kh
+         KmzwRC/HuN4RgePoPZqr/GGzBq91R31jKLVwZxNvD+aMWNRwxFoEvn13nmlxepmEgjN+
+         /r+A==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=UkZi2KYH;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=LwQT0GPp;
+       spf=pass (google.com: domain of 010001978dde21ef-60863481-6ecf-4a95-b513-d60d31201120-000000@send.email.wave.co designates 54.240.9.32 as permitted sender) smtp.mailfrom=010001978dde21ef-60863481-6ecf-4a95-b513-d60d31201120-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <010001978dde21ef-60863481-6ecf-4a95-b513-d60d31201120-000000@send.email.wave.co>
+Received: from a9-32.smtp-out.amazonses.com (a9-32.smtp-out.amazonses.com. [54.240.9.32])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd095644b3si21993146d6.263.2025.06.20.08.03.54
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 20 Jun 2025 08:03:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 010001978dde21ef-60863481-6ecf-4a95-b513-d60d31201120-000000@send.email.wave.co designates 54.240.9.32 as permitted sender) client-ip=54.240.9.32;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=UkZi2KYH;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=LwQT0GPp;
+       spf=pass (google.com: domain of 010001978dde21ef-60863481-6ecf-4a95-b513-d60d31201120-000000@send.email.wave.co designates 54.240.9.32 as permitted sender) smtp.mailfrom=010001978dde21ef-60863481-6ecf-4a95-b513-d60d31201120-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1750431834;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=gLtc6PLhKpYhFLyph3Ksqw6xxwfR+XRD37vw0gfmLUA=;
+	b=UkZi2KYH/gD+JZFJqkdL4fC5XrjavLCwohrPP+ZTSQXPUeAfwRt25i6GUCLzOTV2
+	vz3pJi6EI5/0erR4MIcqm+TIz8cJ6plFxLREDqz6wTr9FvmB/Wfp3zh/YV3GYr7aA+4
+	K8sV5hVfkATp1ZQEdC0klBGv/mPh4OlY2E0+ka8U=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1750431834;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=gLtc6PLhKpYhFLyph3Ksqw6xxwfR+XRD37vw0gfmLUA=;
+	b=LwQT0GPp95paV5/hGDBXGWxsWt7UgzoEzK5i98jaLkqhQQiPSCCrNmBX86Qd3X+M
+	58vLKwNkhOF8xGoXqMJ0ArFOb3qlZqFGkV0Zaemd3g8psQZmpmOqCANWaKsRSrcKSx3
+	7nuzd9+gHYbzJ0HmlRq2Bdu0k4Tgj/71QbJ/EV8I=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Global Project Testing Coordination And Readiness
+Message-ID: <010001978dde21ef-60863481-6ecf-4a95-b513-d60d31201120-000000@email.amazonses.com>
+Date: Fri, 20 Jun 2025 15:03:54 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-8fc938d2633c6461-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.06.20-54.240.9.32
+
+----_NmP-8fc938d2633c6461-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Global Project Testing Coordination And Readiness
+
+# Meeting Summary =
+=E2=80=93 June 20, 2025
+
+## Attendees & Logistics
+- **Date:** June 20, 2025
+- **Time:** 10:33 AM
+- **Participants:** 11 (including Jeff, Paul, Sheila, =
+Vicky, Jessica, Bill, Sukai Crook [organizer], Mac P Connolly [guest], =
+Rakesh Hariharan [guest], external attendees)
+- **Location:** Video =
+conferencing platform; participants joining from various global regions =
+including North America, Ireland, and Asia.
+
+---
+
+## Main Topics Discussed
+
+### 1. **Project Readiness and Test Preparation**
+
+#### **Status Update**
+- Daily meetings have resulted in significant progress since the previous =
+sync on Friday.
+- **Critical and Adjacent Apps Identified:** All core =
+applications and those requiring adjacent testing for End-to-End (E2E) and =
+User Acceptance Testing (UAT) are catalogued.
+- **Business Testers:**=20
+  - Approximately 200 business testers involved.
+  - 198 roles identified; =
+some perform multiple functions.
+  - About 98 unique testers spread across =
+20 sub-functions.
+- **Test Scripts:**
+  - 139 scripts are completed.
+  - Additional scripts for ERP and supply chain are being finalized today =
+and Monday.
+
+#### **Key Risks and Issues**
+- **Geographic Diversity of =
+Testers:**=20
+  - Need more testers from regions outside North America =
+(especially for Solstice).
+  - Finance function presents particular =
+challenges in regional representation.
+  - New joiners (e.g., Dublin-based =
+financial analyst) identified as assets for regional testing and knowledge =
+transfer.
+  - Action identified: Bring in testers from plants, Asia, =
+Ireland, etc., and escalate requests to functional leaders (e.g., Finance =
+via Tina).
+
+- **Knowledge Transfer:** Clear recognition that UAT also =
+serves as a mechanism for knowledge transfer, especially critical where =
+there are new staff or region-specific nuances.
+
+- **Escalations:**
+  - For some applications (e.g., Edicom, certain tax applications in =
+Romania, Germany, and Mexico), regional UAT testers have not been fully =
+named due to unstaffed positions.
+  - This gap is being addressed through =
+leadership outreach and escalation (e.g., Ben Goldstein, Will Jay).
+
+---
+
+### 2. **Testing Approach and Scheduling**
+
+#### **Testing Calendars**
+- **System Integration Testing (SIT) & UAT:**=20
+  - Detailed calendars =
+have been socialized.
+  - Next-level, granular schedules (with daily =
+detail) will be published: SIT today, UAT on Monday.
+- **UAT Phases:**=20
+  - **UAT1:** Focuses on 80% of scripts, initial round including core =
+business process validation and legal entity changes.
+  - **UAT2:** Remaining ~20% of scripts and follow-up on defect resolution,=
+ plus some activities requiring direct business user intervention (for =
+example, report printing in Hyperion).
+- **Early UAT Initiatives:**=20
+  - Possibility for some regions to begin UAT as soon as SIT is complete, =
+based on app/process readiness.
+
+#### **Application Testing Details**
+- All key and adjacent apps are mapped for testing readiness.
+  - Gaps remain for specific regional tax and Edicom applications.
+  - Existing QA environments and access are being utilized.
+
+#### **Integration Testing**
+- **Integration Points:** 76 identified; =
+logical separation and bifurcation from previously shared systems (notably =
+in ERP and integration with Honeywell=E2=80=99s environment).
+- **Automation:** Large proportion of scripts (especially in ERP/supply =
+chain) are executed via automation (Tosca).
+- **Manual Testing:** =
+Remainder=E2=80=94primarily finance and specific process flows=E2=80=94will=
+ be hands-on, keyboard-driven by testers.
+
+---
+
+### 3. **Defect Management =
+and Execution Tracking**
+
+#### **Tracking and Reporting**
+- **Twice Daily Reports:** Each day, morning and evening, teams will =
+provide updates on:
+  - Script plan vs. completion
+  - Delays (by cause: =
+defects, non-approvals, at risk)
+  - Execution status (planned, completed, =
+open issues)
+- **Defect Capture:**
+  - For automated scenarios (e.g., ERP =
+LAS), defects managed via Tosca with direct reporting.
+  - Manual defects (esp. in finance/processes) to be captured through =
+separate reporting, with consideration for =E2=80=9Chands-on-keys=E2=80=9D =
+involvement.
+- **Defect Management Dashboard:** Dashboards will =
+differentiate open issues by severity, stream/workstream, and process area.
+
+#### **Automation vs. Manual Testing=E2=80=94Clarification and Framing**
+- **Discussion of UAT Framing:**
+  - UAT activity is a mix of regression =
+testing, user acceptance, and output verification.
+  - Jeff emphasized the =
+need to clarify:
+    - What is being changed and tested via automation =
+(logical separation, integration).
+    - What is truly UAT (hands-on, =
+business validation).
+    - What aspects (e.g., ADP payroll) need to be =
+"bucketized" in reporting.
+  - Requested that reporting and communication =
+break out automated testing and hands-on user validation clearly, with =
+specific buckets for:
+    - Automated integration testing
+    - Manual end-to-end/business process testing (especially in Finance, =
+ISC, Commercial)
+    - Payroll/ADP testing
+- **Numbers Provided:** 26 out =
+of 51 ERP scenarios are automated.
+
+---
+
+### 4. **Communication Strategy =
+and Stakeholder Engagement**
+
+#### **Strategy Overview**
+- **Communication Launch:** Strategy is rolling out the same day (June 20, =
+2025) with a blend of live and email-driven communications.
+- **Objectives:**
+  - Ensure "who, what, when, why, and how" are =
+consistently communicated.
+  - Set clear expectations and identify =
+challenges early.
+  - Prevent information gaps, with a preference for =
+over-communication.
+- **Tools and Logistics:**
+  - Bridge lines and all =
+necessary comms links/tools are in place for UAT starting next week.
+  - Daily touchpoints planned (calls, emails, updates).
+
+#### **Stakeholder Engagement**
+- **VP Workshop:**=20
+  - Next round of comms to business leaders and VPs, likely at next =
+Wednesday=E2=80=99s (June 25, 2025) V workshop.
+  - Vicky/Jennifer to =
+coordinate timing and inclusion of UAT comms in agenda.
+
+---
+
+## Action Items
+
+1. **Regional Tester Coverage:**=20
+   - Complete identification of business testers by geography and =
+sub-function, with a focus on non-North American regions (Asia, Ireland, =
+plant-level).
+   - Escalate gaps to respective functional leaders (Tina for=
+ Finance).
+
+2. **Test Script Finalization:**=20
+   - ERP and supply chain =
+scripts to be finalized by Monday (June 23, 2025).
+   - Address gaps in =
+Edicom/tax app regional testers=E2=80=94coordinate with Ben Goldstein, Will=
+ Jay.
+
+3. **UAT Framing and Reporting:**
+   - Revise UAT status and defect =
+reporting to clearly separate:
+     - Automated integration tests (ERP LAS)
+     - Manual, business-driven end-to-end tests (especially Finance, ISC, =
+Commercial)
+     - Payroll/ADP tests
+   - Report must enable pinpointing =
+delays/gaps by stream/test type.
+
+4. **Early SIT/UAT Schedules:**
+   - Publish granular SIT and UAT calendars for team consumption (SIT: =
+today; UAT: June 23).
+
+5. **Communication Plan Execution:**
+   - Begin live and email communication today, including UAT kickoff =
+notifications.
+   - Prepare materials for presentation at the next VP =
+Workshop on June 25, 2025.
+
+6. **Defect Management Integration:**
+   - Incorporate ADP/payroll defect reporting into overarching dashboard to=
+ prevent scope gaps.
+
+---
+
+## Follow-up Points / Next Meetings
+
+- **Offline Conversations:** Several team members, including Paul and Jeff,=
+ to continue discussions on website team and HR topics.
+- **Data on Tester Distribution:** Provide Jeff (and Tina) with data on =
+current tester distribution ASAP; Jeff will advocate for regional =
+participation as needed.
+- **Communication with Business Leadership:** =
+Ensure UAT communication and strategy are added to next Wednesday=E2=80=99s=
+ VP workshop agenda.
+- **Frequency of Syncs:** Maintain high meeting =
+cadence as SIT/UAT begins; daily scrum calls planned from next week.
+
+---
+
+## Images
+
+### Image 1: Video Conferencing Screenshot
+- **Key Visual Elements:**
+  - Standard virtual meeting interface with list=
+ of 11 participants=E2=80=94various roles noted as external or guests.
+  - Meeting was organized by Sukai Crook.
+  - Participants from locations =
+including North America and Ireland, reflecting distributed project nature.
+  - Time clearly displayed as 10:33 AM on 6/20/2025.
+  - Interface shows invite, mute, participant management =
+controls=E2=80=94typical setup facilitating interactive discussion and =
+real-time collaboration.
+
+- **Significance to Discussion:**
+  - Reinforces distributed, global nature of project and challenges (and =
+coordination requirements) related to regional tester participation and =
+communication.
+  - Underlines use of digital collaboration for project =
+tracking and real-time status, which is central given the complexity and =
+pace of the initiative.
+
+---
+
+## Summary Statement
+
+The session reflected strong progress on test readiness and coordination =
+for a major systems/program transition, with deep dives into tester =
+coverage, risk mitigation, defect management, and the nuance between =
+automated and manual validation. Immediate actions focus on regional =
+inclusivity, explicit test reporting, and robust communications=E2=80=94cru=
+cial as the project approaches critical execution phases in the next week.
+
+Transcript:
+0:01
+There we go. No, it's happened to Paul one too many times,=
+ so we don't want to keep doing that.
+
+0:07
+We've seen this deck all week, =
+so probably any of us could do it. Absolutely, absolutely.
+
+0:16
+You always do it with the smile on your face, though, Paul. So there's that=
+.
+
+0:20
+I tried.
+
+0:20
+I don't know.
+
+0:23
+The alternative is not good.
+
+0:24
+So.
+
+0:27
+Enjoy the journey, right?
+
+0:28
+Yeah, exactly.
+
+0:30
+I think half of my calls have been with Paul this morning. Yeah, I went =
+back to Paul. All good.
+
+0:40
+All right. What did you leave? Was he still =
+on the call when you hung up?
+
+0:44
+He was, but he saw that I dropped, so =
+he knows he needs to get here.
+
+0:49
+Okay.
+
+0:53
+I can ping him real quick.
+
+0:55
+Yeah, that'd be great.
+
+0:56
+Let's all pay him at the same time.
+
+0:59
+I was literally about to offer that an HR thing I needed to talk to =
+him about, so he was very aware.
+
+1:06
+He's coming, he's coming.
+
+1:07
+Okay.
+
+1:08
+This is important to him.
+
+1:10
+Yeah.
+
+1:13
+Okay. There he is. Hey, Jeff, you unmute.
+
+1:17
+Unmuted it all. Unmuted me?=
+ Yeah, I was on with the. With the. The website team.
+
+1:22
+Yes, yes. I'm sorry, I had to.
+
+1:24
+That's another very energetic =
+conversation.
+
+1:27
+I've heard that. So I might be talking to you offline =
+on that one and you a call. I am presenting with Sheila to the EDP in a =
+minute, so I'm gonna have to drop. But Jeff, I've met with this team every =
+single day, so we've made a lot of progress and I'm going to let them give =
+you an update on what we have done thus far and then I'll connect with you =
+offline.
+
+1:45
+So with that, I had a couple questions too, guys. Just ping =
+me later.
+
+1:51
+Yeah, I'll ping you when I'm in the car. Perfect, guys, =
+talk to you later.
+
+1:54
+Thanks. Okay, Jeff. All right, so again, we'll =
+talk through these couple of salient points on each slide. We'll walk you =
+through what we've done to date and how we're tracking to it. And then of =
+course, you know, follow ups and any questions, we'll talk through each of =
+these. So we'll walk through the readiness summary, review the. The testing=
+ calendar we have to date and talk you through that, review the trackers we=
+ have and the dashboards, walk you through that. And then the communication=
+ strategy and plan that Vicky will walk us through. So with that, Jeff, =
+overall status, I think yeoman's effort really, since our last conversation=
+ on Friday, quite a bit of heavy lifting. You mostly in terms of =
+coordinating all of the data and information we have and packaging it well.=
+ So success story thus far we've identified the critical apps and the =
+adjacent apps that need to be tested as part of the end to end process and =
+UAT testing. We've got close to 200 business testers across all of these =
+sub function and process areas. Almost 198 unique business testers. So some=
+ of them are doing a couple of more things, but really about 98 unique =
+business testers across 20 sub functions. And to date we've got 139 test =
+scripts. We have a couple of more areas where we are finalizing the test =
+scripts and we'll walk you through those. Those are today and Monday. We'll=
+ walk you through those areas.
+
+3:25
+So for the testers, one of the things =
+that I would like to know is like what number, what percentage of those =
+testers are in the parameter.
+
+3:36
+Okay.
+
+3:39
+We'Re gonna have to do a =
+little more work on that. We have started taking some of that information =
+down because I do see that as a risk. But we will work through that today =
+into Monday and get that answer.
+
+3:50
+Yeah, I mean either my question. UAT=
+ is also knowledge transfer. Right. And yeah, so, so, so let's, let's see =
+where we are. And then, you know, the, I, I may add an ask. I will likely =
+add an ask which would be for those business testers to identify somebody =
+in the perimeter who can, you know, can go along with them to make sure =
+that we're getting some Solstice eyes on this because they're the ones that=
+ are going to be need to live with this.
+
+4:26
+Yeah, we got that from a few=
+ people. I think the biggest function we're going to have some struggles =
+with that on is finance just being.
+
+4:33
+No, I know, I know. But then, but=
+ then if that's the case and we have a real gap, then that becomes a follow=
+ up. Will Jack and Tina to say, do you want to bring some people in from =
+the plant to put this forward? You know, I met a new senior financial =
+analyst in Dublin, you know, two days ago. That's, that's just joined. Hey,=
+ right. We don't need to be locked in North America. It's pulling some =
+folks from Asia, pulling some folks from Ireland. They're, they're anxious =
+to get involved. So I, I do want, I went for each of the, each, each of the=
+, the critical apps. I want there to be, you know, some participation of =
+Solstice employees. So if it's all Honeywell, all corporate like then we =
+got more work to do and I want to put more on the central team. I'll Ask =
+the functional leaders to go figure that out. Okay, thank you. Back to you.
+
+5:34
+Yeah, no, we'll take that certainly. And I think there are a few =
+cases you'll see that, that we have encountered that where they are =
+providing brand new joiners and so on the one end we identify it as a risk =
+that KT needs to happen, but on the flip side, the point you're making is =
+valid and we'll track that and get back to you. So overall then we've got =
+detailed testing calendar. We're socializing that today for SIT and then =
+UAT early next week. We've got the communication strategy, we're starting =
+that today. And as well as the mos for SIT and uat, the execution of that =
+will start on Monday with the daily scrum calls early next week. We'll also=
+ look at all of the logistics finalization for Morse planes and work =
+through all of the communication for that. And then finally the status =
+reporting, we'll talk through the execution tracking as well as the defect =
+management. So you've seen this calendar, a version of this we showed and =
+socialized. I think the key takeaways here are that, you know, there's been=
+ quite a few channels of conversations around can we start UAT early, at =
+least in the regions. And what we've discussed with all of the application =
+owners and the the IT function leads as well is where is that possible? =
+Once SIT is over, there's going to be a handoff between the teams and the =
+regional testing teams on what applications are really ready to start =
+testing and what capability or what process areas and sub functions whose =
+scripts they can run to start testing around the 7.2 time frame. So that =
+still needs to be fleshed out a little bit. But I think that's the plan =
+that there will be a handoff and where ready in each region to the point =
+you made earlier. We'll pull in those regional testers and coordinate =
+testing there for those areas that are ready.
+
+7:42
+What is the difference between UAT1 and UAT2? Is it a different set of apps=
+ or is it just the second part of the apples for. So you're going to do =
+UAT1, you're going to identify issues, you're going to fix them and then =
+we're going to come back and confirm that UAT2 that those things are fixed =
+or is UAT1 and UAT2 different apps?
+
+8:05
+Jessica, do you want to.
+
+8:06
+Yeah, I can take that. It's all the same apps, but a lot of the scripts =
+they're going to test UAT one week and Then there's a couple components =
+that are more business user focused. Like for example things Hyperion. =
+There's some reports that they have to print out. So it's going to be the =
+maybe 80%. This is rough numbers right now. 80% happening the week of UAT1 =
+and then the week of UAT2 is the remaining 20ish percent slash any =
+additional defect fixing. So they're going to do whatever they can remote =
+but if there's something they need the end testers to hit a button or =
+validate that the SDS printing out. That's what's going to happen the week =
+during UAT2.
+
+8:49
+Okay, got it, thank you.
+
+8:53
+And so we do have a =
+detailed calendar here and what you see is a daily calendar or this is more=
+ a week on week but we do have a much more one double click into this =
+further that we'll publish for SIT today and then UAT Monday.
+
+9:12
+Monday.
+
+9:15
+So overall in terms of the critical systems I think the key call out =
+here is a couple of areas and you will see this in the BRV adjacent as well=
+. So we're tracking well to everything in terms of the SIT and UAT testers =
+named. There are a couple of areas where we're finalizing the test scripts =
+I think for the ERP and supply chain today and then a couple of these into =
+Monday. The one area I'd like to to note here is it alludes to the point of=
+ having SolSystem for Edicom and some of the tax applications, particularly=
+ what Jessica mentioned on the finance space. We've escalated that to Ben =
+Goldstein. We're having conversations with Will Jay on identifying UAT =
+testers in region because you know, for Edicom and some of the other tax =
+apps that need testing in Romania, Germany, Mexico and the like, we need =
+sources, regional testers there. And so the org isn't ready yet and names =
+haven't, you know, there aren't people in seats. So that's something we're =
+chasing.
+
+10:16
+But we have all the leaders and we can go ahead and get =
+those things. So if you need any help. I was just with Ben in, in Ireland. =
+So like I gotta you just like literally Wednesday night. Right. So couldn't=
+ just talk with him then. But I will, you know I will make the point =
+through Tina and Tina will drive it down for finance organization that =
+finance is a big build back function. This is knowledge transfer. Plus you =
+guys need to make sure that it's going to work and then we'll get that =
+sorted. But so give me that data sooner rather than later around, you know,=
+ the testers and where we need more solstice testers and I'll go work that.
+
+11:00
+Yeah, we'll get that today. But Jeff, kind of to that point it would=
+ definitely be I think at this point helpful for you to whether it's an =
+email or a conversation, when you see them, keep having those conversations=
+ with these folks because one of the things that for at least me was =
+discoverable this week is that some of these folks really didn't have as =
+much information and knowledge on this. So just whenever you can share that=
+ messaging.
+
+11:25
+Yep. Well then, okay.
+
+11:27
+Hey, question on like space=
+ and Hyperion. So I know there's this one, you know the, for the =
+consolidation. So this is the UAT testing pre August 1st is really going to=
+ be around the legal entity changes. And then Rakesh, keep me honest here. =
+The plan is then to kind of clone that into the solstice environment and =
+that's where once the data starts flowing post 81, that's where they'll do =
+the like mock close.
+
+11:52
+Correct, correct, correct. This is existing =
+environment.
+
+11:56
+Okay. Okay.
+
+11:59
+And we do know that's later in the =
+schedule. So we do need that up that upstream data to make Hyperion =
+relevant. So.
+
+12:06
+Yeah. Okay. So kind of for them they've got sort of =
+the, you know, simulation testing with the mock closes. This is kind of, =
+for lack of a better word, sort of regression testing a bit. Is that a good=
+ way to think about it?
+
+12:19
+Yeah, I would say so. Yeah, sure. And then =
+similarly we've got a couple of slides in the readiness in terms of the all=
+ the adjacent systems. So all the testers named, you know, they're using =
+the existing access and the existing QA systems where possible. So that's =
+all aligned and some of these are the ones that blacked out really are you =
+know, workflows or tools that really don't have environment landscape and =
+so they're not relevant for the this. So we've aligned all the schedule as =
+well. The call out here again is on that tax application similarly to the =
+ETICOM space. We've already spoken about it. That's the one area we need to=
+ close the gap on coming into then the execution status. So what we'll do =
+here Jeff, is every day, morning and evening end of day we will be =
+publishing this report out on the total scripts. What is planned for the =
+day, what's actually completed, what is delayed, what is at risk of not =
+completing, what is delayed either due to defects or non approvals. And =
+this is how we're going to track it and report out to UN leadership twice a=
+ day, once in the morning on the plan and then end of day as a roundup of =
+the activities completed.
+
+13:40
+So who will raise defects or script =
+failures? How will that. I also there was some conversation that this was =
+going to be automated with an AI tool and what the UAT business testers =
+were really doing, validation of the end product, but not so much the =
+validation of the individual steps. So help me understand day in the life =
+of, you know, trade compliance. Six scripts. Somebody's doing trade =
+compliance, somebody in the business. What are they doing? What are they =
+seeing? How do we, how are we going to reflect their input? What does that =
+look like?
+
+14:28
+Yeah, and Bill, are you on?
+
+14:32
+Yep, I'm here.
+
+14:34
+Do you want to.
+
+14:35
+Yeah. So we are using automation for a large =
+percentage of the scripts that need to produce outputs with the new =
+Solstice legal entity information. And it'll require less touches for =
+keyboards for users and. But if anything fails along the way, you know, =
+we'll track that, see if it's an integration point we'll. Or if there was =
+an issue in SAP, an access issue, think of any number of things that caused=
+ the failure, we remediate those and run again. But we also have scripts =
+for the users to run sort of as you said in the day in their life. I'm =
+creating a sales order for a customer and then I send it down for pick, =
+pack and ship. And once we go that order to cash scenario all the way =
+through. No processes are changing as part of this deployment, but the =
+integration points are all being changed so that the Solstice AM business =
+is its own space on CIP 900 no longer connected out to any other systems in=
+ Honeywell and vice versa. The ones that were connected to CIP 900 being =
+removed. So we have to check all of those 76 integration points that prior =
+had shared information pathways that we've now bifurcated and let UOP have =
+theirs, for instance, and Solstice has theirs. So that's kind of the way it=
+ goes. We normally could turn around a fix pretty quickly unless it's a =
+development issue, but we don't, we didn't do a lot of development on this =
+other than the forms.
+
+16:04
+It might be helpful to kind of frame at the =
+start of this. You know, again, back to my comment on what, what's, what's =
+changing and therefore what's driving the testing. Right. So what's =
+changing is there's some logical separation that's happening within the erp=
+. So what, what we need to test there is we need to test all the =
+integrations, how are we testing them? We're actually going to do it in =
+automated testing is kind of, that's what I'm hearing. Right. The other =
+thing that's changing is the legal entities are going live, assets and =
+liabilities are being moved, employees are getting moved. So. And we got a =
+new payroll provider. All right, so ADP is going to be tested, but you got =
+to bring, we need to bring that into this MOS in terms of, you know, where,=
+ where are we on the ADP testing? Right. Because otherwise we've got a =
+blind spot in our conversation. So that's got to come in. I know HRIS is =
+kind of doing it, it's more of a service. Then let's like we got to bring =
+that into the same conversation. Okay, so, so that's how that one's going =
+to happen. There's, you know, then there's, we have three people in new =
+roles. So they're going to be tested through some end to end product =
+scripts or end to end scripts that are kind of day in the line which are =
+end to end processes that they're going to go and execute queue and then =
+anything else we want to lay out there. But I think kind of framing that up=
+ because I mean UATs are compassing a lot like some stuff that, that we're =
+saying is UAT feels more like regression testing to me than UAT because if =
+it's a user, they're not touching the keyboard. It doesn't feel like a user=
+ acceptance test. It feels like maybe they're, they're giving some =
+validation of data validation on the outputs. But I just think getting that=
+ clear because there's a lot going here with 50 some apps and 98 testers =
+and you know, all of these kind of pieces together. So some framing up =
+front run how that's going to work. Except that that should also reflect in=
+ the way that we, we come back with and validate the full report out on the=
+ results. It's like, well, Jeff, remember, you know, we're doing the =
+logical separation and the impact there is that we see 76 integrations. =
+We're testing those with this automated testing app. We've completed, you =
+know, 73 of them, three of them had defects. We're fixing those, we expect =
+to get them back up and testing again. So we talk that in a bucket and then=
+ we talk the end to end processes in a bucket and then we talk ADP in a =
+bucket. Like let's bucketize this a little bit because I think if we try to=
+ do it all with the same lens it's going to get confusing. Understood. Just=
+, just. I mean you guys are closer to it but I just would offer that =
+perspective based on, based on what I hear you and, and Bill. I, I was in =
+the LAS workshop with Bill so I heard some of this, you know more detail =
+last week. But let's just think about what's the best way to find me this =
+and help to explain because in my view, you know we're testing the focus on=
+ testing the things that are changing and then essentially validating the =
+things that aren't changing. Still work with regression testing or some =
+other types of automated testing.
+
+19:36
+No good points. I mean we need to =
+have it. If everything on this page looks good and ADP is not here, we'll =
+get ourselves in trouble.
+
+19:44
+Right. So we need, I mean the most =
+important thing is that people are going to get paid right? I mean you want=
+ hyper care issues Paul, that's where you'll have a lot of hyper care =
+issues if people don't get their checks right. And it's going to be a =
+little, it's going to be a little wonky too because you know, I mean this =
+is more like change management stuff but people are going to get two W2s =
+the going to get their ficus going to renew so there's almost like unknown =
+issues thing a change communication thing that we need to have like you =
+know F is going to start back up is essentially third just as if you. Well =
+not on 8:1 but on 11:1 you know so it's, it'll be more condition for the =
+new company to manage but you, you'll have those things as well. Okay, what=
+ else did you want to.
+
+20:34
+Yeah so I think the other point is the defect=
+ management dashboard again this I think the point you're making on ADP =
+will have to incorporate the reports from them as well but again this, this=
+ talks to the point on you know run these scripts with these are past. =
+These are the open issues and across these four severities and actually =
+double clicking into that to say across these end to end process areas or =
+across these work streams. This is, these are the, the breakouts of that =
+and how.
+
+21:03
+So the thing that's still not super clear to me is how much=
+ of this is you're going to run this kind of AI automated testing and =
+you're going to ask the business users to validate the output versus where =
+the users are going to be hands on keys working through it and test break =
+and for me those are, those are a bit of Apple's norm just Conversations =
+because the former, the first one is essentially it's an extended sib =
+because you're getting some validation of the business eyes on the output. =
+The output makes sense and maybe that's where you get into some of these =
+reporting and other things associated with that. But it really feels more =
+like an extended sip. And what I think about more as UAT is the send in =
+process mapping. So I'll just leave you with that diversion thought as you =
+guys think about how you want to present this to Suhai and myself in a way =
+that's kind of clear of the action because on the first one, other than =
+there is a defect with the result, you're not going to expect that the end =
+users are going to go in the snow and raise a bunch of defects on the end =
+to end stuff. Are we expecting that the users are going to go in the cell =
+and raise their own defects or are they going to send an email to their IT =
+partner? Or there's going to be. So it's a sales sheet or.
+
+22:27
+Yeah, so. So on that. So on that point, Jeff. So the portion of ERP =
+majority of that will be on in Tosca. So the execution, the automation and =
+the scripts there, the 51 or so odd scripts within the ERP port that deals =
+with most of supply chain and ordered cash, all of those. And Bill, you can=
+ add color to this here. So those are all going to be automated and in =
+Tosca. And so the defect management tracking will also be in tosca. So we =
+will get reports out of there that track all of that. The finance portion =
+of it is to the point you just made earlier, it's all manual. So it is =
+actually people on keyboard, right, running the end to end scenarios and =
+the functional scenarios and scripts and capturing that. So this =
+essentially then becomes an aggregated view of it. And to your point, we =
+will take that back.
+
+23:25
+I think you're mixing apples and oranges in =
+this basket. I would just, rather than say overall I would bifurcate this =
+and maybe it's really, really we're doing three UAPs, we're doing a, a =
+largely automated UAT on the ERP LAS piece. We're doing a heavily finance =
+focus, but not just finance because I'm sure there's got to be some ISC and=
+ commercial folks in there, right? Doing more end to end, end to end =
+process testing and then we're doing adp. And maybe that's not the right =
+way to break. I think you guys got to come in. But I wouldn't combine =
+apples and oranges into like 104 r ch because it's not going to drive the =
+action. Right. Because my first question is going to be, you're going to be=
+ like, oh, we're, you know, we're 30% behind. And I'm going to be like, =
+well, where are we behind? Like, oh, well, you know, all the automated =
+testing is done, the finance is behind. Well, then I'm just going to go be =
+on finance. Right. So are they just bifurcating and from the beginning, =
+because it is very much Apple Stores between automated testing and where =
+you actually got. People have to go in, they got login hands on keys, they =
+got to process through all that. I'm not going to be prescriptive on that. =
+It's just my point of view. I'd ask you guys to think about that. What's =
+going to be the best way to communicate this.
+
+24:51
+Noted. So we'll take that action, idea them and.
+
+24:55
+Come back to you with that.
+
+24:57
+Okay.
+
+24:59
+26 of the 51 scenarios are =
+automated. Just as if you want a specific number.
+
+25:05
+Yeah.
+
+25:06
+Okay, so. And then we'll turn it over to you, Vicky, to talk through our =
+communication strategy and plan and how we're kicking that off.
+
+25:17
+Okay. And I'm going to try and do the. This in a:30 so we can still end on =
+time because I know everybody has a meeting to get to. Jeff, this is really=
+ just a strategy overlook. We have a detailed plan behind each one of this.
+
+25:31
+This is just to let you know.
+
+25:32
+That we have a holistic view of=
+ what we're doing. Our communication is actually, as mentioned earlier, is =
+actually going to start today. We are having live sessions as well as email=
+ going out. In terms of the kickoff for the uat, we've got bridge lines and=
+ everything set up for next week in terms of moving forward for =
+communication. So everybody's on track. This was, this strategy is intended=
+ to make sure that everybody knows who, what, when, why and how and what =
+the purpose is so that all expectations are set up front, we can identify =
+any challenges that we have moving forward. Wanted to also make sure that =
+they had any tools, any links and everything that specifically necessary =
+for us to have a successful UAT process. So this is the overall strategy of=
+.
+
+26:19
+When are you going to share this? Like either an offset or are we =
+going to share it in the V workshop on Wednesday? When, when are we going =
+to walk the VPs through this?
+
+26:30
+We can just tell us what date we'll be=
+ there exactly.
+
+26:36
+The next window is really in the, in the plenary or,=
+ or, you know, I mean, Jennifer, I'll let you figure out where you want to =
+sign in.
+
+26:43
+Yeah, but we should include it in the.
+
+26:46
+We have UAT on the Wednesday call.
+
+26:48
+So we can add this to it.
+
+26:50
+Yeah, yeah.
+
+26:52
+The next slide, just to give you a quick overview, is =
+that we do have a process identified for our calls, our emails, what we're =
+going to include, timing, daily funds, etc.
+
+27:02
+Etc.
+
+27:02
+So just wanted to let you know that all of these details are identified. =
+We're putting things in place to move us forward to ensure that everybody =
+stays aligned. And I want to over communicate, not under communicate. I =
+want them to say I heard so much about it that I'm sick of it, rather than =
+saying I've never heard about it at all. So if they don't want, they don't =
+want to like me because they hurt too much of me. I'm all good with that. =
+That's what I want.
+
+27:28
+All right, guys, this looks a lot, a lot better.=
+ Christina, Mickey, Jessica, thanks for, you know, agreeing to be deputized=
+, stepping in to, to get this sorted. So I appreciate that this is really =
+important. All right, guys, thanks. Let's keep up this, keep up this =
+frequency as we get into the next few weeks there. All right, everyone, =
+have a great weekend. That it.
+----_NmP-8fc938d2633c6461-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Global =
+Project Testing Coordination And Readiness</h1></td></tr></table></div><div=
+ style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/4FDD614F-B22F-4516-B9E3-DCA49562C003?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h1 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2.5rem">Meeting Summary =E2=80=93 June 20, 2025</h1><h2 =
+style=3D"font-weight:500;padding-top:20px;font-size:2rem">Attendees &amp; =
+Logistics</h2><ul>
+<li><strong style=3D"font-weight:bold">Date:</strong> =
+June 20, 2025</li>
+<li><strong style=3D"font-weight:bold">Time:</strong> =
+10:33 AM</li>
+<li><strong style=3D"font-weight:bold">Participants:</strong>=
+ 11 (including Jeff, Paul, Sheila, Vicky, Jessica, Bill, Sukai Crook =
+[organizer], Mac P Connolly [guest], Rakesh Hariharan [guest], external =
+attendees)</li>
+<li><strong style=3D"font-weight:bold">Location:</strong> =
+Video conferencing platform; participants joining from various global =
+regions including North America, Ireland, and Asia.</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Main Topics =
+Discussed</h2><h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">1. <strong style=3D"font-weight:bold">Project Readiness and Test =
+Preparation</strong></h3><h4 style=3D"font-weight:500;padding-top:20px;font=
+-size:1.5rem"><strong style=3D"font-weight:bold">Status =
+Update</strong></h4><ul>
+<li>Daily meetings have resulted in significant =
+progress since the previous sync on Friday.</li>
+<li><strong =
+style=3D"font-weight:bold">Critical and Adjacent Apps Identified:</strong> =
+All core applications and those requiring adjacent testing for End-to-End =
+(E2E) and User Acceptance Testing (UAT) are catalogued.</li>
+<li><strong style=3D"font-weight:bold">Business Testers:</strong> <ul>
+<li>Approximately 200 business testers involved.</li>
+<li>198 roles identified; some perform multiple functions.</li>
+<li>About 98 unique testers spread across 20 sub-functions.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Test Scripts:</strong><ul>
+<li>139 scripts are completed.</li>
+<li>Additional scripts for ERP and =
+supply chain are being finalized today and Monday.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem"><strong =
+style=3D"font-weight:bold">Key Risks and Issues</strong></h4><ul>
+<li><p><strong style=3D"font-weight:bold">Geographic Diversity of =
+Testers:</strong> </p>
+<ul>
+<li>Need more testers from regions outside =
+North America (especially for Solstice).</li>
+<li>Finance function presents=
+ particular challenges in regional representation.</li>
+<li>New joiners (e.g., Dublin-based financial analyst) identified as assets=
+ for regional testing and knowledge transfer.</li>
+<li>Action identified: =
+Bring in testers from plants, Asia, Ireland, etc., and escalate requests to=
+ functional leaders (e.g., Finance via Tina).</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Knowledge Transfer:</strong> =
+Clear recognition that UAT also serves as a mechanism for knowledge =
+transfer, especially critical where there are new staff or region-specific =
+nuances.</p>
+</li>
+<li><p><strong style=3D"font-weight:bold">Escalations:</=
+strong></p>
+<ul>
+<li>For some applications (e.g., Edicom, certain tax =
+applications in Romania, Germany, and Mexico), regional UAT testers have =
+not been fully named due to unstaffed positions.</li>
+<li>This gap is being addressed through leadership outreach and escalation =
+(e.g., Ben Goldstein, Will Jay).</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">2. <strong=
+ style=3D"font-weight:bold">Testing Approach and Scheduling</strong></h3><h=
+4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem"><strong =
+style=3D"font-weight:bold">Testing Calendars</strong></h4><ul>
+<li><strong style=3D"font-weight:bold">System Integration Testing (SIT) =
+&amp; UAT:</strong> <ul>
+<li>Detailed calendars have been socialized.</li>
+<li>Next-level, granular schedules (with daily detail) will be published: =
+SIT today, UAT on Monday.</li>
+</ul>
+</li>
+<li><strong =
+style=3D"font-weight:bold">UAT Phases:</strong> <ul>
+<li><strong style=3D"font-weight:bold">UAT1:</strong> Focuses on 80% of =
+scripts, initial round including core business process validation and legal=
+ entity changes.</li>
+<li><strong style=3D"font-weight:bold">UAT2:</strong>=
+ Remaining ~20% of scripts and follow-up on defect resolution, plus some =
+activities requiring direct business user intervention (for example, report=
+ printing in Hyperion).</li>
+</ul>
+</li>
+<li><strong =
+style=3D"font-weight:bold">Early UAT Initiatives:</strong> <ul>
+<li>Possibility for some regions to begin UAT as soon as SIT is complete, =
+based on app/process readiness.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem"><strong =
+style=3D"font-weight:bold">Application Testing Details</strong></h4><ul>
+<li>All key and adjacent apps are mapped for testing readiness.<ul>
+<li>Gaps remain for specific regional tax and Edicom applications.</li>
+<li>Existing QA environments and access are being utilized.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+5rem"><strong style=3D"font-weight:bold">Integration =
+Testing</strong></h4><ul>
+<li><strong style=3D"font-weight:bold">Integratio=
+n Points:</strong> 76 identified; logical separation and bifurcation from =
+previously shared systems (notably in ERP and integration with =
+Honeywell=E2=80=99s environment).</li>
+<li><strong style=3D"font-weight:bol=
+d">Automation:</strong> Large proportion of scripts (especially in =
+ERP/supply chain) are executed via automation (Tosca).</li>
+<li><strong style=3D"font-weight:bold">Manual Testing:</strong> =
+Remainder=E2=80=94primarily finance and specific process flows=E2=80=94will=
+ be hands-on, keyboard-driven by testers.</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">3. <strong=
+ style=3D"font-weight:bold">Defect Management and Execution =
+Tracking</strong></h3><h4 style=3D"font-weight:500;padding-top:20px;font-si=
+ze:1.5rem"><strong style=3D"font-weight:bold">Tracking and =
+Reporting</strong></h4><ul>
+<li><strong style=3D"font-weight:bold">Twice =
+Daily Reports:</strong> Each day, morning and evening, teams will provide =
+updates on:<ul>
+<li>Script plan vs. completion</li>
+<li>Delays (by cause: defects, non-approvals, at risk)</li>
+<li>Execution status (planned, completed, open issues)</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Defect Capture:</strong><ul>
+<li>For automated scenarios (e.g., ERP LAS), defects managed via Tosca with=
+ direct reporting.</li>
+<li>Manual defects (esp. in finance/processes) to =
+be captured through separate reporting, with consideration for =
+=E2=80=9Chands-on-keys=E2=80=9D involvement.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Defect Management =
+Dashboard:</strong> Dashboards will differentiate open issues by severity, =
+stream/workstream, and process area.</li>
+</ul>
+<h4 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.5rem"><strong =
+style=3D"font-weight:bold">Automation vs. Manual Testing=E2=80=94Clarificat=
+ion and Framing</strong></h4><ul>
+<li><strong style=3D"font-weight:bold">Di=
+scussion of UAT Framing:</strong><ul>
+<li>UAT activity is a mix of =
+regression testing, user acceptance, and output verification.</li>
+<li>Jeff emphasized the need to clarify:<ul>
+<li>What is being changed and =
+tested via automation (logical separation, integration).</li>
+<li>What is truly UAT (hands-on, business validation).</li>
+<li>What aspects (e.g., ADP payroll) need to be &quot;bucketized&quot; in =
+reporting.</li>
+</ul>
+</li>
+<li>Requested that reporting and communication =
+break out automated testing and hands-on user validation clearly, with =
+specific buckets for:<ul>
+<li>Automated integration testing</li>
+<li>Manual end-to-end/business process testing (especially in Finance, ISC,=
+ Commercial)</li>
+<li>Payroll/ADP testing</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Numbers Provided:</strong> 26 out of=
+ 51 ERP scenarios are automated.</li>
+</ul>
+<hr />
+<h3 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">4. <strong =
+style=3D"font-weight:bold">Communication Strategy and Stakeholder =
+Engagement</strong></h3><h4 style=3D"font-weight:500;padding-top:20px;font-=
+size:1.5rem"><strong style=3D"font-weight:bold">Strategy =
+Overview</strong></h4><ul>
+<li><strong style=3D"font-weight:bold">Communica=
+tion Launch:</strong> Strategy is rolling out the same day (June 20, 2025) =
+with a blend of live and email-driven communications.</li>
+<li><strong style=3D"font-weight:bold">Objectives:</strong><ul>
+<li>Ensure &quot;who, what, when, why, and how&quot; are consistently =
+communicated.</li>
+<li>Set clear expectations and identify challenges early=
+.</li>
+<li>Prevent information gaps, with a preference for =
+over-communication.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold"=
+>Tools and Logistics:</strong><ul>
+<li>Bridge lines and all necessary comms=
+ links/tools are in place for UAT starting next week.</li>
+<li>Daily touchpoints planned (calls, emails, updates).</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+5rem"><strong style=3D"font-weight:bold">Stakeholder =
+Engagement</strong></h4><ul>
+<li><strong style=3D"font-weight:bold">VP =
+Workshop:</strong> <ul>
+<li>Next round of comms to business leaders and VPs=
+, likely at next Wednesday=E2=80=99s (June 25, 2025) V workshop.</li>
+<li>Vicky/Jennifer to coordinate timing and inclusion of UAT comms in =
+agenda.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-=
+top:20px;font-size:2rem">Action Items</h2><ol>
+<li><p><strong =
+style=3D"font-weight:bold">Regional Tester Coverage:</strong> </p>
+<ul>
+<li>Complete identification of business testers by geography and =
+sub-function, with a focus on non-North American regions (Asia, Ireland, =
+plant-level).</li>
+<li>Escalate gaps to respective functional leaders (Tina=
+ for Finance).</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">T=
+est Script Finalization:</strong> </p>
+<ul>
+<li>ERP and supply chain =
+scripts to be finalized by Monday (June 23, 2025).</li>
+<li>Address gaps in Edicom/tax app regional testers=E2=80=94coordinate with=
+ Ben Goldstein, Will Jay.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">UAT Framing and Reporting:</strong></p>
+<ul>
+<li>Revise UAT status and defect reporting to clearly separate:<ul>
+<li>Automated integration tests (ERP LAS)</li>
+<li>Manual, business-driven =
+end-to-end tests (especially Finance, ISC, Commercial)</li>
+<li>Payroll/ADP tests</li>
+</ul>
+</li>
+<li>Report must enable pinpointing =
+delays/gaps by stream/test type.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Early SIT/UAT Schedules:</strong></p>
+<ul>
+<li>Publish granular SIT and UAT calendars for team consumption (SIT: =
+today; UAT: June 23).</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Communication Plan Execution:</strong></p>
+<ul>
+<li>Begin live and email communication today, including UAT kickoff =
+notifications.</li>
+<li>Prepare materials for presentation at the next VP =
+Workshop on June 25, 2025.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Defect Management Integration:</strong></p>
+<ul>
+<li>Incorporate ADP/payroll defect reporting into overarching dashboard to =
+prevent scope gaps.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 =
+style=3D"font-weight:500;padding-top:20px;font-size:2rem">Follow-up Points =
+/ Next Meetings</h2><ul>
+<li><strong style=3D"font-weight:bold">Offline =
+Conversations:</strong> Several team members, including Paul and Jeff, to =
+continue discussions on website team and HR topics.</li>
+<li><strong style=3D"font-weight:bold">Data on Tester =
+Distribution:</strong> Provide Jeff (and Tina) with data on current tester =
+distribution ASAP; Jeff will advocate for regional participation as needed.=
+</li>
+<li><strong style=3D"font-weight:bold">Communication with Business =
+Leadership:</strong> Ensure UAT communication and strategy are added to =
+next Wednesday=E2=80=99s VP workshop agenda.</li>
+<li><strong =
+style=3D"font-weight:bold">Frequency of Syncs:</strong> Maintain high =
+meeting cadence as SIT/UAT begins; daily scrum calls planned from next week=
+.</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size=
+:2rem">Images</h2><h3 style=3D"font-weight:500;padding-top:20px;font-size:1=
+.75rem">Image 1: Video Conferencing Screenshot</h3><ul>
+<li><p><strong style=3D"font-weight:bold">Key Visual Elements:</strong></p>
+<ul>
+<li>Standard virtual meeting interface with list of 11 =
+participants=E2=80=94various roles noted as external or guests.</li>
+<li>Meeting was organized by Sukai Crook.</li>
+<li>Participants from =
+locations including North America and Ireland, reflecting distributed =
+project nature.</li>
+<li>Time clearly displayed as 10:33 AM on 6/20/2025.=
+</li>
+<li>Interface shows invite, mute, participant management =
+controls=E2=80=94typical setup facilitating interactive discussion and =
+real-time collaboration.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Significance to Discussion:</strong></p>
+<ul>
+<li>Reinforces distributed, global nature of project and challenges (and =
+coordination requirements) related to regional tester participation and =
+communication.</li>
+<li>Underlines use of digital collaboration for project=
+ tracking and real-time status, which is central given the complexity and =
+pace of the initiative.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Summary =
+Statement</h2><p>The session reflected strong progress on test readiness =
+and coordination for a major systems/program transition, with deep dives =
+into tester coverage, risk mitigation, defect management, and the nuance =
+between automated and manual validation. Immediate actions focus on =
+regional inclusivity, explicit test reporting, and robust =
+communications=E2=80=94crucial as the project approaches critical execution=
+ phases in the next week.</p>
+</div></div></div><div =
+style=3D"background-color:#ffffff;padding:28px;border-radius:12px;border:1p=
+x solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 =
+rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-size:20px;font-weight:=
+600;margin-top:0;margin-bottom:20px;display:flex;align-items:center;gap:8px=
+"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription<=
+/h3><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">0:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">There we go. No, =
+it&#x27;s happened to Paul one too many times, so we don&#x27;t want to =
+keep doing that.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mickey</span>=
+<span style=3D"color:#64748b;font-size:14px">0:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We&#x27;ve seen this=
+ deck all week, so probably any of us could do it. Absolutely, absolutely.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">0:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You always do it =
+with the smile on your face, though, Paul. So there&#x27;s that.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mickey</span><span=
+ style=3D"color:#64748b;font-size:14px">0:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I tried.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">0:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I don&#x27;t know.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mickey</span><span=
+ style=3D"color:#64748b;font-size:14px">0:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The alternative is =
+not good.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">0:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mickey</span><span style=3D"color:#64748b;font-size:14px"=
+>0:27</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Enjoy the journey, right?</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</spa=
+n><span style=3D"color:#64748b;font-size:14px">0:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, exactly.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">0:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think half of my =
+calls have been with Paul this morning. Yeah, I went back to Paul. All good=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">0:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right. What did =
+you leave? Was he still on the call when you hung up?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mickey</span><span style=3D"color:#64748b;font-size:14px"=
+>0:44</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">He was, but he saw that I dropped, so he knows he needs to get here.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">0:49</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">0:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I can ping him real =
+quick.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">0:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, that&#x27;d be=
+ great.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mickey</span><span=
+ style=3D"color:#64748b;font-size:14px">0:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Let&#x27;s all pay =
+him at the same time.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jennifer</spa=
+n><span style=3D"color:#64748b;font-size:14px">0:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I was literally =
+about to offer that an HR thing I needed to talk to him about, so he was =
+very aware.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mickey</span><span=
+ style=3D"color:#64748b;font-size:14px">1:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">He&#x27;s coming, =
+he&#x27;s coming.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">1:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mickey</span><span=
+ style=3D"color:#64748b;font-size:14px">1:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">This is important to=
+ him.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">1:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">1:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. There he is. =
+Hey, Jeff, you unmute.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><s=
+pan style=3D"color:#64748b;font-size:14px">1:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Unmuted it all. =
+Unmuted me? Yeah, I was on with the. With the. The website team.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">1:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes, yes. I&#x27;m =
+sorry, I had to.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><s=
+pan style=3D"color:#64748b;font-size:14px">1:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;s another =
+very energetic conversation.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><=
+span style=3D"color:#64748b;font-size:14px">1:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;ve heard that=
+. So I might be talking to you offline on that one and you a call. I am =
+presenting with Sheila to the EDP in a minute, so I&#x27;m gonna have to =
+drop. But Jeff, I&#x27;ve met with this team every single day, so =
+we&#x27;ve made a lot of progress and I&#x27;m going to let them give you =
+an update on what we have done thus far and then I&#x27;ll connect with you=
+ offline.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">1:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So with that, I had =
+a couple questions too, guys. Just ping me later.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Paul</span><span style=3D"color:#64748b;font-size:14px">1=
+:51</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, I&#x27;ll ping you when I&#x27;m in the car. Perfect, guys, talk =
+to you later.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">1:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Thanks. Okay, Jeff. =
+All right, so again, we&#x27;ll talk through these couple of salient points=
+ on each slide. We&#x27;ll walk you through what we&#x27;ve done to date =
+and how we&#x27;re tracking to it. And then of course, you know, follow ups=
+ and any questions, we&#x27;ll talk through each of these. So we&#x27;ll =
+walk through the readiness summary, review the. The testing calendar we =
+have to date and talk you through that, review the trackers we have and the=
+ dashboards, walk you through that. And then the communication strategy and=
+ plan that Vicky will walk us through. So with that, Jeff, overall status, =
+I think yeoman&#x27;s effort really, since our last conversation on Friday,=
+ quite a bit of heavy lifting. You mostly in terms of coordinating all of =
+the data and information we have and packaging it well. So success story =
+thus far we&#x27;ve identified the critical apps and the adjacent apps that=
+ need to be tested as part of the end to end process and UAT testing. =
+We&#x27;ve got close to 200 business testers across all of these sub =
+function and process areas. Almost 198 unique business testers. So some of =
+them are doing a couple of more things, but really about 98 unique business=
+ testers across 20 sub functions. And to date we&#x27;ve got 139 test =
+scripts. We have a couple of more areas where we are finalizing the test =
+scripts and we&#x27;ll walk you through those. Those are today and Monday. =
+We&#x27;ll walk you through those areas.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:14px">3=
+:25</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So for the testers, one of the things that I would like to know is like =
+what number, what percentage of those testers are in the parameter.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">3:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jennifer</span><sp=
+an style=3D"color:#64748b;font-size:14px">3:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We&#x27;Re gonna =
+have to do a little more work on that. We have started taking some of that =
+information down because I do see that as a risk. But we will work through =
+that today into Monday and get that answer.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:14px">3=
+:50</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, I mean either my question. UAT is also knowledge transfer. Right. =
+And yeah, so, so, so let&#x27;s, let&#x27;s see where we are. And then, you=
+ know, the, I, I may add an ask. I will likely add an ask which would be =
+for those business testers to identify somebody in the perimeter who can, =
+you know, can go along with them to make sure that we&#x27;re getting some =
+Solstice eyes on this because they&#x27;re the ones that are going to be =
+need to live with this.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jennifer</spa=
+n><span style=3D"color:#64748b;font-size:14px">4:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, we got that =
+from a few people. I think the biggest function we&#x27;re going to have =
+some struggles with that on is finance just being.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:14px">4=
+:33</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">No, I know, I know. But then, but then if that&#x27;s the case and we =
+have a real gap, then that becomes a follow up. Will Jack and Tina to say, =
+do you want to bring some people in from the plant to put this forward? You=
+ know, I met a new senior financial analyst in Dublin, you know, two days =
+ago. That&#x27;s, that&#x27;s just joined. Hey, right. We don&#x27;t need =
+to be locked in North America. It&#x27;s pulling some folks from Asia, =
+pulling some folks from Ireland. They&#x27;re, they&#x27;re anxious to get =
+involved. So I, I do want, I went for each of the, each, each of the, the =
+critical apps. I want there to be, you know, some participation of Solstice=
+ employees. So if it&#x27;s all Honeywell, all corporate like then we got =
+more work to do and I want to put more on the central team. I&#x27;ll Ask =
+the functional leaders to go figure that out. Okay, thank you. Back to you.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">5:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, no, we&#x27;ll=
+ take that certainly. And I think there are a few cases you&#x27;ll see =
+that, that we have encountered that where they are providing brand new =
+joiners and so on the one end we identify it as a risk that KT needs to =
+happen, but on the flip side, the point you&#x27;re making is valid and =
+we&#x27;ll track that and get back to you. So overall then we&#x27;ve got =
+detailed testing calendar. We&#x27;re socializing that today for SIT and =
+then UAT early next week. We&#x27;ve got the communication strategy, =
+we&#x27;re starting that today. And as well as the mos for SIT and uat, the=
+ execution of that will start on Monday with the daily scrum calls early =
+next week. We&#x27;ll also look at all of the logistics finalization for =
+Morse planes and work through all of the communication for that. And then =
+finally the status reporting, we&#x27;ll talk through the execution =
+tracking as well as the defect management. So you&#x27;ve seen this =
+calendar, a version of this we showed and socialized. I think the key =
+takeaways here are that, you know, there&#x27;s been quite a few channels =
+of conversations around can we start UAT early, at least in the regions. =
+And what we&#x27;ve discussed with all of the application owners and the =
+the IT function leads as well is where is that possible? Once SIT is over, =
+there&#x27;s going to be a handoff between the teams and the regional =
+testing teams on what applications are really ready to start testing and =
+what capability or what process areas and sub functions whose scripts they =
+can run to start testing around the 7.2 time frame. So that still needs to =
+be fleshed out a little bit. But I think that&#x27;s the plan that there =
+will be a handoff and where ready in each region to the point you made =
+earlier. We&#x27;ll pull in those regional testers and coordinate testing =
+there for those areas that are ready.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:14px">7=
+:42</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">What is the difference between UAT1 and UAT2? Is it a different set of =
+apps or is it just the second part of the apples for. So you&#x27;re going =
+to do UAT1, you&#x27;re going to identify issues, you&#x27;re going to fix =
+them and then we&#x27;re going to come back and confirm that UAT2 that =
+those things are fixed or is UAT1 and UAT2 different apps?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>8:05</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Jessica, do you want to.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jennifer</spa=
+n><span style=3D"color:#64748b;font-size:14px">8:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I can take =
+that. It&#x27;s all the same apps, but a lot of the scripts they&#x27;re =
+going to test UAT one week and Then there&#x27;s a couple components that =
+are more business user focused. Like for example things Hyperion. =
+There&#x27;s some reports that they have to print out. So it&#x27;s going =
+to be the maybe 80%. This is rough numbers right now. 80% happening the =
+week of UAT1 and then the week of UAT2 is the remaining 20ish percent slash=
+ any additional defect fixing. So they&#x27;re going to do whatever they =
+can remote but if there&#x27;s something they need the end testers to hit a=
+ button or validate that the SDS printing out. That&#x27;s what&#x27;s =
+going to happen the week during UAT2.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:14px">8=
+:49</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay, got it, thank you.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">8:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And so we do have a =
+detailed calendar here and what you see is a daily calendar or this is more=
+ a week on week but we do have a much more one double click into this =
+further that we&#x27;ll publish for SIT today and then UAT Monday.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">9:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Monday.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">9:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So overall in terms =
+of the critical systems I think the key call out here is a couple of areas =
+and you will see this in the BRV adjacent as well. So we&#x27;re tracking =
+well to everything in terms of the SIT and UAT testers named. There are a =
+couple of areas where we&#x27;re finalizing the test scripts I think for =
+the ERP and supply chain today and then a couple of these into Monday. The =
+one area I&#x27;d like to to note here is it alludes to the point of having=
+ SolSystem for Edicom and some of the tax applications, particularly what =
+Jessica mentioned on the finance space. We&#x27;ve escalated that to Ben =
+Goldstein. We&#x27;re having conversations with Will Jay on identifying UAT=
+ testers in region because you know, for Edicom and some of the other tax =
+apps that need testing in Romania, Germany, Mexico and the like, we need =
+sources, regional testers there. And so the org isn&#x27;t ready yet and =
+names haven&#x27;t, you know, there aren&#x27;t people in seats. So =
+that&#x27;s something we&#x27;re chasing.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:14px">1=
+0:16</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">But we have all the leaders and we can go ahead and get those things. So=
+ if you need any help. I was just with Ben in, in Ireland. So like I gotta =
+you just like literally Wednesday night. Right. So couldn&#x27;t just talk =
+with him then. But I will, you know I will make the point through Tina and =
+Tina will drive it down for finance organization that finance is a big =
+build back function. This is knowledge transfer. Plus you guys need to make=
+ sure that it&#x27;s going to work and then we&#x27;ll get that sorted. But=
+ so give me that data sooner rather than later around, you know, the =
+testers and where we need more solstice testers and I&#x27;ll go work that.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jennifer</span><sp=
+an style=3D"color:#64748b;font-size:14px">11:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, we&#x27;ll get=
+ that today. But Jeff, kind of to that point it would definitely be I think=
+ at this point helpful for you to whether it&#x27;s an email or a =
+conversation, when you see them, keep having those conversations with these=
+ folks because one of the things that for at least me was discoverable this=
+ week is that some of these folks really didn&#x27;t have as much =
+information and knowledge on this. So just whenever you can share that =
+messaging.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">11:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep. Well then, okay=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">11:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Hey, question on =
+like space and Hyperion. So I know there&#x27;s this one, you know the, for=
+ the consolidation. So this is the UAT testing pre August 1st is really =
+going to be around the legal entity changes. And then Rakesh, keep me =
+honest here. The plan is then to kind of clone that into the solstice =
+environment and that&#x27;s where once the data starts flowing post 81, =
+that&#x27;s where they&#x27;ll do the like mock close.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>11:52</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Correct, correct, correct. This is existing environment.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">11:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">11:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And we do know =
+that&#x27;s later in the schedule. So we do need that up that upstream data=
+ to make Hyperion relevant. So.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica=
+</span><span style=3D"color:#64748b;font-size:14px">12:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Okay. So kind =
+of for them they&#x27;ve got sort of the, you know, simulation testing with=
+ the mock closes. This is kind of, for lack of a better word, sort of =
+regression testing a bit. Is that a good way to think about it?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">12:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I would say so=
+. Yeah, sure. And then similarly we&#x27;ve got a couple of slides in the =
+readiness in terms of the all the adjacent systems. So all the testers =
+named, you know, they&#x27;re using the existing access and the existing QA=
+ systems where possible. So that&#x27;s all aligned and some of these are =
+the ones that blacked out really are you know, workflows or tools that =
+really don&#x27;t have environment landscape and so they&#x27;re not =
+relevant for the this. So we&#x27;ve aligned all the schedule as well. The =
+call out here again is on that tax application similarly to the ETICOM =
+space. We&#x27;ve already spoken about it. That&#x27;s the one area we need=
+ to close the gap on coming into then the execution status. So what =
+we&#x27;ll do here Jeff, is every day, morning and evening end of day we =
+will be publishing this report out on the total scripts. What is planned =
+for the day, what&#x27;s actually completed, what is delayed, what is at =
+risk of not completing, what is delayed either due to defects or non =
+approvals. And this is how we&#x27;re going to track it and report out to =
+UN leadership twice a day, once in the morning on the plan and then end of =
+day as a roundup of the activities completed.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:14px">1=
+3:40</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So who will raise defects or script failures? How will that. I also =
+there was some conversation that this was going to be automated with an AI =
+tool and what the UAT business testers were really doing, validation of the=
+ end product, but not so much the validation of the individual steps. So =
+help me understand day in the life of, you know, trade compliance. Six =
+scripts. Somebody&#x27;s doing trade compliance, somebody in the business. =
+What are they doing? What are they seeing? How do we, how are we going to =
+reflect their input? What does that look like?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>14:28</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah, and Bill, are you on?</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</s=
+pan><span style=3D"color:#64748b;font-size:14px">14:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep, I&#x27;m here.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">14:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Do you want to.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">14:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So we are =
+using automation for a large percentage of the scripts that need to produce=
+ outputs with the new Solstice legal entity information. And it&#x27;ll =
+require less touches for keyboards for users and. But if anything fails =
+along the way, you know, we&#x27;ll track that, see if it&#x27;s an =
+integration point we&#x27;ll. Or if there was an issue in SAP, an access =
+issue, think of any number of things that caused the failure, we remediate =
+those and run again. But we also have scripts for the users to run sort of =
+as you said in the day in their life. I&#x27;m creating a sales order for a=
+ customer and then I send it down for pick, pack and ship. And once we go =
+that order to cash scenario all the way through. No processes are changing =
+as part of this deployment, but the integration points are all being =
+changed so that the Solstice AM business is its own space on CIP 900 no =
+longer connected out to any other systems in Honeywell and vice versa. The =
+ones that were connected to CIP 900 being removed. So we have to check all =
+of those 76 integration points that prior had shared information pathways =
+that we&#x27;ve now bifurcated and let UOP have theirs, for instance, and =
+Solstice has theirs. So that&#x27;s kind of the way it goes. We normally =
+could turn around a fix pretty quickly unless it&#x27;s a development issue=
+, but we don&#x27;t, we didn&#x27;t do a lot of development on this other =
+than the forms.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><s=
+pan style=3D"color:#64748b;font-size:14px">16:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It might be helpful =
+to kind of frame at the start of this. You know, again, back to my comment =
+on what, what&#x27;s, what&#x27;s changing and therefore what&#x27;s =
+driving the testing. Right. So what&#x27;s changing is there&#x27;s some =
+logical separation that&#x27;s happening within the erp. So what, what we =
+need to test there is we need to test all the integrations, how are we =
+testing them? We&#x27;re actually going to do it in automated testing is =
+kind of, that&#x27;s what I&#x27;m hearing. Right. The other thing =
+that&#x27;s changing is the legal entities are going live, assets and =
+liabilities are being moved, employees are getting moved. So. And we got a =
+new payroll provider. All right, so ADP is going to be tested, but you got =
+to bring, we need to bring that into this MOS in terms of, you know, where,=
+ where are we on the ADP testing? Right. Because otherwise we&#x27;ve got a=
+ blind spot in our conversation. So that&#x27;s got to come in. I know HRIS=
+ is kind of doing it, it&#x27;s more of a service. Then let&#x27;s like we =
+got to bring that into the same conversation. Okay, so, so that&#x27;s how =
+that one&#x27;s going to happen. There&#x27;s, you know, then there&#x27;s,=
+ we have three people in new roles. So they&#x27;re going to be tested =
+through some end to end product scripts or end to end scripts that are kind=
+ of day in the line which are end to end processes that they&#x27;re going =
+to go and execute queue and then anything else we want to lay out there. =
+But I think kind of framing that up because I mean UATs are compassing a =
+lot like some stuff that, that we&#x27;re saying is UAT feels more like =
+regression testing to me than UAT because if it&#x27;s a user, they&#x27;re=
+ not touching the keyboard. It doesn&#x27;t feel like a user acceptance =
+test. It feels like maybe they&#x27;re, they&#x27;re giving some validation=
+ of data validation on the outputs. But I just think getting that clear =
+because there&#x27;s a lot going here with 50 some apps and 98 testers and =
+you know, all of these kind of pieces together. So some framing up front =
+run how that&#x27;s going to work. Except that that should also reflect in =
+the way that we, we come back with and validate the full report out on the =
+results. It&#x27;s like, well, Jeff, remember, you know, we&#x27;re doing =
+the logical separation and the impact there is that we see 76 integrations.=
+ We&#x27;re testing those with this automated testing app. We&#x27;ve =
+completed, you know, 73 of them, three of them had defects. We&#x27;re =
+fixing those, we expect to get them back up and testing again. So we talk =
+that in a bucket and then we talk the end to end processes in a bucket and =
+then we talk ADP in a bucket. Like let&#x27;s bucketize this a little bit =
+because I think if we try to do it all with the same lens it&#x27;s going =
+to get confusing. Understood. Just, just. I mean you guys are closer to it =
+but I just would offer that perspective based on, based on what I hear you =
+and, and Bill. I, I was in the LAS workshop with Bill so I heard some of =
+this, you know more detail last week. But let&#x27;s just think about =
+what&#x27;s the best way to find me this and help to explain because in my =
+view, you know we&#x27;re testing the focus on testing the things that are =
+changing and then essentially validating the things that aren&#x27;t =
+changing. Still work with regression testing or some other types of =
+automated testing.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mickey</span>=
+<span style=3D"color:#64748b;font-size:14px">19:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No good points. I =
+mean we need to have it. If everything on this page looks good and ADP is =
+not here, we&#x27;ll get ourselves in trouble.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:14px">1=
+9:44</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Right. So we need, I mean the most important thing is that people are =
+going to get paid right? I mean you want hyper care issues Paul, =
+that&#x27;s where you&#x27;ll have a lot of hyper care issues if people =
+don&#x27;t get their checks right. And it&#x27;s going to be a little, =
+it&#x27;s going to be a little wonky too because you know, I mean this is =
+more like change management stuff but people are going to get two W2s the =
+going to get their ficus going to renew so there&#x27;s almost like unknown=
+ issues thing a change communication thing that we need to have like you =
+know F is going to start back up is essentially third just as if you. Well =
+not on 8:1 but on 11:1 you know so it&#x27;s, it&#x27;ll be more condition =
+for the new company to manage but you, you&#x27;ll have those things as =
+well. Okay, what else did you want to.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>20:34</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah so I think the other point is the defect management dashboard =
+again this I think the point you&#x27;re making on ADP will have to =
+incorporate the reports from them as well but again this, this talks to the=
+ point on you know run these scripts with these are past. These are the =
+open issues and across these four severities and actually double clicking =
+into that to say across these end to end process areas or across these work=
+ streams. This is, these are the, the breakouts of that and how.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">21:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So the thing =
+that&#x27;s still not super clear to me is how much of this is you&#x27;re =
+going to run this kind of AI automated testing and you&#x27;re going to ask=
+ the business users to validate the output versus where the users are going=
+ to be hands on keys working through it and test break and for me those are=
+, those are a bit of Apple&#x27;s norm just Conversations because the =
+former, the first one is essentially it&#x27;s an extended sib because =
+you&#x27;re getting some validation of the business eyes on the output. The=
+ output makes sense and maybe that&#x27;s where you get into some of these =
+reporting and other things associated with that. But it really feels more =
+like an extended sip. And what I think about more as UAT is the send in =
+process mapping. So I&#x27;ll just leave you with that diversion thought as=
+ you guys think about how you want to present this to Suhai and myself in a=
+ way that&#x27;s kind of clear of the action because on the first one, =
+other than there is a defect with the result, you&#x27;re not going to =
+expect that the end users are going to go in the snow and raise a bunch of =
+defects on the end to end stuff. Are we expecting that the users are going =
+to go in the cell and raise their own defects or are they going to send an =
+email to their IT partner? Or there&#x27;s going to be. So it&#x27;s a =
+sales sheet or.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">22:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, so. So on that=
+. So on that point, Jeff. So the portion of ERP majority of that will be on=
+ in Tosca. So the execution, the automation and the scripts there, the 51 =
+or so odd scripts within the ERP port that deals with most of supply chain =
+and ordered cash, all of those. And Bill, you can add color to this here. =
+So those are all going to be automated and in Tosca. And so the defect =
+management tracking will also be in tosca. So we will get reports out of =
+there that track all of that. The finance portion of it is to the point you=
+ just made earlier, it&#x27;s all manual. So it is actually people on =
+keyboard, right, running the end to end scenarios and the functional =
+scenarios and scripts and capturing that. So this essentially then becomes =
+an aggregated view of it. And to your point, we will take that back.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">23:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think you&#x27;re =
+mixing apples and oranges in this basket. I would just, rather than say =
+overall I would bifurcate this and maybe it&#x27;s really, really =
+we&#x27;re doing three UAPs, we&#x27;re doing a, a largely automated UAT on=
+ the ERP LAS piece. We&#x27;re doing a heavily finance focus, but not just =
+finance because I&#x27;m sure there&#x27;s got to be some ISC and =
+commercial folks in there, right? Doing more end to end, end to end process=
+ testing and then we&#x27;re doing adp. And maybe that&#x27;s not the right=
+ way to break. I think you guys got to come in. But I wouldn&#x27;t combine=
+ apples and oranges into like 104 r ch because it&#x27;s not going to drive=
+ the action. Right. Because my first question is going to be, you&#x27;re =
+going to be like, oh, we&#x27;re, you know, we&#x27;re 30% behind. And =
+I&#x27;m going to be like, well, where are we behind? Like, oh, well, you =
+know, all the automated testing is done, the finance is behind. Well, then =
+I&#x27;m just going to go be on finance. Right. So are they just =
+bifurcating and from the beginning, because it is very much Apple Stores =
+between automated testing and where you actually got. People have to go in,=
+ they got login hands on keys, they got to process through all that. =
+I&#x27;m not going to be prescriptive on that. It&#x27;s just my point of =
+view. I&#x27;d ask you guys to think about that. What&#x27;s going to be =
+the best way to communicate this.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh<=
+/span><span style=3D"color:#64748b;font-size:14px">24:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Noted. So we&#x27;ll=
+ take that action, idea them and.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</s=
+pan><span style=3D"color:#64748b;font-size:14px">24:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Come back to you =
+with that.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">24:57</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">24:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">26 of the 51 =
+scenarios are automated. Just as if you want a specific number.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">25:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">25:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so. And then =
+we&#x27;ll turn it over to you, Vicky, to talk through our communication =
+strategy and plan and how we&#x27;re kicking that off.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Vicky</span><span style=3D"color:#64748b;font-size:14px">=
+25:17</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay. And I&#x27;m going to try and do the. This in a:30 so we can still=
+ end on time because I know everybody has a meeting to get to. Jeff, this =
+is really just a strategy overlook. We have a detailed plan behind each one=
+ of this.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">25:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">This is just to let =
+you know.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicky</span><span =
+style=3D"color:#64748b;font-size:14px">25:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That we have a =
+holistic view of what we&#x27;re doing. Our communication is actually, as =
+mentioned earlier, is actually going to start today. We are having live =
+sessions as well as email going out. In terms of the kickoff for the uat, =
+we&#x27;ve got bridge lines and everything set up for next week in terms of=
+ moving forward for communication. So everybody&#x27;s on track. This was, =
+this strategy is intended to make sure that everybody knows who, what, when=
+, why and how and what the purpose is so that all expectations are set up =
+front, we can identify any challenges that we have moving forward. Wanted =
+to also make sure that they had any tools, any links and everything that =
+specifically necessary for us to have a successful UAT process. So this is =
+the overall strategy of.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><s=
+pan style=3D"color:#64748b;font-size:14px">26:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">When are you going =
+to share this? Like either an offset or are we going to share it in the V =
+workshop on Wednesday? When, when are we going to walk the VPs through this=
+?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jennifer</span><sp=
+an style=3D"color:#64748b;font-size:14px">26:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We can just tell us =
+what date we&#x27;ll be there exactly.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:14px">2=
+6:36</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">The next window is really in the, in the plenary or, or, you know, I =
+mean, Jennifer, I&#x27;ll let you figure out where you want to sign in.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicky</span><span =
+style=3D"color:#64748b;font-size:14px">26:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, but we should =
+include it in the.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><s=
+pan style=3D"color:#64748b;font-size:14px">26:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We have UAT on the =
+Wednesday call.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicky</span><=
+span style=3D"color:#64748b;font-size:14px">26:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So we can add this =
+to it.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">26:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicky</span><span =
+style=3D"color:#64748b;font-size:14px">26:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The next slide, just=
+ to give you a quick overview, is that we do have a process identified for =
+our calls, our emails, what we&#x27;re going to include, timing, daily =
+funds, etc.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">27:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Etc.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Vicky</span><span style=3D"color:#64748b;font-size:14px"=
+>27:02</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">So just wanted to let you know that all of these details are identified=
+. We&#x27;re putting things in place to move us forward to ensure that =
+everybody stays aligned. And I want to over communicate, not under =
+communicate. I want them to say I heard so much about it that I&#x27;m sick=
+ of it, rather than saying I&#x27;ve never heard about it at all. So if =
+they don&#x27;t want, they don&#x27;t want to like me because they hurt too=
+ much of me. I&#x27;m all good with that. That&#x27;s what I want.=
+</div></div><div style=3D"margin-bottom:0;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">27:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right, guys, =
+this looks a lot, a lot better. Christina, Mickey, Jessica, thanks for, you=
+ know, agreeing to be deputized, stepping in to, to get this sorted. So I =
+appreciate that this is really important. All right, guys, thanks. =
+Let&#x27;s keep up this, keep up this frequency as we get into the next few=
+ weeks there. All right, everyone, have a great weekend. That it.=
+</div></div></div><div style=3D"margin-top:36px;text-align:center;color:#64=
+748b;font-size:14px;padding:20px;border-top:1px solid #e2e8f0"><p =
+style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note Taker</p><p=
+ style=3D"margin:0;font-size:12px">Your AI-powered companion</p></div></div=
+></div></div></html>
+----_NmP-8fc938d2633c6461-Part_1--

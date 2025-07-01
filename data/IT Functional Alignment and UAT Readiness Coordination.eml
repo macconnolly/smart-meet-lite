@@ -1,0 +1,1526 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:adf:a403:0:b0:3a4:dc5b:9678 with SMTP id d3csp2209346wra;
+        Mon, 2 Jun 2025 09:32:47 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGAZ6d6XMsDUsOjcjNfC6ShwhY//BixWB+eKYM/4QUJ/VgXTFga+afMGD9Dfgf7UgtTyU7/
+X-Received: by 2002:a05:6102:3594:b0:4e2:83c4:9298 with SMTP id ada2fe7eead31-4e73229303bmr190163137.3.1748881967406;
+        Mon, 02 Jun 2025 09:32:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748881967; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Q4MS/GUOjZxst1CRBwD+c5dy6a2u9YRimq2p4cGQLuT/HmfsBNw6urrvX2emkWSjsU
+         igbtdeSOScw3tqgYyQIKAfnmvlTXvs/67XSKZV73d++lu/74CmQ6Ka1liFM3pjJFbJdZ
+         Pmb06bu5dtnZa1W5dRoqc063M5CwtkHekcbNynEvGnwD3lBKkp/aGHQzRQPZKV9ebnyJ
+         iHGTx4QSId5MMy2nkolGXWPL+RoiJj2ie5dUjELDBJL8F5tkzcI+gV9RRLP9s9ZyNIFa
+         N4OcrecICtflP7Dv6+sJYJkSP0BWm9KpGljnkrM/jmutqaS9R2YxnUAlIyhQIqws5OGH
+         QveQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=vctADPGxh8mAOuOcNjRnaFj1nNmCo3gv/Fe8+1mrZGM=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=YSe0pZsVUCSk/i5pV7Nc4Ycd3wW4bileUko0E5LRpnOsUceQ7uGuuBwA+yULVvjm26
+         NYpmnHve0cF2GGovuhWPtP7JGv8L2A+LsbpItKE4sg2wh0Tdq9QXo6gUQ4p+hjVXNdqs
+         1oFir4AzVckTSiZC1UJL2DjQs5rcklm1S3ZNXIjFGtSlpl/WZQp8LXK+BQj9xW+ZICY5
+         CEuUGr8XfPTHZktubUmo/bg9L+wLN0I5tk/pT7lW2wX5OFWvSWtnqOT/YVw3j92iqsym
+         5wDJH9jBHDVSBLoKPiPj/AZSHRnmcDxziEHlWGXFPXkxLZb0QTBH1WuPoq0FSzuo+kHA
+         MtBg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=uqucXf1i;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=ivXzShFv;
+       spf=pass (google.com: domain of 01000197317d0665-d851c538-f6c7-484a-9b71-2988a251ba43-000000@send.email.wave.co designates 54.240.9.33 as permitted sender) smtp.mailfrom=01000197317d0665-d851c538-f6c7-484a-9b71-2988a251ba43-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <01000197317d0665-d851c538-f6c7-484a-9b71-2988a251ba43-000000@send.email.wave.co>
+Received: from a9-33.smtp-out.amazonses.com (a9-33.smtp-out.amazonses.com. [54.240.9.33])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4e64e9e5106si3104852137.291.2025.06.02.09.32.47
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 02 Jun 2025 09:32:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 01000197317d0665-d851c538-f6c7-484a-9b71-2988a251ba43-000000@send.email.wave.co designates 54.240.9.33 as permitted sender) client-ip=54.240.9.33;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=uqucXf1i;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=ivXzShFv;
+       spf=pass (google.com: domain of 01000197317d0665-d851c538-f6c7-484a-9b71-2988a251ba43-000000@send.email.wave.co designates 54.240.9.33 as permitted sender) smtp.mailfrom=01000197317d0665-d851c538-f6c7-484a-9b71-2988a251ba43-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1748881966;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=jsJIrMFrFFTdobhWF5hI40eL5HtYB6N5g3ZnfFqUvIA=;
+	b=uqucXf1id0tdufBs7u44aHpswg9buUDglvHaGm2Nh6V/3t4NcHIF7VB6My6cW81L
+	9RchlOhhtLrQwBBTuCgoSbuOFlj0VLP8EgB6+OHXzeWaGR/j3aF0U1Bi57Yr8jBlhsl
+	ccjZPQIDfFaXaYJ6kywao78Xz2nSoyrTgRkjAW/Y=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1748881966;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=jsJIrMFrFFTdobhWF5hI40eL5HtYB6N5g3ZnfFqUvIA=;
+	b=ivXzShFvgqb1WehGMam19oXc8LFhW/48rTgBTRrfF2J3pGoXNpgvyDbkIqQtUeZf
+	pd01N1dDUkDj2xEACx5EN2Lqu6NW7H+8FvJc4+1ewXnqqkjVf2o+JVloxuXpS+QlMO3
+	xh5Hmp8aKHwyD9+ELna0frzsyEJCBWK2yZZ1hLaA=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: IT Functional Alignment and UAT Readiness Coordination
+Message-ID: <01000197317d0665-d851c538-f6c7-484a-9b71-2988a251ba43-000000@email.amazonses.com>
+Date: Mon, 2 Jun 2025 16:32:46 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-82014b4e9319a308-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.06.02-54.240.9.33
+
+----_NmP-82014b4e9319a308-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+IT Functional Alignment and UAT Readiness Coordination
+
+Two colleagues discuss ongoing IT readiness and testing coordination for an=
+ upcoming business transformation, specifically focusing on UAT (User =
+Acceptance Testing), cross-functional alignment, and dashboard/reporting =
+requirements.
+
+---
+
+Main Topics Discussed
+
+1. **Personal Updates & Setting =
+the Stage**
+   - Both participants exchange brief updates about their =
+weekends, which included a wedding and extensive travel for connecting =
+flights to Dallas.
+   - The call shifts quickly to a dashboard review for a=
+ transformation/testing program.
+
+2. **Background: Workshop & Current =
+Status**
+   - Workshop held on May 15th in Charlotte scoped changes in =
+processes, subprocesses, and systems, with a focus on impacts to supply =
+chain, procurement, and IT (including legal entity updates in ERP).
+   - PMO produced a deck (located in the UAT folder) summarizing process =
+changes and mapping systems, data flows, and testing requirements.
+   - Key Outcomes:
+       - Supply chain and procurement are significantly =
+impacted and are leading related system/process cutovers.
+       - IT faces notable change due to legal entity adjustments.
+
+3. **Testing & Coordination Challenges**
+   - A large number of systems and=
+ processes require testing and alignment.
+       - Approximately 22 systems=
+ need to complete UAT for BRV Go Live scheduled for August 1, 2025.
+       - 10 non-BRV systems will go live before July.
+       - Additional 52 systems are scheduled for Go Live between August and=
+ September.
+   - Main concern: misalignment between IT/system testing and =
+functional/process testing windows.
+   - Need to strengthen the connection =
+between IT and functional teams (e.g., ERP, supply chain, data/analytics) =
+for calendarizing testing, sharing test scripts, and ensuring required =
+data/info is available.
+
+4. **Dashboard & Reporting Needs**
+   - Leadership (including Jeff and Sukai) is demanding clear and =
+up-to-date readiness status, covering SIT (System Integration Testing) and =
+UAT.
+       - Dashboard must include SIT/UAT readiness, tester =
+identification, knowledge transfer, test script completion, and possible =
+addition of a heat map.
+   - Focus is on end-to-end status reporting, not =
+just siloed work-streams.
+   - Functions expect IT to be closely partnered =
+on test scenario development and coordination.
+   - There needs to be =
+executive visibility into all workstreams and their current readiness, =
+beginning June 6.
+
+5. **Governance Structure: 'Four in a Box' & UAT =
+Roster**
+   - 'Four in a Box' model discussed as a way to assure proper =
+cross-functional representation and governance:
+       - Composed of =
+functional leads, sub-functional leads, IT leads, and sub-functional IT =
+leads (from both Honeywell and Athens).
+       - UAT roster should also =
+include UAT coordinators, test leads, and testers.
+       - Some roles (i.e=
+., test leads and testers) are yet to be identified for all sub-functions =
+and systems.
+   - UAT roster and governance structures need to be finalized=
+ and used to drive IT-functional alignment.
+
+6. **Immediate Action Items & =
+Next Steps**
+   - Develop a comprehensive dashboard by Friday (by June 6, =
+2025) for leadership reporting.
+   - Calendarize and set up alignment =
+meetings (MOS - Management Operating System connects) between IT =
+workstreams and functional teams within this and next week.
+   - Finalize the 'Four in a Box' structure/governance and identify all =
+relevant functional and technical test owners and leads.
+   - Develop and maintain UAT rosters and logistics (including workspace, =
+credentials, access).
+   - Remove or adjust specific date references (e.g.,=
+ June 13 for readiness prep) due to variability in workstream testing =
+windows.
+   - Prepare and adapt executive reporting slides based on =
+evolving numbers/roles as alignment progresses.
+   - Track and report =
+progress in standing executive calls (currently Fridays, cadence may shift)=
+.
+
+---
+
+Key Dates & Figures
+
+- **Workshop Date:** May 15, 2025, in =
+Charlotte.
+- **BRV Go Live:** August 1, 2025 (UAT for ~22 systems must =
+complete by mid-July).
+- **Other Go Lives:**
+    - 10 systems pre-July.
+    - 52 systems between August and September 2025.
+- **Dashboard Readiness Review:** By June 6, 2025.
+
+---
+
+Roles & Responsibilities (to finalize/track):
+
+- Functional Leads, =
+Sub-functional Leads (Honeywell/ Athens)
+- IT Function and Sub-function =
+Leads
+- UAT Coordinators (Pierce, Sriram, etc.)
+- Test Leads & Testers =
+(identify outstanding roles)
+- Operational Separation Lead(s) (known roles =
+like Paul)
+
+---
+
+Follow-Ups & Action Items
+
+- Create and refine =
+dashboard/tracker, incorporating readiness heatmaps if helpful.
+- Schedule and document MOS meetings for IT-function alignment during this =
+and next week.
+- Finalize UAT roster and 'Four in a Box' governance model.
+- Clarify and communicate calendarized test windows per workstream (ERP, =
+supply chain, etc.).
+- Prepare executive-facing weekly (Friday) reporting.
+- Plan for testing logistics: workspace, credentials, tool access, and =
+sign-off procedures.
+- Adjust numbers and reporting as functional/IT =
+alignment progresses.
+
+---
+
+Discussion Points for Next Review
+
+- Progress on dashboard and tracker set-up.
+- Success and bottlenecks in =
+MOS meetings and alignment.
+- Identification of all required roles and =
+finalization of UAT roster.
+- Clarity on test schedule overlaps/gaps, and =
+coverage for go-live windows.
+- Leadership feedback on reporting and =
+readiness status.
+
+---
+
+If any further context or expanded detail on a =
+specific area is needed, let me know.
+
+Transcript:
+0:01
+Can you hear me?
+
+0:01
+Yeah. Can you hear me?
+
+0:03
+Yeah.
+
+0:04
+Did you have a nice weekend?
+
+0:06
+Kind of quiet weekend. I spent about seven hours in the air yesterday,=
+ so.
+
+0:10
+Oh.
+
+0:11
+Which wasn't. No, it was just connecting flights.
+
+0:13
+Oh. Yeah.
+
+0:14
+To get me to. To Dallas.
+
+0:16
+What's your airline?
+
+0:19
+I don't have one, but yesterday I was an American, so it's just. Yeah.=
+ Just ended up connecting.
+
+0:29
+Yeah.
+
+0:29
+There. There's some direct =
+ones, but yeah, this one was just a bit of a wait, so. But no. How was =
+yours?
+
+0:36
+It was nice. What did we do? We had a wedding on Saturday. So =
+that was fun. That was our big event. And otherwise not too much. Just hung=
+ out with my family. My parents live here, so.
+
+0:49
+Had some nice family time in Denver.
+
+0:51
+Yeah. Yeah, yeah.
+
+0:52
+Okay. Nice.
+
+0:53
+Yeah, that's great.
+
+0:54
+Cool. So that's always fun.
+
+0:56
+Yeah. And it was. It was a really beautiful weekend. I think it had =
+been raining for the last like two or three weeks here. So everybody was =
+just ready to be outside and it was nice.
+
+1:05
+So nice.
+
+1:08
+Okay, so let's do dashboard review. We have a little bit of time.
+
+1:13
+Yeah. And I want to make sure. So you heard a couple of these things. =
+Piping up on the call with it. So what's happening is to bring you up to =
+speed, we had this workshop on the 15th where we laid out this whole. And I=
+ think you may have a view into that deck. It's in the UAT folder. So PMO =
+put together all these processes, what's changing? And then a view of what =
+are the systems, what are the data flows. Well, more so processes and sub =
+processes, what's changing, what are the systems that it's touching, what =
+is the data that's needed, what environment, et cetera. So we had a whole =
+day workshop in Charlotte and coming out of it, it was clear that supply =
+chain, for example, a lot of what you saw now and heard on this call, this =
+purchase order, sales order cutover, it's all supply chain LED and =
+procurement led. And it's going to impact from an IT perspective. IT =
+impacts, you know, the whatever legal entity changes they're doing. Well, I=
+ guess it flows down into, based on the LE changes that are needed in the =
+erp that is a little bit above market level, if you will, or maybe it's a =
+bit more of a market level to say, okay, that's all legal entity related =
+changes. Rob and our EY team are putting together this whole cutover =
+strategy and they'll stand up a command center and they'll talk through =
+some of that stuff that Jeff was rambling about. On Friday on. Okay, we =
+need a hypercare. We need this model, that model. This all bakes into that =
+for the purposes of what we need to do with peers. One of the outcomes of =
+that workshop was, listen, I've got a crapload of systems that are getting =
+tested. I've also got a crapload of processes that the functions need to =
+change and test. There needs to be some alignment between when these test =
+windows are. What are the functional tests that they need to do for =
+processes. What are the system, you know, the UATs that need, well, I =
+should say functional UAT that it needs to run and talk to each other about=
+ where are the test scripts, etc. So what is probably needed. One of the =
+things that we should add into our talk about for the you can open the deck=
+ and we'll talk through it is we need, I think you've mentioned something =
+around the test scripts, but we need an IT work stream versus function =
+conversation that we need to calendar and we need to talk to peers about =
+that. So we need to calendar between, say it, you know, ERP and supply =
+chain or data and analytics and supply chain. So all of it and supply chain=
+ to and similarly other functions to talk through. Here are windows for =
+testing. Here are the systems we're testing. Here's the information we need=
+. Here are the test scripts. So I think we need a calendar of, for lack of =
+a better word here, MOS this week and next to set up individual connects =
+between IT and the functions to get all of that down. All of that again =
+flows into the dashboard you have. Because when we say things around is sit=
+ ready, is is KT other people identified, are the testers identified as =
+knowledge transfer complete, is UAT test scripts ready? Are they developed?=
+ All that stuff is in your tracker. I think we need to add that stuff in =
+here as part of the dashboarding and the maybe the heat map, maybe not, but=
+ certainly the dashboard.
+
+4:54
+Yeah, certainly.
+
+4:56
+Let's go through what you have and in the context of what I just mentioned,=
+ let's see how we can quickly modify these slides so that when we talk to =
+Pierce, we know he's looking essentially. You've seen some of the emails.
+
+5:10
+Yeah.
+
+5:11
+So, you know, I'm making sure I copy you on all the emails=
+, but yeah, you can see how his thinking is. But okay, so standing up brv, =
+I would. So a couple of things Here, the 82 systems, where did you get that=
+ from?
+
+5:29
+It was mentioned on some call, but it might have been =
+hypothetical.
+
+5:33
+No, no. So what's happening is. And there is a number =
+if you look at one of the slides. There are about 10 applications that are =
+not. So I would say. So I would say BRV go live is. And you should say =
+about. About 22 systems. So that's fine. BRV Go Live is in. Is the first of=
+ August. You could say approximately 22 systems need to be. Yeah. Need to =
+complete UAT, you know, obviously in advance by mid July. That's fine. We =
+should also say. Yeah, the second statement's redundant. You could take =
+that. We should also say there are 10 non BRV systems going live before =
+July or. Yeah, by July and another 50 plus 52 actually going live between =
+August and October. Let's say by September. Between August and September. =
+And then. So we're standing up an engine and hypercare war room leadership =
+can see progress. That every Friday call, I think is just more of an =
+executive leadership that Jeff and Sukai kind of initiated. I think it will=
+ move into a different cadence. What we should do is say instead leave that=
+ there for now. Let's, let's. Let's reword that and say few things. I'm =
+just thinking out loud here.
+
+7:43
+Yeah.
+
+7:45
+We have to develop a =
+dashboard by Friday. I think we should maybe let's say something to the =
+effect of. Leadership is looking for current readiness, SIT and readiness. =
+UAT readiness status. So Leadership is looking for. Yeah, current SIT and =
+UAT readiness status.
+
+8:13
+Can we say something about like the. I think =
+the theme that keeps coming up that you mentioned is someone said it really=
+ well on the ISC call earlier that within the work streams they're very =
+good, but coordinating across them is I think, where the gap is. And Pierce=
+ has said that. And that's I think to your point down here with like the =
+calendarizing mosque, that's one of the main focuses for us is getting a =
+plan and coordinating across all of these functions. The testing, the =
+windows, the script, preparedness, et cetera. Across all of the functions =
+who independently are executing uat probably. Well, it's just a coordinate,=
+ not as.
+
+8:55
+An end to end.
+
+8:56
+Yeah, exactly.
+
+8:57
+Okay, so let's reword that. I think I understand. So then let's say =
+something effective is leadership is looking for an end to end status. On. =
+I want to include the words you mentioned. So whether it's coordination or =
+maybe say leadership is expecting end to end coordination and reporting.
+
+9:35
+Yeah, exactly.
+
+9:38
+On readiness across all it. I know end to end, =
+it's probably redundant. But we say leadership expecting end to end =
+coordination and reporting on readiness across all IT work streams. So =
+let's see. So what we're building this week, I want to see if I can add one=
+ more.
+
+10:11
+This is like the general one. So I just added this piece per =
+your comment earlier about like calendarized mos to drive the I functional =
+alignment. This is like that general things that we're doing.
+
+10:23
+So maybe then also the background should be functions. We should also say =
+functions are looking at. Well maybe the second bullet is before leadership=
+. We say functions are looking at or functions are expecting it to partner =
+with them on readiness activities and requirements. On requirements and =
+readiness requirements in the sense functional requirements for testing the=
+ test scenarios. All those things. So functions are expecting it to partner=
+. Yeah. To on. On test scenario development and testing coordination. Right=
+. And then leadership expecting end to end coordination reporting and =
+readiness across all IT work streams. We can come back to it. I think let's=
+ leave it for now. I think if we can get it more succinct we will. Okay, =
+let's look at what we're building this week and those numbers, it'll also =
+have to change because those numbers you have there will change once we do =
+this alignment.
+
+11:47
+Yeah, exactly.
+
+11:48
+So you know the point we said =
+earlier 40 something actually. Well yeah. So one thing I'd like to add is =
+on Friday call, you know, Chris Sukai said, hey, I need a view of what is =
+in readiness. So I want to add something to that effect of it's not just =
+leadership expecting end to end coordination. Maybe just say leadership =
+expecting end to end coordination and you know, end to end coordination =
+comma reporting and current status. And we can voice over that in essence =
+that Sukai saying oh, I didn't know 42 systems are in sit. I want to get a =
+review of it for leadership readout, etc. Maybe you can add starting =
+starting 65 or something you know, at the end of it, you know across all =
+work streams. Starting six six. Yeah. So let's see what are we building =
+this week? So actually we should have which should say four in a box roster=
+. So it's not upset lead. I would say, I would say functional lead. So =
+you've got. Yeah, I'd say function lead.
+
+13:43
+What about the coordinator?
+
+13:46
+Yeah, I think we could say.
+
+13:51
+So in the next one I, I added =
+this piece over here about like the opset lead. They're like each person's =
+like primary role in that.
+
+14:02
+So opsep is more like they're all decided=
+. So like Paul is the operational separation lead for the program. All =
+those people are known. It's more finance. I have somebody as a coordinator=
+ for finance but I've got sub functions in finance and then I've got it so =
+I've got. Within it, I've got sub functions in supply chain or sub work =
+streams in supply chain. So it's really. The four in a box is. So let's go =
+back and say. Let's see what that four in a box is. So you could say, =
+actually the four in a box is. I would say Honeywell. Let's say uat. Oh, =
+it's a bit more than four in a box. But let's put the first bullet as =
+functional lead. So Honeywell and Athens, functional lead. All right. Han =
+and Solstice. Yeah. Han and at. Functional leads. Han and actually function=
+, sub function leads. And then comma, hon and Athens, it Function sub, =
+function leads. So that would be the four. And then you could add. The =
+second one is you should also then add. So let's see. In fact, instead of =
+just saying roster, just say for. Instead of saying for in a box roster, =
+just say UAT roster. Because I want to also call it as the second bullet =
+there. The. The coordinators. The UAT coordinators, test leads and testers.=
+ UAT coordinators are known. Pierce and his counterpart, Sriram, the guy =
+that spoke up today, test leads for each of these sub functions. We don't =
+know. And then any testers you know, we don't know. So.
+
+16:40
+So I am wondering if we can take this here, put it here, and then use.
+
+16:48
+Will be one. Yeah.
+
+16:49
+And then use this box to describe, like, =
+what is the UAT roster Like. Like, keep this as the. Like, what's the point=
+ of the UAT roster? Yeah, a description. And then I'll take these and stick=
+ these. This overwrites this.
+
+17:06
+Sure. And then we'll have to make sure=
+ we track that here on your table.
+
+17:10
+Exactly.
+
+17:11
+So the titles will be fine. Yeah, we'll change. I mean, not fine, we'll =
+have to change the title. But let's go back there then. So let's go back to=
+ slide one. We'll say something to the effect of finalize. Actually, don't =
+delete. I'll just say, yeah, maybe. Yeah. Let's say finalize technical and =
+functional owners and leads. And maybe you can even call it finalize four =
+in a box, meaning it's the more four in a box of function leads, etc. So =
+maybe that's the first one. Finalize four in a box. The rest one. No, the =
+next one is second bullet is finalize, Identify, testing, identify =
+technical and functional owners, test owners and leads. Or the second =
+bullet will be Identify technical and, you know, actually flip that. =
+Identify functional and technical, test lead owners and test leads. Owners =
+and test leads.
+
+18:44
+Yeah.
+
+18:46
+And then you could kill the others. The=
+ other two bullets below. But finalize the four in a box. I'm thinking we =
+should call out as. Yeah, maybe we say finalize four in a box. Governance =
+only from the context of. Okay. They decide, you know, within this function=
+, there are three, four finance people. And they decide, perhaps, you know,=
+ how within that work stream, they'll decide how, you know, these things =
+work.
+
+19:29
+Exactly. Well, I mean, this. Ultimately, I want to write this =
+after. Because the 400 box governance is what drives the IT functional =
+alignment ultimately. Or what we will use to drive it.
+
+19:41
+Right. So let's look at the entry readiness prep. I wouldn't. So the black.=
+ You're saying the owners are function leads for this?
+
+19:49
+Yeah, yeah. Like who's. Like, mainly responsible? And we can delete these =
+if you don't think that it adds anything.
+
+19:56
+It won't be. It won't be. =
+It's. It's. We won't. It'll be both. So. Yeah. And we can maybe voiceover =
+or, you know, so. Okay. UAT entry readiness prep. June 13th. Light touch. =
+UAD sign off. I wouldn't call it that. I don't think we have exact numbers =
+of June 13th. For example, ERP is already saying there's a June. There's =
+probably like a 13th to 23rd window or 23rd. So supply chain's got a =
+different window. Supply chain sit team has got. Supply chain has got a =
+different SIT window. So leave that June 13th off. What do you mean by =
+entry readiness prep?
+
+20:42
+This is like the generic box. This is like the=
+. Like the. Any other coordination that we're doing. So like calendarize =
+mos. So let's hear the plan.
+
+20:57
+Let's. Let's put that as first. So =
+calendarize mos. You know, maybe we say, you know, we. We know this is for =
+acting this week, but Calendarize.
+
+21:06
+Yeah.
+
+21:07
+Or. Yeah, this is like the plan for the functional alignment.
+
+21:12
+Functional alignment. Because this was the thing.
+
+21:14
+Yeah, that's fine.
+
+21:15
+Siri. Siri.
+
+21:16
+Ron. Sri Rom.
+
+21:18
+Sri Rom. Yes. Had asked for =
+kind of by the end of the week was like a. The plan for.
+
+21:25
+You said. Yeah.
+
+21:27
+What for mos?
+
+21:30
+No, just say. I just say set up=
+ mos. Right. Or finalize. You know, finalize mo. Just set up MOS is good. =
+Actually do set up Daily Mosquito. I would say develop tracker. Develop =
+dash. Develop dashboard and tracker. I would say. So the other stuff on =
+June 13, light touch.
+
+22:12
+You can get rid of those.
+
+22:14
+That one's fine. Yeah. Remove that one, I would say then, you know, =
+finalize logistics develop, you know. Yeah. Finalize logistics. So the =
+other piece of this is for readiness. We're going to have to talk about =
+where is this being done? You know, is it in a room somewhere? People come =
+in and test. Are they going to get laptops and credentials? How do you =
+provide access to these apps for them? All this other stuff, what logins =
+will they use? You know, do they. Do they come in and run? Who signs? So =
+logistics, tactical executions. Fine. So UAT roster. Finalize foreign box =
+governance. Identify functional technical owners and test leads. So set up =
+daily mosquito. I would say developer readiness dashboard and reporting =
+tracker. Okay. You already have the executive dashboard on the right. So =
+entry readiness prep. Okay. Remove the readiness that. Remove the. Develop =
+that one and move it into the other one. Remove the second bullet. Let's =
+move it to the right. Just call it develop weekly Friday reporting.
+
+23:49
+This can go away.
+
+23:52
+Yeah. More so because that's. That's executive =
+reporting. So remove that. Yeah. Delete that. I want to say something to =
+the effect of.
+----_NmP-82014b4e9319a308-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">IT =
+Functional Alignment and UAT Readiness Coordination</h1></td></tr></table><=
+/div><div style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/9C7CCE21-51E3-4E26-8480-35C2B38A7436?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><p>Two colleagues discuss ongoing IT =
+readiness and testing coordination for an upcoming business transformation,=
+ specifically focusing on UAT (User Acceptance Testing), cross-functional =
+alignment, and dashboard/reporting requirements.</p>
+<hr />
+<p>Main Topics Discussed</p>
+<ol>
+<li><p><strong style=3D"font-weight:bold"=
+>Personal Updates &amp; Setting the Stage</strong></p>
+<ul>
+<li>Both participants exchange brief updates about their weekends, which =
+included a wedding and extensive travel for connecting flights to Dallas.=
+</li>
+<li>The call shifts quickly to a dashboard review for a =
+transformation/testing program.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Background: Workshop &amp; Current =
+Status</strong></p>
+<ul>
+<li>Workshop held on May 15th in Charlotte scoped =
+changes in processes, subprocesses, and systems, with a focus on impacts to=
+ supply chain, procurement, and IT (including legal entity updates in ERP).=
+</li>
+<li>PMO produced a deck (located in the UAT folder) summarizing =
+process changes and mapping systems, data flows, and testing requirements.=
+</li>
+<li>Key Outcomes:<ul>
+<li>Supply chain and procurement are =
+significantly impacted and are leading related system/process cutovers.=
+</li>
+<li>IT faces notable change due to legal entity adjustments.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Testing =
+&amp; Coordination Challenges</strong></p>
+<ul>
+<li>A large number of =
+systems and processes require testing and alignment.<ul>
+<li>Approximately 22 systems need to complete UAT for BRV Go Live scheduled=
+ for August 1, 2025.</li>
+<li>10 non-BRV systems will go live before July.=
+</li>
+<li>Additional 52 systems are scheduled for Go Live between August =
+and September.</li>
+</ul>
+</li>
+<li>Main concern: misalignment between =
+IT/system testing and functional/process testing windows.</li>
+<li>Need to strengthen the connection between IT and functional teams (e.g.=
+, ERP, supply chain, data/analytics) for calendarizing testing, sharing =
+test scripts, and ensuring required data/info is available.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Dashboard &amp; Reporting =
+Needs</strong></p>
+<ul>
+<li>Leadership (including Jeff and Sukai) is =
+demanding clear and up-to-date readiness status, covering SIT (System =
+Integration Testing) and UAT.<ul>
+<li>Dashboard must include SIT/UAT =
+readiness, tester identification, knowledge transfer, test script =
+completion, and possible addition of a heat map.</li>
+</ul>
+</li>
+<li>Focus is on end-to-end status reporting, not just siloed work-streams.=
+</li>
+<li>Functions expect IT to be closely partnered on test scenario =
+development and coordination.</li>
+<li>There needs to be executive =
+visibility into all workstreams and their current readiness, beginning June=
+ 6.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Governance =
+Structure: &#39;Four in a Box&#39; &amp; UAT Roster</strong></p>
+<ul>
+<li>&#39;Four in a Box&#39; model discussed as a way to assure proper =
+cross-functional representation and governance:<ul>
+<li>Composed of functional leads, sub-functional leads, IT leads, and =
+sub-functional IT leads (from both Honeywell and Athens).</li>
+<li>UAT roster should also include UAT coordinators, test leads, and =
+testers.</li>
+<li>Some roles (i.e., test leads and testers) are yet to be =
+identified for all sub-functions and systems.</li>
+</ul>
+</li>
+<li>UAT roster and governance structures need to be finalized and used to =
+drive IT-functional alignment.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Immediate Action Items &amp; Next =
+Steps</strong></p>
+<ul>
+<li>Develop a comprehensive dashboard by Friday (by=
+ June 6, 2025) for leadership reporting.</li>
+<li>Calendarize and set up =
+alignment meetings (MOS - Management Operating System connects) between IT =
+workstreams and functional teams within this and next week.</li>
+<li>Finalize the &#39;Four in a Box&#39; structure/governance and identify =
+all relevant functional and technical test owners and leads.</li>
+<li>Develop and maintain UAT rosters and logistics (including workspace, =
+credentials, access).</li>
+<li>Remove or adjust specific date references (e=
+.g., June 13 for readiness prep) due to variability in workstream testing =
+windows.</li>
+<li>Prepare and adapt executive reporting slides based on =
+evolving numbers/roles as alignment progresses.</li>
+<li>Track and report progress in standing executive calls (currently =
+Fridays, cadence may shift).</li>
+</ul>
+</li>
+</ol>
+<hr />
+<p>Key Dates &amp; Figures</p>
+<ul>
+<li><strong style=3D"font-weight:bold">=
+Workshop Date:</strong> May 15, 2025, in Charlotte.</li>
+<li><strong style=3D"font-weight:bold">BRV Go Live:</strong> August 1, 2025=
+ (UAT for ~22 systems must complete by mid-July).</li>
+<li><strong style=3D"font-weight:bold">Other Go Lives:</strong><ul>
+<li>10 systems pre-July.</li>
+<li>52 systems between August and September =
+2025.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Dashboard =
+Readiness Review:</strong> By June 6, 2025.</li>
+</ul>
+<hr />
+<p>Roles &amp; Responsibilities (to finalize/track):</p>
+<ul>
+<li>Functional Leads, Sub-functional Leads (Honeywell/ Athens)</li>
+<li>IT Function and Sub-function Leads</li>
+<li>UAT Coordinators (Pierce, =
+Sriram, etc.)</li>
+<li>Test Leads &amp; Testers (identify outstanding =
+roles)</li>
+<li>Operational Separation Lead(s) (known roles like Paul)</li>
+</ul>
+<hr />
+<p>Follow-Ups &amp; Action Items</p>
+<ul>
+<li>Create and refine dashboard/tracker, incorporating readiness heatmaps =
+if helpful.</li>
+<li>Schedule and document MOS meetings for IT-function =
+alignment during this and next week.</li>
+<li>Finalize UAT roster and =
+&#39;Four in a Box&#39; governance model.</li>
+<li>Clarify and communicate =
+calendarized test windows per workstream (ERP, supply chain, etc.).</li>
+<li>Prepare executive-facing weekly (Friday) reporting.</li>
+<li>Plan for testing logistics: workspace, credentials, tool access, and =
+sign-off procedures.</li>
+<li>Adjust numbers and reporting as functional/IT=
+ alignment progresses.</li>
+</ul>
+<hr />
+<p>Discussion Points for Next =
+Review</p>
+<ul>
+<li>Progress on dashboard and tracker set-up.</li>
+<li>Success and bottlenecks in MOS meetings and alignment.</li>
+<li>Identification of all required roles and finalization of UAT roster.=
+</li>
+<li>Clarity on test schedule overlaps/gaps, and coverage for go-live =
+windows.</li>
+<li>Leadership feedback on reporting and readiness status.=
+</li>
+</ul>
+<hr />
+<p>If any further context or expanded detail on a =
+specific area is needed, let me know.</p>
+</div></div></div><div =
+style=3D"background-color:#ffffff;padding:28px;border-radius:12px;border:1p=
+x solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 =
+rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-size:20px;font-weight:=
+600;margin-top:0;margin-bottom:20px;display:flex;align-items:center;gap:8px=
+"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription<=
+/h3><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">0:01</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Can you=
+ hear me?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Team =
+Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">0:01</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+ Can you hear me?</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT =
+leader / Project Lead</span><span style=3D"color:#64748b;font-size:14px">0:=
+03</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Team =
+Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">0:04</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Did =
+you have a nice weekend?</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT =
+leader / Project Lead</span><span style=3D"color:#64748b;font-size:14px">0:=
+06</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Kind of quiet weekend. I spent about seven hours in the air yesterday, =
+so.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-col=
+or:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Team =
+Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">0:10</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Oh.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">0:11</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Which =
+wasn&#x27;t. No, it was just connecting flights.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unknown Team Member / Analyst</span><span =
+style=3D"color:#64748b;font-size:14px">0:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh. Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">0:14</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">To get =
+me to. To Dallas.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Team =
+Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">0:16</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">What&#x27;s your airline?</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT =
+leader / Project Lead</span><span style=3D"color:#64748b;font-size:14px">0:=
+19</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I don&#x27;t have one, but yesterday I was an American, so it&#x27;s =
+just. Yeah. Just ended up connecting.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unknown Team Member / Analyst</span><span =
+style=3D"color:#64748b;font-size:14px">0:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">0:29</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">There. =
+There&#x27;s some direct ones, but yeah, this one was just a bit of a wait,=
+ so. But no. How was yours?</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Team =
+Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">0:36</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">It =
+was nice. What did we do? We had a wedding on Saturday. So that was fun. =
+That was our big event. And otherwise not too much. Just hung out with my =
+family. My parents live here, so.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown=
+ IT leader / Project Lead</span><span style=3D"color:#64748b;font-size:14px=
+">0:49</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Had some nice family time in Denver.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unknown Team Member / Analyst</span><span =
+style=3D"color:#64748b;font-size:14px">0:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Yeah, yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">0:52</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. =
+Nice.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Team =
+Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">0:53</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah,=
+ that&#x27;s great.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT =
+leader / Project Lead</span><span style=3D"color:#64748b;font-size:14px">0:=
+54</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Cool. So that&#x27;s always fun.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unknown Team Member / Analyst</span><span =
+style=3D"color:#64748b;font-size:14px">0:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. And it was. It=
+ was a really beautiful weekend. I think it had been raining for the last =
+like two or three weeks here. So everybody was just ready to be outside and=
+ it was nice.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">1:05</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So nice=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Team =
+Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">1:08</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay,=
+ so let&#x27;s do dashboard review. We have a little bit of time.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">1:13</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. =
+And I want to make sure. So you heard a couple of these things. Piping up =
+on the call with it. So what&#x27;s happening is to bring you up to speed, =
+we had this workshop on the 15th where we laid out this whole. And I think =
+you may have a view into that deck. It&#x27;s in the UAT folder. So PMO put=
+ together all these processes, what&#x27;s changing? And then a view of =
+what are the systems, what are the data flows. Well, more so processes and =
+sub processes, what&#x27;s changing, what are the systems that it&#x27;s =
+touching, what is the data that&#x27;s needed, what environment, et cetera.=
+ So we had a whole day workshop in Charlotte and coming out of it, it was =
+clear that supply chain, for example, a lot of what you saw now and heard =
+on this call, this purchase order, sales order cutover, it&#x27;s all =
+supply chain LED and procurement led. And it&#x27;s going to impact from an=
+ IT perspective. IT impacts, you know, the whatever legal entity changes =
+they&#x27;re doing. Well, I guess it flows down into, based on the LE =
+changes that are needed in the erp that is a little bit above market level,=
+ if you will, or maybe it&#x27;s a bit more of a market level to say, okay,=
+ that&#x27;s all legal entity related changes. Rob and our EY team are =
+putting together this whole cutover strategy and they&#x27;ll stand up a =
+command center and they&#x27;ll talk through some of that stuff that Jeff =
+was rambling about. On Friday on. Okay, we need a hypercare. We need this =
+model, that model. This all bakes into that for the purposes of what we =
+need to do with peers. One of the outcomes of that workshop was, listen, =
+I&#x27;ve got a crapload of systems that are getting tested. I&#x27;ve also=
+ got a crapload of processes that the functions need to change and test. =
+There needs to be some alignment between when these test windows are. What =
+are the functional tests that they need to do for processes. What are the =
+system, you know, the UATs that need, well, I should say functional UAT =
+that it needs to run and talk to each other about where are the test =
+scripts, etc. So what is probably needed. One of the things that we should =
+add into our talk about for the you can open the deck and we&#x27;ll talk =
+through it is we need, I think you&#x27;ve mentioned something around the =
+test scripts, but we need an IT work stream versus function conversation =
+that we need to calendar and we need to talk to peers about that. So we =
+need to calendar between, say it, you know, ERP and supply chain or data =
+and analytics and supply chain. So all of it and supply chain to and =
+similarly other functions to talk through. Here are windows for testing. =
+Here are the systems we&#x27;re testing. Here&#x27;s the information we =
+need. Here are the test scripts. So I think we need a calendar of, for lack=
+ of a better word here, MOS this week and next to set up individual =
+connects between IT and the functions to get all of that down. All of that =
+again flows into the dashboard you have. Because when we say things around =
+is sit ready, is is KT other people identified, are the testers identified =
+as knowledge transfer complete, is UAT test scripts ready? Are they =
+developed? All that stuff is in your tracker. I think we need to add that =
+stuff in here as part of the dashboarding and the maybe the heat map, maybe=
+ not, but certainly the dashboard.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknow=
+n Team Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">=
+4:54</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, certainly.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT =
+leader / Project Lead</span><span style=3D"color:#64748b;font-size:14px">4:=
+56</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Let&#x27;s go through what you have and in the context of what I just =
+mentioned, let&#x27;s see how we can quickly modify these slides so that =
+when we talk to Pierce, we know he&#x27;s looking essentially. You&#x27;ve =
+seen some of the emails.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Team =
+Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">5:10</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">5:11</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So, you=
+ know, I&#x27;m making sure I copy you on all the emails, but yeah, you can=
+ see how his thinking is. But okay, so standing up brv, I would. So a =
+couple of things Here, the 82 systems, where did you get that from?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Team =
+Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">5:29</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">It =
+was mentioned on some call, but it might have been hypothetical.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">5:33</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">No, no.=
+ So what&#x27;s happening is. And there is a number if you look at one of =
+the slides. There are about 10 applications that are not. So I would say. =
+So I would say BRV go live is. And you should say about. About 22 systems. =
+So that&#x27;s fine. BRV Go Live is in. Is the first of August. You could =
+say approximately 22 systems need to be. Yeah. Need to complete UAT, you =
+know, obviously in advance by mid July. That&#x27;s fine. We should also =
+say. Yeah, the second statement&#x27;s redundant. You could take that. We =
+should also say there are 10 non BRV systems going live before July or. =
+Yeah, by July and another 50 plus 52 actually going live between August and=
+ October. Let&#x27;s say by September. Between August and September. And =
+then. So we&#x27;re standing up an engine and hypercare war room leadership=
+ can see progress. That every Friday call, I think is just more of an =
+executive leadership that Jeff and Sukai kind of initiated. I think it will=
+ move into a different cadence. What we should do is say instead leave that=
+ there for now. Let&#x27;s, let&#x27;s. Let&#x27;s reword that and say few =
+things. I&#x27;m just thinking out loud here.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unknown Team Member / Analyst</span><span =
+style=3D"color:#64748b;font-size:14px">7:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">7:45</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">We have=
+ to develop a dashboard by Friday. I think we should maybe let&#x27;s say =
+something to the effect of. Leadership is looking for current readiness, =
+SIT and readiness. UAT readiness status. So Leadership is looking for. Yeah=
+, current SIT and UAT readiness status.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unknown Team Member / Analyst</span><span =
+style=3D"color:#64748b;font-size:14px">8:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Can we say something=
+ about like the. I think the theme that keeps coming up that you mentioned =
+is someone said it really well on the ISC call earlier that within the work=
+ streams they&#x27;re very good, but coordinating across them is I think, =
+where the gap is. And Pierce has said that. And that&#x27;s I think to your=
+ point down here with like the calendarizing mosque, that&#x27;s one of the=
+ main focuses for us is getting a plan and coordinating across all of these=
+ functions. The testing, the windows, the script, preparedness, et cetera. =
+Across all of the functions who independently are executing uat probably. =
+Well, it&#x27;s just a coordinate, not as.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unknown IT leader / Project Lead</span><span =
+style=3D"color:#64748b;font-size:14px">8:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">An end to end.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Team =
+Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">8:56</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah,=
+ exactly.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">8:57</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, =
+so let&#x27;s reword that. I think I understand. So then let&#x27;s say =
+something effective is leadership is looking for an end to end status. On. =
+I want to include the words you mentioned. So whether it&#x27;s =
+coordination or maybe say leadership is expecting end to end coordination =
+and reporting.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Team =
+Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">9:35</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah,=
+ exactly.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">9:38</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">On =
+readiness across all it. I know end to end, it&#x27;s probably redundant. =
+But we say leadership expecting end to end coordination and reporting on =
+readiness across all IT work streams. So let&#x27;s see. So what we&#x27;re=
+ building this week, I want to see if I can add one more.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unknown Team Member / Analyst</span><span =
+style=3D"color:#64748b;font-size:14px">10:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">This is like the =
+general one. So I just added this piece per your comment earlier about like=
+ calendarized mos to drive the I functional alignment. This is like that =
+general things that we&#x27;re doing.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unknown IT leader / Project Lead</span><span =
+style=3D"color:#64748b;font-size:14px">10:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So maybe then also =
+the background should be functions. We should also say functions are =
+looking at. Well maybe the second bullet is before leadership. We say =
+functions are looking at or functions are expecting it to partner with them=
+ on readiness activities and requirements. On requirements and readiness =
+requirements in the sense functional requirements for testing the test =
+scenarios. All those things. So functions are expecting it to partner. Yeah=
+. To on. On test scenario development and testing coordination. Right. And =
+then leadership expecting end to end coordination reporting and readiness =
+across all IT work streams. We can come back to it. I think let&#x27;s =
+leave it for now. I think if we can get it more succinct we will. Okay, =
+let&#x27;s look at what we&#x27;re building this week and those numbers, =
+it&#x27;ll also have to change because those numbers you have there will =
+change once we do this alignment.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown=
+ Team Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">1=
+1:47</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, exactly.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT =
+leader / Project Lead</span><span style=3D"color:#64748b;font-size:14px">11=
+:48</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So you know the point we said earlier 40 something actually. Well yeah. =
+So one thing I&#x27;d like to add is on Friday call, you know, Chris Sukai =
+said, hey, I need a view of what is in readiness. So I want to add =
+something to that effect of it&#x27;s not just leadership expecting end to =
+end coordination. Maybe just say leadership expecting end to end =
+coordination and you know, end to end coordination comma reporting and =
+current status. And we can voice over that in essence that Sukai saying oh,=
+ I didn&#x27;t know 42 systems are in sit. I want to get a review of it for=
+ leadership readout, etc. Maybe you can add starting starting 65 or =
+something you know, at the end of it, you know across all work streams. =
+Starting six six. Yeah. So let&#x27;s see what are we building this week? =
+So actually we should have which should say four in a box roster. So =
+it&#x27;s not upset lead. I would say, I would say functional lead. So =
+you&#x27;ve got. Yeah, I&#x27;d say function lead.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unknown Team Member / Analyst</span><span =
+style=3D"color:#64748b;font-size:14px">13:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">What about the =
+coordinator?</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">13:46</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, =
+I think we could say.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Team =
+Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">13:51</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So =
+in the next one I, I added this piece over here about like the opset lead. =
+They&#x27;re like each person&#x27;s like primary role in that.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">14:02</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So =
+opsep is more like they&#x27;re all decided. So like Paul is the =
+operational separation lead for the program. All those people are known. =
+It&#x27;s more finance. I have somebody as a coordinator for finance but =
+I&#x27;ve got sub functions in finance and then I&#x27;ve got it so =
+I&#x27;ve got. Within it, I&#x27;ve got sub functions in supply chain or =
+sub work streams in supply chain. So it&#x27;s really. The four in a box is=
+. So let&#x27;s go back and say. Let&#x27;s see what that four in a box is.=
+ So you could say, actually the four in a box is. I would say Honeywell. =
+Let&#x27;s say uat. Oh, it&#x27;s a bit more than four in a box. But =
+let&#x27;s put the first bullet as functional lead. So Honeywell and Athens=
+, functional lead. All right. Han and Solstice. Yeah. Han and at. =
+Functional leads. Han and actually function, sub function leads. And then =
+comma, hon and Athens, it Function sub, function leads. So that would be =
+the four. And then you could add. The second one is you should also then =
+add. So let&#x27;s see. In fact, instead of just saying roster, just say =
+for. Instead of saying for in a box roster, just say UAT roster. Because I =
+want to also call it as the second bullet there. The. The coordinators. The=
+ UAT coordinators, test leads and testers. UAT coordinators are known. =
+Pierce and his counterpart, Sriram, the guy that spoke up today, test leads=
+ for each of these sub functions. We don&#x27;t know. And then any testers =
+you know, we don&#x27;t know. So.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown=
+ Team Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">1=
+6:40</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So I am wondering if we can take this here, put it here, and then use.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">16:48</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Will =
+be one. Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Team =
+Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">16:49</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">And =
+then use this box to describe, like, what is the UAT roster Like. Like, =
+keep this as the. Like, what&#x27;s the point of the UAT roster? Yeah, a =
+description. And then I&#x27;ll take these and stick these. This overwrites=
+ this.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">17:06</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Sure. =
+And then we&#x27;ll have to make sure we track that here on your table.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Team =
+Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">17:10</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Exactly.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">17:11</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So the=
+ titles will be fine. Yeah, we&#x27;ll change. I mean, not fine, we&#x27;ll=
+ have to change the title. But let&#x27;s go back there then. So let&#x27;s=
+ go back to slide one. We&#x27;ll say something to the effect of finalize. =
+Actually, don&#x27;t delete. I&#x27;ll just say, yeah, maybe. Yeah. =
+Let&#x27;s say finalize technical and functional owners and leads. And =
+maybe you can even call it finalize four in a box, meaning it&#x27;s the =
+more four in a box of function leads, etc. So maybe that&#x27;s the first =
+one. Finalize four in a box. The rest one. No, the next one is second =
+bullet is finalize, Identify, testing, identify technical and functional =
+owners, test owners and leads. Or the second bullet will be Identify =
+technical and, you know, actually flip that. Identify functional and =
+technical, test lead owners and test leads. Owners and test leads.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Team =
+Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">18:44</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">18:46</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">And =
+then you could kill the others. The other two bullets below. But finalize =
+the four in a box. I&#x27;m thinking we should call out as. Yeah, maybe we =
+say finalize four in a box. Governance only from the context of. Okay. They=
+ decide, you know, within this function, there are three, four finance =
+people. And they decide, perhaps, you know, how within that work stream, =
+they&#x27;ll decide how, you know, these things work.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unknown Team Member / Analyst</span><span =
+style=3D"color:#64748b;font-size:14px">19:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Exactly. Well, I =
+mean, this. Ultimately, I want to write this after. Because the 400 box =
+governance is what drives the IT functional alignment ultimately. Or what =
+we will use to drive it.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT =
+leader / Project Lead</span><span style=3D"color:#64748b;font-size:14px">19=
+:41</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Right. So let&#x27;s look at the entry readiness prep. I wouldn&#x27;t. =
+So the black. You&#x27;re saying the owners are function leads for this?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Team =
+Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">19:49</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah=
+, yeah. Like who&#x27;s. Like, mainly responsible? And we can delete these =
+if you don&#x27;t think that it adds anything.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unknown IT leader / Project Lead</span><span =
+style=3D"color:#64748b;font-size:14px">19:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It won&#x27;t be. It=
+ won&#x27;t be. It&#x27;s. It&#x27;s. We won&#x27;t. It&#x27;ll be both. So=
+. Yeah. And we can maybe voiceover or, you know, so. Okay. UAT entry =
+readiness prep. June 13th. Light touch. UAD sign off. I wouldn&#x27;t call =
+it that. I don&#x27;t think we have exact numbers of June 13th. For example=
+, ERP is already saying there&#x27;s a June. There&#x27;s probably like a =
+13th to 23rd window or 23rd. So supply chain&#x27;s got a different window.=
+ Supply chain sit team has got. Supply chain has got a different SIT window=
+. So leave that June 13th off. What do you mean by entry readiness prep?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Team =
+Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">20:42</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">This=
+ is like the generic box. This is like the. Like the. Any other =
+coordination that we&#x27;re doing. So like calendarize mos. So let&#x27;s =
+hear the plan.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">20:57</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Let&#x27;s. Let&#x27;s put that as first. So calendarize mos. You know, =
+maybe we say, you know, we. We know this is for acting this week, but =
+Calendarize.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Team =
+Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">21:06</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">21:07</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Or. =
+Yeah, this is like the plan for the functional alignment.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unknown Team Member / Analyst</span><span =
+style=3D"color:#64748b;font-size:14px">21:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Functional alignment=
+. Because this was the thing.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown=
+ IT leader / Project Lead</span><span style=3D"color:#64748b;font-size:14px=
+">21:14</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah, that&#x27;s fine.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Team=
+ Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">21:15<=
+/span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Siri. Siri.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">21:16</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Ron. =
+Sri Rom.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Team =
+Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">21:18</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Sri =
+Rom. Yes. Had asked for kind of by the end of the week was like a. The plan=
+ for.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">21:25</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">You =
+said. Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Team =
+Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">21:27</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">What=
+ for mos?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">21:30</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">No, =
+just say. I just say set up mos. Right. Or finalize. You know, finalize mo.=
+ Just set up MOS is good. Actually do set up Daily Mosquito. I would say =
+develop tracker. Develop dash. Develop dashboard and tracker. I would say. =
+So the other stuff on June 13, light touch.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unknown Team Member / Analyst</span><span =
+style=3D"color:#64748b;font-size:14px">22:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You can get rid of =
+those.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">22:14</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">That =
+one&#x27;s fine. Yeah. Remove that one, I would say then, you know, =
+finalize logistics develop, you know. Yeah. Finalize logistics. So the =
+other piece of this is for readiness. We&#x27;re going to have to talk =
+about where is this being done? You know, is it in a room somewhere? People=
+ come in and test. Are they going to get laptops and credentials? How do =
+you provide access to these apps for them? All this other stuff, what =
+logins will they use? You know, do they. Do they come in and run? Who signs=
+? So logistics, tactical executions. Fine. So UAT roster. Finalize foreign =
+box governance. Identify functional technical owners and test leads. So set=
+ up daily mosquito. I would say developer readiness dashboard and reporting=
+ tracker. Okay. You already have the executive dashboard on the right. So =
+entry readiness prep. Okay. Remove the readiness that. Remove the. Develop =
+that one and move it into the other one. Remove the second bullet. =
+Let&#x27;s move it to the right. Just call it develop weekly Friday =
+reporting.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Team =
+Member / Analyst</span><span style=3D"color:#64748b;font-size:14px">23:49</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">This=
+ can go away.</div></div><div style=3D"margin-bottom:0;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown IT leader =
+/ Project Lead</span><span style=3D"color:#64748b;font-size:14px">23:52</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. =
+More so because that&#x27;s. That&#x27;s executive reporting. So remove =
+that. Yeah. Delete that. I want to say something to the effect of.=
+</div></div></div><div style=3D"margin-top:36px;text-align:center;color:#64=
+748b;font-size:14px;padding:20px;border-top:1px solid #e2e8f0"><p =
+style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note Taker</p><p=
+ style=3D"margin:0;font-size:12px">Your AI-powered companion</p></div></div=
+></div></div></html>
+----_NmP-82014b4e9319a308-Part_1--

@@ -1,0 +1,2606 @@
+MIME-Version: 1.0
+Date: Thu, 19 Jun 2025 21:20:17 -0400
+References: <0100019788f63880-707876eb-000f-41fd-99b6-6d41b50a1f3c-000000@email.amazonses.com>
+In-Reply-To: <0100019788f63880-707876eb-000f-41fd-99b6-6d41b50a1f3c-000000@email.amazonses.com>
+Message-ID: <CAOat4ZDAA_2WUu+nnCo9TWW9p_SvcTauu5aSvGPNOR0Jahq91Q@mail.gmail.com>
+Subject: Fwd: UAT and SIT Execution Tracking Strategy
+From: Mac Connolly <mac@macconnolly.com>
+To: save@mem.ai
+Content-Type: multipart/alternative; boundary="0000000000004d228d0637f6aaf2"
+
+--0000000000004d228d0637f6aaf2
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+---------- Forwarded message ---------
+From: Wave AI Note Taker <summary@email.wave.co>
+Date: Thu, Jun 19, 2025 at 12:12=E2=80=AFPM
+Subject: UAT and SIT Execution Tracking Strategy
+To: <mac@macconnolly.com>
+
+
+[image: Wave AI Logo]UAT and SIT Execution Tracking Strategy
+=E2=9C=A8 View Your Session on the Web
+<https://app.wave.co/sessions/18A24040-92F9-454F-AA81-12888172E2FD?lastLogi=
+nParam=3Dgoogle>
+=F0=9F=93=9DSummary
+Meeting Summary =E2=80=94 June 19, 2025Attendees
+
+   - Primary participants: Rakesh, Brian, Jessica, Jeff, Prashant, Mac,
+   Sakina, Preet, Bill, Srinivas, and others.
+
+------------------------------
+Main Topics Discussed1. *Process and Scenario/Test Script Tracking*
+
+   - *Objective:* There is a requirement to closely track the execution of
+   test scenarios and scripts, both at a process and system level,
+   particularly focusing on User Acceptance Testing (UAT) and System
+   Integration Testing (SIT).
+   - *Current State:*
+      - Collection of the total number of scenarios is a recent activity.
+      - The intended dashboard (in Capital Edge) is designed for SIT/UAT
+      but currently does not provide process-level execution detail.
+   - *Dashboard Requirements:*
+      - Should distinguish between BRV (Business Readiness Verification)
+      and non-BRV views.
+      - For SIT: Aim to have visibility per system (e.g., how many of the
+      50 systems have started/finished SIT).
+      - For UAT: Broader tracking, including systems not going through
+      changes but still affected by processes.
+      - Need to track in-flight execution: e.g., for 50 scenarios, how many
+      have been executed, how many remain, what=E2=80=99s successful/failed=
+, etc.
+   - *Current Tools/Trackers:*
+      - Excel trackers are in use to monitor test scripts across identified
+      processes.
+      - Mac and team have developed a new system tracker for non-BRV
+      processes, but a corresponding BRV-specific tracker is needed.
+      - The tracker includes fields for IT lead identification, planned
+      SIT/UAT dates, resource alignment, readiness status, and other
+key columns.
+      - Approaches to flagging missed deadlines and tracking resource
+      alignment were discussed (e.g., identifying missing IT leads,
+pending items
+      flagged in red, etc.).
+      - Suggestion to repurpose the functional dashboard to track SIT and
+      UAT progress at the application level rather than just cutover status=
+.
+
+2. *Data Mapping and Linkages Between Processes, Systems, and Scripts*
+
+   - *Key Questions:*
+      - Is there a mapped linkage between processes, systems involved, and
+      developed scenarios/scripts?
+      - Currently, there is no robust mapping of processes to systems and
+      associated scripts, but this could be added as a lookup.
+   - *Challenges Noted:*
+      - Data captured in alignment sessions lists numbers of scripts but
+      may not give a clear hierarchical or process mapping.
+      - Supply Chain and Finance differ in how scripts and scenarios are
+      mapped/organized.
+      - Complexity and risk of confusion if attempting to map all three
+      levels (process, system, script) due to overlapping elements.
+
+3. *Execution vs. Readiness Tracking*
+
+   - *Readiness:* Initial focus should be on system readiness:
+   identification of all testers, IT leads, leads alignment with functional
+   groups, and environment setup, tracked via readiness dates.
+   - *Execution:* The recommendation is to monitor script execution at the
+   script level, with each function providing a set of scripts to be run on=
+ce
+   systems are ready.
+   - *Reporting:*
+      - Burn-down charts to track progress (e.g., 200 scripts across 21
+      areas, day-by-day execution).
+      - Daily/periodic updates to include number planned, started, delayed,
+      and completed per area.
+   - *Consensus (after discussion):*
+      - Avoid over-complicating by not mapping scripts to both process and
+      system unless a clear linkage exists.
+      - Track readiness and execution separately; use processes for
+      planning and scripts for actual burn-down reporting.
+
+4. *Immediate Needs & Next Steps for Tracking and Reporting*
+
+   - *Mock-Ups and Reporting:*
+      - For immediate needs (by tomorrow and upcoming internal/executive
+      reviews), a burn-down/execution tracker will be mocked up in
+Excel or Power
+      BI.
+      - This tracker will show number of scripts per focus area, status
+      (planned, started, completed, delayed), and will be maintained daily =
+for
+      clear visibility.
+   - *Integration into Capital Edge:*
+      - Once the mockup is validated, data/model to be sent to Brian for
+      integration as a new tab or report within Capital Edge.
+      - Both BRV and non-BRV trackers will be maintained separately, with
+      provisions for cases where systems overlap between the two.
+      - Suggestions for two separate tabs/reports within the tool to
+      address dual activities (e.g., SAP as BRV and non-BRV).
+   - *Highlight on Data Duplicates:*
+      - Noted issue with some systems (like SAP) being present in both BRV
+      and non-BRV, requiring distinction in reporting.
+
+5. *Tooling and Access*
+
+   - *Preferred Platforms:*
+      - Excel for quick, flexible tracking for immediate needs; Power BI
+      for visualization.
+      - Capital Edge for centralized, ongoing reporting.
+   - *Access Limitations:*
+      - Not everyone has custom analytics/PowerBI access; quick turnarounds
+      may necessitate use of Excel.
+      - Jen (an often relied-upon dashboard developer) was unavailable to
+      assist due to travel.
+
+------------------------------
+Action Items
+
+   1.
+
+   *Data Mock-Up:*
+   - Compile a mock-up tracker (Excel/Power BI) showing per-area script
+      execution burn-down by tomorrow for internal/executive review
+(responsible:
+      Sakina, Brian).
+   2.
+
+   *Tracker Delivery:*
+   - Sakina to work with others to produce the burn-down chart aligned with
+      the UAT test calendar (mapped over two weeks).
+      - Team to send this tracker to Brian for review.
+   3.
+
+   *Integration with Capital Edge:*
+   - Brian to set up new tabs for BRV and non-BRV tracking in Capital Edge
+      once mock-up is validated and provided.
+      - Design trackers to account for systems with dual roles (e.g., SAP
+      in both BRV and non-BRV).
+   4.
+
+   *Ongoing Maintenance:*
+   - Teams to update the tracker daily, reflecting planned vs. completed
+      execution figures, delays, and issue statuses.
+   5.
+
+   *Enhance Data Linkages:*
+   - Consider adding a process-to-system lookup to enhance visibility, if
+      resources and time permit.
+   6.
+
+   *Test Script Status Reporting:*
+   - Add a status tracking mechanism per script (planned, started,
+      completed, delayed) in the tracker for burn-down reporting.
+
+------------------------------
+Follow-Up Points
+
+   - Review with Sukai scheduled for today (June 19), with need for a
+   finalized mock-up by that call.
+   - Jeff=E2=80=99s review or executive reporting expected tomorrow (June 2=
+0),
+   requiring at least a temporary mock-up in place.
+   - Once validated, tracker and reports will be integrated into Capital
+   Edge and developed further for ongoing use.
+   - Additional session may be needed to address data duplication for
+   systems with dual activities (e.g., SAP).
+   - Circulate finalized mock-ups/dashboards to all relevant stakeholders
+   and confirm availability/access in chosen tools.
+
+------------------------------
+Key Dates / Figures Mentioned
+
+   - *Today:* June 19, 2025 =E2=80=94 Internal review; mock-up tracker to b=
+e
+   finalized for Sukai call.
+   - *Tomorrow:* June 20, 2025 =E2=80=94 Executive review (Jeff); tracker t=
+o be
+   available as Power BI or Excel.
+   - *Two-week UAT period:* Details need to be mapped for calendar
+   alignment in execution tracking.
+   - *Script/Process Numbers:* Example figures used =E2=80=94 50 systems, 2=
+00
+   scripts, 21 focus areas, but actual numbers to be finalized per provided
+   files.
+
+------------------------------
+Additional Notes
+
+   - Strong preference to keep reporting actionable and comprehensible;
+   avoid added complexity unless justified by data or stakeholder demand.
+   - Primary focus is on clear visibility for leadership into UAT/SIT
+   readiness and execution, avoiding reporting confusion or omissions.
+   - Readiness and execution are distinct and should be reported as such.
+   - Ensure flexible tracking solution (Excel for now, Capital Edge
+   longer-term); prep for quick escalation/use in executive forums.
+   - Remain adaptable as data linkages and structures mature in coming days=
+.
+
+=F0=9F=8E=99=EF=B8=8FTranscription
+Brian0:01
+So essentially the processes, the scenarios that translate into test
+scripts and as they're executing them, the scenarios do we have a view of
+I've got 50 scenarios, 22 of them executed and.
+Jakish0:19
+So no, I don't think so because I think even collecting the number of
+scenarios is quite a recent activity. Right. So I guess the dashboard that
+was intended to be put into Capital Edge, is it that that's the sort of SIT
+UAT kind of dashboard, isn't that?
+Brian0:45
+Right, From a readiness perspective, yes. So for a non brv that makes total
+sense for brv. And when you get that file you'll see that, you know, there,
+there's sit happening for subsystems, some of the systems. And then in UAT
+you talk touching a lot more systems that are not going through any
+changes, but they're running the processes. As they run these processes,
+they're going to touch the BRB systems and these adjacents. And so we want
+to be able to track the progress not just at a system level, but as you run
+these scenarios and processes, say an auto to cache, end to end process and
+there's 10 scripts and you run them. Where are we with that? So that's
+where I'm trying to get to is what mechanism do we have currently in
+Capital Edge and how do we track it? If not, I have to a BI on an Excel
+that just simply says I'm tracking 20 test, 100 test scripts across these
+20 processes and this is what the execution is.
+Jakish1:48
+So Ryan, you have the sheet that Mac and team have developed the new system
+tracker, the one we were going to kind of rip and replace.
+Jessica2:02
+Yes, and then again that's what I was looking at. The one that was provided
+is the non brv.
+Rakesh2:06
+Let me pull it back up.
+Jessica2:08
+So Mac, if you could share the other one back over, that would be.
+Jakish2:12
+But like essentially it's the same list, it's just different.
+Brian2:16
+It's the same, it's different application. Right? Yeah. So let's go through
+this for example. Right, Forget these. What we would need to make sure is
+that the IT leads have been identified and if there's any blank it's a view
+and if you go to the next column, you know the Athens. Well, Athens IT lead
+identified. Yeah. So you know 45 or 290 out of 296. Right. Plan sit and I
+think there's the test resource. So we want all of those pending would be
+filled out and you know where you have a gap you would want to say okay,
+you know, two out of two, you know, 45 in our case here have been, you
+know, is pending. And that would be, you know, if it was a date that was
+supposed to be yesterday, then we would want to flag it as red. And then
+similarly then, you know, has SIT started? You know, and if so, I think the
+started not started pending. I think that's the next column we want to
+target. But really there's. The first portion of it is have I identified
+all the people? Have I identified the leads? Have I identified all the
+testers that need to support the testing? Have I identified and aligned the
+dates? These dates that are listed here, have I aligned them with the
+functions? Have I aligned the readiness of the environment, etc. So if you
+go to the top columns on the right, you got have I, you know, SIT resources
+aligned, you know, function leads aligned, test resources, you know, is
+there, you know, these that need to be filled out essentially these top
+columns there are what we would track for readiness.
+Jakish4:00
+Okay. And sorry Brian, maybe scroll back to the left. So you know, I think.
+Sorry. At the statuses we have. So primary. Okay. Functionality.
+Jessica4:16
+I will just note as we're going through this, the tracker has been updated
+for all of these columns. So they're all available.
+Brian4:22
+Sure. Perfect. Okay. Okay.
+Jakish4:24
+Okay. And then. So sorry, keep going. So I guess to answer your question
+about what is available. Jakish, what I think is like quickly doable and
+Brian, stop me when I, when I like go overboard is in the functional
+dashboards we can repl that like system readiness line with SIT readiness
+or sit, and uat, you know, progress or what have you. And we can use the
+SIT start column and the UAT start column. Finance has 10 apps and like 3
+of 10 have started sit and then like you know, 3, 2 of 10 have started UAT.
+Right. Like I think that is probably what's like most available but in
+terms of. Yeah, so, so like exactly. Right now it just says like three app.
+It's pulling like I think the overall like cutover status. Right. So
+instead of pulling cutover status, we can switch that to the UAT status and
+then, and then add a, add a row underneath for sit and then like each
+function can kind of have that like deep like that view on start.
+Brian5:59
+I think that's not going to help us. Preet and Jessica chime in here
+because I think Jeff is very specific about what he's asking from an SIT
+progress date. I think so for example, SIT is going to be in a system
+level. So I've got, I'm just going to throw out numbers there. 50 systems
+that are going to, you know, 10 systems that are going to go through sit.
+So we want to track readiness for that. And then when it comes to UAT, I'm
+touching those 10 systems plus another 40 more to complete this UAT
+process. So I'm gonna have to track what have I done on the 50 systems. But
+the process level is going to be I'm executing on these processes so I want
+to be able to track how many, how many scenarios have I executed on these
+processes and where are they, have they been successful, have they failed
+and have I completed. So that's Jeff is looking for is.
+Jakish6:56
+The dashboard that we were talking about yesterday Brian, is that. Yeah,
+that one.
+Jessica7:10
+This is the one that's in progress. We ran into an issue down here with the
+start dates and that's what we were working on fixing. I've pinged that
+developer, I've also pinged an onshore developer to see what we can do to
+have this available before end of day.
+Brian7:21
+So this would be good I think from this template support the other 290 non
+BRB. But for BRB at least sit it will show us a view and then UAT from a
+system perspective, it'll show a view. I think the execution piece of this
+is the scenarios. I've run 50 scenarios, I'm planning 20 more or you know,
+zero behind schedule, 22 on track and then not started is 55 whether
+scenarios or test cases. Because that's what he wants to truly track and
+say where is execution on this? There's a portion of the readiness. I think
+Brian, that this can be used for systems. I think there probably needs to
+be a separate one on execution of processes to say I've run these end to
+end processes, I've run these functional processes and here's the tracker
+on them. When you see those.
+Jakish8:22
+I guess maybe we can go and this might be where you were going Brian, like
+in the tracker, where were we capturing? Is that one number of test scripts=
+?
+Prashant8:43
+Do we have the associated process? Like do we have a concrete mapping of.
+For each of the processes these are the systems that are involved and then
+these are the scenarios that have been developed to test them. Are those
+three tables mapped together? Are you asking me pre Brian, like the Process
+2 system do we have a view on? These are all of the processes and for each
+of the processes these are the systems that are involved.
+Jessica9:16
+I do not believe there's a linkage between the two but we can add that
+essentially as a lookup onto the system title. But it's not Done at this
+point in time.
+Prashant9:24
+Yeah, so I think that that would be like, I think that that's the gap
+because then at that point. Rakesh, to your. Yeah, sorry, go ahead.
+Jakish9:35
+Sorry. I, maybe I'm like that.
+Brian9:38
+So I thought.
+Jakish9:42
+The data that was captured in the alignment sessions are around how many
+scripts do you have and things like that. Is that fair?
+Brian9:55
+We have scripts but they're against running an auto to cache end to end
+scenario. Let's say I have 30 scripts to run against order to cache. But
+order to cache I would need to know they cater to these many supply chain
+processes and they're touching these seven systems.
+Jakish10:20
+Yeah, I guess. Why do we want to do that?
+Brian10:29
+Because that's the level of detail in the reporting that Jeff wants to know
+is the process details the system's link can be linked to. Okay, I'm
+touching the system so I can go back in and say it's in progress for uat,
+but I'm running an end to end process or functional process. But I truly
+then need to track how many processes have I started today, how many are
+coming up for testing next week or tomorrow, how many have I completed? So
+let's say a process and they're, you know, let's say order to cash. And
+I've, I've got, you know, maybe 10 sub processes underneath that. That
+consists of 100 scripts. So he wants to know, okay, I'm in this order to
+cache. I've started these three of these 10 processes and 20 of these
+hundred scripts.
+Jakish11:24
+But you got the scripts from. Sorry, you got the script from. So let's take
+or let's stick with order to cash. So like the CX team would have provided
+a certain number of scenarios related to order entry. Correct. When they
+provide this, do they say like here's like 50 scenarios for order entry or
+is it just like I'm CX and I have 100 scenarios?
+Brian12:00
+It's the latter. Now for finance it's a little bit different because they
+provided some 50 odd scenarios across certain things that got translated
+into scripts. So we'll have to go back and see what those scenario descript
+mapping is. But for supply chain they did not provide scenarios as such.
+They looked at all the test scripts and they verified that they match all
+the scenarios.
+Jakish12:28
+Okay, okay. I look, I think like that's, that's sort of like on the
+function in my mind a little bit. Right. Like we, we, we can run a process
+to go through your scripts and tag them to processes, but I don't know what
+like incremental value it's going to give you at this point.
+Brian12:56
+But even if. What other way do you have? What other way do you have to say
+there's progress in uat, isn't it?
+Jakish13:04
+Like, how many, how many scripts have you completed? How you know, how many
+issues have generated? You know, like, is it closed? Is it tested? Is it
+not tested? Right.
+Brian13:16
+Like from a script execution, yes, but from leading it back to process,
+there isn't a linkage.
+Jeff13:26
+Can I just start?
+Brian13:27
+Yeah, yeah.
+Jeff13:31
+So I only been quiet because I'm just letting. I'm absorbing all this. The
+UAT scripts, are they done? I think we had a call out. They're supposed to
+be done today. Do you confidently know if they're done or not?
+Brian13:50
+Sorry, you're asking me? I think that those scripts from our ERP and
+finance teams are. Yeah, what, what we're tracking to the 21.
+Jeff14:00
+So we have scripts for each of the 21 identified system processes for our
+conversation, Correct?
+Prashant14:06
+Correct.
+Brian14:07
+Yes.
+Prashant14:10
+We have. I don't think so. Like, we have the finance systems. I haven't
+seen any of the other script data from the other systems.
+Brian14:20
+No, we have erp, we have from Bill or.
+Jessica14:23
+Sorry.
+Brian14:26
+We have from Bill and sri. There's one that he said is getting finalized.
+Right. So that's the other one. But everything else is there.
+Prashant14:35
+I've seen Shrinibases, I haven't seen Bills.
+Jeff14:39
+Okay, so for our conversation, let's pretend they're done. So we have a
+file per process that they need to go through and the scenarios are
+identified as steps within their UAT scripts, correct?
+Brian14:52
+Yes.
+Jeff14:54
+So picking on order to cache. Order to cache in that script, even if it
+touches four or five act, you should have 30, 30 lines and at some point in
+there they'll touch, you know, first piece, second piece, third piece. We
+may not have clear visibility to that, but they should know that they, the
+end user should know when, like I need to go into, you know, this system
+and do this, this system and do that. Meaning you and me may not have that
+detail, but the person who actually physically does it should theoretically
+know what tool they're going into.
+Brian15:39
+Yes.
+Jeff15:41
+So here's where mine's going with this and I think it's kind of aligning
+with where PRI was going with this. Of we can look at the apps for
+readiness, but I'm thinking for a visual for like a burn down, we identify.
+Hey, order to cache has total number of. I don't know if it's. We want to
+call it scenarios, but however many lines of testing we have. So if each
+like I don't know if it's a, you know.
+Brian16:13
+Yeah, let's say scripts. Let's say scripts, right? Let's say 30 scripts for
+auto cache as end to end has 30 scripts.
+Jeff16:19
+Yes. I think it's a matter of how many have been tested versus have been.
+So order to cash it's going to be 30. And let's say the team says we're
+going to do 1 through 5 on Monday, 6 to 10 on Tuesday, 11 to 15 Wednesday,
+you know, 16 to 20 Thursday and then 21 to 30 on Friday. It's, you know, I
+think that's our burn down. And then we track to that se do of we work
+through with the bill and Srinivas to get that compiled and then figure out
+if it makes sense to either put that in here or just put it into a
+dashboard and say each day we're going to have 10, 20, 30 executed and then
+follow them up at the end of the day and say hey, we expected to be 10
+executed today and we met that with 10 or we didn't.
+Brian17:19
+I think that's probably okay. So then I'm following you before I comment on
+it. Prashant, you had a question?
+Rakesh17:31
+It's not a question. And for these folks, I got pulled in a little bit late
+into this call. I will make this point and I know Rakesh, we've spoken
+about a couple of times, the moment we start mixing process with system, we
+will get into a permutation combination that will quickly go out of hand.
+So I am actually in alignment with what pre is saying. We first take a
+system lens of saying readiness for UAT and then each function just gives
+us a set of scripts that they will run. Once the systems that they require
+to do the UAT are ready. The moment we go and say order to cache, then
+Finance will have 20 scripts that will potentially overlap with supply
+chain. I don't know, like it will then become a muddle that we'll not be
+able to like track one to one through any tracker. I think we leave it at a
+script level and have a list of processes that will get tested through the
+script. Shouldn't go and map process to script, if you know what I mean.
+Because the system is one set of variables, process is one set of
+variables, script is another set of variables. If at this point we are able
+to categorically say we have all of these three and very clearly mapped for
+brb, then it's fine, then we can build this out. But I don't think that's
+the case. What we do know for sure is that the system readiness dates are
+A, B, C and D test. Script readiness dates are A, B and C and the list of
+processes that will be tested. Overall, I think we just do a burnout of the
+total scripts once the systems are ready and then say that the following
+processes have been tested across these number of scripts. We should not go
+and map those to that level because we will then kind of be execution
+reporting nightmare.
+Brian19:31
+So who is we? And when you say so there's one, there's two sides to this.
+One, what we think and two, what Jeff wants. So when you say we should not
+be reporting and then when you say total scripts executed or processes
+executed, what are you meaning that against. Against what? You're going to
+track processes executed, what are you tracking them? Because you mentioned
+scripts executed, which we have, but finance supply chain has an order
+management process, logistics process. So all of that is woven into the end
+to end order to cache 30 scripts.
+Rakesh20:14
+That's it. My point, right? The 30 scripts should test a list of processes.
+That's all we should go into. And then as long as those 30 scripts are
+being tested, we are able to mark VRE readiness. Yes. No, right. We're not
+going and saying order to cache test it and then have like a daily status
+of it. That was where we kind of get a little bit confused.
+Jakish20:44
+I actually think if your scripts have metadata to them like function end to
+end process, what have you, you can show a view that says ISE has 30
+scripts and Finance has 12 and whatever else and each function is
+progressing at different paces. And you can show that view if you have your
+scripts tagged to. Or cash report to report, procure to pay. You can also
+kind of show that view, right? Like order cash is progressing well. Procure
+to pay is not what have you. Where I think you're going to get in trouble
+is if you map it back to the functions like functional stand up of the
+process. And why I say that is like it's not like a full science exercise
+here. There's like nuance. If you take order, order to cash, for example,
+right. Order management from an ISC perspective an entirely move as is
+function. So like from their perspective like their processes and people
+are not changing. So they, they've gone and flagged it as complete. Right?
+Like so like the, the, the, the people process aspect of it is like tracked
+very much from like a people perspective. And then the systems like end to
+end aspect to speak is tracking something like, like a test of a Process
+that might not even be changing, you know what I mean? From like the two, I
+think is like more nuanced than just simply going and tagging processes to
+systems or like tagging processes to. Do you know what I mean? So it's
+almost like if you have a list of processes and functions or sorry, if you
+have a list of scripts that functions have provided you and functions are
+telling you like we need to execute all of these things in order to test
+the ERP from our perspective or from an order to cache perspective.
+Brian22:43
+Right.
+Jakish22:43
+Like I think you take that and you sort of map that.
+Brian22:52
+Okay, so let's do this then. So I think I'm following you and I'm aligned
+to what Jessica is saying. So what we will give you and I don't know if
+it's ready for tomorrow, but we have it. I don't know if it'll be doable
+for you tomorrow. We can certainly do a XLBI or something for tomorrow at
+least. What we will do then is take the 20 odd processes within, I say
+processes, but sub processes or folk areas that it has within ERP and
+supply chain, supply chain, er, finance that cater to all these four end to
+end processes and functional processes. We know the number of scripts
+against each of those. We also have a UAT test calendar that's over two
+weeks, but we're getting granular so we will take that and do that as a
+burn down. So you know, I've got 200 scripts in total to execute across,
+let's say seven, let's say 21 focus areas and those 21 focus areas cover
+all the supply chain function finance processes, end to end, functional
+etc. Don't worry about looking them back. But we can certainly say I've got
+200 scripts, I've got 21 areas to test and how am I progressing against
+that 21 area? Because when we calendar in detail over the two weeks of UAT,
+we're going to have a day by day calendar. Right. I'm going to run
+functional area test one for four days. I'm going to, you know, it'll be
+the first week Monday to Friday, you know, functional area number 15 will
+just be on a Friday, a start and an end on a Friday. So I think what we can
+give you then Brian is and maybe this is overkill to do it on Capital Edge,
+but maybe it's just an Excel tracker that we maintain every day to Jess
+point, Jessica's point rather that we just maintain that and say here's
+what we're tracking to Script execution, we were expected to start 10
+scripts. We started eight. Two are delayed by the way. The other four have
+been completed, et cetera. So it's probably the best way to show him
+execution progress at this point.
+Prashant24:57
+Yeah.
+Brian25:00
+So is that doable then from a tracking perspective here, Brian, if we send
+you that, where would that show up here as a report or.
+Jessica25:10
+Yep. So we need to develop the report. The other thing that I'm hearing
+there, so what we're talking about, number of UAT scripts versus total
+versus what's ran. Right now, all we have in here is the number of scripts.
+We need to add a tracking point as to how many are ran or what when they're
+being ran. Unless we're going to do that on a line item level and then
+outside of that it's completely trackable and we can customize the bi.
+Brian25:37
+It won't be at a system level. It'll be a separate line item that says 21
+sub functional areas. So you may have to create another tab.
+Jakish25:47
+Another tracker. Yeah, so another tracker with all the scripts and a status
+against each. Is that.
+Brian25:53
+Yeah, so we will send you that. We will, yeah, sorry, go ahead, Brian.
+Jessica25:59
+Yeah, if we have that, send it to me and I'll just insert a new tab here
+that's just called scripts.
+Brian26:05
+And then we can track, maybe call it execute script execution tracker or
+something.
+Jessica26:10
+Yep.
+Brian26:11
+And that will be a true burn down of. Yeah, I'm planned 15, I've executed
+start at 10, three are delayed, two are completed, et cetera. So Sakina,
+then I'll work with you for tomorrow's conversation with Jeff at least to
+mock up what we, what we have. And then in the meantime we can send you the
+mock up of that, Brian, so that you can replicate it here moving forward.
+Jakish26:45
+So I guess like realistically for tomorrow, are we saying like we should
+just try to like mock it up on Power BI or something like that?
+Brian27:00
+Yeah, because I don't think we have time to. Yeah, yeah, for Capital Edge
+here today. We're reviewing with Sukai at 7 today and it's got to be final
+by then. So. Yeah, for tomorrow and today, I think maybe just a mock up in
+Power BI similar to what Mac was sharing and what you were sharing, Brian,
+Similar to that view, we may need some mockup that we track and we say,
+yeah, that's more execution readiness and then execution. And then all of
+them would be zero as long as the metrics are there, the attributes and the
+fields are there. Then for the readiness, obviously you would need to take
+The BRV tracker file that Max sent you and redo that again. Maybe for
+tomorrow we do a Power BI on top just to say those highlight. Where are we
+with script readiness? Where are we with people identification? Where are
+we with environment?
+Jakish27:59
+Isn't there a way to do a quick Power BI report in custom analytics?
+Probably.
+Jessica28:09
+There is. Don't think we have custom analytics access for most of the
+people on the call, but we can definitely explore that. But I don't know if
+that'll be the right way just given turnaround time.
+Jakish28:21
+Okay. Okay. Yeah. Okay. It's too bad Jen's on a plane. She tends to like,
+whip out these, like, Power BI dashboards.
+Brian28:37
+So let's do that. If we can do it with you, Brian, we'll send you that. But
+I think we'll have to see what we can get in ahead of today's call. And I
+think what we'll do is send that data to you once you know, the whole data
+model so that it could be built in here. And maybe you want to create on
+this, Brian. Probably a couple of tabs. One is the BRV readiness or the BRV
+tracker, and then the other is the non BRV tracker just to show some
+distinct distinction. And I think what you had before in terms of burn down
+and cut over, that would be more applicable for brv. Sorry, non brv,
+because those would have, you know, the dates you have for sit start, etc.
+So maybe there's a flag you can even run to say brv, non brv. Great. Okay.
+Now there are some duplicates, so we'll have to see how to address that.
+Jakish29:34
+But in the file there are duplicates.
+Brian29:37
+You said no. For example, brv, er, SAP is used for brv, but SAP is also a
+non brv because it's. There's work to get ready for day one, so it's, it's
+dual activities. So. So it won't be me. See here. Okay, so we just have to
+make provision for that. Maybe it's another line entry that says, you know,
+SAP for non brv. SAP for brv. But we'll get through that. Worst case, we
+may have to develop two, two, two tab tabs. But at least we'll send you,
+you know, you have the data from Mac for both. For this, for the brv.
+We'll, we'll, you know, we'll mock up something and then we'll send to you.
+I think we'll do some BI today for the, for the. To get over Jeff's
+conversation and then we'll send it to you and the team to. To have it in
+Capital Edge and tracking there.
+Jakish30:31
+Okay?
+Brian30:31
+Right.
+Jessica30:32
+Sounds good.
+Brian30:33
+All righty. Thank you both. Thanks, all.
+Jessica30:36
+Thanks, all.
+Brian30:38
+Thank you.
+
+Captured with Wave AI Note Taker
+
+Your AI-powered companion
+
+--0000000000004d228d0637f6aaf2
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div><br></div><div><br><div class=3D"gmail_quote gmail_quote_container"><d=
+iv dir=3D"ltr" class=3D"gmail_attr">---------- Forwarded message ---------<=
+br>From: <strong class=3D"gmail_sendername" dir=3D"auto">Wave AI Note Taker=
+</strong> <span dir=3D"auto">&lt;<a href=3D"mailto:summary@email.wave.co">s=
+ummary@email.wave.co</a>&gt;</span><br>Date: Thu, Jun 19, 2025 at 12:12=E2=
+=80=AFPM<br>Subject: UAT and SIT Execution Tracking Strategy<br>To:  &lt;<a=
+ href=3D"mailto:mac@macconnolly.com">mac@macconnolly.com</a>&gt;<br></div><=
+br><br><div style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif;margin:0px;padding:0px;backgr=
+ound-color:rgb(244,244,244)"><div style=3D"width:100%;max-width:604px;margi=
+n:0px auto;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot=
+;,Roboto,Helvetica,Arial,sans-serif"><div style=3D"background-image:url(&qu=
+ot;https://upcdn.io/W142iax/raw/email/banner_clean.png&quot;);background-si=
+ze:cover;background-position:center center;width:604px;height:297px;margin:=
+0px auto;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif"><table cellpadding=3D"0" cellspacing=3D"=
+0" border=3D"0" width=3D"100%" height=3D"100%" style=3D"font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif"><tbody style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;S=
+egoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><tr style=3D"font-family:-=
+apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial=
+,sans-serif"><td valign=3D"center" align=3D"center" style=3D"padding:0px;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif"><img src=3D"https://upcdn.io/W142iax/raw/email/logo=
+_white.png" alt=3D"Wave AI Logo" style=3D"width: 41px; height: 58px; max-wi=
+dth: 41px; margin-bottom: 10px; font-family: -apple-system, BlinkMacSystemF=
+ont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif;"><h1 style=
+=3D"font-size:32px;margin:0px;padding:0px 0px 10px;text-align:center;font-f=
+amily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetic=
+a,Arial,sans-serif;color:white">UAT and SIT Execution Tracking Strategy</h1=
+></td></tr></tbody></table></div><div style=3D"max-width:600px;margin:0px a=
+uto;padding:32px 20px;font-family:-apple-system,BlinkMacSystemFont,&quot;Se=
+goe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><div style=3D"text-align:ce=
+nter;margin-bottom:32px;font-family:-apple-system,BlinkMacSystemFont,&quot;=
+Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><a href=3D"https://app.wa=
+ve.co/sessions/18A24040-92F9-454F-AA81-12888172E2FD?lastLoginParam=3Dgoogle=
+" style=3D"padding:12px 24px;border-radius:8px;text-decoration:none;font-we=
+ight:500;font-size:16px;display:inline-block;margin-top:8px;margin-bottom:8=
+px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto=
+,Helvetica,Arial,sans-serif;background-color:rgb(230,240,255);color:rgb(0,1=
+02,204)" target=3D"_blank">=E2=9C=A8 View Your Session on the Web</a></div>=
+<div style=3D"text-align:center;margin-bottom:36px;font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+"></div><div style=3D"padding:28px;border-radius:12px;border:1px solid rgb(=
+226,232,240);margin-bottom:28px;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><h3 style=3D"font=
+-size:20px;font-weight:600;margin-top:0px;margin-bottom:20px;display:flex;f=
+ont-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Hel=
+vetica,Arial,sans-serif;color:rgb(15,23,42)"><span style=3D"font-size:24px;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif">=F0=9F=93=9D</span>Summary</h3><div style=3D"font=
+-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&qu=
+ot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)"><=
+div style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><h1 style=3D"font-weight:500;padding=
+-top:20px;font-size:2.5rem;font-family:-apple-system,BlinkMacSystemFont,&qu=
+ot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">Meeting Summary =E2=80=
+=94 June 19, 2025</h1><h2 style=3D"font-weight:500;padding-top:20px;font-si=
+ze:2rem;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif">Attendees</h2><ul style=3D"font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Primary participants: Rakesh, Brian,=
+ Jessica, Jeff, Prashant, Mac, Sakina, Preet, Bill, Srinivas, and others.</=
+li>
+</ul>
+<hr style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif">Main Topics Discussed</h2><h3 style=3D"font-weight:500;padding-=
+top:20px;font-size:1.75rem;font-family:-apple-system,BlinkMacSystemFont,&qu=
+ot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">1. <strong style=3D"fo=
+nt-weight:bold;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif">Process and Scenario/Test Script T=
+racking</strong></h3><ul style=3D"font-family:-apple-system,BlinkMacSystemF=
+ont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Objective:</strong> There is a requirement to close=
+ly track the execution of test scenarios and scripts, both at a process and=
+ system level, particularly focusing on User Acceptance Testing (UAT) and S=
+ystem Integration Testing (SIT).</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Current State:</strong><ul style=3D"font-family:-ap=
+ple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,s=
+ans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Collection of the total number of sc=
+enarios is a recent activity.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">The intended dashboard (in Capital E=
+dge) is designed for SIT/UAT but currently does not provide process-level e=
+xecution detail.</li>
+</ul>
+</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Dashboard Requirements:</strong><ul style=3D"font-f=
+amily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetic=
+a,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Should distinguish between BRV (Busi=
+ness Readiness Verification) and non-BRV views.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">For SIT: Aim to have visibility per =
+system (e.g., how many of the 50 systems have started/finished SIT).</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">For UAT: Broader tracking, including=
+ systems not going through changes but still affected by processes.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Need to track in-flight execution: e=
+.g., for 50 scenarios, how many have been executed, how many remain, what=
+=E2=80=99s successful/failed, etc.</li>
+</ul>
+</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Current Tools/Trackers:</strong><ul style=3D"font-f=
+amily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetic=
+a,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Excel trackers are in use to monitor=
+ test scripts across identified processes.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Mac and team have developed a new sy=
+stem tracker for non-BRV processes, but a corresponding BRV-specific tracke=
+r is needed.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">The tracker includes fields for IT l=
+ead identification, planned SIT/UAT dates, resource alignment, readiness st=
+atus, and other key columns.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Approaches to flagging missed deadli=
+nes and tracking resource alignment were discussed (e.g., identifying missi=
+ng IT leads, pending items flagged in red, etc.).</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Suggestion to repurpose the function=
+al dashboard to track SIT and UAT progress at the application level rather =
+than just cutover status.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif">2. <strong style=3D"font-weight:bold;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f">Data Mapping and Linkages Between Processes, Systems, and Scripts</stron=
+g></h3><ul style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Key Questions:</strong><ul style=3D"font-family:-ap=
+ple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,s=
+ans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Is there a mapped linkage between pr=
+ocesses, systems involved, and developed scenarios/scripts?</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Currently, there is no robust mappin=
+g of processes to systems and associated scripts, but this could be added a=
+s a lookup.</li>
+</ul>
+</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Challenges Noted:</strong><ul style=3D"font-family:=
+-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Aria=
+l,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Data captured in alignment sessions =
+lists numbers of scripts but may not give a clear hierarchical or process m=
+apping.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Supply Chain and Finance differ in h=
+ow scripts and scenarios are mapped/organized.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Complexity and risk of confusion if =
+attempting to map all three levels (process, system, script) due to overlap=
+ping elements.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif">3. <strong style=3D"font-weight:bold;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f">Execution vs. Readiness Tracking</strong></h3><ul style=3D"font-family:-=
+apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial=
+,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Readiness:</strong> Initial focus should be on syst=
+em readiness: identification of all testers, IT leads, leads alignment with=
+ functional groups, and environment setup, tracked via readiness dates.</li=
+>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Execution:</strong> The recommendation is to monito=
+r script execution at the script level, with each function providing a set =
+of scripts to be run once systems are ready.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Reporting:</strong><ul style=3D"font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Burn-down charts to track progress (=
+e.g., 200 scripts across 21 areas, day-by-day execution).</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Daily/periodic updates to include nu=
+mber planned, started, delayed, and completed per area.</li>
+</ul>
+</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Consensus (after discussion):</strong><ul style=3D"=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Avoid over-complicating by not mappi=
+ng scripts to both process and system unless a clear linkage exists.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Track readiness and execution separa=
+tely; use processes for planning and scripts for actual burn-down reporting=
+.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif">4. <strong style=3D"font-weight:bold;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f">Immediate Needs &amp; Next Steps for Tracking and Reporting</strong></h3=
+><ul style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Mock-Ups and Reporting:</strong><ul style=3D"font-f=
+amily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetic=
+a,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">For immediate needs (by tomorrow and=
+ upcoming internal/executive reviews), a burn-down/execution tracker will b=
+e mocked up in Excel or Power BI.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">This tracker will show number of scr=
+ipts per focus area, status (planned, started, completed, delayed), and wil=
+l be maintained daily for clear visibility.</li>
+</ul>
+</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Integration into Capital Edge:</strong><ul style=3D=
+"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,H=
+elvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Once the mockup is validated, data/m=
+odel to be sent to Brian for integration as a new tab or report within Capi=
+tal Edge.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Both BRV and non-BRV trackers will b=
+e maintained separately, with provisions for cases where systems overlap be=
+tween the two.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Suggestions for two separate tabs/re=
+ports within the tool to address dual activities (e.g., SAP as BRV and non-=
+BRV).</li>
+</ul>
+</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Highlight on Data Duplicates:</strong><ul style=3D"=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Noted issue with some systems (like =
+SAP) being present in both BRV and non-BRV, requiring distinction in report=
+ing.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif">5. <strong style=3D"font-weight:bold;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f">Tooling and Access</strong></h3><ul style=3D"font-family:-apple-system,B=
+linkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Preferred Platforms:</strong><ul style=3D"font-fami=
+ly:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,A=
+rial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Excel for quick, flexible tracking f=
+or immediate needs; Power BI for visualization.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Capital Edge for centralized, ongoin=
+g reporting.</li>
+</ul>
+</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Access Limitations:</strong><ul style=3D"font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Not everyone has custom analytics/Po=
+werBI access; quick turnarounds may necessitate use of Excel.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Jen (an often relied-upon dashboard =
+developer) was unavailable to assist due to travel.</li>
+</ul>
+</li>
+</ul>
+<hr style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif">Action Items</h2><ol style=3D"font-family:-apple-system,BlinkMa=
+cSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><p style=3D"font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+"><strong style=3D"font-weight:bold;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">Data Mock-Up:=
+</strong></p>
+<ul style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Compile a mock-up tracker (Excel/Pow=
+er BI) showing per-area script execution burn-down by tomorrow for internal=
+/executive review (responsible: Sakina, Brian).</li>
+</ul>
+</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><p style=3D"font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+"><strong style=3D"font-weight:bold;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">Tracker Deliv=
+ery:</strong></p>
+<ul style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Sakina to work with others to produc=
+e the burn-down chart aligned with the UAT test calendar (mapped over two w=
+eeks).</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Team to send this tracker to Brian f=
+or review.</li>
+</ul>
+</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><p style=3D"font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+"><strong style=3D"font-weight:bold;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">Integration w=
+ith Capital Edge:</strong></p>
+<ul style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Brian to set up new tabs for BRV and=
+ non-BRV tracking in Capital Edge once mock-up is validated and provided.</=
+li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Design trackers to account for syste=
+ms with dual roles (e.g., SAP in both BRV and non-BRV).</li>
+</ul>
+</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><p style=3D"font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+"><strong style=3D"font-weight:bold;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">Ongoing Maint=
+enance:</strong></p>
+<ul style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Teams to update the tracker daily, r=
+eflecting planned vs. completed execution figures, delays, and issue status=
+es.</li>
+</ul>
+</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><p style=3D"font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+"><strong style=3D"font-weight:bold;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">Enhance Data =
+Linkages:</strong></p>
+<ul style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Consider adding a process-to-system =
+lookup to enhance visibility, if resources and time permit.</li>
+</ul>
+</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><p style=3D"font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+"><strong style=3D"font-weight:bold;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">Test Script S=
+tatus Reporting:</strong></p>
+<ul style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Add a status tracking mechanism per =
+script (planned, started, completed, delayed) in the tracker for burn-down =
+reporting.</li>
+</ul>
+</li>
+</ol>
+<hr style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif">Follow-Up Points</h2><ul style=3D"font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Review with Sukai scheduled for toda=
+y (June 19), with need for a finalized mock-up by that call.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Jeff=E2=80=99s review or executive r=
+eporting expected tomorrow (June 20), requiring at least a temporary mock-u=
+p in place.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Once validated, tracker and reports =
+will be integrated into Capital Edge and developed further for ongoing use.=
+</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Additional session may be needed to =
+address data duplication for systems with dual activities (e.g., SAP).</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Circulate finalized mock-ups/dashboa=
+rds to all relevant stakeholders and confirm availability/access in chosen =
+tools.</li>
+</ul>
+<hr style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif">Key Dates / Figures Mentioned</h2><ul style=3D"font-family:-app=
+le-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sa=
+ns-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Today:</strong> June 19, 2025 =E2=80=94 Internal re=
+view; mock-up tracker to be finalized for Sukai call.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Tomorrow:</strong> June 20, 2025 =E2=80=94 Executiv=
+e review (Jeff); tracker to be available as Power BI or Excel.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Two-week UAT period:</strong> Details need to be ma=
+pped for calendar alignment in execution tracking.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Script/Process Numbers:</strong> Example figures us=
+ed =E2=80=94 50 systems, 200 scripts, 21 focus areas, but actual numbers to=
+ be finalized per provided files.</li>
+</ul>
+<hr style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif">Additional Notes</h2><ul style=3D"font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Strong preference to keep reporting =
+actionable and comprehensible; avoid added complexity unless justified by d=
+ata or stakeholder demand.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Primary focus is on clear visibility=
+ for leadership into UAT/SIT readiness and execution, avoiding reporting co=
+nfusion or omissions.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Readiness and execution are distinct=
+ and should be reported as such.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Ensure flexible tracking solution (E=
+xcel for now, Capital Edge longer-term); prep for quick escalation/use in e=
+xecutive forums.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Remain adaptable as data linkages an=
+d structures mature in coming days.</li>
+</ul>
+</div></div></div><div style=3D"padding:28px;border-radius:12px;border:1px =
+solid rgb(226,232,240);font-family:-apple-system,BlinkMacSystemFont,&quot;S=
+egoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><h3 style=3D"font-size:20p=
+x;font-weight:600;margin-top:0px;margin-bottom:20px;display:flex;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif;color:rgb(15,23,42)"><span style=3D"font-size:24px;font-fami=
+ly:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,A=
+rial,sans-serif">=F0=9F=8E=99=EF=B8=8F</span>Transcription</h3><div style=
+=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px=
+;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,=
+250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;marg=
+in-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;marg=
+in-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Brian</span><s=
+pan style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&q=
+uot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)=
+">0:01</span></div><div style=3D"font-size:16px;line-height:1.6;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif;color:rgb(71,85,105)">So essentially the processes, the scena=
+rios that translate into test scripts and as they&#39;re executing them, th=
+e scenarios do we have a view of I&#39;ve got 50 scenarios, 22 of them exec=
+uted and.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-r=
+adius:8px;border-left-width:4px;border-left-style:solid;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)">=
+<div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,Blin=
+kMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><spa=
+n style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,Blink=
+MacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:=
+rgb(59,130,246)">Jakish</span><span style=3D"font-size:14px;font-family:-ap=
+ple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,s=
+ans-serif;color:rgb(100,116,139)">0:19</span></div><div style=3D"font-size:=
+16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">So no, =
+I don&#39;t think so because I think even collecting the number of scenario=
+s is quite a recent activity. Right. So I guess the dashboard that was inte=
+nded to be put into Capital Edge, is it that that&#39;s the sort of SIT UAT=
+ kind of dashboard, isn&#39;t that?</div></div><div style=3D"margin-bottom:=
+16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-style=
+:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-le=
+ft-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font=
+-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvet=
+ica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-=
+family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helveti=
+ca,Arial,sans-serif;color:rgb(59,130,246)">Brian</span><span style=3D"font-=
+size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;=
+,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">0:45</span></div=
+><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;colo=
+r:rgb(71,85,105)">Right, From a readiness perspective, yes. So for a non br=
+v that makes total sense for brv. And when you get that file you&#39;ll see=
+ that, you know, there, there&#39;s sit happening for subsystems, some of t=
+he systems. And then in UAT you talk touching a lot more systems that are n=
+ot going through any changes, but they&#39;re running the processes. As the=
+y run these processes, they&#39;re going to touch the BRB systems and these=
+ adjacents. And so we want to be able to track the progress not just at a s=
+ystem level, but as you run these scenarios and processes, say an auto to c=
+ache, end to end process and there&#39;s 10 scripts and you run them. Where=
+ are we with that? So that&#39;s where I&#39;m trying to get to is what mec=
+hanism do we have currently in Capital Edge and how do we track it? If not,=
+ I have to a BI on an Excel that just simply says I&#39;m tracking 20 test,=
+ 100 test scripts across these 20 processes and this is what the execution =
+is.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:=
+8px;border-left-width:4px;border-left-style:solid;font-family:-apple-system=
+,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;=
+background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div s=
+tyle=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSy=
+stemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span styl=
+e=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSys=
+temFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59=
+,130,246)">Jakish</span><span style=3D"font-size:14px;font-family:-apple-sy=
+stem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-se=
+rif;color:rgb(100,116,139)">1:48</span></div><div style=3D"font-size:16px;l=
+ine-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">So Ryan, you =
+have the sheet that Mac and team have developed the new system tracker, the=
+ one we were going to kind of rip and replace.</div></div><div style=3D"mar=
+gin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border=
+-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe =
+UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252=
+);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bott=
+om:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-righ=
+t:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Rob=
+oto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jessica</span><span s=
+tyle=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;S=
+egoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">2:0=
+2</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-app=
+le-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sa=
+ns-serif;color:rgb(71,85,105)">Yes, and then again that&#39;s what I was lo=
+oking at. The one that was provided is the non brv.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px=
+;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,=
+250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;marg=
+in-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;marg=
+in-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Rakesh</span><=
+span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&=
+quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139=
+)">2:06</span></div><div style=3D"font-size:16px;line-height:1.6;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif;color:rgb(71,85,105)">Let me pull it back up.</div></div><di=
+v style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-wi=
+dth:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:r=
+gb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:fl=
+ex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:6=
+00;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jessica=
+</span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100=
+,116,139)">2:08</span></div><div style=3D"font-size:16px;line-height:1.6;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif;color:rgb(71,85,105)">So Mac, if you could share the=
+ other one back over, that would be.</div></div><div style=3D"margin-bottom=
+:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-styl=
+e:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-l=
+eft-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;fon=
+t-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helve=
+tica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font=
+-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvet=
+ica,Arial,sans-serif;color:rgb(59,130,246)">Jakish</span><span style=3D"fon=
+t-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quo=
+t;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">2:12</span></d=
+iv><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,B=
+linkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;co=
+lor:rgb(71,85,105)">But like essentially it&#39;s the same list, it&#39;s j=
+ust different.</div></div><div style=3D"margin-bottom:16px;padding:16px;bor=
+der-radius:8px;border-left-width:4px;border-left-style:solid;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,2=
+46)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system=
+,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"=
+><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,=
+BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;c=
+olor:rgb(59,130,246)">Brian</span><span style=3D"font-size:14px;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif;color:rgb(100,116,139)">2:16</span></div><div style=3D"font-s=
+ize:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">It&=
+#39;s the same, it&#39;s different application. Right? Yeah. So let&#39;s g=
+o through this for example. Right, Forget these. What we would need to make=
+ sure is that the IT leads have been identified and if there&#39;s any blan=
+k it&#39;s a view and if you go to the next column, you know the Athens. We=
+ll, Athens IT lead identified. Yeah. So you know 45 or 290 out of 296. Righ=
+t. Plan sit and I think there&#39;s the test resource. So we want all of th=
+ose pending would be filled out and you know where you have a gap you would=
+ want to say okay, you know, two out of two, you know, 45 in our case here =
+have been, you know, is pending. And that would be, you know, if it was a d=
+ate that was supposed to be yesterday, then we would want to flag it as red=
+. And then similarly then, you know, has SIT started? You know, and if so, =
+I think the started not started pending. I think that&#39;s the next column=
+ we want to target. But really there&#39;s. The first portion of it is have=
+ I identified all the people? Have I identified the leads? Have I identifie=
+d all the testers that need to support the testing? Have I identified and a=
+ligned the dates? These dates that are listed here, have I aligned them wit=
+h the functions? Have I aligned the readiness of the environment, etc. So i=
+f you go to the top columns on the right, you got have I, you know, SIT res=
+ources aligned, you know, function leads aligned, test resources, you know,=
+ is there, you know, these that need to be filled out essentially these top=
+ columns there are what we would track for readiness.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px=
+;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,=
+250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;marg=
+in-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;marg=
+in-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jakish</span><=
+span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&=
+quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139=
+)">4:00</span></div><div style=3D"font-size:16px;line-height:1.6;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif;color:rgb(71,85,105)">Okay. And sorry Brian, maybe scroll ba=
+ck to the left. So you know, I think. Sorry. At the statuses we have. So pr=
+imary. Okay. Functionality.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;border-radius:8px;border-left-width:4px;border-left-style:solid;f=
+ont-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Hel=
+vetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-color=
+:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:=
+-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Aria=
+l,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-family:-=
+apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial=
+,sans-serif;color:rgb(59,130,246)">Jessica</span><span style=3D"font-size:1=
+4px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robot=
+o,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">4:16</span></div><div =
+style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacS=
+ystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(=
+71,85,105)">I will just note as we&#39;re going through this, the tracker h=
+as been updated for all of these columns. So they&#39;re all available.</di=
+v></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;bor=
+der-left-width:4px;border-left-style:solid;font-family:-apple-system,BlinkM=
+acSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;backgro=
+und-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D=
+"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"fo=
+nt-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont=
+,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,24=
+6)">Brian</span><span style=3D"font-size:14px;font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;colo=
+r:rgb(100,116,139)">4:22</span></div><div style=3D"font-size:16px;line-heig=
+ht:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Sure. Perfect. Okay. =
+Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-radiu=
+s:8px;border-left-width:4px;border-left-style:solid;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div=
+ style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMac=
+SystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span st=
+yle=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacS=
+ystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(=
+59,130,246)">Jakish</span><span style=3D"font-size:14px;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif;color:rgb(100,116,139)">4:24</span></div><div style=3D"font-size:16px=
+;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe U=
+I&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Okay. And t=
+hen. So sorry, keep going. So I guess to answer your question about what is=
+ available. Jakish, what I think is like quickly doable and Brian, stop me =
+when I, when I like go overboard is in the functional dashboards we can rep=
+l that like system readiness line with SIT readiness or sit, and uat, you k=
+now, progress or what have you. And we can use the SIT start column and the=
+ UAT start column. Finance has 10 apps and like 3 of 10 have started sit an=
+d then like you know, 3, 2 of 10 have started UAT. Right. Like I think that=
+ is probably what&#39;s like most available but in terms of. Yeah, so, so l=
+ike exactly. Right now it just says like three app. It&#39;s pulling like I=
+ think the overall like cutover status. Right. So instead of pulling cutove=
+r status, we can switch that to the UAT status and then, and then add a, ad=
+d a row underneath for sit and then like each function can kind of have tha=
+t like deep like that view on start.</div></div><div style=3D"margin-bottom=
+:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-styl=
+e:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-l=
+eft-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;fon=
+t-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helve=
+tica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font=
+-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvet=
+ica,Arial,sans-serif;color:rgb(59,130,246)">Brian</span><span style=3D"font=
+-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot=
+;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">5:59</span></di=
+v><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,Bl=
+inkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;col=
+or:rgb(71,85,105)">I think that&#39;s not going to help us. Preet and Jessi=
+ca chime in here because I think Jeff is very specific about what he&#39;s =
+asking from an SIT progress date. I think so for example, SIT is going to b=
+e in a system level. So I&#39;ve got, I&#39;m just going to throw out numbe=
+rs there. 50 systems that are going to, you know, 10 systems that are going=
+ to go through sit. So we want to track readiness for that. And then when i=
+t comes to UAT, I&#39;m touching those 10 systems plus another 40 more to c=
+omplete this UAT process. So I&#39;m gonna have to track what have I done o=
+n the 50 systems. But the process level is going to be I&#39;m executing on=
+ these processes so I want to be able to track how many, how many scenarios=
+ have I executed on these processes and where are they, have they been succ=
+essful, have they failed and have I completed. So that&#39;s Jeff is lookin=
+g for is.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-r=
+adius:8px;border-left-width:4px;border-left-style:solid;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)">=
+<div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,Blin=
+kMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><spa=
+n style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,Blink=
+MacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:=
+rgb(59,130,246)">Jakish</span><span style=3D"font-size:14px;font-family:-ap=
+ple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,s=
+ans-serif;color:rgb(100,116,139)">6:56</span></div><div style=3D"font-size:=
+16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">The das=
+hboard that we were talking about yesterday Brian, is that. Yeah, that one.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px=
+;border-left-width:4px;border-left-style:solid;font-family:-apple-system,Bl=
+inkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;bac=
+kground-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div styl=
+e=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=
+=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,=
+130,246)">Jessica</span><span style=3D"font-size:14px;font-family:-apple-sy=
+stem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-se=
+rif;color:rgb(100,116,139)">7:10</span></div><div style=3D"font-size:16px;l=
+ine-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">This is the o=
+ne that&#39;s in progress. We ran into an issue down here with the start da=
+tes and that&#39;s what we were working on fixing. I&#39;ve pinged that dev=
+eloper, I&#39;ve also pinged an onshore developer to see what we can do to =
+have this available before end of day.</div></div><div style=3D"margin-bott=
+om:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-st=
+yle:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;=
+,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border=
+-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;f=
+ont-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Hel=
+vetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif;color:rgb(59,130,246)">Brian</span><span style=3D"fo=
+nt-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">7:21</span></=
+div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,=
+BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;c=
+olor:rgb(71,85,105)">So this would be good I think from this template suppo=
+rt the other 290 non BRB. But for BRB at least sit it will show us a view a=
+nd then UAT from a system perspective, it&#39;ll show a view. I think the e=
+xecution piece of this is the scenarios. I&#39;ve run 50 scenarios, I&#39;m=
+ planning 20 more or you know, zero behind schedule, 22 on track and then n=
+ot started is 55 whether scenarios or test cases. Because that&#39;s what h=
+e wants to truly track and say where is execution on this? There&#39;s a po=
+rtion of the readiness. I think Brian, that this can be used for systems. I=
+ think there probably needs to be a separate one on execution of processes =
+to say I&#39;ve run these end to end processes, I&#39;ve run these function=
+al processes and here&#39;s the tracker on them. When you see those.</div><=
+/div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border=
+-left-width:4px;border-left-style:solid;font-family:-apple-system,BlinkMacS=
+ystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background=
+-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"di=
+splay:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&=
+quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-=
+weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&q=
+uot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)"=
+>Jakish</span><span style=3D"font-size:14px;font-family:-apple-system,Blink=
+MacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:=
+rgb(100,116,139)">8:22</span></div><div style=3D"font-size:16px;line-height=
+:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robo=
+to,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">I guess maybe we can go=
+ and this might be where you were going Brian, like in the tracker, where w=
+ere we capturing? Is that one number of test scripts?</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px=
+;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,=
+250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;marg=
+in-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;marg=
+in-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Prashant</span=
+><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont=
+,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,1=
+39)">8:43</span></div><div style=3D"font-size:16px;line-height:1.6;font-fam=
+ily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,=
+Arial,sans-serif;color:rgb(71,85,105)">Do we have the associated process? L=
+ike do we have a concrete mapping of. For each of the processes these are t=
+he systems that are involved and then these are the scenarios that have bee=
+n developed to test them. Are those three tables mapped together? Are you a=
+sking me pre Brian, like the Process 2 system do we have a view on? These a=
+re all of the processes and for each of the processes these are the systems=
+ that are involved.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;border-radius:8px;border-left-width:4px;border-left-style:solid;font-fami=
+ly:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,A=
+rial,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,=
+130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-s=
+ystem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-s=
+erif"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-sy=
+stem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-se=
+rif;color:rgb(59,130,246)">Jessica</span><span style=3D"font-size:14px;font=
+-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvet=
+ica,Arial,sans-serif;color:rgb(100,116,139)">9:16</span></div><div style=3D=
+"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,10=
+5)">I do not believe there&#39;s a linkage between the two but we can add t=
+hat essentially as a lookup onto the system title. But it&#39;s not Done at=
+ this point in time.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;border-radius:8px;border-left-width:4px;border-left-style:solid;font-fam=
+ily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,=
+Arial,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59=
+,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-s=
+ystem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-s=
+erif;color:rgb(59,130,246)">Prashant</span><span style=3D"font-size:14px;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif;color:rgb(100,116,139)">9:24</span></div><div style=
+=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystem=
+Font,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85=
+,105)">Yeah, so I think that that would be like, I think that that&#39;s th=
+e gap because then at that point. Rakesh, to your. Yeah, sorry, go ahead.</=
+div></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;b=
+order-left-width:4px;border-left-style:solid;font-family:-apple-system,Blin=
+kMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;backg=
+round-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=
+=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystem=
+Font,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D=
+"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemF=
+ont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130=
+,246)">Jakish</span><span style=3D"font-size:14px;font-family:-apple-system=
+,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;=
+color:rgb(100,116,139)">9:35</span></div><div style=3D"font-size:16px;line-=
+height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot=
+;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Sorry. I, maybe I=
+&#39;m like that.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+border-radius:8px;border-left-width:4px;border-left-style:solid;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,13=
+0,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-sys=
+tem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-ser=
+if"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f;color:rgb(59,130,246)">Brian</span><span style=3D"font-size:14px;font-fam=
+ily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,=
+Arial,sans-serif;color:rgb(100,116,139)">9:38</span></div><div style=3D"fon=
+t-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&q=
+uot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">=
+So I thought.</div></div><div style=3D"margin-bottom:16px;padding:16px;bord=
+er-radius:8px;border-left-width:4px;border-left-style:solid;font-family:-ap=
+ple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,s=
+ans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,24=
+6)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,=
+BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">=
+<span style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,B=
+linkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;co=
+lor:rgb(59,130,246)">Jakish</span><span style=3D"font-size:14px;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif;color:rgb(100,116,139)">9:42</span></div><div style=3D"font-s=
+ize:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">The=
+ data that was captured in the alignment sessions are around how many scrip=
+ts do you have and things like that. Is that fair?</div></div><div style=3D=
+"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;bo=
+rder-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Se=
+goe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250=
+,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-=
+bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot=
+;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-=
+right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;=
+,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Brian</span><span=
+ style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">9=
+:55</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif;color:rgb(71,85,105)">We have scripts but they&#39;re against ru=
+nning an auto to cache end to end scenario. Let&#39;s say I have 30 scripts=
+ to run against order to cache. But order to cache I would need to know the=
+y cater to these many supply chain processes and they&#39;re touching these=
+ seven systems.</div></div><div style=3D"margin-bottom:16px;padding:16px;bo=
+rder-radius:8px;border-left-width:4px;border-left-style:solid;font-family:-=
+apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial=
+,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,=
+246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-system=
+,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;=
+color:rgb(59,130,246)">Jakish</span><span style=3D"font-size:14px;font-fami=
+ly:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,A=
+rial,sans-serif;color:rgb(100,116,139)">10:20</span></div><div style=3D"fon=
+t-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&q=
+uot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">=
+Yeah, I guess. Why do we want to do that?</div></div><div style=3D"margin-b=
+ottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left=
+-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);bor=
+der-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8p=
+x;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px=
+;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,H=
+elvetica,Arial,sans-serif;color:rgb(59,130,246)">Brian</span><span style=3D=
+"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">10:29</spa=
+n></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-sys=
+tem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-ser=
+if;color:rgb(71,85,105)">Because that&#39;s the level of detail in the repo=
+rting that Jeff wants to know is the process details the system&#39;s link =
+can be linked to. Okay, I&#39;m touching the system so I can go back in and=
+ say it&#39;s in progress for uat, but I&#39;m running an end to end proces=
+s or functional process. But I truly then need to track how many processes =
+have I started today, how many are coming up for testing next week or tomor=
+row, how many have I completed? So let&#39;s say a process and they&#39;re,=
+ you know, let&#39;s say order to cash. And I&#39;ve, I&#39;ve got, you kno=
+w, maybe 10 sub processes underneath that. That consists of 100 scripts. So=
+ he wants to know, okay, I&#39;m in this order to cache. I&#39;ve started t=
+hese three of these 10 processes and 20 of these hundred scripts.</div></di=
+v><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-le=
+ft-width:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-co=
+lor:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"displ=
+ay:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quo=
+t;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-wei=
+ght:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Ja=
+kish</span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMac=
+SystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb=
+(100,116,139)">11:24</span></div><div style=3D"font-size:16px;line-height:1=
+.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto=
+,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">But you got the scripts f=
+rom. Sorry, you got the script from. So let&#39;s take or let&#39;s stick w=
+ith order to cash. So like the CX team would have provided a certain number=
+ of scenarios related to order entry. Correct. When they provide this, do t=
+hey say like here&#39;s like 50 scenarios for order entry or is it just lik=
+e I&#39;m CX and I have 100 scenarios?</div></div><div style=3D"margin-bott=
+om:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-st=
+yle:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;=
+,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border=
+-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;f=
+ont-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Hel=
+vetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif;color:rgb(59,130,246)">Brian</span><span style=3D"fo=
+nt-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">12:00</span><=
+/div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system=
+,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;=
+color:rgb(71,85,105)">It&#39;s the latter. Now for finance it&#39;s a littl=
+e bit different because they provided some 50 odd scenarios across certain =
+things that got translated into scripts. So we&#39;ll have to go back and s=
+ee what those scenario descript mapping is. But for supply chain they did n=
+ot provide scenarios as such. They looked at all the test scripts and they =
+verified that they match all the scenarios.</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-le=
+ft-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);b=
+order-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:=
+8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robot=
+o,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8=
+px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto=
+,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jakish</span><span style=
+=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">12:28</=
+span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif;color:rgb(71,85,105)">Okay, okay. I look, I think like that&#39;s, th=
+at&#39;s sort of like on the function in my mind a little bit. Right. Like =
+we, we, we can run a process to go through your scripts and tag them to pro=
+cesses, but I don&#39;t know what like incremental value it&#39;s going to =
+give you at this point.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;border-radius:8px;border-left-width:4px;border-left-style:solid;font-=
+family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helveti=
+ca,Arial,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb=
+(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-app=
+le-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sa=
+ns-serif"><span style=3D"font-weight:600;margin-right:8px;font-family:-appl=
+e-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,san=
+s-serif;color:rgb(59,130,246)">Brian</span><span style=3D"font-size:14px;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif;color:rgb(100,116,139)">12:56</span></div><div style=
+=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystem=
+Font,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85=
+,105)">But even if. What other way do you have? What other way do you have =
+to say there&#39;s progress in uat, isn&#39;t it?</div></div><div style=3D"=
+margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;bor=
+der-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,=
+252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-b=
+ottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;=
+,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-r=
+ight:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jakish</span><span=
+ style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">1=
+3:04</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-=
+apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial=
+,sans-serif;color:rgb(71,85,105)">Like, how many, how many scripts have you=
+ completed? How you know, how many issues have generated? You know, like, i=
+s it closed? Is it tested? Is it not tested? Right.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px=
+;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,=
+250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;marg=
+in-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;marg=
+in-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Brian</span><s=
+pan style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&q=
+uot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)=
+">13:16</span></div><div style=3D"font-size:16px;line-height:1.6;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif;color:rgb(71,85,105)">Like from a script execution, yes, but=
+ from leading it back to process, there isn&#39;t a linkage.</div></div><di=
+v style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-wi=
+dth:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:r=
+gb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:fl=
+ex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:6=
+00;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jeff</s=
+pan><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemF=
+ont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,11=
+6,139)">13:26</span></div><div style=3D"font-size:16px;line-height:1.6;font=
+-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvet=
+ica,Arial,sans-serif;color:rgb(71,85,105)">Can I just start?</div></div><di=
+v style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-wi=
+dth:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:r=
+gb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:fl=
+ex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:6=
+00;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Brian</=
+span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystem=
+Font,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,1=
+16,139)">13:27</span></div><div style=3D"font-size:16px;line-height:1.6;fon=
+t-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helve=
+tica,Arial,sans-serif;color:rgb(71,85,105)">Yeah, yeah.</div></div><div sty=
+le=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4=
+px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&qu=
+ot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(24=
+8,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;ma=
+rgin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;ma=
+rgin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jeff</span><=
+span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&=
+quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139=
+)">13:31</span></div><div style=3D"font-size:16px;line-height:1.6;font-fami=
+ly:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,A=
+rial,sans-serif;color:rgb(71,85,105)">So I only been quiet because I&#39;m =
+just letting. I&#39;m absorbing all this. The UAT scripts, are they done? I=
+ think we had a call out. They&#39;re supposed to be done today. Do you con=
+fidently know if they&#39;re done or not?</div></div><div style=3D"margin-b=
+ottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left=
+-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);bor=
+der-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8p=
+x;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px=
+;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,H=
+elvetica,Arial,sans-serif;color:rgb(59,130,246)">Brian</span><span style=3D=
+"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">13:50</spa=
+n></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-sys=
+tem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-ser=
+if;color:rgb(71,85,105)">Sorry, you&#39;re asking me? I think that those sc=
+ripts from our ERP and finance teams are. Yeah, what, what we&#39;re tracki=
+ng to the 21.</div></div><div style=3D"margin-bottom:16px;padding:16px;bord=
+er-radius:8px;border-left-width:4px;border-left-style:solid;font-family:-ap=
+ple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,s=
+ans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,24=
+6)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,=
+BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">=
+<span style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,B=
+linkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;co=
+lor:rgb(59,130,246)">Jeff</span><span style=3D"font-size:14px;font-family:-=
+apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial=
+,sans-serif;color:rgb(100,116,139)">14:00</span></div><div style=3D"font-si=
+ze:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;=
+Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">So w=
+e have scripts for each of the 21 identified system processes for our conve=
+rsation, Correct?</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+border-radius:8px;border-left-width:4px;border-left-style:solid;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,13=
+0,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-sys=
+tem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-ser=
+if"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f;color:rgb(59,130,246)">Prashant</span><span style=3D"font-size:14px;font-=
+family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helveti=
+ca,Arial,sans-serif;color:rgb(100,116,139)">14:06</span></div><div style=3D=
+"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,10=
+5)">Correct.</div></div><div style=3D"margin-bottom:16px;padding:16px;borde=
+r-radius:8px;border-left-width:4px;border-left-style:solid;font-family:-app=
+le-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sa=
+ns-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246=
+)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,B=
+linkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><=
+span style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,Bl=
+inkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;col=
+or:rgb(59,130,246)">Brian</span><span style=3D"font-size:14px;font-family:-=
+apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial=
+,sans-serif;color:rgb(100,116,139)">14:07</span></div><div style=3D"font-si=
+ze:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;=
+Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Yes.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px=
+;border-left-width:4px;border-left-style:solid;font-family:-apple-system,Bl=
+inkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;bac=
+kground-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div styl=
+e=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=
+=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,=
+130,246)">Prashant</span><span style=3D"font-size:14px;font-family:-apple-s=
+ystem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-s=
+erif;color:rgb(100,116,139)">14:10</span></div><div style=3D"font-size:16px=
+;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe U=
+I&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">We have. I =
+don&#39;t think so. Like, we have the finance systems. I haven&#39;t seen a=
+ny of the other script data from the other systems.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px=
+;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,=
+250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;marg=
+in-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;marg=
+in-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Brian</span><s=
+pan style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&q=
+uot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)=
+">14:20</span></div><div style=3D"font-size:16px;line-height:1.6;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif;color:rgb(71,85,105)">No, we have erp, we have from Bill or.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px=
+;border-left-width:4px;border-left-style:solid;font-family:-apple-system,Bl=
+inkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;bac=
+kground-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div styl=
+e=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=
+=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,=
+130,246)">Jessica</span><span style=3D"font-size:14px;font-family:-apple-sy=
+stem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-se=
+rif;color:rgb(100,116,139)">14:23</span></div><div style=3D"font-size:16px;=
+line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Sorry.</div>=
+</div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;borde=
+r-left-width:4px;border-left-style:solid;font-family:-apple-system,BlinkMac=
+SystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;backgroun=
+d-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"d=
+isplay:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,=
+&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font=
+-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&=
+quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)=
+">Brian</span><span style=3D"font-size:14px;font-family:-apple-system,Blink=
+MacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:=
+rgb(100,116,139)">14:26</span></div><div style=3D"font-size:16px;line-heigh=
+t:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Rob=
+oto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">We have from Bill and =
+sri. There&#39;s one that he said is getting finalized. Right. So that&#39;=
+s the other one. But everything else is there.</div></div><div style=3D"mar=
+gin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border=
+-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe =
+UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252=
+);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bott=
+om:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-righ=
+t:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Rob=
+oto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Prashant</span><span =
+style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;=
+Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">14=
+:35</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif;color:rgb(71,85,105)">I&#39;ve seen Shrinibases, I haven&#39;t s=
+een Bills.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-=
+radius:8px;border-left-width:4px;border-left-style:solid;font-family:-apple=
+-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans=
+-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"=
+><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><sp=
+an style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,Blin=
+kMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color=
+:rgb(59,130,246)">Jeff</span><span style=3D"font-size:14px;font-family:-app=
+le-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sa=
+ns-serif;color:rgb(100,116,139)">14:39</span></div><div style=3D"font-size:=
+16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Okay, s=
+o for our conversation, let&#39;s pretend they&#39;re done. So we have a fi=
+le per process that they need to go through and the scenarios are identifie=
+d as steps within their UAT scripts, correct?</div></div><div style=3D"marg=
+in-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-=
+left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe U=
+I&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252)=
+;border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-botto=
+m:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Rob=
+oto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right=
+:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robo=
+to,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Brian</span><span styl=
+e=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">14:52<=
+/span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple=
+-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans=
+-serif;color:rgb(71,85,105)">Yes.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;border-radius:8px;border-left-width:4px;border-left-style:s=
+olid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robo=
+to,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left=
+-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-f=
+amily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetic=
+a,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-fa=
+mily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica=
+,Arial,sans-serif;color:rgb(59,130,246)">Jeff</span><span style=3D"font-siz=
+e:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">14:54</span></div><=
+div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,Blink=
+MacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:=
+rgb(71,85,105)">So picking on order to cache. Order to cache in that script=
+, even if it touches four or five act, you should have 30, 30 lines and at =
+some point in there they&#39;ll touch, you know, first piece, second piece,=
+ third piece. We may not have clear visibility to that, but they should kno=
+w that they, the end user should know when, like I need to go into, you kno=
+w, this system and do this, this system and do that. Meaning you and me may=
+ not have that detail, but the person who actually physically does it shoul=
+d theoretically know what tool they&#39;re going into.</div></div><div styl=
+e=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4p=
+x;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quo=
+t;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248=
+,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;mar=
+gin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;mar=
+gin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Brian</span><=
+span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&=
+quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139=
+)">15:39</span></div><div style=3D"font-size:16px;line-height:1.6;font-fami=
+ly:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,A=
+rial,sans-serif;color:rgb(71,85,105)">Yes.</div></div><div style=3D"margin-=
+bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-lef=
+t-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);bo=
+rder-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8=
+px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto=
+,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8p=
+x;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jeff</span><span style=3D=
+"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">15:41</spa=
+n></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-sys=
+tem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-ser=
+if;color:rgb(71,85,105)">So here&#39;s where mine&#39;s going with this and=
+ I think it&#39;s kind of aligning with where PRI was going with this. Of w=
+e can look at the apps for readiness, but I&#39;m thinking for a visual for=
+ like a burn down, we identify. Hey, order to cache has total number of. I =
+don&#39;t know if it&#39;s. We want to call it scenarios, but however many =
+lines of testing we have. So if each like I don&#39;t know if it&#39;s a, y=
+ou know.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-ra=
+dius:8px;border-left-width:4px;border-left-style:solid;font-family:-apple-s=
+ystem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-s=
+erif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><=
+div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,Blink=
+MacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span=
+ style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkM=
+acSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:r=
+gb(59,130,246)">Brian</span><span style=3D"font-size:14px;font-family:-appl=
+e-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,san=
+s-serif;color:rgb(100,116,139)">16:13</span></div><div style=3D"font-size:1=
+6px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Yeah, le=
+t&#39;s say scripts. Let&#39;s say scripts, right? Let&#39;s say 30 scripts=
+ for auto cache as end to end has 30 scripts.</div></div><div style=3D"marg=
+in-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-=
+left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe U=
+I&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252)=
+;border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-botto=
+m:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Rob=
+oto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right=
+:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robo=
+to,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jeff</span><span style=
+=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">16:19</=
+span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif;color:rgb(71,85,105)">Yes. I think it&#39;s a matter of how many have=
+ been tested versus have been. So order to cash it&#39;s going to be 30. An=
+d let&#39;s say the team says we&#39;re going to do 1 through 5 on Monday, =
+6 to 10 on Tuesday, 11 to 15 Wednesday, you know, 16 to 20 Thursday and the=
+n 21 to 30 on Friday. It&#39;s, you know, I think that&#39;s our burn down.=
+ And then we track to that se do of we work through with the bill and Srini=
+vas to get that compiled and then figure out if it makes sense to either pu=
+t that in here or just put it into a dashboard and say each day we&#39;re g=
+oing to have 10, 20, 30 executed and then follow them up at the end of the =
+day and say hey, we expected to be 10 executed today and we met that with 1=
+0 or we didn&#39;t.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;border-radius:8px;border-left-width:4px;border-left-style:solid;font-fami=
+ly:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,A=
+rial,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,=
+130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-s=
+ystem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-s=
+erif"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-sy=
+stem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-se=
+rif;color:rgb(59,130,246)">Brian</span><span style=3D"font-size:14px;font-f=
+amily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetic=
+a,Arial,sans-serif;color:rgb(100,116,139)">17:19</span></div><div style=3D"=
+font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont=
+,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105=
+)">I think that&#39;s probably okay. So then I&#39;m following you before I=
+ comment on it. Prashant, you had a question?</div></div><div style=3D"marg=
+in-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-=
+left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe U=
+I&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252)=
+;border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-botto=
+m:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Rob=
+oto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right=
+:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robo=
+to,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Rakesh</span><span sty=
+le=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">17:31=
+</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-appl=
+e-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,san=
+s-serif;color:rgb(71,85,105)">It&#39;s not a question. And for these folks,=
+ I got pulled in a little bit late into this call. I will make this point a=
+nd I know Rakesh, we&#39;ve spoken about a couple of times, the moment we s=
+tart mixing process with system, we will get into a permutation combination=
+ that will quickly go out of hand. So I am actually in alignment with what =
+pre is saying. We first take a system lens of saying readiness for UAT and =
+then each function just gives us a set of scripts that they will run. Once =
+the systems that they require to do the UAT are ready. The moment we go and=
+ say order to cache, then Finance will have 20 scripts that will potentiall=
+y overlap with supply chain. I don&#39;t know, like it will then become a m=
+uddle that we&#39;ll not be able to like track one to one through any track=
+er. I think we leave it at a script level and have a list of processes that=
+ will get tested through the script. Shouldn&#39;t go and map process to sc=
+ript, if you know what I mean. Because the system is one set of variables, =
+process is one set of variables, script is another set of variables. If at =
+this point we are able to categorically say we have all of these three and =
+very clearly mapped for brb, then it&#39;s fine, then we can build this out=
+. But I don&#39;t think that&#39;s the case. What we do know for sure is th=
+at the system readiness dates are A, B, C and D test. Script readiness date=
+s are A, B and C and the list of processes that will be tested. Overall, I =
+think we just do a burnout of the total scripts once the systems are ready =
+and then say that the following processes have been tested across these num=
+ber of scripts. We should not go and map those to that level because we wil=
+l then kind of be execution reporting nightmare.</div></div><div style=3D"m=
+argin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;bord=
+er-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,2=
+52);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bo=
+ttom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-ri=
+ght:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Brian</span><span s=
+tyle=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;S=
+egoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">19:=
+31</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-ap=
+ple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,s=
+ans-serif;color:rgb(71,85,105)">So who is we? And when you say so there&#39=
+;s one, there&#39;s two sides to this. One, what we think and two, what Jef=
+f wants. So when you say we should not be reporting and then when you say t=
+otal scripts executed or processes executed, what are you meaning that agai=
+nst. Against what? You&#39;re going to track processes executed, what are y=
+ou tracking them? Because you mentioned scripts executed, which we have, bu=
+t finance supply chain has an order management process, logistics process. =
+So all of that is woven into the end to end order to cache 30 scripts.</div=
+></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;bord=
+er-left-width:4px;border-left-style:solid;font-family:-apple-system,BlinkMa=
+cSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;backgrou=
+nd-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"=
+display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont=
+,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"fon=
+t-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,=
+&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246=
+)">Rakesh</span><span style=3D"font-size:14px;font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;colo=
+r:rgb(100,116,139)">20:14</span></div><div style=3D"font-size:16px;line-hei=
+ght:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">That&#39;s it. My po=
+int, right? The 30 scripts should test a list of processes. That&#39;s all =
+we should go into. And then as long as those 30 scripts are being tested, w=
+e are able to mark VRE readiness. Yes. No, right. We&#39;re not going and s=
+aying order to cache test it and then have like a daily status of it. That =
+was where we kind of get a little bit confused.</div></div><div style=3D"ma=
+rgin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;borde=
+r-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,25=
+2);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bot=
+tom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-rig=
+ht:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jakish</span><span s=
+tyle=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;S=
+egoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">20:=
+44</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-ap=
+ple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,s=
+ans-serif;color:rgb(71,85,105)">I actually think if your scripts have metad=
+ata to them like function end to end process, what have you, you can show a=
+ view that says ISE has 30 scripts and Finance has 12 and whatever else and=
+ each function is progressing at different paces. And you can show that vie=
+w if you have your scripts tagged to. Or cash report to report, procure to =
+pay. You can also kind of show that view, right? Like order cash is progres=
+sing well. Procure to pay is not what have you. Where I think you&#39;re go=
+ing to get in trouble is if you map it back to the functions like functiona=
+l stand up of the process. And why I say that is like it&#39;s not like a f=
+ull science exercise here. There&#39;s like nuance. If you take order, orde=
+r to cash, for example, right. Order management from an ISC perspective an =
+entirely move as is function. So like from their perspective like their pro=
+cesses and people are not changing. So they, they&#39;ve gone and flagged i=
+t as complete. Right? Like so like the, the, the, the people process aspect=
+ of it is like tracked very much from like a people perspective. And then t=
+he systems like end to end aspect to speak is tracking something like, like=
+ a test of a Process that might not even be changing, you know what I mean?=
+ From like the two, I think is like more nuanced than just simply going and=
+ tagging processes to systems or like tagging processes to. Do you know wha=
+t I mean? So it&#39;s almost like if you have a list of processes and funct=
+ions or sorry, if you have a list of scripts that functions have provided y=
+ou and functions are telling you like we need to execute all of these thing=
+s in order to test the ERP from our perspective or from an order to cache p=
+erspective.</div></div><div style=3D"margin-bottom:16px;padding:16px;border=
+-radius:8px;border-left-width:4px;border-left-style:solid;font-family:-appl=
+e-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,san=
+s-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)=
+"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,Bl=
+inkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><s=
+pan style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;colo=
+r:rgb(59,130,246)">Brian</span><span style=3D"font-size:14px;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif;color:rgb(100,116,139)">22:43</span></div><div style=3D"font-siz=
+e:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;S=
+egoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Right=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8p=
+x;border-left-width:4px;border-left-style:solid;font-family:-apple-system,B=
+linkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;ba=
+ckground-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div sty=
+le=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=
+=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,=
+130,246)">Jakish</span><span style=3D"font-size:14px;font-family:-apple-sys=
+tem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-ser=
+if;color:rgb(100,116,139)">22:43</span></div><div style=3D"font-size:16px;l=
+ine-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Like I think =
+you take that and you sort of map that.</div></div><div style=3D"margin-bot=
+tom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-s=
+tyle:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot=
+;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);borde=
+r-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;f=
+ont-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Hel=
+vetica,Arial,sans-serif;color:rgb(59,130,246)">Brian</span><span style=3D"f=
+ont-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">22:52</span>=
+</div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+;color:rgb(71,85,105)">Okay, so let&#39;s do this then. So I think I&#39;m =
+following you and I&#39;m aligned to what Jessica is saying. So what we wil=
+l give you and I don&#39;t know if it&#39;s ready for tomorrow, but we have=
+ it. I don&#39;t know if it&#39;ll be doable for you tomorrow. We can certa=
+inly do a XLBI or something for tomorrow at least. What we will do then is =
+take the 20 odd processes within, I say processes, but sub processes or fol=
+k areas that it has within ERP and supply chain, supply chain, er, finance =
+that cater to all these four end to end processes and functional processes.=
+ We know the number of scripts against each of those. We also have a UAT te=
+st calendar that&#39;s over two weeks, but we&#39;re getting granular so we=
+ will take that and do that as a burn down. So you know, I&#39;ve got 200 s=
+cripts in total to execute across, let&#39;s say seven, let&#39;s say 21 fo=
+cus areas and those 21 focus areas cover all the supply chain function fina=
+nce processes, end to end, functional etc. Don&#39;t worry about looking th=
+em back. But we can certainly say I&#39;ve got 200 scripts, I&#39;ve got 21=
+ areas to test and how am I progressing against that 21 area? Because when =
+we calendar in detail over the two weeks of UAT, we&#39;re going to have a =
+day by day calendar. Right. I&#39;m going to run functional area test one f=
+or four days. I&#39;m going to, you know, it&#39;ll be the first week Monda=
+y to Friday, you know, functional area number 15 will just be on a Friday, =
+a start and an end on a Friday. So I think what we can give you then Brian =
+is and maybe this is overkill to do it on Capital Edge, but maybe it&#39;s =
+just an Excel tracker that we maintain every day to Jess point, Jessica&#39=
+;s point rather that we just maintain that and say here&#39;s what we&#39;r=
+e tracking to Script execution, we were expected to start 10 scripts. We st=
+arted eight. Two are delayed by the way. The other four have been completed=
+, et cetera. So it&#39;s probably the best way to show him execution progre=
+ss at this point.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+border-radius:8px;border-left-width:4px;border-left-style:solid;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,13=
+0,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-sys=
+tem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-ser=
+if"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f;color:rgb(59,130,246)">Prashant</span><span style=3D"font-size:14px;font-=
+family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helveti=
+ca,Arial,sans-serif;color:rgb(100,116,139)">24:57</span></div><div style=3D=
+"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,10=
+5)">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-r=
+adius:8px;border-left-width:4px;border-left-style:solid;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)">=
+<div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,Blin=
+kMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><spa=
+n style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,Blink=
+MacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:=
+rgb(59,130,246)">Brian</span><span style=3D"font-size:14px;font-family:-app=
+le-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sa=
+ns-serif;color:rgb(100,116,139)">25:00</span></div><div style=3D"font-size:=
+16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">So is t=
+hat doable then from a tracking perspective here, Brian, if we send you tha=
+t, where would that show up here as a report or.</div></div><div style=3D"m=
+argin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;bord=
+er-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,2=
+52);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bo=
+ttom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-ri=
+ght:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jessica</span><span=
+ style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">2=
+5:10</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-=
+apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial=
+,sans-serif;color:rgb(71,85,105)">Yep. So we need to develop the report. Th=
+e other thing that I&#39;m hearing there, so what we&#39;re talking about, =
+number of UAT scripts versus total versus what&#39;s ran. Right now, all we=
+ have in here is the number of scripts. We need to add a tracking point as =
+to how many are ran or what when they&#39;re being ran. Unless we&#39;re go=
+ing to do that on a line item level and then outside of that it&#39;s compl=
+etely trackable and we can customize the bi.</div></div><div style=3D"margi=
+n-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-l=
+eft-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);=
+border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom=
+:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robo=
+to,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:=
+8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robot=
+o,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Brian</span><span style=
+=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">25:37</=
+span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif;color:rgb(71,85,105)">It won&#39;t be at a system level. It&#39;ll be=
+ a separate line item that says 21 sub functional areas. So you may have to=
+ create another tab.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;border-radius:8px;border-left-width:4px;border-left-style:solid;font-fam=
+ily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,=
+Arial,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59=
+,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-s=
+ystem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-s=
+erif;color:rgb(59,130,246)">Jakish</span><span style=3D"font-size:14px;font=
+-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvet=
+ica,Arial,sans-serif;color:rgb(100,116,139)">25:47</span></div><div style=
+=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystem=
+Font,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85=
+,105)">Another tracker. Yeah, so another tracker with all the scripts and a=
+ status against each. Is that.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;border-radius:8px;border-left-width:4px;border-left-style:soli=
+d;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-co=
+lor:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-fami=
+ly:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,A=
+rial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif;color:rgb(59,130,246)">Brian</span><span style=3D"font-size:=
+14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robo=
+to,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">25:53</span></div><di=
+v style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMa=
+cSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rg=
+b(71,85,105)">Yeah, so we will send you that. We will, yeah, sorry, go ahea=
+d, Brian.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-r=
+adius:8px;border-left-width:4px;border-left-style:solid;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)">=
+<div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,Blin=
+kMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><spa=
+n style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,Blink=
+MacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:=
+rgb(59,130,246)">Jessica</span><span style=3D"font-size:14px;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif;color:rgb(100,116,139)">25:59</span></div><div style=3D"font-siz=
+e:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;S=
+egoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Yeah,=
+ if we have that, send it to me and I&#39;ll just insert a new tab here tha=
+t&#39;s just called scripts.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;border-radius:8px;border-left-width:4px;border-left-style:solid;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-colo=
+r:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-family:=
+-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Aria=
+l,sans-serif;color:rgb(59,130,246)">Brian</span><span style=3D"font-size:14=
+px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto=
+,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">26:05</span></div><div =
+style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacS=
+ystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(=
+71,85,105)">And then we can track, maybe call it execute script execution t=
+racker or something.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;border-radius:8px;border-left-width:4px;border-left-style:solid;font-fam=
+ily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,=
+Arial,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59=
+,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-s=
+ystem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-s=
+erif;color:rgb(59,130,246)">Jessica</span><span style=3D"font-size:14px;fon=
+t-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helve=
+tica,Arial,sans-serif;color:rgb(100,116,139)">26:10</span></div><div style=
+=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystem=
+Font,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85=
+,105)">Yep.</div></div><div style=3D"margin-bottom:16px;padding:16px;border=
+-radius:8px;border-left-width:4px;border-left-style:solid;font-family:-appl=
+e-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,san=
+s-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)=
+"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,Bl=
+inkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><s=
+pan style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;colo=
+r:rgb(59,130,246)">Brian</span><span style=3D"font-size:14px;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif;color:rgb(100,116,139)">26:11</span></div><div style=3D"font-siz=
+e:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;S=
+egoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">And t=
+hat will be a true burn down of. Yeah, I&#39;m planned 15, I&#39;ve execute=
+d start at 10, three are delayed, two are completed, et cetera. So Sakina, =
+then I&#39;ll work with you for tomorrow&#39;s conversation with Jeff at le=
+ast to mock up what we, what we have. And then in the meantime we can send =
+you the mock up of that, Brian, so that you can replicate it here moving fo=
+rward.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-radi=
+us:8px;border-left-width:4px;border-left-style:solid;font-family:-apple-sys=
+tem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-ser=
+if;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><di=
+v style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMa=
+cSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span s=
+tyle=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMac=
+SystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb=
+(59,130,246)">Jakish</span><span style=3D"font-size:14px;font-family:-apple=
+-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans=
+-serif;color:rgb(100,116,139)">26:45</span></div><div style=3D"font-size:16=
+px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">So I gues=
+s like realistically for tomorrow, are we saying like we should just try to=
+ like mock it up on Power BI or something like that?</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px=
+;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,=
+250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;marg=
+in-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;marg=
+in-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Brian</span><s=
+pan style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&q=
+uot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)=
+">27:00</span></div><div style=3D"font-size:16px;line-height:1.6;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif;color:rgb(71,85,105)">Yeah, because I don&#39;t think we hav=
+e time to. Yeah, yeah, for Capital Edge here today. We&#39;re reviewing wit=
+h Sukai at 7 today and it&#39;s got to be final by then. So. Yeah, for tomo=
+rrow and today, I think maybe just a mock up in Power BI similar to what Ma=
+c was sharing and what you were sharing, Brian, Similar to that view, we ma=
+y need some mockup that we track and we say, yeah, that&#39;s more executio=
+n readiness and then execution. And then all of them would be zero as long =
+as the metrics are there, the attributes and the fields are there. Then for=
+ the readiness, obviously you would need to take The BRV tracker file that =
+Max sent you and redo that again. Maybe for tomorrow we do a Power BI on to=
+p just to say those highlight. Where are we with script readiness? Where ar=
+e we with people identification? Where are we with environment?</div></div>=
+<div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left=
+-width:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystem=
+Font,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-colo=
+r:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display=
+:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;=
+Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weigh=
+t:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;S=
+egoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jaki=
+sh</span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSy=
+stemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(1=
+00,116,139)">27:59</span></div><div style=3D"font-size:16px;line-height:1.6=
+;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,H=
+elvetica,Arial,sans-serif;color:rgb(71,85,105)">Isn&#39;t there a way to do=
+ a quick Power BI report in custom analytics? Probably.</div></div><div sty=
+le=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4=
+px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&qu=
+ot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(24=
+8,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;ma=
+rgin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;ma=
+rgin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jessica</spa=
+n><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,=
+139)">28:09</span></div><div style=3D"font-size:16px;line-height:1.6;font-f=
+amily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetic=
+a,Arial,sans-serif;color:rgb(71,85,105)">There is. Don&#39;t think we have =
+custom analytics access for most of the people on the call, but we can defi=
+nitely explore that. But I don&#39;t know if that&#39;ll be the right way j=
+ust given turnaround time.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;border-radius:8px;border-left-width:4px;border-left-style:solid;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-color:=
+rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-=
+apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial=
+,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif;color:rgb(59,130,246)">Jakish</span><span style=3D"font-size:14p=
+x;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif;color:rgb(100,116,139)">28:21</span></div><div s=
+tyle=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSy=
+stemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(7=
+1,85,105)">Okay. Okay. Yeah. Okay. It&#39;s too bad Jen&#39;s on a plane. S=
+he tends to like, whip out these, like, Power BI dashboards.</div></div><di=
+v style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-wi=
+dth:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:r=
+gb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:fl=
+ex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:6=
+00;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Brian</=
+span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystem=
+Font,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,1=
+16,139)">28:37</span></div><div style=3D"font-size:16px;line-height:1.6;fon=
+t-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helve=
+tica,Arial,sans-serif;color:rgb(71,85,105)">So let&#39;s do that. If we can=
+ do it with you, Brian, we&#39;ll send you that. But I think we&#39;ll have=
+ to see what we can get in ahead of today&#39;s call. And I think what we&#=
+39;ll do is send that data to you once you know, the whole data model so th=
+at it could be built in here. And maybe you want to create on this, Brian. =
+Probably a couple of tabs. One is the BRV readiness or the BRV tracker, and=
+ then the other is the non BRV tracker just to show some distinct distincti=
+on. And I think what you had before in terms of burn down and cut over, tha=
+t would be more applicable for brv. Sorry, non brv, because those would hav=
+e, you know, the dates you have for sit start, etc. So maybe there&#39;s a =
+flag you can even run to say brv, non brv. Great. Okay. Now there are some =
+duplicates, so we&#39;ll have to see how to address that.</div></div><div s=
+tyle=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width=
+:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&=
+quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(=
+248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;=
+margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe =
+UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;=
+margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe U=
+I&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jakish</sp=
+an><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFo=
+nt,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116=
+,139)">29:34</span></div><div style=3D"font-size:16px;line-height:1.6;font-=
+family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helveti=
+ca,Arial,sans-serif;color:rgb(71,85,105)">But in the file there are duplica=
+tes.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-radius=
+:8px;border-left-width:4px;border-left-style:solid;font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div =
+style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacS=
+ystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span sty=
+le=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSy=
+stemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(5=
+9,130,246)">Brian</span><span style=3D"font-size:14px;font-family:-apple-sy=
+stem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-se=
+rif;color:rgb(100,116,139)">29:37</span></div><div style=3D"font-size:16px;=
+line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">You said no.=
+ For example, brv, er, SAP is used for brv, but SAP is also a non brv becau=
+se it&#39;s. There&#39;s work to get ready for day one, so it&#39;s, it&#39=
+;s dual activities. So. So it won&#39;t be me. See here. Okay, so we just h=
+ave to make provision for that. Maybe it&#39;s another line entry that says=
+, you know, SAP for non brv. SAP for brv. But we&#39;ll get through that. W=
+orst case, we may have to develop two, two, two tab tabs. But at least we&#=
+39;ll send you, you know, you have the data from Mac for both. For this, fo=
+r the brv. We&#39;ll, we&#39;ll, you know, we&#39;ll mock up something and =
+then we&#39;ll send to you. I think we&#39;ll do some BI today for the, for=
+ the. To get over Jeff&#39;s conversation and then we&#39;ll send it to you=
+ and the team to. To have it in Capital Edge and tracking there.</div></div=
+><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-lef=
+t-width:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-col=
+or:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"displa=
+y:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weig=
+ht:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;=
+Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jak=
+ish</span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacS=
+ystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(=
+100,116,139)">30:31</span></div><div style=3D"font-size:16px;line-height:1.=
+6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Okay?</div></div><div styl=
+e=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4p=
+x;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quo=
+t;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248=
+,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;mar=
+gin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;mar=
+gin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Brian</span><=
+span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&=
+quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139=
+)">30:31</span></div><div style=3D"font-size:16px;line-height:1.6;font-fami=
+ly:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,A=
+rial,sans-serif;color:rgb(71,85,105)">Right.</div></div><div style=3D"margi=
+n-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-l=
+eft-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);=
+border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom=
+:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robo=
+to,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:=
+8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robot=
+o,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jessica</span><span sty=
+le=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">30:32=
+</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-appl=
+e-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,san=
+s-serif;color:rgb(71,85,105)">Sounds good.</div></div><div style=3D"margin-=
+bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-lef=
+t-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);bo=
+rder-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8=
+px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto=
+,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8p=
+x;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Brian</span><span style=
+=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">30:33</=
+span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif;color:rgb(71,85,105)">All righty. Thank you both. Thanks, all.</div><=
+/div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border=
+-left-width:4px;border-left-style:solid;font-family:-apple-system,BlinkMacS=
+ystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background=
+-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"di=
+splay:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&=
+quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-=
+weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&q=
+uot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)"=
+>Jessica</span><span style=3D"font-size:14px;font-family:-apple-system,Blin=
+kMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color=
+:rgb(100,116,139)">30:36</span></div><div style=3D"font-size:16px;line-heig=
+ht:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Thanks, all.</div></d=
+iv><div style=3D"margin-bottom:0px;padding:16px;border-radius:8px;border-le=
+ft-width:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-co=
+lor:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"displ=
+ay:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quo=
+t;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-wei=
+ght:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Br=
+ian</span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacS=
+ystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(=
+100,116,139)">30:38</span></div><div style=3D"font-size:16px;line-height:1.=
+6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Thank you.</div></div></di=
+v><div style=3D"margin-top:36px;text-align:center;font-size:14px;padding:20=
+px;border-top-width:1px;border-top-style:solid;font-family:-apple-system,Bl=
+inkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;bor=
+der-top-color:rgb(226,232,240);color:rgb(100,116,139)"><p style=3D"margin:0=
+px 0px 8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot=
+;,Roboto,Helvetica,Arial,sans-serif">Captured with Wave AI Note Taker</p><p=
+ style=3D"margin:0px;font-size:12px;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">Your AI-power=
+ed companion</p></div></div></div></div></div></div>
+
+--0000000000004d228d0637f6aaf2--

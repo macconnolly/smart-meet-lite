@@ -1,0 +1,2111 @@
+MIME-Version: 1.0
+Date: Fri, 13 Jun 2025 13:21:58 -0400
+References: <010001975a61df71-d4a31528-80fa-44cf-a5ed-9e3f4a952ea2-000000@email.amazonses.com>
+In-Reply-To: <010001975a61df71-d4a31528-80fa-44cf-a5ed-9e3f4a952ea2-000000@email.amazonses.com>
+Message-ID: <CAOat4ZCYjeb9n6Qs75kP-KiUzsFFo6dHqB1Ebv7c2DTkjWNGWA@mail.gmail.com>
+Subject: Fwd: UAT Readiness Alignment for Supply Chain Cutovers
+From: Mac Connolly <mac@macconnolly.com>
+To: save@mem.ai
+Content-Type: multipart/alternative; boundary="000000000000bcfbf506377748ed"
+
+--000000000000bcfbf506377748ed
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+---------- Forwarded message ---------
+From: Wave AI Note Taker <summary@email.wave.co>
+Date: Tue, 10 Jun 2025 at 11:07
+Subject: UAT Readiness Alignment for Supply Chain Cutovers
+To: <mac@macconnolly.com>
+
+
+[image: Wave AI Logo]UAT Readiness Alignment for Supply Chain Cutovers
+=E2=9C=A8 View Your Session on the Web
+<https://app.wave.co/sessions/1BBCFCD6-4D11-4B4B-AD6C-C0335575A0FA?lastLogi=
+nParam=3Dgoogle>
+=F0=9F=93=9DSummary
+Meeting Summary =E2=80=93 June 10, 2025Attendees and Context
+
+   - Attended by IT Workstream leads, business and supply chain
+   stakeholders (including representatives from ERP, CCEX, Data Analytics,
+   Supply Chain IT, Security, Planning, Logistics, Procurement, Operations,
+   and factory/site-level teams).
+   - Noted contributors: Rakesh (facilitator), Sriram, Srinivas, Bill,
+   Stephen, Brian, Chase, Pramod, Jerry, and others.
+   - Purpose: Detailed working and alignment session on User Acceptance
+   Testing (UAT) readiness, particularly for supply chain functions as part=
+ of
+   major systems transformation (BRV, UAT, and Day 1 cutovers =E2=80=93 inc=
+luding 8.1
+   and 11.1 releases). Several references to previous UAT kickoff sessions
+   (April-May 2025).
+
+------------------------------
+Main Topics Discussed1. *Session Objectives and Background*
+
+   - Alignment between IT and business functions for UAT readiness.
+   - Effort to confirm scope, systems impacted, owners, test periods, and
+   specific test requirements/system dispositions (e.g., Build Back, Move
+   As-Is, TSA).
+   - Context: 300+ systems in total, with a short-listed 40 systems
+   identified as critical for supply chain ("ISC") scope.
+
+2. *System Inventory Review*
+
+   - Presentation and walkthrough of an Excel/table detailing the critical
+   systems for ISC impacted by BRV/UAT.
+   - Each system entry includes: System name, IT workstream lead, Business
+   UAT lead, type of testing required, and disposition.
+   - Discussion of methodology: Process owners in Logistics, CX,
+   Procurement, Planning contributed top critical systems. Major focus on
+   systems requiring =E2=80=9Cfull UAT=E2=80=9D versus =E2=80=9Caccess vali=
+dation only.=E2=80=9D
+   - Clarification and review requested from functional and IT leads:
+   Verification of accuracy, duplicates, missing systems, and responsible
+   contacts.
+   - Agreed process for edits: Suggestions and additions (e.g., from site
+   users like Chase) to be relayed and incorporated.
+
+3. *System Dispositions and Testing Scope*
+
+   - =E2=80=9CColumn F=E2=80=9D is critical: Determines whether =E2=80=9Cfu=
+ll UAT=E2=80=9D versus minimal
+   validation needed.
+   - Discussion about two =E2=80=9CCollections=E2=80=9D line items and clar=
+ification of
+   scope (process- versus system-based).
+   - Addressed system-specific nuances: (e.g., Banking Portals, HighRadius,
+   JIRA usage in collections/reconciliation).
+   - Challenges with tool ownership across categories (ERP vs. Planning
+   tools, such as Optavision).
+   - Need to confirm disposition and testing approach for legacy and Day 1
+   portals (e.g., SUS Portal, Ariba) and clarify integration touchpoints
+   (Optavision, APO, etc.).
+   - Emphasis: Each system to be validated with current owners and business
+   leads.
+
+4. *Business and Test Window Availability*
+
+   - Key dates:
+      - UAT window proposed: July 7=E2=80=9311, 2025.
+      - Reference to other test and close windows: June 23=E2=80=9330, 2025=
+.
+   - Need for clarity on business testers=E2=80=99 availability during thes=
+e
+   periods, particularly by process (AP, Collections, Credit Mgmt, Order Mg=
+mt,
+   etc.).
+   - Decision: Each UAT sub-function lead will confirm business user
+   availability. Direct offline follow-ups encouraged between IT and busine=
+ss
+   contacts.
+
+5. *Gaps and Follow-Up Items Identified*
+
+   - Review uncovered possible missing/duplicate systems in the inventory
+   sheet.
+   - Notable missing site-level or operational systems, especially as
+   flagged by site leads (e.g., Chase, Brian). Action required to ensure
+   completeness.
+   - Clarification needed for systems such as MES, and those integrated
+   with factory ERPs (e.g., SAP MES integration for specific plants).
+   - Process for functional and site teams to review and flag any
+   missing/incorrect system entries.
+   - Discussion around need for a column to distinguish BRV (8.1 go-live)
+   scope versus 10/27 (Day 1) go-live scope.
+
+6. *Testing Logistics and Environment Readiness*
+
+   - Review of test environments (e.g., CIQ, CIX) and their refresh cycles.
+   - Noted that integration between environments (e.g., CIP 900 and CAP
+   900) may not fully simulate production; workarounds expected for end-to-=
+end
+   testing.
+   - Data readiness: Recent refreshes of test environments from production
+   ensure accuracy.
+   - Automated test script development: ERP team targeting mid-June
+   completion of automated scripts to be circulated among business teams fo=
+r
+   review.
+
+7. *Test Scenarios, Scripts, and Roles*
+
+   - Different workstreams at various stages of translating scenarios into
+   test scripts.
+   - ERP: Automated test scripts being developed, aiming for efficiency and
+   scenario coverage.
+   - Coordination required for script validation between IT and business,
+   as well as appropriate sign-offs.
+   - Discussion of tool usage, logistics for loading scripts, and role
+   assignments (validation, sign-off, etc.).
+
+8. *Third Party, TSA, and Day 1 Systems*
+
+   - Clarity sought on treatment of TSAs =E2=80=93 majority not requiring i=
+n-depth
+   testing unless there=E2=80=99s minor configuration change; some minor va=
+lidation
+   (SSO, access/logical separation) still needed.
+   - Specific examples: Ariba, Windshuttle, IBM Sterling (EDI),
+   Hybris/Magento/Salesforce (CX platforms) =E2=80=93 most unchanged; minim=
+al =E2=80=9Csmoke
+   testing=E2=80=9D requested.
+   - Follow-up for site/factory-level applications tightly integrated but
+   remaining =E2=80=9Cas-is=E2=80=9D for Day 1.
+
+9. *Environment, Access, and Security*
+
+   - Security team to support provisioning of access for testers (including
+   remote, device, connectivity needs).
+   - Business UAT leads and IT workstream leads to coordinate on user
+   access, necessary changes, and device setups as needed.
+
+10. *Open Questions and Site-Level Concerns*
+
+   - Raised by Brian/Chase: Concern that not all operationally critical
+   applications are reflected; need for granular site-level system validati=
+on.
+   - Stephen flagged importance of manufacturing IT teams=E2=80=99 involvem=
+ent for
+   completeness (e.g., Gary Hamby, Joe Ryan).
+   - Agreement to rebuild/review system inventories in collaboration with
+   site teams, reconciling November=E2=80=93December initial inventories wi=
+th current
+   state.
+
+11. *Additional Technical and Integration Considerations*
+
+   - Noted system-specific exceptions where integrations aren=E2=80=99t ava=
+ilable
+   in the QA environment.
+   - Will need to build temporary integrations or plan workarounds for
+   comprehensive UAT.
+
+12. *Miscellaneous and Admin Points*
+
+   - Clarified tool-specific questions (e.g., SSO validation, license
+   renewals for Windshuttle), with several system-level side discussions to=
+ be
+   handled offline.
+   - Email address changes (e.g., for Salesforce vendor IDs):
+   System-generated addresses available, but mailboxes not yet created; to =
+be
+   clarified and followed-up separately.
+
+------------------------------
+Action Items
+
+   1.
+
+   *System Inventory Review & Updates*
+   - All workstream and business leads to review the master list of systems
+      for completeness, accuracy, duplications, and contact assignments.
+      - Supply input for any missing or site-specific/operational
+      applications by June 13, 2025.
+      - Chase/Brian to supply site-level critical system gaps;
+      Rakesh/Sriram to coordinate follow-up.
+   2.
+
+   *Define Testing Scope per Application*
+   - Column F (level of testing: full UAT vs. access validation) to be
+      completed by IT workstream leads (target: next 1=E2=80=932 days).
+      - IT workstream and business UAT leads to fully sync on system scope
+      and testing requirements.
+   3.
+
+   *Business Tester Availability Confirmation*
+   - Each sub-function lead (e.g., Mihala/Preeta for CX, Unis for
+      Collections) to confirm business availability for proposed windows.
+      - Rakesh/Sriram to facilitate and record owners for each process/test
+      area.
+   4.
+
+   *Scheduling and Window Alignment*
+   - Confirm and document test dates and business resource windows for:
+         - June 23=E2=80=9330 (pre-UAT window)
+         - July 7=E2=80=9311 (main UAT window)
+      - Clearly distinguish 8.1 (BRV) scope from 10/27 Day 1 scope in
+      inventory and test plans.
+   5.
+
+   *Environment and Data Preparation*
+   - Test environment readiness to be explicitly confirmed by all teams.
+      - ERP team to coordinate any temporary integrations required for full
+      end-to-end UAT coverage.
+   6.
+
+   *Test Scenario, Script, and Role Alignment*
+   - IT (ERP, CCEX, IMA, etc.) to provide baseline test scripts by mid-next
+      week (target: June 18, 2025).
+      - Business to review/expand, IT/business to align on sign-off matrix,
+      tool logistics, and workflows.
+   7.
+
+   *Follow-Ups for TSA/3rd Party/No-Change Systems*
+   - Minimal validation (=E2=80=9Csmoke test=E2=80=9D) for unchanged/TSAs, =
+with
+      documentation of approach.
+      - Sriram/Srinivas to clarify plan for each TSA/third-party system.
+   8.
+
+   *Addressing Site-Level and Integration Apps*
+   - Organize meeting between supply chain/IT and manufacturing/site IT
+      leads (e.g., Gary Hamby, Joe Ryan) to validate operational system
+      completeness and integration impacts.
+   9.
+
+   *Resolve Specific System-Level Questions*
+   - Offline sessions to confirm system disposition and ownership (e.g.,
+      Optavision, SUS Portal, MES, etc.).
+      - Special attention to Salesforce email domain requirements by August
+      1.
+   10.
+
+   *Security and Access Actions*
+   - Security/IT to ensure all tester access and device/connectivity needs
+      are captured and fulfilled ahead of UAT start.
+   11.
+
+   *Follow-Up Sessions*
+   - Follow-up meeting(s) to be scheduled within 5=E2=80=937 days (by June =
+17) to
+      continue working through detailed issues and align on outstanding
+      inventory/scope/test planning topics.
+
+------------------------------
+Follow-Up Points & Future Meetings
+
+   - *Inventory Working Session*: Additional workshops for site/factory
+   systems with manufacturing IT, to ensure no gaps at operational level.
+   - *Test Script & Tool Logistics Deep-Dive*: Subset of team to convene
+   for tools/process flow/automation review regarding test scripts.
+   - *TSA and Integration Focus Call*: Systematic review of third-party,
+   TSA, and untouched =E2=80=9Cmove as is=E2=80=9D systems for Day 1, inclu=
+ding SSO and access
+   sign-off.
+   - *Regular Progress Check-ins*: Ongoing calls to ensure action items are
+   progressing for script development, environment readiness, and business
+   tester alignment.
+   - *Distribution of Notes & Recording*: Rakesh to circulate meeting notes
+   and Copilot-generated recording/summary.
+
+------------------------------
+Key Dates
+
+   - *June 13, 2025*: Target for feedback on system inventory and initial
+   testing scope completion by workstream leads.
+   - *June 17, 2025*: Next alignment/follow-up session.
+   - *June 18, 2025*: Baseline automated test scripts from ERP/IT teams to
+   business for review.
+   - *June 23=E2=80=9330, 2025*: Pre-UAT test period and code freeze window=
+ for new
+   development.
+   - *July 7=E2=80=9311, 2025*: Main cross-functional UAT window.
+   - *August 1, 2025*: Date referenced for some Day 1 cutovers and
+   email/domain changes.
+
+------------------------------
+Summary
+
+All teams are in active alignment to ensure UAT readiness for the critical
+systems supporting upcoming cutovers (BRV, 8.1, Day 1/10.27). There are
+important follow-ups around completeness of the test inventory,
+site-level/operational system inclusion, test script automation, tester
+scheduling, and environment/logistics readiness. Several detailed,
+system-specific clarifications and follow-ups are pending, with
+expectations for parallel progress by function, workstream, and site teams
+in the coming week.
+
+*A follow-up meeting will be scheduled, and all action items are to be
+progressed in preparation.*
+=F0=9F=8E=99=EF=B8=8FTranscription
+Rakesh0:07
+Share the or share the screen. Yep, sharing. I'll kick things off. Hey,
+good morning. Good evening, team. Hi, Rakesh. Good morning again, everyone.
+Good morning everyone. Morning. Shreem us. Thanks for making it. You are.
+You're one of the most important people on this call. So. And sri. Too many
+conflicting. I. Yeah, yeah. But no, thank you for making the time for it.
+Yeah, absolutely. SRI and Srinivas and all the active leads actually,
+Stephen and others. This is fantastic. So. Yep. Bill, thank you. This is
+going to make us have a really good conversation with the supply chain
+stakeholders, with ISC stakeholders. So thank you very, very much for
+making time. Rakesh, could you record the session or is it not. No, I do
+have copilot on so I'm going to bear with me while it turns off everybody's
+audio and camera for a second. I think recording should be on. Great, thank
+you. Appreciate it. And I want to make sure it is a case can. I didn't get
+a note. I know it muted me, but I want to make sure that it is. Cisco Pilot
+is in use. So I think we're okay. Perfect. All right, so we'll give it one
+more minute and then we'll get started here. So. And I'll let people in
+here. So quite a few more others joining in. So. All right, I think we can
+get started. We do have very good participation. So again, thank you all so
+much for making the time for this. This is quite, quite important, critical
+that you are all here and supporting us. So I want this very much to be an
+alignment session, working session with the function. So what we've done
+over the past couple of weeks is if you recall, many of you were or some of
+you were in the UAT kickoff sessions back in late April and May. And we
+started working towards aligning all of the IT work streams with the
+functions in terms of UAT readiness. So what we wanted to do here, and
+we've been working again in this case with Sriram and the EISC function,
+we're similarly doing something with Will and the finance function and, and
+the HR function as well. So what we want to do starting with this is have a
+series of conversations with all of the stakeholders involved in the
+systems, both from a systems and process perspective with a supply chain
+function. So if you'll go to the next slide, Mac. So again, very much a
+working session. What we've done over the past week or so is work with
+Sriram and the team to identify all of the systems that are getting touched
+by supply chain as part of this BRB and uat. Now, from a purely systems
+perspective, there is a slew of systems that are, you know, build back,
+move as is, et cetera, that have those dispositions that are getting
+touched. But in addition to that, for the end to end supply chain
+processes, there are quite a few systems that are impacted either, you
+know, information flowing or needs needs testing in an environment. So the
+idea here is that we've got a table, we've asked Canvas for some feedback
+from the work streams, workstream leads and yourselves. So what we want to
+do is review those systems and make sure that we've got those lined up as,
+you know, either BRV or BRV adjacent and make sure that we've got the right
+function or the work stream supporting it. We've got the right testers and
+owners of those systems identified. So I think this is where we'd be
+looking for the workstream leads to help identify some of that here. We
+also want to talk through some of the test windows and test periods that
+we've identified. I know there's very much a draft here, but several of you
+sent back your SID and UAT dates. At least for the UAT dates. We want to
+make sure that we're lining that up with some of the test periods that
+Sriram and the team are looking at as, as, as they go through the process.
+I added on here the entry exit criteria perhaps a bit, you know, again it's
+a, it's a starting point here. Want you all to take a look at that and
+perhaps that may need a little bit more work or alignment individually to
+understand with the test leads and the function leads what the entry exit
+criteria is. As you come out of and get into and come out of uat. In the
+sign off there is a roles and responsibilities matrix that we flashed up in
+one of the kickoffs. I do want to bring that back up again to talk through,
+you know, as we talk through, you know, the tool to use, who's going to
+load the scripts, who's going to sign off and who's going to validate, etc.
+So we just want to talk through that. The other piece of this is really
+talk through the test scenarios and approach where we are across several
+functions and work streams is there are test scenarios that have been
+developed. I think different work streams are in different phases of
+validating that the test scenarios have been translated to test scripts.
+We'll talk through some of the logistics on, you know, what tools are we
+using. I know the ERP team, Srinivas Sri, Jab ET Cetera SRI Bill, you know,
+you've already started conversations on how do you automate these scripts,
+what tools do you use, etc. So I want to make sure that we have a holistic
+conversation and talk through precisely that, that we align on what are the
+tools, you know, what are the logistics around it. I know there was some
+virtual windows and some physical, you know, couple of windows, one
+virtual, one physical. You know, we also have the security team here just
+to provide us, you know, as we look at logins, as we look at user Access,
+testers access, etc. Do we need devices, you know, what sort of
+connectivity is there, remote testing involved, etc. So they'll able to
+align or at least loop in and take some action items for us if needed to
+make sure that the right users get the right access to enable the testing.
+So I said quite a lot there. I do want this to very much be a working
+session, you know, particularly the, we've got the erp, the ccex, the data
+analytics teams in here and the supply chain IT teams. So I do want us to
+talk through that. You know, those are the key work streams, functions, if
+you will, that impact supply chain. So before we get started into working
+session and talking through the systems. Sriram, any other comments or
+outcomes you would like from this conversation? No. First of all, thank you
+Rakesh for setting this up. Team this up. This was an important meeting
+from a supply chain stakeholder perspective. So there are a lot of
+functions that are on this call from the business side as well as from the
+supply chain functions across planning, CX logistics and procurement and
+operations. So there, there are, so I want to give us some time for Q and
+A. Maybe we can do it during these individual agenda items which, which I
+think is. Okay, right, like. Or you want to reserve questions for the late.
+No, no, no, let's keep the questions coming. We'll answer them, we'll take
+notes, but very much a working session. Perfect. Okay. All right, so if you
+go to the next slide and this is going to be a busy slide and so we'll
+start using your Excel for this. Again, sore for the eyes but what this is
+and we'll pull up the sheet and walk through this. So let me do that here.
+Or would you prefer to do that? Sriram? No, go ahead. All right. As you
+said, this is a, this is an important view that I personally wanted to
+ensure to define the scope of what systems are critically important for
+isc. And so the way we develop this, there are, by the way there start off
+with we have 300 plus systems and so there was no way that we have time to
+go and test all of those systems. So the teams went back and did a touch
+point on what are the systems that are extremely critical for us to ensure
+that we are ready for 8.1 or 11.1, depending on the system. And each of the
+process owners from Logistics, cx, procurement and planning came back with
+a short list of say five to 10 systems each. And this is a list of about 40
+systems that have various dispositions, Buildpack, Movasis, mostly TSA that
+we have organized here. And the intent is to ensure everybody has common
+understanding of what are those systems a which IT work streams and the PMs
+are leading the effort. From an IT perspective, who are the business UAT
+leads? And really I think one thing that we're like you see column F is
+very, very critical because there are some systems that we don't really
+need to do a whole lot of full testing. It's just a question of ensuring
+that the users have access and that the systems are cut over because there
+is really no development that is significantly worthy to go full uat. But
+there are several systems that we do need to do a full uat. And so we want
+to understand what those systems are and ensure that we have a proper test
+plan for that. So that's why I set up this System and with EY's help and
+with the IT Workstream leads help, we're trying to fill this out so we all
+have the same understanding of what we're testing for and to what extent
+we're testing these systems for. That's the intent of this file. Great,
+thanks Sriram. Now if some of you already have this information and I'm
+looking at you, Bill and Srinivas, you know some of this, you may already
+have all this information. If so, you know, we can certainly send you the
+link and have you have you fill that as well. But I think the idea is to
+walk through this and make sure that, you know, these are the systems that
+are getting touched as part of, you know, Sriram's and functional scope,
+ISE's functional scope. So if there's anything else that you think, think
+from our perspective, from an IT perspective, the systems should be
+included here. You know, let's have that conversation as well. So Rakesh, I
+have two questions. Number one, before this call, I think we had a internal
+IT connect where we were talking about the business availability for the
+upcoming uat. Right? Okay. And then when the closest, the close, I
+understand is starts I think the week of the 23rd of June and then probably
+it should close by 30th. Right. Then when the business will be available
+for the UAT that is number one. And then the window that we are looking
+currently, 7th to 11th, July 7th to 11th. Right. Again it depends based on
+list of scenarios scope that one used one want to execute for each of these
+processes. Right. Number two, why do we have collections twice on your
+spreadsheet one it says and then there is one banking port which I
+understand that's the cash app collections. So what is those two different
+collections here? What is the scope of those two collections here? Yep, so
+we can talk through those. So the first thing first. Yes. So Your point on
+July 7th to 11th? I think so the action item here is to understand business
+availability, to be able to support that. So I think Shriram, that's
+probably a takeaway. Either we can address it here or have that as a
+takeaway to come back and validate business availability. Now shreem, are
+you looking for any specifics on that or is that more of a. And by that I
+mean, you know, do we need business availability across certain regions,
+across certain locations. When I say business availability across the
+process. Right. Processes could be someone involving with AP or it could be
+someone from the collections disputes, credit management or anyone who will
+be engaged from order management from again this explicitly for business.
+Right, right. So what is their availability today when the users will be
+available? I think that is key. Right. For me to have my test scripts
+ready. I'll have to go back and work with the business because list of
+scenarios needs to be documented what they want me to cover in the testing
+the scope. Therefore I wanted to understand their availability. Based on
+that we can come up is like one week window is enough or two weeks window
+of your interview business. Yeah, got it. I mean I think it's a good, good
+question Srinivas. I think that's why in column G we have identified the
+business UAT for that specific sub function lead. For CX it would be Mihala
+Preeta and then for collections it'd be Unis. You can come to me overall
+from an ISE point of view and I'll be happy to set some time to go and get
+those details and the answer can be different for each function. So. So
+let's take that offline. The contact names are given here for that reason
+specifically so that the IT team and the business team can talk to each
+other and ensure that your test scenarios are aligned and the owners of
+actual Testers and the timeline is all aligned. Right. So I think we can do
+that. Not in this meeting, but I'm happy to have additional conversations
+offline with you. Okay. Okay. And for everyone's benefit. And some of you
+may not have access to the ITAthens folder, but if you do, at least the IT
+team will. Srinivasan team. I've posted this particular file. I'm sharing
+in there for your reference. Now, the second question you asked about the
+systems. So this was a. These were the systems identified and we went back
+and looked at this as master app inventory. So that what you see in column
+A are the systems that Sriram and the team and the functions have
+identified as impacted by their scope of testing. So if there's something
+that is either a duplicate or needs validation or rectifying here, we can
+certainly do that and clarify if there are certain things that are wrongly
+called out here or if it's a wrong system in your. In your opinion, then we
+can certainly modify it here and correct it if there's something missing as
+well. We can do that. So you were talking about, you said Jira on top.
+Correct for collections. Yeah, I know that's more of a process where they
+use Zira corrections, but then we have one more. So here is where we create
+a work list for the. The collection specialist to go test based on company
+or based on what they wanted us to cover in that. In that. So just wanted
+to double check the expectation for those two line items. That's the reason
+why I asked you that question. Fair enough. And I think Harry, you're on as
+well. So. So I know we said Banking Portals is not just one nice little
+app, it's perhaps a series of them. Correct. I'll get that clarified with
+Eunice. On what? All portals are included in there. Take an action there.
+This is a collection. So I believe that they need to validate the bank
+statement ally as well as the system like hrc. So Units Hurricane is really
+managing the hrc. You know, that's another app. Let me cover here. It's not
+just for the portal itself. So. Sorry, what was that? What was that? Okay,
+so this is high radius. Okay. Yeah. Okay, let me make a comment here. That.
+Yeah, so this is not a specific specific. It's access to bank portal as is.
+Got it. Okay. And I think you mentioned hrc. Right. So that's from Harry.
+And then the other part here we mentioned, and I know I pulled in Gary in
+here. So this is really more of a process. So maybe we need to have A
+follow up here as well with Eunice on now to your point, Srinivasi said the
+requirement for the use of this. Yes. All right. I think. I think that one,
+if I remember correctly maybe somebody from the CX organization might be
+able to back me up here. But I. I think if customers end up paying to the
+wrong company, they would have. The collections team would have to make an
+entry in JIRA for the reconciliation process. So. And then the. The monies
+would then be flowing to the correct entity after the approval via jira.
+That is my recollection of what unis needs that for, but I can confirm that
+there are that or other applications as well. Okay. I think this is more of
+a. My understanding is the JIRA is more of a tracking right. For any
+request that they want to get reviewed or approved. So yeah, probably to
+get it clarified between Srira. Sure. Yeah. Okay. Now sh. We do have a few
+other ERP apps. I think there were a couple that got thrown over to you
+from when we spoke with Goku in Pramod from a couple of days ago. I believe
+Optivision. Do you want to. Do you mind. Sorry for the interruption. Do you
+want to filter out specific? We certainly can. Okay, let's do this. Let's
+make sure again these are the right ones. So sus portal was a lib without
+and we note that as a dcom we need to understand what is in scope or what
+would replace it in the scope of this testing. So whether it's even in
+scope to be tested. Would you or Bill have a view on that? I'm not aware
+about this app, Bill. You know I suggest let's. Let's circle back serum on
+this. I might touch base on this if I recollect correctly. It was agreed
+that only it is not needed for solidus because of the volume and the other
+details that we have. Additionally using the apo, I think we share the
+forecast with the BW portal, with the BICs, with our vendors or suppliers.
+That could be another reason why why it was not suggested. But then let's
+circle back to close this gap. Okay. So can you just kill a call with you
+me and Siram include Jesus on that please? Yeah. These are business from
+procurement point of view. Okay, perfect. And promotion this one. This
+might need to be used from soft spin is to hard spin. So for readiness we
+will need to make sure that this continue to work until we get the final
+migration to Ariba and EDI other portals. But overall it will be the
+commission for the hard spin. Yes, fair enough. Good point you're making
+because this is a day one disposition of a dcom for day one. But yeah, or
+live without for day one. So at soft spin then you're. You're. You're spot
+on. But if it's still live, then there might be some testing or some. Some
+requirement there. Okay. So I've taken it as a follow up. Optavision is the
+other one. Optivision. If I understand correctly. This should be with
+Engineering. Okay, but Zariba is with the erp, right? I mean that's what we
+already categorized. Which one you're talking Goku. We were talking about
+Ariba before Ariba. No, no, we will come back. No, yeah, yeah, let's get to
+that. Optivision. So we see Engineering. Okay, I'm just gonna make a note
+here. Is. Is Optavision not the. The planning tool used in Huntsville?
+Yeah, it is. That's what I was going to say. It's their erp. Yeah, it's
+there. Okay. It's erp. Oh okay. Yeah. So let me make sure then. So, so, so
+when we say it's erp. But. But here. There's a team here in erp. Yeah,
+yeah. But the thing about it is they use it for, for advanced planning.
+They use it like for apo. They don't really use apo. They use Optavision
+and then put the data into APO from Optavision. There's an integration.
+There's an integration between Optavision and CAP 900. I get it. I think
+what I meant was the IT work stream that is involved with Athens migration
+of these systems. Right. So it's an ERP work stream led by SRI and Bill.
+Right. Like I want to make. Make sure that they discussed this one
+Optivision long time back when we are dispositioning all our applications
+and this is a planning tool. So I don't. That's the reason why I think this
+did not come up to erp. Let me understand. JD you say when it's planning
+tool what is. We do out of. We did the advanced planning. It is all that.
+The planning. The optimization is planning for possible plan. Basically how
+the to. How do they plan all the roles and all the different variant
+configuration materials from Optimism from Optavision and then that data
+will be transferred back to SAP. Yeah. So what is the disposition? SRI is
+it move as is. I would imagine optimization is more as is. Yes. And who.
+Who owns it SRI today? No, that is. Yeah, that's what I'm so wondering
+right now. That is that is categorized and under planning applications no,
+it's not planning. Okay. I mean, at least from the service category on your
+perspective, I know this is not. But then, Jerry, let's connect. It might
+be treated as a planning tool, but it might be a scheduling tool. Let's
+understand that. Let's have a meeting with Jerry and we will walk through
+this. Okay, perfect. This is the exact benefit of this meeting. I just
+wanted to make sure. Yeah. So you need to understand, I mean, why it's
+falling under planning and cmd. It is not. It is not under planning for
+sure. Same as the support last one, right? The previous one that you
+mentioned. Yeah, yeah. Different stakeholders in terms of the meeting. So
+Jerry, thank you. Appreciate it. Basically to reconfirm that with the
+stakeholders to align this template. Right? Yeah, yeah. Even if it is live
+without. We need to make sure if those are aligned with relevant. Take a
+look. Yeah, thank you. So we've got a couple here. So apo. Yep. Yeah, put
+it in the chat. I mean, we're working with Burna on that. We're not working
+with Bill on the apo. Yeah, that's correct. So it is. There it is. Right.
+Okay. So. So it's not Bill. Who is it? I put it in Bill. Bill is the pm.
+Is. Right. Okay. All right. It may be somebody as a POC you're working
+with. So we'll poor. Okay. Ariba. Ariba is. No, it's. Ariba is the rpr.
+That's right. Okay, so SRI and Bill, as you go through this, I. I would
+like maybe after this meeting would like your input on the testing
+requirement call column. Right. Something as simple as full UAT or basic
+testing. What is the extent of it testing that we need to do with business
+on. On each of these apps. Okay. Ariba. I don't know. Again, let me check
+with hi moms for me. A lot of surprises today's call. Basically, so I don't
+know why. Bill, did you hear anything on Ariba coming to your feet? It's
+not coming sri. We agreed this like four months back. One second. I'm
+asking Bill, basically. Bill, you there? I am. Yeah. I don't know. It was
+giving me some sort of warning every time I tried to come off mute. Yeah,
+it must be the co pilot messing up. Apologize. Okay, yeah, I'm sorry. So
+the question was, are we going to be testing Ariba? Yeah, that's what the
+question is. Right. I mean it was not in our full end to end testing scope.
+No. Right. That's what I'm saying. It's a tsa, right? Which means we're not
+changing or just paying for the service. Correct. So for TSAs, do you need
+any testing at this point? In one or two exceptions we're finding that is
+the case. But on the whole, no. Right. So one of the ISE applications, even
+though it's tsa, there are some minor changes that are being done September
+wise which is forcing us to do a uat. User asset control should be that in
+place. But we need to make sure if this particular instance is dedicatedly
+for am. If so no testing of course not going to be. But then you still need
+to validate the logical separation and you still need to validate the sso.
+So there will be some still minor U. But then it's needed. That's my,
+that's my suggestion. User control to be done for sure. As you mentioned.
+Yes. The sso, they have to validate. Correct. So yeah, I mean there's no
+lot of testing. But then the testing needs to be done. So. Brian Davis. Go
+ahead. Brian, are you having difficulty unmuting as well? Yeah, somehow
+when you unmute, if you're getting some messages. I'm also having the same
+thing. Can you hear me? Yes, we can. Okay. No, I'm. I'm the. For those who
+don't know, I'm the systems lead for Spectra, so I kind of oversee. And
+there's other people on the call. Jay over for Jason Boyd basically. And so
+I'm looking at Spectra and pack out and chi and there's four. There's three
+or four applications and LIMs. Our team, to my knowledge, we're at a loss
+as to what is going on here, where testing is going to be done, what's the
+extent of the testing. We need a. A reboot here for. For our local team to
+get on the same page with what you are discussing. Okay. So we need to take
+it offline to another call. But we're. Of course this seems to be at a very
+high level and not at the point level. Yeah, I think Brian, the problem is
+we need to align on the high level first before we encourage. Get to what
+you're asking. Right. So like we need to agree what testing is required for
+a given system and then we need to decide what plants we need to test it
+at. Right. But they need to tell us. What I don't understand is what is
+changing. Depending on what is changing will drive what we need to test.
+That's what this meeting is about, Brian. But what I'm. What I'm saying is
+I don't. I don't know what their what system? What are they changing in
+this? We're, I'm assuming we're gonna have, we're gonna get access to a new
+server and we're gonna test on I, I, I don't even know what the
+connectivity is between all. Yeah Brian, no one's asking me to make
+assumptions. So the team needs to come back with the scope of the change.
+Yeah, I think it's clear that they owe you that. But you're asking us to
+test in 13 days. No, I'm not. I'm not. That's why we asked for this meeting
+Brian. Because we are not aligned as a leadership team on what needs to be
+tested, who needs to be involved. Okay, so what we're trying to get at here
+is to clarify just what you said. What is changing on these systems like,
+for example, ERP, CIP 900, it's a TSA. Do we need what kind of testing do
+we need? Because that's a pretty generic system. Right. It's everything. So
+you know, we need someone on this team to come back to us and I guess what
+trio I'm starting to drive at is what testing is needed and then we can
+identify okay, these are the people that need to be involved. We're not
+even close to that right now. Correct? That's right. We're building that so
+that, that's. Thanks, thanks Jason for clarifying that. That's why it pms.
+We need your help to fill that column F as soon as possible. Like today if
+possible explain you know what level of testing we need. Okay. All right.
+Chase. Chase. Hey. Hey guys. Also representing the Spectra business. It
+seems that there's entire systems that are critical to day to day Spectra
+business that are just not listed at all. What if we have situations like
+that is the ask kind of for the users at the site level and the LOB level
+to make sure that basically this is accurate. I guess a concern I have is
+that there just maybe is some systems that aren't even included right now.
+So I'm happy to take your input Chase. Like I think once you unfilter and
+take a look at it, see if there are systems that you think are important
+and not showing here. The whole funneled that to me and I'm happy to take
+that back to the team and go look at it. But we've asked the functional
+teams for what systems are critical. I'm not going to say this is foolproof
+and 100% done. I think this is a good starting point and if there's edits
+that need to be done to add more systems. Let's work and get that full list
+done here. Got it. The other, the other thing is too. We need to understand
+what needs to be tested for the 8.1go live and the 1027 go live because
+there's two different lines. That's the other piece that needs to be. That
+would help add clarity. That's a good point. Yeah, good point. We'll add
+that column. Yeah. Thank you. Okay. No, very good discussion. Thank you. I
+think these are relevant questions and as you can see it's, it's, you know
+we're just working through it. So. But yes, so I think the other point you
+made Stephen as well ERP quite generic but we know 8. 1 all the legal
+entity changes happening in ERP. So Sri and Bill are all over that in terms
+of the scope of testing etc. So again, you know, let us know there. Bill,
+IBM, Sterling, Srinivasa, Sri, IBM Sterling is an EDI one and we need to do
+that is already part of our. Our activities. Okay. And then you've got see
+1. 1 comment. I assume that Christ is involved in that. Christina Delko But
+I just wanted to. Yeah, he's involved in that. He's helping us to build
+that. So. Yeah. Awesome. Yeah, there was a couple of other ones. I mean
+this one, see, this one's under planning. So it's. It's. I don't know the
+difference between this one. But I again, Shiram, maybe you can help me
+here. It's the same. It looks like it's the same ECC SIP 900 but it's a
+separate line item. So. Yeah, ECC and BW are separate systems, but they're
+all in. Okay. Okay. Itself is a one system. Right. One application. Right.
+So. Right, right across the board. Yeah. All right. So okay. Wind Shuttle.
+That just seems again from a CX tool. I think Prita. I think someone from.
+I don't know anything. Erica is working with the contract renewal for
+windshuttle. That is what the latest information. I got it. We are
+extremely conceivably using in master Data management and cx. Yeah. But is
+there any testing required for venture business? Nothing is changing for.
+No, no, no testing. Testing is not required at all. Stream. Yeah. Because
+that is just a renewal. Contract is just from the license standpoint.
+That's a license, right. Not from the testing standpoint. No. Yeah, you are
+right. There is no testing. Yeah, yeah. Because this is the standalone
+tool. This is basically. They use this tool to automate all the master data
+Activities to upload customer master to upload material master to make
+changes to any other master data. So yeah, we can do a quick glance, but
+nothing is changing over there. Okay, but we're keeping the access to the
+same people that have the access. We're not changing anything regarding
+that. Right. Licenses are the same. Will access need to change Right now
+Erica is. Is controlling everything and she is part of this attendance team
+and the. Sounds like moving. So she's already working as part of the
+license renewal. Oh, how many. That's a separate topic, right? I don't want
+to. Okay, okay. We have a separate topic. We have a separate communication
+going on. This one. Yeah, the license renewal and all those things. License
+itself is a separate topic all by itself. So I'm talking more accurate. So
+yeah, a license all sorted out hopefully. But will access change to using
+the tool? Everything is from CIP 900 only. Exactly. Yeah. All these things
+are currently CIP 900. There is no different access AP 900. Understood.
+Thank you. There were a couple of others on apo, BW and snp. These are also
+on to the ERP team. So. Correct. That BW is not part of erp. That BW should
+be part of ima. Okay. Yeah. Rajesh is probably not here, but then. Yeah, I
+mean we are. We are Siri. We all are. All are reviewing that with Rajesh.
+So he knows it. They're the one. They are. They are working through the
+dispensation for it. Okay. One who are working through the reporting. The
+report that we have. The planning organization uses the reports, the S
+reports. So they are the ones who are who are working through that. Okay,
+so it's not so Rajesh. G. Okay. Snp. I don't know. I mean it's again a
+duplicate entry. I'm okay that if you want to have that. But then it's part
+of the rule number 16 only. Oh, SEM. Yeah, yeah, it's. It's together we can
+remove it. Yeah. Okay. So pramo, just one quick question over here because
+obviously apo, you know, we have demand planning, we have snp. That is all
+comes under APO only anyway. Right. So what is the plan? You guys will be
+doing some testing and then they need to be an end to end testing from SAP
+standpoint also. Correct. That's what it is. And it is only everything from
+the IS system standpoint. It is part of the erp. EP is part of the ERP work
+stream on the IT and Purna and my team as coordinating that putting the
+efforts with the partners that we have in the project. Okay. And I just
+want to call out that we got an integration between CIP 900 and CAP 900. So
+we whatever changes in CIP 900, we got to make sure it can still talk to
+the CAP 900. Correct. And that's the reason we have that under TSA. And
+Jerry and Poorna are definitely coordinating it very well. Yeah. Okay. Got
+it. Okay, cool. This is great. Thank you. Again, the action item. We'll
+have the teams go back in here and populate what sort of testing or the
+scope of testing required. Jerry, this is Kathryn Hart. I do want to
+mention that in the test environment, CAP 900 and CIP 900 don't talk to
+each other the way they do in the live environment. So testing is going to
+be very difficult. We've got some work to do to make sure we can test that
+integration. So you bring up a good point. Just a general question for the
+team, and we may not solve it here, but are all of these in a QA
+environment or test environment? Where is testing going to happen? Because
+I think what I heard in prior conversations is there isn't necessarily a
+neat little environment for testing for one or two of these. And we may
+have to use sandbox environment for testing. So I want to make sure that.
+That we have that in our minds as well as we go through this. Yes, testing
+is required, but some of those, you know, the environment availability and
+data availability is also something that we need to have in the back of our
+minds as we discuss this. Yeah, yeah. Let me start from the ERP standpoint
+and then I will get into the standard way, at least from our standpoint,
+how we normally do this, setting these UAT sign offs. Right. So what we do
+is from the ERP standpoint, we are planning to start our integration
+testings. When I call integration testings. Whatever has been done,
+everything is in cix, which is our sandbox. So we do validation in the
+sandbox, making sure that everything is okay. Right. Including the forms,
+the changes, the terms and conditions, whatever we are planning from that
+workstream standpoint. So everything will be validated in CIX as part of
+the integration testing. So the goal is basically use that. The whatever we
+are discussing from July 7th to 11th is basically move everything to CAQ.
+But the end to end testing need to be signed off in ciq because that is
+where we take all our programs or whatever validated from Sandbox, move to
+ciq, and then CIQ is the one that we have almost integrations, almost with
+all the Systems in cix we may not have integrations with all the third
+party systems, but Q is the key one. But end to end UAT sign off is the
+ciq. Yeah, but CIQ APO will not push our planned orders to ecc. Yeah. From
+APO standpoint, I think we need to see what, what needs to be done
+basically because that is. That plays a different role. Yeah, those
+connections will have to be set up because right now when we do one off
+testing, we do a manual push between the two systems. But we'll need to
+automate that so that we can simulate production. Yeah. How we need to
+coordinate the testing activities for APO standpoint. Okay, so takeaway
+here for those exceptions. So what I understood, if I translate you right,
+SRI is it will be in ciq, the quality environment. That's where end to end
+testing will happen and sign offs will happen by exception. We where that
+is not the case, we will have to find the workarounds or the temporary
+integrations to be built to complete that testing. Exactly. Because at the
+end of the day when we do an end to end, somebody is signing off. That
+means that all the flow has been validated. That's the reason why we need
+to pick one system. If we do it in two places, I don't know when we move
+back, I don't know whether behaving the same or anything has been changed.
+Okay. Now in terms. Okay, so we'll document that and make sure. Now who's
+following up on that? Is that you, SRI or your team that will have the
+ownership on that as you work with each of the other ownership, obviously.
+Right. As you know, we are the ERP ones and majority comes to ERP only at
+some point. But we just definitely need, you know, I need to talk to Corona
+for example if it is AP or. Right. You know. Yeah, but from our. We have
+the ownership. Okay, got it. Perfect. How about data? What sort of data
+needs to be seeded, where, et cetera? Again, not to get into the details of
+it, but each of these scenario requirements. I presume you're already
+having the conversations on the data requirements that need to be there.
+Yeah, data from data standpoint. Again, CIQ is a recent refreshed of CIP in
+the site. Yeah, ciq, CIX got refreshed sometime in CIQ got refreshed
+sometime end of fifth and CIX got refreshed sometime in March, basically.
+So it's almost like, like, almost like a fresh copy of a production date.
+Okay, yeah, fresh copy of. So data standpoint, whatever we have it in cip
+all the material master, customer, vendor or below materials, whatever it
+from master data from pricing, whatever we have it in P that should be good
+in Q. Okay so data standpoint. So at least what I am thinking if somebody
+please correct me from maybe Prita from your standpoint or any from the ISC
+standpoint that is you know CAQ is already is a fresh off CIP so I'm
+assuming that should not be a problem. And from ERP standpoint what is
+happening right now? Bill is working with the team to build automated test
+scripts. Right. Getting all the different different scenarios. So what the
+team is planning as soon as the scripts are available? Maybe. I'm not sure
+Bill, it should be sometime mid next week that the plan is these test
+scripts will be coordinated to Sriram and then you know that is the
+starting validation point from us to give the basic scenarios. These are
+the scenarios what we are planning to do if business wants to add anything
+and they can let us know. We'll see whether. How can we automate so that we
+can save time when we move to ciq? Yep, thank you. That's the way it's
+gonna go. Sorry, just a quick one Rakesh. I know we have 15 minutes to go.
+15 minutes. Yes. Several other topics to touch but Brian, I have a quick
+question. Please go ahead. Yeah. So are we going to be using our. The
+existing CIX 900 and CIQ 900. Yes. Okay. Yes, yes. So we are. We are still
+doing development work right now in CIX and CIQ for current projects. When
+is is that going to get turned off on before the 23rd pointing to a
+different place or what development are you referring any specific project?
+Yeah, we have our own project going on in Spectra they said was good
+through July. Whatever we we told. Maybe I need to follow up on that. We.
+We were asking all our teams whatever development projects that is
+happening they need to wrap it up by June 27th. That is the last date they
+have. We cannot take anything to July because of the cutover activities. We
+need to lock all the. No new code should be done. Right. So maybe from
+your. If you can send me the details I will check with. Is this anything
+related to the toller portal? Yeah, it's between the portal and SAP. It's
+Prashad. Prashad's leading it right now I guess. Yeah, I'll send you the
+details but I thought you're going to start some testing on June 23rd,
+right? No, no, no. Let's not confuse. Right. Whatever activities what is
+happening June 23 is for project Athens basically. Right, so what Prasad is
+working. That's not project items, that's a separate activity for Toller
+Pro project. I will check with Prasad. When are they planning to move to
+production so that we can coordinate. But the goal is whatever is the new
+code should be done before end of June. Great, thank you for the question
+and clarity. Appreciate it. Okay. All right, so going other work streams?
+Yeah, let's do. And I know we've only got you know, 13 minutes so I do want
+to circle back. So you know, lots of good conversations here, lots of
+action items we're taking on. I think you know, we'll parking lot the entry
+exit criteria and some of the, the access issues. But let's go through, you
+know, we'll set up a follow up session for specific teams and I think
+Stephen, I think you may be still on. I doubt there's very little on CCEX
+here, here in terms of scope of testing. But can you opine on where we are
+with, you know, what we may or may not need to do with hybris, magento,
+sftc, alemica, etc. Yeah. Hey. Hi team. So for BRV, I don't think we've got
+really anything that we, that we need to accommodate because all of these
+applications are you know, TS8 right now. One question I wanted to ask the
+team is we're already in ccex, we're already building out all of our test
+scenarios, right. For user, for SIT and then uat. So you know, we're
+looking at, you know, every application and you know, application testing
+and then complete end to end testing and we are engaging with the business
+to build those, you know, complete the complete inventory of test
+scenarios, you know, as we, as we move forward over the next couple of
+weeks. So is this over and above that, Rakesh? Because we are, you know,
+we're kind of, we're kind of moving along that line as it stands, knowing
+we'll have, you know, if you take Hybris as an example, obviously we've got
+some changes in there that we're going to test. You know, a complete end to
+end cycle. And for you that's a day one activity, correct? It's not a BRV
+activity. Nice. Correct, yeah. So I think this one, in this case, this is
+all the systems that as part of ISE are getting touched. So I think this to
+if my understanding then Stephen would be like, so let's say Hybris,
+there's no change in hybrids, it's a TSA on Day one. But you're working
+towards a UAT for your day one. So for brv, you know, the scope of testing
+may be minimal to none here. We may have to look at what the scope of
+testing is for day one and sync up with Sriram on that. So we may need to
+make that distinction. Correct. Somebody correct me if I'm. If I'm
+mispeaking. I have a question. Okay, go ahead. So as far as we understood,
+we understood that I think the same question Prita has because Ioana was
+asking us from Salesforce. You want to stand for the email addresses. I
+understand that we will need to have them with the Solstice domain in
+Salesforce. And my understanding was that would that happen after or on the
+1st of August or a bit after 1st of August. So would we need to test that
+now? Very good point. What we've been told on the ERP side is that it's not
+an eight. One deliverable. Right. I have heard the same thing that email
+addresses is going to be post 8. 1. Yes. So my question here is Sri. My
+question was like, like do we really need to test reframe and Magento and
+Hybris perspective when they place an order from these platform? It does
+because they're not changing anything other than email id and from 1st of
+August nothing is changing. So do we really need to test that? No, no, no.
+That's what it is. Right. We have some cases like we do not have any
+changes but at least what suggesting, right. You know you need to get into
+all detailed level of testing. But at least if you can run a phase scenario
+just to make sure that everything is okay, that's what it is. Because this
+is not a physical separation, right. You know nothing, nothing is
+happening. Exactly. Everything remains the same. No. No network changes, no
+IP changes. Everything remains the same. So you don't need to test anything
+but at least for the purpose of like making sure that. Yeah, the flow is
+there just to validate the flow. Maybe you can just run, run one simple
+scenario and say that I'm good to go. Okay. So you can displace one order
+from this. Who, who, who would do that? Simple test scenario. Is it a
+business? We have to do CX business? Yeah. Okay. So three, do they need to
+do the SSO testing? SSO is which one? This one is. You are talking about E
+Commerce Portal only, right? Or a different one? No. Yes. Single sign on
+will be part of the overall testing scenario. That's already in scope.
+Yeah, single sign on is part of their scope. Yes, that's correct. In
+Rakesh. I'm going to sort of challenge a couple of things on this sheet.
+Right. Yeah, yeah. Because the EDI Elenica, that was MERT erp. Right. As a
+solution as the service. That's most definitely. That was, that was a while
+back. Okay. The RPA Automation should be ima. Okay. Right. And then I
+actually think the gen. I'm not 100% sure what that application is
+referencing to. I think we've got to check that. I was just looking at the
+background that the, the master inventory sheet and there's you know,
+there's several, several references to gen, you know, generically. So I
+think we probably need to just look at that and see well, what exactly does
+that mean? Because we don't, we've got sort of, you know. So I don't think
+we need to test anything on the 1st of August there because ideally again
+nothing is changing. What we're using Genai for is classifying cases that
+are going through Salesforce. So it's hosted on Salesforce. So if testing
+on Generic will have or on Salesforce starts in Morocco anyways in mid
+August or something then that's when you test that as well. Now I still
+have a question. I'm sorry Stephen, I see you have your hands up and I
+jumped here. But still regarding emails, I will go back to that because
+there are some emails coming from sales saying that from communications
+with customers that they're in order to set up their vendor id which is a
+very important thing for us in the Esso cut over and in everything that
+we're going after the 1st of August they will need us to have the new
+domain email addresses in some of the cases like the automotive customers.
+So we will need to have the domain available on 1st of August. And I'm just
+raising this here, I don't know if this is a possibility or not, but this
+is what just raised today. Okay. No, thank you for bringing that to our
+attention. Let me do a follow up. And, and Vince, not to put put you on the
+spot here, from an, from an IAM perspective those emails would be
+available. Correct. And in the system by 8.1. I don't know in the system
+but certainly available prior to 8.1. Yes. So email addresses are available
+now. That's Saurabh Khanna and the Dex Messaging team. It's not IAM but
+understood are available. The mailboxes however have not been created yet.
+Okay so all right, so email address is available. Mailbox is not created
+yet. So we need to understand, perhaps dig dip. But maybe I will drop it
+here and we can catch up offline so that we don't. So we, we don't block
+the discussion on this now. Understood. I will record you. Yeah, the
+request. Okay, so we'll have a. Yes. Stephen, just time's wrapping up. I
+want to make sure we clarity on go forward to start getting some items
+addressed here. Make sure we're working on that. Let's get organized going
+forward. Understood. So again, quite a bit of work to do here. So I know we
+wanted to talk through. If we go back to our, you know, let me go back to
+the content we were sharing earlier. Right. So if we go back to our agenda
+here. So test dates and windows, you know, we have a list here of the test
+dates and windows that we've gotten from the teams. We will send that out.
+We just write it. Yeah. Okay. Slide's a little slower then you're kind of.
+Is that good? Are you able to see my screen now or no? No. Okay, give me
+one second. Again. How about now? Yeah. Okay. All right. So again the first
+item, I think we're making progress but we still need quite a bit of work.
+So there's, there's a homework for everyone here to go back in and complete
+that. And at least the column on, you know, the testing required, the test
+dates and windows, we will send that out. This is what the teams have
+published as the sit UAT dates. We'll send that out. Make sure that's again
+a follow up conversation that's needed on aligning the windows and business
+availability. So I think we have an action item there certainly, you know,
+for ERP 23rd to 30th June and then 7 to 11th of July. So we'll have to
+follow up on the business availability across processes, the entry exit
+criteria. I think this is something we'll also send out. Please take a look
+at that. And for particularly the folks that will be signing off and the
+function leads, take a look and see what may or may not need to be adjusted
+there. We didn't really get around too much. I know we have a few couple of
+follow ups on test scripts. Automating of test scripts, finalizing the test
+scripts and understanding. So there's quite a few follow ups. I think sri
+you and the team. What I heard from was clearly the IT team will send what
+test scripts they have, the business will validate and then add on top of
+that or align with whatever the test scope scripts that the IT has. Right.
+So I'm Waiting for SRI to send us what the starting point is. Likewise when
+we'll take action. Yeah, as soon as they're available mid next week. That's
+what we're targeting. Okay. And it's not just for erp and I want to make
+sure EX and IMA and others are all doing the same thing. Yeah. So Stephen,
+I think for you it may be a bit later because your UAT is and your plan
+calls for that for a bit later than now. I don't think we have IMA
+representation, Rajesh or anyone else in the sport. So that's a follow up
+that will lead and then certainly promote. You've got that. And then the
+next steps really in terms of. I don't think we ever discussed or you know,
+discussed the tools, some of the logistics and some of the, the access
+requirements. So that's a, that's a follow up. So perhaps that warrants a
+subset of our team here to have that conversation on the logistics, etc. So
+war will set that up as an, as a follow up as well. So I think those are
+the things that I captured here notes and we'll certainly get the recording
+out and the copilot notes out as well. Anything else I missed team?
+Anything else you'd like to discuss here? Because we'll set up a follow up
+session clearly lots of good things to discuss and align and finalize over
+the next five, seven days. So certainly a follow up session warranted here.
+But if there's anything else pertinent, the critical or anything I missed,
+I missed here. Rakesh, one thing I want a question for Stephen really is
+Stephen, we have connected with planning, procurement and logistics to get
+the list of all the systems that are available for is. Right, like in the
+scope but outside of this, are there any operationally from, from a
+individual factory perspective or from a, like the systems that for example
+Brian put out in the chat area, Chase put up in the chat here and Brian put
+that in the chat. Now those, those things, are they aligned to operations
+from your standpoint for the particular factories or is there, is there a
+list that we have to compile from that viewpoint that may not be aligned to
+the functions I mentioned before? Yeah, because we got some questions on
+the MES that you connect into cip, but I didn't know how to approach that
+answer. Have we not. Yeah, I'll connect you to that part of that. Have we
+not engaged with the Gary Hamby's and the Joe Ryan's and I mean the
+manufacturing IT folks on this because they have Pretty strong knowledge of
+what you're talking about. We have and we haven't. Right. So it looks like
+things that expanded we have to do like probably, I would say back up a bit
+and walk through the work that has been done. Going to look at these apps.
+A lot of these were, you know, brought up by the sites. We're going back to
+like November, December time frame where a large list was populated and
+then a lot of work was done to reconcile what needed the action. So I'm
+kind of thinking we need to back up and maybe walk the ISC team through
+that work. Why we're at where we are today. Okay, Stephen, so is there a
+follow up with Gary Handy? We can set up that call? Because if a lot of
+these are site apps and just move as is, there's nothing really necessarily
+changing from a process perspective for brv. So it may be just that
+alignment. But some of the things are integrated with erp, with SAP that
+Chase was bringing up. So, you know, bandwidth is changing on SAP. You
+always need to make sure the integration is not changing. But again, if you
+guys can walk us through what is and is not changing with ERP SAP, so it
+makes sense. That's a good call out, Jason. Thank you. We'll set that
+follow up with the site specific apps and the integration with erp. Great.
+Okay. No, thank you all very much. This is super helpful, useful. We'll set
+up a follow up call and then send, send out the notes and action items.
+Quite a few things coming out here. So again, thank you for your
+participation. Thank you. Thanks guys.
+
+Captured with Wave AI Note Taker
+
+Your AI-powered companion
+
+--000000000000bcfbf506377748ed
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-size:small;colo=
+r:#444444"><br></div><br><div class=3D"gmail_quote gmail_quote_container"><=
+div dir=3D"ltr" class=3D"gmail_attr">---------- Forwarded message ---------=
+<br>From: <strong class=3D"gmail_sendername" dir=3D"auto">Wave AI Note Take=
+r</strong> <span dir=3D"auto">&lt;<a href=3D"mailto:summary@email.wave.co">=
+summary@email.wave.co</a>&gt;</span><br>Date: Tue, 10 Jun 2025 at 11:07<br>=
+Subject: UAT Readiness Alignment for Supply Chain Cutovers<br>To:  &lt;<a h=
+ref=3D"mailto:mac@macconnolly.com">mac@macconnolly.com</a>&gt;<br></div><br=
+><br><div style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;margin:0;padding:0;background-c=
+olor:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 auto;backgr=
+ound-color:#ffffff"><div style=3D"background-image:url(https://upcdn.io/W14=
+2iax/raw/email/banner_clean.png);background-size:cover;background-position:=
+center;width:604px;height:297px;margin:0 auto"><table cellpadding=3D"0" cel=
+lspacing=3D"0" border=3D"0" width=3D"100%" height=3D"100%"><tbody><tr><td v=
+align=3D"center" align=3D"center" style=3D"padding:0"><img src=3D"https://u=
+pcdn.io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" style=3D"wid=
+th:41px;height:58px;max-width:41px;margin-bottom:10px"><h1 style=3D"color:w=
+hite;font-size:32px;margin:0;padding:0 0 10px;text-align:center">UAT Readin=
+ess Alignment for Supply Chain Cutovers</h1></td></tr></tbody></table></div=
+><div style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div style=
+=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.co/se=
+ssions/1BBCFCD6-4D11-4B4B-AD6C-C0335575A0FA?lastLoginParam=3Dgoogle" style=
+=3D"background-color:#e6f0ff;color:#0066cc;padding:12px 24px;border-radius:=
+8px;text-decoration:none;font-weight:500;font-size:16px;display:inline-bloc=
+k;margin-top:8px;margin-bottom:8px" target=3D"_blank">=E2=9C=A8 View Your S=
+ession on the Web</a></div><div style=3D"text-align:center;margin-bottom:36=
+px"></div><div style=3D"background-color:#ffffff;padding:28px;border-radius=
+:12px;border:1px solid #e2e8f0;margin-bottom:28px"><h3 style=3D"color:#0f17=
+2a;font-size:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:f=
+lex"><span style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div sty=
+le=3D"color:#475569;font-size:16px;line-height:1.6"><div><h1 style=3D"font-=
+weight:500;padding-top:20px;font-size:2.5rem">Meeting Summary =E2=80=93 Jun=
+e 10, 2025</h1><h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem=
+">Attendees and Context</h2><ul>
+<li>Attended by IT Workstream leads, business and supply chain stakeholders=
+ (including representatives from ERP, CCEX, Data Analytics, Supply Chain IT=
+, Security, Planning, Logistics, Procurement, Operations, and factory/site-=
+level teams).</li>
+<li>Noted contributors: Rakesh (facilitator), Sriram, Srinivas, Bill, Steph=
+en, Brian, Chase, Pramod, Jerry, and others.</li>
+<li>Purpose: Detailed working and alignment session on User Acceptance Test=
+ing (UAT) readiness, particularly for supply chain functions as part of maj=
+or systems transformation (BRV, UAT, and Day 1 cutovers =E2=80=93 including=
+ 8.1 and 11.1 releases). Several references to previous UAT kickoff session=
+s (April-May 2025).</li>
+</ul>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Main Topics D=
+iscussed</h2><h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75re=
+m">1. <strong style=3D"font-weight:bold">Session Objectives and Background<=
+/strong></h3><ul>
+<li>Alignment between IT and business functions for UAT readiness.</li>
+<li>Effort to confirm scope, systems impacted, owners, test periods, and sp=
+ecific test requirements/system dispositions (e.g., Build Back, Move As-Is,=
+ TSA).</li>
+<li>Context: 300+ systems in total, with a short-listed 40 systems identifi=
+ed as critical for supply chain (&quot;ISC&quot;) scope.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">2. <strong=
+ style=3D"font-weight:bold">System Inventory Review</strong></h3><ul>
+<li>Presentation and walkthrough of an Excel/table detailing the critical s=
+ystems for ISC impacted by BRV/UAT.</li>
+<li>Each system entry includes: System name, IT workstream lead, Business U=
+AT lead, type of testing required, and disposition.</li>
+<li>Discussion of methodology: Process owners in Logistics, CX, Procurement=
+, Planning contributed top critical systems. Major focus on systems requiri=
+ng =E2=80=9Cfull UAT=E2=80=9D versus =E2=80=9Caccess validation only.=E2=80=
+=9D</li>
+<li>Clarification and review requested from functional and IT leads: Verifi=
+cation of accuracy, duplicates, missing systems, and responsible contacts.<=
+/li>
+<li>Agreed process for edits: Suggestions and additions (e.g., from site us=
+ers like Chase) to be relayed and incorporated.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">3. <strong=
+ style=3D"font-weight:bold">System Dispositions and Testing Scope</strong><=
+/h3><ul>
+<li>=E2=80=9CColumn F=E2=80=9D is critical: Determines whether =E2=80=9Cful=
+l UAT=E2=80=9D versus minimal validation needed.</li>
+<li>Discussion about two =E2=80=9CCollections=E2=80=9D line items and clari=
+fication of scope (process- versus system-based).</li>
+<li>Addressed system-specific nuances: (e.g., Banking Portals, HighRadius, =
+JIRA usage in collections/reconciliation).</li>
+<li>Challenges with tool ownership across categories (ERP vs. Planning tool=
+s, such as Optavision).</li>
+<li>Need to confirm disposition and testing approach for legacy and Day 1 p=
+ortals (e.g., SUS Portal, Ariba) and clarify integration touchpoints (Optav=
+ision, APO, etc.).</li>
+<li>Emphasis: Each system to be validated with current owners and business =
+leads.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">4. <strong=
+ style=3D"font-weight:bold">Business and Test Window Availability</strong><=
+/h3><ul>
+<li>Key dates:<ul>
+<li>UAT window proposed: July 7=E2=80=9311, 2025.</li>
+<li>Reference to other test and close windows: June 23=E2=80=9330, 2025.</l=
+i>
+</ul>
+</li>
+<li>Need for clarity on business testers=E2=80=99 availability during these=
+ periods, particularly by process (AP, Collections, Credit Mgmt, Order Mgmt=
+, etc.).</li>
+<li>Decision: Each UAT sub-function lead will confirm business user availab=
+ility. Direct offline follow-ups encouraged between IT and business contact=
+s.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">5. <strong=
+ style=3D"font-weight:bold">Gaps and Follow-Up Items Identified</strong></h=
+3><ul>
+<li>Review uncovered possible missing/duplicate systems in the inventory sh=
+eet.</li>
+<li>Notable missing site-level or operational systems, especially as flagge=
+d by site leads (e.g., Chase, Brian). Action required to ensure completenes=
+s.</li>
+<li>Clarification needed for systems such as MES, and those integrated with=
+ factory ERPs (e.g., SAP MES integration for specific plants).</li>
+<li>Process for functional and site teams to review and flag any missing/in=
+correct system entries.</li>
+<li>Discussion around need for a column to distinguish BRV (8.1 go-live) sc=
+ope versus 10/27 (Day 1) go-live scope.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">6. <strong=
+ style=3D"font-weight:bold">Testing Logistics and Environment Readiness</st=
+rong></h3><ul>
+<li>Review of test environments (e.g., CIQ, CIX) and their refresh cycles.<=
+/li>
+<li>Noted that integration between environments (e.g., CIP 900 and CAP 900)=
+ may not fully simulate production; workarounds expected for end-to-end tes=
+ting.</li>
+<li>Data readiness: Recent refreshes of test environments from production e=
+nsure accuracy.</li>
+<li>Automated test script development: ERP team targeting mid-June completi=
+on of automated scripts to be circulated among business teams for review.</=
+li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">7. <strong=
+ style=3D"font-weight:bold">Test Scenarios, Scripts, and Roles</strong></h3=
+><ul>
+<li>Different workstreams at various stages of translating scenarios into t=
+est scripts.</li>
+<li>ERP: Automated test scripts being developed, aiming for efficiency and =
+scenario coverage.</li>
+<li>Coordination required for script validation between IT and business, as=
+ well as appropriate sign-offs.</li>
+<li>Discussion of tool usage, logistics for loading scripts, and role assig=
+nments (validation, sign-off, etc.).</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">8. <strong=
+ style=3D"font-weight:bold">Third Party, TSA, and Day 1 Systems</strong></h=
+3><ul>
+<li>Clarity sought on treatment of TSAs =E2=80=93 majority not requiring in=
+-depth testing unless there=E2=80=99s minor configuration change; some mino=
+r validation (SSO, access/logical separation) still needed.</li>
+<li>Specific examples: Ariba, Windshuttle, IBM Sterling (EDI), Hybris/Magen=
+to/Salesforce (CX platforms) =E2=80=93 most unchanged; minimal =E2=80=9Csmo=
+ke testing=E2=80=9D requested.</li>
+<li>Follow-up for site/factory-level applications tightly integrated but re=
+maining =E2=80=9Cas-is=E2=80=9D for Day 1.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">9. <strong=
+ style=3D"font-weight:bold">Environment, Access, and Security</strong></h3>=
+<ul>
+<li>Security team to support provisioning of access for testers (including =
+remote, device, connectivity needs).</li>
+<li>Business UAT leads and IT workstream leads to coordinate on user access=
+, necessary changes, and device setups as needed.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">10. <stron=
+g style=3D"font-weight:bold">Open Questions and Site-Level Concerns</strong=
+></h3><ul>
+<li>Raised by Brian/Chase: Concern that not all operationally critical appl=
+ications are reflected; need for granular site-level system validation.</li=
+>
+<li>Stephen flagged importance of manufacturing IT teams=E2=80=99 involveme=
+nt for completeness (e.g., Gary Hamby, Joe Ryan).</li>
+<li>Agreement to rebuild/review system inventories in collaboration with si=
+te teams, reconciling November=E2=80=93December initial inventories with cu=
+rrent state.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">11. <stron=
+g style=3D"font-weight:bold">Additional Technical and Integration Considera=
+tions</strong></h3><ul>
+<li>Noted system-specific exceptions where integrations aren=E2=80=99t avai=
+lable in the QA environment.</li>
+<li>Will need to build temporary integrations or plan workarounds for compr=
+ehensive UAT.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">12. <stron=
+g style=3D"font-weight:bold">Miscellaneous and Admin Points</strong></h3><u=
+l>
+<li>Clarified tool-specific questions (e.g., SSO validation, license renewa=
+ls for Windshuttle), with several system-level side discussions to be handl=
+ed offline.</li>
+<li>Email address changes (e.g., for Salesforce vendor IDs): System-generat=
+ed addresses available, but mailboxes not yet created; to be clarified and =
+followed-up separately.</li>
+</ul>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Action Items<=
+/h2><ol>
+<li><p><strong style=3D"font-weight:bold">System Inventory Review &amp; Upd=
+ates</strong></p>
+<ul>
+<li>All workstream and business leads to review the master list of systems =
+for completeness, accuracy, duplications, and contact assignments.</li>
+<li>Supply input for any missing or site-specific/operational applications =
+by June 13, 2025.</li>
+<li>Chase/Brian to supply site-level critical system gaps; Rakesh/Sriram to=
+ coordinate follow-up.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Define Testing Scope per Applicat=
+ion</strong></p>
+<ul>
+<li>Column F (level of testing: full UAT vs. access validation) to be compl=
+eted by IT workstream leads (target: next 1=E2=80=932 days).</li>
+<li>IT workstream and business UAT leads to fully sync on system scope and =
+testing requirements.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Business Tester Availability Conf=
+irmation</strong></p>
+<ul>
+<li>Each sub-function lead (e.g., Mihala/Preeta for CX, Unis for Collection=
+s) to confirm business availability for proposed windows.</li>
+<li>Rakesh/Sriram to facilitate and record owners for each process/test are=
+a.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Scheduling and Window Alignment</=
+strong></p>
+<ul>
+<li>Confirm and document test dates and business resource windows for:  <ul=
+>
+<li>June 23=E2=80=9330 (pre-UAT window)</li>
+<li>July 7=E2=80=9311 (main UAT window)</li>
+</ul>
+</li>
+<li>Clearly distinguish 8.1 (BRV) scope from 10/27 Day 1 scope in inventory=
+ and test plans.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Environment and Data Preparation<=
+/strong></p>
+<ul>
+<li>Test environment readiness to be explicitly confirmed by all teams.</li=
+>
+<li>ERP team to coordinate any temporary integrations required for full end=
+-to-end UAT coverage.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Test Scenario, Script, and Role A=
+lignment</strong></p>
+<ul>
+<li>IT (ERP, CCEX, IMA, etc.) to provide baseline test scripts by mid-next =
+week (target: June 18, 2025).</li>
+<li>Business to review/expand, IT/business to align on sign-off matrix, too=
+l logistics, and workflows.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Follow-Ups for TSA/3rd Party/No-C=
+hange Systems</strong></p>
+<ul>
+<li>Minimal validation (=E2=80=9Csmoke test=E2=80=9D) for unchanged/TSAs, w=
+ith documentation of approach.</li>
+<li>Sriram/Srinivas to clarify plan for each TSA/third-party system.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Addressing Site-Level and Integra=
+tion Apps</strong></p>
+<ul>
+<li>Organize meeting between supply chain/IT and manufacturing/site IT lead=
+s (e.g., Gary Hamby, Joe Ryan) to validate operational system completeness =
+and integration impacts.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Resolve Specific System-Level Que=
+stions</strong></p>
+<ul>
+<li>Offline sessions to confirm system disposition and ownership (e.g., Opt=
+avision, SUS Portal, MES, etc.).</li>
+<li>Special attention to Salesforce email domain requirements by August 1.<=
+/li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Security and Access Actions</stro=
+ng></p>
+<ul>
+<li>Security/IT to ensure all tester access and device/connectivity needs a=
+re captured and fulfilled ahead of UAT start.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Follow-Up Sessions</strong></p>
+<ul>
+<li>Follow-up meeting(s) to be scheduled within 5=E2=80=937 days (by June 1=
+7) to continue working through detailed issues and align on outstanding inv=
+entory/scope/test planning topics.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Follow-Up Poi=
+nts &amp; Future Meetings</h2><ul>
+<li><strong style=3D"font-weight:bold">Inventory Working Session</strong>: =
+Additional workshops for site/factory systems with manufacturing IT, to ens=
+ure no gaps at operational level.</li>
+<li><strong style=3D"font-weight:bold">Test Script &amp; Tool Logistics Dee=
+p-Dive</strong>: Subset of team to convene for tools/process flow/automatio=
+n review regarding test scripts.</li>
+<li><strong style=3D"font-weight:bold">TSA and Integration Focus Call</stro=
+ng>: Systematic review of third-party, TSA, and untouched =E2=80=9Cmove as =
+is=E2=80=9D systems for Day 1, including SSO and access sign-off.</li>
+<li><strong style=3D"font-weight:bold">Regular Progress Check-ins</strong>:=
+ Ongoing calls to ensure action items are progressing for script developmen=
+t, environment readiness, and business tester alignment.</li>
+<li><strong style=3D"font-weight:bold">Distribution of Notes &amp; Recordin=
+g</strong>: Rakesh to circulate meeting notes and Copilot-generated recordi=
+ng/summary.</li>
+</ul>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Key Dates</h2=
+><ul>
+<li><strong style=3D"font-weight:bold">June 13, 2025</strong>: Target for f=
+eedback on system inventory and initial testing scope completion by workstr=
+eam leads.</li>
+<li><strong style=3D"font-weight:bold">June 17, 2025</strong>: Next alignme=
+nt/follow-up session.</li>
+<li><strong style=3D"font-weight:bold">June 18, 2025</strong>: Baseline aut=
+omated test scripts from ERP/IT teams to business for review.</li>
+<li><strong style=3D"font-weight:bold">June 23=E2=80=9330, 2025</strong>: P=
+re-UAT test period and code freeze window for new development.</li>
+<li><strong style=3D"font-weight:bold">July 7=E2=80=9311, 2025</strong>: Ma=
+in cross-functional UAT window.</li>
+<li><strong style=3D"font-weight:bold">August 1, 2025</strong>: Date refere=
+nced for some Day 1 cutovers and email/domain changes.</li>
+</ul>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Summary</h2><=
+p>All teams are in active alignment to ensure UAT readiness for the critica=
+l systems supporting upcoming cutovers (BRV, 8.1, Day 1/10.27). There are i=
+mportant follow-ups around completeness of the test inventory, site-level/o=
+perational system inclusion, test script automation, tester scheduling, and=
+ environment/logistics readiness. Several detailed, system-specific clarifi=
+cations and follow-ups are pending, with expectations for parallel progress=
+ by function, workstream, and site teams in the coming week. </p>
+<p><strong style=3D"font-weight:bold">A follow-up meeting will be scheduled=
+, and all action items are to be progressed in preparation.</strong></p>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex"><span =
+style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription</h3><div=
+ style=3D"margin-bottom:0;padding:16px;background-color:#f8fafc;border-radi=
+us:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bot=
+tom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rak=
+esh</span><span style=3D"color:#64748b;font-size:14px">0:07</span></div><di=
+v style=3D"color:#475569;font-size:16px;line-height:1.6">Share the or share=
+ the screen. Yep, sharing. I&#39;ll kick things off. Hey, good morning. Goo=
+d evening, team. Hi, Rakesh. Good morning again, everyone. Good morning eve=
+ryone. Morning. Shreem us. Thanks for making it. You are. You&#39;re one of=
+ the most important people on this call. So. And sri. Too many conflicting.=
+ I. Yeah, yeah. But no, thank you for making the time for it. Yeah, absolut=
+ely. SRI and Srinivas and all the active leads actually, Stephen and others=
+. This is fantastic. So. Yep. Bill, thank you. This is going to make us hav=
+e a really good conversation with the supply chain stakeholders, with ISC s=
+takeholders. So thank you very, very much for making time. Rakesh, could yo=
+u record the session or is it not. No, I do have copilot on so I&#39;m goin=
+g to bear with me while it turns off everybody&#39;s audio and camera for a=
+ second. I think recording should be on. Great, thank you. Appreciate it. A=
+nd I want to make sure it is a case can. I didn&#39;t get a note. I know it=
+ muted me, but I want to make sure that it is. Cisco Pilot is in use. So I =
+think we&#39;re okay. Perfect. All right, so we&#39;ll give it one more min=
+ute and then we&#39;ll get started here. So. And I&#39;ll let people in her=
+e. So quite a few more others joining in. So. All right, I think we can get=
+ started. We do have very good participation. So again, thank you all so mu=
+ch for making the time for this. This is quite, quite important, critical t=
+hat you are all here and supporting us. So I want this very much to be an a=
+lignment session, working session with the function. So what we&#39;ve done=
+ over the past couple of weeks is if you recall, many of you were or some o=
+f you were in the UAT kickoff sessions back in late April and May. And we s=
+tarted working towards aligning all of the IT work streams with the functio=
+ns in terms of UAT readiness. So what we wanted to do here, and we&#39;ve b=
+een working again in this case with Sriram and the EISC function, we&#39;re=
+ similarly doing something with Will and the finance function and, and the =
+HR function as well. So what we want to do starting with this is have a ser=
+ies of conversations with all of the stakeholders involved in the systems, =
+both from a systems and process perspective with a supply chain function. S=
+o if you&#39;ll go to the next slide, Mac. So again, very much a working se=
+ssion. What we&#39;ve done over the past week or so is work with Sriram and=
+ the team to identify all of the systems that are getting touched by supply=
+ chain as part of this BRB and uat. Now, from a purely systems perspective,=
+ there is a slew of systems that are, you know, build back, move as is, et =
+cetera, that have those dispositions that are getting touched. But in addit=
+ion to that, for the end to end supply chain processes, there are quite a f=
+ew systems that are impacted either, you know, information flowing or needs=
+ needs testing in an environment. So the idea here is that we&#39;ve got a =
+table, we&#39;ve asked Canvas for some feedback from the work streams, work=
+stream leads and yourselves. So what we want to do is review those systems =
+and make sure that we&#39;ve got those lined up as, you know, either BRV or=
+ BRV adjacent and make sure that we&#39;ve got the right function or the wo=
+rk stream supporting it. We&#39;ve got the right testers and owners of thos=
+e systems identified. So I think this is where we&#39;d be looking for the =
+workstream leads to help identify some of that here. We also want to talk t=
+hrough some of the test windows and test periods that we&#39;ve identified.=
+ I know there&#39;s very much a draft here, but several of you sent back yo=
+ur SID and UAT dates. At least for the UAT dates. We want to make sure that=
+ we&#39;re lining that up with some of the test periods that Sriram and the=
+ team are looking at as, as, as they go through the process. I added on her=
+e the entry exit criteria perhaps a bit, you know, again it&#39;s a, it&#39=
+;s a starting point here. Want you all to take a look at that and perhaps t=
+hat may need a little bit more work or alignment individually to understand=
+ with the test leads and the function leads what the entry exit criteria is=
+. As you come out of and get into and come out of uat. In the sign off ther=
+e is a roles and responsibilities matrix that we flashed up in one of the k=
+ickoffs. I do want to bring that back up again to talk through, you know, a=
+s we talk through, you know, the tool to use, who&#39;s going to load the s=
+cripts, who&#39;s going to sign off and who&#39;s going to validate, etc. S=
+o we just want to talk through that. The other piece of this is really talk=
+ through the test scenarios and approach where we are across several functi=
+ons and work streams is there are test scenarios that have been developed. =
+I think different work streams are in different phases of validating that t=
+he test scenarios have been translated to test scripts. We&#39;ll talk thro=
+ugh some of the logistics on, you know, what tools are we using. I know the=
+ ERP team, Srinivas Sri, Jab ET Cetera SRI Bill, you know, you&#39;ve alrea=
+dy started conversations on how do you automate these scripts, what tools d=
+o you use, etc. So I want to make sure that we have a holistic conversation=
+ and talk through precisely that, that we align on what are the tools, you =
+know, what are the logistics around it. I know there was some virtual windo=
+ws and some physical, you know, couple of windows, one virtual, one physica=
+l. You know, we also have the security team here just to provide us, you kn=
+ow, as we look at logins, as we look at user Access, testers access, etc. D=
+o we need devices, you know, what sort of connectivity is there, remote tes=
+ting involved, etc. So they&#39;ll able to align or at least loop in and ta=
+ke some action items for us if needed to make sure that the right users get=
+ the right access to enable the testing. So I said quite a lot there. I do =
+want this to very much be a working session, you know, particularly the, we=
+&#39;ve got the erp, the ccex, the data analytics teams in here and the sup=
+ply chain IT teams. So I do want us to talk through that. You know, those a=
+re the key work streams, functions, if you will, that impact supply chain. =
+So before we get started into working session and talking through the syste=
+ms. Sriram, any other comments or outcomes you would like from this convers=
+ation? No. First of all, thank you Rakesh for setting this up. Team this up=
+. This was an important meeting from a supply chain stakeholder perspective=
+. So there are a lot of functions that are on this call from the business s=
+ide as well as from the supply chain functions across planning, CX logistic=
+s and procurement and operations. So there, there are, so I want to give us=
+ some time for Q and A. Maybe we can do it during these individual agenda i=
+tems which, which I think is. Okay, right, like. Or you want to reserve que=
+stions for the late. No, no, no, let&#39;s keep the questions coming. We&#3=
+9;ll answer them, we&#39;ll take notes, but very much a working session. Pe=
+rfect. Okay. All right, so if you go to the next slide and this is going to=
+ be a busy slide and so we&#39;ll start using your Excel for this. Again, s=
+ore for the eyes but what this is and we&#39;ll pull up the sheet and walk =
+through this. So let me do that here. Or would you prefer to do that? Srira=
+m? No, go ahead. All right. As you said, this is a, this is an important vi=
+ew that I personally wanted to ensure to define the scope of what systems a=
+re critically important for isc. And so the way we develop this, there are,=
+ by the way there start off with we have 300 plus systems and so there was =
+no way that we have time to go and test all of those systems. So the teams =
+went back and did a touch point on what are the systems that are extremely =
+critical for us to ensure that we are ready for 8.1 or 11.1, depending on t=
+he system. And each of the process owners from Logistics, cx, procurement a=
+nd planning came back with a short list of say five to 10 systems each. And=
+ this is a list of about 40 systems that have various dispositions, Buildpa=
+ck, Movasis, mostly TSA that we have organized here. And the intent is to e=
+nsure everybody has common understanding of what are those systems a which =
+IT work streams and the PMs are leading the effort. From an IT perspective,=
+ who are the business UAT leads? And really I think one thing that we&#39;r=
+e like you see column F is very, very critical because there are some syste=
+ms that we don&#39;t really need to do a whole lot of full testing. It&#39;=
+s just a question of ensuring that the users have access and that the syste=
+ms are cut over because there is really no development that is significantl=
+y worthy to go full uat. But there are several systems that we do need to d=
+o a full uat. And so we want to understand what those systems are and ensur=
+e that we have a proper test plan for that. So that&#39;s why I set up this=
+ System and with EY&#39;s help and with the IT Workstream leads help, we&#3=
+9;re trying to fill this out so we all have the same understanding of what =
+we&#39;re testing for and to what extent we&#39;re testing these systems fo=
+r. That&#39;s the intent of this file. Great, thanks Sriram. Now if some of=
+ you already have this information and I&#39;m looking at you, Bill and Sri=
+nivas, you know some of this, you may already have all this information. If=
+ so, you know, we can certainly send you the link and have you have you fil=
+l that as well. But I think the idea is to walk through this and make sure =
+that, you know, these are the systems that are getting touched as part of, =
+you know, Sriram&#39;s and functional scope, ISE&#39;s functional scope. So=
+ if there&#39;s anything else that you think, think from our perspective, f=
+rom an IT perspective, the systems should be included here. You know, let&#=
+39;s have that conversation as well. So Rakesh, I have two questions. Numbe=
+r one, before this call, I think we had a internal IT connect where we were=
+ talking about the business availability for the upcoming uat. Right? Okay.=
+ And then when the closest, the close, I understand is starts I think the w=
+eek of the 23rd of June and then probably it should close by 30th. Right. T=
+hen when the business will be available for the UAT that is number one. And=
+ then the window that we are looking currently, 7th to 11th, July 7th to 11=
+th. Right. Again it depends based on list of scenarios scope that one used =
+one want to execute for each of these processes. Right. Number two, why do =
+we have collections twice on your spreadsheet one it says and then there is=
+ one banking port which I understand that&#39;s the cash app collections. S=
+o what is those two different collections here? What is the scope of those =
+two collections here? Yep, so we can talk through those. So the first thing=
+ first. Yes. So Your point on July 7th to 11th? I think so the action item =
+here is to understand business availability, to be able to support that. So=
+ I think Shriram, that&#39;s probably a takeaway. Either we can address it =
+here or have that as a takeaway to come back and validate business availabi=
+lity. Now shreem, are you looking for any specifics on that or is that more=
+ of a. And by that I mean, you know, do we need business availability acros=
+s certain regions, across certain locations. When I say business availabili=
+ty across the process. Right. Processes could be someone involving with AP =
+or it could be someone from the collections disputes, credit management or =
+anyone who will be engaged from order management from again this explicitly=
+ for business. Right, right. So what is their availability today when the u=
+sers will be available? I think that is key. Right. For me to have my test =
+scripts ready. I&#39;ll have to go back and work with the business because =
+list of scenarios needs to be documented what they want me to cover in the =
+testing the scope. Therefore I wanted to understand their availability. Bas=
+ed on that we can come up is like one week window is enough or two weeks wi=
+ndow of your interview business. Yeah, got it. I mean I think it&#39;s a go=
+od, good question Srinivas. I think that&#39;s why in column G we have iden=
+tified the business UAT for that specific sub function lead. For CX it woul=
+d be Mihala Preeta and then for collections it&#39;d be Unis. You can come =
+to me overall from an ISE point of view and I&#39;ll be happy to set some t=
+ime to go and get those details and the answer can be different for each fu=
+nction. So. So let&#39;s take that offline. The contact names are given her=
+e for that reason specifically so that the IT team and the business team ca=
+n talk to each other and ensure that your test scenarios are aligned and th=
+e owners of actual Testers and the timeline is all aligned. Right. So I thi=
+nk we can do that. Not in this meeting, but I&#39;m happy to have additiona=
+l conversations offline with you. Okay. Okay. And for everyone&#39;s benefi=
+t. And some of you may not have access to the ITAthens folder, but if you d=
+o, at least the IT team will. Srinivasan team. I&#39;ve posted this particu=
+lar file. I&#39;m sharing in there for your reference. Now, the second ques=
+tion you asked about the systems. So this was a. These were the systems ide=
+ntified and we went back and looked at this as master app inventory. So tha=
+t what you see in column A are the systems that Sriram and the team and the=
+ functions have identified as impacted by their scope of testing. So if the=
+re&#39;s something that is either a duplicate or needs validation or rectif=
+ying here, we can certainly do that and clarify if there are certain things=
+ that are wrongly called out here or if it&#39;s a wrong system in your. In=
+ your opinion, then we can certainly modify it here and correct it if there=
+&#39;s something missing as well. We can do that. So you were talking about=
+, you said Jira on top. Correct for collections. Yeah, I know that&#39;s mo=
+re of a process where they use Zira corrections, but then we have one more.=
+ So here is where we create a work list for the. The collection specialist =
+to go test based on company or based on what they wanted us to cover in tha=
+t. In that. So just wanted to double check the expectation for those two li=
+ne items. That&#39;s the reason why I asked you that question. Fair enough.=
+ And I think Harry, you&#39;re on as well. So. So I know we said Banking Po=
+rtals is not just one nice little app, it&#39;s perhaps a series of them. C=
+orrect. I&#39;ll get that clarified with Eunice. On what? All portals are i=
+ncluded in there. Take an action there. This is a collection. So I believe =
+that they need to validate the bank statement ally as well as the system li=
+ke hrc. So Units Hurricane is really managing the hrc. You know, that&#39;s=
+ another app. Let me cover here. It&#39;s not just for the portal itself. S=
+o. Sorry, what was that? What was that? Okay, so this is high radius. Okay.=
+ Yeah. Okay, let me make a comment here. That. Yeah, so this is not a speci=
+fic specific. It&#39;s access to bank portal as is. Got it. Okay. And I thi=
+nk you mentioned hrc. Right. So that&#39;s from Harry. And then the other p=
+art here we mentioned, and I know I pulled in Gary in here. So this is real=
+ly more of a process. So maybe we need to have A follow up here as well wit=
+h Eunice on now to your point, Srinivasi said the requirement for the use o=
+f this. Yes. All right. I think. I think that one, if I remember correctly =
+maybe somebody from the CX organization might be able to back me up here. B=
+ut I. I think if customers end up paying to the wrong company, they would h=
+ave. The collections team would have to make an entry in JIRA for the recon=
+ciliation process. So. And then the. The monies would then be flowing to th=
+e correct entity after the approval via jira. That is my recollection of wh=
+at unis needs that for, but I can confirm that there are that or other appl=
+ications as well. Okay. I think this is more of a. My understanding is the =
+JIRA is more of a tracking right. For any request that they want to get rev=
+iewed or approved. So yeah, probably to get it clarified between Srira. Sur=
+e. Yeah. Okay. Now sh. We do have a few other ERP apps. I think there were =
+a couple that got thrown over to you from when we spoke with Goku in Pramod=
+ from a couple of days ago. I believe Optivision. Do you want to. Do you mi=
+nd. Sorry for the interruption. Do you want to filter out specific? We cert=
+ainly can. Okay, let&#39;s do this. Let&#39;s make sure again these are the=
+ right ones. So sus portal was a lib without and we note that as a dcom we =
+need to understand what is in scope or what would replace it in the scope o=
+f this testing. So whether it&#39;s even in scope to be tested. Would you o=
+r Bill have a view on that? I&#39;m not aware about this app, Bill. You kno=
+w I suggest let&#39;s. Let&#39;s circle back serum on this. I might touch b=
+ase on this if I recollect correctly. It was agreed that only it is not nee=
+ded for solidus because of the volume and the other details that we have. A=
+dditionally using the apo, I think we share the forecast with the BW portal=
+, with the BICs, with our vendors or suppliers. That could be another reaso=
+n why why it was not suggested. But then let&#39;s circle back to close thi=
+s gap. Okay. So can you just kill a call with you me and Siram include Jesu=
+s on that please? Yeah. These are business from procurement point of view. =
+Okay, perfect. And promotion this one. This might need to be used from soft=
+ spin is to hard spin. So for readiness we will need to make sure that this=
+ continue to work until we get the final migration to Ariba and EDI other p=
+ortals. But overall it will be the commission for the hard spin. Yes, fair =
+enough. Good point you&#39;re making because this is a day one disposition =
+of a dcom for day one. But yeah, or live without for day one. So at soft sp=
+in then you&#39;re. You&#39;re. You&#39;re spot on. But if it&#39;s still l=
+ive, then there might be some testing or some. Some requirement there. Okay=
+. So I&#39;ve taken it as a follow up. Optavision is the other one. Optivis=
+ion. If I understand correctly. This should be with Engineering. Okay, but =
+Zariba is with the erp, right? I mean that&#39;s what we already categorize=
+d. Which one you&#39;re talking Goku. We were talking about Ariba before Ar=
+iba. No, no, we will come back. No, yeah, yeah, let&#39;s get to that. Opti=
+vision. So we see Engineering. Okay, I&#39;m just gonna make a note here. I=
+s. Is Optavision not the. The planning tool used in Huntsville? Yeah, it is=
+. That&#39;s what I was going to say. It&#39;s their erp. Yeah, it&#39;s th=
+ere. Okay. It&#39;s erp. Oh okay. Yeah. So let me make sure then. So, so, s=
+o when we say it&#39;s erp. But. But here. There&#39;s a team here in erp. =
+Yeah, yeah. But the thing about it is they use it for, for advanced plannin=
+g. They use it like for apo. They don&#39;t really use apo. They use Optavi=
+sion and then put the data into APO from Optavision. There&#39;s an integra=
+tion. There&#39;s an integration between Optavision and CAP 900. I get it. =
+I think what I meant was the IT work stream that is involved with Athens mi=
+gration of these systems. Right. So it&#39;s an ERP work stream led by SRI =
+and Bill. Right. Like I want to make. Make sure that they discussed this on=
+e Optivision long time back when we are dispositioning all our applications=
+ and this is a planning tool. So I don&#39;t. That&#39;s the reason why I t=
+hink this did not come up to erp. Let me understand. JD you say when it&#39=
+;s planning tool what is. We do out of. We did the advanced planning. It is=
+ all that. The planning. The optimization is planning for possible plan. Ba=
+sically how the to. How do they plan all the roles and all the different va=
+riant configuration materials from Optimism from Optavision and then that d=
+ata will be transferred back to SAP. Yeah. So what is the disposition? SRI =
+is it move as is. I would imagine optimization is more as is. Yes. And who.=
+ Who owns it SRI today? No, that is. Yeah, that&#39;s what I&#39;m so wonde=
+ring right now. That is that is categorized and under planning applications=
+ no, it&#39;s not planning. Okay. I mean, at least from the service categor=
+y on your perspective, I know this is not. But then, Jerry, let&#39;s conne=
+ct. It might be treated as a planning tool, but it might be a scheduling to=
+ol. Let&#39;s understand that. Let&#39;s have a meeting with Jerry and we w=
+ill walk through this. Okay, perfect. This is the exact benefit of this mee=
+ting. I just wanted to make sure. Yeah. So you need to understand, I mean, =
+why it&#39;s falling under planning and cmd. It is not. It is not under pla=
+nning for sure. Same as the support last one, right? The previous one that =
+you mentioned. Yeah, yeah. Different stakeholders in terms of the meeting. =
+So Jerry, thank you. Appreciate it. Basically to reconfirm that with the st=
+akeholders to align this template. Right? Yeah, yeah. Even if it is live wi=
+thout. We need to make sure if those are aligned with relevant. Take a look=
+. Yeah, thank you. So we&#39;ve got a couple here. So apo. Yep. Yeah, put i=
+t in the chat. I mean, we&#39;re working with Burna on that. We&#39;re not =
+working with Bill on the apo. Yeah, that&#39;s correct. So it is. There it =
+is. Right. Okay. So. So it&#39;s not Bill. Who is it? I put it in Bill. Bil=
+l is the pm. Is. Right. Okay. All right. It may be somebody as a POC you&#3=
+9;re working with. So we&#39;ll poor. Okay. Ariba. Ariba is. No, it&#39;s. =
+Ariba is the rpr. That&#39;s right. Okay, so SRI and Bill, as you go throug=
+h this, I. I would like maybe after this meeting would like your input on t=
+he testing requirement call column. Right. Something as simple as full UAT =
+or basic testing. What is the extent of it testing that we need to do with =
+business on. On each of these apps. Okay. Ariba. I don&#39;t know. Again, l=
+et me check with hi moms for me. A lot of surprises today&#39;s call. Basic=
+ally, so I don&#39;t know why. Bill, did you hear anything on Ariba coming =
+to your feet? It&#39;s not coming sri. We agreed this like four months back=
+. One second. I&#39;m asking Bill, basically. Bill, you there? I am. Yeah. =
+I don&#39;t know. It was giving me some sort of warning every time I tried =
+to come off mute. Yeah, it must be the co pilot messing up. Apologize. Okay=
+, yeah, I&#39;m sorry. So the question was, are we going to be testing Arib=
+a? Yeah, that&#39;s what the question is. Right. I mean it was not in our f=
+ull end to end testing scope. No. Right. That&#39;s what I&#39;m saying. It=
+&#39;s a tsa, right? Which means we&#39;re not changing or just paying for =
+the service. Correct. So for TSAs, do you need any testing at this point? I=
+n one or two exceptions we&#39;re finding that is the case. But on the whol=
+e, no. Right. So one of the ISE applications, even though it&#39;s tsa, the=
+re are some minor changes that are being done September wise which is forci=
+ng us to do a uat. User asset control should be that in place. But we need =
+to make sure if this particular instance is dedicatedly for am. If so no te=
+sting of course not going to be. But then you still need to validate the lo=
+gical separation and you still need to validate the sso. So there will be s=
+ome still minor U. But then it&#39;s needed. That&#39;s my, that&#39;s my s=
+uggestion. User control to be done for sure. As you mentioned. Yes. The sso=
+, they have to validate. Correct. So yeah, I mean there&#39;s no lot of tes=
+ting. But then the testing needs to be done. So. Brian Davis. Go ahead. Bri=
+an, are you having difficulty unmuting as well? Yeah, somehow when you unmu=
+te, if you&#39;re getting some messages. I&#39;m also having the same thing=
+. Can you hear me? Yes, we can. Okay. No, I&#39;m. I&#39;m the. For those w=
+ho don&#39;t know, I&#39;m the systems lead for Spectra, so I kind of overs=
+ee. And there&#39;s other people on the call. Jay over for Jason Boyd basic=
+ally. And so I&#39;m looking at Spectra and pack out and chi and there&#39;=
+s four. There&#39;s three or four applications and LIMs. Our team, to my kn=
+owledge, we&#39;re at a loss as to what is going on here, where testing is =
+going to be done, what&#39;s the extent of the testing. We need a. A reboot=
+ here for. For our local team to get on the same page with what you are dis=
+cussing. Okay. So we need to take it offline to another call. But we&#39;re=
+. Of course this seems to be at a very high level and not at the point leve=
+l. Yeah, I think Brian, the problem is we need to align on the high level f=
+irst before we encourage. Get to what you&#39;re asking. Right. So like we =
+need to agree what testing is required for a given system and then we need =
+to decide what plants we need to test it at. Right. But they need to tell u=
+s. What I don&#39;t understand is what is changing. Depending on what is ch=
+anging will drive what we need to test. That&#39;s what this meeting is abo=
+ut, Brian. But what I&#39;m. What I&#39;m saying is I don&#39;t. I don&#39;=
+t know what their what system? What are they changing in this? We&#39;re, I=
+&#39;m assuming we&#39;re gonna have, we&#39;re gonna get access to a new s=
+erver and we&#39;re gonna test on I, I, I don&#39;t even know what the conn=
+ectivity is between all. Yeah Brian, no one&#39;s asking me to make assumpt=
+ions. So the team needs to come back with the scope of the change. Yeah, I =
+think it&#39;s clear that they owe you that. But you&#39;re asking us to te=
+st in 13 days. No, I&#39;m not. I&#39;m not. That&#39;s why we asked for th=
+is meeting Brian. Because we are not aligned as a leadership team on what n=
+eeds to be tested, who needs to be involved. Okay, so what we&#39;re trying=
+ to get at here is to clarify just what you said. What is changing on these=
+ systems like, for example, ERP, CIP 900, it&#39;s a TSA. Do we need what k=
+ind of testing do we need? Because that&#39;s a pretty generic system. Righ=
+t. It&#39;s everything. So you know, we need someone on this team to come b=
+ack to us and I guess what trio I&#39;m starting to drive at is what testin=
+g is needed and then we can identify okay, these are the people that need t=
+o be involved. We&#39;re not even close to that right now. Correct? That&#3=
+9;s right. We&#39;re building that so that, that&#39;s. Thanks, thanks Jaso=
+n for clarifying that. That&#39;s why it pms. We need your help to fill tha=
+t column F as soon as possible. Like today if possible explain you know wha=
+t level of testing we need. Okay. All right. Chase. Chase. Hey. Hey guys. A=
+lso representing the Spectra business. It seems that there&#39;s entire sys=
+tems that are critical to day to day Spectra business that are just not lis=
+ted at all. What if we have situations like that is the ask kind of for the=
+ users at the site level and the LOB level to make sure that basically this=
+ is accurate. I guess a concern I have is that there just maybe is some sys=
+tems that aren&#39;t even included right now. So I&#39;m happy to take your=
+ input Chase. Like I think once you unfilter and take a look at it, see if =
+there are systems that you think are important and not showing here. The wh=
+ole funneled that to me and I&#39;m happy to take that back to the team and=
+ go look at it. But we&#39;ve asked the functional teams for what systems a=
+re critical. I&#39;m not going to say this is foolproof and 100% done. I th=
+ink this is a good starting point and if there&#39;s edits that need to be =
+done to add more systems. Let&#39;s work and get that full list done here. =
+Got it. The other, the other thing is too. We need to understand what needs=
+ to be tested for the 8.1go live and the 1027 go live because there&#39;s t=
+wo different lines. That&#39;s the other piece that needs to be. That would=
+ help add clarity. That&#39;s a good point. Yeah, good point. We&#39;ll add=
+ that column. Yeah. Thank you. Okay. No, very good discussion. Thank you. I=
+ think these are relevant questions and as you can see it&#39;s, it&#39;s, =
+you know we&#39;re just working through it. So. But yes, so I think the oth=
+er point you made Stephen as well ERP quite generic but we know 8. 1 all th=
+e legal entity changes happening in ERP. So Sri and Bill are all over that =
+in terms of the scope of testing etc. So again, you know, let us know there=
+. Bill, IBM, Sterling, Srinivasa, Sri, IBM Sterling is an EDI one and we ne=
+ed to do that is already part of our. Our activities. Okay. And then you&#3=
+9;ve got see 1. 1 comment. I assume that Christ is involved in that. Christ=
+ina Delko But I just wanted to. Yeah, he&#39;s involved in that. He&#39;s h=
+elping us to build that. So. Yeah. Awesome. Yeah, there was a couple of oth=
+er ones. I mean this one, see, this one&#39;s under planning. So it&#39;s. =
+It&#39;s. I don&#39;t know the difference between this one. But I again, Sh=
+iram, maybe you can help me here. It&#39;s the same. It looks like it&#39;s=
+ the same ECC SIP 900 but it&#39;s a separate line item. So. Yeah, ECC and =
+BW are separate systems, but they&#39;re all in. Okay. Okay. Itself is a on=
+e system. Right. One application. Right. So. Right, right across the board.=
+ Yeah. All right. So okay. Wind Shuttle. That just seems again from a CX to=
+ol. I think Prita. I think someone from. I don&#39;t know anything. Erica i=
+s working with the contract renewal for windshuttle. That is what the lates=
+t information. I got it. We are extremely conceivably using in master Data =
+management and cx. Yeah. But is there any testing required for venture busi=
+ness? Nothing is changing for. No, no, no testing. Testing is not required =
+at all. Stream. Yeah. Because that is just a renewal. Contract is just from=
+ the license standpoint. That&#39;s a license, right. Not from the testing =
+standpoint. No. Yeah, you are right. There is no testing. Yeah, yeah. Becau=
+se this is the standalone tool. This is basically. They use this tool to au=
+tomate all the master data Activities to upload customer master to upload m=
+aterial master to make changes to any other master data. So yeah, we can do=
+ a quick glance, but nothing is changing over there. Okay, but we&#39;re ke=
+eping the access to the same people that have the access. We&#39;re not cha=
+nging anything regarding that. Right. Licenses are the same. Will access ne=
+ed to change Right now Erica is. Is controlling everything and she is part =
+of this attendance team and the. Sounds like moving. So she&#39;s already w=
+orking as part of the license renewal. Oh, how many. That&#39;s a separate =
+topic, right? I don&#39;t want to. Okay, okay. We have a separate topic. We=
+ have a separate communication going on. This one. Yeah, the license renewa=
+l and all those things. License itself is a separate topic all by itself. S=
+o I&#39;m talking more accurate. So yeah, a license all sorted out hopefull=
+y. But will access change to using the tool? Everything is from CIP 900 onl=
+y. Exactly. Yeah. All these things are currently CIP 900. There is no diffe=
+rent access AP 900. Understood. Thank you. There were a couple of others on=
+ apo, BW and snp. These are also on to the ERP team. So. Correct. That BW i=
+s not part of erp. That BW should be part of ima. Okay. Yeah. Rajesh is pro=
+bably not here, but then. Yeah, I mean we are. We are Siri. We all are. All=
+ are reviewing that with Rajesh. So he knows it. They&#39;re the one. They =
+are. They are working through the dispensation for it. Okay. One who are wo=
+rking through the reporting. The report that we have. The planning organiza=
+tion uses the reports, the S reports. So they are the ones who are who are =
+working through that. Okay, so it&#39;s not so Rajesh. G. Okay. Snp. I don&=
+#39;t know. I mean it&#39;s again a duplicate entry. I&#39;m okay that if y=
+ou want to have that. But then it&#39;s part of the rule number 16 only. Oh=
+, SEM. Yeah, yeah, it&#39;s. It&#39;s together we can remove it. Yeah. Okay=
+. So pramo, just one quick question over here because obviously apo, you kn=
+ow, we have demand planning, we have snp. That is all comes under APO only =
+anyway. Right. So what is the plan? You guys will be doing some testing and=
+ then they need to be an end to end testing from SAP standpoint also. Corre=
+ct. That&#39;s what it is. And it is only everything from the IS system sta=
+ndpoint. It is part of the erp. EP is part of the ERP work stream on the IT=
+ and Purna and my team as coordinating that putting the efforts with the pa=
+rtners that we have in the project. Okay. And I just want to call out that =
+we got an integration between CIP 900 and CAP 900. So we whatever changes i=
+n CIP 900, we got to make sure it can still talk to the CAP 900. Correct. A=
+nd that&#39;s the reason we have that under TSA. And Jerry and Poorna are d=
+efinitely coordinating it very well. Yeah. Okay. Got it. Okay, cool. This i=
+s great. Thank you. Again, the action item. We&#39;ll have the teams go bac=
+k in here and populate what sort of testing or the scope of testing require=
+d. Jerry, this is Kathryn Hart. I do want to mention that in the test envir=
+onment, CAP 900 and CIP 900 don&#39;t talk to each other the way they do in=
+ the live environment. So testing is going to be very difficult. We&#39;ve =
+got some work to do to make sure we can test that integration. So you bring=
+ up a good point. Just a general question for the team, and we may not solv=
+e it here, but are all of these in a QA environment or test environment? Wh=
+ere is testing going to happen? Because I think what I heard in prior conve=
+rsations is there isn&#39;t necessarily a neat little environment for testi=
+ng for one or two of these. And we may have to use sandbox environment for =
+testing. So I want to make sure that. That we have that in our minds as wel=
+l as we go through this. Yes, testing is required, but some of those, you k=
+now, the environment availability and data availability is also something t=
+hat we need to have in the back of our minds as we discuss this. Yeah, yeah=
+. Let me start from the ERP standpoint and then I will get into the standar=
+d way, at least from our standpoint, how we normally do this, setting these=
+ UAT sign offs. Right. So what we do is from the ERP standpoint, we are pla=
+nning to start our integration testings. When I call integration testings. =
+Whatever has been done, everything is in cix, which is our sandbox. So we d=
+o validation in the sandbox, making sure that everything is okay. Right. In=
+cluding the forms, the changes, the terms and conditions, whatever we are p=
+lanning from that workstream standpoint. So everything will be validated in=
+ CIX as part of the integration testing. So the goal is basically use that.=
+ The whatever we are discussing from July 7th to 11th is basically move eve=
+rything to CAQ. But the end to end testing need to be signed off in ciq bec=
+ause that is where we take all our programs or whatever validated from Sand=
+box, move to ciq, and then CIQ is the one that we have almost integrations,=
+ almost with all the Systems in cix we may not have integrations with all t=
+he third party systems, but Q is the key one. But end to end UAT sign off i=
+s the ciq. Yeah, but CIQ APO will not push our planned orders to ecc. Yeah.=
+ From APO standpoint, I think we need to see what, what needs to be done ba=
+sically because that is. That plays a different role. Yeah, those connectio=
+ns will have to be set up because right now when we do one off testing, we =
+do a manual push between the two systems. But we&#39;ll need to automate th=
+at so that we can simulate production. Yeah. How we need to coordinate the =
+testing activities for APO standpoint. Okay, so takeaway here for those exc=
+eptions. So what I understood, if I translate you right, SRI is it will be =
+in ciq, the quality environment. That&#39;s where end to end testing will h=
+appen and sign offs will happen by exception. We where that is not the case=
+, we will have to find the workarounds or the temporary integrations to be =
+built to complete that testing. Exactly. Because at the end of the day when=
+ we do an end to end, somebody is signing off. That means that all the flow=
+ has been validated. That&#39;s the reason why we need to pick one system. =
+If we do it in two places, I don&#39;t know when we move back, I don&#39;t =
+know whether behaving the same or anything has been changed. Okay. Now in t=
+erms. Okay, so we&#39;ll document that and make sure. Now who&#39;s followi=
+ng up on that? Is that you, SRI or your team that will have the ownership o=
+n that as you work with each of the other ownership, obviously. Right. As y=
+ou know, we are the ERP ones and majority comes to ERP only at some point. =
+But we just definitely need, you know, I need to talk to Corona for example=
+ if it is AP or. Right. You know. Yeah, but from our. We have the ownership=
+. Okay, got it. Perfect. How about data? What sort of data needs to be seed=
+ed, where, et cetera? Again, not to get into the details of it, but each of=
+ these scenario requirements. I presume you&#39;re already having the conve=
+rsations on the data requirements that need to be there. Yeah, data from da=
+ta standpoint. Again, CIQ is a recent refreshed of CIP in the site. Yeah, c=
+iq, CIX got refreshed sometime in CIQ got refreshed sometime end of fifth a=
+nd CIX got refreshed sometime in March, basically. So it&#39;s almost like,=
+ like, almost like a fresh copy of a production date. Okay, yeah, fresh cop=
+y of. So data standpoint, whatever we have it in cip all the material maste=
+r, customer, vendor or below materials, whatever it from master data from p=
+ricing, whatever we have it in P that should be good in Q. Okay so data sta=
+ndpoint. So at least what I am thinking if somebody please correct me from =
+maybe Prita from your standpoint or any from the ISC standpoint that is you=
+ know CAQ is already is a fresh off CIP so I&#39;m assuming that should not=
+ be a problem. And from ERP standpoint what is happening right now? Bill is=
+ working with the team to build automated test scripts. Right. Getting all =
+the different different scenarios. So what the team is planning as soon as =
+the scripts are available? Maybe. I&#39;m not sure Bill, it should be somet=
+ime mid next week that the plan is these test scripts will be coordinated t=
+o Sriram and then you know that is the starting validation point from us to=
+ give the basic scenarios. These are the scenarios what we are planning to =
+do if business wants to add anything and they can let us know. We&#39;ll se=
+e whether. How can we automate so that we can save time when we move to ciq=
+? Yep, thank you. That&#39;s the way it&#39;s gonna go. Sorry, just a quick=
+ one Rakesh. I know we have 15 minutes to go. 15 minutes. Yes. Several othe=
+r topics to touch but Brian, I have a quick question. Please go ahead. Yeah=
+. So are we going to be using our. The existing CIX 900 and CIQ 900. Yes. O=
+kay. Yes, yes. So we are. We are still doing development work right now in =
+CIX and CIQ for current projects. When is is that going to get turned off o=
+n before the 23rd pointing to a different place or what development are you=
+ referring any specific project? Yeah, we have our own project going on in =
+Spectra they said was good through July. Whatever we we told. Maybe I need =
+to follow up on that. We. We were asking all our teams whatever development=
+ projects that is happening they need to wrap it up by June 27th. That is t=
+he last date they have. We cannot take anything to July because of the cuto=
+ver activities. We need to lock all the. No new code should be done. Right.=
+ So maybe from your. If you can send me the details I will check with. Is t=
+his anything related to the toller portal? Yeah, it&#39;s between the porta=
+l and SAP. It&#39;s Prashad. Prashad&#39;s leading it right now I guess. Ye=
+ah, I&#39;ll send you the details but I thought you&#39;re going to start s=
+ome testing on June 23rd, right? No, no, no. Let&#39;s not confuse. Right. =
+Whatever activities what is happening June 23 is for project Athens basical=
+ly. Right, so what Prasad is working. That&#39;s not project items, that&#3=
+9;s a separate activity for Toller Pro project. I will check with Prasad. W=
+hen are they planning to move to production so that we can coordinate. But =
+the goal is whatever is the new code should be done before end of June. Gre=
+at, thank you for the question and clarity. Appreciate it. Okay. All right,=
+ so going other work streams? Yeah, let&#39;s do. And I know we&#39;ve only=
+ got you know, 13 minutes so I do want to circle back. So you know, lots of=
+ good conversations here, lots of action items we&#39;re taking on. I think=
+ you know, we&#39;ll parking lot the entry exit criteria and some of the, t=
+he access issues. But let&#39;s go through, you know, we&#39;ll set up a fo=
+llow up session for specific teams and I think Stephen, I think you may be =
+still on. I doubt there&#39;s very little on CCEX here, here in terms of sc=
+ope of testing. But can you opine on where we are with, you know, what we m=
+ay or may not need to do with hybris, magento, sftc, alemica, etc. Yeah. He=
+y. Hi team. So for BRV, I don&#39;t think we&#39;ve got really anything tha=
+t we, that we need to accommodate because all of these applications are you=
+ know, TS8 right now. One question I wanted to ask the team is we&#39;re al=
+ready in ccex, we&#39;re already building out all of our test scenarios, ri=
+ght. For user, for SIT and then uat. So you know, we&#39;re looking at, you=
+ know, every application and you know, application testing and then complet=
+e end to end testing and we are engaging with the business to build those, =
+you know, complete the complete inventory of test scenarios, you know, as w=
+e, as we move forward over the next couple of weeks. So is this over and ab=
+ove that, Rakesh? Because we are, you know, we&#39;re kind of, we&#39;re ki=
+nd of moving along that line as it stands, knowing we&#39;ll have, you know=
+, if you take Hybris as an example, obviously we&#39;ve got some changes in=
+ there that we&#39;re going to test. You know, a complete end to end cycle.=
+ And for you that&#39;s a day one activity, correct? It&#39;s not a BRV act=
+ivity. Nice. Correct, yeah. So I think this one, in this case, this is all =
+the systems that as part of ISE are getting touched. So I think this to if =
+my understanding then Stephen would be like, so let&#39;s say Hybris, there=
+&#39;s no change in hybrids, it&#39;s a TSA on Day one. But you&#39;re work=
+ing towards a UAT for your day one. So for brv, you know, the scope of test=
+ing may be minimal to none here. We may have to look at what the scope of t=
+esting is for day one and sync up with Sriram on that. So we may need to ma=
+ke that distinction. Correct. Somebody correct me if I&#39;m. If I&#39;m mi=
+speaking. I have a question. Okay, go ahead. So as far as we understood, we=
+ understood that I think the same question Prita has because Ioana was aski=
+ng us from Salesforce. You want to stand for the email addresses. I underst=
+and that we will need to have them with the Solstice domain in Salesforce. =
+And my understanding was that would that happen after or on the 1st of Augu=
+st or a bit after 1st of August. So would we need to test that now? Very go=
+od point. What we&#39;ve been told on the ERP side is that it&#39;s not an =
+eight. One deliverable. Right. I have heard the same thing that email addre=
+sses is going to be post 8. 1. Yes. So my question here is Sri. My question=
+ was like, like do we really need to test reframe and Magento and Hybris pe=
+rspective when they place an order from these platform? It does because the=
+y&#39;re not changing anything other than email id and from 1st of August n=
+othing is changing. So do we really need to test that? No, no, no. That&#39=
+;s what it is. Right. We have some cases like we do not have any changes bu=
+t at least what suggesting, right. You know you need to get into all detail=
+ed level of testing. But at least if you can run a phase scenario just to m=
+ake sure that everything is okay, that&#39;s what it is. Because this is no=
+t a physical separation, right. You know nothing, nothing is happening. Exa=
+ctly. Everything remains the same. No. No network changes, no IP changes. E=
+verything remains the same. So you don&#39;t need to test anything but at l=
+east for the purpose of like making sure that. Yeah, the flow is there just=
+ to validate the flow. Maybe you can just run, run one simple scenario and =
+say that I&#39;m good to go. Okay. So you can displace one order from this.=
+ Who, who, who would do that? Simple test scenario. Is it a business? We ha=
+ve to do CX business? Yeah. Okay. So three, do they need to do the SSO test=
+ing? SSO is which one? This one is. You are talking about E Commerce Portal=
+ only, right? Or a different one? No. Yes. Single sign on will be part of t=
+he overall testing scenario. That&#39;s already in scope. Yeah, single sign=
+ on is part of their scope. Yes, that&#39;s correct. In Rakesh. I&#39;m goi=
+ng to sort of challenge a couple of things on this sheet. Right. Yeah, yeah=
+. Because the EDI Elenica, that was MERT erp. Right. As a solution as the s=
+ervice. That&#39;s most definitely. That was, that was a while back. Okay. =
+The RPA Automation should be ima. Okay. Right. And then I actually think th=
+e gen. I&#39;m not 100% sure what that application is referencing to. I thi=
+nk we&#39;ve got to check that. I was just looking at the background that t=
+he, the master inventory sheet and there&#39;s you know, there&#39;s severa=
+l, several references to gen, you know, generically. So I think we probably=
+ need to just look at that and see well, what exactly does that mean? Becau=
+se we don&#39;t, we&#39;ve got sort of, you know. So I don&#39;t think we n=
+eed to test anything on the 1st of August there because ideally again nothi=
+ng is changing. What we&#39;re using Genai for is classifying cases that ar=
+e going through Salesforce. So it&#39;s hosted on Salesforce. So if testing=
+ on Generic will have or on Salesforce starts in Morocco anyways in mid Aug=
+ust or something then that&#39;s when you test that as well. Now I still ha=
+ve a question. I&#39;m sorry Stephen, I see you have your hands up and I ju=
+mped here. But still regarding emails, I will go back to that because there=
+ are some emails coming from sales saying that from communications with cus=
+tomers that they&#39;re in order to set up their vendor id which is a very =
+important thing for us in the Esso cut over and in everything that we&#39;r=
+e going after the 1st of August they will need us to have the new domain em=
+ail addresses in some of the cases like the automotive customers. So we wil=
+l need to have the domain available on 1st of August. And I&#39;m just rais=
+ing this here, I don&#39;t know if this is a possibility or not, but this i=
+s what just raised today. Okay. No, thank you for bringing that to our atte=
+ntion. Let me do a follow up. And, and Vince, not to put put you on the spo=
+t here, from an, from an IAM perspective those emails would be available. C=
+orrect. And in the system by 8.1. I don&#39;t know in the system but certai=
+nly available prior to 8.1. Yes. So email addresses are available now. That=
+&#39;s Saurabh Khanna and the Dex Messaging team. It&#39;s not IAM but unde=
+rstood are available. The mailboxes however have not been created yet. Okay=
+ so all right, so email address is available. Mailbox is not created yet. S=
+o we need to understand, perhaps dig dip. But maybe I will drop it here and=
+ we can catch up offline so that we don&#39;t. So we, we don&#39;t block th=
+e discussion on this now. Understood. I will record you. Yeah, the request.=
+ Okay, so we&#39;ll have a. Yes. Stephen, just time&#39;s wrapping up. I wa=
+nt to make sure we clarity on go forward to start getting some items addres=
+sed here. Make sure we&#39;re working on that. Let&#39;s get organized goin=
+g forward. Understood. So again, quite a bit of work to do here. So I know =
+we wanted to talk through. If we go back to our, you know, let me go back t=
+o the content we were sharing earlier. Right. So if we go back to our agend=
+a here. So test dates and windows, you know, we have a list here of the tes=
+t dates and windows that we&#39;ve gotten from the teams. We will send that=
+ out. We just write it. Yeah. Okay. Slide&#39;s a little slower then you&#3=
+9;re kind of. Is that good? Are you able to see my screen now or no? No. Ok=
+ay, give me one second. Again. How about now? Yeah. Okay. All right. So aga=
+in the first item, I think we&#39;re making progress but we still need quit=
+e a bit of work. So there&#39;s, there&#39;s a homework for everyone here t=
+o go back in and complete that. And at least the column on, you know, the t=
+esting required, the test dates and windows, we will send that out. This is=
+ what the teams have published as the sit UAT dates. We&#39;ll send that ou=
+t. Make sure that&#39;s again a follow up conversation that&#39;s needed on=
+ aligning the windows and business availability. So I think we have an acti=
+on item there certainly, you know, for ERP 23rd to 30th June and then 7 to =
+11th of July. So we&#39;ll have to follow up on the business availability a=
+cross processes, the entry exit criteria. I think this is something we&#39;=
+ll also send out. Please take a look at that. And for particularly the folk=
+s that will be signing off and the function leads, take a look and see what=
+ may or may not need to be adjusted there. We didn&#39;t really get around =
+too much. I know we have a few couple of follow ups on test scripts. Automa=
+ting of test scripts, finalizing the test scripts and understanding. So the=
+re&#39;s quite a few follow ups. I think sri you and the team. What I heard=
+ from was clearly the IT team will send what test scripts they have, the bu=
+siness will validate and then add on top of that or align with whatever the=
+ test scope scripts that the IT has. Right. So I&#39;m Waiting for SRI to s=
+end us what the starting point is. Likewise when we&#39;ll take action. Yea=
+h, as soon as they&#39;re available mid next week. That&#39;s what we&#39;r=
+e targeting. Okay. And it&#39;s not just for erp and I want to make sure EX=
+ and IMA and others are all doing the same thing. Yeah. So Stephen, I think=
+ for you it may be a bit later because your UAT is and your plan calls for =
+that for a bit later than now. I don&#39;t think we have IMA representation=
+, Rajesh or anyone else in the sport. So that&#39;s a follow up that will l=
+ead and then certainly promote. You&#39;ve got that. And then the next step=
+s really in terms of. I don&#39;t think we ever discussed or you know, disc=
+ussed the tools, some of the logistics and some of the, the access requirem=
+ents. So that&#39;s a, that&#39;s a follow up. So perhaps that warrants a s=
+ubset of our team here to have that conversation on the logistics, etc. So =
+war will set that up as an, as a follow up as well. So I think those are th=
+e things that I captured here notes and we&#39;ll certainly get the recordi=
+ng out and the copilot notes out as well. Anything else I missed team? Anyt=
+hing else you&#39;d like to discuss here? Because we&#39;ll set up a follow=
+ up session clearly lots of good things to discuss and align and finalize o=
+ver the next five, seven days. So certainly a follow up session warranted h=
+ere. But if there&#39;s anything else pertinent, the critical or anything I=
+ missed, I missed here. Rakesh, one thing I want a question for Stephen rea=
+lly is Stephen, we have connected with planning, procurement and logistics =
+to get the list of all the systems that are available for is. Right, like i=
+n the scope but outside of this, are there any operationally from, from a i=
+ndividual factory perspective or from a, like the systems that for example =
+Brian put out in the chat area, Chase put up in the chat here and Brian put=
+ that in the chat. Now those, those things, are they aligned to operations =
+from your standpoint for the particular factories or is there, is there a l=
+ist that we have to compile from that viewpoint that may not be aligned to =
+the functions I mentioned before? Yeah, because we got some questions on th=
+e MES that you connect into cip, but I didn&#39;t know how to approach that=
+ answer. Have we not. Yeah, I&#39;ll connect you to that part of that. Have=
+ we not engaged with the Gary Hamby&#39;s and the Joe Ryan&#39;s and I mean=
+ the manufacturing IT folks on this because they have Pretty strong knowled=
+ge of what you&#39;re talking about. We have and we haven&#39;t. Right. So =
+it looks like things that expanded we have to do like probably, I would say=
+ back up a bit and walk through the work that has been done. Going to look =
+at these apps. A lot of these were, you know, brought up by the sites. We&#=
+39;re going back to like November, December time frame where a large list w=
+as populated and then a lot of work was done to reconcile what needed the a=
+ction. So I&#39;m kind of thinking we need to back up and maybe walk the IS=
+C team through that work. Why we&#39;re at where we are today. Okay, Stephe=
+n, so is there a follow up with Gary Handy? We can set up that call? Becaus=
+e if a lot of these are site apps and just move as is, there&#39;s nothing =
+really necessarily changing from a process perspective for brv. So it may b=
+e just that alignment. But some of the things are integrated with erp, with=
+ SAP that Chase was bringing up. So, you know, bandwidth is changing on SAP=
+. You always need to make sure the integration is not changing. But again, =
+if you guys can walk us through what is and is not changing with ERP SAP, s=
+o it makes sense. That&#39;s a good call out, Jason. Thank you. We&#39;ll s=
+et that follow up with the site specific apps and the integration with erp.=
+ Great. Okay. No, thank you all very much. This is super helpful, useful. W=
+e&#39;ll set up a follow up call and then send, send out the notes and acti=
+on items. Quite a few things coming out here. So again, thank you for your =
+participation. Thank you. Thanks guys.</div></div></div><div style=3D"margi=
+n-top:36px;text-align:center;color:#64748b;font-size:14px;padding:20px;bord=
+er-top:1px solid #e2e8f0"><p style=3D"margin:0;margin-bottom:8px">Captured =
+with Wave AI Note Taker</p><p style=3D"margin:0;font-size:12px">Your AI-pow=
+ered companion</p></div></div></div></div></div></div>
+
+--000000000000bcfbf506377748ed--

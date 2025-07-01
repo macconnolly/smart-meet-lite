@@ -1,0 +1,1434 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a5d:4c51:0:b0:391:3c18:836e with SMTP id n17csp316658wrt;
+        Thu, 1 May 2025 13:02:23 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFDHFgzwMTo1dN4BS59al0jVdpLn42lpbv3uQARfX6AHnz91wr6gBLcPl5vHSKDMvXtfs61
+X-Received: by 2002:ad4:574b:0:b0:6e8:f3ec:5406 with SMTP id 6a1803df08f44-6f51538aae9mr11601626d6.19.1746129743443;
+        Thu, 01 May 2025 13:02:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746129743; cv=none;
+        d=google.com; s=arc-20240605;
+        b=II90VJWh6JH4ueFUs93XETLKo4ANLcOeJ8w1JCyYAbps5XxhzzHi6zyjPXESB5G/fZ
+         pOZhCMjDWeeOw8FHpPG6XinvILsKJZfyDbz1TzU0t+djZMhWOPVh0V66KgtoZN15Cwhv
+         sIaz4r2/TrPk+nvQ5kgfTBCtc5VwPn8m2N1aWtjKG2pRMn0H2LIfo8IM4yBBt/b12tuV
+         vfjPb1D96/NGN+vuOg9piHvciznCAne61Zl8gKYW4pPnWjSBfd1w3ygqN7e4EkX/4MEE
+         4DS+EX8lImFNHAGYTTu+E3Il+0fvsyw98YudkOa8CiRuY6389Y+sAXbUVo9mtJNcbUqM
+         YMkg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=wio4XCKXmWZgeqCTtOe9l3All8A8i3ofijMWzA+Z5UU=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=Aop0E7T7DwzsTxwLk5MgpovLfc0rKejomMVDpwBbByqUkl+8cEPuBwXaQo5pfnm2Fv
+         WzzKOtaN93kCVSv3ihEh+3RoVXgpNHB2oF8/4qRE00HqR1leXpTMqVi8M3Hnsn3+UXIy
+         rtmHYhWTTSzRlot7ViIYJDMA9lTB+2Ec1u8O46kcNotre0iVOa8ROP2rSp8iRi467g+j
+         XNN6Nqoc7uL6qO0h2dmM7J3+rUxMiWyRfajMrb9oZkQE8k3lDCTiAqnxGdVT9dS5DqJV
+         88aaATXPWH7+QohOPUvi2WnJS17U0IjYqeTsSSV1gxA4mLtK/ASpwzs5BU5FtjsJfVGa
+         olQg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=qlPwCSfU;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=gkfGK8Me;
+       spf=pass (google.com: domain of 010001968d716b9f-6c452fe9-5c9c-45a0-a3a0-2fe5c6d745e4-000000@send.email.wave.co designates 54.240.9.112 as permitted sender) smtp.mailfrom=010001968d716b9f-6c452fe9-5c9c-45a0-a3a0-2fe5c6d745e4-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <010001968d716b9f-6c452fe9-5c9c-45a0-a3a0-2fe5c6d745e4-000000@send.email.wave.co>
+Received: from a9-112.smtp-out.amazonses.com (a9-112.smtp-out.amazonses.com. [54.240.9.112])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f50f4abd0csi14806326d6.401.2025.05.01.13.02.23
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 01 May 2025 13:02:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 010001968d716b9f-6c452fe9-5c9c-45a0-a3a0-2fe5c6d745e4-000000@send.email.wave.co designates 54.240.9.112 as permitted sender) client-ip=54.240.9.112;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=qlPwCSfU;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=gkfGK8Me;
+       spf=pass (google.com: domain of 010001968d716b9f-6c452fe9-5c9c-45a0-a3a0-2fe5c6d745e4-000000@send.email.wave.co designates 54.240.9.112 as permitted sender) smtp.mailfrom=010001968d716b9f-6c452fe9-5c9c-45a0-a3a0-2fe5c6d745e4-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1746129743;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=wio4XCKXmWZgeqCTtOe9l3All8A8i3ofijMWzA+Z5UU=;
+	b=qlPwCSfUObdUv7n+nMOIrpYiCFHVRrfbB7uDjKG/96UE7dCVKOpWs3nuli3IxvVJ
+	SjGFGuDg1YiJfsatCBVkGnbaAS3dAG2jYvo/DaBIagnGKXjmDqDKilfn3pgewROECiw
+	x+Fjpp4SBh6bueWIORvqA5OSlK9ztmyyCg8g/NrY=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1746129743;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=wio4XCKXmWZgeqCTtOe9l3All8A8i3ofijMWzA+Z5UU=;
+	b=gkfGK8MePkbNYNVTajrqSLRMgzFIzSSSwXuVINrHH1gMu7I+TEeYqWaz2vgTJkCP
+	ztD//pxojm/qH2cl0w0Z39OIlj1YRqm5lP/bBEUObiUk/DABpquB5wf2qTUQ6qwaSV/
+	HS2kAoLTwYOW8MHT0mX60GIRwIFtsZJdfmmuB8tU=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Navigating Professional Growth and Team Dynamics
+Message-ID: <010001968d716b9f-6c452fe9-5c9c-45a0-a3a0-2fe5c6d745e4-000000@email.amazonses.com>
+Date: Thu, 1 May 2025 20:02:22 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-4ebe1a2a1a46eb6d-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.05.01-54.240.9.112
+
+----_NmP-4ebe1a2a1a46eb6d-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Navigating Professional Growth and Team Dynamics
+
+## Overview
+
+The conversation revolves around professional roles, project management, =
+team dynamics, career progression, client engagements, and personal matters=
+ affecting work commitments. The participants discuss their experiences at =
+various companies, team structures, potential role adjustments, and =
+interactions with colleagues and clients.
+
+## Professional Experience
+
+### Previous Roles and Companies
+- **Leadership Positions**: Managed roles =
+at Gap and Kimberly Clark.
+- **GE Healthcare**: Spent two and a half years.
+- **Collins RTX Healthcare**: Joined six months prior, focusing on =
+applications workstream from inception.
+
+### Current Roles
+- **SMO/PMO Roles**: Primarily engaged in Senior Management Office (SMO) =
+and Project Management Office (PMO) capacities.
+- **Applications =
+Workstream**: Involved in refreshing and updating work previously handled =
+by EY teams.
+
+## Team Structure and Roles
+
+### Team Members' Experience =
+Levels
+- **TSA Consultant**: A junior first-year consultant.
+- **TSA Costing Consultant**: A third-year consultant expected to advance =
+to director but facing challenges.
+ =20
+### Potential Role Adjustments
+- **Focus Areas**: Preference for team members to engage in areas of =
+genuine interest, such as TSA execution planning and exit planning over =
+costing roles.
+- **Role Fit**: Execution planning and PMO-type roles deemed=
+ a better fit due to existing experience, whereas costing roles are more =
+specialized and less familiar.
+
+## Career Progression
+
+### Promotion Timeline
+- **Current Position**: Consultant, promoted =
+mid-year last year.
+- **Future Promotions**: Plans to aim for director =
+level by next summer, allowing time to prepare and navigate the current =
+market climate.
+
+### Market Conditions Impact
+- **Challenges**: Current =
+market conditions are unfavorable, with limited opportunities for =
+advancement and many consultants remaining on the bench.
+- **Strategy**: No rush to pursue director roles immediately due to market =
+saturation and economic factors.
+
+## Client Engagements
+
+### Honeywell
+- **Project Involvement**: Minimal details, but discussions indicate a =
+focus on advanced materials within the industrials sector.
+- **Team Composition**: Includes roles like execution planning and =
+inventory change control, with key personnel automating processes.
+
+### RTX Healthcare
+- **Role Transition**: Transitioned from cyber and =
+infrastructure to applications.
+- **Client Challenges**: RTX is described =
+as a difficult client with projects that tend to be long-term and absorbing=
+.
+
+## Working Relationship with Partners
+
+### Collaboration with Will
+- **Interaction Style**: Will is hands-on and methodical, often challenging=
+ team members to think deeply about their presentations.
+- **Complementary Styles**: The participant is logical and structured, =
+which complements Will=E2=80=99s dynamic approach.
+- **Project =
+Leadership**: Will is more involved with Honeywell, while Nandin and Skip =
+manage RTX day-to-day operations.
+
+## Personal Matters
+
+### Travel Plans Affected by Wife's Surgery
+- **Recent Events**: =
+Participant's wife underwent surgery, affecting travel availability.
+- **Team Impact**: Anticipated reduced travel to locations like New Jersey,=
+ Miami, and Charlotte.
+
+## Next Steps and Action Items
+
+### Conversations with Will
+- **Role Adjustments**: Plan to discuss =
+potential changes to focus away from business-managed applications towards =
+more suitable roles.
+- **Team Expansion**: Explore opportunities for =
+broader exposure to different workstreams, enhancing professional growth.
+
+### Potential Role Changes
+- **Exit Planning and PMO Support**: Shift =
+towards roles that offer more comprehensive involvement in project =
+management and exit strategies rather than specialized costing tasks.
+
+---
+
+Transcript:
+0:02
+But most of the deals, at least that I've been a part of, =
+have been very structured. So I, I ran Gap, Kimberly Clark, both of those. =
+I was kind of like the senior deal tech person on and 3am that was like =
+massive deal. So kind of similar to Honeywell where I was in, I was doing =
+the smo but not the most senior IT deal type person, like day to day person=
+ and then arc. So freeing ton of stuff over the last three years, but =
+mostly kind of doing SMO IMO roles. So that's probably kind of why I'm =
+playing such a broad role to be as well.
+
+0:53
+Okay. Yeah, I, I spent two =
+and a half years at GE Healthcare and then the last six months at Collins =
+RTX Healthcare. I was on cyber and then infrastructure and then Collins has=
+ been applications. So I was on the apps work stream pretty much from its =
+inception until now. It's a really quick deal for us on apps because they =
+had done a lot of the pre work and went pencils down and we sort of picked =
+it up and refreshed what the EY teams had already done. So less like SMO =
+PMO experience, but broadly speaking. Yeah, I mean, yeah, I think my.
+
+1:56
+I guess where I would say is my TSA guy is very junior, so he's like a =
+first year consultant. My TSA costing guy is like a third year consultant =
+and supposed to be going out for director, but I don't think that's gonna =
+happen based on kind of what I've seen thus far. Yeah, so like what where =
+Will's always gonna say like program needs first, you know, like our team =
+needs and then personal needs. But my, my thing is like I always want to =
+get people experience on something that they're actually interested in. So =
+I don't know if you're super interested in TSAs like execution planning and=
+ exit planning kind of TSA exit planning and then the execution piece of =
+that or if you're interested in costing. So I would say the rub with =
+costing is, you know you're, you would be picking up someone else's model =
+if that's what you were doing.
+
+3:06
+Yeah, I have less experience with =
+costing. I think day one execution planning and then the actual execution =
+of it is probably going to be the best fit. Like more of a PMO type role =
+like costing in tsa I feel like is something very specific that I don't =
+have a lot of exposure to. So it depends what type of level of experience =
+you're looking for there. And I think that like I would love to learn it, =
+but it would Be just that it would be learning it rather than like bringing=
+ experience doing it. Like, my exposure has been like, really later in the =
+life cycle after costing has been done. The TSAs have been written. Other =
+than like one very small deal at the beginning of my career where I worked =
+on costing, it hasn't been like TSA or costing centric. So I. I think that =
+it just depends what you're looking for, you know?
+
+4:19
+Yeah. If it. To your point, like, I didn't know how much costing and stuff =
+you did at kpmg. Yeah. With like Jonathan and Kevin and those guys. So if =
+it's not a lot, it probably would probably be a better fit for like, TSA =
+exit planning and some of those.
+
+4:35
+Yes, I completely agree with you.
+
+4:38
+Okay. All right. I will let Will know. Probably. I think that makes =
+more sense from a program perspective too, because even. Even if I did want=
+ to move someone out of the costume role, I think it would be too =
+disruptive.
+
+4:55
+Yeah.
+
+4:56
+At this point.
+
+4:58
+Yeah. That. I mean, =
+that's what Will was saying was sort of that it's like he was thinking =
+about shifting people around and doing some movement. But I think =
+ultimately, like, the. It's a balance, Right. Of what is going to be =
+disruptive and what is going to have like the most positive net impact on =
+the program. And then like, personal needs come after that, obviously. So =
+let me know what Will says. Are there, like. Is there a role at Honeywell =
+that is unfilled for like, a consultant in like, any of those other areas, =
+like the day one execution planning or like, you also mentioned inventory =
+change control, too.
+
+5:47
+I've got a guy for that and I don't want to move=
+ him out of it because it's more. He's like automated all of the =
+spreadsheets and stuff, so he'll know how to do that.
+
+5:55
+That's awesome. That's the type of guy you keep around. For sure.
+
+6:00
+Yeah. I don't want 100. Yeah. I don't want to try to figure out any of that=
+ stuff.
+
+6:08
+Yeah, it's the worst. Capital Edge is the worst.
+
+6:14
+It is the worst. I agree with you on that.
+
+6:18
+Yeah.
+
+6:19
+So, yeah, nothing that's on film, I think. I don't know that we would =
+necessarily move anyone off that we have. Yeah, I think it would probably =
+be a good fit for exit planning and like, helping out with like, some of =
+the PMO stuff too.
+
+6:38
+Yeah, definitely. Yeah, I completely agree with =
+you.
+
+6:41
+It'd be good for you too, because then you get like, you get =
+more broad exposure to all of the work streams. So I Think that could be =
+good for you as well?
+
+6:51
+Yeah, I think that that would be good.
+
+6:54
+And then what? Are you up for director or are you like.
+
+6:58
+No. So I'm a consultant. I was promoted at mid year last year so I won't go=
+ up for director at least until December, probably not until next summer so=
+ I can get back on cycle.
+
+7:14
+Okay, makes sense.
+
+7:16
+So I've got either six months or a year before I go for director. I think =
+given the current climate and given like where the market is at, I am =
+certainly not in any rush to push director at mid year again after I did =
+that for consultant. So you've got, you've got some time or whoever picks =
+me up has some time.
+
+7:38
+Okay, yeah, that's helpful. And the market does =
+suck. Yeah.
+
+7:46
+It'S crazy. I mean what I keep hearing is that there's =
+people on the bench and that the people on the bench have sort of stayed =
+there. And then when we're selling new work there's not a lot of like =
+availability for the folks like in these circles. Like with Will, I've sort=
+ of bounced from like one Will project to another. I've never been on the =
+bench and I don't know what your experience is like, but it's definitely =
+different I think today than it was a year ago for sure.
+
+8:20
+Yeah, my experience is kind of different because I've had, I've made a bad =
+habit of working with like partners that are retiring. So Ajay Baudia used =
+to run like west coast and he and I did. What did we do? Gap and we also =
+did Everest and then he left and I worked with Alan Kyle. He, he left and =
+Sumi left.
+
+8:50
+Yep. Yes. Sumi was my ccl. I was, I was on Sumi projects =
+pretty much until she left. Like I was working with Sumi and Eileen on =
+their like west coast stuff.
+
+9:03
+That's kind of just unfortunate =
+situation with, with her leaving. So I don't have the full story.
+
+9:08
+But you know, nobody does. I, I, I, it did well, it.
+
+9:14
+Was alcohol related but I don't really know. Yeah, you know what exactly =
+happened?
+
+9:20
+That's usually how it goes, which is unfortunate, but. Okay=
+, well, yeah, why don't you talk to Will and keep me posted. I need to have=
+ a conversation with Will as well. Just about like what I'm doing. But I =
+was talking to Anthony and the business managed apps team today and Will =
+about making a change and I think that that's something that I'm trying to =
+put in motion. So I appreciate the call too.
+
+9:55
+You want to change on =
+what?
+
+9:58
+Just like business managed apps. I think that as we approach =
+day one, we've gotten to the point where like my role here is mostly =
+finished and we have Pari and Tim Patrick now. Like when I joined it was =
+just me and Anthony Lockley on this work stream and we've now staffed it =
+with Tim and Pari. And my interest is really not in like this app's work =
+stream or with rtx and there's an opportunity to make a change and I'm like=
+ actively trying to do that.
+
+10:38
+Okay. Make a change to the demo project=
+.
+
+10:40
+Yes. Yeah, exactly. Like sort of while I can. Parry is up for =
+director and I, I don't, I don't know if it's going to happen but Pari and =
+Anthony ran business manage apps together. Before Pari joined this project =
+she was running Hornet, which was another RTX spin off. And then when that =
+wrapped up, she came over here and brought I think all of the Hornet =
+experience to this project. So I think that we are adequately covered on =
+business managed apps or overly covered honestly. And it would be great to =
+do something different.
+
+11:28
+Okay. Yeah, I've heard people aren't always =
+the biggest fan of RTX either.
+
+11:32
+Yeah, it's a really hard client for =
+sure. It's a really, I mean it's a hard client. Everybody says, oh, every =
+client is hard. But RTX is different in some ways. And it's another one of =
+those forever projects that will go like, just like GE Healthcare was and I=
+. GE Healthcare became like I could never get off of that thing. And I =
+think RTX has a tendency to like suck people in as well. So it's good.
+
+12:04
+Both wheel projects.
+
+12:06
+Yeah, those were both wheel projects.
+
+12:08
+Very well. Good for Will on that end. Do you have any other partners =
+on, on the RTX sale or.
+
+12:14
+No, it's actually mostly nonin. So Will is =
+not really even on this project anymore. It's mostly Nandin on RTX and Skip=
+ Shoal a little bit. He's an md, so it's Skip a little bit and Nandin in =
+the day to day. And then Will is, I think Will has like oversight but he's =
+not directly involved.
+
+12:47
+Got it. Okay.
+
+12:48
+I think he's been more =
+involved with Honeywell.
+
+12:52
+Yeah, he's, he's very hands on here.
+
+12:54
+Yes. Which would be great. I mean I love when you like working for Will. =
+You. I mean I developed. You have to develop a sense for how he works and =
+accept it and once I did, I enjoyed working with Will. I love his hands on =
+approach. So it's great to hear that he is There. And I think that that =
+makes sense to me now that like, that's where he's spending his time. Were =
+you guys just out here or. He went out somewhere in New Jersey this week.
+
+13:29
+So. Yeah, I was supposed to be in Mars Plains this week too, but my =
+wife was in the hospital Sunday to Monday.
+
+13:36
+Oh, gosh.
+
+13:38
+So, yeah, hopefully we'll see. She's gonna have a surgery, so I don't know.=
+ I may not travel next week either.
+
+13:44
+So I'm so sorry to hear that. I =
+hope that she's all right and that surgery goes well. That's a really like,=
+ scary thing.
+
+13:54
+All good there. But yes, the team does travel to New =
+Jersey, Miami and then Charlotte. So it's kind of a combination of those.
+
+14:05
+Yeah, that sounds about right for Will. That sounds about right, I =
+think. Is there somebody else from Denver on Honeywell?
+
+14:14
+There may be. I'm not sure.
+
+14:16
+I don't know. I feel like whoever my. I =
+was assigned a buddy and I can't remember his name, but I connected him =
+with Will and he got put on one of Will's projects, but I don't know which =
+one.
+
+14:33
+Wouldn'T be Oliver.
+
+14:34
+NBA guy. I can't remember in the =
+military. But anyway, so I think that this is good. It really just depends =
+on like what the need is on the Honeywell side. It sounds like the costing =
+switch out is not the best go forward approach. But I think that if there =
+is like team expansion or the opportunity for it to help out on either the =
+PMO side or some of like the day one planning and then execution. When are =
+they TSA ing like very much at Honeywell or are they. Is a lot of the =
+execution going to take place like prior to day one?
+
+15:22
+They're TSA quite a bit. So it's like 98 applications is what the current =
+TSA plus, you know, obviously like infrastructure and some of those items.
+
+15:33
+Yeah, yeah, yeah. What business. What business is it at Honeywell?
+
+15:39
+Advanced materials.
+
+15:40
+Okay. Yeah, advanced materials. Okay. I =
+mean, what do they manufacture? Is it like, is it like a hands on =
+manufacturing or is it like research or like, is it industrials?
+
+15:54
+I. I'd say it probably lands and. Industrials.
+
+15:57
+Yeah.
+
+15:58
+Like I've only been here a week, so I haven't gotten into, I would say the =
+weeds on some of that.
+
+16:03
+Yeah, yeah. Well, how's your first week been?=
+ How has your first week been? Have you worked with Will before?
+
+16:10
+I have not. Well, nothing. I have done pitches with Will, so we did like a =
+pitch to the CIO at Colin's Aerospace. Then I Was thai led on zero based =
+budgeting. I have not worked with him outside of that. I was probably like =
+in the industrial space because my sectors are industrials and life =
+sciences. And I was primarily working with Alan Kyle who was, was leading =
+industrials until he announced his retirement. And now it's Will leading =
+industrial.
+
+16:42
+Okay. Yeah, Will is good. Definitely an acquired taste. =
+But he's, he's, he's a smart guy for sure.
+
+16:51
+Oh yeah. You know, he and=
+ I get along well.
+
+16:54
+That's awesome.
+
+16:55
+Kind of complement each =
+other.
+
+16:57
+That's good.
+
+16:59
+I think Will likes to kind of throw =
+grenades into and see like if people have really thought through what =
+they're presenting. Yeah. And I'm very like methodical and like hey, I want=
+ you to do XYZ and document all that. So it complements pretty well.
+
+17:19
+That's great. I mean that's what I am certainly looking for is like someone=
+ who is methodical and I, I love to hear that. I, I see what you mean about=
+ Will with the grenades and I think that I tend to fall not, not as much on=
+ that end of the spectrum. More like I'm a very, very logical, like =
+structured person in the way I think and do work.
+
+17:46
+So.
+
+17:46
+Yeah, it's, I, I agree with you. It complements Will's style of. Sometimes =
+it feels like chaos, but it's, it definitely makes me think. For sure.
+
+17:58
+Yeah. A little chaotic. Used to working with us.
+
+18:03
+Yeah. Okay. Well, I think, I think, I think we should be. Be good. Let me =
+know what if anything, the outcome of your conversation with Will is. I =
+need to have a, like a follow up conversation with him as well. But I mean =
+are there any next steps or is there anything that I can do or you might =
+need from me?
+
+18:32
+I'll connect with Will. I told him I'd get back to him=
+ today on where I, I thought that would be the best place to, to get you =
+plugged in. So I'll talk.
+
+18:42
+Okay. Okay. That sounds great. Thank you, =
+Lane.
+
+18:45
+All right.
+
+18:46
+Thank you. Have.
+
+18:47
+Sounds good. Have, have a, a safe and safe life back.
+
+18:51
+Thank you. Yeah, you as well. And have a good weekend. I'll definitely be. =
+I'll say a prayer for you and your wife and if not I'll Let me know the =
+outcome of the wheel conversation. Okay, thanks Lane.
+
+19:07
+Bye.
+----_NmP-4ebe1a2a1a46eb6d-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Navigating =
+Professional Growth and Team Dynamics</h1></td></tr></table></div><div =
+style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/4e94733c-1095-43c9-b9c2-ad077be650bc?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h2 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2rem">Overview</h2><p>The conversation revolves around =
+professional roles, project management, team dynamics, career progression, =
+client engagements, and personal matters affecting work commitments. The =
+participants discuss their experiences at various companies, team =
+structures, potential role adjustments, and interactions with colleagues =
+and clients.</p>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2r=
+em">Professional Experience</h2><h3 style=3D"font-weight:500;padding-top:20=
+px;font-size:1.75rem">Previous Roles and Companies</h3><ul>
+<li><strong style=3D"font-weight:bold">Leadership Positions</strong>: =
+Managed roles at Gap and Kimberly Clark.</li>
+<li><strong =
+style=3D"font-weight:bold">GE Healthcare</strong>: Spent two and a half =
+years.</li>
+<li><strong style=3D"font-weight:bold">Collins RTX =
+Healthcare</strong>: Joined six months prior, focusing on applications =
+workstream from inception.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-=
+top:20px;font-size:1.75rem">Current Roles</h3><ul>
+<li><strong =
+style=3D"font-weight:bold">SMO/PMO Roles</strong>: Primarily engaged in =
+Senior Management Office (SMO) and Project Management Office (PMO) =
+capacities.</li>
+<li><strong style=3D"font-weight:bold">Applications =
+Workstream</strong>: Involved in refreshing and updating work previously =
+handled by EY teams.</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:20=
+px;font-size:2rem">Team Structure and Roles</h2><h3 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">Team =
+Members&#39; Experience Levels</h3><ul>
+<li><strong =
+style=3D"font-weight:bold">TSA Consultant</strong>: A junior first-year =
+consultant.</li>
+<li><strong style=3D"font-weight:bold">TSA Costing =
+Consultant</strong>: A third-year consultant expected to advance to =
+director but facing challenges.</li>
+</ul>
+<h3 style=3D"font-weight:500;pad=
+ding-top:20px;font-size:1.75rem">Potential Role Adjustments</h3><ul>
+<li><strong style=3D"font-weight:bold">Focus Areas</strong>: Preference for=
+ team members to engage in areas of genuine interest, such as TSA execution=
+ planning and exit planning over costing roles.</li>
+<li><strong style=3D"font-weight:bold">Role Fit</strong>: Execution =
+planning and PMO-type roles deemed a better fit due to existing experience,=
+ whereas costing roles are more specialized and less familiar.</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Career =
+Progression</h2><h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">Promotion Timeline</h3><ul>
+<li><strong style=3D"font-weight:bold">C=
+urrent Position</strong>: Consultant, promoted mid-year last year.</li>
+<li><strong style=3D"font-weight:bold">Future Promotions</strong>: Plans to=
+ aim for director level by next summer, allowing time to prepare and =
+navigate the current market climate.</li>
+</ul>
+<h3 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">Market =
+Conditions Impact</h3><ul>
+<li><strong style=3D"font-weight:bold">Challenge=
+s</strong>: Current market conditions are unfavorable, with limited =
+opportunities for advancement and many consultants remaining on the bench.=
+</li>
+<li><strong style=3D"font-weight:bold">Strategy</strong>: No rush to =
+pursue director roles immediately due to market saturation and economic =
+factors.</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size=
+:2rem">Client Engagements</h2><h3 style=3D"font-weight:500;padding-top:20px=
+;font-size:1.75rem">Honeywell</h3><ul>
+<li><strong style=3D"font-weight:bol=
+d">Project Involvement</strong>: Minimal details, but discussions indicate =
+a focus on advanced materials within the industrials sector.</li>
+<li><strong style=3D"font-weight:bold">Team Composition</strong>: Includes =
+roles like execution planning and inventory change control, with key =
+personnel automating processes.</li>
+</ul>
+<h3 style=3D"font-weight:500;pad=
+ding-top:20px;font-size:1.75rem">RTX Healthcare</h3><ul>
+<li><strong style=3D"font-weight:bold">Role Transition</strong>: =
+Transitioned from cyber and infrastructure to applications.</li>
+<li><strong style=3D"font-weight:bold">Client Challenges</strong>: RTX is =
+described as a difficult client with projects that tend to be long-term and=
+ absorbing.</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:20px;font-s=
+ize:2rem">Working Relationship with Partners</h2><h3 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">Collaboration =
+with Will</h3><ul>
+<li><strong style=3D"font-weight:bold">Interaction =
+Style</strong>: Will is hands-on and methodical, often challenging team =
+members to think deeply about their presentations.</li>
+<li><strong style=3D"font-weight:bold">Complementary Styles</strong>: The =
+participant is logical and structured, which complements Will=E2=80=99s =
+dynamic approach.</li>
+<li><strong style=3D"font-weight:bold">Project =
+Leadership</strong>: Will is more involved with Honeywell, while Nandin and=
+ Skip manage RTX day-to-day operations.</li>
+</ul>
+<h2 =
+style=3D"font-weight:500;padding-top:20px;font-size:2rem">Personal =
+Matters</h2><h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">Travel Plans Affected by Wife&#39;s Surgery</h3><ul>
+<li><strong style=3D"font-weight:bold">Recent Events</strong>: =
+Participant&#39;s wife underwent surgery, affecting travel availability.=
+</li>
+<li><strong style=3D"font-weight:bold">Team Impact</strong>: =
+Anticipated reduced travel to locations like New Jersey, Miami, and =
+Charlotte.</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:20px;font-si=
+ze:2rem">Next Steps and Action Items</h2><h3 style=3D"font-weight:500;paddi=
+ng-top:20px;font-size:1.75rem">Conversations with Will</h3><ul>
+<li><strong style=3D"font-weight:bold">Role Adjustments</strong>: Plan to =
+discuss potential changes to focus away from business-managed applications =
+towards more suitable roles.</li>
+<li><strong style=3D"font-weight:bold">Te=
+am Expansion</strong>: Explore opportunities for broader exposure to =
+different workstreams, enhancing professional growth.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">Potential =
+Role Changes</h3><ul>
+<li><strong style=3D"font-weight:bold">Exit Planning =
+and PMO Support</strong>: Shift towards roles that offer more comprehensive=
+ involvement in project management and exit strategies rather than =
+specialized costing tasks.</li>
+</ul>
+<hr />
+</div></div></div><div =
+style=3D"background-color:#ffffff;padding:28px;border-radius:12px;border:1p=
+x solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 =
+rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-size:20px;font-weight:=
+600;margin-top:0;margin-bottom:20px;display:flex;align-items:center;gap:8px=
+"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription<=
+/h3><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">0:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">But most of the =
+deals, at least that I&#x27;ve been a part of, have been very structured. =
+So I, I ran Gap, Kimberly Clark, both of those. I was kind of like the =
+senior deal tech person on and 3am that was like massive deal. So kind of =
+similar to Honeywell where I was in, I was doing the smo but not the most =
+senior IT deal type person, like day to day person and then arc. So freeing=
+ ton of stuff over the last three years, but mostly kind of doing SMO IMO =
+roles. So that&#x27;s probably kind of why I&#x27;m playing such a broad =
+role to be as well.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">0:53</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. Yeah=
+, I, I spent two and a half years at GE Healthcare and then the last six =
+months at Collins RTX Healthcare. I was on cyber and then infrastructure =
+and then Collins has been applications. So I was on the apps work stream =
+pretty much from its inception until now. It&#x27;s a really quick deal for=
+ us on apps because they had done a lot of the pre work and went pencils =
+down and we sort of picked it up and refreshed what the EY teams had =
+already done. So less like SMO PMO experience, but broadly speaking. Yeah, =
+I mean, yeah, I think my.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><s=
+pan style=3D"color:#64748b;font-size:14px">1:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I guess where I =
+would say is my TSA guy is very junior, so he&#x27;s like a first year =
+consultant. My TSA costing guy is like a third year consultant and supposed=
+ to be going out for director, but I don&#x27;t think that&#x27;s gonna =
+happen based on kind of what I&#x27;ve seen thus far. Yeah, so like what =
+where Will&#x27;s always gonna say like program needs first, you know, like=
+ our team needs and then personal needs. But my, my thing is like I always =
+want to get people experience on something that they&#x27;re actually =
+interested in. So I don&#x27;t know if you&#x27;re super interested in TSAs=
+ like execution planning and exit planning kind of TSA exit planning and =
+then the execution piece of that or if you&#x27;re interested in costing. =
+So I would say the rub with costing is, you know you&#x27;re, you would be =
+picking up someone else&#x27;s model if that&#x27;s what you were doing.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">3:06</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I =
+have less experience with costing. I think day one execution planning and =
+then the actual execution of it is probably going to be the best fit. Like =
+more of a PMO type role like costing in tsa I feel like is something very =
+specific that I don&#x27;t have a lot of exposure to. So it depends what =
+type of level of experience you&#x27;re looking for there. And I think that=
+ like I would love to learn it, but it would Be just that it would be =
+learning it rather than like bringing experience doing it. Like, my =
+exposure has been like, really later in the life cycle after costing has =
+been done. The TSAs have been written. Other than like one very small deal =
+at the beginning of my career where I worked on costing, it hasn&#x27;t =
+been like TSA or costing centric. So I. I think that it just depends what =
+you&#x27;re looking for, you know?</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</=
+span><span style=3D"color:#64748b;font-size:14px">4:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. If it. To your=
+ point, like, I didn&#x27;t know how much costing and stuff you did at kpmg=
+. Yeah. With like Jonathan and Kevin and those guys. So if it&#x27;s not a =
+lot, it probably would probably be a better fit for like, TSA exit planning=
+ and some of those.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">4:35</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yes, I =
+completely agree with you.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><s=
+pan style=3D"color:#64748b;font-size:14px">4:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. All right. I =
+will let Will know. Probably. I think that makes more sense from a program =
+perspective too, because even. Even if I did want to move someone out of =
+the costume role, I think it would be too disruptive.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Meeting Participant</span><span style=3D"color:#64748b;fo=
+nt-size:14px">4:55</span></div><div style=3D"color:#475569;font-size:16px;l=
+ine-height:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><s=
+pan style=3D"color:#64748b;font-size:14px">4:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">At this point.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">4:58</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. That=
+. I mean, that&#x27;s what Will was saying was sort of that it&#x27;s like =
+he was thinking about shifting people around and doing some movement. But I=
+ think ultimately, like, the. It&#x27;s a balance, Right. Of what is going =
+to be disruptive and what is going to have like the most positive net =
+impact on the program. And then like, personal needs come after that, =
+obviously. So let me know what Will says. Are there, like. Is there a role =
+at Honeywell that is unfilled for like, a consultant in like, any of those =
+other areas, like the day one execution planning or like, you also =
+mentioned inventory change control, too.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Lane</span><span style=3D"color:#64748b;font-size:14px">5=
+:47</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I&#x27;ve got a guy for that and I don&#x27;t want to move him out of it=
+ because it&#x27;s more. He&#x27;s like automated all of the spreadsheets =
+and stuff, so he&#x27;ll know how to do that.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Meeting Participant</span><span style=3D"color:#64748b;fo=
+nt-size:14px">5:55</span></div><div style=3D"color:#475569;font-size:16px;l=
+ine-height:1.6">That&#x27;s awesome. That&#x27;s the type of guy you keep =
+around. For sure.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><s=
+pan style=3D"color:#64748b;font-size:14px">6:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. I don&#x27;t =
+want 100. Yeah. I don&#x27;t want to try to figure out any of that stuff.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">6:08</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, =
+it&#x27;s the worst. Capital Edge is the worst.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Lane</span><span style=3D"color:#64748b;font-size:14px">6=
+:14</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">It is the worst. I agree with you on that.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Meeting Participant</span><span style=3D"color:#64748b;fo=
+nt-size:14px">6:18</span></div><div style=3D"color:#475569;font-size:16px;l=
+ine-height:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><s=
+pan style=3D"color:#64748b;font-size:14px">6:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So, yeah, nothing =
+that&#x27;s on film, I think. I don&#x27;t know that we would necessarily =
+move anyone off that we have. Yeah, I think it would probably be a good fit=
+ for exit planning and like, helping out with like, some of the PMO stuff =
+too.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">6:38</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, =
+definitely. Yeah, I completely agree with you.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Lane</span><span style=3D"color:#64748b;font-size:14px">6=
+:41</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">It&#x27;d be good for you too, because then you get like, you get more =
+broad exposure to all of the work streams. So I Think that could be good =
+for you as well?</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">6:51</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I =
+think that that would be good.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</s=
+pan><span style=3D"color:#64748b;font-size:14px">6:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then what? Are =
+you up for director or are you like.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Meeting Participant</span><span style=3D"color:#64748b;fo=
+nt-size:14px">6:58</span></div><div style=3D"color:#475569;font-size:16px;l=
+ine-height:1.6">No. So I&#x27;m a consultant. I was promoted at mid year =
+last year so I won&#x27;t go up for director at least until December, =
+probably not until next summer so I can get back on cycle.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Lane</span><span style=3D"color:#64748b;font-size:14px">7=
+:14</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay, makes sense.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">7:16</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So =
+I&#x27;ve got either six months or a year before I go for director. I think=
+ given the current climate and given like where the market is at, I am =
+certainly not in any rush to push director at mid year again after I did =
+that for consultant. So you&#x27;ve got, you&#x27;ve got some time or =
+whoever picks me up has some time.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</=
+span><span style=3D"color:#64748b;font-size:14px">7:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, yeah, =
+that&#x27;s helpful. And the market does suck. Yeah.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Meeting Participant</span><span style=3D"color:#64748b;fo=
+nt-size:14px">7:46</span></div><div style=3D"color:#475569;font-size:16px;l=
+ine-height:1.6">It&#x27;S crazy. I mean what I keep hearing is that =
+there&#x27;s people on the bench and that the people on the bench have sort=
+ of stayed there. And then when we&#x27;re selling new work there&#x27;s =
+not a lot of like availability for the folks like in these circles. Like =
+with Will, I&#x27;ve sort of bounced from like one Will project to another.=
+ I&#x27;ve never been on the bench and I don&#x27;t know what your =
+experience is like, but it&#x27;s definitely different I think today than =
+it was a year ago for sure.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><s=
+pan style=3D"color:#64748b;font-size:14px">8:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, my experience =
+is kind of different because I&#x27;ve had, I&#x27;ve made a bad habit of =
+working with like partners that are retiring. So Ajay Baudia used to run =
+like west coast and he and I did. What did we do? Gap and we also did =
+Everest and then he left and I worked with Alan Kyle. He, he left and Sumi =
+left.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">8:50</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yep. Yes. =
+Sumi was my ccl. I was, I was on Sumi projects pretty much until she left. =
+Like I was working with Sumi and Eileen on their like west coast stuff.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">9:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;s kind of =
+just unfortunate situation with, with her leaving. So I don&#x27;t have the=
+ full story.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">9:08</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">But you =
+know, nobody does. I, I, I, it did well, it.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Lane</span><span style=3D"color:#64748b;font-size:14px">9=
+:14</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Was alcohol related but I don&#x27;t really know. Yeah, you know what =
+exactly happened?</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">9:20</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">That&#x27;s usually how it goes, which is unfortunate, but. Okay, well, =
+yeah, why don&#x27;t you talk to Will and keep me posted. I need to have a =
+conversation with Will as well. Just about like what I&#x27;m doing. But I =
+was talking to Anthony and the business managed apps team today and Will =
+about making a change and I think that that&#x27;s something that I&#x27;m =
+trying to put in motion. So I appreciate the call too.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Lane</span><span style=3D"color:#64748b;font-size:14px">9=
+:55</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">You want to change on what?</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting=
+ Participant</span><span style=3D"color:#64748b;font-size:14px">9:58</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Just like=
+ business managed apps. I think that as we approach day one, we&#x27;ve =
+gotten to the point where like my role here is mostly finished and we have =
+Pari and Tim Patrick now. Like when I joined it was just me and Anthony =
+Lockley on this work stream and we&#x27;ve now staffed it with Tim and Pari=
+. And my interest is really not in like this app&#x27;s work stream or with=
+ rtx and there&#x27;s an opportunity to make a change and I&#x27;m like =
+actively trying to do that.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><s=
+pan style=3D"color:#64748b;font-size:14px">10:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. Make a change =
+to the demo project.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">10:40</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yes. Yeah=
+, exactly. Like sort of while I can. Parry is up for director and I, I =
+don&#x27;t, I don&#x27;t know if it&#x27;s going to happen but Pari and =
+Anthony ran business manage apps together. Before Pari joined this project =
+she was running Hornet, which was another RTX spin off. And then when that =
+wrapped up, she came over here and brought I think all of the Hornet =
+experience to this project. So I think that we are adequately covered on =
+business managed apps or overly covered honestly. And it would be great to =
+do something different.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><s=
+pan style=3D"color:#64748b;font-size:14px">11:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. Yeah, =
+I&#x27;ve heard people aren&#x27;t always the biggest fan of RTX either.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">11:32</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, =
+it&#x27;s a really hard client for sure. It&#x27;s a really, I mean =
+it&#x27;s a hard client. Everybody says, oh, every client is hard. But RTX =
+is different in some ways. And it&#x27;s another one of those forever =
+projects that will go like, just like GE Healthcare was and I. GE =
+Healthcare became like I could never get off of that thing. And I think RTX=
+ has a tendency to like suck people in as well. So it&#x27;s good.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">12:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Both wheel projects.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">12:06</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, =
+those were both wheel projects.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</s=
+pan><span style=3D"color:#64748b;font-size:14px">12:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Very well. Good for =
+Will on that end. Do you have any other partners on, on the RTX sale or.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">12:14</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">No, =
+it&#x27;s actually mostly nonin. So Will is not really even on this project=
+ anymore. It&#x27;s mostly Nandin on RTX and Skip Shoal a little bit. =
+He&#x27;s an md, so it&#x27;s Skip a little bit and Nandin in the day to =
+day. And then Will is, I think Will has like oversight but he&#x27;s not =
+directly involved.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><s=
+pan style=3D"color:#64748b;font-size:14px">12:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Got it. Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">12:48</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">I think =
+he&#x27;s been more involved with Honeywell.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Lane</span><span style=3D"color:#64748b;font-size:14px">1=
+2:52</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, he&#x27;s, he&#x27;s very hands on here.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Meeting Participant</span><span style=3D"color:#64748b;fo=
+nt-size:14px">12:54</span></div><div style=3D"color:#475569;font-size:16px;=
+line-height:1.6">Yes. Which would be great. I mean I love when you like =
+working for Will. You. I mean I developed. You have to develop a sense for =
+how he works and accept it and once I did, I enjoyed working with Will. I =
+love his hands on approach. So it&#x27;s great to hear that he is There. =
+And I think that that makes sense to me now that like, that&#x27;s where =
+he&#x27;s spending his time. Were you guys just out here or. He went out =
+somewhere in New Jersey this week.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</=
+span><span style=3D"color:#64748b;font-size:14px">13:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So. Yeah, I was =
+supposed to be in Mars Plains this week too, but my wife was in the =
+hospital Sunday to Monday.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">13:36</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, gosh.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">13:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So, yeah, hopefully =
+we&#x27;ll see. She&#x27;s gonna have a surgery, so I don&#x27;t know. I =
+may not travel next week either.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting=
+ Participant</span><span style=3D"color:#64748b;font-size:14px">13:44</span=
+></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So =
+I&#x27;m so sorry to hear that. I hope that she&#x27;s all right and that =
+surgery goes well. That&#x27;s a really like, scary thing.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Lane</span><span style=3D"color:#64748b;font-size:14px">1=
+3:54</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">All good there. But yes, the team does travel to New Jersey, Miami and =
+then Charlotte. So it&#x27;s kind of a combination of those.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">14:05</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, =
+that sounds about right for Will. That sounds about right, I think. Is =
+there somebody else from Denver on Honeywell?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Lane</span><span style=3D"color:#64748b;font-size:14px">1=
+4:14</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">There may be. I&#x27;m not sure.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Meeting Participant</span><span style=3D"color:#64748b;fo=
+nt-size:14px">14:16</span></div><div style=3D"color:#475569;font-size:16px;=
+line-height:1.6">I don&#x27;t know. I feel like whoever my. I was assigned =
+a buddy and I can&#x27;t remember his name, but I connected him with Will =
+and he got put on one of Will&#x27;s projects, but I don&#x27;t know which =
+one.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">14:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Wouldn&#x27;T be =
+Oliver.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">14:34</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">NBA guy. =
+I can&#x27;t remember in the military. But anyway, so I think that this is =
+good. It really just depends on like what the need is on the Honeywell side=
+. It sounds like the costing switch out is not the best go forward approach=
+. But I think that if there is like team expansion or the opportunity for =
+it to help out on either the PMO side or some of like the day one planning =
+and then execution. When are they TSA ing like very much at Honeywell or =
+are they. Is a lot of the execution going to take place like prior to day =
+one?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">15:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">They&#x27;re TSA =
+quite a bit. So it&#x27;s like 98 applications is what the current TSA plus=
+, you know, obviously like infrastructure and some of those items.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">15:33</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, =
+yeah, yeah. What business. What business is it at Honeywell?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">15:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Advanced materials.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">15:40</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. =
+Yeah, advanced materials. Okay. I mean, what do they manufacture? Is it =
+like, is it like a hands on manufacturing or is it like research or like, =
+is it industrials?</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><s=
+pan style=3D"color:#64748b;font-size:14px">15:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I. I&#x27;d say it =
+probably lands and. Industrials.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting=
+ Participant</span><span style=3D"color:#64748b;font-size:14px">15:57</span=
+></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">15:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Like I&#x27;ve only =
+been here a week, so I haven&#x27;t gotten into, I would say the weeds on =
+some of that.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">16:03</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, =
+yeah. Well, how&#x27;s your first week been? How has your first week been? =
+Have you worked with Will before?</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</s=
+pan><span style=3D"color:#64748b;font-size:14px">16:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I have not. Well, =
+nothing. I have done pitches with Will, so we did like a pitch to the CIO =
+at Colin&#x27;s Aerospace. Then I Was thai led on zero based budgeting. I =
+have not worked with him outside of that. I was probably like in the =
+industrial space because my sectors are industrials and life sciences. And =
+I was primarily working with Alan Kyle who was, was leading industrials =
+until he announced his retirement. And now it&#x27;s Will leading =
+industrial.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">16:42</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. =
+Yeah, Will is good. Definitely an acquired taste. But he&#x27;s, he&#x27;s,=
+ he&#x27;s a smart guy for sure.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</s=
+pan><span style=3D"color:#64748b;font-size:14px">16:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh yeah. You know, =
+he and I get along well.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">16:54</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">That&#x27;s awesome.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><s=
+pan style=3D"color:#64748b;font-size:14px">16:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Kind of complement =
+each other.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">16:57</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">That&#x27;s good.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><s=
+pan style=3D"color:#64748b;font-size:14px">16:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think Will likes =
+to kind of throw grenades into and see like if people have really thought =
+through what they&#x27;re presenting. Yeah. And I&#x27;m very like =
+methodical and like hey, I want you to do XYZ and document all that. So it =
+complements pretty well.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">17:19</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">That&#x27;s great. I mean that&#x27;s what I am certainly looking for is=
+ like someone who is methodical and I, I love to hear that. I, I see what =
+you mean about Will with the grenades and I think that I tend to fall not, =
+not as much on that end of the spectrum. More like I&#x27;m a very, very =
+logical, like structured person in the way I think and do work.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">17:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Meeting Participant</span><span style=3D"color:#64748b;fo=
+nt-size:14px">17:46</span></div><div style=3D"color:#475569;font-size:16px;=
+line-height:1.6">Yeah, it&#x27;s, I, I agree with you. It complements =
+Will&#x27;s style of. Sometimes it feels like chaos, but it&#x27;s, it =
+definitely makes me think. For sure.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Lane</span><span style=3D"color:#64748b;font-size:14px">1=
+7:58</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. A little chaotic. Used to working with us.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Meeting Participant</span><span style=3D"color:#64748b;fo=
+nt-size:14px">18:03</span></div><div style=3D"color:#475569;font-size:16px;=
+line-height:1.6">Yeah. Okay. Well, I think, I think, I think we should be. =
+Be good. Let me know what if anything, the outcome of your conversation =
+with Will is. I need to have a, like a follow up conversation with him as =
+well. But I mean are there any next steps or is there anything that I can =
+do or you might need from me?</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</s=
+pan><span style=3D"color:#64748b;font-size:14px">18:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;ll connect =
+with Will. I told him I&#x27;d get back to him today on where I, I thought =
+that would be the best place to, to get you plugged in. So I&#x27;ll talk.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">18:42</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. =
+Okay. That sounds great. Thank you, Lane.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Lane</span><span style=3D"color:#64748b;font-size:14px">1=
+8:45</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">All right.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Participant</span><span style=3D"color:#64748b;font-size:14px">18:46</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Thank you=
+. Have.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">18:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sounds good. Have, =
+have a, a safe and safe life back.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meetin=
+g Participant</span><span style=3D"color:#64748b;font-size:14px">18:51</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Thank =
+you. Yeah, you as well. And have a good weekend. I&#x27;ll definitely be. =
+I&#x27;ll say a prayer for you and your wife and if not I&#x27;ll Let me =
+know the outcome of the wheel conversation. Okay, thanks Lane.=
+</div></div><div style=3D"margin-bottom:0;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">19:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Bye.=
+</div></div></div><div style=3D"margin-top:36px;text-align:center;color:#64=
+748b;font-size:14px;padding:20px;border-top:1px solid #e2e8f0"><p =
+style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note Taker</p><p=
+ style=3D"margin:0;font-size:12px">Your AI-powered companion</p></div></div=
+></div></div></html>
+----_NmP-4ebe1a2a1a46eb6d-Part_1--

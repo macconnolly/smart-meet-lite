@@ -1,0 +1,590 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:adf:a403:0:b0:3a4:dc5b:9678 with SMTP id d3csp2336678wra;
+        Mon, 2 Jun 2025 14:51:28 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFG/fYsYojBr2REOjO8lGkZ4UkhN3vVm0Qq31WnjsPPhkLiXWqSSv6T8rLboRh9UOlc1tsh
+X-Received: by 2002:a05:622a:290:b0:4a5:98c2:34b9 with SMTP id d75a77b69052e-4a598c23731mr18924211cf.34.1748901088666;
+        Mon, 02 Jun 2025 14:51:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748901088; cv=none;
+        d=google.com; s=arc-20240605;
+        b=cFGxDWR1lCXXuqF603Ko2BKdLBYSewk2C13BT0T7eavV2MTDIXXSrgz7Fv5SVNLbvO
+         b7tLQ/5rXr6ftO2/ya/syaKIewOoxCS5RcCRNXiSrYKY3ra+0JL3ArpIeuJ6uRuIHkoP
+         9ufSn76bXHzSiTtfoSa6ede9SXqt/zXq0Vo7JBd6hQBymvkz9C+AwOok1rJhyI0QIrUc
+         ceE5Rb0qY0jywqaKWCfrzYcVasrKT7fepSoGi2MxI+Oplvs2Nbh3oC8wgRqKiFLqguqI
+         sVPXTUTl76VO5QBnGsz50VE4sC4dlnnB0PtLrHk+eMHl+Y7c7EKkxmg0dgdT6625/6Ul
+         AH/w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=F7QxC6zag6RRGipXKpeMKVke3TYd6+CZ0PX/Srw+SbE=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=RQ/9goZ7RUOHUzhn6GVI0jqVfqkGXBuB8v3oGE8kPllNp3WiwN9BoyzcBVNh6b784n
+         fM6bUHAjwZOxEn4kXvl0wWrTv7syOixzT+H7VcO6jBVSdM0Ll385nOgmN471bsPFGfQ6
+         Qh+umdMsUFlAYz6xW0U7uHnjsecAPtR6j0X5RS8doHtY7sPepR2YB1vLGQk7MVs7Paea
+         Keiz83Pfqcyol/mmYyYzGPubjKKdStGJiR/BoXD3CL2VkUaQtLYcXAksdqGsv05DHKbN
+         1YdliG5MUImXsbaMI+Qdhk303oyUwaLV4Hl/6kwp+cE3W+z2gbMGltzepIkaYU9sHCBN
+         o1VA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=YcsxECKy;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=sJIQ5wRW;
+       spf=pass (google.com: domain of 0100019732a0cb12-192cd740-e21d-4581-96ac-d1b1b17d09d9-000000@send.email.wave.co designates 54.240.9.34 as permitted sender) smtp.mailfrom=0100019732a0cb12-192cd740-e21d-4581-96ac-d1b1b17d09d9-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <0100019732a0cb12-192cd740-e21d-4581-96ac-d1b1b17d09d9-000000@send.email.wave.co>
+Received: from a9-34.smtp-out.amazonses.com (a9-34.smtp-out.amazonses.com. [54.240.9.34])
+        by mx.google.com with ESMTPS id d75a77b69052e-4a43588aa32si110861571cf.78.2025.06.02.14.51.28
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 02 Jun 2025 14:51:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 0100019732a0cb12-192cd740-e21d-4581-96ac-d1b1b17d09d9-000000@send.email.wave.co designates 54.240.9.34 as permitted sender) client-ip=54.240.9.34;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=YcsxECKy;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=sJIQ5wRW;
+       spf=pass (google.com: domain of 0100019732a0cb12-192cd740-e21d-4581-96ac-d1b1b17d09d9-000000@send.email.wave.co designates 54.240.9.34 as permitted sender) smtp.mailfrom=0100019732a0cb12-192cd740-e21d-4581-96ac-d1b1b17d09d9-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1748901088;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=4O2rzSgBnUyPRCdJKj76U07G014uh29HN7wy/0GFKWQ=;
+	b=YcsxECKyZ4USySHd9nSR76AFnnbL1n3ojUzmxDyKfZ9Vm83/O5k0uuizmDcOSOXg
+	MV04jimUtYhFEBmIr/YCD76dCWLxeaK3I1SyWKdoynLpZQpmqYBnF/QCcBh9yIBJkOa
+	VZe2CvNfooQYPwF++bm7JMgz88aIsoBQdHN1rJRM=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1748901088;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=4O2rzSgBnUyPRCdJKj76U07G014uh29HN7wy/0GFKWQ=;
+	b=sJIQ5wRWA4VVdtzreGH4nI+XAb9flEwZdMV/Hp0XCAhgyjHWv1pcQIJPK2syP9j3
+	NzAY4F1P/hs66eE2WmMV93UTSSdwQc/idoxsXD68INgq6kJEMOcoweODLdDqyEODKQz
+	nJmaMny2ULdhM2W8+/+xA9/IPOb4InEnmmveYBro=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Application Mapping Challenges During System Transformation
+Message-ID: <0100019732a0cb12-192cd740-e21d-4581-96ac-d1b1b17d09d9-000000@email.amazonses.com>
+Date: Mon, 2 Jun 2025 21:51:28 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-03c0028f98f03f34-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.06.02-54.240.9.34
+
+----_NmP-03c0028f98f03f34-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Application Mapping Challenges During System Transformation
+
+The discussion centers on challenges and planning for application mapping =
+during a major system transformation, focusing on identifying and =
+classifying applications impacted by the BRV (Build-Readiness Validation) =
+process, their User Acceptance Testing (UAT) status, and integration with =
+the Configuration Management Database (CMDB). It also addresses =
+complexities with cloned applications, legacy-to-new system transitions, =
+and the need for more accurate functional mapping. The included images =
+visually support these discussions with process and system disposition data=
+.
+
+---
+
+## Main Topics Discussed
+
+### 1. Application Identification & =
+Classification Challenges
+- Not all applications are yet in the CMDB, =
+particularly for new or cloned apps.
+- Some apps cannot be classified as =
+strictly BRV (Build-Readiness Validation) or "Day One" apps; a third =
+category may be necessary for apps going live outside main project =
+milestones (e.g., July or June instead of October 27).
+- When cloning applications, new app IDs may not yet be reflected in the =
+CMDB=E2=80=94affecting mapping and tracking.
+
+### 2. Impacted Applications =
+& UAT Scope
+- A provisional approach is needed for mapping and flagging =
+applications that are being migrated, cloned, or are otherwise impacted but=
+ not directly in scope for BRV or =E2=80=9CDay One.=E2=80=9D
+- Suggestion to collaborate with business functions and IT to get accurate =
+listings of the applications they are using and impacting.
+- A two-step process is inferred:
+    1. Validate which applications are =
+truly BRV-related=E2=80=94a current list of 22 BRV apps is acknowledged as =
+potentially inaccurate.
+    2. Build a functional mapping view for UAT, =
+identifying which apps or processes affect which functions, even if they =
+aren=E2=80=99t strictly BRV.
+
+### 3. Functional Mapping & Process =
+Complexity
+- Scenarios exist where business processes change, but the =
+supporting systems do not (especially where Temporary Systems =
+Architecture=E2=80=94TSA=E2=80=94is in use).
+- There are applications (like=
+ HR/payroll) where parts of the process have migrated (e.g., to Oracle HCM)=
+, but legacy systems (like PeopleSoft and ADP) are still in use for certain=
+ functions or regions.
+
+### 4. Example: HR System Transformation
+- Oracle HCM went live May 12, 2025, but operational issues mean some =
+regions (e.g., US) still process payroll via PeopleSoft, while others use a=
+ new Honeywell HCM.
+- The process adds complexity to UAT and mapping since =
+both legacy and new systems are used concurrently, and different legal =
+entities may be involved.
+
+---
+
+## Action Items / Suggested Steps
+
+1. **Obtain Accurate BRV App List:** Engage with business functions and IT =
+to confirm which applications are touched by BRV=E2=80=94current list (22 =
+apps) may not be accurate.
+2. **Document Impacted Applications:** Create =
+documentation based on feedback detailing all apps being touched/migrated, =
+with clear distinctions (BRV, Day One, third category).
+3. **Improve Functional Mapping for UAT:** Build or refine the matrix that =
+maps application impacts to business functions, including process and =
+system disposition status.
+4. **Address Cloning and Legacy System Issues:**=
+ Develop a provisional process for handling cloned apps or systems without =
+a formal new CMDB entry.
+
+---
+
+## Images
+
+### Image 1: Process & System =
+Disposition Spreadsheet
+- Shows the breakdown of build-back vs. move-as-is =
+processes across functions (CCEX, Finance, HR, ISC, Legal, etc).
+    - Example: CCEX has 77 build-back and 257 move-as-is processes (334 =
+total).
+    - System disposition columns show how many require SIT/UAT, TSA=
+ validation, etc.
+- Some numbers are marked "TBC" (To Be Confirmed) or =
+"N/A" (Not Applicable), indicating areas requiring further data.
+- **Significance:** This spreadsheet is essential for tracking scope and =
+readiness for system/process changes, supporting project management for =
+rollouts.
+
+### Image 2: Functional Mapping for UAT Spreadsheet
+- Matrix mapping software/systems (rows) to business functions/departments =
+(columns: IT, Finance, HR, ISC, etc.), with "X" marks for involvement.
+    - Example: "GLOBAL COMPENSATION 1.0 PROD" involves IT, HR, and Finance.
+- Multiple tabs suggest comprehensive documentation (BRV Apps, Non-BRV Apps=
+, etc.).
+- **Significance:** Helps identify which applications need to be =
+considered for UAT by function, clarifying ownership and impact zones.
+
+---
+
+## Additional Notes
+
+- **Timeframes & Dates:**
+    - Some apps go live in =
+July or June 2025, not the main project date of October 27, 2025.
+    - Oracle HCM went live May 12, 2025.
+- Provisional approaches and =
+iterative, collaborative documentation are recommended due to incomplete =
+data (missing CMDB entries, in-progress migrations).
+- Complex business process and system interdependencies (especially in =
+HR/payroll) highlight the importance of detailed mapping and validation =
+before UAT.
+
+Transcript:
+0:00
+I don't think is in CMDB yet. So the fact is =
+though, that will go to UAT and we may need to understand maybe we, you =
+know. So here's my logic. The flag right now the options are BRV and day =
+one, we have this case in it where it's neither. So there's a third option =
+where it's not purely a BRV, but it's in that time frame. So BRB, if you =
+translate it as August 1st, then we have some apps going around there that =
+is in that time frame. Now, is it day one related? No, they're not going =
+live October 27, they're going live in July and June. So we need to make a =
+provision for that. The second part of this is there isn't, you know, an =
+app, something like a build back, which is a clone. You're not going to =
+have the new application ID from CMDB because it's either not created or if=
+ it is, it hasn't been imported into the 296. The 296 reflects the original=
+ Honeywell app landscape. So if I'm cloning an app, the app that's getting =
+cloned, the clone is the one that's getting touched in uat. But we have to =
+reflect it somehow here. So we may have to call the original app as a BRV =
+or we may have to flag the original Honeywell app as the one being touched =
+because we don't have another way of flagging the new app. So those are the=
+ kind of tips and tricks we need to go through to look at and say, I've got=
+ this 296. Now maybe this is a conversation we have with the functions and =
+the it to say, say what is it you're touching? Give me a list of all the =
+apps you touch and let's document them. And then we come in here and we say=
+, and this is where provision is needed. So here's the layering in.
+
+2:05
+Yeah, I think that's exactly what we need is like this. These were the 22 =
+for BRV. And once we, I think step one is validate the apps that are BRV. =
+Like for example, you said that there were HR that we might have that are =
+actually not like these hr. Maybe not. So we don't have the right list of =
+22 BRV apps. So that's step one, go out and get input on what are the BRV =
+apps. And then step two is a view like this, the functional mapping for UAT=
+ where they can tell us it might not be a BRV app, but it goes and touches =
+all of these functions. Right?
+
+2:47
+Correct. Now that's from a business =
+process perspective. So the process may be changing, but the system may be =
+on a tsa, for example. Right. So if the process is changing but the =
+system's on a tsa, do I call it a VRV app? You know, because it's a TSA on =
+day one. But if I'm doing a new process on the same system or if it's a new=
+ move as is process, but a new person's doing it, there's some BRV impact =
+because it's touching a system. They may have to go into the system and =
+verify something. And so we can say it's impacted by prv, but it's not a =
+system that's changing at brv. So we have to. I didn't realize scenarios =
+like that.
+
+3:35
+Can't see my actual screen. I've been. Let me just share =
+the whole thing.
+
+3:39
+I've been showing the other one, but okay, yep, yep,=
+ yep. I've seen these.
+
+3:43
+Yeah. Okay, so it's like this one. These are =
+the 22 that are wrong.
+
+3:48
+Right.
+
+3:48
+And then functional mapping.
+
+3:50
+Most technically, 90% of them are right. But yeah, a few of them are.
+
+3:55
+Not like those HR ones.
+
+3:57
+Correct. So these HR we added in, for =
+example, this Honeywell 8, Oracle HCM is a brand new app that's coming up, =
+but there's an impact. So think of it this way. Today they have PeopleSoft =
+in Honeywell and they're transforming that PeopleSoft and going with Oracle=
+ HCM. So today in the CMDB, they're generating a new app number for the new=
+ Honeywell HCM that is going live. In fact, it went live last May 12, a =
+couple of weeks ago. So it went live. They have some issues with it. =
+They're using both Systems now on 8. 1. If you talk to Arpit on our HR team=
+, they'll tell you that people are getting paid out of, you know, the, the =
+people are moving to the right legal entity in Honeywell HCM. So there's =
+some work needed for PRV. And then people in the US are getting paid out of=
+ the PeopleSoft payroll. So the old HCM system is being used for payroll, =
+for payroll processing for us. They're using ADP as an outsourced provider =
+to provide payroll for rest.
+----_NmP-03c0028f98f03f34-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Application=
+ Mapping Challenges During System Transformation</h1></td></tr></table></di=
+v><div style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/54115AD6-FBF4-4009-9B46-9AC3F559BFF7?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><p>The discussion centers on challenges =
+and planning for application mapping during a major system transformation, =
+focusing on identifying and classifying applications impacted by the BRV =
+(Build-Readiness Validation) process, their User Acceptance Testing (UAT) =
+status, and integration with the Configuration Management Database (CMDB). =
+It also addresses complexities with cloned applications, legacy-to-new =
+system transitions, and the need for more accurate functional mapping. The =
+included images visually support these discussions with process and system =
+disposition data.</p>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;=
+font-size:2rem">Main Topics Discussed</h2><h3 style=3D"font-weight:500;padd=
+ing-top:20px;font-size:1.75rem">1. Application Identification &amp; =
+Classification Challenges</h3><ul>
+<li>Not all applications are yet in the =
+CMDB, particularly for new or cloned apps.</li>
+<li>Some apps cannot be =
+classified as strictly BRV (Build-Readiness Validation) or &quot;Day =
+One&quot; apps; a third category may be necessary for apps going live =
+outside main project milestones (e.g., July or June instead of October 27).=
+</li>
+<li>When cloning applications, new app IDs may not yet be reflected =
+in the CMDB=E2=80=94affecting mapping and tracking.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">2. =
+Impacted Applications &amp; UAT Scope</h3><ul>
+<li>A provisional approach =
+is needed for mapping and flagging applications that are being migrated, =
+cloned, or are otherwise impacted but not directly in scope for BRV or =
+=E2=80=9CDay One.=E2=80=9D</li>
+<li>Suggestion to collaborate with business=
+ functions and IT to get accurate listings of the applications they are =
+using and impacting.</li>
+<li>A two-step process is inferred:<ol>
+<li>Validate which applications are truly BRV-related=E2=80=94a current =
+list of 22 BRV apps is acknowledged as potentially inaccurate.</li>
+<li>Build a functional mapping view for UAT, identifying which apps or =
+processes affect which functions, even if they aren=E2=80=99t strictly BRV.=
+</li>
+</ol>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-=
+size:1.75rem">3. Functional Mapping &amp; Process Complexity</h3><ul>
+<li>Scenarios exist where business processes change, but the supporting =
+systems do not (especially where Temporary Systems Architecture=E2=80=94TSA=
+=E2=80=94is in use).</li>
+<li>There are applications (like HR/payroll) =
+where parts of the process have migrated (e.g., to Oracle HCM), but legacy =
+systems (like PeopleSoft and ADP) are still in use for certain functions or=
+ regions.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-siz=
+e:1.75rem">4. Example: HR System Transformation</h3><ul>
+<li>Oracle HCM went live May 12, 2025, but operational issues mean some =
+regions (e.g., US) still process payroll via PeopleSoft, while others use a=
+ new Honeywell HCM.</li>
+<li>The process adds complexity to UAT and mapping=
+ since both legacy and new systems are used concurrently, and different =
+legal entities may be involved.</li>
+</ul>
+<hr />
+<h2 =
+style=3D"font-weight:500;padding-top:20px;font-size:2rem">Action Items / =
+Suggested Steps</h2><ol>
+<li><strong style=3D"font-weight:bold">Obtain =
+Accurate BRV App List:</strong> Engage with business functions and IT to =
+confirm which applications are touched by BRV=E2=80=94current list (22 =
+apps) may not be accurate.</li>
+<li><strong style=3D"font-weight:bold">Docu=
+ment Impacted Applications:</strong> Create documentation based on feedback=
+ detailing all apps being touched/migrated, with clear distinctions (BRV, =
+Day One, third category).</li>
+<li><strong style=3D"font-weight:bold">Impro=
+ve Functional Mapping for UAT:</strong> Build or refine the matrix that =
+maps application impacts to business functions, including process and =
+system disposition status.</li>
+<li><strong style=3D"font-weight:bold">Addr=
+ess Cloning and Legacy System Issues:</strong> Develop a provisional =
+process for handling cloned apps or systems without a formal new CMDB entry=
+.</li>
+</ol>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size=
+:2rem">Images</h2><h3 style=3D"font-weight:500;padding-top:20px;font-size:1=
+.75rem">Image 1: Process &amp; System Disposition Spreadsheet</h3><ul>
+<li>Shows the breakdown of build-back vs. move-as-is processes across =
+functions (CCEX, Finance, HR, ISC, Legal, etc).<ul>
+<li>Example: CCEX has 77 build-back and 257 move-as-is processes (334 =
+total).</li>
+<li>System disposition columns show how many require SIT/UAT, =
+TSA validation, etc.</li>
+</ul>
+</li>
+<li>Some numbers are marked =
+&quot;TBC&quot; (To Be Confirmed) or &quot;N/A&quot; (Not Applicable), =
+indicating areas requiring further data.</li>
+<li><strong =
+style=3D"font-weight:bold">Significance:</strong> This spreadsheet is =
+essential for tracking scope and readiness for system/process changes, =
+supporting project management for rollouts.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">Image 2: =
+Functional Mapping for UAT Spreadsheet</h3><ul>
+<li>Matrix mapping =
+software/systems (rows) to business functions/departments (columns: IT, =
+Finance, HR, ISC, etc.), with &quot;X&quot; marks for involvement.<ul>
+<li>Example: &quot;GLOBAL COMPENSATION 1.0 PROD&quot; involves IT, HR, and =
+Finance.</li>
+</ul>
+</li>
+<li>Multiple tabs suggest comprehensive =
+documentation (BRV Apps, Non-BRV Apps, etc.).</li>
+<li><strong =
+style=3D"font-weight:bold">Significance:</strong> Helps identify which =
+applications need to be considered for UAT by function, clarifying =
+ownership and impact zones.</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;=
+padding-top:20px;font-size:2rem">Additional Notes</h2><ul>
+<li><strong style=3D"font-weight:bold">Timeframes &amp; Dates:</strong><ul>
+<li>Some apps go live in July or June 2025, not the main project date of =
+October 27, 2025.</li>
+<li>Oracle HCM went live May 12, 2025.</li>
+</ul>
+</li>
+<li>Provisional approaches and iterative, collaborative documentation=
+ are recommended due to incomplete data (missing CMDB entries, in-progress =
+migrations).</li>
+<li>Complex business process and system interdependencies=
+ (especially in HR/payroll) highlight the importance of detailed mapping =
+and validation before UAT.</li>
+</ul>
+</div></div></div><div =
+style=3D"background-color:#ffffff;padding:28px;border-radius:12px;border:1p=
+x solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 =
+rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-size:20px;font-weight:=
+600;margin-top:0;margin-bottom:20px;display:flex;align-items:center;gap:8px=
+"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription<=
+/h3><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">unknown, possibly =
+a technical or process lead discussing CMDB and app impacts</span><span =
+style=3D"color:#64748b;font-size:14px">0:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I don&#x27;t think =
+is in CMDB yet. So the fact is though, that will go to UAT and we may need =
+to understand maybe we, you know. So here&#x27;s my logic. The flag right =
+now the options are BRV and day one, we have this case in it where =
+it&#x27;s neither. So there&#x27;s a third option where it&#x27;s not =
+purely a BRV, but it&#x27;s in that time frame. So BRB, if you translate it=
+ as August 1st, then we have some apps going around there that is in that =
+time frame. Now, is it day one related? No, they&#x27;re not going live =
+October 27, they&#x27;re going live in July and June. So we need to make a =
+provision for that. The second part of this is there isn&#x27;t, you know, =
+an app, something like a build back, which is a clone. You&#x27;re not =
+going to have the new application ID from CMDB because it&#x27;s either not=
+ created or if it is, it hasn&#x27;t been imported into the 296. The 296 =
+reflects the original Honeywell app landscape. So if I&#x27;m cloning an =
+app, the app that&#x27;s getting cloned, the clone is the one that&#x27;s =
+getting touched in uat. But we have to reflect it somehow here. So we may =
+have to call the original app as a BRV or we may have to flag the original =
+Honeywell app as the one being touched because we don&#x27;t have another =
+way of flagging the new app. So those are the kind of tips and tricks we =
+need to go through to look at and say, I&#x27;ve got this 296. Now maybe =
+this is a conversation we have with the functions and the it to say, say =
+what is it you&#x27;re touching? Give me a list of all the apps you touch =
+and let&#x27;s document them. And then we come in here and we say, and this=
+ is where provision is needed. So here&#x27;s the layering in.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">unknown, possibly =
+a collaborator or analyst responding and validating information</span><span=
+ style=3D"color:#64748b;font-size:14px">2:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I think =
+that&#x27;s exactly what we need is like this. These were the 22 for BRV. =
+And once we, I think step one is validate the apps that are BRV. Like for =
+example, you said that there were HR that we might have that are actually =
+not like these hr. Maybe not. So we don&#x27;t have the right list of 22 =
+BRV apps. So that&#x27;s step one, go out and get input on what are the BRV=
+ apps. And then step two is a view like this, the functional mapping for =
+UAT where they can tell us it might not be a BRV app, but it goes and =
+touches all of these functions. Right?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">unknown, possibly a technical or process lead discussing =
+CMDB and app impacts</span><span style=3D"color:#64748b;font-size:14px">2:4=
+7</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Correct. Now that&#x27;s from a business process perspective. So the =
+process may be changing, but the system may be on a tsa, for example. Right=
+. So if the process is changing but the system&#x27;s on a tsa, do I call =
+it a VRV app? You know, because it&#x27;s a TSA on day one. But if I&#x27;m=
+ doing a new process on the same system or if it&#x27;s a new move as is =
+process, but a new person&#x27;s doing it, there&#x27;s some BRV impact =
+because it&#x27;s touching a system. They may have to go into the system =
+and verify something. And so we can say it&#x27;s impacted by prv, but =
+it&#x27;s not a system that&#x27;s changing at brv. So we have to. I =
+didn&#x27;t realize scenarios like that.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">unknown, possibly a collaborator or analyst responding =
+and validating information</span><span style=3D"color:#64748b;font-size:14p=
+x">3:35</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Can&#x27;t see my actual screen. I&#x27;ve been. Let me just share the=
+ whole thing.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">unknown, possibly =
+a technical or process lead discussing CMDB and app impacts</span><span =
+style=3D"color:#64748b;font-size:14px">3:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;ve been =
+showing the other one, but okay, yep, yep, yep. I&#x27;ve seen these.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">unknown, possibly =
+a collaborator or analyst responding and validating information</span><span=
+ style=3D"color:#64748b;font-size:14px">3:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Okay, so =
+it&#x27;s like this one. These are the 22 that are wrong.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">unknown, possibly a technical or process lead discussing =
+CMDB and app impacts</span><span style=3D"color:#64748b;font-size:14px">3:4=
+8</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Right.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">unknown, possibly =
+a collaborator or analyst responding and validating information</span><span=
+ style=3D"color:#64748b;font-size:14px">3:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then functional =
+mapping.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">unknown, possibly =
+a technical or process lead discussing CMDB and app impacts</span><span =
+style=3D"color:#64748b;font-size:14px">3:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Most technically, =
+90% of them are right. But yeah, a few of them are.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">unknown, possibly a collaborator or analyst responding =
+and validating information</span><span style=3D"color:#64748b;font-size:14p=
+x">3:55</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Not like those HR ones.</div></div><div style=3D"margin-bottom:0;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">unknown, =
+possibly a technical or process lead discussing CMDB and app =
+impacts</span><span style=3D"color:#64748b;font-size:14px">3:57</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Correct. So =
+these HR we added in, for example, this Honeywell 8, Oracle HCM is a brand =
+new app that&#x27;s coming up, but there&#x27;s an impact. So think of it =
+this way. Today they have PeopleSoft in Honeywell and they&#x27;re =
+transforming that PeopleSoft and going with Oracle HCM. So today in the =
+CMDB, they&#x27;re generating a new app number for the new Honeywell HCM =
+that is going live. In fact, it went live last May 12, a couple of weeks =
+ago. So it went live. They have some issues with it. They&#x27;re using =
+both Systems now on 8. 1. If you talk to Arpit on our HR team, they&#x27;ll=
+ tell you that people are getting paid out of, you know, the, the people =
+are moving to the right legal entity in Honeywell HCM. So there&#x27;s some=
+ work needed for PRV. And then people in the US are getting paid out of the=
+ PeopleSoft payroll. So the old HCM system is being used for payroll, for =
+payroll processing for us. They&#x27;re using ADP as an outsourced provider=
+ to provide payroll for rest.</div></div></div><div =
+style=3D"margin-top:36px;text-align:center;color:#64748b;font-size:14px;pad=
+ding:20px;border-top:1px solid #e2e8f0"><p style=3D"margin:0;margin-bottom:=
+8px">Captured with Wave AI Note Taker</p><p style=3D"margin:0;font-size:12p=
+x">Your AI-powered companion</p></div></div></div></div></html>
+----_NmP-03c0028f98f03f34-Part_1--

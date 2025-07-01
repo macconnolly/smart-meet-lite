@@ -1,0 +1,2024 @@
+MIME-Version: 1.0
+Date: Fri, 6 Jun 2025 12:17:11 -0400
+References: <0100019745e2337b-76526bb3-ccd5-41e1-9d87-3bcc3d860f66-000000@email.amazonses.com>
+In-Reply-To: <0100019745e2337b-76526bb3-ccd5-41e1-9d87-3bcc3d860f66-000000@email.amazonses.com>
+Message-ID: <CAOat4ZBJuWoSRm+u+29onxAtM5oTRf5x2L_6kqixk+tV0d=jSA@mail.gmail.com>
+Subject: Fwd: Athens IT Dashboard Progress and Reporting
+From: Mac Connolly <mac@macconnolly.com>
+To: emzk90gkuyqtobj@upload.pipedream.net
+Content-Type: multipart/alternative; boundary="0000000000001c42580636e9907f"
+
+--0000000000001c42580636e9907f
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+---------- Forwarded message ---------
+From: Wave AI Note Taker <summary@email.wave.co>
+Date: Fri, 6 Jun 2025 at 11:35
+Subject: Athens IT Dashboard Progress and Reporting
+To: <mac@macconnolly.com>
+
+
+[image: Wave AI Logo]Athens IT Dashboard Progress and Reporting
+=E2=9C=A8 View Your Session on the Web
+<https://app.wave.co/sessions/ACB7489C-D143-47C8-A934-27DC13A57F02?lastLogi=
+nParam=3Dgoogle>
+=F0=9F=93=9DSummary
+Meeting Summary
+
+*Date:* June 6, 2025
+*Attendees:* (names mentioned: Pre, Mac, Brian, Jeff, Rakesh, Rob, Steven,
+Sunshine, Tyler, Sriram, DJ, Ana)
+*Project:* Athens IT Testing, UAT, and Cutover Progress Reporting Dashboard
+------------------------------
+Main Topics Discussed1. *Dashboarding and Reporting Needs for Leadership*
+
+   - *Background:*
+      - UAT (User Acceptance Testing) is starting for the Athens project.
+      - Leadership wants regular dashboard views and progress reporting on
+      items such as SIT (System Integration Testing), UAT, cutovers, go-liv=
+es,
+      and hypercare (immediate support after go-live).
+      - There is a specific ask for burn-down charts showing progress over
+      time, as well as reporting on hypercare issues and triaging activitie=
+s.
+   - *Requirements:*
+      - Dashboards must be built on the existing Capital Edge trackers,
+      specifically the BRV (Business Requirement Validation) inventory trac=
+ker.
+      - Additional columns/fields are needed to support SIT and UAT
+      readiness reporting, including more detailed attributes.
+
+2. *Feasibility and Technical Approach*
+
+   - *Enhancements to Tracker:*
+      - Adding extra columns/fields (text, lookups, drop-downs) is
+      straightforward.
+      - Once requirements for additional data points are provided, a
+      one-to-one comparison will be made with the current tracker.
+      - The updated tracker will be the basis for further dashboards (e.g.,
+      bar charts, burndowns, heat maps), including standard hypercare
+reporting.
+   - *Reporting Approach:*
+      - With necessary data points, Capital Edge can support various
+      dashboards and custom reports.
+      - Examples from previous projects (e.g., J&J) to be provided for
+      inspiration/methodology, especially with drill-throughs and user
+      interaction.
+   - *Data Import/Export:*
+      - Manual data updates can be uploaded via bulk import/export,
+      minimizing heavy manual labor as long as formatting (e.g., no errant
+      spaces) is kept clean.
+
+3. *Hypercare Issue Tracking*
+
+   - *Central Tracking Proposal:*
+      - Debate over whether Capital Edge should act as the central
+      repository for Level 2 and above hypercare issues.
+      - Help desk tickets (Level 1) remain outside the tracker, but any
+      escalated or cross-functional issue should be logged centrally for
+      effective tracking and dashboard reporting.
+      - Capital Edge=E2=80=99s RAID log (Risks, Actions, Issues, Decisions)
+      function strongly considered for this purpose.
+
+4. *Process and Scenario Tracking*
+
+   - *Distinction between Data Sets:*
+      - Discussion on whether to inventory process scenarios explicitly.
+      - The systems tracker in Capital Edge may already contain pertinent
+      statuses (e.g., testers identified, scenarios defined, testing comple=
+te).
+      - Consensus that inventorying every scenario may not be necessary;
+      instead, key process-level progress is what matters for leadership
+      visibility.
+      - Suggestion to track test script location and ownership on Teams if
+      more detail is needed.
+   - *System vs Process Tracking:*
+      - Systems readiness to be tracked at the system level (e.g., 82 or
+      290+ systems), with statuses such as SIT/UAT start/end, testing
+completion,
+      and more.
+      - For processes, focus on those truly changing=E2=80=94e.g., =E2=80=
+=9Cof 100
+      functional processes, 50 are changing and require testing.=E2=80=9D
+      - Concern raised about the complexity and practicality of mapping
+      every process to every system; effort may outweigh value for
+some analytics.
+      - Leadership is interested in a clear, program-level view, e.g., =E2=
+=80=9COut
+      of 50 relevant processes, 37 tested, 13 planned by July 15=E2=80=9D, =
+with similar
+      information for cross-functional processes.
+
+5. *End-to-End and Cross-Functional Process Tracking*
+
+   - *Governance Structure:*
+      - Structured weekly calls exist with end-to-end process leads (e.g.,
+      Sriram for Order-to-Cash, DJ for P2P), managed by Rob.
+      - Proposal to piggyback on this governance to track progress on
+      end-to-end scenario validation, potentially via a simple checklist
+      maintained in Excel or ported to Capital Edge.
+      - Suggestion to have each end-to-end lead be accountable for checking
+      off readiness/test items for their domain and reporting progress on a
+      manageable list of end-to-end processes.
+   - *Consolidated Reporting Needs:*
+      - Leadership (specifically Jeff and Pierce) expects a consolidated
+      dashboard showing readiness on key process scenarios (e.g., how many
+      cross-functional processes, how many tested by which function).
+      - Exploration of leveraging high-level checklists developed by the
+      LES team for end-to-end process readiness, as these provide simple,
+      actionable validation steps, rather than granular test cases.
+
+6. *Data Model and Reporting Alignment*
+
+   - *Tracker Field Additions:*
+      - Proposal to extract updated system inventory from Capital Edge and
+      add remaining needed attributes (service owner, SIT/UAT dates, comple=
+tion
+      flags, etc.) for all systems (noted figure: 296 systems).
+      - Brian and Mac to collaborate on spreadsheet structure and efficient
+      data management (use of lookups, dropdowns, standardized fields).
+   - *Mockups and Examples:*
+      - Mac to send existing report mockups and J&J examples to Brian,
+      demonstrating key dashboard features like drill-throughs and
+system-process
+      mapping.
+      - Need to ensure compatibility of data model for seamless report
+      functionality (e.g., proper data connections, slicers).
+
+------------------------------
+Action Items
+
+   1.
+
+   *Tracker/Inventory Updates:*
+   - Extract up-to-date system inventory (296 systems) from Capital Edge.
+      - Add required columns: service owner, SIT/UAT start/end dates,
+      completion trackers, relevant flags.
+      - Mac to send the updated file with these new attributes to Brian for
+      review.
+   2.
+
+   *Review and Data Mapping:*
+   - Brian to review the file, identify improvements (lookup, dropdown
+      fields), and align with Mac prior to implementation.
+      - Update data model to match reporting needs, especially for mockup
+      dashboards.
+   3.
+
+   *Dashboard Mockups and Examples:*
+   - Mac to send previous dashboard examples (J&J, others) and
+      Athens-specific mockups to Brian, highlighting desired features.
+      - Collaborate on how to recreate/adjust these dashboards for Athens
+      within Capital Edge constraints.
+   4.
+
+   *Data Integration:*
+   - Ensure data model supports required dashboard features, including
+      slicers, drill-throughs, and report slice-and-dice.
+      - Validate ability to reuse/adjust prior reporting templates for
+      Athens, ensuring all slicers and underlying data are available.
+   5.
+
+   *Hypercare Tracking Decision:*
+   - Align internally and possibly with relevant client teams on whether
+      Level 2+ hypercare issues will be centrally managed/tracked
+within Capital
+      Edge.
+   6.
+
+   *End-to-End Process Reporting:*
+   - Find time for Rob, Mac, and Pre to discuss leveraging process leads'
+      weekly calls and governance for end-to-end process readiness reportin=
+g.
+      - Explore importing LES team=E2=80=99s readiness checklist into the r=
+eporting
+      structure.
+   7.
+
+   *Reporting to Leadership:*
+   - Develop a simple structure to enable process leads to check off
+      progress/status and aggregate into leadership updates (weekly, with
+      outlined tested/planned items by date, e.g., =E2=80=9C13 processes
+planned by July
+      15th=E2=80=9D).
+      - Coordinate with Rob and Steven prior to client-facing (Jeff,
+      Pierce).
+
+------------------------------
+Follow-Up Points
+
+   - *Internal Alignment Meeting:*
+      - Mac to set up a separate meeting with Rob and Pre to finalize the
+      reporting structure for end-to-end processes prior to engaging with
+      client-side leadership.
+   - *Ongoing Dashboard Development:*
+      - Iterative process to update, test, and refine dashboard mockups as
+      data points and structural requirements become clearer.
+   - *Hypercare Tracker Decision:*
+      - To be confirmed pending clarification of where and how issues
+      should be tracked for post-go-live support.
+   - *Future Syncs:*
+      - Action items for follow-up meetings and status checkpoints,
+      especially as new reports are mocked up and tested.
+
+------------------------------
+Key Dates & Figures Mentioned
+
+   - *June 6, 2025:* Date of this meeting.
+   - *July 15th (example):* Used as a prospective milestone target date for
+   planning/testing efforts.
+   - *Systems in Scope:*
+      - 82 systems for standard dashboard (systems readiness view).
+      - Approximately 296 total systems in big-picture inventory.
+   - *Processes in Scope:*
+      - Example: 100 functional processes, of which 50 are changing and
+      require focused testing.
+      - 156 new or changed processes out of a broader suite of 1200+.
+
+------------------------------
+Additional Notes
+
+   - Consistent emphasis on avoiding overly complex tracking that does not
+   yield sufficient value.
+   - Importance of leveraging existing project governance and team
+   accountability structures.
+   - Simplicity in process checklist and status marking to drive timely and
+   actionable leadership reporting.
+   - Attention to maintaining data model integrity for all
+   imported/exported reporting artifacts.
+
+------------------------------
+
+*End of Summary*
+=F0=9F=8E=99=EF=B8=8FTranscription
+Mac0:00
+What the view is or what data points we're pulling. I don't have a lot.
+Brian0:02
+Yeah, yeah. So absolutely. So what we're looking to do is we have mocked up
+a couple actually. Hey Pre.
+Pre0:13
+Hey. Sorry about that. That like UAT call went over a little bit.
+Brian0:18
+No, you're good. How did it go?
+Pre0:20
+It was fine.
+Brian0:22
+That's good.
+Rakesh0:22
+Hey guys.
+Pre0:23
+Action items as usual.
+Rakesh0:24
+Yeah, yeah. Hey Mac, I didn't realize you were not on that invite.
+Brian0:30
+Yeah, I, I, I thought it was this one. Honestly I was looking at my
+calendar and I, that's why I thought that it was at 11 and I thought it was
+this one.
+Rakesh0:39
+Okay, okay, we'll make sure you're on the next one. You need to be on that
+one. But yeah. Okay, let's get started on this. So Pre, I know we have a
+few other catch ups, but let's talk through this. Hey Brian, good to
+connect again. Hopefully Friday's going well. Hopefully going well. Yep,
+yep, doing all right. So we wanted to connect with you. So one of the
+things, you know, UAT is kicking off here on Athens. So what we were
+looking to do is, you know, Jeff and leadership is starting to ask for
+dashboarding and progress reporting on slew of items from an IT perspective
+how IT testing is going on. So sit UAT testing and how the cutovers, you
+know, the go lives are happening. He's asking for, they're asking for burn
+downs on, you know, how the cutover is getting reported on, the go lives
+are reported on. There's also quite a bit of ask on, you know, hypercare
+and hypercare issues and triaging etc. So first thing first though, what we
+wanted to do is talk to you about how we can build some dashboarding onto
+existing capital edge trackers that we have. There's a BRV inventory
+tracker that we are going to leverage fully, add a few more attributes and
+columns in there and fields that we're going to leverage to start reporting
+on for sit UAT readiness. So what we wanted to connect with you this
+morning on was to see one, feasibility of that, two, the complexity and
+three, you know, what needs to get done if the first two questions are
+answered. Two, you know, we have the sort of the design, the basic design,
+the requirements, the wireframe of it, for lack of a better word. But we're
+looking to see, you know, what that effort would be to enable this view
+dashboarding reporting on top of the existing capital edge reports trackers
+that we have.
+Brian2:56
+And so I'll tackle it in kind.
+Mac2:59
+Of two parts so for the tracker, additional columns, data points, we can
+add anything in there and that's relatively easy. It can either be text
+field lookups or drop downs. That's really just based on what you have in
+here. Okay, if you'll provide that and I can do a one to one comparison,
+make sure we have everything again that's in this, in the BRV tracker and
+then once we have that, that takes care of the data point as far as the
+reporting. If we have data points we can build any number of trackers
+whether it's the bar chart you're showing there, a true burn down or
+anything else as far as that kind of typical hypercare tracking that we
+would see.
+Rakesh3:42
+Okay, Pre, okay, so we'll certainly send you that and we can have follow on
+conversations. Matt can certainly have that with you and the team on how
+we're thinking that. I'll give you some examples of what we did pre that we
+did in J, you know, diamond and J and J and others that we can for the most
+part the look and feel of it, see how we can, you know, replicate that for
+Athens on the other portion where he wanted also Hypercare, we need to
+understand how that dashboarding would work. Are we looking at it out of
+Capital Edge or are those separate reports where Hypercare is going to be
+coming in? We're going to be tracking issues and reporting on issues. Those
+are probably somewhere else but it would be good to get a tracker if we're
+doing it in Capital Edge and report out of it.
+Pre4:36
+So I think for that one we gotta align. Like are we gonna push this group
+to put issues like is Capital Edge gonna be our kind of like central
+repository of issues? Now I understand like someone calls the help desk, a
+ticket gets created in the help desk. Like that's fine, that can get
+managed at that level. But level 2 onwards, everything should be in a
+central tracker. We don't need the detail tickets that are being called in
+at the help desk at the central tracker. But we do need if it comes to a
+regional call, if one of the IT war rooms decides that it has cross
+functional impact, right. Like that it has to be pushed into call it like a
+central hypercare tracker. Right. And so if we decide it's like a Capital
+Edge RAID log, I think that kind of makes it pretty easy. A lot of people
+have access to Capital Edge already. There's like reporting that we can
+drive off of it if you know, so we just got to like come in with that point
+of view, I guess.
+Rakesh5:54
+Understood. Okay, so I so What? And for your benefit, Mac as well. So
+Brian, I think there are two distinct things forming. One from a inventory
+that's already there, we'd like to have a multitude of reports that we are
+able to run and provide to leadership. The other part I think that PRI was
+mentioning is there's all these processes and scenarios that are going to
+get cut over or tested. I don't know. Pre. What are your thoughts on where
+are we tracking those? Are those in the. From the process tracker as well?
+We should have a.
+Pre6:29
+Scenarios like what gets tested, you're saying?
+Rakesh6:32
+Yeah, yeah. Like, like for example, in the BRV process tracker, I believe
+we have, you know, there's some tracker around KT ready, scenarios defined,
+test cases, number tested, etc. So is the understanding that we will track
+out of that process tracker.
+Pre6:57
+A couple things here. The systems tracker in Capital Edge has statuses for
+things like testers identified, scenarios defined, testing complete. What
+we can do is pull that into the functional dashboard so that where we're
+showing systems like right now, it's just like a broad systems line. We can
+have this broken into.
+Rakesh7:31
+We touched on that.
+Pre7:32
+Testers identified, scenarios defined, testing complete and that can pull
+those statuses in. That's a little bit different from. To be honest, I
+don't think we need to inventory this scenario. I mean, you tell me. I
+don't know that we need to inventory the scenarios, but if we do, I would
+think the team site is probably the place to do it. Okay, but then we don't
+put your test scripts in your functional folders on teams, something like
+that.
+Rakesh8:10
+Okay.
+Pre8:11
+If the intention is to try and get test scripts, then like that's that. But
+so if we, if we use Jeff's lens and we like separate out the end to end
+testing from like functional testing. Right.
+Rakesh8:26
+And system. Yeah. And the system's readiness.
+Pre8:29
+Yeah, correct. And if we like apply Pierce's principle that like the
+business owns it, like from our perspective, we just want to know that this
+stuff is complete and like progressing. I don't know that we care like too
+much about like the scope. Do you know what if like Will Johnson says that
+he is tested Hyperion, then like he's tested Hyperion. Like it's not really
+for us to prosecute. Whether or not.
+Rakesh8:54
+Sure.
+Pre8:55
+It's actually.
+Rakesh8:56
+Yeah, sure, sure. Okay. No, I saw you there.
+Pre9:01
+That's for that. The end to end. This is where I think it might be worth
+like so put the end to end stuff aside.
+Rakesh9:10
+Right.
+Pre9:10
+Like I think we still need to do the exercise to identify like which
+functions are testing what systems and ensure that's correctly mapped. So
+this is flowing into their BRB status report out. We may be able to get
+like. And Brian, you tell me like, maybe like a summary view of like, of
+all the 22 systems, how many have finished testing? How many are like a
+heat map? So you would have all of the systems down here and the various
+statuses and you can just sort of color kind of show a heat map of how the
+systems are progressing against all of the various statuses.
+Brian9:56
+Well, that's exactly what we'll need to get to that. The dashboard view for
+the systems that Rakesh was speaking to, to get to the burndown point,
+you'll need that as well. You'll need like the system with the UAT status,
+start and end dates and then tracking against the other metrics.
+Rakesh10:11
+So this is a bit different, Mac, because if I'm understanding you right
+pre, the system's readiness is we're taking it off of the system Tracker.
+We have 82 systems or so we know when SIT is done. The dashboard we just
+displayed earlier the illustrations, the linking to the process saying,
+listen, I've got the process tracker, I need to test 100 processes. They
+touch five systems. Maybe it's at a process level, we don't need it a
+system level there. So let's say, for example, 100 processes need to be
+within a function. There's 100 process, 50 of them are changing and so they
+need some sort of testing. And so we get, we track that there are 50
+processes that are truly changing and those are tested, they touch five
+systems and, you know, three of those systems have been touched, two of
+those systems have not been touched. So do we need to provide. What I was
+reading when I, when I heard Jeff say these, the conversation, I thought he
+wanted a view of, you know, peers to come in there and say, oh, I supply
+chain, I've got 100 processes in play, 50 of them really changing. And so I
+need to test. So My scope is 50 processes. I need to know where the
+progress is on how many of those processes have I tested, what process
+issues do I have for hypercare, etc. So how would we get that reporting if
+it is from Capital Edge, from this BRV or the process tracker, how can we
+get. Is that just fields in here that we say processes?
+Pre11:55
+So there is a field that tells you which of these processes are new.
+There's about 156 processes of the full suite of like 1200 or whatever. We
+could probably even like filter off the legal spin one. So that'll kind of
+give us a lesser 135. Now the problem is these processes are not tied to a
+system. And I like, almost wonder.
+Brian12:26
+That's what I was like, that's what I was sort of getting is we.
+Pre12:29
+Can back to the function, right? So like if I look at finance, if we know
+that finance needs to test 10 of the 22 BRB systems, we. I'm almost
+wondering if like we just give finance this list to say, like, hey, these
+are your new processes, ensure that these are part of your test scripts.
+And then it kind of like falls back to the function as they're defining
+their test scripts to ensure that they're considering new processes.
+Otherwise we have to go through like an intense mapping and we did this for
+people, Rakesh. And I don't think it's like yielding the results that we
+wanted to yield, tell you the truth, because like, much like hiring. Right,
+okay, you have to test every system, right, like to a certain level. And
+like we can like drive some analytics, but it's not like getting us like it
+almost like it takes so much effort to get the analytics.
+Rakesh13:40
+Okay, fair enough. I get your point. Then how do we. And again, I know
+Brian and you, Mac, we're not on this conversation and we're trying to
+address some of Jeff's asks because what I see him asking is peers having a
+weekly update now saying across this, let's say for these function x50
+processes in scope, we have tested 37 of them and we've planned another 13
+by July 15th. But there are also cross functional processes that touch five
+functions. And for those we've got let's say 25 cross functional processes
+and each of those functions has tested their portion or something to the
+effect where, you know, there's also a system linkage in there. But I'm not
+so much worried about systems. It's really a tracker on. I've got a cross
+functional process here that touches four functions and a bunch of IT
+systems. I'm tracking to that. How would we track to that to say, okay,
+I've got 25 cross functional processes.
+Pre14:56
+When we say cross functional processes, we're talking about the end to end
+ones, right?
+Rakesh14:59
+End to end to end.
+Pre15:01
+So I think like. So you. Where was the. Those UAT slides that we have? I
+thought like did a good job of laying out the various processes under like
+order to cash or what have you.
+Rakesh15:21
+Yeah, yeah, the UAT kickoff.
+Pre15:23
+So this is where we have to have a conversation with Rob and, and Steven
+Because I think that like, can we, I think there, it's a page, right? Like.
+Rakesh15:39
+You mean the governance structure that.
+Pre15:41
+No, no, like those scenarios, I didn't think of them as like a lot of
+scenarios. Like, there's just like a page worth of like scenarios for uat,
+for order to cash, for, to pay. Right. Like, and mom was wondering if we
+can like piggyback off of their structure, off of their governance
+structure to say like, hey, you have your end to end leads already
+identified. These end to end leads are working through cutover planning
+right now. But can we also add to their scope to test this? You know what I
+mean? Like, they, they, they, they've got like a weekly call set up and
+they've got, right. What have you. So can, can we just have that whoever is
+like ordered a cash, for example, can we have him just like run through
+these and like identify, like identify someone to, to check off all of
+these? You know?
+Rakesh16:44
+We can, I think. Yes, but then is there some consolidated dashboard
+reporting on this to say order to cash? You know, we've tested, let us say
+eight lines here are, you know, billing and consolidation or collections
+has, you know, a few systems across these. And we've tested, we've tested
+these nine lines here.
+Pre17:09
+Yeah, yeah, because there's so like again, it doesn't feel like that many.
+Right. Because there's so few. Can we not just like take this, put it in an
+Excel, put a name against it and just like try to get people to. You know
+what I mean? Like put it.
+Rakesh17:25
+Yeah, we can, we can, we don't need to over engineer totally. Can we move
+this into Capital Edge and so we can.
+Pre17:34
+So sorry, this is the governance I was talking about. Right. So like they
+have these people, Sriram, for all the cash, DJ for P2P. I don't know who
+Ana is, but what have you. We have these people set up. Can we piggyback
+off of Rob's call? He has a weekly call with these people.
+Rakesh17:53
+Yeah.
+Pre17:53
+And have them again, like very simply, Sriram would be like, hey, Sriram,
+we need someone from your team to go in and sort of really like check these
+items off.
+Rakesh18:08
+Yeah, yeah. So who will report out on it? Because what I heard, what's his
+name, Jeff say is that he's expecting peers to provide an updated view or
+report on this. On what is the end to end process. I know you brought up
+the good point of, okay, let's sync up and have the business run this with
+these guys with precisely the governance model you showed, but I thought
+Pierce Got on the hook too. Was on the hook now to do that.
+Pre18:38
+Yeah, yeah, yeah. Maybe an internal discussion with Rob first before we
+involve client. But my thought is like if we give them a really simple
+structure because again we should also have in perspective. Right. The
+system's not changing. It's like metadata on the system.
+Rakesh18:55
+That's true for many.
+Pre18:57
+That is we shouldn't have breakpoints or anything like that. Right. Like
+there's like you're not. It's the same order entry Systems. Right.
+Salesforce.com EDI what have you. It's going through the same ERP that's
+like getting rename, reuse. It's not even like a new company code or
+anything like that. And like so really we're testing that like the metadata
+on like these things like you know, purchase orders, what have you are like
+looking. Right.
+Rakesh19:28
+You know what I mean?
+Pre19:29
+Like so I just feel like we should. But. But if. And, and if this list is
+too long too. I think. Let me pull up another list that Sam. So the LES
+team, they've been looking into end to end process readiness and they
+develop a high level you that we can also leverage for this. Right. So
+that's an even shorter list. Right. So it's like have suppliers and vendors
+received updated legal. This one is like a readiness item.
+Rakesh20:10
+But like it's more of a checklist here.
+Pre20:12
+Correct. It's like a checklist of like vendor master data. Can someone like
+take you know, review test that? Can you pay vendors? Can you purchase
+orders? Like it's like a.
+Rakesh20:25
+These are truly test cases. Seem to be more of a test case for POSO
+success. Right. So it's a. This is more. If you run a tabletop exercise,
+these are sort of the steps you will go through and say can I do this? Yes,
+done commercial, I pass it on to you supply chain, you receive it next you
+run through. So this is almost a. Yeah. A step, you know, exercise.
+Pre20:48
+Right, Right. So my point is like if we layer in UAT to this like readiness
+view. Right. Can this cutover team just also include uat, right. And like
+go into the system and then just sort of check off the.
+Rakesh21:08
+Check off the end to end or LE related process in that system. System or.
+Pre21:15
+The check off that like the end. So it would be the end to end process lead
+kind of coordinating that all of these items they've sort of tested and
+like from a system perspective they think order to cache is ready.
+Rakesh21:38
+So like for example, can I set up a new customer? Right. So is that the
+case? So if I play that out. Line number seven, can I set up a new
+customer? Commercial is probably in the SFTC or is that in the erp? So it
+may be a new setup in. So you need to have a view to say, okay, this is.
+Now this lead can go into the system and set up a new customer in
+Salesforce.
+Pre22:09
+Yeah.
+Rakesh22:10
+So now Salesforce doesn't have a UAT per se, because nothing is changing.
+They're only going to get, you know, if I. If I play that in the context of
+what's changing, erp, legal entities are changing, and those flow
+downstream into Salesforce. And in Salesforce, they can see the new legal
+entities that are Athens specific. So when a person here, as a commercial
+lead comes in and says on, you know, once this is done in the QA system,
+they'll only be able to see Athens legal entities. So they come in and they
+say, can I set up a new customer for these? In the past, I had 50 legal
+entities I could see. Now I only see 27, because that's what Athens is. So
+within those 27 legal entities, that has now flowed downhill. I'm now able
+to can I set up a new customer? Or it may be legal entity agnostic, but can
+I set up a new customer for Athens in that Salesforce that reports right up
+to the. To the right hierarchy. Right. So if that's the level of testing,
+then yeah, we probably need to add in. Add in the system view here. But I
+don't know how that would help because it doesn't test system readiness
+because Salesforce is not changing. It's really validating. It's the data
+flows into Salesforce and you're consuming. You know, you're going in and
+seeing if you can. You can see that data in Salesforce. So again, not to
+digress from this, I.
+Pre23:39
+Okay, again, that's fine. And I do think that you can kind of look at this
+readiness checklist and say, like, you know, a lot of these are blue
+because nothing is changing and then move as is. Right.
+Rakesh23:54
+Per system.
+Pre23:54
+Yeah, yeah, yeah, yeah. So that, that, like, set up a new customer is a
+good one because there's nothing changing from a setup new customer
+process. Right.
+Rakesh24:04
+Presumably from a process, you should just be able to just set up a new
+Athens customer.
+Pre24:09
+Correct. And the system isn't changing either. So that's probably one that
+doesn't need to be tested. Right. So look through the list and pick the
+things that do need to be tested.
+Rakesh24:21
+Okay, so now back to. Okay, so, Rob, maybe the immediate ask is, I think on
+the inventory tracker. What we will do is we will extract out of capital
+edge if we haven't already done, I think which we Mac has done. We will add
+the attributes that we need for all 290 plus systems. You know, we've got
+to add some service owner names, we've got to add some sit start and end
+date name, you know, UAT start and end dates and some completion tracker
+etc. And some flags we'll do and send an updated inventory of the 296
+systems here for this tracker. I think the next piece on top of that then
+is to layer in this, this reporting on can I. You know is. Is SIT complete?
+Is knowledge transfer complete for the system? You know, is the UAT
+complete, is cutover complete? So it's again running some dashboards or
+reporting on top of this model.
+Brian25:22
+Brian, I'll work with you on that because I've done it manually but I think
+that there's opportunity there to do lookups as well where we have that
+data. I pulled them out of the inventory, the heat map and just put them
+into an Excel manually so the Excel has the proper model and I can send you
+what we have and then we can explore opportunities to make some of it
+lookups.
+Rakesh25:56
+Right.
+Brian25:56
+Like the UAT dates and things like that. Like the.
+Mac26:01
+Yeah, yeah, dates like that always be the date field. That's just kind of
+the dropdown or you can type it in. Yeah, but other things where it's
+consistent and maybe it's five, six, seven options, whatever it might be,
+make those the dropdowns. But yeah, if you send me that file, I'll go
+through it, identify some of them and we can connect just to make sure that
+we both agree and then move forward getting those put in.
+Rakesh26:24
+Awesome.
+Mac26:25
+And then for the actual updates we just do that through the bulk import
+export process. Even if we do lookups as long as there's no errant spaces,
+anything like that and just copy paste in values and it'll tell us which
+ones error out. We can always fix them and then push it through that way so
+there's no heavy manual effort there.
+Brian26:43
+Okay, sweet.
+Rakesh26:45
+Okay, so I think we have immediate next steps, at least tactical next steps
+for this and we'll run some reports out of there so Mac action items for us
+to connect with Brian to get that data and a mock up of the off the report,
+the couple of reports that we can start showing.
+Brian27:08
+Yep. Do you want me to send him the ones that we started plus the JJ
+examples?
+Rakesh27:14
+Yeah, the J and J. Yes, send the J and J examples, but more so how we want
+to mimic that for what we're doing here.
+Brian27:20
+Exactly. And I mean, I'm not sure what Capital Edge is capable of, but the
+J and J examples have good illustration of, like, drill throughs and the
+way that they want to be able to, like, click into and view that data. So
+I'll make sure that we get those sent over as well as how we mocked it up
+for this.
+Rakesh27:38
+Okay, perfect. We'll have to make sure that.
+Mac27:42
+Capitalized already, or.
+Rakesh27:43
+Is that correct? Yeah.
+Mac27:46
+Okay. Yeah, they were already in there. We can probably do essentially a
+lateral transfer and just redo data connections based on what we discussed
+and then go from there.
+Rakesh27:53
+Oh, perfect. Okay. Makes life simpler. All right, so we'll. And then we'll
+make sure that we have to make sure the data model is the same because
+those reports pull certain things, the slicers and et cetera. We may not
+have that, the underlying data. So we just have to be careful about
+replicating it 100%.
+Mac28:12
+Yeah. And that'll be part of the dev process and the dev connections or
+data connections.
+Rakesh28:17
+Excuse me.
+Mac28:17
+And then qat. Uat part of it on our end.
+Rakesh28:20
+Okay, sounds good. Thank you all.
+Brian28:23
+Cool. Thank you.
+Rakesh28:24
+We'll connect with you on other things, but let's. Yeah. I just want to
+make sure that Jeff isn't. You know, he gave us a lot to do. I want to make
+sure that it's not necessarily a lot.
+Pre28:37
+Yeah, yeah, yeah. That's fair. Let me find some time with us and Rob first.
+Like, sometime today.
+Rakesh28:42
+Sounds good. Thank you all.
+Brian28:43
+Thank you.
+Pre28:44
+Thanks.
+Mac28:45
+Thanks, all.
+Brian28:56
+Hi, sunshine. Girl, you look so tan.
+Pre28:58
+Thank you.
+Brian29:00
+You look great.
+Rakesh29:00
+You look great.
+Pre29:02
+How are you doing?
+Rakesh29:02
+I'm doing great.
+Brian29:03
+How are you?
+Rakesh29:04
+Fabulous, humble.
+Brian29:08
+Tyler, thank you so much for the donut and the coffee.
+Rakesh29:12
+Yeah, Appreciate her. So sweet. We only had to ask, huh?
+Brian29:18
+What'd you say?
+Rakesh29:19
+I said, so sweet. We all had to ask.
+Pre29:25
+Oh, my God, that hurt.
+Rakesh29:26
+Okay, bathing suit face.
+Pre29:30
+Anything new?
+Rakesh29:32
+What are you going to New York for? We're flying back for. Who's in
+Charlotte?
+Brian29:37
+Oh, just work. We're working for this company called Honeywell.
+Pre29:44
+Wait, I know Honeywell. Yeah, I have their pads in my bathroom.
+Brian29:49
+Pads?
+Pre29:50
+Yeah.
+Rakesh29:51
+Or is that honey pot?
+Brian29:53
+I think that's.
+
+Captured with Wave AI Note Taker
+
+Your AI-powered companion
+
+--0000000000001c42580636e9907f
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-size:small;colo=
+r:#444444"><br></div><br><div class=3D"gmail_quote gmail_quote_container"><=
+div dir=3D"ltr" class=3D"gmail_attr">---------- Forwarded message ---------=
+<br>From: <strong class=3D"gmail_sendername" dir=3D"auto">Wave AI Note Take=
+r</strong> <span dir=3D"auto">&lt;<a href=3D"mailto:summary@email.wave.co">=
+summary@email.wave.co</a>&gt;</span><br>Date: Fri, 6 Jun 2025 at 11:35<br>S=
+ubject: Athens IT Dashboard Progress and Reporting<br>To:  &lt;<a href=3D"m=
+ailto:mac@macconnolly.com">mac@macconnolly.com</a>&gt;<br></div><br><br><di=
+v style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot=
+;,Roboto,Helvetica,Arial,sans-serif;margin:0;padding:0;background-color:#f4=
+f4f4"><div style=3D"width:100%;max-width:604px;margin:0 auto;background-col=
+or:#ffffff"><div style=3D"background-image:url(https://upcdn.io/W142iax/raw=
+/email/banner_clean.png);background-size:cover;background-position:center;w=
+idth:604px;height:297px;margin:0 auto"><table cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" width=3D"100%" height=3D"100%"><tbody><tr><td valign=3D=
+"center" align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.io/=
+W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" style=3D"width:41px;=
+height:58px;max-width:41px;margin-bottom:10px"><h1 style=3D"color:white;fon=
+t-size:32px;margin:0;padding:0 0 10px;text-align:center">Athens IT Dashboar=
+d Progress and Reporting</h1></td></tr></tbody></table></div><div style=3D"=
+max-width:600px;margin:0 auto;padding:32px 20px"><div style=3D"text-align:c=
+enter;margin-bottom:32px"><a href=3D"https://app.wave.co/sessions/ACB7489C-=
+D143-47C8-A934-27DC13A57F02?lastLoginParam=3Dgoogle" style=3D"background-co=
+lor:#e6f0ff;color:#0066cc;padding:12px 24px;border-radius:8px;text-decorati=
+on:none;font-weight:500;font-size:16px;display:inline-block;margin-top:8px;=
+margin-bottom:8px" target=3D"_blank">=E2=9C=A8 View Your Session on the Web=
+</a></div><div style=3D"text-align:center;margin-bottom:36px"></div><div st=
+yle=3D"background-color:#ffffff;padding:28px;border-radius:12px;border:1px =
+solid #e2e8f0;margin-bottom:28px"><h3 style=3D"color:#0f172a;font-size:20px=
+;font-weight:600;margin-top:0;margin-bottom:20px;display:flex"><span style=
+=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div style=3D"color:#475=
+569;font-size:16px;line-height:1.6"><div><h1 style=3D"font-weight:500;paddi=
+ng-top:20px;font-size:2.5rem">Meeting Summary</h1><p><strong style=3D"font-=
+weight:bold">Date:</strong> June 6, 2025<br><strong style=3D"font-weight:bo=
+ld">Attendees:</strong> (names mentioned: Pre, Mac, Brian, Jeff, Rakesh, Ro=
+b, Steven, Sunshine, Tyler, Sriram, DJ, Ana)<br><strong style=3D"font-weigh=
+t:bold">Project:</strong> Athens IT Testing, UAT, and Cutover Progress Repo=
+rting Dashboard  </p>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Main Topics D=
+iscussed</h2><h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75re=
+m">1. <strong style=3D"font-weight:bold">Dashboarding and Reporting Needs f=
+or Leadership</strong></h3><ul>
+<li><strong style=3D"font-weight:bold">Background:</strong>  <ul>
+<li>UAT (User Acceptance Testing) is starting for the Athens project.</li>
+<li>Leadership wants regular dashboard views and progress reporting on item=
+s such as SIT (System Integration Testing), UAT, cutovers, go-lives, and hy=
+percare (immediate support after go-live).</li>
+<li>There is a specific ask for burn-down charts showing progress over time=
+, as well as reporting on hypercare issues and triaging activities.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Requirements:</strong>  <ul>
+<li>Dashboards must be built on the existing Capital Edge trackers, specifi=
+cally the BRV (Business Requirement Validation) inventory tracker.</li>
+<li>Additional columns/fields are needed to support SIT and UAT readiness r=
+eporting, including more detailed attributes.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">2. <strong=
+ style=3D"font-weight:bold">Feasibility and Technical Approach</strong></h3=
+><ul>
+<li><strong style=3D"font-weight:bold">Enhancements to Tracker:</strong><ul=
+>
+<li>Adding extra columns/fields (text, lookups, drop-downs) is straightforw=
+ard.</li>
+<li>Once requirements for additional data points are provided, a one-to-one=
+ comparison will be made with the current tracker.</li>
+<li>The updated tracker will be the basis for further dashboards (e.g., bar=
+ charts, burndowns, heat maps), including standard hypercare reporting.</li=
+>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Reporting Approach:</strong><ul>
+<li>With necessary data points, Capital Edge can support various dashboards=
+ and custom reports.</li>
+<li>Examples from previous projects (e.g., J&amp;J) to be provided for insp=
+iration/methodology, especially with drill-throughs and user interaction.</=
+li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Data Import/Export:</strong><ul>
+<li>Manual data updates can be uploaded via bulk import/export, minimizing =
+heavy manual labor as long as formatting (e.g., no errant spaces) is kept c=
+lean.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">3. <strong=
+ style=3D"font-weight:bold">Hypercare Issue Tracking</strong></h3><ul>
+<li><strong style=3D"font-weight:bold">Central Tracking Proposal:</strong><=
+ul>
+<li>Debate over whether Capital Edge should act as the central repository f=
+or Level 2 and above hypercare issues.</li>
+<li>Help desk tickets (Level 1) remain outside the tracker, but any escalat=
+ed or cross-functional issue should be logged centrally for effective track=
+ing and dashboard reporting.</li>
+<li>Capital Edge=E2=80=99s RAID log (Risks, Actions, Issues, Decisions) fun=
+ction strongly considered for this purpose.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">4. <strong=
+ style=3D"font-weight:bold">Process and Scenario Tracking</strong></h3><ul>
+<li><strong style=3D"font-weight:bold">Distinction between Data Sets:</stro=
+ng><ul>
+<li>Discussion on whether to inventory process scenarios explicitly.</li>
+<li>The systems tracker in Capital Edge may already contain pertinent statu=
+ses (e.g., testers identified, scenarios defined, testing complete).</li>
+<li>Consensus that inventorying every scenario may not be necessary; instea=
+d, key process-level progress is what matters for leadership visibility.</l=
+i>
+<li>Suggestion to track test script location and ownership on Teams if more=
+ detail is needed.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">System vs Process Tracking:</strong>=
+<ul>
+<li>Systems readiness to be tracked at the system level (e.g., 82 or 290+ s=
+ystems), with statuses such as SIT/UAT start/end, testing completion, and m=
+ore.</li>
+<li>For processes, focus on those truly changing=E2=80=94e.g., =E2=80=9Cof =
+100 functional processes, 50 are changing and require testing.=E2=80=9D</li=
+>
+<li>Concern raised about the complexity and practicality of mapping every p=
+rocess to every system; effort may outweigh value for some analytics.</li>
+<li>Leadership is interested in a clear, program-level view, e.g., =E2=80=
+=9COut of 50 relevant processes, 37 tested, 13 planned by July 15=E2=80=9D,=
+ with similar information for cross-functional processes.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">5. <strong=
+ style=3D"font-weight:bold">End-to-End and Cross-Functional Process Trackin=
+g</strong></h3><ul>
+<li><strong style=3D"font-weight:bold">Governance Structure:</strong><ul>
+<li>Structured weekly calls exist with end-to-end process leads (e.g., Srir=
+am for Order-to-Cash, DJ for P2P), managed by Rob.</li>
+<li>Proposal to piggyback on this governance to track progress on end-to-en=
+d scenario validation, potentially via a simple checklist maintained in Exc=
+el or ported to Capital Edge.</li>
+<li>Suggestion to have each end-to-end lead be accountable for checking off=
+ readiness/test items for their domain and reporting progress on a manageab=
+le list of end-to-end processes.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Consolidated Reporting Needs:</stron=
+g><ul>
+<li>Leadership (specifically Jeff and Pierce) expects a consolidated dashbo=
+ard showing readiness on key process scenarios (e.g., how many cross-functi=
+onal processes, how many tested by which function).</li>
+<li>Exploration of leveraging high-level checklists developed by the LES te=
+am for end-to-end process readiness, as these provide simple, actionable va=
+lidation steps, rather than granular test cases.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">6. <strong=
+ style=3D"font-weight:bold">Data Model and Reporting Alignment</strong></h3=
+><ul>
+<li><strong style=3D"font-weight:bold">Tracker Field Additions:</strong><ul=
+>
+<li>Proposal to extract updated system inventory from Capital Edge and add =
+remaining needed attributes (service owner, SIT/UAT dates, completion flags=
+, etc.) for all systems (noted figure: 296 systems).</li>
+<li>Brian and Mac to collaborate on spreadsheet structure and efficient dat=
+a management (use of lookups, dropdowns, standardized fields).</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Mockups and Examples:</strong><ul>
+<li>Mac to send existing report mockups and J&amp;J examples to Brian, demo=
+nstrating key dashboard features like drill-throughs and system-process map=
+ping.</li>
+<li>Need to ensure compatibility of data model for seamless report function=
+ality (e.g., proper data connections, slicers).</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Action Items<=
+/h2><ol>
+<li><p><strong style=3D"font-weight:bold">Tracker/Inventory Updates:</stron=
+g></p>
+<ul>
+<li>Extract up-to-date system inventory (296 systems) from Capital Edge.</l=
+i>
+<li>Add required columns: service owner, SIT/UAT start/end dates, completio=
+n trackers, relevant flags.</li>
+<li>Mac to send the updated file with these new attributes to Brian for rev=
+iew.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Review and Data Mapping:</strong>=
+</p>
+<ul>
+<li>Brian to review the file, identify improvements (lookup, dropdown field=
+s), and align with Mac prior to implementation.</li>
+<li>Update data model to match reporting needs, especially for mockup dashb=
+oards.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Dashboard Mockups and Examples:</=
+strong></p>
+<ul>
+<li>Mac to send previous dashboard examples (J&amp;J, others) and Athens-sp=
+ecific mockups to Brian, highlighting desired features.</li>
+<li>Collaborate on how to recreate/adjust these dashboards for Athens withi=
+n Capital Edge constraints.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Data Integration:</strong></p>
+<ul>
+<li>Ensure data model supports required dashboard features, including slice=
+rs, drill-throughs, and report slice-and-dice.</li>
+<li>Validate ability to reuse/adjust prior reporting templates for Athens, =
+ensuring all slicers and underlying data are available.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Hypercare Tracking Decision:</str=
+ong></p>
+<ul>
+<li>Align internally and possibly with relevant client teams on whether Lev=
+el 2+ hypercare issues will be centrally managed/tracked within Capital Edg=
+e.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">End-to-End Process Reporting:</st=
+rong></p>
+<ul>
+<li>Find time for Rob, Mac, and Pre to discuss leveraging process leads&#39=
+; weekly calls and governance for end-to-end process readiness reporting.</=
+li>
+<li>Explore importing LES team=E2=80=99s readiness checklist into the repor=
+ting structure.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Reporting to Leadership:</strong>=
+</p>
+<ul>
+<li>Develop a simple structure to enable process leads to check off progres=
+s/status and aggregate into leadership updates (weekly, with outlined teste=
+d/planned items by date, e.g., =E2=80=9C13 processes planned by July 15th=
+=E2=80=9D).</li>
+<li>Coordinate with Rob and Steven prior to client-facing (Jeff, Pierce).</=
+li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Follow-Up Poi=
+nts</h2><ul>
+<li><strong style=3D"font-weight:bold">Internal Alignment Meeting:</strong>=
+  <ul>
+<li>Mac to set up a separate meeting with Rob and Pre to finalize the repor=
+ting structure for end-to-end processes prior to engaging with client-side =
+leadership.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Ongoing Dashboard Development:</stro=
+ng>  <ul>
+<li>Iterative process to update, test, and refine dashboard mockups as data=
+ points and structural requirements become clearer.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Hypercare Tracker Decision:</strong>=
+  <ul>
+<li>To be confirmed pending clarification of where and how issues should be=
+ tracked for post-go-live support.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Future Syncs:</strong>  <ul>
+<li>Action items for follow-up meetings and status checkpoints, especially =
+as new reports are mocked up and tested.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Key Dates &am=
+p; Figures Mentioned</h2><ul>
+<li><strong style=3D"font-weight:bold">June 6, 2025:</strong> Date of this =
+meeting.</li>
+<li><strong style=3D"font-weight:bold">July 15th (example):</strong> Used a=
+s a prospective milestone target date for planning/testing efforts.</li>
+<li><strong style=3D"font-weight:bold">Systems in Scope:</strong><ul>
+<li>82 systems for standard dashboard (systems readiness view).</li>
+<li>Approximately 296 total systems in big-picture inventory.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Processes in Scope:</strong><ul>
+<li>Example: 100 functional processes, of which 50 are changing and require=
+ focused testing.</li>
+<li>156 new or changed processes out of a broader suite of 1200+.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Additional No=
+tes</h2><ul>
+<li>Consistent emphasis on avoiding overly complex tracking that does not y=
+ield sufficient value.</li>
+<li>Importance of leveraging existing project governance and team accountab=
+ility structures.</li>
+<li>Simplicity in process checklist and status marking to drive timely and =
+actionable leadership reporting.</li>
+<li>Attention to maintaining data model integrity for all imported/exported=
+ reporting artifacts.</li>
+</ul>
+<hr>
+<p><strong style=3D"font-weight:bold">End of Summary</strong></p>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex"><span =
+style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription</h3><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-=
+bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">=
+Mac</span><span style=3D"color:#64748b;font-size:14px">0:00</span></div><di=
+v style=3D"color:#475569;font-size:16px;line-height:1.6">What the view is o=
+r what data points we&#39;re pulling. I don&#39;t have a lot.</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border=
+-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margi=
+n-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px=
+">Brian</span><span style=3D"color:#64748b;font-size:14px">0:02</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah. So=
+ absolutely. So what we&#39;re looking to do is we have mocked up a couple =
+actually. Hey Pre.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6">=
+<div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;=
+font-weight:600;margin-right:8px">Pre</span><span style=3D"color:#64748b;fo=
+nt-size:14px">0:13</span></div><div style=3D"color:#475569;font-size:16px;l=
+ine-height:1.6">Hey. Sorry about that. That like UAT call went over a littl=
+e bit.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Brian</span><span style=3D"color:#64748b;font-size:=
+14px">0:18</span></div><div style=3D"color:#475569;font-size:16px;line-heig=
+ht:1.6">No, you&#39;re good. How did it go?</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border=
+-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><spa=
+n style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pre</span><span =
+style=3D"color:#64748b;font-size:14px">0:20</span></div><div style=3D"color=
+:#475569;font-size:16px;line-height:1.6">It was fine.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brian<=
+/span><span style=3D"color:#64748b;font-size:14px">0:22</span></div><div st=
+yle=3D"color:#475569;font-size:16px;line-height:1.6">That&#39;s good.</div>=
+</div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8faf=
+c;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fl=
+ex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-r=
+ight:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">0:22</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Hey g=
+uys.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"=
+display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:60=
+0;margin-right:8px">Pre</span><span style=3D"color:#64748b;font-size:14px">=
+0:23</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">Action items as usual.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b=
+82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3=
+b82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#=
+64748b;font-size:14px">0:24</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">Yeah, yeah. Hey Mac, I didn&#39;t realize you were=
+ not on that invite.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6=
+"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f=
+6;font-weight:600;margin-right:8px">Brian</span><span style=3D"color:#64748=
+b;font-size:14px">0:30</span></div><div style=3D"color:#475569;font-size:16=
+px;line-height:1.6">Yeah, I, I, I thought it was this one. Honestly I was l=
+ooking at my calendar and I, that&#39;s why I thought that it was at 11 and=
+ I thought it was this one.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color=
+:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"colo=
+r:#64748b;font-size:14px">0:39</span></div><div style=3D"color:#475569;font=
+-size:16px;line-height:1.6">Okay, okay, we&#39;ll make sure you&#39;re on t=
+he next one. You need to be on that one. But yeah. Okay, let&#39;s get star=
+ted on this. So Pre, I know we have a few other catch ups, but let&#39;s ta=
+lk through this. Hey Brian, good to connect again. Hopefully Friday&#39;s g=
+oing well. Hopefully going well. Yep, yep, doing all right. So we wanted to=
+ connect with you. So one of the things, you know, UAT is kicking off here =
+on Athens. So what we were looking to do is, you know, Jeff and leadership =
+is starting to ask for dashboarding and progress reporting on slew of items=
+ from an IT perspective how IT testing is going on. So sit UAT testing and =
+how the cutovers, you know, the go lives are happening. He&#39;s asking for=
+, they&#39;re asking for burn downs on, you know, how the cutover is gettin=
+g reported on, the go lives are reported on. There&#39;s also quite a bit o=
+f ask on, you know, hypercare and hypercare issues and triaging etc. So fir=
+st thing first though, what we wanted to do is talk to you about how we can=
+ build some dashboarding onto existing capital edge trackers that we have. =
+There&#39;s a BRV inventory tracker that we are going to leverage fully, ad=
+d a few more attributes and columns in there and fields that we&#39;re goin=
+g to leverage to start reporting on for sit UAT readiness. So what we wante=
+d to connect with you this morning on was to see one, feasibility of that, =
+two, the complexity and three, you know, what needs to get done if the firs=
+t two questions are answered. Two, you know, we have the sort of the design=
+, the basic design, the requirements, the wireframe of it, for lack of a be=
+tter word. But we&#39;re looking to see, you know, what that effort would b=
+e to enable this view dashboarding reporting on top of the existing capital=
+ edge reports trackers that we have.</div></div><div style=3D"margin-bottom=
+:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4=
+px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brian</span><span style=
+=3D"color:#64748b;font-size:14px">2:56</span></div><div style=3D"color:#475=
+569;font-size:16px;line-height:1.6">And so I&#39;ll tackle it in kind.</div=
+></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fa=
+fc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:f=
+lex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-=
+right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">2:59</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Of two =
+parts so for the tracker, additional columns, data points, we can add anyth=
+ing in there and that&#39;s relatively easy. It can either be text field lo=
+okups or drop downs. That&#39;s really just based on what you have in here.=
+ Okay, if you&#39;ll provide that and I can do a one to one comparison, mak=
+e sure we have everything again that&#39;s in this, in the BRV tracker and =
+then once we have that, that takes care of the data point as far as the rep=
+orting. If we have data points we can build any number of trackers whether =
+it&#39;s the bar chart you&#39;re showing there, a true burn down or anythi=
+ng else as far as that kind of typical hypercare tracking that we would see=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"dis=
+play:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;m=
+argin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">=
+3:42</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">Okay, Pre, okay, so we&#39;ll certainly send you that and we can have fol=
+low on conversations. Matt can certainly have that with you and the team on=
+ how we&#39;re thinking that. I&#39;ll give you some examples of what we di=
+d pre that we did in J, you know, diamond and J and J and others that we ca=
+n for the most part the look and feel of it, see how we can, you know, repl=
+icate that for Athens on the other portion where he wanted also Hypercare, =
+we need to understand how that dashboarding would work. Are we looking at i=
+t out of Capital Edge or are those separate reports where Hypercare is goin=
+g to be coming in? We&#39;re going to be tracking issues and reporting on i=
+ssues. Those are probably somewhere else but it would be good to get a trac=
+ker if we&#39;re doing it in Capital Edge and report out of it.</div></div>=
+<div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bord=
+er-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;mar=
+gin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8=
+px">Pre</span><span style=3D"color:#64748b;font-size:14px">4:36</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">So I think for=
+ that one we gotta align. Like are we gonna push this group to put issues l=
+ike is Capital Edge gonna be our kind of like central repository of issues?=
+ Now I understand like someone calls the help desk, a ticket gets created i=
+n the help desk. Like that&#39;s fine, that can get managed at that level. =
+But level 2 onwards, everything should be in a central tracker. We don&#39;=
+t need the detail tickets that are being called in at the help desk at the =
+central tracker. But we do need if it comes to a regional call, if one of t=
+he IT war rooms decides that it has cross functional impact, right. Like th=
+at it has to be pushed into call it like a central hypercare tracker. Right=
+. And so if we decide it&#39;s like a Capital Edge RAID log, I think that k=
+ind of makes it pretty easy. A lot of people have access to Capital Edge al=
+ready. There&#39;s like reporting that we can drive off of it if you know, =
+so we just got to like come in with that point of view, I guess.</div></div=
+><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bor=
+der-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;ma=
+rgin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:=
+8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">5:54</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Understood=
+. Okay, so I so What? And for your benefit, Mac as well. So Brian, I think =
+there are two distinct things forming. One from a inventory that&#39;s alre=
+ady there, we&#39;d like to have a multitude of reports that we are able to=
+ run and provide to leadership. The other part I think that PRI was mention=
+ing is there&#39;s all these processes and scenarios that are going to get =
+cut over or tested. I don&#39;t know. Pre. What are your thoughts on where =
+are we tracking those? Are those in the. From the process tracker as well? =
+We should have a.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><=
+div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;f=
+ont-weight:600;margin-right:8px">Pre</span><span style=3D"color:#64748b;fon=
+t-size:14px">6:29</span></div><div style=3D"color:#475569;font-size:16px;li=
+ne-height:1.6">Scenarios like what gets tested, you&#39;re saying?</div></d=
+iv><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;b=
+order-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;=
+margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-righ=
+t:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">6:32</span=
+></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, ye=
+ah. Like, like for example, in the BRV process tracker, I believe we have, =
+you know, there&#39;s some tracker around KT ready, scenarios defined, test=
+ cases, number tested, etc. So is the understanding that we will track out =
+of that process tracker.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b=
+82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3=
+b82f6;font-weight:600;margin-right:8px">Pre</span><span style=3D"color:#647=
+48b;font-size:14px">6:57</span></div><div style=3D"color:#475569;font-size:=
+16px;line-height:1.6">A couple things here. The systems tracker in Capital =
+Edge has statuses for things like testers identified, scenarios defined, te=
+sting complete. What we can do is pull that into the functional dashboard s=
+o that where we&#39;re showing systems like right now, it&#39;s just like a=
+ broad systems line. We can have this broken into.</div></div><div style=3D=
+"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px=
+;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8p=
+x"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</s=
+pan><span style=3D"color:#64748b;font-size:14px">7:31</span></div><div styl=
+e=3D"color:#475569;font-size:16px;line-height:1.6">We touched on that.</div=
+></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fa=
+fc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:f=
+lex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-=
+right:8px">Pre</span><span style=3D"color:#64748b;font-size:14px">7:32</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Testers=
+ identified, scenarios defined, testing complete and that can pull those st=
+atuses in. That&#39;s a little bit different from. To be honest, I don&#39;=
+t think we need to inventory this scenario. I mean, you tell me. I don&#39;=
+t know that we need to inventory the scenarios, but if we do, I would think=
+ the team site is probably the place to do it. Okay, but then we don&#39;t =
+put your test scripts in your functional folders on teams, something like t=
+hat.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"=
+display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:60=
+0;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14p=
+x">8:10</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div sty=
+le=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-wei=
+ght:600;margin-right:8px">Pre</span><span style=3D"color:#64748b;font-size:=
+14px">8:11</span></div><div style=3D"color:#475569;font-size:16px;line-heig=
+ht:1.6">If the intention is to try and get test scripts, then like that&#39=
+;s that. But so if we, if we use Jeff&#39;s lens and we like separate out t=
+he end to end testing from like functional testing. Right.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-b=
+ottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">R=
+akesh</span><span style=3D"color:#64748b;font-size:14px">8:26</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">And system. Yeah=
+. And the system&#39;s readiness.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D=
+"color:#3b82f6;font-weight:600;margin-right:8px">Pre</span><span style=3D"c=
+olor:#64748b;font-size:14px">8:29</span></div><div style=3D"color:#475569;f=
+ont-size:16px;line-height:1.6">Yeah, correct. And if we like apply Pierce&#=
+39;s principle that like the business owns it, like from our perspective, w=
+e just want to know that this stuff is complete and like progressing. I don=
+&#39;t know that we care like too much about like the scope. Do you know wh=
+at if like Will Johnson says that he is tested Hyperion, then like he&#39;s=
+ tested Hyperion. Like it&#39;s not really for us to prosecute. Whether or =
+not.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"=
+display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:60=
+0;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14p=
+x">8:54</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Sure.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div sty=
+le=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-wei=
+ght:600;margin-right:8px">Pre</span><span style=3D"color:#64748b;font-size:=
+14px">8:55</span></div><div style=3D"color:#475569;font-size:16px;line-heig=
+ht:1.6">It&#39;s actually.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #=
+3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:=
+#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color=
+:#64748b;font-size:14px">8:56</span></div><div style=3D"color:#475569;font-=
+size:16px;line-height:1.6">Yeah, sure, sure. Okay. No, I saw you there.</di=
+v></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8f=
+afc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:=
+flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin=
+-right:8px">Pre</span><span style=3D"color:#64748b;font-size:14px">9:01</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">That&#=
+39;s for that. The end to end. This is where I think it might be worth like=
+ so put the end to end stuff aside.</div></div><div style=3D"margin-bottom:=
+16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4p=
+x solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span styl=
+e=3D"color:#64748b;font-size:14px">9:10</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">Right.</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border=
+-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><spa=
+n style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pre</span><span =
+style=3D"color:#64748b;font-size:14px">9:10</span></div><div style=3D"color=
+:#475569;font-size:16px;line-height:1.6">Like I think we still need to do t=
+he exercise to identify like which functions are testing what systems and e=
+nsure that&#39;s correctly mapped. So this is flowing into their BRB status=
+ report out. We may be able to get like. And Brian, you tell me like, maybe=
+ like a summary view of like, of all the 22 systems, how many have finished=
+ testing? How many are like a heat map? So you would have all of the system=
+s down here and the various statuses and you can just sort of color kind of=
+ show a heat map of how the systems are progressing against all of the vari=
+ous statuses.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-=
+weight:600;margin-right:8px">Brian</span><span style=3D"color:#64748b;font-=
+size:14px">9:56</span></div><div style=3D"color:#475569;font-size:16px;line=
+-height:1.6">Well, that&#39;s exactly what we&#39;ll need to get to that. T=
+he dashboard view for the systems that Rakesh was speaking to, to get to th=
+e burndown point, you&#39;ll need that as well. You&#39;ll need like the sy=
+stem with the UAT status, start and end dates and then tracking against the=
+ other metrics.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><di=
+v style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fon=
+t-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;fo=
+nt-size:14px">10:11</span></div><div style=3D"color:#475569;font-size:16px;=
+line-height:1.6">So this is a bit different, Mac, because if I&#39;m unders=
+tanding you right pre, the system&#39;s readiness is we&#39;re taking it of=
+f of the system Tracker. We have 82 systems or so we know when SIT is done.=
+ The dashboard we just displayed earlier the illustrations, the linking to =
+the process saying, listen, I&#39;ve got the process tracker, I need to tes=
+t 100 processes. They touch five systems. Maybe it&#39;s at a process level=
+, we don&#39;t need it a system level there. So let&#39;s say, for example,=
+ 100 processes need to be within a function. There&#39;s 100 process, 50 of=
+ them are changing and so they need some sort of testing. And so we get, we=
+ track that there are 50 processes that are truly changing and those are te=
+sted, they touch five systems and, you know, three of those systems have be=
+en touched, two of those systems have not been touched. So do we need to pr=
+ovide. What I was reading when I, when I heard Jeff say these, the conversa=
+tion, I thought he wanted a view of, you know, peers to come in there and s=
+ay, oh, I supply chain, I&#39;ve got 100 processes in play, 50 of them real=
+ly changing. And so I need to test. So My scope is 50 processes. I need to =
+know where the progress is on how many of those processes have I tested, wh=
+at process issues do I have for hypercare, etc. So how would we get that re=
+porting if it is from Capital Edge, from this BRV or the process tracker, h=
+ow can we get. Is that just fields in here that we say processes?</div></di=
+v><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bo=
+rder-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;m=
+argin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right=
+:8px">Pre</span><span style=3D"color:#64748b;font-size:14px">11:55</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So there is=
+ a field that tells you which of these processes are new. There&#39;s about=
+ 156 processes of the full suite of like 1200 or whatever. We could probabl=
+y even like filter off the legal spin one. So that&#39;ll kind of give us a=
+ lesser 135. Now the problem is these processes are not tied to a system. A=
+nd I like, almost wonder.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3=
+b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#=
+3b82f6;font-weight:600;margin-right:8px">Brian</span><span style=3D"color:#=
+64748b;font-size:14px">12:26</span></div><div style=3D"color:#475569;font-s=
+ize:16px;line-height:1.6">That&#39;s what I was like, that&#39;s what I was=
+ sort of getting is we.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b8=
+2f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b=
+82f6;font-weight:600;margin-right:8px">Pre</span><span style=3D"color:#6474=
+8b;font-size:14px">12:29</span></div><div style=3D"color:#475569;font-size:=
+16px;line-height:1.6">Can back to the function, right? So like if I look at=
+ finance, if we know that finance needs to test 10 of the 22 BRB systems, w=
+e. I&#39;m almost wondering if like we just give finance this list to say, =
+like, hey, these are your new processes, ensure that these are part of your=
+ test scripts. And then it kind of like falls back to the function as they&=
+#39;re defining their test scripts to ensure that they&#39;re considering n=
+ew processes. Otherwise we have to go through like an intense mapping and w=
+e did this for people, Rakesh. And I don&#39;t think it&#39;s like yielding=
+ the results that we wanted to yield, tell you the truth, because like, muc=
+h like hiring. Right, okay, you have to test every system, right, like to a=
+ certain level. And like we can like drive some analytics, but it&#39;s not=
+ like getting us like it almost like it takes so much effort to get the ana=
+lytics.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size=
+:14px">13:40</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">Okay, fair enough. I get your point. Then how do we. And again, I=
+ know Brian and you, Mac, we&#39;re not on this conversation and we&#39;re =
+trying to address some of Jeff&#39;s asks because what I see him asking is =
+peers having a weekly update now saying across this, let&#39;s say for thes=
+e function x50 processes in scope, we have tested 37 of them and we&#39;ve =
+planned another 13 by July 15th. But there are also cross functional proces=
+ses that touch five functions. And for those we&#39;ve got let&#39;s say 25=
+ cross functional processes and each of those functions has tested their po=
+rtion or something to the effect where, you know, there&#39;s also a system=
+ linkage in there. But I&#39;m not so much worried about systems. It&#39;s =
+really a tracker on. I&#39;ve got a cross functional process here that touc=
+hes four functions and a bunch of IT systems. I&#39;m tracking to that. How=
+ would we track to that to say, okay, I&#39;ve got 25 cross functional proc=
+esses.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Pre</span><span style=3D"color:#64748b;font-size:14=
+px">14:56</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">When we say cross functional processes, we&#39;re talking about the =
+end to end ones, right?</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b8=
+2f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b=
+82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#6=
+4748b;font-size:14px">14:59</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">End to end to end.</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border=
+-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><spa=
+n style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pre</span><span =
+style=3D"color:#64748b;font-size:14px">15:01</span></div><div style=3D"colo=
+r:#475569;font-size:16px;line-height:1.6">So I think like. So you. Where wa=
+s the. Those UAT slides that we have? I thought like did a good job of layi=
+ng out the various processes under like order to cash or what have you.</di=
+v></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8f=
+afc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:=
+flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin=
+-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">15:21=
+</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Ye=
+ah, yeah, the UAT kickoff.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #=
+3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:=
+#3b82f6;font-weight:600;margin-right:8px">Pre</span><span style=3D"color:#6=
+4748b;font-size:14px">15:23</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">So this is where we have to have a conversation wi=
+th Rob and, and Steven Because I think that like, can we, I think there, it=
+&#39;s a page, right? Like.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color=
+:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"colo=
+r:#64748b;font-size:14px">15:39</span></div><div style=3D"color:#475569;fon=
+t-size:16px;line-height:1.6">You mean the governance structure that.</div><=
+/div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc=
+;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fle=
+x;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-ri=
+ght:8px">Pre</span><span style=3D"color:#64748b;font-size:14px">15:41</span=
+></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">No, no, =
+like those scenarios, I didn&#39;t think of them as like a lot of scenarios=
+. Like, there&#39;s just like a page worth of like scenarios for uat, for o=
+rder to cash, for, to pay. Right. Like, and mom was wondering if we can lik=
+e piggyback off of their structure, off of their governance structure to sa=
+y like, hey, you have your end to end leads already identified. These end t=
+o end leads are working through cutover planning right now. But can we also=
+ add to their scope to test this? You know what I mean? Like, they, they, t=
+hey, they&#39;ve got like a weekly call set up and they&#39;ve got, right. =
+What have you. So can, can we just have that whoever is like ordered a cash=
+, for example, can we have him just like run through these and like identif=
+y, like identify someone to, to check off all of these? You know?</div></di=
+v><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bo=
+rder-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;m=
+argin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right=
+:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">16:44</span=
+></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">We can, =
+I think. Yes, but then is there some consolidated dashboard reporting on th=
+is to say order to cash? You know, we&#39;ve tested, let us say eight lines=
+ here are, you know, billing and consolidation or collections has, you know=
+, a few systems across these. And we&#39;ve tested, we&#39;ve tested these =
+nine lines here.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><d=
+iv style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fo=
+nt-weight:600;margin-right:8px">Pre</span><span style=3D"color:#64748b;font=
+-size:14px">17:09</span></div><div style=3D"color:#475569;font-size:16px;li=
+ne-height:1.6">Yeah, yeah, because there&#39;s so like again, it doesn&#39;=
+t feel like that many. Right. Because there&#39;s so few. Can we not just l=
+ike take this, put it in an Excel, put a name against it and just like try =
+to get people to. You know what I mean? Like put it.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh=
+</span><span style=3D"color:#64748b;font-size:14px">17:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, we can, we can=
+, we don&#39;t need to over engineer totally. Can we move this into Capital=
+ Edge and so we can.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6=
+"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f=
+6;font-weight:600;margin-right:8px">Pre</span><span style=3D"color:#64748b;=
+font-size:14px">17:34</span></div><div style=3D"color:#475569;font-size:16p=
+x;line-height:1.6">So sorry, this is the governance I was talking about. Ri=
+ght. So like they have these people, Sriram, for all the cash, DJ for P2P. =
+I don&#39;t know who Ana is, but what have you. We have these people set up=
+. Can we piggyback off of Rob&#39;s call? He has a weekly call with these p=
+eople.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size=
+:14px">17:53</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><di=
+v style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fon=
+t-weight:600;margin-right:8px">Pre</span><span style=3D"color:#64748b;font-=
+size:14px">17:53</span></div><div style=3D"color:#475569;font-size:16px;lin=
+e-height:1.6">And have them again, like very simply, Sriram would be like, =
+hey, Sriram, we need someone from your team to go in and sort of really lik=
+e check these items off.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b=
+82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3=
+b82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#=
+64748b;font-size:14px">18:08</span></div><div style=3D"color:#475569;font-s=
+ize:16px;line-height:1.6">Yeah, yeah. So who will report out on it? Because=
+ what I heard, what&#39;s his name, Jeff say is that he&#39;s expecting pee=
+rs to provide an updated view or report on this. On what is the end to end =
+process. I know you brought up the good point of, okay, let&#39;s sync up a=
+nd have the business run this with these guys with precisely the governance=
+ model you showed, but I thought Pierce Got on the hook too. Was on the hoo=
+k now to do that.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><=
+div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;f=
+ont-weight:600;margin-right:8px">Pre</span><span style=3D"color:#64748b;fon=
+t-size:14px">18:38</span></div><div style=3D"color:#475569;font-size:16px;l=
+ine-height:1.6">Yeah, yeah, yeah. Maybe an internal discussion with Rob fir=
+st before we involve client. But my thought is like if we give them a reall=
+y simple structure because again we should also have in perspective. Right.=
+ The system&#39;s not changing. It&#39;s like metadata on the system.</div>=
+</div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8faf=
+c;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fl=
+ex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-r=
+ight:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">18:55</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">That=
+&#39;s true for many.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f=
+6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82=
+f6;font-weight:600;margin-right:8px">Pre</span><span style=3D"color:#64748b=
+;font-size:14px">18:57</span></div><div style=3D"color:#475569;font-size:16=
+px;line-height:1.6">That is we shouldn&#39;t have breakpoints or anything l=
+ike that. Right. Like there&#39;s like you&#39;re not. It&#39;s the same or=
+der entry Systems. Right. Salesforce.com EDI what have you. It&#39;s going =
+through the same ERP that&#39;s like getting rename, reuse. It&#39;s not ev=
+en like a new company code or anything like that. And like so really we&#39=
+;re testing that like the metadata on like these things like you know, purc=
+hase orders, what have you are like looking. Right.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh=
+</span><span style=3D"color:#64748b;font-size:14px">19:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You know what I mean=
+?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"dis=
+play:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;m=
+argin-right:8px">Pre</span><span style=3D"color:#64748b;font-size:14px">19:=
+29</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">=
+Like so I just feel like we should. But. But if. And, and if this list is t=
+oo long too. I think. Let me pull up another list that Sam. So the LES team=
+, they&#39;ve been looking into end to end process readiness and they devel=
+op a high level you that we can also leverage for this. Right. So that&#39;=
+s an even shorter list. Right. So it&#39;s like have suppliers and vendors =
+received updated legal. This one is like a readiness item.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-b=
+ottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">R=
+akesh</span><span style=3D"color:#64748b;font-size:14px">20:10</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">But like it&#39=
+;s more of a checklist here.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"colo=
+r:#3b82f6;font-weight:600;margin-right:8px">Pre</span><span style=3D"color:=
+#64748b;font-size:14px">20:12</span></div><div style=3D"color:#475569;font-=
+size:16px;line-height:1.6">Correct. It&#39;s like a checklist of like vendo=
+r master data. Can someone like take you know, review test that? Can you pa=
+y vendors? Can you purchase orders? Like it&#39;s like a.</div></div><div s=
+tyle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-rad=
+ius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bo=
+ttom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Ra=
+kesh</span><span style=3D"color:#64748b;font-size:14px">20:25</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">These are truly =
+test cases. Seem to be more of a test case for POSO success. Right. So it&#=
+39;s a. This is more. If you run a tabletop exercise, these are sort of the=
+ steps you will go through and say can I do this? Yes, done commercial, I p=
+ass it on to you supply chain, you receive it next you run through. So this=
+ is almost a. Yeah. A step, you know, exercise.</div></div><div style=3D"ma=
+rgin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bo=
+rder-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pre</span><s=
+pan style=3D"color:#64748b;font-size:14px">20:48</span></div><div style=3D"=
+color:#475569;font-size:16px;line-height:1.6">Right, Right. So my point is =
+like if we layer in UAT to this like readiness view. Right. Can this cutove=
+r team just also include uat, right. And like go into the system and then j=
+ust sort of check off the.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #=
+3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:=
+#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color=
+:#64748b;font-size:14px">21:08</span></div><div style=3D"color:#475569;font=
+-size:16px;line-height:1.6">Check off the end to end or LE related process =
+in that system. System or.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #=
+3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:=
+#3b82f6;font-weight:600;margin-right:8px">Pre</span><span style=3D"color:#6=
+4748b;font-size:14px">21:15</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">The check off that like the end. So it would be th=
+e end to end process lead kind of coordinating that all of these items they=
+&#39;ve sort of tested and like from a system perspective they think order =
+to cache is ready.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6">=
+<div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;=
+font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#64748b=
+;font-size:14px">21:38</span></div><div style=3D"color:#475569;font-size:16=
+px;line-height:1.6">So like for example, can I set up a new customer? Right=
+. So is that the case? So if I play that out. Line number seven, can I set =
+up a new customer? Commercial is probably in the SFTC or is that in the erp=
+? So it may be a new setup in. So you need to have a view to say, okay, thi=
+s is. Now this lead can go into the system and set up a new customer in Sal=
+esforce.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Pre</span><span style=3D"color:#64748b;font-size:14=
+px">22:09</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div s=
+tyle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-w=
+eight:600;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-=
+size:14px">22:10</span></div><div style=3D"color:#475569;font-size:16px;lin=
+e-height:1.6">So now Salesforce doesn&#39;t have a UAT per se, because noth=
+ing is changing. They&#39;re only going to get, you know, if I. If I play t=
+hat in the context of what&#39;s changing, erp, legal entities are changing=
+, and those flow downstream into Salesforce. And in Salesforce, they can se=
+e the new legal entities that are Athens specific. So when a person here, a=
+s a commercial lead comes in and says on, you know, once this is done in th=
+e QA system, they&#39;ll only be able to see Athens legal entities. So they=
+ come in and they say, can I set up a new customer for these? In the past, =
+I had 50 legal entities I could see. Now I only see 27, because that&#39;s =
+what Athens is. So within those 27 legal entities, that has now flowed down=
+hill. I&#39;m now able to can I set up a new customer? Or it may be legal e=
+ntity agnostic, but can I set up a new customer for Athens in that Salesfor=
+ce that reports right up to the. To the right hierarchy. Right. So if that&=
+#39;s the level of testing, then yeah, we probably need to add in. Add in t=
+he system view here. But I don&#39;t know how that would help because it do=
+esn&#39;t test system readiness because Salesforce is not changing. It&#39;=
+s really validating. It&#39;s the data flows into Salesforce and you&#39;re=
+ consuming. You know, you&#39;re going in and seeing if you can. You can se=
+e that data in Salesforce. So again, not to digress from this, I.</div></di=
+v><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bo=
+rder-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;m=
+argin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right=
+:8px">Pre</span><span style=3D"color:#64748b;font-size:14px">23:39</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, again=
+, that&#39;s fine. And I do think that you can kind of look at this readine=
+ss checklist and say, like, you know, a lot of these are blue because nothi=
+ng is changing and then move as is. Right.</div></div><div style=3D"margin-=
+bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-=
+left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span=
+ style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><spa=
+n style=3D"color:#64748b;font-size:14px">23:54</span></div><div style=3D"co=
+lor:#475569;font-size:16px;line-height:1.6">Per system.</div></div><div sty=
+le=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radiu=
+s:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bott=
+om:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pre<=
+/span><span style=3D"color:#64748b;font-size:14px">23:54</span></div><div s=
+tyle=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, yeah, yea=
+h. So that, that, like, set up a new customer is a good one because there&#=
+39;s nothing changing from a setup new customer process. Right.</div></div>=
+<div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bord=
+er-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;mar=
+gin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8=
+px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">24:04</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Presumably=
+ from a process, you should just be able to just set up a new Athens custom=
+er.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-col=
+or:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"d=
+isplay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Pre</span><span style=3D"color:#64748b;font-size:14px">2=
+4:09</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">Correct. And the system isn&#39;t changing either. So that&#39;s probably=
+ one that doesn&#39;t need to be tested. Right. So look through the list an=
+d pick the things that do need to be tested.</div></div><div style=3D"margi=
+n-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;borde=
+r-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><sp=
+an style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><s=
+pan style=3D"color:#64748b;font-size:14px">24:21</span></div><div style=3D"=
+color:#475569;font-size:16px;line-height:1.6">Okay, so now back to. Okay, s=
+o, Rob, maybe the immediate ask is, I think on the inventory tracker. What =
+we will do is we will extract out of capital edge if we haven&#39;t already=
+ done, I think which we Mac has done. We will add the attributes that we ne=
+ed for all 290 plus systems. You know, we&#39;ve got to add some service ow=
+ner names, we&#39;ve got to add some sit start and end date name, you know,=
+ UAT start and end dates and some completion tracker etc. And some flags we=
+&#39;ll do and send an updated inventory of the 296 systems here for this t=
+racker. I think the next piece on top of that then is to layer in this, thi=
+s reporting on can I. You know is. Is SIT complete? Is knowledge transfer c=
+omplete for the system? You know, is the UAT complete, is cutover complete?=
+ So it&#39;s again running some dashboards or reporting on top of this mode=
+l.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-colo=
+r:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"di=
+splay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Brian</span><span style=3D"color:#64748b;font-size:14px">=
+25:22</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Brian, I&#39;ll work with you on that because I&#39;ve done it manually =
+but I think that there&#39;s opportunity there to do lookups as well where =
+we have that data. I pulled them out of the inventory, the heat map and jus=
+t put them into an Excel manually so the Excel has the proper model and I c=
+an send you what we have and then we can explore opportunities to make some=
+ of it lookups.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><di=
+v style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fon=
+t-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;fo=
+nt-size:14px">25:56</span></div><div style=3D"color:#475569;font-size:16px;=
+line-height:1.6">Right.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b8=
+2f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b=
+82f6;font-weight:600;margin-right:8px">Brian</span><span style=3D"color:#64=
+748b;font-size:14px">25:56</span></div><div style=3D"color:#475569;font-siz=
+e:16px;line-height:1.6">Like the UAT dates and things like that. Like the.<=
+/div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#=
+f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displ=
+ay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">26:01=
+</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Ye=
+ah, yeah, dates like that always be the date field. That&#39;s just kind of=
+ the dropdown or you can type it in. Yeah, but other things where it&#39;s =
+consistent and maybe it&#39;s five, six, seven options, whatever it might b=
+e, make those the dropdowns. But yeah, if you send me that file, I&#39;ll g=
+o through it, identify some of them and we can connect just to make sure th=
+at we both agree and then move forward getting those put in.</div></div><di=
+v style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-=
+radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin=
+-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px"=
+>Rakesh</span><span style=3D"color:#64748b;font-size:14px">26:24</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">Awesome.</div=
+></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fa=
+fc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:f=
+lex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-=
+right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">26:25</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">And th=
+en for the actual updates we just do that through the bulk import export pr=
+ocess. Even if we do lookups as long as there&#39;s no errant spaces, anyth=
+ing like that and just copy paste in values and it&#39;ll tell us which one=
+s error out. We can always fix them and then push it through that way so th=
+ere&#39;s no heavy manual effort there.</div></div><div style=3D"margin-bot=
+tom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-lef=
+t:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span st=
+yle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brian</span><span st=
+yle=3D"color:#64748b;font-size:14px">26:43</span></div><div style=3D"color:=
+#475569;font-size:16px;line-height:1.6">Okay, sweet.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh=
+</span><span style=3D"color:#64748b;font-size:14px">26:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so I think we =
+have immediate next steps, at least tactical next steps for this and we&#39=
+;ll run some reports out of there so Mac action items for us to connect wit=
+h Brian to get that data and a mock up of the off the report, the couple of=
+ reports that we can start showing.</div></div><div style=3D"margin-bottom:=
+16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4p=
+x solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brian</span><span style=
+=3D"color:#64748b;font-size:14px">27:08</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">Yep. Do you want me to send him the on=
+es that we started plus the JJ examples?</div></div><div style=3D"margin-bo=
+ttom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-le=
+ft:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span s=
+tyle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span =
+style=3D"color:#64748b;font-size:14px">27:14</span></div><div style=3D"colo=
+r:#475569;font-size:16px;line-height:1.6">Yeah, the J and J. Yes, send the =
+J and J examples, but more so how we want to mimic that for what we&#39;re =
+doing here.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div st=
+yle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-we=
+ight:600;margin-right:8px">Brian</span><span style=3D"color:#64748b;font-si=
+ze:14px">27:20</span></div><div style=3D"color:#475569;font-size:16px;line-=
+height:1.6">Exactly. And I mean, I&#39;m not sure what Capital Edge is capa=
+ble of, but the J and J examples have good illustration of, like, drill thr=
+oughs and the way that they want to be able to, like, click into and view t=
+hat data. So I&#39;ll make sure that we get those sent over as well as how =
+we mocked it up for this.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3=
+b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#=
+3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:=
+#64748b;font-size:14px">27:38</span></div><div style=3D"color:#475569;font-=
+size:16px;line-height:1.6">Okay, perfect. We&#39;ll have to make sure that.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"disp=
+lay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;ma=
+rgin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">27:4=
+2</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">C=
+apitalized already, or.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b8=
+2f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b=
+82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#6=
+4748b;font-size:14px">27:43</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">Is that correct? Yeah.</div></div><div style=3D"ma=
+rgin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bo=
+rder-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><s=
+pan style=3D"color:#64748b;font-size:14px">27:46</span></div><div style=3D"=
+color:#475569;font-size:16px;line-height:1.6">Okay. Yeah, they were already=
+ in there. We can probably do essentially a lateral transfer and just redo =
+data connections based on what we discussed and then go from there.</div></=
+div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex=
+;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-rig=
+ht:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">27:53</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, pe=
+rfect. Okay. Makes life simpler. All right, so we&#39;ll. And then we&#39;l=
+l make sure that we have to make sure the data model is the same because th=
+ose reports pull certain things, the slicers and et cetera. We may not have=
+ that, the underlying data. So we just have to be careful about replicating=
+ it 100%.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div styl=
+e=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weig=
+ht:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:1=
+4px">28:12</span></div><div style=3D"color:#475569;font-size:16px;line-heig=
+ht:1.6">Yeah. And that&#39;ll be part of the dev process and the dev connec=
+tions or data connections.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #=
+3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:=
+#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color=
+:#64748b;font-size:14px">28:17</span></div><div style=3D"color:#475569;font=
+-size:16px;line-height:1.6">Excuse me.</div></div><div style=3D"margin-bott=
+om:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left=
+:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span sty=
+le=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span style=
+=3D"color:#64748b;font-size:14px">28:17</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">And then qat. Uat part of it on our en=
+d.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-colo=
+r:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"di=
+splay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>28:20</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Okay, sounds good. Thank you all.</div></div><div style=3D"margin-botto=
+m:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:=
+4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span styl=
+e=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brian</span><span styl=
+e=3D"color:#64748b;font-size:14px">28:23</span></div><div style=3D"color:#4=
+75569;font-size:16px;line-height:1.6">Cool. Thank you.</div></div><div styl=
+e=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius=
+:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-botto=
+m:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakes=
+h</span><span style=3D"color:#64748b;font-size:14px">28:24</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">We&#39;ll connect w=
+ith you on other things, but let&#39;s. Yeah. I just want to make sure that=
+ Jeff isn&#39;t. You know, he gave us a lot to do. I want to make sure that=
+ it&#39;s not necessarily a lot.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px s=
+olid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"=
+color:#3b82f6;font-weight:600;margin-right:8px">Pre</span><span style=3D"co=
+lor:#64748b;font-size:14px">28:37</span></div><div style=3D"color:#475569;f=
+ont-size:16px;line-height:1.6">Yeah, yeah, yeah. That&#39;s fair. Let me fi=
+nd some time with us and Rob first. Like, sometime today.</div></div><div s=
+tyle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-rad=
+ius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bo=
+ttom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Ra=
+kesh</span><span style=3D"color:#64748b;font-size:14px">28:42</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">Sounds good. Tha=
+nk you all.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div st=
+yle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-we=
+ight:600;margin-right:8px">Brian</span><span style=3D"color:#64748b;font-si=
+ze:14px">28:43</span></div><div style=3D"color:#475569;font-size:16px;line-=
+height:1.6">Thank you.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82=
+f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b8=
+2f6;font-weight:600;margin-right:8px">Pre</span><span style=3D"color:#64748=
+b;font-size:14px">28:44</span></div><div style=3D"color:#475569;font-size:1=
+6px;line-height:1.6">Thanks.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"colo=
+r:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span style=3D"color:=
+#64748b;font-size:14px">28:45</span></div><div style=3D"color:#475569;font-=
+size:16px;line-height:1.6">Thanks, all.</div></div><div style=3D"margin-bot=
+tom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-lef=
+t:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span st=
+yle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brian</span><span st=
+yle=3D"color:#64748b;font-size:14px">28:56</span></div><div style=3D"color:=
+#475569;font-size:16px;line-height:1.6">Hi, sunshine. Girl, you look so tan=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"dis=
+play:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;m=
+argin-right:8px">Pre</span><span style=3D"color:#64748b;font-size:14px">28:=
+58</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">=
+Thank you.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div sty=
+le=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-wei=
+ght:600;margin-right:8px">Brian</span><span style=3D"color:#64748b;font-siz=
+e:14px">29:00</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">You look great.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #=
+3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:=
+#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color=
+:#64748b;font-size:14px">29:00</span></div><div style=3D"color:#475569;font=
+-size:16px;line-height:1.6">You look great.</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border=
+-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><spa=
+n style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pre</span><span =
+style=3D"color:#64748b;font-size:14px">29:02</span></div><div style=3D"colo=
+r:#475569;font-size:16px;line-height:1.6">How are you doing?</div></div><di=
+v style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-=
+radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin=
+-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px"=
+>Rakesh</span><span style=3D"color:#64748b;font-size:14px">29:02</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">I&#39;m doing=
+ great.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Brian</span><span style=3D"color:#64748b;font-size:=
+14px">29:03</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">How are you?</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f=
+6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82=
+f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#647=
+48b;font-size:14px">29:04</span></div><div style=3D"color:#475569;font-size=
+:16px;line-height:1.6">Fabulous, humble.</div></div><div style=3D"margin-bo=
+ttom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-le=
+ft:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span s=
+tyle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brian</span><span s=
+tyle=3D"color:#64748b;font-size:14px">29:08</span></div><div style=3D"color=
+:#475569;font-size:16px;line-height:1.6">Tyler, thank you so much for the d=
+onut and the coffee.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6=
+"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f=
+6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#6474=
+8b;font-size:14px">29:12</span></div><div style=3D"color:#475569;font-size:=
+16px;line-height:1.6">Yeah, Appreciate her. So sweet. We only had to ask, h=
+uh?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-col=
+or:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"d=
+isplay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Brian</span><span style=3D"color:#64748b;font-size:14px"=
+>29:18</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">What&#39;d you say?</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b8=
+2f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b=
+82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#6=
+4748b;font-size:14px">29:19</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">I said, so sweet. We all had to ask.</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border=
+-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margi=
+n-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px=
+">Pre</span><span style=3D"color:#64748b;font-size:14px">29:25</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, my God, tha=
+t hurt.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size=
+:14px">29:26</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">Okay, bathing suit face.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pre</span><span style=
+=3D"color:#64748b;font-size:14px">29:30</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">Anything new?</div></div><div style=3D=
+"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px=
+;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8p=
+x"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</s=
+pan><span style=3D"color:#64748b;font-size:14px">29:32</span></div><div sty=
+le=3D"color:#475569;font-size:16px;line-height:1.6">What are you going to N=
+ew York for? We&#39;re flying back for. Who&#39;s in Charlotte?</div></div>=
+<div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bord=
+er-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;mar=
+gin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8=
+px">Brian</span><span style=3D"color:#64748b;font-size:14px">29:37</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, just wo=
+rk. We&#39;re working for this company called Honeywell.</div></div><div st=
+yle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radi=
+us:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bot=
+tom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pre=
+</span><span style=3D"color:#64748b;font-size:14px">29:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Wait, I know Honeywe=
+ll. Yeah, I have their pads in my bathroom.</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border=
+-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><spa=
+n style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brian</span><spa=
+n style=3D"color:#64748b;font-size:14px">29:49</span></div><div style=3D"co=
+lor:#475569;font-size:16px;line-height:1.6">Pads?</div></div><div style=3D"=
+margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;=
+border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px=
+"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pre</span>=
+<span style=3D"color:#64748b;font-size:14px">29:50</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.</div></div><div sty=
+le=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radiu=
+s:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bott=
+om:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rake=
+sh</span><span style=3D"color:#64748b;font-size:14px">29:51</span></div><di=
+v style=3D"color:#475569;font-size:16px;line-height:1.6">Or is that honey p=
+ot?</div></div><div style=3D"margin-bottom:0;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"disp=
+lay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;ma=
+rgin-right:8px">Brian</span><span style=3D"color:#64748b;font-size:14px">29=
+:53</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6"=
+>I think that&#39;s.</div></div></div><div style=3D"margin-top:36px;text-al=
+ign:center;color:#64748b;font-size:14px;padding:20px;border-top:1px solid #=
+e2e8f0"><p style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note =
+Taker</p><p style=3D"margin:0;font-size:12px">Your AI-powered companion</p>=
+</div></div></div></div></div></div>
+
+--0000000000001c42580636e9907f--

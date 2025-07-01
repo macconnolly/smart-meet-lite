@@ -1,0 +1,140 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a05:6000:1106:b0:3a4:dc5b:9678 with SMTP id z6csp956815wrw;
+        Tue, 27 May 2025 13:19:55 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE/YjxUWVd7r7HRltnRClNSd5UKrEVRJjVNtUnC2kCco/wQNNVdty52qJRUEIeK6kb/IPbg
+X-Received: by 2002:a05:620a:2619:b0:7c5:42c8:ac82 with SMTP id af79cd13be357-7ceecbc2f3cmr2236523785a.23.1748377195517;
+        Tue, 27 May 2025 13:19:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748377195; cv=none;
+        d=google.com; s=arc-20240605;
+        b=d79BL7lQIhcLNyv5rK6HGzrKczK5em2azhKQSSMht5CRDAVB679CDtN/rOnFLwJP+o
+         0z9jgAUy0WVETbECg5R2HF0q68BE0mUivRR3PWYZe4N/3Z52WjTea0K/bGrkz+DQA6b0
+         aSnd7F4knkzJ/aG/9UA6ixRcAJkSrnhN3Z/w6C+jxPGdINA87fv3phW+1h1NBOLtwEkf
+         RhXP8dJoMBOXm6amr5MRHwZz1F1Vsg7YUrw1J2Zu8nyx/pevRgQZtnVAgdUGgXEAcsUj
+         2SXokNdPS3jNS098RtgsfraVfZaK5ePCfimJ17g/+MuP+frlPV8st/975dB9PidZzjn+
+         iuLA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=XxJW90M6IWcIOR4vZwPEeuXlwUeyPHDuIcw/R93720k=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=epBN1qeZABYlfr/qW/87y7UBhVchOhSVjb4FGd3Jz0ddcWoWLAQ1hIp3XPZfWwxZqa
+         0nbfBAe3MTqP+fZK2PP+wAhFibXX3GrmmBn+0bHs3VaAKeegtFTdkmMqZnObIRw5++c4
+         8bhaBZrxEYDsGRNpUHKRgK27XMmJxSJNzN0WkgYV/b73qM/5NGrjY8kK5L2RMgLTehmm
+         q8wqysnWY3m49BpvGBHpUjD2Czq14YeK2MKElo7LKq+hOEvZL4KSKLmBlvFncV1Xng3g
+         rab6uo9dMPZIdm0xv+8q93HOMl+Lsf+9Q91G+VC9DtJwRFm4AmEEYIiI8MExcHa+4EVy
+         kdHw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=P66hhWHP;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=kT7ZX4XK;
+       spf=pass (google.com: domain of 010001971366d173-a87d6c86-a719-4b19-a09f-3a8eb9003c52-000000@send.email.wave.co designates 54.240.9.112 as permitted sender) smtp.mailfrom=010001971366d173-a87d6c86-a719-4b19-a09f-3a8eb9003c52-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <010001971366d173-a87d6c86-a719-4b19-a09f-3a8eb9003c52-000000@send.email.wave.co>
+Received: from a9-112.smtp-out.amazonses.com (a9-112.smtp-out.amazonses.com. [54.240.9.112])
+        by mx.google.com with ESMTPS id af79cd13be357-7cf19d766d4si6730085a.303.2025.05.27.13.19.55
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 27 May 2025 13:19:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 010001971366d173-a87d6c86-a719-4b19-a09f-3a8eb9003c52-000000@send.email.wave.co designates 54.240.9.112 as permitted sender) client-ip=54.240.9.112;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=P66hhWHP;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=kT7ZX4XK;
+       spf=pass (google.com: domain of 010001971366d173-a87d6c86-a719-4b19-a09f-3a8eb9003c52-000000@send.email.wave.co designates 54.240.9.112 as permitted sender) smtp.mailfrom=010001971366d173-a87d6c86-a719-4b19-a09f-3a8eb9003c52-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1748377195;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=XxJW90M6IWcIOR4vZwPEeuXlwUeyPHDuIcw/R93720k=;
+	b=P66hhWHPykTll911j/+rFR/XWQ7ebCOyGlI65FRNr1nHpI4ottJezv0RjuRAow+q
+	wcRAGdxfatl5HpEnxKoykjuL6HktTkZIV1iW94qMkQ/qexz1rkRGA+tqzrdPd/GglP8
+	SMbIVKrKLTds5V/b711JeMOTsGNo1xOl3nvFxl9k=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1748377195;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=XxJW90M6IWcIOR4vZwPEeuXlwUeyPHDuIcw/R93720k=;
+	b=kT7ZX4XKy0zWqnFk5lzh3dVO2rUZQ73Etxeec2T9pzqk4ZEd2Svy9sRuzMtgX9QV
+	Ja5zWegz5wAiEeROupmjpQpwZehmWzj45ATWH1uUbnoDPZs8X8w76D74i3mtNxGC4+K
+	VHL51khSbro9xWf0V5CzVWrHr7iGApRq8HpB377Y=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Clarifying Entry And Exit Criteria Details
+Message-ID: <010001971366d173-a87d6c86-a719-4b19-a09f-3a8eb9003c52-000000@email.amazonses.com>
+Date: Tue, 27 May 2025 20:19:54 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-875435fc6aa056a9-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.05.27-54.240.9.112
+
+----_NmP-875435fc6aa056a9-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Clarifying Entry And Exit Criteria Details
+
+The speaker points out that =
+certain items being discussed are not included in the entry or exit =
+criteria and instructs others to refer to the relevant slide for =
+clarification.
+
+Transcript:
+0:00
+Just said. Those are not in your entry =
+exit criteria. Look at the slide that we're talking about.
+----_NmP-875435fc6aa056a9-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Clarifying =
+Entry And Exit Criteria Details</h1></td></tr></table></div><div =
+style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/A5A7DD61-64BE-40CE-BA70-131ACB02488D?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><p>The speaker points out that certain =
+items being discussed are not included in the entry or exit criteria and =
+instructs others to refer to the relevant slide for clarification.</p>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0,=
+ 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex;align-i=
+tems:center;gap:8px"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</=
+span>Transcription</h3><div style=3D"margin-bottom:0;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown</span><spa=
+n style=3D"color:#64748b;font-size:14px">0:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Just said. Those are=
+ not in your entry exit criteria. Look at the slide that we&#x27;re talking=
+ about.</div></div></div><div style=3D"margin-top:36px;text-align:center;co=
+lor:#64748b;font-size:14px;padding:20px;border-top:1px solid #e2e8f0"><p =
+style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note Taker</p><p=
+ style=3D"margin:0;font-size:12px">Your AI-powered companion</p></div></div=
+></div></div></html>
+----_NmP-875435fc6aa056a9-Part_1--

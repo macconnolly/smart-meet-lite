@@ -1,0 +1,1979 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a05:6000:154a:b0:391:3c18:836e with SMTP id 10csp854666wry;
+        Thu, 20 Mar 2025 12:00:13 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFy4hJsHsQfhUv7/rlX1yCle3uUmMj611lk6CRsvhE4psg1yhRzEl405C0FhV2wjKrGTkSG
+X-Received: by 2002:a05:622a:17c5:b0:476:6a3d:de44 with SMTP id d75a77b69052e-4771dd8f460mr7151281cf.18.1742497212757;
+        Thu, 20 Mar 2025 12:00:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742497212; cv=none;
+        d=google.com; s=arc-20240605;
+        b=almNVUK7LyQrGGKmmZapNj3oZhBOfmk0jZ6EiYi8eKHKBzaYjGkFQ7aTYulet8y2WB
+         y475WE1H7ubIjEiyBarLjCcNzzX0tf0nEpkX5GB3Ek2yAA9GsnwGYEXSXDRAwb44bux0
+         6OJayjvBib+wzsdb1hOovhNErsZx7VWR98gpld+3wv75nxZ9vRWHCgM/CXB5rXyeP3v8
+         ODCNu0TRFjejwLe/hqxrWLllmySbLnrqiJyIjNj1otfgn+awXoj5oa2O7Kuulo8gIaf9
+         YOxXPRemTu4F4wm+WOvoeX7N4ow2IrufuGekl/5FhQ3/TO2tiIX0O/WT2z8pksIcE6+2
+         qlSg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=pkVjZNUn5t7nSrqroTt6LlLpMDtd1Jukj6+GUrsmxDU=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=FG4rwz/SfzD88bGCf1CR8G/DYq69T4g8UhSwTJdv+3mlmmEnSAOfdGHdB8hF3FV7ET
+         tX73J0lrWFK2g0AEdYHqm2F2iYGLnVNeio9OQbb0XaWQv6AKbCvKd+6kcFtXCt1vRU8A
+         YYiURD0GMeIS7abX8Pk+0gLgo33W8tdCatg7yhK9prL1sYUtvOIDHmFocE1DcsuwP2r1
+         PNBYeJ+Na0fPQRZxmy2+OHd1qDhkJjpY7uEBrg0L605ncEBcOZknX0FK3yg7rmYpU8Es
+         F73agaSeWSyvU4zsIRSrSqjyF0+cjofALpbtoT0f8vaYz6wJrFXLXX5AIrFgyJyXyXNx
+         pDwg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=pB7IxJti;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=rE0Hmgwx;
+       spf=pass (google.com: domain of 01000195b4ed66c5-caf04161-9249-46b2-a1d0-e4431a0af196-000000@send.email.wave.co designates 54.240.9.32 as permitted sender) smtp.mailfrom=01000195b4ed66c5-caf04161-9249-46b2-a1d0-e4431a0af196-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <01000195b4ed66c5-caf04161-9249-46b2-a1d0-e4431a0af196-000000@send.email.wave.co>
+Received: from a9-32.smtp-out.amazonses.com (a9-32.smtp-out.amazonses.com. [54.240.9.32])
+        by mx.google.com with ESMTPS id d75a77b69052e-4771d4fe5casi3695861cf.224.2025.03.20.12.00.12
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 20 Mar 2025 12:00:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 01000195b4ed66c5-caf04161-9249-46b2-a1d0-e4431a0af196-000000@send.email.wave.co designates 54.240.9.32 as permitted sender) client-ip=54.240.9.32;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=pB7IxJti;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=rE0Hmgwx;
+       spf=pass (google.com: domain of 01000195b4ed66c5-caf04161-9249-46b2-a1d0-e4431a0af196-000000@send.email.wave.co designates 54.240.9.32 as permitted sender) smtp.mailfrom=01000195b4ed66c5-caf04161-9249-46b2-a1d0-e4431a0af196-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1742497212;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=70S3bd61Il9YHLKh4ogwDLbXj6WUWE5F6czGxrDzUd0=;
+	b=pB7IxJtirvUD3C1csuTQcYxMOig5SpxANp9I9c75HN3JayZ3z1Y+Wq4yvuaVKlq5
+	Dn3/nE2BA1zadygL2e8g0M4HT2BKi92+wLxsMPgZVp4cvRONX9v7uPCDY7CoJYcIBLa
+	qsNApTH4YS386w9v7ncask2H6GYCc+/B0kgpQvog=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1742497212;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=70S3bd61Il9YHLKh4ogwDLbXj6WUWE5F6czGxrDzUd0=;
+	b=rE0HmgwxiJ6N+TZ1HBxY0MhBAERiOK9ikqwMViE1VwxlXCkeEqGbk26R/TSIqi2R
+	JzlzvyHjGUJQUne+l8732bqzDSmoeCfGNq4GmIgNbyDCTR++oLUDeeZFUb9l5jbMXOQ
+	MtYXfla1VJS+bRgToc2JHqEA81BCZJCiVS7IrToY=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Application Inventory Review and Licensing Coordination Meeting
+Message-ID: <01000195b4ed66c5-caf04161-9249-46b2-a1d0-e4431a0af196-000000@email.amazonses.com>
+Date: Thu, 20 Mar 2025 19:00:12 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-32eb98469810c3da-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.03.20-54.240.9.32
+
+----_NmP-32eb98469810c3da-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Application Inventory Review and Licensing Coordination Meeting
+
+# Meeting Summary
+
+## Main Topics Discussed
+
+### 1. Application Inventory =
+Review
+- **Applications Considered**: Mentor Graphics, Global Component =
+Database (GCD), and GERB Tool.
+- **Current Status**: These applications =
+were not previously in the inventory. They emerged from work on the Hornet =
+project and subsequent potential additions analysis.
+- **Ownership Clarification**:=20
+  - **Global Component Database**: =
+Associated with Mentor Graphics, now part of Siemens EDA after acquisition.
+  - **GERB Tool**: An independent engineering tool requiring local =
+installation and licensing.
+
+### 2. GERB Tool Licensing and Usage
+- **Installation and Licensing**: GERB Tool requires a local installation =
+with licenses that need to be purchased by the engineering group.
+- **Current Licensing Status**:=20
+  - Unknown if licenses are already =
+acquired.
+  - Need to determine the number of active users.
+- **Action Plan**:=20
+  - Follow up with Colin Gillis on GERB Tool =
+licensing and active users.
+  - Verify if licenses are accounted for in the=
+ TSA EN01 costing.
+
+### 3. Mentor Graphics and Global Component Database =
+(GCD)
+- **Vendor Information**: Mentor Graphics, now Siemens EDA, offers a =
+suite of tools.
+- **Application Tracking**:=20
+  - Siemens tools like =
+Siemens NX are already tracked.
+  - GCD referred internally as "Edmund."
+- **Replacement Strategy**:=20
+  - Creating a standalone database with an =
+Excel file for parameters, similar to the Hornet project.
+  - Tim Mullen is responsible for developing the standalone library.
+- **Impact on Inventory**:=20
+  - No need to track GCD separately as it =
+will be replaced by the standalone library before Day One.
+
+### 4. Divestiture Process (Day One and Day Two)
+- **Key Dates**:
+  - **Day One**: May 31st =E2=80=93 Logical separation begins.
+  - **Day Two**: Physical separation follows after Day One.
+- **Separation Phases**:
+  - **Day One**: Users redirect to the standalone =
+library, ensuring logical separation from the global master library.
+  - **Day Two**: Users must perform local installations and obtain =
+individual licenses, ensuring complete physical separation.
+- **Licensing Management**:
+  - Licensing costs managed via a "bucket" in =
+TSA costing, reflecting the total cost of provided applications.
+  - Ensuring Collins accounts for these licensing costs accurately.
+
+### 5. Coordination with Contracts and Licensing Teams
+- **Consent Agreements**:
+  - Need for consent agreements with Siemens EDA =
+and WYSE Software.
+  - Tim Patrick is liaising with the contracts team to =
+facilitate these agreements.
+- **Licensing Verification**:
+  - Confirm that all licenses under TSA are appropriately accounted for.
+  - Avoid unauthorized reseller issues by ensuring divested users remain =
+employees or authorized contractors.
+- **User Count Verification**:
+  - Determine the number of active users across locations: Bangalore, =
+Wolverhampton, and Rockford.
+  - Collaborate with the licensing team to =
+obtain accurate user counts.
+
+## Action Items
+
+- **Christine**:
+  - Collaborate with Tim and Anthony to extract actuation user accounts for=
+ Mentor Graphics and GERB Tool.
+  - Follow up with Colin Gillis regarding =
+GERB Tool licensing and active users.
+  - Request a report from the =
+licensing team on Mentor Graphics and GERB Tool user counts.
+  - Reach out to the licensing team for user counts and share the latest =
+census data.
+ =20
+- **Matt**:
+  - Send an email to the contracts team =
+regarding consent agreements for Siemens EDA and WYSE Software.
+  - CC relevant teams to ensure all stakeholders are informed.
+  - Coordinate with Tim on user counts and necessary licensing information.
+  - Ensure the contracts team is aware of and addresses consent needs for =
+Siemens EDA and WYSE Software.
+ =20
+- **Tim**:
+  - Continue developing the =
+standalone library to replace GCD.
+  - Work with Christine and Anthony to =
+provide user counts and licensing information.
+ =20
+- **Anthony and Pari**:
+  - Assist in validating the application inventory and provide specific =
+details as needed.
+
+## Follow-up Points
+
+- **Verification of Licensing =
+Costs**:
+  - Ensure all licenses provided under TSA are accurately =
+reflected in the costing efforts.
+ =20
+- **Consent Agreements**:
+  - Finalize consent agreements with Siemens EDA and WYSE Software through =
+the contracts team.
+ =20
+- **User Count and Licensing Details**:
+  - Obtain and verify the number of active users for Mentor Graphics and =
+GERB Tool across all locations.
+  - Provide this information to the =
+contracts and licensing teams for accurate cost allocation.
+ =20
+- **Census Data Sharing**:
+  - Share the latest census data with Christine =
+to assist in determining active user counts.
+ =20
+- **Vendor Inquiries**:
+  - Redirect any vendor inquiries regarding licensing and technical issues =
+to the contracts team to avoid unauthorized reseller concerns.
+
+## Key Dates and Figures
+
+- **Day One**: May 31st =E2=80=93 Logical =
+separation commences.
+- **Divestiture Sites**:=20
+  - Bangalore
+  - Wolverhampton
+  - Rockford
+- **Licensing Locations**:
+  - Users in Bangalore, Wolverhampton, and Rockford require licensing =
+verification.
+- **Current Timeline**:
+  - 52 days until May 31st, as =
+highlighted in the weekly leadership call.
+
+Transcript:
+0:00
+It, it's. It, it's.
+
+2:06
+Hey, Christine, can you hear me?
+
+2:08
+Hey. Hey, Christine. Hey, Christine. Yeah, it's a little muffled, but I =
+can't hear you.
+
+2:17
+That looks better.
+
+2:17
+Yeah, yeah, definitely.
+
+2:21
+All right. Are we waiting for anybody else or is this just me for this=
+ one?
+
+2:25
+I think it will be just you originally. So I got your name from=
+ Pari Sankoya and Anthony Lockley, colleagues here. We're working on the =
+Business Managed Apps team. I'm not sure if you have worked with them, but =
+I think that it is our first time meeting and let me just double check and =
+see. I'm not sure if Tim is able to join, but Tim Mullen I think was the =
+other person.
+
+2:55
+Yeah, his counterpart of mine. I will see if he's =
+available.
+
+2:59
+Yeah. This should not take very long. Really. There were =
+just a couple apps that came up as potential additions to our Business =
+Managed app scope that we had flagged that we wanted to review with you and=
+ Tim. Okay, let me get the list. There we go.
+
+3:22
+Yeah, I just pinged Tim, so hopefully but I can cover most of it that he =
+should be coming along to.
+
+3:29
+Cool. So the three were Mentor Graphics, =
+the Global Component Database and GERB Tool. So right now these were not in=
+ our inventory and they came up, I think from the work that we did on =
+Hornet and then also just in our analysis of potential additions and we =
+were trying to understand. I know that Pari had talked to Tim previously =
+about the library that's being built at and I'm not sure if Mentor Graphics=
+ and gerbtool are related to that or if it's just the Global Component =
+Database, but just trying to understand who's the owner. Is it related to =
+that library? And ultimately do we need to pull this into the inventory of =
+apps that we're tracking or not?
+
+4:18
+Yeah, and I mean we've been working =
+on this with the Redwood crew since last year, so I'm not sure why they're =
+coming back around again on these. Yeah, yeah, the, the listings there. =
+Grip tool is its own independent engineering tool. It does not store data =
+that if, if that's needed by that group, that's just a straight up local =
+install and they're going to have to purchase licensing. So there's nothing=
+ that I would say we need to migrate. There's no configuration. So that's a=
+ pretty simple one.
+
+4:59
+Lovely. Do we have licenses already for that? Are=
+ there actuation users of GerBTool? I wonder.
+
+5:09
+That one wasn't on my radar, but maybe because it wasn't something where we=
+ had migration activities around it that it might not have been on my radar=
+.
+
+5:17
+Yeah, I can tell you we would.
+
+5:20
+Have to ask the engineering =
+group.
+
+5:22
+Okay. Yeah, I can follow up with Colin Gillis too who's =
+working on the EN. The TSA EN01 costing and try and understand if GERB tool=
+, those licenses that are. If they're centrally provided are accounted for =
+there and if there are actuation users. Okay, so I might follow up with.
+
+5:52
+Yeah, I mean Colin's been involved with some of these questions since =
+last year. My original point of contact was Locksme and I think her. A lot =
+of her activities have been transferred to Colin since she left.
+
+6:07
+Yeah, yeah, that's my understanding as well. Hey, Jesse.
+
+6:13
+So the two are, you know, we've been working on since last year now. It's. =
+It's a little misleading the way they're listed. The global component =
+database is the electrical library, so that's one and the same. It actually=
+ is from Mentographics was the vendor. It's now Siemens. Siemens bought out=
+ Mentographics. So you'll see those used somewhat interchangeably. Menor =
+graphics being its own listing. That's a vendor name. And depending on who =
+you talk to, it's going to mean different applications because they have a =
+pretty massive suite of tools. So I don't know in that particular case =
+necessarily what group of tools they are referring to.
+
+7:04
+Yeah. And I can go back and look at the application inventory, but I think =
+that that makes sense. I did hear that this morning that it was acquired by=
+ Siemens. And if it's an app, and if it's not an app, it's a suite of tools=
+, then I don't think we need to track it outside of what we're already =
+tracking because we have those Siemens tools like Siemens nx, we have all =
+of those Siemens tools already accounted for. And so if this to you is not =
+like a one particular application that we're using, there's no need to add =
+it.
+
+7:39
+Yeah, this might be a little bit different than some of the other=
+ Siemens tools. I mean demographics is now Siemens eda, so it is part of =
+Siemens, but I know it. It generally ends up in its own bucket when we're =
+talking about tool divestitures or migrations. So I suspect this refers to =
+the client applications which, you know, we have various methods that those=
+ get deployed out. But again for client applications, the expectation with =
+the divestiture is they're going to have to do local installs and obtain =
+their own licensing prior to physical separation. That for the time being =
+they're still relying on our Software deployments for clients. And they're =
+still tapping into Collins licensing and that would continue during logical=
+ separation, but prior to physical they'd have to have local installs so =
+that they're no longer dependent on our deployment methods.
+
+8:49
+So day one.
+
+8:50
+Yeah, whatever deployment method Saffron wants. Right. At=
+ that point before physical separation, they need to have their own =
+installs.
+
+9:00
+Okay. And physical separation is like day two. Right. So =
+we're going to be logically separated for day one and then day two, the =
+physical separation. Yeah, they will obviously have to go there. Like =
+that's their own strategy.
+
+9:12
+Right.
+
+9:13
+Okay.
+
+9:15
+So that's between day one and day two. My understanding is that it's on =
+them to figure out, you know, tool deployment or local installations and =
+then I don't know who they're working with on, you know, figuring out =
+licensing. I think there were some questions around that of we may need to =
+at least provide what we believe they're going to have to go purchase for =
+licensing.
+
+9:37
+Okay. So I just checked my notes and I had a piece in =
+there that potentially this Mentor Graphics was referring to the VX tool 2.=
+6. So that would be the.
+
+9:50
+Those would be the client that go hand in =
+hand with that Global Component Database library. So yeah, that. And =
+they're going to get bumped up in a version when we bump up, we're going to=
+ carry them along with us. But those would be the client applications.
+
+10:06
+So this is the client applications for gcd.
+
+10:10
+Yes, got it.
+
+10:12
+Okay. And so with the library that's being built, will that replace =
+gcd?
+
+10:22
+Yeah, for them, yes. And we went back and forth a lot last year=
+, beginning of this year originally, I think the Laksme and the Redwood =
+team had signed up for a clone and cleanse of the existing system. But it's=
+ a server based system, it's got an Oracle database and it was way more =
+than what they need and way costlier than what anybody in the end wanted to=
+ do. So we are giving them a standalone database with an Excel file for =
+their parameters. We did this for Hornet already, so we have precedence for=
+ breaking off the system this way. So we're going to do the same situation =
+for Redwood that we did for Hornet and give them a standalone library.
+
+11:12
+Perfect. So I can lean on Pari for the specific details there. It =
+sounds like then Global Component Database, maybe we will track and just =
+track it as this. But there's really no action there. Right. Like that work=
+ is being done, like the execution.
+
+11:32
+Yeah, I know. Tim just joined. I=
+ had handed off the instructions that I created when I did Hornet I handed =
+off to Tim, he's following those instructions to create their standalone =
+library.
+
+11:45
+Sweet.
+
+11:45
+And that's what we want them to use for day =
+one. Logical separation is they would start pointing to that standalone =
+library and not our global master library that everyone in Collins, you =
+know, can get into. So we want, we want them to be separated out at that =
+point.
+
+12:07
+Got it. So Tim is doing that. Is that work being done there =
+like that building the database tracked in Capital Edge, do you know?
+
+12:21
+I don't know if it's tracked in Capital Edge. I mean, we have a =
+charge number we were given. I don't know if any of that's being tracked in=
+ Capital Edge though.
+
+12:32
+Okay. And so Global Component Database. Is =
+this like a light something that's licensed right now from Siemens or is =
+this.
+
+12:42
+Yes, the actual. The application name is Edmund. We had tagged=
+ it Global Component Database internally, but the EDM library is what they =
+call it.
+
+12:58
+Got it. And so this one I think we can pull into our =
+inventory and probably track as no action because they're going to be =
+provided with the library that Tim is building and then mentor graphics. =
+They will continue to maintain their current use of connecting to the new =
+database as the client for day one and then by day two, physical separation=
+, it's going to be whatever strategy they choose, get their own licenses, =
+install it on the new PC, whatever.
+
+13:37
+It wasn't clear to me. I haven't=
+ been asked at this point to provide any, you know, estimates for what =
+licensing they have to purchase. I'm not sure how that's being handled by =
+the divestiture group. And you know, what. What does Collins have to =
+provide to Safran to say this is what we think you need to go get.
+
+14:01
+That would be incredibly helpful if. I mean. Yeah, so that's sort of where =
+we're going next is we need to start to understand that one, make sure that=
+ those license costs were accounted for in the tsa because the TSA =
+revisions that are being under undergone right now I think reflects the =
+latest view of. Here's the apps that you will continue to use the Collins =
+license for after day one, between day one and day two. And I think that we=
+. Those counts would help us understand one, how many users there are and =
+where they are. I had Bangalore, I think said that there were Bangalore =
+folks here.
+
+14:50
+There's. Yeah, Bangalore Wolverhampton and a few in =
+Rockford.
+
+15:00
+Bangalore Wolverhampton. And let me write down Rockford. =
+Yes. Okay.
+
+15:09
+Those are the sites that I'm aware of.
+
+15:12
+Do you have an approximate off the top of your head? Do you know how Many =
+licenses we have.
+
+15:17
+Oh, well, it's our primary tool for all of Collins=
+ and so we have a huge number of licenses. I'd have to look at the actual =
+user count for those groups.
+
+15:30
+Yeah. And I think that that's the =
+question is we need to find out the user count for.
+
+15:34
+Yeah, they're not going to want to match the licensing we have.
+
+15:37
+Yeah, yeah, yeah, exactly. So, like the actuation user count. Exactly.
+
+15:45
+Again, it's a pretty massive tool suite. They may not even want all =
+of the features that we have. That group may use a. In Collins as a whole.
+
+15:59
+Okay, okay, yeah, that would make sense.
+
+16:03
+That would have to be validated with that divestiture group on what it is =
+they're going to require for licensing. I can put best estimate for that.
+
+16:17
+Okay, yeah, that would be really helpful if you could just take that =
+offline and check on. Yeah. For that group, the user counts and then what =
+the recommended approach might be for licensing and then we can validate =
+with the divestiture group.
+
+16:36
+And we're not. We're not charging back =
+specifically for each between day one and day two. We're not charging =
+Saffron like line item by line item for licensing. It's just kind of a big =
+bucket, right?
+
+16:53
+Yeah, exactly. It's a big bucket. The bucket. The =
+cost that they pay for the bucket is supposed to, in theory, reflect the =
+sum total cost of all of the apps that are provided under that bucket. And =
+they can't pick and choose. I want this app, I don't want this app, I want =
+whatever. So they'll get it sort of as is like as we have it now. And =
+that's the onus is on the legal team and our team to make sure that that =
+bucket is appropriately costed and sized according to what they're going to=
+ be given.
+
+17:26
+Okay.
+
+17:27
+Yeah.
+
+17:27
+And I know in between day one =
+and day two, they're going to be considered contractors. Correct.
+
+17:36
+So I don't think so. I know that was the approach with Hornet. I think that=
+ there are remaining employees and there's going to be just a flag put on =
+them in active directory that marks them as divested. So I think for Hornet=
+ it was. It did go that approach. And for this one, there's complicating =
+factors. Right. And I think that they are going to continue to be employees=
+.
+
+18:05
+Okay. That might actually, I know I've gotten some inquiries from =
+the vendor which I've deflected so far, but they were concerned about the =
+possibility of us acting as reseller. And as long as the divested users are=
+ still employees, that's not a concern. Or if they were onboarded =
+contractors, that's typically not a concern either. It's when we're acting =
+as unauthorized resellers of their licensing where they start getting a =
+little antsy. So we want to make sure that we're not violating any rules =
+there.
+
+18:56
+Yeah, absolutely. And one of my colleagues, Tim Patrick on =
+the business managed apps team has a regular cadence. I think he's actually=
+ on the call right now with the contracts team who I think can help =
+facilitate those conversations. Right. With Siemens, I think that there's =
+some notice that they typically send like a. And some type of consent that =
+gets sent to Siemens. Like basically outlining here's the structure, here's=
+ how we plan to do it.
+
+19:23
+That would be awesome if they actually. Yeah.=
+ If there was just some agreement, that would be even better.
+
+19:28
+Yeah, that's I think their whole job. So I'll make a note to add this to =
+the list of follow ups with Tim. If you can help me understand the user =
+counts, that would be really helpful just for like our records. And then =
+also I'm sure that the contracts team will ask that at some point too. And =
+we, I can make sure that I know it gets sent to them to make sure that this=
+ one gets on their radar because I'm sure that they have like Siemens =
+overall. But if this is like the eda.
+
+19:57
+Yeah, I would definitely make =
+sure they're included, including Siemens eda. Because even though they're =
+technically one company, you know, same situation that we've had where when=
+ they got bought out, you know, one company, but those two sides of the =
+house were treated a little bit differently.
+
+20:13
+Yeah.
+
+20:13
+So I want to make sure that's all included.
+
+20:16
+Yep, exactly. Exactly. =
+So I'll send a note and CC this team on that. And otherwise I think that =
+that pretty much covers the questions that I had GerBTool locally installed=
+ licenses. Do you know for GerBTool after day one they'll still use the =
+Collins licenses or can you help pull the user accounts for that group that=
+ might use it actuation folks?
+
+20:45
+Yeah. And I think if out on the =
+Redwood SharePoint sites is there users. I know that was being kept close =
+to the vest for a while. I think I saw a preliminary one at some point.
+
+21:02
+Oh, the census.
+
+21:04
+Yeah. Honestly the only way for me to know =
+would be if I asked the licensing team to run a report for give me the =
+users from the last year or two or you know, some, some date and bumped him=
+ up against that list.
+
+21:21
+Yeah, I, so I, I definitely have a Copy =
+that's been shared with our team and I just need to ask Tori probably and =
+Anthony about, I think, the sensitivity of that because I. I got the same =
+impression that it is sort of being held.
+
+21:40
+Yeah. The draft ones that =
+were being sent around, I know we had passwords and were under orders not =
+to share and. Yeah, and I understand.
+
+21:48
+Yeah. But I'm sure that there =
+would be no problem. And our team, we can do that, like, check too. If the =
+license team can pull the active users from the last year and we get that =
+list, I can bump it up against the latest census that I have from like a =
+month ago and we can get that list no problem, both for Mentor and for grr.=
+ But let me speak with the folks on my team about sharing this. I'm sure =
+that it's no problem with like Collins, folks who are read in and it sounds=
+ like you are. So let me see about what I can do for sharing that. But in =
+the meantime, if you can reach out to the licensing team and ask for a =
+report on mentor graphics and GRBTool, I think that that would help =
+jumpstart it. Okay, sweet. So those two will track and then Global =
+Component Database. I'm going to just chat with Tim and Anthony and Pari =
+and see what they think. I don't think it needs to be tracked because the =
+work is already being done. Tim, you're driving. It's going to replace GCD =
+or the Siemens EDM library. And ultimately that doesn't make a difference =
+as long as it's done before. As long as it's built by day one for actuation=
+, I don't think they care because Mentor Graphics will, like, plug right =
+into it. This is what you did for Hornet.
+
+23:09
+And day one, I know that =
+that's, you know, shifted. What's the current day one?
+
+23:16
+Yeah, yeah. So the current day one is May 31st.
+
+23:19
+Okay.
+
+23:21
+Is this something. I'm not sure what the timeline looks like, but is this =
+something that we were planning to have ready for May 31st?
+
+23:30
+Yeah, I don't think that's it. Tim's gotten pretty far with it already, so =
+I don't see that as being a problem.
+
+23:38
+Sweet. Yeah.
+
+23:39
+You can correct me if I'm. No, no, that's. So far everything.
+
+23:43
+I know everything's on track, so we're good. 52 days as leadership reminded=
+ us about 10 times. This morning we have our weekly leadership call. And I =
+heard the number 52 so many times, so it's definitely on the brain.
+
+23:59
+Yeah. Now that if we retrieve the license.
+
+24:02
+Info from the Siemens EDA=
+ side that might be pretty extensive because that's.
+
+24:10
+Tim, you and I can. We might need to chat offline and see how we can filter=
+ that because otherwise it's, it's gonna be.
+
+24:16
+Yeah, my creature. Break that up between locations or just.
+
+24:23
+Pick a few choice licenses because there's so many license features. Right.=
+ Have to pick some. Some specific license features.
+
+24:34
+Okay. Okay. And I'll see about getting you a copy of the census that I have=
+, if that would help at all.
+
+24:43
+That my. The last one I saw. So it's =
+entirely possible that names have shifted since then?
+
+24:54
+Yeah, I think somewhat. I'm not sure how much shifting has gone on. Like I =
+think here and there probably, but probably not a whole, whole lot. Cool. =
+Okie dokie. Well, I've got these actions. I'll make sure that you're cc'd =
+on the email to the contracts team. Do you know who the Vendor is.
+
+25:18
+For GrBTool wise software, I believe.
+
+25:23
+Let me double check. I =
+actually should have that gcd.
+
+25:29
+I'm just going to go verifying that.
+
+25:30
+But I'm pretty sure it's WWISE because then, yeah, for wwise, I can =
+get that put onto the contracts team's radar as well. At the same time as.
+
+25:48
+Yes, it's wyse W I S E WYSE Software.
+
+25:52
+Perfect. Okay, so I'll =
+send an email to them about Siemens EDA and Wise Software Girb tool that we=
+ need to get that consent agreement done for and then GCD we won't track. =
+Christine, you and Tim can work on pulling the user accounts, the actuation=
+ user accounts for Mentor Graphics and Grub tool if possible. And I'm going=
+ to follow up on the census and sharing that. Okay, sweet.
+
+26:21
+And those, I mean the user counts and the licensing, that's basically for =
+Saffron to go make their decisions before day two. It's not really an =
+action that we're going to use with it, but they're going to go do their =
+procurements.
+
+26:36
+Yeah, yeah, I think so. I do think that on our side =
+the business Managed Ask team will be tasked with. Oh, I'm sorry.
+
+26:46
+Breaking up a little bit.
+
+26:47
+Yeah, hold on one second. So on our side, =
+I think we might be tasked with verifying that all of the licenses that are=
+ going to be provided under TSA have been accounted for in those TSA =
+costing efforts. So for us I think it's mostly just a verification that =
+they were accounted for and part of those buckets. And then for Saffron. =
+Yeah, it will help them between day one and day two make the decision of =
+what they want to do, but I think that that's less important. It's. We have=
+ to protect, like Collins and ensure that we've accounted for those if it's=
+ something that we're paying for.
+
+27:30
+If the vendor pushes again on =
+contacts, me or. We talked to him about technical issues, too, regarding =
+licensing for the divestiture. Is there somebody on your contracts team =
+that I can have them go to? Because I'm not sure I'm comfortable fielding =
+those.
+
+27:49
+Absolutely. Let me get you a name. I'll ping you a name on =
+teams on Collins. And let me get you a name because there's a few and =
+there's someone on our team that's dedicated interfacing with them. So I'll=
+ get you a name, and I'll ping it to you. Okay, perfect.
+
+28:05
+Yeah. I don't want to misspeak and say something different than what =
+they're talking to the vendors about.
+
+28:13
+And it's one thing off your =
+plate, you know, like, it's one less thing to worry about.
+
+28:17
+Awesome. Okay.
+
+28:18
+Sick. Okay. Well, Christine, Tim, Jesse, thank you so=
+ much for joining. I'll send out some notes, and we'll keep pushing. I =
+think that this sort of answers the questions, but if anything else, I'll =
+just probably ping you. Okay, cool. All right, thank you, Matt. Thank you =
+all so much. I appreciate it. All right, thanks.
+
+28:36
+Bye.
+----_NmP-32eb98469810c3da-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><div style=3D"font-family:-apple-system, =
+BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, =
+sans-serif;margin:0;padding:0;background-color:#f4f4f4"><div =
+style=3D"width:100%;max-width:604px;margin:0 auto;background-color:#ffffff"=
+><div style=3D"background-image:url(https://upcdn.io/W142iax/raw/email/bann=
+er_clean.png);background-size:cover;background-position:center;width:604px;=
+height:297px;margin:0 auto;position:relative"><table cellPadding=3D"0" =
+cellSpacing=3D"0" border=3D"0" width=3D"100%" height=3D"100%"><tr><td =
+valign=3D"center" align=3D"center" style=3D"padding:0"><img =
+src=3D"https://upcdn.io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI =
+Logo" style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><=
+h1 style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Application=
+ Inventory Review and Licensing Coordination Meeting</h1></td></tr></table>=
+</div><div style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/DD562C37-4514-4652-BC87-6E0CD63E696A?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View and Edit Your session on the Wave Web App</a></div><div =
+style=3D"text-align:center;margin-bottom:36px"></div><div =
+style=3D"background-color:#ffffff;padding:28px;border-radius:12px;border:1p=
+x solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 =
+rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex;align-i=
+tems:center;gap:8px"><span style=3D"font-size:24px">=F0=9F=93=9D</span>Summ=
+ary</h3><div style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h1 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2.5rem">Meeting Summary</h1><h2 style=3D"font-weight:500;padd=
+ing-top:20px;font-size:2rem">Main Topics Discussed</h2><h3 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">1. Application=
+ Inventory Review</h3><ul>
+<li><strong style=3D"font-weight:bold">Applicati=
+ons Considered</strong>: Mentor Graphics, Global Component Database (GCD), =
+and GERB Tool.</li>
+<li><strong style=3D"font-weight:bold">Current =
+Status</strong>: These applications were not previously in the inventory. =
+They emerged from work on the Hornet project and subsequent potential =
+additions analysis.</li>
+<li><strong style=3D"font-weight:bold">Ownership =
+Clarification</strong>: <ul>
+<li><strong style=3D"font-weight:bold">Global =
+Component Database</strong>: Associated with Mentor Graphics, now part of =
+Siemens EDA after acquisition.</li>
+<li><strong style=3D"font-weight:bold">=
+GERB Tool</strong>: An independent engineering tool requiring local =
+installation and licensing.</li>
+</ul>
+</li>
+</ul>
+<h3 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">2. GERB Tool =
+Licensing and Usage</h3><ul>
+<li><strong style=3D"font-weight:bold">Install=
+ation and Licensing</strong>: GERB Tool requires a local installation with =
+licenses that need to be purchased by the engineering group.</li>
+<li><strong style=3D"font-weight:bold">Current Licensing Status</strong>: =
+<ul>
+<li>Unknown if licenses are already acquired.</li>
+<li>Need to determine the number of active users.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Action Plan</strong>: <ul>
+<li>Follow up with Colin Gillis on GERB Tool licensing and active users.=
+</li>
+<li>Verify if licenses are accounted for in the TSA EN01 costing.=
+</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-=
+size:1.75rem">3. Mentor Graphics and Global Component Database =
+(GCD)</h3><ul>
+<li><strong style=3D"font-weight:bold">Vendor =
+Information</strong>: Mentor Graphics, now Siemens EDA, offers a suite of =
+tools.</li>
+<li><strong style=3D"font-weight:bold">Application =
+Tracking</strong>: <ul>
+<li>Siemens tools like Siemens NX are already =
+tracked.</li>
+<li>GCD referred internally as &quot;Edmund.&quot;</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Replacement Strategy</strong>:=
+ <ul>
+<li>Creating a standalone database with an Excel file for parameters,=
+ similar to the Hornet project.</li>
+<li>Tim Mullen is responsible for =
+developing the standalone library.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Impact on Inventory</strong>: <ul>
+<li>No need to track GCD separately as it will be replaced by the =
+standalone library before Day One.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">4. =
+Divestiture Process (Day One and Day Two)</h3><ul>
+<li><strong =
+style=3D"font-weight:bold">Key Dates</strong>:<ul>
+<li><strong =
+style=3D"font-weight:bold">Day One</strong>: May 31st =E2=80=93 Logical =
+separation begins.</li>
+<li><strong style=3D"font-weight:bold">Day =
+Two</strong>: Physical separation follows after Day One.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Separation Phases</strong>:<ul>
+<li><strong style=3D"font-weight:bold">Day One</strong>: Users redirect to =
+the standalone library, ensuring logical separation from the global master =
+library.</li>
+<li><strong style=3D"font-weight:bold">Day Two</strong>: =
+Users must perform local installations and obtain individual licenses, =
+ensuring complete physical separation.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Licensing Management</strong>:<ul>
+<li>Licensing costs managed via a &quot;bucket&quot; in TSA costing, =
+reflecting the total cost of provided applications.</li>
+<li>Ensuring Collins accounts for these licensing costs accurately.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1=
+.75rem">5. Coordination with Contracts and Licensing Teams</h3><ul>
+<li><strong style=3D"font-weight:bold">Consent Agreements</strong>:<ul>
+<li>Need for consent agreements with Siemens EDA and WYSE Software.</li>
+<li>Tim Patrick is liaising with the contracts team to facilitate these =
+agreements.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Licensi=
+ng Verification</strong>:<ul>
+<li>Confirm that all licenses under TSA are =
+appropriately accounted for.</li>
+<li>Avoid unauthorized reseller issues by=
+ ensuring divested users remain employees or authorized contractors.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">User Count =
+Verification</strong>:<ul>
+<li>Determine the number of active users across =
+locations: Bangalore, Wolverhampton, and Rockford.</li>
+<li>Collaborate with the licensing team to obtain accurate user counts.=
+</li>
+</ul>
+</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:20px;font-=
+size:2rem">Action Items</h2><ul>
+<li><p><strong style=3D"font-weight:bold">=
+Christine</strong>:</p>
+<ul>
+<li>Collaborate with Tim and Anthony to =
+extract actuation user accounts for Mentor Graphics and GERB Tool.</li>
+<li>Follow up with Colin Gillis regarding GERB Tool licensing and active =
+users.</li>
+<li>Request a report from the licensing team on Mentor Graphics=
+ and GERB Tool user counts.</li>
+<li>Reach out to the licensing team for =
+user counts and share the latest census data.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Matt</strong>:</p>
+<ul>
+<li>Send an email to the contracts team regarding consent agreements for =
+Siemens EDA and WYSE Software.</li>
+<li>CC relevant teams to ensure all =
+stakeholders are informed.</li>
+<li>Coordinate with Tim on user counts and =
+necessary licensing information.</li>
+<li>Ensure the contracts team is =
+aware of and addresses consent needs for Siemens EDA and WYSE Software.=
+</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Tim</strong>:</=
+p>
+<ul>
+<li>Continue developing the standalone library to replace GCD.</li>
+<li>Work with Christine and Anthony to provide user counts and licensing =
+information.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Ant=
+hony and Pari</strong>:</p>
+<ul>
+<li>Assist in validating the application =
+inventory and provide specific details as needed.</li>
+</ul>
+</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Follow-up =
+Points</h2><ul>
+<li><p><strong style=3D"font-weight:bold">Verification of =
+Licensing Costs</strong>:</p>
+<ul>
+<li>Ensure all licenses provided under =
+TSA are accurately reflected in the costing efforts.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Consent Agreements</strong>:</p>
+<ul>
+<li>Finalize consent agreements with Siemens EDA and WYSE Software =
+through the contracts team.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">User Count and Licensing Details</strong>:</p>
+<ul>
+<li>Obtain and verify the number of active users for Mentor Graphics =
+and GERB Tool across all locations.</li>
+<li>Provide this information to =
+the contracts and licensing teams for accurate cost allocation.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Census Data =
+Sharing</strong>:</p>
+<ul>
+<li>Share the latest census data with Christine =
+to assist in determining active user counts.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Vendor Inquiries</strong>:</p>
+<ul>
+<li>Redirect any vendor inquiries regarding licensing and technical =
+issues to the contracts team to avoid unauthorized reseller concerns.</li>
+</ul>
+</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2=
+rem">Key Dates and Figures</h2><ul>
+<li><strong style=3D"font-weight:bold">=
+Day One</strong>: May 31st =E2=80=93 Logical separation commences.</li>
+<li><strong style=3D"font-weight:bold">Divestiture Sites</strong>: <ul>
+<li>Bangalore</li>
+<li>Wolverhampton</li>
+<li>Rockford</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Licensing Locations</strong>:<ul>
+<li>Users in Bangalore, Wolverhampton, and Rockford require licensing =
+verification.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Curre=
+nt Timeline</strong>:<ul>
+<li>52 days until May 31st, as highlighted in the=
+ weekly leadership call.</li>
+</ul>
+</li>
+</ul>
+</div></div></div><div =
+style=3D"background-color:#ffffff;padding:28px;border-radius:12px;border:1p=
+x solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 =
+rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-size:20px;font-weight:=
+600;margin-top:0;margin-bottom:20px;display:flex;align-items:center;gap:8px=
+"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription<=
+/h3><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</span><s=
+pan style=3D"color:#64748b;font-size:14px">0:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It, it&#x27;s. It, =
+it&#x27;s.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">2:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Hey, Christine, can =
+you hear me?</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</span><s=
+pan style=3D"color:#64748b;font-size:14px">2:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Hey. Hey, Christine.=
+ Hey, Christine. Yeah, it&#x27;s a little muffled, but I can&#x27;t hear =
+you.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">2:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That looks better.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</span><s=
+pan style=3D"color:#64748b;font-size:14px">2:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, =
+definitely.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">2:21</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right. Are we =
+waiting for anybody else or is this just me for this one?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Christine</span><span style=3D"color:#64748b;font-size:14=
+px">2:25</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">I think it will be just you originally. So I got your name from Pari =
+Sankoya and Anthony Lockley, colleagues here. We&#x27;re working on the =
+Business Managed Apps team. I&#x27;m not sure if you have worked with them,=
+ but I think that it is our first time meeting and let me just double check=
+ and see. I&#x27;m not sure if Tim is able to join, but Tim Mullen I think =
+was the other person.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><s=
+pan style=3D"color:#64748b;font-size:14px">2:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, his =
+counterpart of mine. I will see if he&#x27;s available.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Christine</span><span style=3D"color:#64748b;font-size:14=
+px">2:59</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">Yeah. This should not take very long. Really. There were just a =
+couple apps that came up as potential additions to our Business Managed app=
+ scope that we had flagged that we wanted to review with you and Tim. Okay,=
+ let me get the list. There we go.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</=
+span><span style=3D"color:#64748b;font-size:14px">3:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I just pinged =
+Tim, so hopefully but I can cover most of it that he should be coming along=
+ to.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</span><s=
+pan style=3D"color:#64748b;font-size:14px">3:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Cool. So the three =
+were Mentor Graphics, the Global Component Database and GERB Tool. So right=
+ now these were not in our inventory and they came up, I think from the =
+work that we did on Hornet and then also just in our analysis of potential =
+additions and we were trying to understand. I know that Pari had talked to =
+Tim previously about the library that&#x27;s being built at and I&#x27;m =
+not sure if Mentor Graphics and gerbtool are related to that or if =
+it&#x27;s just the Global Component Database, but just trying to understand=
+ who&#x27;s the owner. Is it related to that library? And ultimately do we =
+need to pull this into the inventory of apps that we&#x27;re tracking or =
+not?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">4:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, and I mean =
+we&#x27;ve been working on this with the Redwood crew since last year, so =
+I&#x27;m not sure why they&#x27;re coming back around again on these. Yeah,=
+ yeah, the, the listings there. Grip tool is its own independent =
+engineering tool. It does not store data that if, if that&#x27;s needed by =
+that group, that&#x27;s just a straight up local install and they&#x27;re =
+going to have to purchase licensing. So there&#x27;s nothing that I would =
+say we need to migrate. There&#x27;s no configuration. So that&#x27;s a =
+pretty simple one.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</sp=
+an><span style=3D"color:#64748b;font-size:14px">4:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Lovely. Do we have =
+licenses already for that? Are there actuation users of GerBTool? I wonder.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">5:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That one wasn&#x27;t=
+ on my radar, but maybe because it wasn&#x27;t something where we had =
+migration activities around it that it might not have been on my radar.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</span><s=
+pan style=3D"color:#64748b;font-size:14px">5:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I can tell you=
+ we would.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">5:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Have to ask the =
+engineering group.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</sp=
+an><span style=3D"color:#64748b;font-size:14px">5:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. Yeah, I can =
+follow up with Colin Gillis too who&#x27;s working on the EN. The TSA EN01 =
+costing and try and understand if GERB tool, those licenses that are. If =
+they&#x27;re centrally provided are accounted for there and if there are =
+actuation users. Okay, so I might follow up with.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">5=
+:52</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, I mean Colin&#x27;s been involved with some of these questions =
+since last year. My original point of contact was Locksme and I think her. =
+A lot of her activities have been transferred to Colin since she left.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</span><s=
+pan style=3D"color:#64748b;font-size:14px">6:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, =
+that&#x27;s my understanding as well. Hey, Jesse.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">6=
+:13</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So the two are, you know, we&#x27;ve been working on since last year now=
+. It&#x27;s. It&#x27;s a little misleading the way they&#x27;re listed. The=
+ global component database is the electrical library, so that&#x27;s one =
+and the same. It actually is from Mentographics was the vendor. It&#x27;s =
+now Siemens. Siemens bought out Mentographics. So you&#x27;ll see those =
+used somewhat interchangeably. Menor graphics being its own listing. =
+That&#x27;s a vendor name. And depending on who you talk to, it&#x27;s =
+going to mean different applications because they have a pretty massive =
+suite of tools. So I don&#x27;t know in that particular case necessarily =
+what group of tools they are referring to.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Christine</span><span style=3D"color:#64748b;font-size:14=
+px">7:04</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">Yeah. And I can go back and look at the application inventory, but I =
+think that that makes sense. I did hear that this morning that it was =
+acquired by Siemens. And if it&#x27;s an app, and if it&#x27;s not an app, =
+it&#x27;s a suite of tools, then I don&#x27;t think we need to track it =
+outside of what we&#x27;re already tracking because we have those Siemens =
+tools like Siemens nx, we have all of those Siemens tools already accounted=
+ for. And so if this to you is not like a one particular application that =
+we&#x27;re using, there&#x27;s no need to add it.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">7=
+:39</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, this might be a little bit different than some of the other =
+Siemens tools. I mean demographics is now Siemens eda, so it is part of =
+Siemens, but I know it. It generally ends up in its own bucket when =
+we&#x27;re talking about tool divestitures or migrations. So I suspect this=
+ refers to the client applications which, you know, we have various methods=
+ that those get deployed out. But again for client applications, the =
+expectation with the divestiture is they&#x27;re going to have to do local =
+installs and obtain their own licensing prior to physical separation. That =
+for the time being they&#x27;re still relying on our Software deployments =
+for clients. And they&#x27;re still tapping into Collins licensing and that=
+ would continue during logical separation, but prior to physical =
+they&#x27;d have to have local installs so that they&#x27;re no longer =
+dependent on our deployment methods.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Christine</span><span style=3D"color:#64748b;font-size:14=
+px">8:49</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">So day one.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><s=
+pan style=3D"color:#64748b;font-size:14px">8:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, whatever =
+deployment method Saffron wants. Right. At that point before physical =
+separation, they need to have their own installs.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Christine</span><span style=3D"color:#64748b;font-size:14=
+px">9:00</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">Okay. And physical separation is like day two. Right. So we&#x27;re =
+going to be logically separated for day one and then day two, the physical =
+separation. Yeah, they will obviously have to go there. Like that&#x27;s =
+their own strategy.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><s=
+pan style=3D"color:#64748b;font-size:14px">9:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</span><s=
+pan style=3D"color:#64748b;font-size:14px">9:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">9:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So that&#x27;s =
+between day one and day two. My understanding is that it&#x27;s on them to =
+figure out, you know, tool deployment or local installations and then I =
+don&#x27;t know who they&#x27;re working with on, you know, figuring out =
+licensing. I think there were some questions around that of we may need to =
+at least provide what we believe they&#x27;re going to have to go purchase =
+for licensing.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</span><s=
+pan style=3D"color:#64748b;font-size:14px">9:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. So I just =
+checked my notes and I had a piece in there that potentially this Mentor =
+Graphics was referring to the VX tool 2.6. So that would be the.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">9:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Those would be the =
+client that go hand in hand with that Global Component Database library. So=
+ yeah, that. And they&#x27;re going to get bumped up in a version when we =
+bump up, we&#x27;re going to carry them along with us. But those would be =
+the client applications.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</sp=
+an><span style=3D"color:#64748b;font-size:14px">10:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So this is the =
+client applications for gcd.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><=
+span style=3D"color:#64748b;font-size:14px">10:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes, got it.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</span><s=
+pan style=3D"color:#64748b;font-size:14px">10:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. And so with =
+the library that&#x27;s being built, will that replace gcd?</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">=
+10:22</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, for them, yes. And we went back and forth a lot last year, =
+beginning of this year originally, I think the Laksme and the Redwood team =
+had signed up for a clone and cleanse of the existing system. But it&#x27;s=
+ a server based system, it&#x27;s got an Oracle database and it was way =
+more than what they need and way costlier than what anybody in the end =
+wanted to do. So we are giving them a standalone database with an Excel =
+file for their parameters. We did this for Hornet already, so we have =
+precedence for breaking off the system this way. So we&#x27;re going to do =
+the same situation for Redwood that we did for Hornet and give them a =
+standalone library.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</sp=
+an><span style=3D"color:#64748b;font-size:14px">11:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Perfect. So I can =
+lean on Pari for the specific details there. It sounds like then Global =
+Component Database, maybe we will track and just track it as this. But =
+there&#x27;s really no action there. Right. Like that work is being done, =
+like the execution.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><s=
+pan style=3D"color:#64748b;font-size:14px">11:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I know. Tim =
+just joined. I had handed off the instructions that I created when I did =
+Hornet I handed off to Tim, he&#x27;s following those instructions to =
+create their standalone library.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christi=
+ne</span><span style=3D"color:#64748b;font-size:14px">11:45</span></div><di=
+v style=3D"color:#475569;font-size:16px;line-height:1.6">Sweet.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">11:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And that&#x27;s what=
+ we want them to use for day one. Logical separation is they would start =
+pointing to that standalone library and not our global master library that =
+everyone in Collins, you know, can get into. So we want, we want them to be=
+ separated out at that point.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christi=
+ne</span><span style=3D"color:#64748b;font-size:14px">12:07</span></div><di=
+v style=3D"color:#475569;font-size:16px;line-height:1.6">Got it. So Tim is =
+doing that. Is that work being done there like that building the database =
+tracked in Capital Edge, do you know?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">1=
+2:21</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I don&#x27;t know if it&#x27;s tracked in Capital Edge. I mean, we have =
+a charge number we were given. I don&#x27;t know if any of that&#x27;s =
+being tracked in Capital Edge though.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Christine</span><span style=3D"color:#64748b;font-size:14=
+px">12:32</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">Okay. And so Global Component Database. Is this like a light =
+something that&#x27;s licensed right now from Siemens or is this.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">12:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes, the actual. The=
+ application name is Edmund. We had tagged it Global Component Database =
+internally, but the EDM library is what they call it.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Christine</span><span style=3D"color:#64748b;font-size:14=
+px">12:58</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">Got it. And so this one I think we can pull into our inventory and =
+probably track as no action because they&#x27;re going to be provided with =
+the library that Tim is building and then mentor graphics. They will =
+continue to maintain their current use of connecting to the new database as=
+ the client for day one and then by day two, physical separation, it&#x27;s=
+ going to be whatever strategy they choose, get their own licenses, install=
+ it on the new PC, whatever.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><=
+span style=3D"color:#64748b;font-size:14px">13:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It wasn&#x27;t clear=
+ to me. I haven&#x27;t been asked at this point to provide any, you know, =
+estimates for what licensing they have to purchase. I&#x27;m not sure how =
+that&#x27;s being handled by the divestiture group. And you know, what. =
+What does Collins have to provide to Safran to say this is what we think =
+you need to go get.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</sp=
+an><span style=3D"color:#64748b;font-size:14px">14:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That would be =
+incredibly helpful if. I mean. Yeah, so that&#x27;s sort of where =
+we&#x27;re going next is we need to start to understand that one, make sure=
+ that those license costs were accounted for in the tsa because the TSA =
+revisions that are being under undergone right now I think reflects the =
+latest view of. Here&#x27;s the apps that you will continue to use the =
+Collins license for after day one, between day one and day two. And I think=
+ that we. Those counts would help us understand one, how many users there =
+are and where they are. I had Bangalore, I think said that there were =
+Bangalore folks here.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><s=
+pan style=3D"color:#64748b;font-size:14px">14:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">There&#x27;s. Yeah, =
+Bangalore Wolverhampton and a few in Rockford.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Christine</span><span style=3D"color:#64748b;font-size:14=
+px">15:00</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">Bangalore Wolverhampton. And let me write down Rockford. Yes. Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">15:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Those are the sites =
+that I&#x27;m aware of.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</sp=
+an><span style=3D"color:#64748b;font-size:14px">15:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Do you have an =
+approximate off the top of your head? Do you know how Many licenses we have=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">15:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, well, it&#x27;s =
+our primary tool for all of Collins and so we have a huge number of =
+licenses. I&#x27;d have to look at the actual user count for those groups.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</span><s=
+pan style=3D"color:#64748b;font-size:14px">15:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. And I think =
+that that&#x27;s the question is we need to find out the user count for.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">15:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, they&#x27;re =
+not going to want to match the licensing we have.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Christine</span><span style=3D"color:#64748b;font-size:14=
+px">15:37</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">Yeah, yeah, yeah, exactly. So, like the actuation user count. =
+Exactly.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">15:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Again, it&#x27;s a =
+pretty massive tool suite. They may not even want all of the features that =
+we have. That group may use a. In Collins as a whole.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Christine</span><span style=3D"color:#64748b;font-size:14=
+px">15:59</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">Okay, okay, yeah, that would make sense.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">1=
+6:03</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">That would have to be validated with that divestiture group on what it =
+is they&#x27;re going to require for licensing. I can put best estimate for=
+ that.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</span><s=
+pan style=3D"color:#64748b;font-size:14px">16:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, yeah, that =
+would be really helpful if you could just take that offline and check on. =
+Yeah. For that group, the user counts and then what the recommended =
+approach might be for licensing and then we can validate with the =
+divestiture group.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><s=
+pan style=3D"color:#64748b;font-size:14px">16:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And we&#x27;re not. =
+We&#x27;re not charging back specifically for each between day one and day =
+two. We&#x27;re not charging Saffron like line item by line item for =
+licensing. It&#x27;s just kind of a big bucket, right?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Christine</span><span style=3D"color:#64748b;font-size:14=
+px">16:53</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">Yeah, exactly. It&#x27;s a big bucket. The bucket. The cost that =
+they pay for the bucket is supposed to, in theory, reflect the sum total =
+cost of all of the apps that are provided under that bucket. And they =
+can&#x27;t pick and choose. I want this app, I don&#x27;t want this app, I =
+want whatever. So they&#x27;ll get it sort of as is like as we have it now.=
+ And that&#x27;s the onus is on the legal team and our team to make sure =
+that that bucket is appropriately costed and sized according to what =
+they&#x27;re going to be given.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</s=
+pan><span style=3D"color:#64748b;font-size:14px">17:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</span><s=
+pan style=3D"color:#64748b;font-size:14px">17:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">17:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And I know in =
+between day one and day two, they&#x27;re going to be considered =
+contractors. Correct.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</sp=
+an><span style=3D"color:#64748b;font-size:14px">17:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So I don&#x27;t =
+think so. I know that was the approach with Hornet. I think that there are =
+remaining employees and there&#x27;s going to be just a flag put on them in=
+ active directory that marks them as divested. So I think for Hornet it was=
+. It did go that approach. And for this one, there&#x27;s complicating =
+factors. Right. And I think that they are going to continue to be employees=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">18:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. That might =
+actually, I know I&#x27;ve gotten some inquiries from the vendor which =
+I&#x27;ve deflected so far, but they were concerned about the possibility =
+of us acting as reseller. And as long as the divested users are still =
+employees, that&#x27;s not a concern. Or if they were onboarded contractors=
+, that&#x27;s typically not a concern either. It&#x27;s when we&#x27;re =
+acting as unauthorized resellers of their licensing where they start =
+getting a little antsy. So we want to make sure that we&#x27;re not =
+violating any rules there.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</sp=
+an><span style=3D"color:#64748b;font-size:14px">18:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, absolutely. =
+And one of my colleagues, Tim Patrick on the business managed apps team has=
+ a regular cadence. I think he&#x27;s actually on the call right now with =
+the contracts team who I think can help facilitate those conversations. =
+Right. With Siemens, I think that there&#x27;s some notice that they =
+typically send like a. And some type of consent that gets sent to Siemens. =
+Like basically outlining here&#x27;s the structure, here&#x27;s how we plan=
+ to do it.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">19:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That would be =
+awesome if they actually. Yeah. If there was just some agreement, that =
+would be even better.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</sp=
+an><span style=3D"color:#64748b;font-size:14px">19:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, that&#x27;s I =
+think their whole job. So I&#x27;ll make a note to add this to the list of =
+follow ups with Tim. If you can help me understand the user counts, that =
+would be really helpful just for like our records. And then also I&#x27;m =
+sure that the contracts team will ask that at some point too. And we, I can=
+ make sure that I know it gets sent to them to make sure that this one gets=
+ on their radar because I&#x27;m sure that they have like Siemens overall. =
+But if this is like the eda.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><=
+span style=3D"color:#64748b;font-size:14px">19:57</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I would =
+definitely make sure they&#x27;re included, including Siemens eda. Because =
+even though they&#x27;re technically one company, you know, same situation =
+that we&#x27;ve had where when they got bought out, you know, one company, =
+but those two sides of the house were treated a little bit differently.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</span><s=
+pan style=3D"color:#64748b;font-size:14px">20:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">20:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So I want to make =
+sure that&#x27;s all included.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christi=
+ne</span><span style=3D"color:#64748b;font-size:14px">20:16</span></div><di=
+v style=3D"color:#475569;font-size:16px;line-height:1.6">Yep, exactly. =
+Exactly. So I&#x27;ll send a note and CC this team on that. And otherwise I=
+ think that that pretty much covers the questions that I had GerBTool =
+locally installed licenses. Do you know for GerBTool after day one =
+they&#x27;ll still use the Collins licenses or can you help pull the user =
+accounts for that group that might use it actuation folks?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">2=
+0:45</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. And I think if out on the Redwood SharePoint sites is there users.=
+ I know that was being kept close to the vest for a while. I think I saw a =
+preliminary one at some point.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christi=
+ne</span><span style=3D"color:#64748b;font-size:14px">21:02</span></div><di=
+v style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, the census.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">21:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Honestly the =
+only way for me to know would be if I asked the licensing team to run a =
+report for give me the users from the last year or two or you know, some, =
+some date and bumped him up against that list.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Christine</span><span style=3D"color:#64748b;font-size:14=
+px">21:21</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">Yeah, I, so I, I definitely have a Copy that&#x27;s been shared with=
+ our team and I just need to ask Tori probably and Anthony about, I think, =
+the sensitivity of that because I. I got the same impression that it is =
+sort of being held.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><s=
+pan style=3D"color:#64748b;font-size:14px">21:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. The draft ones=
+ that were being sent around, I know we had passwords and were under orders=
+ not to share and. Yeah, and I understand.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Christine</span><span style=3D"color:#64748b;font-size:14=
+px">21:48</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">Yeah. But I&#x27;m sure that there would be no problem. And our team=
+, we can do that, like, check too. If the license team can pull the active =
+users from the last year and we get that list, I can bump it up against the=
+ latest census that I have from like a month ago and we can get that list =
+no problem, both for Mentor and for grr. But let me speak with the folks on=
+ my team about sharing this. I&#x27;m sure that it&#x27;s no problem with =
+like Collins, folks who are read in and it sounds like you are. So let me =
+see about what I can do for sharing that. But in the meantime, if you can =
+reach out to the licensing team and ask for a report on mentor graphics and=
+ GRBTool, I think that that would help jumpstart it. Okay, sweet. So those =
+two will track and then Global Component Database. I&#x27;m going to just =
+chat with Tim and Anthony and Pari and see what they think. I don&#x27;t =
+think it needs to be tracked because the work is already being done. Tim, =
+you&#x27;re driving. It&#x27;s going to replace GCD or the Siemens EDM =
+library. And ultimately that doesn&#x27;t make a difference as long as =
+it&#x27;s done before. As long as it&#x27;s built by day one for actuation,=
+ I don&#x27;t think they care because Mentor Graphics will, like, plug =
+right into it. This is what you did for Hornet.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">2=
+3:09</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">And day one, I know that that&#x27;s, you know, shifted. What&#x27;s the=
+ current day one?</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</sp=
+an><span style=3D"color:#64748b;font-size:14px">23:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah. So the =
+current day one is May 31st.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><=
+span style=3D"color:#64748b;font-size:14px">23:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</span><s=
+pan style=3D"color:#64748b;font-size:14px">23:21</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Is this something. =
+I&#x27;m not sure what the timeline looks like, but is this something that =
+we were planning to have ready for May 31st?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">2=
+3:30</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, I don&#x27;t think that&#x27;s it. Tim&#x27;s gotten pretty far =
+with it already, so I don&#x27;t see that as being a problem.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</span><s=
+pan style=3D"color:#64748b;font-size:14px">23:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sweet. Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">23:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You can correct me =
+if I&#x27;m. No, no, that&#x27;s. So far everything.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Christine</span><span style=3D"color:#64748b;font-size:14=
+px">23:43</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">I know everything&#x27;s on track, so we&#x27;re good. 52 days as =
+leadership reminded us about 10 times. This morning we have our weekly =
+leadership call. And I heard the number 52 so many times, so it&#x27;s =
+definitely on the brain.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><s=
+pan style=3D"color:#64748b;font-size:14px">23:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Now that if we=
+ retrieve the license.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</sp=
+an><span style=3D"color:#64748b;font-size:14px">24:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Info from the =
+Siemens EDA side that might be pretty extensive because that&#x27;s.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">24:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Tim, you and I can. =
+We might need to chat offline and see how we can filter that because =
+otherwise it&#x27;s, it&#x27;s gonna be.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Christine</span><span style=3D"color:#64748b;font-size:14=
+px">24:16</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">Yeah, my creature. Break that up between locations or just.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">24:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Pick a few choice =
+licenses because there&#x27;s so many license features. Right. Have to pick=
+ some. Some specific license features.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Christine</span><span style=3D"color:#64748b;font-size:14=
+px">24:34</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">Okay. Okay. And I&#x27;ll see about getting you a copy of the census=
+ that I have, if that would help at all.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">2=
+4:43</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">That my. The last one I saw. So it&#x27;s entirely possible that names =
+have shifted since then?</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</sp=
+an><span style=3D"color:#64748b;font-size:14px">24:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I think =
+somewhat. I&#x27;m not sure how much shifting has gone on. Like I think =
+here and there probably, but probably not a whole, whole lot. Cool. Okie =
+dokie. Well, I&#x27;ve got these actions. I&#x27;ll make sure that =
+you&#x27;re cc&#x27;d on the email to the contracts team. Do you know who =
+the Vendor is.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">25:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">For GrBTool wise =
+software, I believe.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</sp=
+an><span style=3D"color:#64748b;font-size:14px">25:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Let me double check.=
+ I actually should have that gcd.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</s=
+pan><span style=3D"color:#64748b;font-size:14px">25:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m just going =
+to go verifying that.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</sp=
+an><span style=3D"color:#64748b;font-size:14px">25:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">But I&#x27;m pretty =
+sure it&#x27;s WWISE because then, yeah, for wwise, I can get that put onto=
+ the contracts team&#x27;s radar as well. At the same time as.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">25:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes, it&#x27;s wyse =
+W I S E WYSE Software.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</sp=
+an><span style=3D"color:#64748b;font-size:14px">25:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Perfect. Okay, so =
+I&#x27;ll send an email to them about Siemens EDA and Wise Software Girb =
+tool that we need to get that consent agreement done for and then GCD we =
+won&#x27;t track. Christine, you and Tim can work on pulling the user =
+accounts, the actuation user accounts for Mentor Graphics and Grub tool if =
+possible. And I&#x27;m going to follow up on the census and sharing that. =
+Okay, sweet.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">26:21</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And those, I mean =
+the user counts and the licensing, that&#x27;s basically for Saffron to go =
+make their decisions before day two. It&#x27;s not really an action that =
+we&#x27;re going to use with it, but they&#x27;re going to go do their =
+procurements.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</span><s=
+pan style=3D"color:#64748b;font-size:14px">26:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, I think =
+so. I do think that on our side the business Managed Ask team will be =
+tasked with. Oh, I&#x27;m sorry.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</s=
+pan><span style=3D"color:#64748b;font-size:14px">26:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Breaking up a little=
+ bit.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</span><s=
+pan style=3D"color:#64748b;font-size:14px">26:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, hold on one =
+second. So on our side, I think we might be tasked with verifying that all =
+of the licenses that are going to be provided under TSA have been accounted=
+ for in those TSA costing efforts. So for us I think it&#x27;s mostly just =
+a verification that they were accounted for and part of those buckets. And =
+then for Saffron. Yeah, it will help them between day one and day two make =
+the decision of what they want to do, but I think that that&#x27;s less =
+important. It&#x27;s. We have to protect, like Collins and ensure that =
+we&#x27;ve accounted for those if it&#x27;s something that we&#x27;re =
+paying for.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">27:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">If the vendor pushes=
+ again on contacts, me or. We talked to him about technical issues, too, =
+regarding licensing for the divestiture. Is there somebody on your =
+contracts team that I can have them go to? Because I&#x27;m not sure =
+I&#x27;m comfortable fielding those.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Christine</span><span style=3D"color:#64748b;font-size:14=
+px">27:49</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">Absolutely. Let me get you a name. I&#x27;ll ping you a name on =
+teams on Collins. And let me get you a name because there&#x27;s a few and =
+there&#x27;s someone on our team that&#x27;s dedicated interfacing with =
+them. So I&#x27;ll get you a name, and I&#x27;ll ping it to you. Okay, =
+perfect.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">28:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. I don&#x27;t =
+want to misspeak and say something different than what they&#x27;re talking=
+ to the vendors about.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</sp=
+an><span style=3D"color:#64748b;font-size:14px">28:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And it&#x27;s one =
+thing off your plate, you know, like, it&#x27;s one less thing to worry =
+about.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">28:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Awesome. Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Christine</span><s=
+pan style=3D"color:#64748b;font-size:14px">28:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sick. Okay. Well, =
+Christine, Tim, Jesse, thank you so much for joining. I&#x27;ll send out =
+some notes, and we&#x27;ll keep pushing. I think that this sort of answers =
+the questions, but if anything else, I&#x27;ll just probably ping you. Okay=
+, cool. All right, thank you, Matt. Thank you all so much. I appreciate it.=
+ All right, thanks.</div></div><div style=3D"margin-bottom:0;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><s=
+pan style=3D"color:#64748b;font-size:14px">28:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Bye.=
+</div></div></div><div style=3D"margin-top:36px;text-align:center;color:#64=
+748b;font-size:14px;padding:20px;border-top:1px solid #e2e8f0"><p =
+style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note Taker</p><p=
+ style=3D"margin:0;font-size:12px">Your AI-powered companion</p></div></div=
+></div></div></html>
+----_NmP-32eb98469810c3da-Part_1--

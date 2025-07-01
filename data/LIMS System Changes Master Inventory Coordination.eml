@@ -1,0 +1,1941 @@
+MIME-Version: 1.0
+Date: Fri, 13 Jun 2025 19:39:54 -0400
+References: <010001976a6c8568-a1ec190d-12e2-425b-aba9-c540f01c80f0-000000@email.amazonses.com>
+In-Reply-To: <010001976a6c8568-a1ec190d-12e2-425b-aba9-c540f01c80f0-000000@email.amazonses.com>
+Message-ID: <CAOat4ZDAPwDzwD8Co51VMoFn8-uy0HnbqWFEhUE7zFaddE2uzw@mail.gmail.com>
+Subject: Fwd: LIMS System Changes Master Inventory Coordination
+From: Mac Connolly <mac@macconnolly.com>
+To: save@mem.ai
+Content-Type: multipart/alternative; boundary="0000000000004a028906377c9009"
+
+--0000000000004a028906377c9009
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+---------- Forwarded message ---------
+From: Wave AI Note Taker <summary@email.wave.co>
+Date: Fri, 13 Jun 2025 at 13:53
+Subject: LIMS System Changes Master Inventory Coordination
+To: <mac@macconnolly.com>
+
+
+[image: Wave AI Logo]LIMS System Changes Master Inventory Coordination
+=E2=9C=A8 View Your Session on the Web
+<https://app.wave.co/sessions/D980A836-E28E-4F58-A3DD-8CF27FAB18B9?lastLogi=
+nParam=3Dgoogle>
+=F0=9F=93=9DSummary
+Meeting Summary =E2=80=93 June 13, 2025Attendees
+
+   - Jason, Brian, Steve, Steven, Paul, Chase, Bill, Gary, James, Phil,
+   David, Sriram, Rakesh, Jaime, Mac, others mentioned.
+   - Partial drop-ins/out: Chase delegated representation to Jason and
+   Brian.
+
+------------------------------
+Main Topics Discussed1. Status and Dependencies for LIMS and Critical
+Application Interfaces
+
+   -
+
+   *LIMS Team Progress:*
+   - Awaiting green light from LIMS team; expected mid-June to finalize
+      system bifurcation.
+      - LIMS is critical for ISC (Integrated Supply Chain), with 8 active
+      ISC LIMS applications and 17 identified in ecosystem.
+      - LIMS changes: Moving from on-prem to a new environment (specified
+      as =E2=80=9Cthe Colo,=E2=80=9D not the cloud), impacting certain inte=
+rface pathways.
+   -
+
+   *Impact on Operations:*
+   - ISC consumes 80=E2=80=9390% of IT systems, so changes in critical apps=
+ (LIMS,
+      Ecosystem, Packout, SAP interfaces) have broad impact.
+      - Key question and repeated concern: How will changes to software,
+      interfaces, and server environments affect daily operations,
+especially for
+      LIMS?
+   -
+
+   *UAT (User Acceptance Testing) Requirements:*
+   - Discussion on testing scope: Should focus only on connections where
+      infrastructure is changing, not full end-to-end validation unless ser=
+vers
+      or paths change.
+      - Applications like Quality Optimizer and Packout highlighted=E2=80=
+=94require
+      clarification on what needs to be validated.
+
+2. Inventory and Ownership of Critical Applications
+
+   -
+
+   *List Management:*
+   - Multiple lists exist=E2=80=94need to reconcile into a single master li=
+st for
+      system ownership tracking and UAT planning.
+      - Gaps found: Some applications discussed (e.g., Packout,
+      ProcessView, NWA, Quality Optimizer, Ballistics Database) were
+missing from
+      some versions of the critical system lists.
+   -
+
+   *Roles & Responsibilities:*
+   - Each application/system should have:
+         - An IT owner
+         - A business/plant/site owner
+      - Testing requirements may be plant-specific due to differences in
+      LIMS deployments and interfaces (example: requirements for Spokane vs=
+.
+      other sites).
+   -
+
+   *Complexity Across Sites:*
+   - Each site may use different LIMS products: LabVantage, Nexus, RQMS,
+      Ballistics Database, etc.
+      - Noted that just listing "LIMS" is insufficient; each specific type
+      and deployment must be itemized.
+   -
+
+   *File Management:*
+   - Need to confirm which list is the authoritative source (=E2=80=9CSyste=
+ms
+      Template ise=E2=80=9D), ensure all work and updates are consolidated,=
+ and avoid
+      working off multiple, divergent files.
+
+3. Communication and Clarity of Changes
+
+   -
+
+   *What's Changing vs. Not Changing:*
+   - Emphasis that understanding what is *not* changing is just as
+      important as clarifying what is changing.
+      - Many confusion points stem from lack of communication about benign
+      migrations vs. fundamental system or interface alterations.
+   -
+
+   *Testing Guidance:*
+   - Service owners must specify, for each application/line item:
+         - What is changing.
+         - What is not changing.
+         - Resulting impact on UAT (e.g., connection test only, login
+         validation, or no action).
+      -
+
+   *Need for Clear Messaging:*
+   - There are mixed messages from different groups; must standardize on
+      clear and concise communication to all stakeholders via service owner=
+s.
+
+4. UAT Planning and Coordination
+
+   -
+
+   *Cross-functional Involvement:*
+   - UAT must account for applications falling under multiple
+      functions=E2=80=94engineering, supply chain, HSE, and site/business-m=
+anaged
+      applications.
+      - Need to synchronize test planning and point-of-contact
+      identification across all these domains.
+   -
+
+   *Timeline & Upcoming Milestones:*
+   - LIMS upgrade/enhancement was supposed to be finished by Monday (June
+      9).
+      - Goal is to =E2=80=9Cclone=E2=80=9D environments such that from the =
+user
+      perspective, nothing changes (data, workflows remain consistent).
+      - Target for sharing the consolidated list and validating what's
+      changing: Next Monday or Tuesday (June 16 or 17).
+   -
+
+   *Testing Methods:*
+   - For server name/path changes: Point external applications (e.g.,
+      Packout) to new locations and verify data flows.
+      - For interface-only changes: Only connections testing required.
+      - No need for complete functional validation for applications not
+      fundamentally changed.
+
+------------------------------
+Action Items
+
+   1.
+
+   *Inventory Validation and Completion*
+   - Jason, Brian to provide and review the incomplete systems list;
+      identify missing applications, reconcile with Steven's earlier
+master list.
+      - Deadline for updated list: June 16=E2=80=9317, 2025.
+   2.
+
+   *Clarified Change Documentation*
+   - Service owners to document for every application:
+         - What is changing
+         - What is not changing
+         - Nature of required UAT (e.g., connection, login, full process)
+      - Bill, Gary, James, Phil, and respective towers will coordinate this
+      communication.
+   3.
+
+   *Master Inventory Reconciliation*
+   - Steven to locate the original manufacturing critical systems list and
+      share.
+      - Team to integrate this =E2=80=9Clong list=E2=80=9D with current bus=
+iness readiness
+      validation files.
+   4.
+
+   *Develop Testing Guidelines*
+   - Guidance to be created at the application owner level detailing what
+      kind of testing is needed per change scope.
+      - Slides/guidelines to clarify required activities for all IT and
+      business owners involved.
+   5.
+
+   *Consolidated UAT Contact List*
+   - Rakesh to coordinate and gather identified testers (from both business
+      and IT side) for each site/application.
+   6.
+
+   *Follow-up and Knowledge Sharing*
+   - Plan knowledge sharing session focused on =E2=80=9Cwhat=E2=80=99s chan=
+ging/what=E2=80=99s not=E2=80=9D
+      application-by-application.
+      - Schedule further review and alignment meeting(s), potentially with
+      =E2=80=9Coffice hours=E2=80=9D for key sites.
+      - Sriram to coordinate with Gary and others to set up the next
+      discussion.
+   7.
+
+   *File/Document Management*
+   - Confirm and communicate the single source of truth file; ensure it is
+      updated and housed in the correct directory for all stakeholders.
+   8.
+
+   *Clear Messaging to IT Towers*
+   - Rakesh to ensure all service owners understand the expectation to
+      confirm and document UAT requirements for every system involved=E2=80=
+=94no blanks
+      allowed.
+
+------------------------------
+Follow-up Points & Next Steps
+
+   - *Validate the manufacturing side's questions are fully addressed; fill
+   gaps in application/system coverage.*
+   - *Ensure every site and function is cross-mapped with relevant
+   applications for UAT planning.*
+   - *Next reconciliation and planning session scheduled for week of June
+   16, 2025.*
+   - *Pending: Shared access to updated =E2=80=9Cmaster inventory=E2=80=9D =
+and consolidated
+   points-of-contact lists.*
+   - *Encourage feedback and suggestion of missing systems/applications
+   from all team members.*
+   - *Action item to set up application-by-application review sessions as
+   needed.*
+   - *Require explicit service owner sign-off on what level of UAT (if any)
+   is required for each system.*
+
+------------------------------
+Decisions & Conclusions
+
+   - The process must move from ad hoc, application-specific tracking to a
+   comprehensive, reconciled, and clearly owned master list.
+   - Broad communication must be established not only about what is
+   changing, but particularly about what is *not* changing, to reduce
+   unnecessary effort and confusion during UAT.
+   - Ownership and lines of accountability need ongoing clarification at
+   both IT and site/business levels, especially due to the variety of LIMS =
+and
+   interfacing applications in use.
+   - Action plan and deadlines are in place to support timely UAT
+   preparation and minimize operational risk.
+
+------------------------------
+
+*End of Summary.*
+=F0=9F=8E=99=EF=B8=8FTranscription
+Stephen0:00
+But we're waiting on that LIMS team to give us the green light sometime
+pretty soon. It's supposed to be mid month that we can make that
+bifurcation and go.
+Brian0:10
+But why isn't pack out on the list? I think is part of the question.
+Chase0:15
+And lims, I mean our LIMS is.
+Jason0:18
+So why don't we do this, Jason, Brian, we will send you this list knowing
+that it's incomplete. We will send you the inventory and we'll work with,
+you know, work with you to get that full list. Whatever you think is
+missing, add that in here, we'll go back and validate it. That Steve and
+Steven.
+Jaime0:38
+No, we've already, I think we're missing. Let's talk about how ISC
+operates. So we're taking sales orders, we manufacture a bunch of goods, we
+touch probably 90% of the IT systems. I'm guessing we are large consumers
+of most of our software. I don't know Paul, maybe my 90%'s off, maybe it's
+80. So all these questions around all these other softwares that are
+changing or not changing, how are we going to be impacted by that? That
+makes sense. So lims. LIMS is on the list. I think it's on the R D list.
+However, we are heavy consumers of that.
+Brian1:27
+It's on the engineering list.
+Jaime1:29
+Yeah, yeah, but it's a critical, but.
+Chase1:33
+It'S a critical app in order to do uat.
+Brian1:35
+Yeah, understood.
+Jaime1:38
+Yeah. So we, you know, when this journey started a long time ago, IC
+provided a list of what we thought were critical applications that we use
+that is already created. We've, we've got that, that was then reconciled
+and divided amongst all the various functions. And so those are the
+questions. That's where they're coming is, what is the plan for those? How
+do we know LIMS is going to work?
+Stephen2:10
+Those are the two long tail ones for me, Stephen, is LIMS and Ecosystem
+those interfaces. Because it's not something that I can control, but it's
+something that I need to provide. There's 17 that we've identified in
+ecosystem, environment and eight active ones for ISC in LIMS. Once they're
+done with this upgrade enhancement that they're working on, which was
+supposed to be done by Monday, you know, mid June, then what we're going to
+do is clone and ensure that only traffic going over that from 81 forward
+will be AM traffic for you guys and anything that was going somewhere else
+will have its own interface transportation path.
+Jaime2:57
+Okay, and do we think that user acceptance testing is required?
+Stephen3:02
+I think we should definitely, you know, kick the tires on it, make sure,
+you know, and try to break it. And if we can't break it, then we know we
+got it. Right.
+Chase3:13
+You're talking about moving the lens move to the new solstice cloud.
+Gary3:18
+Right.
+Chase3:19
+You know, that's only in cix. That's in the lowest client.
+Stephen3:22
+Right. That's where we are right now. We're in cix. We move some stuff to
+Q. But the lion's share is still an X because we're still doing a lot of
+development.
+Jaime3:37
+And then pack out was brought up, I think. Chase, what's the SPC software?
+You brought that up the other day.
+Chase3:48
+ProcessView and NWA.
+Jaime3:50
+Yeah.
+Chase3:53
+And I think Quality Optimizer I think is up there. Number 10. That's very
+important for our shield business.
+Jaime4:02
+Yeah.
+James4:03
+As well as the ballistics database.
+Chase4:07
+And we had provided. Yeah, maybe these are on a different.
+Jaime4:11
+Yeah, so that's where a lot of these questions are coming from is all.
+Jason4:17
+These critical apps that we listed and Sriram. Sorry, go ahead, Chase.
+James4:25
+Yeah, I just wanted to say. Yeah, I actually need it to drop real quick,
+but I got Brian and Jason on to talk for me. But you know, the thing for us
+is almost all those applications I listed are interfacing with SAP in some
+way. Some do, some do not have like quality clients or sandbox clients that
+you can test in. And so the sequencing and timing of the different things
+is just important to make sure you've got. You basically need an IT owner
+and then like a plant owner maybe, maybe by plant because each plant's
+different for each one of those on UAT is my guidance. Like what I need to
+do to test lims is not necessarily what Spokane needs to do, for example.
+Sriram5:06
+Right.
+James5:07
+So just as an example, that's just one of my questions. Concerns like they
+interface differently and do different things.
+Brian5:16
+You're on different instances and every site seems to have different LIMS
+applications too.
+Sriram5:21
+Right.
+Gary5:23
+But Gary, we are not changing the servers on these limbs. Right. So
+technically the interface and then the other stuff should not change in
+this phase. I think that is where probably Bill, like we really need to put
+a strong slide. What is changing. You don't need to test the end to end
+processors in some areas, just validate the forms in some areas where the
+servers are migrating. We need to do an end to end test more from a
+connection standpoint of you. We don't have to validate the fields. I think
+we have to push down the message to all the service owners in the IT and
+make sure they Present what is changing and provide guidance to the teams
+of guidelines. I think that is important. That's missing big time. And then
+we are thinking very big in some areas and then very small.
+Brian6:17
+Right. Like BCC instant plans that Colonial Heights uses. You know, we're
+moving that from the Honeywell environment just to the Colo environment.
+But we're not changing anything. So all we have to do is really test it.
+Sriram6:30
+I'm sorry, baby.
+Gary6:34
+In this instance the recommendation is we want you to log in and then
+perform your day to day operations. Just one and then see if works fine.
+That's it. We're not asking you to validate whether the field is right.
+This value is right. No, it's just simple connections testing. Right. I
+think let's highlight by application owner they should be highlighting all
+these things. What is changing. We are moving the servers here. So the
+expectation is connection testing. Just log in and then validate. And then
+here we are just valid in SAP. We're not moving the servers. No interfaces
+should be changing. Just validate the forms. Right. Or we are changing the
+name. I think we really need to put those slides for each, you know, from
+each tower standpoint of view so the communication is clear. And then like
+bring in the UAT dates like you know, quality optimizer. Like we're not
+changing anything. So what are we asking? Like do we need to stick still
+validate anything? Yes or no. Right. If yes, maybe just hand them a login
+validation. We need to provide those guidelines. I think that's what is
+confusing everybody.
+Chase7:45
+I think it's a little bit more involved in that. For instance, for Packout.
+Packout has to know the path that it needs to talk to on the SAP side or
+the LIM side.
+Jaime7:59
+Yeah. I think Brian, what you're missing is what's not changing.
+Bill8:04
+Yeah.
+Jaime8:05
+And you're assuming, I mean I shouldn't say you. Right. A lot of people are
+assuming that we're doing a complete clone of the RP system and navigating
+it to a new server. We aren't doing anything remotely close to that.
+Stephen8:18
+Absolutely not.
+Jaime8:19
+Right. That's the piece of information that we aren't telling people.
+What's not changing. A lot of these things are quite benign. But the
+updating a legal entity field and address.
+Steven8:35
+Right.
+Jaime8:35
+And a master list somewhere. That's the change. Yeah.
+Gary8:40
+Whoop.
+Jaime8:40
+You do?
+Stephen8:41
+Yeah. And for interfaces too, you know, we analyze 76, well, hundreds of
+interface. We got that down to 76 that had shared pathways say going down
+to CIP 300 for UOP. Those are the ones we focus on cloning, so they become
+AM only interfaces. So from the AM user standpoint, nothing changes. They
+log in as per usual. The data gets extracted from the server as usual, and
+their work is as usual. So I guess I agree with Jaime that probably what's
+not changing is more important than what is changing.
+Jaime9:13
+Yeah.
+Chase9:16
+Again, I'm going to repeat myself. I know. The LIMS system is changing and
+going to a different cloud. A different cloud, right.
+Brian9:24
+No, the lens is not on the cloud now. Not your version of Limps. Your
+version of LIMS right now is on Prem, and it will be moved on Prem and
+within Honeywell, it'll be on the color because it's the ECC instance. So
+we consider it. That's for control.
+Chase9:41
+Okay.
+Brian9:42
+Okay, I got.
+Chase9:43
+All right. We're getting a different message from a different group of
+people, then I'm.
+Brian9:47
+Okay.
+Chase9:48
+Anyways, my point is, is if the server. If the server name is changing or
+the path to. To lims is changing, then we have to make the change on
+Packout, for example. So there is some. There's some changes that have to
+be made on other applications in order to talk to SAP or LIMS or whatever.
+Brian10:09
+So you just got to point to the new locations.
+Chase10:12
+Correct. I'm just saying it's not.
+Brian10:13
+Yeah.
+Chase10:14
+Testing something. There are some minor linkages that need to be changed.
+Brian10:19
+Agreed. And that. That's what we're saying. We'll make those changes to
+the. To the pathways and test. Make sure you're seeing the data. The data
+is flowing back and forth and at that point we should be good. You're not
+going to have to go out and test the entire ECC LIMS application because
+we're not making changes to it. You just need to test the pathways, make
+sure we're getting the data.
+Chase10:44
+I understood. I'm just. I was just making the point. We're just not going
+to test that.
+Gary10:49
+We.
+Chase10:50
+Somebody on. On these. On these external applications may need to make some
+changes in order for the connectivity to be there. That's all.
+Brian10:58
+Understood. Understood. We're in agreement.
+Bill11:03
+It sounds like there was an action to look at each of these and just
+confirm, like what's changing or not changing so that we can better
+understand if we have the right UAT captured. Right. Who can do that and
+when can that be shared with the team.
+Jason11:21
+So we'll take it back to the service owners and then Gary, James, Phil will
+work with you to each of these. So you've got engineering, supply chain,
+hse, David. So we'll work with each of these names here on the left to get
+those as quickly as we can. So I'm. Again, let's. Let's shoot for next
+Monday or Tuesday to get this back to you. Okay.
+Bill11:57
+Yep, go ahead.
+Jaime11:59
+Can you go to the ISC Key Systems tab that. Yeah.
+Stephen12:04
+Brian, I just. I sent one last thing on lims. Brian, I just sent a note to
+the two guys on my team that are managing what's changing there and ask
+them to make sure they loop you in so you know what is and what isn't
+changing.
+Chase12:17
+Okay. Yeah. Because I was just hit up this week about doing some testing
+for a new Limbs client.
+Jaime12:26
+Like.
+Chase12:26
+Okay, so.
+Jason12:31
+All right, so. And then Bill, I think I. I guess there was a general ask.
+We'll have to see Stephen, to the point of, you know, can we describe for
+every system that's what is changing, what is not? Well, we'll. We'll try
+and capture that. Can we go to the ISE Key systems? I think this Sriram you
+gave us and we validated the list last time, so let's look at the ISE tab.
+Steven12:58
+Is this the same file that we're actively updating or is this a different
+file? Because the file name looks different to me.
+Jason13:04
+Yeah, it looks different from what we talked about. True.
+Steven13:07
+Yeah.
+Jason13:08
+Okay.
+Steven13:08
+There is a. It was called Business Readiness Validation.
+Jason13:13
+Ise, correct.
+Sriram13:14
+Yeah, yeah, I think we just renamed.
+Bill13:17
+It.
+Sriram13:19
+But we'll check. This is the one in that same folder from the email that
+was sent out with the notes. But we'll double check, and if there is
+something else there, we'll incorporate that in here.
+Jason13:32
+Okay.
+Jaime13:37
+Please.
+Steven13:37
+I think we should work off of one file.
+Jason13:39
+Yeah, no, we should work off of one. We should have it in that same folder
+called Systems Template ise and then move these around there.
+Gary13:46
+Right.
+Jason13:50
+So give me one second. I'm opening that folder and we'll. We'll talk
+through.
+Stephen13:59
+There were two links, sriram, in the ping that you gave me. One didn't make
+any sense to me, so I updated the other one.
+Steven14:08
+Okay.
+Jason14:09
+Gee, thanks for that pill. So we'll go check both of them and see. See
+which one's which. Okay, so this. Is that what people have been updating
+here?
+Sriram14:18
+Make it.
+Steven14:19
+Yeah.
+Jason14:20
+Correct. Okay.
+Steven14:26
+Well, this is. Yeah, we've got a lot of updates in this week. There's still
+some more that people are working on. I thought this meeting was more on
+the manufacturing side, but where do you go?
+Jason14:41
+Have we addressed all of the questions on the manufacturing side? I know
+we're got a few more Minutes. But I think the action. Sorry, go ahead.
+Jaime14:52
+No, that's good.
+Jason14:54
+I was going to say we do have a few action items coming out of this. That.
+Yes. So we do need to communicate certainly the changes and what's not
+changing across. So the list that we just showed earlier, I know we added a
+few things that was not on that list that you provided. So we'll go back
+and add that and track to it. Is that the full list that Brian and Chase,
+all of you provided a bit earlier? Going back to. If I was to stop sharing
+Mac, if you can share that screen again.
+Steven15:28
+Steven, I think this is one thing that I know you mentioned in this call
+earlier that at the beginning of this program there was a list provided for
+all the manufacturing systems. Do you have that handy? Because we, in this
+call we found a couple of them that was not in that tab. The manufacturing
+key systems tab.
+Jaime15:52
+It take me a little bit to find the original. Yeah, it's a long ass list,
+I'll tell you that.
+Sriram15:59
+That would be incredibly helpful. Right. Like if you have that list as a
+starting point we can sort of bring it into and then cross align with all
+of the information that we've gathered from all of these functional
+alignment calls and start to be able to say for these key systems,
+ultimately what we're looking for is what are the functions that need to be
+involved in the testing? Right. So we have a list of systems. We can say
+here's all of the folks that need to be involved and then here's all of the
+points of contact which Rakesh was. The other action item was the blank
+list of here's the testers from the business side or from the IT side who
+need to be involved in that testing downstream. So yeah, if you could give
+that list we can bring it in here and rationalize it against the modern
+data.
+Jason16:53
+And I suspect most of them would be here. But I think if there's a few
+Delta, I think we heard about Packout and LIMS and a couple of others.
+Brian17:02
+And we got to be careful when we say limbs because we got a multitude of
+different lens Systems. We got LabVantage, we got others. So we can't just
+say LIMS. If you want to talk LIMS, we need to list them all out. You know,
+Quality Optimizer is one that's considered lims. Ballistics Database, Lab
+Vantage, all of those are lims are in the LIMS category.
+Jason17:22
+Then you've got Nexus LIMS as well.
+Brian17:24
+And Nexus as well. Yeah. And we've got more. RQMS is actually lims.
+Gary17:29
+I mean, I mean, shouldn't we look at the overall uat, Gary, and then like,
+why don't you guys sit down and then find all the systems that our IOC
+teams uses. That makes this job easy. I think we need to look at the
+overall UAT timelines across all functions and then just flag.
+Chase17:51
+Who can I send. We had sent an email back to somebody. I can find it and I
+can send you the actual, the actual application name that's in, you know,
+in our IT direct system.
+Jaime18:05
+So you. Which that only helps us for Colonial Heights.
+Chase18:09
+I understand, but that, but we need to do.
+Jason18:11
+I mean, let's start with one site.
+Steven18:14
+Yeah, we're looking.
+Chase18:14
+We're looking out for ourselves. Right. So we're gonna. We're gonna tell
+you what our. What, what the specific name is of, of the limbs, quote,
+unquote limbs that Gary's talking about. But it seems like you got some
+items on the R D list and some on this ISC list and they're.
+Jaime18:33
+All over because we touched most here.
+Chase18:37
+Is there a chance that we could asterisk a few of them so that the R and D
+ones are in the ua, are in the icuat bucket so that we can. You know.
+Jaime18:48
+I like Heimera's idea. Right. Isn't there a master list of all the UATs?
+And then we cross reference what we're interested in?
+James19:00
+I think that's.
+Gary19:01
+Otherwise we're gonna keep missing something. Steve.
+Jaime19:04
+Like, I know like chasing Colonial Heights is like, okay, that's one out of=
+.
+Chase19:08
+16.
+Jaime19:10
+And probably one out of 16 applications for Colonial Heights. It doesn't
+get us anywhere. We'll still be talking about this in December.
+Jason19:17
+Yeah, yeah. So what we can do is. And Gary will work with you on it, but
+yeah, And James, we have the master inventory. We can. And Jaime will. Will
+take that and perhaps, you know, have the follow up session here to go
+through that master inventory and go through. You know, I think there are
+site level applications there and other functions across all functions.
+Take a look at that and align. Now again, it may be you have to be site by
+site or we could do some office hours with get several sites on the Brian
+yourself and a few others to just talk through that list.
+Brian19:56
+And Rakesh, I think you're gonna see that these applications fall under
+Engineering isc. They fall under business managed all over.
+Jason20:03
+Right, Right, they are. That's the challenges. Yeah. Yeah. So Gary, maybe
+the action item is for us to take and see how best we can package that,
+because you're right in that A lot of them, they are across all over. So
+again, I'm just thinking out loud, but again we won't solve it here, but
+let's take an action item then Stephen to. We'll take an action item to
+work with Gary to get that initial list and then we'll set up a follow up
+call with you, Brian and others as needed. Sriram, I'll work it through you
+to set up the conversations next week to get that discussion going.
+Gary20:47
+Let's do it.
+Jason20:49
+Okay. All right, so quite a few action items, so I think nothing, you know,
+again more work for us to get to the bottom of this. And then I think the
+action item, certainly the list of test names for Bill to send. And then
+we'll plan a knowledge sharing session with what's changing and then
+certainly here, you know, by app a follow up session to identify what is
+changing and what is the scope of testing so that we can track it in one
+place here. All right, any other questions, comments from the team? I think
+it was a good conversation but a lot more activities to get done here. So.
+Gary21:36
+Yeah, Rakesh, just make sure the messaging is clear to all the IT towers
+that, you know, I mean everybody should have a plan for uat, yes or no.
+There should not be any blank lefts. The service owners have to acknowledge
+is there any UAT required or not. And then like, you know, let's have them
+like list out what is changing, what is not changing and then like that
+gives us a clear list and then we can clearly mark which ones belongs to
+IAC and then bring in that list to the team. But the messaging needs to be
+clear to the service owners. They need to flag each and every line item
+relevant for UAT and then the respective information because that scope of.
+Jason22:22
+The changes will dictate what consists of UAT to the to what level. Right,
+point noted. So we'll take that back to the IT owners and all of the
+service, the work stream leads and send that get that message out. So.
+Jaime22:43
+Okay, thanks for translating.
+Jason22:44
+Thanks, appreciate it.
+Jaime22:48
+Yeah, take care.
+Brian22:49
+Thanks everybody.
+Jason22:50
+Thank you.
+
+Captured with Wave AI Note Taker
+
+Your AI-powered companion
+
+--0000000000004a028906377c9009
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-size:small;colo=
+r:#444444"><br></div><br><div class=3D"gmail_quote gmail_quote_container"><=
+div dir=3D"ltr" class=3D"gmail_attr">---------- Forwarded message ---------=
+<br>From: <strong class=3D"gmail_sendername" dir=3D"auto">Wave AI Note Take=
+r</strong> <span dir=3D"auto">&lt;<a href=3D"mailto:summary@email.wave.co">=
+summary@email.wave.co</a>&gt;</span><br>Date: Fri, 13 Jun 2025 at 13:53<br>=
+Subject: LIMS System Changes Master Inventory Coordination<br>To:  &lt;<a h=
+ref=3D"mailto:mac@macconnolly.com">mac@macconnolly.com</a>&gt;<br></div><br=
+><br><div style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;margin:0;padding:0;background-c=
+olor:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 auto;backgr=
+ound-color:#ffffff"><div style=3D"background-image:url(https://upcdn.io/W14=
+2iax/raw/email/banner_clean.png);background-size:cover;background-position:=
+center;width:604px;height:297px;margin:0 auto"><table cellpadding=3D"0" cel=
+lspacing=3D"0" border=3D"0" width=3D"100%" height=3D"100%"><tbody><tr><td v=
+align=3D"center" align=3D"center" style=3D"padding:0"><img src=3D"https://u=
+pcdn.io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" style=3D"wid=
+th:41px;height:58px;max-width:41px;margin-bottom:10px"><h1 style=3D"color:w=
+hite;font-size:32px;margin:0;padding:0 0 10px;text-align:center">LIMS Syste=
+m Changes Master Inventory Coordination</h1></td></tr></tbody></table></div=
+><div style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div style=
+=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.co/se=
+ssions/D980A836-E28E-4F58-A3DD-8CF27FAB18B9?lastLoginParam=3Dgoogle" style=
+=3D"background-color:#e6f0ff;color:#0066cc;padding:12px 24px;border-radius:=
+8px;text-decoration:none;font-weight:500;font-size:16px;display:inline-bloc=
+k;margin-top:8px;margin-bottom:8px" target=3D"_blank">=E2=9C=A8 View Your S=
+ession on the Web</a></div><div style=3D"text-align:center;margin-bottom:36=
+px"></div><div style=3D"background-color:#ffffff;padding:28px;border-radius=
+:12px;border:1px solid #e2e8f0;margin-bottom:28px"><h3 style=3D"color:#0f17=
+2a;font-size:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:f=
+lex"><span style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div sty=
+le=3D"color:#475569;font-size:16px;line-height:1.6"><div><h1 style=3D"font-=
+weight:500;padding-top:20px;font-size:2.5rem">Meeting Summary =E2=80=93 Jun=
+e 13, 2025</h1><h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem=
+">Attendees</h2><ul>
+<li>Jason, Brian, Steve, Steven, Paul, Chase, Bill, Gary, James, Phil, Davi=
+d, Sriram, Rakesh, Jaime, Mac, others mentioned.</li>
+<li>Partial drop-ins/out: Chase delegated representation to Jason and Brian=
+.</li>
+</ul>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Main Topics D=
+iscussed</h2><h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75re=
+m">1. Status and Dependencies for LIMS and Critical Application Interfaces<=
+/h3><ul>
+<li><p><strong style=3D"font-weight:bold">LIMS Team Progress:</strong></p>
+<ul>
+<li>Awaiting green light from LIMS team; expected mid-June to finalize syst=
+em bifurcation.</li>
+<li>LIMS is critical for ISC (Integrated Supply Chain), with 8 active ISC L=
+IMS applications and 17 identified in ecosystem.</li>
+<li>LIMS changes: Moving from on-prem to a new environment (specified as =
+=E2=80=9Cthe Colo,=E2=80=9D not the cloud), impacting certain interface pat=
+hways.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Impact on Operations:</strong></p=
+>
+<ul>
+<li>ISC consumes 80=E2=80=9390% of IT systems, so changes in critical apps =
+(LIMS, Ecosystem, Packout, SAP interfaces) have broad impact.</li>
+<li>Key question and repeated concern: How will changes to software, interf=
+aces, and server environments affect daily operations, especially for LIMS?=
+</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">UAT (User Acceptance Testing) Req=
+uirements:</strong></p>
+<ul>
+<li>Discussion on testing scope: Should focus only on connections where inf=
+rastructure is changing, not full end-to-end validation unless servers or p=
+aths change.</li>
+<li>Applications like Quality Optimizer and Packout highlighted=E2=80=94req=
+uire clarification on what needs to be validated.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">2. Invento=
+ry and Ownership of Critical Applications</h3><ul>
+<li><p><strong style=3D"font-weight:bold">List Management:</strong></p>
+<ul>
+<li>Multiple lists exist=E2=80=94need to reconcile into a single master lis=
+t for system ownership tracking and UAT planning.</li>
+<li>Gaps found: Some applications discussed (e.g., Packout, ProcessView, NW=
+A, Quality Optimizer, Ballistics Database) were missing from some versions =
+of the critical system lists.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Roles &amp; Responsibilities:</st=
+rong></p>
+<ul>
+<li>Each application/system should have:<ul>
+<li>An IT owner</li>
+<li>A business/plant/site owner</li>
+</ul>
+</li>
+<li>Testing requirements may be plant-specific due to differences in LIMS d=
+eployments and interfaces (example: requirements for Spokane vs. other site=
+s).</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Complexity Across Sites:</strong>=
+</p>
+<ul>
+<li>Each site may use different LIMS products: LabVantage, Nexus, RQMS, Bal=
+listics Database, etc.</li>
+<li>Noted that just listing &quot;LIMS&quot; is insufficient; each specific=
+ type and deployment must be itemized.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">File Management:</strong></p>
+<ul>
+<li>Need to confirm which list is the authoritative source (=E2=80=9CSystem=
+s Template ise=E2=80=9D), ensure all work and updates are consolidated, and=
+ avoid working off multiple, divergent files.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">3. Communi=
+cation and Clarity of Changes</h3><ul>
+<li><p><strong style=3D"font-weight:bold">What&#39;s Changing vs. Not Chang=
+ing:</strong></p>
+<ul>
+<li>Emphasis that understanding what is <em style=3D"font-style:italic">not=
+</em> changing is just as important as clarifying what is changing.</li>
+<li>Many confusion points stem from lack of communication about benign migr=
+ations vs. fundamental system or interface alterations.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Testing Guidance:</strong></p>
+<ul>
+<li>Service owners must specify, for each application/line item:<ul>
+<li>What is changing.</li>
+<li>What is not changing.</li>
+<li>Resulting impact on UAT (e.g., connection test only, login validation, =
+or no action).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Need for Clear Messaging:</strong=
+></p>
+<ul>
+<li>There are mixed messages from different groups; must standardize on cle=
+ar and concise communication to all stakeholders via service owners.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">4. UAT Pla=
+nning and Coordination</h3><ul>
+<li><p><strong style=3D"font-weight:bold">Cross-functional Involvement:</st=
+rong></p>
+<ul>
+<li>UAT must account for applications falling under multiple functions=E2=
+=80=94engineering, supply chain, HSE, and site/business-managed application=
+s.</li>
+<li>Need to synchronize test planning and point-of-contact identification a=
+cross all these domains.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Timeline &amp; Upcoming Milestone=
+s:</strong></p>
+<ul>
+<li>LIMS upgrade/enhancement was supposed to be finished by Monday (June 9)=
+.</li>
+<li>Goal is to =E2=80=9Cclone=E2=80=9D environments such that from the user=
+ perspective, nothing changes (data, workflows remain consistent).</li>
+<li>Target for sharing the consolidated list and validating what&#39;s chan=
+ging: Next Monday or Tuesday (June 16 or 17).</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Testing Methods:</strong></p>
+<ul>
+<li>For server name/path changes: Point external applications (e.g., Packou=
+t) to new locations and verify data flows.</li>
+<li>For interface-only changes: Only connections testing required.</li>
+<li>No need for complete functional validation for applications not fundame=
+ntally changed.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Action Items<=
+/h2><ol>
+<li><p><strong style=3D"font-weight:bold">Inventory Validation and Completi=
+on</strong></p>
+<ul>
+<li>Jason, Brian to provide and review the incomplete systems list; identif=
+y missing applications, reconcile with Steven&#39;s earlier master list.</l=
+i>
+<li>Deadline for updated list: June 16=E2=80=9317, 2025.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Clarified Change Documentation</s=
+trong></p>
+<ul>
+<li>Service owners to document for every application:<ul>
+<li>What is changing</li>
+<li>What is not changing</li>
+<li>Nature of required UAT (e.g., connection, login, full process)</li>
+</ul>
+</li>
+<li>Bill, Gary, James, Phil, and respective towers will coordinate this com=
+munication.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Master Inventory Reconciliation</=
+strong></p>
+<ul>
+<li>Steven to locate the original manufacturing critical systems list and s=
+hare.</li>
+<li>Team to integrate this =E2=80=9Clong list=E2=80=9D with current busines=
+s readiness validation files.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Develop Testing Guidelines</stron=
+g></p>
+<ul>
+<li>Guidance to be created at the application owner level detailing what ki=
+nd of testing is needed per change scope.</li>
+<li>Slides/guidelines to clarify required activities for all IT and busines=
+s owners involved.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Consolidated UAT Contact List</st=
+rong></p>
+<ul>
+<li>Rakesh to coordinate and gather identified testers (from both business =
+and IT side) for each site/application.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Follow-up and Knowledge Sharing</=
+strong></p>
+<ul>
+<li>Plan knowledge sharing session focused on =E2=80=9Cwhat=E2=80=99s chang=
+ing/what=E2=80=99s not=E2=80=9D application-by-application.</li>
+<li>Schedule further review and alignment meeting(s), potentially with =E2=
+=80=9Coffice hours=E2=80=9D for key sites.</li>
+<li>Sriram to coordinate with Gary and others to set up the next discussion=
+.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">File/Document Management</strong>=
+</p>
+<ul>
+<li>Confirm and communicate the single source of truth file; ensure it is u=
+pdated and housed in the correct directory for all stakeholders.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Clear Messaging to IT Towers</str=
+ong></p>
+<ul>
+<li>Rakesh to ensure all service owners understand the expectation to confi=
+rm and document UAT requirements for every system involved=E2=80=94no blank=
+s allowed.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Follow-up Poi=
+nts &amp; Next Steps</h2><ul>
+<li><strong style=3D"font-weight:bold">Validate the manufacturing side&#39;=
+s questions are fully addressed; fill gaps in application/system coverage.<=
+/strong></li>
+<li><strong style=3D"font-weight:bold">Ensure every site and function is cr=
+oss-mapped with relevant applications for UAT planning.</strong></li>
+<li><strong style=3D"font-weight:bold">Next reconciliation and planning ses=
+sion scheduled for week of June 16, 2025.</strong></li>
+<li><strong style=3D"font-weight:bold">Pending: Shared access to updated =
+=E2=80=9Cmaster inventory=E2=80=9D and consolidated points-of-contact lists=
+.</strong></li>
+<li><strong style=3D"font-weight:bold">Encourage feedback and suggestion of=
+ missing systems/applications from all team members.</strong></li>
+<li><strong style=3D"font-weight:bold">Action item to set up application-by=
+-application review sessions as needed.</strong></li>
+<li><strong style=3D"font-weight:bold">Require explicit service owner sign-=
+off on what level of UAT (if any) is required for each system.</strong></li=
+>
+</ul>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Decisions &am=
+p; Conclusions</h2><ul>
+<li>The process must move from ad hoc, application-specific tracking to a c=
+omprehensive, reconciled, and clearly owned master list.</li>
+<li>Broad communication must be established not only about what is changing=
+, but particularly about what is <em style=3D"font-style:italic">not</em> c=
+hanging, to reduce unnecessary effort and confusion during UAT.</li>
+<li>Ownership and lines of accountability need ongoing clarification at bot=
+h IT and site/business levels, especially due to the variety of LIMS and in=
+terfacing applications in use.</li>
+<li>Action plan and deadlines are in place to support timely UAT preparatio=
+n and minimize operational risk.</li>
+</ul>
+<hr>
+<p><strong style=3D"font-weight:bold">End of Summary.</strong></p>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex"><span =
+style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription</h3><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-=
+bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">=
+Stephen</span><span style=3D"color:#64748b;font-size:14px">0:00</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">But we&#39;re =
+waiting on that LIMS team to give us the green light sometime pretty soon. =
+It&#39;s supposed to be mid month that we can make that bifurcation and go.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"disp=
+lay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;ma=
+rgin-right:8px">Brian</span><span style=3D"color:#64748b;font-size:14px">0:=
+10</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">=
+But why isn&#39;t pack out on the list? I think is part of the question.</d=
+iv></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display=
+:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margi=
+n-right:8px">Chase</span><span style=3D"color:#64748b;font-size:14px">0:15<=
+/span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">And=
+ lims, I mean our LIMS is.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #=
+3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:=
+#3b82f6;font-weight:600;margin-right:8px">Jason</span><span style=3D"color:=
+#64748b;font-size:14px">0:18</span></div><div style=3D"color:#475569;font-s=
+ize:16px;line-height:1.6">So why don&#39;t we do this, Jason, Brian, we wil=
+l send you this list knowing that it&#39;s incomplete. We will send you the=
+ inventory and we&#39;ll work with, you know, work with you to get that ful=
+l list. Whatever you think is missing, add that in here, we&#39;ll go back =
+and validate it. That Steve and Steven.</div></div><div style=3D"margin-bot=
+tom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-lef=
+t:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span st=
+yle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jaime</span><span st=
+yle=3D"color:#64748b;font-size:14px">0:38</span></div><div style=3D"color:#=
+475569;font-size:16px;line-height:1.6">No, we&#39;ve already, I think we&#3=
+9;re missing. Let&#39;s talk about how ISC operates. So we&#39;re taking sa=
+les orders, we manufacture a bunch of goods, we touch probably 90% of the I=
+T systems. I&#39;m guessing we are large consumers of most of our software.=
+ I don&#39;t know Paul, maybe my 90%&#39;s off, maybe it&#39;s 80. So all t=
+hese questions around all these other softwares that are changing or not ch=
+anging, how are we going to be impacted by that? That makes sense. So lims.=
+ LIMS is on the list. I think it&#39;s on the R D list. However, we are hea=
+vy consumers of that.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f=
+6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82=
+f6;font-weight:600;margin-right:8px">Brian</span><span style=3D"color:#6474=
+8b;font-size:14px">1:27</span></div><div style=3D"color:#475569;font-size:1=
+6px;line-height:1.6">It&#39;s on the engineering list.</div></div><div styl=
+e=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius=
+:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-botto=
+m:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jaime=
+</span><span style=3D"color:#64748b;font-size:14px">1:29</span></div><div s=
+tyle=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, but it&#3=
+9;s a critical, but.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6=
+"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f=
+6;font-weight:600;margin-right:8px">Chase</span><span style=3D"color:#64748=
+b;font-size:14px">1:33</span></div><div style=3D"color:#475569;font-size:16=
+px;line-height:1.6">It&#39;S a critical app in order to do uat.</div></div>=
+<div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bord=
+er-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;mar=
+gin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8=
+px">Brian</span><span style=3D"color:#64748b;font-size:14px">1:35</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, unders=
+tood.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D=
+"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:6=
+00;margin-right:8px">Jaime</span><span style=3D"color:#64748b;font-size:14p=
+x">1:38</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah. So we, you know, when this journey started a long time ago, IC p=
+rovided a list of what we thought were critical applications that we use th=
+at is already created. We&#39;ve, we&#39;ve got that, that was then reconci=
+led and divided amongst all the various functions. And so those are the que=
+stions. That&#39;s where they&#39;re coming is, what is the plan for those?=
+ How do we know LIMS is going to work?</div></div><div style=3D"margin-bott=
+om:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left=
+:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span sty=
+le=3D"color:#3b82f6;font-weight:600;margin-right:8px">Stephen</span><span s=
+tyle=3D"color:#64748b;font-size:14px">2:10</span></div><div style=3D"color:=
+#475569;font-size:16px;line-height:1.6">Those are the two long tail ones fo=
+r me, Stephen, is LIMS and Ecosystem those interfaces. Because it&#39;s not=
+ something that I can control, but it&#39;s something that I need to provid=
+e. There&#39;s 17 that we&#39;ve identified in ecosystem, environment and e=
+ight active ones for ISC in LIMS. Once they&#39;re done with this upgrade e=
+nhancement that they&#39;re working on, which was supposed to be done by Mo=
+nday, you know, mid June, then what we&#39;re going to do is clone and ensu=
+re that only traffic going over that from 81 forward will be AM traffic for=
+ you guys and anything that was going somewhere else will have its own inte=
+rface transportation path.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #=
+3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:=
+#3b82f6;font-weight:600;margin-right:8px">Jaime</span><span style=3D"color:=
+#64748b;font-size:14px">2:57</span></div><div style=3D"color:#475569;font-s=
+ize:16px;line-height:1.6">Okay, and do we think that user acceptance testin=
+g is required?</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font=
+-weight:600;margin-right:8px">Stephen</span><span style=3D"color:#64748b;fo=
+nt-size:14px">3:02</span></div><div style=3D"color:#475569;font-size:16px;l=
+ine-height:1.6">I think we should definitely, you know, kick the tires on i=
+t, make sure, you know, and try to break it. And if we can&#39;t break it, =
+then we know we got it. Right.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px sol=
+id #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"co=
+lor:#3b82f6;font-weight:600;margin-right:8px">Chase</span><span style=3D"co=
+lor:#64748b;font-size:14px">3:13</span></div><div style=3D"color:#475569;fo=
+nt-size:16px;line-height:1.6">You&#39;re talking about moving the lens move=
+ to the new solstice cloud.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color=
+:#3b82f6;font-weight:600;margin-right:8px">Gary</span><span style=3D"color:=
+#64748b;font-size:14px">3:18</span></div><div style=3D"color:#475569;font-s=
+ize:16px;line-height:1.6">Right.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px s=
+olid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"=
+color:#3b82f6;font-weight:600;margin-right:8px">Chase</span><span style=3D"=
+color:#64748b;font-size:14px">3:19</span></div><div style=3D"color:#475569;=
+font-size:16px;line-height:1.6">You know, that&#39;s only in cix. That&#39;=
+s in the lowest client.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b8=
+2f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b=
+82f6;font-weight:600;margin-right:8px">Stephen</span><span style=3D"color:#=
+64748b;font-size:14px">3:22</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">Right. That&#39;s where we are right now. We&#39;r=
+e in cix. We move some stuff to Q. But the lion&#39;s share is still an X b=
+ecause we&#39;re still doing a lot of development.</div></div><div style=3D=
+"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px=
+;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8p=
+x"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jaime</sp=
+an><span style=3D"color:#64748b;font-size:14px">3:37</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">And then pack out was bro=
+ught up, I think. Chase, what&#39;s the SPC software? You brought that up t=
+he other day.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-=
+weight:600;margin-right:8px">Chase</span><span style=3D"color:#64748b;font-=
+size:14px">3:48</span></div><div style=3D"color:#475569;font-size:16px;line=
+-height:1.6">ProcessView and NWA.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D=
+"color:#3b82f6;font-weight:600;margin-right:8px">Jaime</span><span style=3D=
+"color:#64748b;font-size:14px">3:50</span></div><div style=3D"color:#475569=
+;font-size:16px;line-height:1.6">Yeah.</div></div><div style=3D"margin-bott=
+om:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left=
+:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span sty=
+le=3D"color:#3b82f6;font-weight:600;margin-right:8px">Chase</span><span sty=
+le=3D"color:#64748b;font-size:14px">3:53</span></div><div style=3D"color:#4=
+75569;font-size:16px;line-height:1.6">And I think Quality Optimizer I think=
+ is up there. Number 10. That&#39;s very important for our shield business.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"disp=
+lay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;ma=
+rgin-right:8px">Jaime</span><span style=3D"color:#64748b;font-size:14px">4:=
+02</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">=
+Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D=
+"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:6=
+00;margin-right:8px">James</span><span style=3D"color:#64748b;font-size:14p=
+x">4:03</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">As well as the ballistics database.</div></div><div style=3D"margin-bo=
+ttom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-le=
+ft:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span s=
+tyle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Chase</span><span s=
+tyle=3D"color:#64748b;font-size:14px">4:07</span></div><div style=3D"color:=
+#475569;font-size:16px;line-height:1.6">And we had provided. Yeah, maybe th=
+ese are on a different.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b8=
+2f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b=
+82f6;font-weight:600;margin-right:8px">Jaime</span><span style=3D"color:#64=
+748b;font-size:14px">4:11</span></div><div style=3D"color:#475569;font-size=
+:16px;line-height:1.6">Yeah, so that&#39;s where a lot of these questions a=
+re coming from is all.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82=
+f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b8=
+2f6;font-weight:600;margin-right:8px">Jason</span><span style=3D"color:#647=
+48b;font-size:14px">4:17</span></div><div style=3D"color:#475569;font-size:=
+16px;line-height:1.6">These critical apps that we listed and Sriram. Sorry,=
+ go ahead, Chase.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><=
+div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;f=
+ont-weight:600;margin-right:8px">James</span><span style=3D"color:#64748b;f=
+ont-size:14px">4:25</span></div><div style=3D"color:#475569;font-size:16px;=
+line-height:1.6">Yeah, I just wanted to say. Yeah, I actually need it to dr=
+op real quick, but I got Brian and Jason on to talk for me. But you know, t=
+he thing for us is almost all those applications I listed are interfacing w=
+ith SAP in some way. Some do, some do not have like quality clients or sand=
+box clients that you can test in. And so the sequencing and timing of the d=
+ifferent things is just important to make sure you&#39;ve got. You basicall=
+y need an IT owner and then like a plant owner maybe, maybe by plant becaus=
+e each plant&#39;s different for each one of those on UAT is my guidance. L=
+ike what I need to do to test lims is not necessarily what Spokane needs to=
+ do, for example.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><=
+div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;f=
+ont-weight:600;margin-right:8px">Sriram</span><span style=3D"color:#64748b;=
+font-size:14px">5:06</span></div><div style=3D"color:#475569;font-size:16px=
+;line-height:1.6">Right.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b=
+82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3=
+b82f6;font-weight:600;margin-right:8px">James</span><span style=3D"color:#6=
+4748b;font-size:14px">5:07</span></div><div style=3D"color:#475569;font-siz=
+e:16px;line-height:1.6">So just as an example, that&#39;s just one of my qu=
+estions. Concerns like they interface differently and do different things.<=
+/div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#=
+f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displ=
+ay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Brian</span><span style=3D"color:#64748b;font-size:14px">5:1=
+6</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Y=
+ou&#39;re on different instances and every site seems to have different LIM=
+S applications too.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"=
+><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6=
+;font-weight:600;margin-right:8px">Sriram</span><span style=3D"color:#64748=
+b;font-size:14px">5:21</span></div><div style=3D"color:#475569;font-size:16=
+px;line-height:1.6">Right.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #=
+3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:=
+#3b82f6;font-weight:600;margin-right:8px">Gary</span><span style=3D"color:#=
+64748b;font-size:14px">5:23</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">But Gary, we are not changing the servers on these=
+ limbs. Right. So technically the interface and then the other stuff should=
+ not change in this phase. I think that is where probably Bill, like we rea=
+lly need to put a strong slide. What is changing. You don&#39;t need to tes=
+t the end to end processors in some areas, just validate the forms in some =
+areas where the servers are migrating. We need to do an end to end test mor=
+e from a connection standpoint of you. We don&#39;t have to validate the fi=
+elds. I think we have to push down the message to all the service owners in=
+ the IT and make sure they Present what is changing and provide guidance to=
+ the teams of guidelines. I think that is important. That&#39;s missing big=
+ time. And then we are thinking very big in some areas and then very small.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"disp=
+lay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;ma=
+rgin-right:8px">Brian</span><span style=3D"color:#64748b;font-size:14px">6:=
+17</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">=
+Right. Like BCC instant plans that Colonial Heights uses. You know, we&#39;=
+re moving that from the Honeywell environment just to the Colo environment.=
+ But we&#39;re not changing anything. So all we have to do is really test i=
+t.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-colo=
+r:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"di=
+splay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sriram</span><span style=3D"color:#64748b;font-size:14px"=
+>6:30</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I&#39;m sorry, baby.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b8=
+2f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b=
+82f6;font-weight:600;margin-right:8px">Gary</span><span style=3D"color:#647=
+48b;font-size:14px">6:34</span></div><div style=3D"color:#475569;font-size:=
+16px;line-height:1.6">In this instance the recommendation is we want you to=
+ log in and then perform your day to day operations. Just one and then see =
+if works fine. That&#39;s it. We&#39;re not asking you to validate whether =
+the field is right. This value is right. No, it&#39;s just simple connectio=
+ns testing. Right. I think let&#39;s highlight by application owner they sh=
+ould be highlighting all these things. What is changing. We are moving the =
+servers here. So the expectation is connection testing. Just log in and the=
+n validate. And then here we are just valid in SAP. We&#39;re not moving th=
+e servers. No interfaces should be changing. Just validate the forms. Right=
+. Or we are changing the name. I think we really need to put those slides f=
+or each, you know, from each tower standpoint of view so the communication =
+is clear. And then like bring in the UAT dates like you know, quality optim=
+izer. Like we&#39;re not changing anything. So what are we asking? Like do =
+we need to stick still validate anything? Yes or no. Right. If yes, maybe j=
+ust hand them a login validation. We need to provide those guidelines. I th=
+ink that&#39;s what is confusing everybody.</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border=
+-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><spa=
+n style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Chase</span><spa=
+n style=3D"color:#64748b;font-size:14px">7:45</span></div><div style=3D"col=
+or:#475569;font-size:16px;line-height:1.6">I think it&#39;s a little bit mo=
+re involved in that. For instance, for Packout. Packout has to know the pat=
+h that it needs to talk to on the SAP side or the LIM side.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-=
+bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">=
+Jaime</span><span style=3D"color:#64748b;font-size:14px">7:59</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. I think Br=
+ian, what you&#39;re missing is what&#39;s not changing.</div></div><div st=
+yle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radi=
+us:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bot=
+tom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bil=
+l</span><span style=3D"color:#64748b;font-size:14px">8:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.</div></div><di=
+v style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-=
+radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin=
+-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px"=
+>Jaime</span><span style=3D"color:#64748b;font-size:14px">8:05</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">And you&#39;re =
+assuming, I mean I shouldn&#39;t say you. Right. A lot of people are assumi=
+ng that we&#39;re doing a complete clone of the RP system and navigating it=
+ to a new server. We aren&#39;t doing anything remotely close to that.</div=
+></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fa=
+fc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:f=
+lex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-=
+right:8px">Stephen</span><span style=3D"color:#64748b;font-size:14px">8:18<=
+/span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Abs=
+olutely not.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div s=
+tyle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-w=
+eight:600;margin-right:8px">Jaime</span><span style=3D"color:#64748b;font-s=
+ize:14px">8:19</span></div><div style=3D"color:#475569;font-size:16px;line-=
+height:1.6">Right. That&#39;s the piece of information that we aren&#39;t t=
+elling people. What&#39;s not changing. A lot of these things are quite ben=
+ign. But the updating a legal entity field and address.</div></div><div sty=
+le=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radiu=
+s:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bott=
+om:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Stev=
+en</span><span style=3D"color:#64748b;font-size:14px">8:35</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Right.</div></div><=
+div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;borde=
+r-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;marg=
+in-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8p=
+x">Jaime</span><span style=3D"color:#64748b;font-size:14px">8:35</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">And a master =
+list somewhere. That&#39;s the change. Yeah.</div></div><div style=3D"margi=
+n-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;borde=
+r-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><sp=
+an style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Gary</span><spa=
+n style=3D"color:#64748b;font-size:14px">8:40</span></div><div style=3D"col=
+or:#475569;font-size:16px;line-height:1.6">Whoop.</div></div><div style=3D"=
+margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;=
+border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px=
+"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jaime</spa=
+n><span style=3D"color:#64748b;font-size:14px">8:40</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">You do?</div></div><div s=
+tyle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-rad=
+ius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bo=
+ttom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">St=
+ephen</span><span style=3D"color:#64748b;font-size:14px">8:41</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. And for in=
+terfaces too, you know, we analyze 76, well, hundreds of interface. We got =
+that down to 76 that had shared pathways say going down to CIP 300 for UOP.=
+ Those are the ones we focus on cloning, so they become AM only interfaces.=
+ So from the AM user standpoint, nothing changes. They log in as per usual.=
+ The data gets extracted from the server as usual, and their work is as usu=
+al. So I guess I agree with Jaime that probably what&#39;s not changing is =
+more important than what is changing.</div></div><div style=3D"margin-botto=
+m:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:=
+4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span styl=
+e=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jaime</span><span styl=
+e=3D"color:#64748b;font-size:14px">9:13</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">Yeah.</div></div><div style=3D"margin-=
+bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-=
+left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span=
+ style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Chase</span><span=
+ style=3D"color:#64748b;font-size:14px">9:16</span></div><div style=3D"colo=
+r:#475569;font-size:16px;line-height:1.6">Again, I&#39;m going to repeat my=
+self. I know. The LIMS system is changing and going to a different cloud. A=
+ different cloud, right.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b=
+82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3=
+b82f6;font-weight:600;margin-right:8px">Brian</span><span style=3D"color:#6=
+4748b;font-size:14px">9:24</span></div><div style=3D"color:#475569;font-siz=
+e:16px;line-height:1.6">No, the lens is not on the cloud now. Not your vers=
+ion of Limps. Your version of LIMS right now is on Prem, and it will be mov=
+ed on Prem and within Honeywell, it&#39;ll be on the color because it&#39;s=
+ the ECC instance. So we consider it. That&#39;s for control.</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border=
+-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margi=
+n-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px=
+">Chase</span><span style=3D"color:#64748b;font-size:14px">9:41</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.</div></d=
+iv><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;b=
+order-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;=
+margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-righ=
+t:8px">Brian</span><span style=3D"color:#64748b;font-size:14px">9:42</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, I g=
+ot.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-col=
+or:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"d=
+isplay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Chase</span><span style=3D"color:#64748b;font-size:14px"=
+>9:43</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">All right. We&#39;re getting a different message from a different group =
+of people, then I&#39;m.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b=
+82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3=
+b82f6;font-weight:600;margin-right:8px">Brian</span><span style=3D"color:#6=
+4748b;font-size:14px">9:47</span></div><div style=3D"color:#475569;font-siz=
+e:16px;line-height:1.6">Okay.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px soli=
+d #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"col=
+or:#3b82f6;font-weight:600;margin-right:8px">Chase</span><span style=3D"col=
+or:#64748b;font-size:14px">9:48</span></div><div style=3D"color:#475569;fon=
+t-size:16px;line-height:1.6">Anyways, my point is, is if the server. If the=
+ server name is changing or the path to. To lims is changing, then we have =
+to make the change on Packout, for example. So there is some. There&#39;s s=
+ome changes that have to be made on other applications in order to talk to =
+SAP or LIMS or whatever.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b=
+82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3=
+b82f6;font-weight:600;margin-right:8px">Brian</span><span style=3D"color:#6=
+4748b;font-size:14px">10:09</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">So you just got to point to the new locations.</di=
+v></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8f=
+afc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:=
+flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin=
+-right:8px">Chase</span><span style=3D"color:#64748b;font-size:14px">10:12<=
+/span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Cor=
+rect. I&#39;m just saying it&#39;s not.</div></div><div style=3D"margin-bot=
+tom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-lef=
+t:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span st=
+yle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brian</span><span st=
+yle=3D"color:#64748b;font-size:14px">10:13</span></div><div style=3D"color:=
+#475569;font-size:16px;line-height:1.6">Yeah.</div></div><div style=3D"marg=
+in-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bord=
+er-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><s=
+pan style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Chase</span><s=
+pan style=3D"color:#64748b;font-size:14px">10:14</span></div><div style=3D"=
+color:#475569;font-size:16px;line-height:1.6">Testing something. There are =
+some minor linkages that need to be changed.</div></div><div style=3D"margi=
+n-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;borde=
+r-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><sp=
+an style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brian</span><sp=
+an style=3D"color:#64748b;font-size:14px">10:19</span></div><div style=3D"c=
+olor:#475569;font-size:16px;line-height:1.6">Agreed. And that. That&#39;s w=
+hat we&#39;re saying. We&#39;ll make those changes to the. To the pathways =
+and test. Make sure you&#39;re seeing the data. The data is flowing back an=
+d forth and at that point we should be good. You&#39;re not going to have t=
+o go out and test the entire ECC LIMS application because we&#39;re not mak=
+ing changes to it. You just need to test the pathways, make sure we&#39;re =
+getting the data.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><=
+div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;f=
+ont-weight:600;margin-right:8px">Chase</span><span style=3D"color:#64748b;f=
+ont-size:14px">10:44</span></div><div style=3D"color:#475569;font-size:16px=
+;line-height:1.6">I understood. I&#39;m just. I was just making the point. =
+We&#39;re just not going to test that.</div></div><div style=3D"margin-bott=
+om:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left=
+:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span sty=
+le=3D"color:#3b82f6;font-weight:600;margin-right:8px">Gary</span><span styl=
+e=3D"color:#64748b;font-size:14px">10:49</span></div><div style=3D"color:#4=
+75569;font-size:16px;line-height:1.6">We.</div></div><div style=3D"margin-b=
+ottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-l=
+eft:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Chase</span><span =
+style=3D"color:#64748b;font-size:14px">10:50</span></div><div style=3D"colo=
+r:#475569;font-size:16px;line-height:1.6">Somebody on. On these. On these e=
+xternal applications may need to make some changes in order for the connect=
+ivity to be there. That&#39;s all.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brian</span><span style=
+=3D"color:#64748b;font-size:14px">10:58</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">Understood. Understood. We&#39;re in a=
+greement.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div styl=
+e=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weig=
+ht:600;margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:=
+14px">11:03</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">It sounds like there was an action to look at each of these and ju=
+st confirm, like what&#39;s changing or not changing so that we can better =
+understand if we have the right UAT captured. Right. Who can do that and wh=
+en can that be shared with the team.</div></div><div style=3D"margin-bottom=
+:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4=
+px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jason</span><span style=
+=3D"color:#64748b;font-size:14px">11:21</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">So we&#39;ll take it back to the servi=
+ce owners and then Gary, James, Phil will work with you to each of these. S=
+o you&#39;ve got engineering, supply chain, hse, David. So we&#39;ll work w=
+ith each of these names here on the left to get those as quickly as we can.=
+ So I&#39;m. Again, let&#39;s. Let&#39;s shoot for next Monday or Tuesday t=
+o get this back to you. Okay.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px soli=
+d #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"col=
+or:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span style=3D"colo=
+r:#64748b;font-size:14px">11:57</span></div><div style=3D"color:#475569;fon=
+t-size:16px;line-height:1.6">Yep, go ahead.</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border=
+-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><spa=
+n style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jaime</span><spa=
+n style=3D"color:#64748b;font-size:14px">11:59</span></div><div style=3D"co=
+lor:#475569;font-size:16px;line-height:1.6">Can you go to the ISC Key Syste=
+ms tab that. Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6">=
+<div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;=
+font-weight:600;margin-right:8px">Stephen</span><span style=3D"color:#64748=
+b;font-size:14px">12:04</span></div><div style=3D"color:#475569;font-size:1=
+6px;line-height:1.6">Brian, I just. I sent one last thing on lims. Brian, I=
+ just sent a note to the two guys on my team that are managing what&#39;s c=
+hanging there and ask them to make sure they loop you in so you know what i=
+s and what isn&#39;t changing.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px sol=
+id #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"co=
+lor:#3b82f6;font-weight:600;margin-right:8px">Chase</span><span style=3D"co=
+lor:#64748b;font-size:14px">12:17</span></div><div style=3D"color:#475569;f=
+ont-size:16px;line-height:1.6">Okay. Yeah. Because I was just hit up this w=
+eek about doing some testing for a new Limbs client.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jaime<=
+/span><span style=3D"color:#64748b;font-size:14px">12:26</span></div><div s=
+tyle=3D"color:#475569;font-size:16px;line-height:1.6">Like.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-=
+bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">=
+Chase</span><span style=3D"color:#64748b;font-size:14px">12:26</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so.</div>=
+</div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8faf=
+c;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fl=
+ex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-r=
+ight:8px">Jason</span><span style=3D"color:#64748b;font-size:14px">12:31</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">All r=
+ight, so. And then Bill, I think I. I guess there was a general ask. We&#39=
+;ll have to see Stephen, to the point of, you know, can we describe for eve=
+ry system that&#39;s what is changing, what is not? Well, we&#39;ll. We&#39=
+;ll try and capture that. Can we go to the ISE Key systems? I think this Sr=
+iram you gave us and we validated the list last time, so let&#39;s look at =
+the ISE tab.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div s=
+tyle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-w=
+eight:600;margin-right:8px">Steven</span><span style=3D"color:#64748b;font-=
+size:14px">12:58</span></div><div style=3D"color:#475569;font-size:16px;lin=
+e-height:1.6">Is this the same file that we&#39;re actively updating or is =
+this a different file? Because the file name looks different to me.</div></=
+div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex=
+;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-rig=
+ht:8px">Jason</span><span style=3D"color:#64748b;font-size:14px">13:04</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, i=
+t looks different from what we talked about. True.</div></div><div style=3D=
+"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px=
+;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8p=
+x"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Steven</s=
+pan><span style=3D"color:#64748b;font-size:14px">13:07</span></div><div sty=
+le=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.</div></div><div s=
+tyle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-rad=
+ius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bo=
+ttom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Ja=
+son</span><span style=3D"color:#64748b;font-size:14px">13:08</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.</div></div>=
+<div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bord=
+er-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;mar=
+gin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8=
+px">Steven</span><span style=3D"color:#64748b;font-size:14px">13:08</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">There is a=
+. It was called Business Readiness Validation.</div></div><div style=3D"mar=
+gin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bor=
+der-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jason</span><=
+span style=3D"color:#64748b;font-size:14px">13:13</span></div><div style=3D=
+"color:#475569;font-size:16px;line-height:1.6">Ise, correct.</div></div><di=
+v style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-=
+radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin=
+-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px"=
+>Sriram</span><span style=3D"color:#64748b;font-size:14px">13:14</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, I=
+ think we just renamed.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b8=
+2f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b=
+82f6;font-weight:600;margin-right:8px">Bill</span><span style=3D"color:#647=
+48b;font-size:14px">13:17</span></div><div style=3D"color:#475569;font-size=
+:16px;line-height:1.6">It.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #=
+3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:=
+#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span style=3D"color=
+:#64748b;font-size:14px">13:19</span></div><div style=3D"color:#475569;font=
+-size:16px;line-height:1.6">But we&#39;ll check. This is the one in that sa=
+me folder from the email that was sent out with the notes. But we&#39;ll do=
+uble check, and if there is something else there, we&#39;ll incorporate tha=
+t in here.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div sty=
+le=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-wei=
+ght:600;margin-right:8px">Jason</span><span style=3D"color:#64748b;font-siz=
+e:14px">13:32</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><d=
+iv style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fo=
+nt-weight:600;margin-right:8px">Jaime</span><span style=3D"color:#64748b;fo=
+nt-size:14px">13:37</span></div><div style=3D"color:#475569;font-size:16px;=
+line-height:1.6">Please.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b=
+82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3=
+b82f6;font-weight:600;margin-right:8px">Steven</span><span style=3D"color:#=
+64748b;font-size:14px">13:37</span></div><div style=3D"color:#475569;font-s=
+ize:16px;line-height:1.6">I think we should work off of one file.</div></di=
+v><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bo=
+rder-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;m=
+argin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right=
+:8px">Jason</span><span style=3D"color:#64748b;font-size:14px">13:39</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, no,=
+ we should work off of one. We should have it in that same folder called Sy=
+stems Template ise and then move these around there.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Gary</=
+span><span style=3D"color:#64748b;font-size:14px">13:46</span></div><div st=
+yle=3D"color:#475569;font-size:16px;line-height:1.6">Right.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-=
+bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">=
+Jason</span><span style=3D"color:#64748b;font-size:14px">13:50</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">So give me one =
+second. I&#39;m opening that folder and we&#39;ll. We&#39;ll talk through.<=
+/div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#=
+f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displ=
+ay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Stephen</span><span style=3D"color:#64748b;font-size:14px">1=
+3:59</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">There were two links, sriram, in the ping that you gave me. One didn&#39;=
+t make any sense to me, so I updated the other one.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Steven=
+</span><span style=3D"color:#64748b;font-size:14px">14:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.</div></div><di=
+v style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-=
+radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin=
+-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px"=
+>Jason</span><span style=3D"color:#64748b;font-size:14px">14:09</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Gee, thanks fo=
+r that pill. So we&#39;ll go check both of them and see. See which one&#39;=
+s which. Okay, so this. Is that what people have been updating here?</div><=
+/div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc=
+;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fle=
+x;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-ri=
+ght:8px">Sriram</span><span style=3D"color:#64748b;font-size:14px">14:18</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Make =
+it.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-col=
+or:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"d=
+isplay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Steven</span><span style=3D"color:#64748b;font-size:14px=
+">14:19</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div sty=
+le=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-wei=
+ght:600;margin-right:8px">Jason</span><span style=3D"color:#64748b;font-siz=
+e:14px">14:20</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Correct. Okay.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3=
+b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#=
+3b82f6;font-weight:600;margin-right:8px">Steven</span><span style=3D"color:=
+#64748b;font-size:14px">14:26</span></div><div style=3D"color:#475569;font-=
+size:16px;line-height:1.6">Well, this is. Yeah, we&#39;ve got a lot of upda=
+tes in this week. There&#39;s still some more that people are working on. I=
+ thought this meeting was more on the manufacturing side, but where do you =
+go?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-col=
+or:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"d=
+isplay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Jason</span><span style=3D"color:#64748b;font-size:14px"=
+>14:41</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Have we addressed all of the questions on the manufacturing side? I kno=
+w we&#39;re got a few more Minutes. But I think the action. Sorry, go ahead=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"dis=
+play:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;m=
+argin-right:8px">Jaime</span><span style=3D"color:#64748b;font-size:14px">1=
+4:52</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">No, that&#39;s good.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82=
+f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b8=
+2f6;font-weight:600;margin-right:8px">Jason</span><span style=3D"color:#647=
+48b;font-size:14px">14:54</span></div><div style=3D"color:#475569;font-size=
+:16px;line-height:1.6">I was going to say we do have a few action items com=
+ing out of this. That. Yes. So we do need to communicate certainly the chan=
+ges and what&#39;s not changing across. So the list that we just showed ear=
+lier, I know we added a few things that was not on that list that you provi=
+ded. So we&#39;ll go back and add that and track to it. Is that the full li=
+st that Brian and Chase, all of you provided a bit earlier? Going back to. =
+If I was to stop sharing Mac, if you can share that screen again.</div></di=
+v><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bo=
+rder-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;m=
+argin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right=
+:8px">Steven</span><span style=3D"color:#64748b;font-size:14px">15:28</span=
+></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Steven, =
+I think this is one thing that I know you mentioned in this call earlier th=
+at at the beginning of this program there was a list provided for all the m=
+anufacturing systems. Do you have that handy? Because we, in this call we f=
+ound a couple of them that was not in that tab. The manufacturing key syste=
+ms tab.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Jaime</span><span style=3D"color:#64748b;font-size:=
+14px">15:52</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">It take me a little bit to find the original. Yeah, it&#39;s a lon=
+g ass list, I&#39;ll tell you that.</div></div><div style=3D"margin-bottom:=
+16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4p=
+x solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriram</span><span styl=
+e=3D"color:#64748b;font-size:14px">15:59</span></div><div style=3D"color:#4=
+75569;font-size:16px;line-height:1.6">That would be incredibly helpful. Rig=
+ht. Like if you have that list as a starting point we can sort of bring it =
+into and then cross align with all of the information that we&#39;ve gather=
+ed from all of these functional alignment calls and start to be able to say=
+ for these key systems, ultimately what we&#39;re looking for is what are t=
+he functions that need to be involved in the testing? Right. So we have a l=
+ist of systems. We can say here&#39;s all of the folks that need to be invo=
+lved and then here&#39;s all of the points of contact which Rakesh was. The=
+ other action item was the blank list of here&#39;s the testers from the bu=
+siness side or from the IT side who need to be involved in that testing dow=
+nstream. So yeah, if you could give that list we can bring it in here and r=
+ationalize it against the modern data.</div></div><div style=3D"margin-bott=
+om:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left=
+:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span sty=
+le=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jason</span><span sty=
+le=3D"color:#64748b;font-size:14px">16:53</span></div><div style=3D"color:#=
+475569;font-size:16px;line-height:1.6">And I suspect most of them would be =
+here. But I think if there&#39;s a few Delta, I think we heard about Packou=
+t and LIMS and a couple of others.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brian</span><span style=
+=3D"color:#64748b;font-size:14px">17:02</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">And we got to be careful when we say l=
+imbs because we got a multitude of different lens Systems. We got LabVantag=
+e, we got others. So we can&#39;t just say LIMS. If you want to talk LIMS, =
+we need to list them all out. You know, Quality Optimizer is one that&#39;s=
+ considered lims. Ballistics Database, Lab Vantage, all of those are lims a=
+re in the LIMS category.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b=
+82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3=
+b82f6;font-weight:600;margin-right:8px">Jason</span><span style=3D"color:#6=
+4748b;font-size:14px">17:22</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">Then you&#39;ve got Nexus LIMS as well.</div></div=
+><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bor=
+der-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;ma=
+rgin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:=
+8px">Brian</span><span style=3D"color:#64748b;font-size:14px">17:24</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">And Nexus =
+as well. Yeah. And we&#39;ve got more. RQMS is actually lims.</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border=
+-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margi=
+n-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px=
+">Gary</span><span style=3D"color:#64748b;font-size:14px">17:29</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">I mean, I mean=
+, shouldn&#39;t we look at the overall uat, Gary, and then like, why don&#3=
+9;t you guys sit down and then find all the systems that our IOC teams uses=
+. That makes this job easy. I think we need to look at the overall UAT time=
+lines across all functions and then just flag.</div></div><div style=3D"mar=
+gin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bor=
+der-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Chase</span><=
+span style=3D"color:#64748b;font-size:14px">17:51</span></div><div style=3D=
+"color:#475569;font-size:16px;line-height:1.6">Who can I send. We had sent =
+an email back to somebody. I can find it and I can send you the actual, the=
+ actual application name that&#39;s in, you know, in our IT direct system.<=
+/div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#=
+f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displ=
+ay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Jaime</span><span style=3D"color:#64748b;font-size:14px">18:=
+05</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">=
+So you. Which that only helps us for Colonial Heights.</div></div><div styl=
+e=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius=
+:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-botto=
+m:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Chase=
+</span><span style=3D"color:#64748b;font-size:14px">18:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I understand, but th=
+at, but we need to do.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82=
+f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b8=
+2f6;font-weight:600;margin-right:8px">Jason</span><span style=3D"color:#647=
+48b;font-size:14px">18:11</span></div><div style=3D"color:#475569;font-size=
+:16px;line-height:1.6">I mean, let&#39;s start with one site.</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border=
+-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margi=
+n-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px=
+">Steven</span><span style=3D"color:#64748b;font-size:14px">18:14</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, we&#39=
+;re looking.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div s=
+tyle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-w=
+eight:600;margin-right:8px">Chase</span><span style=3D"color:#64748b;font-s=
+ize:14px">18:14</span></div><div style=3D"color:#475569;font-size:16px;line=
+-height:1.6">We&#39;re looking out for ourselves. Right. So we&#39;re gonna=
+. We&#39;re gonna tell you what our. What, what the specific name is of, of=
+ the limbs, quote, unquote limbs that Gary&#39;s talking about. But it seem=
+s like you got some items on the R D list and some on this ISC list and the=
+y&#39;re.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div styl=
+e=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weig=
+ht:600;margin-right:8px">Jaime</span><span style=3D"color:#64748b;font-size=
+:14px">18:33</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">All over because we touched most here.</div></div><div style=3D"m=
+argin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;b=
+order-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"=
+><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Chase</span=
+><span style=3D"color:#64748b;font-size:14px">18:37</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">Is there a chance that we=
+ could asterisk a few of them so that the R and D ones are in the ua, are i=
+n the icuat bucket so that we can. You know.</div></div><div style=3D"margi=
+n-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;borde=
+r-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><sp=
+an style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jaime</span><sp=
+an style=3D"color:#64748b;font-size:14px">18:48</span></div><div style=3D"c=
+olor:#475569;font-size:16px;line-height:1.6">I like Heimera&#39;s idea. Rig=
+ht. Isn&#39;t there a master list of all the UATs? And then we cross refere=
+nce what we&#39;re interested in?</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D=
+"color:#3b82f6;font-weight:600;margin-right:8px">James</span><span style=3D=
+"color:#64748b;font-size:14px">19:00</span></div><div style=3D"color:#47556=
+9;font-size:16px;line-height:1.6">I think that&#39;s.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Gary</=
+span><span style=3D"color:#64748b;font-size:14px">19:01</span></div><div st=
+yle=3D"color:#475569;font-size:16px;line-height:1.6">Otherwise we&#39;re go=
+nna keep missing something. Steve.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jaime</span><span style=
+=3D"color:#64748b;font-size:14px">19:04</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">Like, I know like chasing Colonial Hei=
+ghts is like, okay, that&#39;s one out of.</div></div><div style=3D"margin-=
+bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-=
+left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span=
+ style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Chase</span><span=
+ style=3D"color:#64748b;font-size:14px">19:08</span></div><div style=3D"col=
+or:#475569;font-size:16px;line-height:1.6">16.</div></div><div style=3D"mar=
+gin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bor=
+der-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jaime</span><=
+span style=3D"color:#64748b;font-size:14px">19:10</span></div><div style=3D=
+"color:#475569;font-size:16px;line-height:1.6">And probably one out of 16 a=
+pplications for Colonial Heights. It doesn&#39;t get us anywhere. We&#39;ll=
+ still be talking about this in December.</div></div><div style=3D"margin-b=
+ottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-l=
+eft:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jason</span><span =
+style=3D"color:#64748b;font-size:14px">19:17</span></div><div style=3D"colo=
+r:#475569;font-size:16px;line-height:1.6">Yeah, yeah. So what we can do is.=
+ And Gary will work with you on it, but yeah, And James, we have the master=
+ inventory. We can. And Jaime will. Will take that and perhaps, you know, h=
+ave the follow up session here to go through that master inventory and go t=
+hrough. You know, I think there are site level applications there and other=
+ functions across all functions. Take a look at that and align. Now again, =
+it may be you have to be site by site or we could do some office hours with=
+ get several sites on the Brian yourself and a few others to just talk thro=
+ugh that list.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font=
+-weight:600;margin-right:8px">Brian</span><span style=3D"color:#64748b;font=
+-size:14px">19:56</span></div><div style=3D"color:#475569;font-size:16px;li=
+ne-height:1.6">And Rakesh, I think you&#39;re gonna see that these applicat=
+ions fall under Engineering isc. They fall under business managed all over.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"disp=
+lay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;ma=
+rgin-right:8px">Jason</span><span style=3D"color:#64748b;font-size:14px">20=
+:03</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6"=
+>Right, Right, they are. That&#39;s the challenges. Yeah. Yeah. So Gary, ma=
+ybe the action item is for us to take and see how best we can package that,=
+ because you&#39;re right in that A lot of them, they are across all over. =
+So again, I&#39;m just thinking out loud, but again we won&#39;t solve it h=
+ere, but let&#39;s take an action item then Stephen to. We&#39;ll take an a=
+ction item to work with Gary to get that initial list and then we&#39;ll se=
+t up a follow up call with you, Brian and others as needed. Sriram, I&#39;l=
+l work it through you to set up the conversations next week to get that dis=
+cussion going.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font=
+-weight:600;margin-right:8px">Gary</span><span style=3D"color:#64748b;font-=
+size:14px">20:47</span></div><div style=3D"color:#475569;font-size:16px;lin=
+e-height:1.6">Let&#39;s do it.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px sol=
+id #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"co=
+lor:#3b82f6;font-weight:600;margin-right:8px">Jason</span><span style=3D"co=
+lor:#64748b;font-size:14px">20:49</span></div><div style=3D"color:#475569;f=
+ont-size:16px;line-height:1.6">Okay. All right, so quite a few action items=
+, so I think nothing, you know, again more work for us to get to the bottom=
+ of this. And then I think the action item, certainly the list of test name=
+s for Bill to send. And then we&#39;ll plan a knowledge sharing session wit=
+h what&#39;s changing and then certainly here, you know, by app a follow up=
+ session to identify what is changing and what is the scope of testing so t=
+hat we can track it in one place here. All right, any other questions, comm=
+ents from the team? I think it was a good conversation but a lot more activ=
+ities to get done here. So.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color=
+:#3b82f6;font-weight:600;margin-right:8px">Gary</span><span style=3D"color:=
+#64748b;font-size:14px">21:36</span></div><div style=3D"color:#475569;font-=
+size:16px;line-height:1.6">Yeah, Rakesh, just make sure the messaging is cl=
+ear to all the IT towers that, you know, I mean everybody should have a pla=
+n for uat, yes or no. There should not be any blank lefts. The service owne=
+rs have to acknowledge is there any UAT required or not. And then like, you=
+ know, let&#39;s have them like list out what is changing, what is not chan=
+ging and then like that gives us a clear list and then we can clearly mark =
+which ones belongs to IAC and then bring in that list to the team. But the =
+messaging needs to be clear to the service owners. They need to flag each a=
+nd every line item relevant for UAT and then the respective information bec=
+ause that scope of.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"=
+><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6=
+;font-weight:600;margin-right:8px">Jason</span><span style=3D"color:#64748b=
+;font-size:14px">22:22</span></div><div style=3D"color:#475569;font-size:16=
+px;line-height:1.6">The changes will dictate what consists of UAT to the to=
+ what level. Right, point noted. So we&#39;ll take that back to the IT owne=
+rs and all of the service, the work stream leads and send that get that mes=
+sage out. So.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-=
+weight:600;margin-right:8px">Jaime</span><span style=3D"color:#64748b;font-=
+size:14px">22:43</span></div><div style=3D"color:#475569;font-size:16px;lin=
+e-height:1.6">Okay, thanks for translating.</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border=
+-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><spa=
+n style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jason</span><spa=
+n style=3D"color:#64748b;font-size:14px">22:44</span></div><div style=3D"co=
+lor:#475569;font-size:16px;line-height:1.6">Thanks, appreciate it.</div></d=
+iv><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;b=
+order-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;=
+margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-righ=
+t:8px">Jaime</span><span style=3D"color:#64748b;font-size:14px">22:48</span=
+></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, ta=
+ke care.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Brian</span><span style=3D"color:#64748b;font-size:=
+14px">22:49</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">Thanks everybody.</div></div><div style=3D"margin-bottom:0;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b8=
+2f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b=
+82f6;font-weight:600;margin-right:8px">Jason</span><span style=3D"color:#64=
+748b;font-size:14px">22:50</span></div><div style=3D"color:#475569;font-siz=
+e:16px;line-height:1.6">Thank you.</div></div></div><div style=3D"margin-to=
+p:36px;text-align:center;color:#64748b;font-size:14px;padding:20px;border-t=
+op:1px solid #e2e8f0"><p style=3D"margin:0;margin-bottom:8px">Captured with=
+ Wave AI Note Taker</p><p style=3D"margin:0;font-size:12px">Your AI-powered=
+ companion</p></div></div></div></div></div></div>
+
+--0000000000004a028906377c9009--

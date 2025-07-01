@@ -1,0 +1,799 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a05:6000:26d2:b0:3a5:23aa:6f43 with SMTP id 18csp657116wrm;
+        Fri, 20 Jun 2025 04:12:13 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFIz4yFXuBWRBdfx8kQ46fitNo+wEEQAvTyfmumrQtdpBkYjU4SeZyN+FEGyqSJxxEEIWls
+X-Received: by 2002:a05:620a:f10:b0:7ce:ed86:3c53 with SMTP id af79cd13be357-7d3f9915ea6mr288882385a.29.1750417933356;
+        Fri, 20 Jun 2025 04:12:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750417933; cv=none;
+        d=google.com; s=arc-20240605;
+        b=eUNcZ45pLRNagHW6bQNzfMvyjriWsASeomI4+N2Ep8RC+hV471anXVD9tnXYh1DM5T
+         jTP1mR1MUnnk38Zq5g9wHI5+WNXKBUkq3gNEUWOI0OmEy+fcROnCrJWZiDhX0/ERPK7Q
+         hd7ysjiuqSM0fiG7avqQv2i3ESxT9V3wnQCDmaVWql+fuJpbKzHhXAepI5df7zKI+TE2
+         Kbq3adqHwL/75VMg+ThWbkYivTRjAEBQCmta5rdFFpkwW2n364zrHLgeZ817PIXIOThf
+         hc98WW0kLjIiiXubaeYnDXoxS0XYDeG6W5GWfTFoF1byKi+3/I5Q5KjxWcURWvMp0lv2
+         6UOw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=bfm4P1fjPIXuAr1QQDa9y9DeYQWWqwAK3iO4Jkn5FEY=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=Sy3gFT8/ir/9HIFzlaXzpANpGncA2/ATaRmaJeQg9juOze7LV6UwQeR9LZ+/nar0f6
+         3h/Vaon224uH5rztbf53BRV/O50bq/qSO8wiIG6Y30o4vtrvXrmiVHhfDpq8EOIar1Ob
+         W3IWM5lunVtvv6/46WAPNnfZu1w9fnoiqZe0GFHBEj2klObqogpxTKQoF+xB9jWeedyw
+         ObQvy7lDFJdPbtPwuBsZwS51sb5kDNmjR3hNOwkfeitdBOMa+WJXHJBWg50T6MJg239i
+         oohppsJwtroS2jsEx15zEznKFTAW+fAMJZej5DJ8WFFrGV1YZT8kHnee6Js1VX3qZJQB
+         Q5jQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=ArfLzs3B;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=haYDjh3w;
+       spf=pass (google.com: domain of 010001978d0a015c-7bc4cc34-fa1d-4cb5-b57d-1f50161348fc-000000@send.email.wave.co designates 54.240.9.112 as permitted sender) smtp.mailfrom=010001978d0a015c-7bc4cc34-fa1d-4cb5-b57d-1f50161348fc-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <010001978d0a015c-7bc4cc34-fa1d-4cb5-b57d-1f50161348fc-000000@send.email.wave.co>
+Received: from a9-112.smtp-out.amazonses.com (a9-112.smtp-out.amazonses.com. [54.240.9.112])
+        by mx.google.com with ESMTPS id d75a77b69052e-4a77a0e27efsi15296171cf.559.2025.06.20.04.12.13
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 20 Jun 2025 04:12:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 010001978d0a015c-7bc4cc34-fa1d-4cb5-b57d-1f50161348fc-000000@send.email.wave.co designates 54.240.9.112 as permitted sender) client-ip=54.240.9.112;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=ArfLzs3B;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=haYDjh3w;
+       spf=pass (google.com: domain of 010001978d0a015c-7bc4cc34-fa1d-4cb5-b57d-1f50161348fc-000000@send.email.wave.co designates 54.240.9.112 as permitted sender) smtp.mailfrom=010001978d0a015c-7bc4cc34-fa1d-4cb5-b57d-1f50161348fc-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1750417932;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=mY2hVs7a7v+ZBIMenzjuEcHcHSZqI//cI3msSrFy6QU=;
+	b=ArfLzs3BBVorUIjFVayC8lWP5ahXHqVy1D6Aje3ZId3s9ApImLKsn8ESBFnOz6Xr
+	s+JTFaQpBY4JKrMuWm0VdLA36SkbDUWDd9VOZolZ5YjXzgXb01lkSlUxsI3kK9URujm
+	LcxJJjOhq9+IT1vn/CdAolZnfv+G5BeaUTops4NI=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1750417932;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=mY2hVs7a7v+ZBIMenzjuEcHcHSZqI//cI3msSrFy6QU=;
+	b=haYDjh3wZ4Tj+lYSv8sxeEPhPcx4mU74yR5vNuctN5aLOlGrqewfzvusi0DeFxG+
+	zFLOLJExwel9EexqJDIol2vWi4XnHa7bQzaODFNhUhJHR+wKKHV/guou6T4pibrRQTf
+	+7Oksj1tpW72MXwgw1U1tNGDbZtF4awBAcK381JY=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Data Consolidation Testing and Coordination Updates
+Message-ID: <010001978d0a015c-7bc4cc34-fa1d-4cb5-b57d-1f50161348fc-000000@email.amazonses.com>
+Date: Fri, 20 Jun 2025 11:12:12 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-85f57efa4c01eb50-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.06.20-54.240.9.112
+
+----_NmP-85f57efa4c01eb50-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Data Consolidation Testing and Coordination Updates
+
+## Main Topics Discussed
+
+### 1. Data Consolidation and Scheduling Updates
+- The team is working on consolidating dispersed data into a single, =
+concise location for easier tracking and reporting, especially for the =
+upcoming call with Jeff.
+- While daily plans are built, some hourly =
+scheduling details still need to be updated and formatted.
+- The goal is to make it easy for everyone, especially Finance (due to =
+overlapping functions), to view all information in one spot.
+- The consolidation is expected to be completed on June 20, 2025 ("today").
+- There are internal discussions on distinguishing daily versus hourly =
+plans for greater clarity.
+
+### 2. Status of SIT and UAT Plans
+- SIT (System Integration Testing) plans are to be finalized by June 20, =
+2025, with all major details in place.
+- UAT (User Acceptance Testing) =
+plans, while previously listed as being completed by June 27, 2025, are now=
+ targeted for completion by Monday, June 23, 2025.
+    - Minor changes are =
+expected even after "finalization" due to the dynamic nature of testing and=
+ potential unforeseen changes.
+- Discussions highlight the need for clear =
+communication around deadlines and details, avoiding open-ended dates to =
+maintain accountability.
+
+### 3. Communication and Status Reporting
+- The communication plan will no longer emphasize email as the central =
+strategy to avoid misrepresentation of the team=E2=80=99s methods.
+- Status reporting is being adjusted from "draft" to "dashboard developed" =
+to present a more finalized appearance and avoid unnecessary concerns.
+- Team is coordinating wording adjustments in documentation to clarify =
+project status.
+
+### 4. Logistics for On-Site Work
+- On-site logistics (e.g=
+., access, lunch, parking) need to be finalized; Pierce is responsible for =
+confirming these items upon his return.
+- There was debate about =
+appropriate finalization dates, settling on June 24-25, 2025, to ensure =
+everything is ready for on-site activities and access before testing begins=
+.
+
+### 5. APAC and EMEA Testing Handoff
+- The team is aligned and ready for=
+ APAC and EMEA regions to begin testing.
+- Handoff to these regions is =
+targeted for July 1 or 2, 2025, with final confirmation and coordination =
+pending.
+- Benny is being contacted to provide support for engaging the =
+EMEA team.
+
+## Key Dates & Deadlines
+
+| Item                   | Original =
+Date    | Revised Date           |
+|------------------------|--------------=
+----|------------------------|
+| SIT Plan Finalization  | June 20, 2025    =
+| =E2=80=94 (still today)        |
+| UAT Plan Finalization  | June 27, 2025=
+    | June 23, 2025 (Monday) |
+| On-site Logistics      | June 27, 2025    =
+| June 24-25, 2025       |
+| APAC/EMEA Handoff      | Not specified    | =
+July 1-2, 2025         |
+
+## Action Items & Follow-Ups
+
+- **Data Consolidation:** Jessica to complete data consolidation and =
+formatting for Jeff=E2=80=99s call on June 20, 2025.
+- **Plan Differentiation:** Clarify and visually separate daily and hourly =
+schedules.
+- **Documentation Updates:** Adjust wording to reflect schedule =
+clarity and avoid terms that suggest open-endedness or draft status.
+- **UAT Timeline Clarification:** Clearly communicate that UAT will be =
+finalized by June 23, 2025; ensure changes in date across all references.
+- **On-site Logistics:** Pierce to finalize all logistics upon return; push=
+ finalization to June 24-25, 2025.
+- **APAC/EMEA Coordination:** Determine =
+and communicate exact handoff date for testing; Benny to aid in =
+coordination.
+- **Status Reporting Adjustment:** Shift from reporting =
+=E2=80=9Cdraft=E2=80=9D status to =E2=80=9Cdashboard developed=E2=80=9D to =
+avoid concerns.
+
+## Additional Points
+
+- The team acknowledges that minor =
+adjustments may occur after finalization, but major open items must be =
+resolved and plans in place before the next project milestones.
+- Strong emphasis on clarity, accountability, and unified documentation for=
+ all involved parties.
+
+Transcript:
+0:00
+Going to pull his into here. He =
+has his own day by day. So we have the data. It's just more call formatting=
+ to put it all into one concise spot.
+
+0:12
+Okay, I just, yeah, I, I hear =
+the concern.
+
+0:17
+I understand. I will try to have this ready for the Jeff=
+ call so we can say that it's done. But because it all wasn't in one =
+concise spot, we didn't want to confidently say that it's done yet because =
+if I showed him this, obviously it doesn't.
+
+0:30
+Have everything in it.
+
+0:31
+So I will try to have it done. If it is not done, my focus is fit =
+because obviously that starts next week. So the information's out there. =
+It's just not all in one concise spot. So it's really more of a =
+consolidation effort. If it's not, then can we make a distinction between =
+the daily and hourly? And so we do have the daily plan built. We're just =
+updating some of the hourly scheduling. Yeah, we can absolutely do that. =
+And if, if need be, I can flash mini bosses and just say drop them =
+combining into one easier tracking. That's really like more where we're at =
+with this. So it's not that it's not done, it's just the concise having =
+everything in one spot to make it easier to track. Because, you know, our =
+concern really is finance because finance is going to have some overlapping=
+ functions. We want to make sure that everybody can see everything in the =
+same spot. So yeah, we can flash this. This is on this slide that Rakesh =
+was showing and I can flash this if we need to, but I'll try to have Trini =
+Vas in here. But it's more of a consolidation effort at this point. So it =
+will be done today and we can show this if we need to, but a little bit =
+more of what's called formatting work needs to be accomplished.
+
+1:45
+Okay. Yeah, let's not flash anything we don't feel is done. So yes, as much=
+ as you can do, Jessica would be much appreciated. And if we can discrete, =
+if we can differentiate between, like I think Bill said that between daily =
+and. Because I think in his mind when I read that, I was thinking rsit, =
+higher level plans are done. They are. Now you're going hour by hour, =
+you're doing that third level of detail. So making sure you have that =
+differentiation with cash when you say that, I think that's going to be =
+good. And then I think he's going to have the same comment on the 7th. Why =
+is it, I mean, why is the UAT calendar not done until the 27th. Like why do=
+ we need seven more days to do something we knew was coming? So explain to =
+me that one as well.
+
+2:30
+It will be done before then. So what we'll do =
+after this is we'll finesse the wording to make that a little bit clearer =
+so it doesn't seem like it's as open ended as it seems right now. Does that=
+, does that make sense?
+
+2:43
+So what. Yeah. What is left? What is left to =
+do for the uat?
+
+2:49
+Srinivas your file. When do you think UAT will be =
+done? Done? I know on the talk yesterday you had a couple more things you =
+need to update. Can you ask your answer?
+
+3:04
+I'm sorry, could you repeat =
+that question?
+
+3:07
+Your hourly schedule for due 18. When do you think =
+that will be complete? I'm sorry, my apologies. Sid, I.
+
+3:18
+No today.
+
+3:20
+Okay. All right, so send me over again. I know you sent it to me =
+yesterday. Send me over over again where you are. I will pull everything =
+that I can before the Jeff call. So in a better state. And we need to just =
+clean up the timeline. Rakesh on here. And a little bit of wording to say =
+that it's the detailed hourly that we still have open a little bit open =
+ended. And the timeline for sit will be today. And the UAT, because you =
+said you'll have it completed for UAT today as well. Right?
+
+4:00
+UAT might take a couple of hours more, but sit. I'll ensure that you have =
+that 500 code number.
+
+4:06
+Okay, so put UAT Monday because whenever I can =
+update it over the weekend. Perfect.
+
+4:13
+Everything needs to be done done=
+ by Monday. We can't have another seven days for anything. Everything done =
+done. And it means it's going to change. We all know that somebody could be=
+ sick, something. So these minor changes are going to happen up until the =
+day. Even when we're doing uat, things are going to adjust. So I'm not too =
+worried about the changing. What I'm worried about is saying we don't have =
+a plan. And so we need to have both, you know, sit. Finalized, finalized =
+today. UAT finalized, finalized on Monday. There will be minor changes. He =
+understands that. I understand that. Okay, so communication plan. Take off =
+the via email because before she even gets started tell the storyline. It =
+sounds like our whole strategy is via email. So take just the via email =
+after that piece. UAT finalization for that next one will change that date.=
+ So both of those dates will be Monday.
+
+5:04
+And also mine. Two dates =
+changed. Yeah, there you go. Sorry, I just want to make sure we capture =
+that there too.
+
+5:09
+Perfect. And then the draft status reporting. I would=
+ just say status reporting dashboard developed. Like, we don't take off to =
+a draft because you're already going to trigger his. Wait a minute. Why are=
+ we at draft P. So this is good. Okay, so then if you go to the second. So =
+give me one second. We should remove the graph then.
+
+5:29
+Yes.
+
+5:29
+It's an hourly detail. Calendar developed. SID calendar finalized.
+
+5:35
+Okay.
+
+5:36
+Yep. Before.
+
+5:36
+Before we leave this slide, though, one =
+quick one.
+
+5:39
+So logistics for on site.
+
+5:40
+Can that be 627 or =
+segregation would be saying that should be 623 also.
+
+5:46
+So logistics for on site. I agree, but that was the same thing. It's just. =
+Yes, it's just that one is. What are we trying to communicate there, guys? =
+Is it a repeat? It's just on site.
+
+6:00
+This is making sure that we have =
+lunch, that people can get in. The cars are done. All of that's done. =
+That's what we're gonna have Pierce to finalize when he comes back. Yeah, =
+can we go to the 24th? Because the only thing is I don't know exactly what =
+Pierce did, and I've tried connecting in with.
+
+6:17
+Yeah, I think that's fine. 25th, because that's more logistics. Yeah, I =
+think that's good. We just want to make sure we.
+
+6:24
+Get everybody in the building. Yep.
+
+6:26
+No, I'm not sitting on a parking.
+
+6:28
+Lot doing our testing.
+
+6:30
+It has to be done. It has to be done. =
+But. Okay, so sit at the top. Let's just change those dates to make sure =
+they align at this slide. So that's fine. No, if you go to that second =
+slide. So top portion, change that to the 23rd.
+
+6:53
+The other thing I want to call out here is our team is aligned that we can =
+have APAC and EMEA start testing. So what we're going to do is we're going =
+to have a handoff, if you will, on the July 1st or 2nd. We got to figure =
+that out explicitly with the APAC and Maya team. I did Paying Benny just to=
+ see if he can help support us in getting NMA Elite.
+----_NmP-85f57efa4c01eb50-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Data =
+Consolidation Testing and Coordination Updates</h1></td></tr></table></div>=
+<div style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/a458f29a-8072-42c8-9b1e-c90ad6deeae8?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h2 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2rem">Main Topics Discussed</h2><h3 style=3D"font-weight:500;=
+padding-top:20px;font-size:1.75rem">1. Data Consolidation and Scheduling =
+Updates</h3><ul>
+<li>The team is working on consolidating dispersed data =
+into a single, concise location for easier tracking and reporting, =
+especially for the upcoming call with Jeff.</li>
+<li>While daily plans are =
+built, some hourly scheduling details still need to be updated and =
+formatted.</li>
+<li>The goal is to make it easy for everyone, especially =
+Finance (due to overlapping functions), to view all information in one spot=
+.</li>
+<li>The consolidation is expected to be completed on June 20, 2025 =
+(&quot;today&quot;).</li>
+<li>There are internal discussions on =
+distinguishing daily versus hourly plans for greater clarity.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">2. Status =
+of SIT and UAT Plans</h3><ul>
+<li>SIT (System Integration Testing) plans =
+are to be finalized by June 20, 2025, with all major details in place.</li>
+<li>UAT (User Acceptance Testing) plans, while previously listed as being =
+completed by June 27, 2025, are now targeted for completion by Monday, June=
+ 23, 2025.<ul>
+<li>Minor changes are expected even after =
+&quot;finalization&quot; due to the dynamic nature of testing and potential=
+ unforeseen changes.</li>
+</ul>
+</li>
+<li>Discussions highlight the need =
+for clear communication around deadlines and details, avoiding open-ended =
+dates to maintain accountability.</li>
+</ul>
+<h3 style=3D"font-weight:500;p=
+adding-top:20px;font-size:1.75rem">3. Communication and Status =
+Reporting</h3><ul>
+<li>The communication plan will no longer emphasize =
+email as the central strategy to avoid misrepresentation of the =
+team=E2=80=99s methods.</li>
+<li>Status reporting is being adjusted from =
+&quot;draft&quot; to &quot;dashboard developed&quot; to present a more =
+finalized appearance and avoid unnecessary concerns.</li>
+<li>Team is coordinating wording adjustments in documentation to clarify =
+project status.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;fo=
+nt-size:1.75rem">4. Logistics for On-Site Work</h3><ul>
+<li>On-site logistics (e.g., access, lunch, parking) need to be finalized; =
+Pierce is responsible for confirming these items upon his return.</li>
+<li>There was debate about appropriate finalization dates, settling on June=
+ 24-25, 2025, to ensure everything is ready for on-site activities and =
+access before testing begins.</li>
+</ul>
+<h3 style=3D"font-weight:500;paddi=
+ng-top:20px;font-size:1.75rem">5. APAC and EMEA Testing Handoff</h3><ul>
+<li>The team is aligned and ready for APAC and EMEA regions to begin =
+testing.</li>
+<li>Handoff to these regions is targeted for July 1 or 2, =
+2025, with final confirmation and coordination pending.</li>
+<li>Benny is being contacted to provide support for engaging the EMEA team.=
+</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">K=
+ey Dates &amp; Deadlines</h2><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Original Date</th>
+<th>Revised Date</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SIT Plan Finalization</td>
+<td>June 20, 2025</td>
+<td>=E2=80=94 (still today)</td>
+</tr>
+<tr>
+<td>UAT Plan Finalization</td>
+<td>June 27, 2025</td>
+<td>June 23, 2025 (Monday)</td>
+</tr>
+<tr>
+<td>On-site Logistics</td>
+<td>June 27, 2025</td>
+<td>June 24-25, 2025</td>
+</tr>
+<tr>
+<td>APAC/EMEA Handoff</td>
+<td>Not specified</td>
+<td>July 1-2, 2025</td>
+</tr>
+</tbody></table>
+<h2 style=3D"font-weight:500=
+;padding-top:20px;font-size:2rem">Action Items &amp; Follow-Ups</h2><ul>
+<li><strong style=3D"font-weight:bold">Data Consolidation:</strong> Jessica=
+ to complete data consolidation and formatting for Jeff=E2=80=99s call on =
+June 20, 2025.</li>
+<li><strong style=3D"font-weight:bold">Plan =
+Differentiation:</strong> Clarify and visually separate daily and hourly =
+schedules.</li>
+<li><strong style=3D"font-weight:bold">Documentation =
+Updates:</strong> Adjust wording to reflect schedule clarity and avoid =
+terms that suggest open-endedness or draft status.</li>
+<li><strong style=3D"font-weight:bold">UAT Timeline Clarification:</strong>=
+ Clearly communicate that UAT will be finalized by June 23, 2025; ensure =
+changes in date across all references.</li>
+<li><strong =
+style=3D"font-weight:bold">On-site Logistics:</strong> Pierce to finalize =
+all logistics upon return; push finalization to June 24-25, 2025.</li>
+<li><strong style=3D"font-weight:bold">APAC/EMEA Coordination:</strong> =
+Determine and communicate exact handoff date for testing; Benny to aid in =
+coordination.</li>
+<li><strong style=3D"font-weight:bold">Status Reporting =
+Adjustment:</strong> Shift from reporting =E2=80=9Cdraft=E2=80=9D status to=
+ =E2=80=9Cdashboard developed=E2=80=9D to avoid concerns.</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Additional =
+Points</h2><ul>
+<li>The team acknowledges that minor adjustments may occur =
+after finalization, but major open items must be resolved and plans in =
+place before the next project milestones.</li>
+<li>Strong emphasis on =
+clarity, accountability, and unified documentation for all involved parties=
+.</li>
+</ul>
+</div></div></div><div style=3D"background-color:#ffffff;paddi=
+ng:28px;border-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 =
+rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription</h3><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14p=
+x">0:00</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Going to pull his into here. He has his own day by day. So we have the=
+ data. It&#x27;s just more call formatting to put it all into one concise =
+spot.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">0:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, I just, yeah, =
+I, I hear the concern.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">0:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I understand. I will=
+ try to have this ready for the Jeff call so we can say that it&#x27;s done=
+. But because it all wasn&#x27;t in one concise spot, we didn&#x27;t want =
+to confidently say that it&#x27;s done yet because if I showed him this, =
+obviously it doesn&#x27;t.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><s=
+pan style=3D"color:#64748b;font-size:14px">0:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Have everything in =
+it.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-col=
+or:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">0:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So I will try to =
+have it done. If it is not done, my focus is fit because obviously that =
+starts next week. So the information&#x27;s out there. It&#x27;s just not =
+all in one concise spot. So it&#x27;s really more of a consolidation effort=
+. If it&#x27;s not, then can we make a distinction between the daily and =
+hourly? And so we do have the daily plan built. We&#x27;re just updating =
+some of the hourly scheduling. Yeah, we can absolutely do that. And if, if =
+need be, I can flash mini bosses and just say drop them combining into one =
+easier tracking. That&#x27;s really like more where we&#x27;re at with this=
+. So it&#x27;s not that it&#x27;s not done, it&#x27;s just the concise =
+having everything in one spot to make it easier to track. Because, you know=
+, our concern really is finance because finance is going to have some =
+overlapping functions. We want to make sure that everybody can see =
+everything in the same spot. So yeah, we can flash this. This is on this =
+slide that Rakesh was showing and I can flash this if we need to, but =
+I&#x27;ll try to have Trini Vas in here. But it&#x27;s more of a =
+consolidation effort at this point. So it will be done today and we can =
+show this if we need to, but a little bit more of what&#x27;s called =
+formatting work needs to be accomplished.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">1=
+:45</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay. Yeah, let&#x27;s not flash anything we don&#x27;t feel is done. So=
+ yes, as much as you can do, Jessica would be much appreciated. And if we =
+can discrete, if we can differentiate between, like I think Bill said that =
+between daily and. Because I think in his mind when I read that, I was =
+thinking rsit, higher level plans are done. They are. Now you&#x27;re going=
+ hour by hour, you&#x27;re doing that third level of detail. So making sure=
+ you have that differentiation with cash when you say that, I think =
+that&#x27;s going to be good. And then I think he&#x27;s going to have the =
+same comment on the 7th. Why is it, I mean, why is the UAT calendar not =
+done until the 27th. Like why do we need seven more days to do something we=
+ knew was coming? So explain to me that one as well.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">2:30</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">It will be done before then. So what we&#x27;ll do after this is =
+we&#x27;ll finesse the wording to make that a little bit clearer so it =
+doesn&#x27;t seem like it&#x27;s as open ended as it seems right now. Does =
+that, does that make sense?</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><s=
+pan style=3D"color:#64748b;font-size:14px">2:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So what. Yeah. What =
+is left? What is left to do for the uat?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">2:49</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Srinivas your file. When do you think UAT will be done? Done? I know on=
+ the talk yesterday you had a couple more things you need to update. Can =
+you ask your answer?</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><s=
+pan style=3D"color:#64748b;font-size:14px">3:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m sorry, =
+could you repeat that question?</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica=
+</span><span style=3D"color:#64748b;font-size:14px">3:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Your hourly schedule=
+ for due 18. When do you think that will be complete? I&#x27;m sorry, my =
+apologies. Sid, I.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><s=
+pan style=3D"color:#64748b;font-size:14px">3:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No today.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">3:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. All right, so =
+send me over again. I know you sent it to me yesterday. Send me over over =
+again where you are. I will pull everything that I can before the Jeff call=
+. So in a better state. And we need to just clean up the timeline. Rakesh =
+on here. And a little bit of wording to say that it&#x27;s the detailed =
+hourly that we still have open a little bit open ended. And the timeline =
+for sit will be today. And the UAT, because you said you&#x27;ll have it =
+completed for UAT today as well. Right?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">4=
+:00</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">UAT might take a couple of hours more, but sit. I&#x27;ll ensure that =
+you have that 500 code number.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica=
+</span><span style=3D"color:#64748b;font-size:14px">4:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so put UAT =
+Monday because whenever I can update it over the weekend. Perfect.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">4:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Everything needs to =
+be done done by Monday. We can&#x27;t have another seven days for anything.=
+ Everything done done. And it means it&#x27;s going to change. We all know =
+that somebody could be sick, something. So these minor changes are going to=
+ happen up until the day. Even when we&#x27;re doing uat, things are going =
+to adjust. So I&#x27;m not too worried about the changing. What I&#x27;m =
+worried about is saying we don&#x27;t have a plan. And so we need to have =
+both, you know, sit. Finalized, finalized today. UAT finalized, finalized =
+on Monday. There will be minor changes. He understands that. I understand =
+that. Okay, so communication plan. Take off the via email because before =
+she even gets started tell the storyline. It sounds like our whole strategy=
+ is via email. So take just the via email after that piece. UAT =
+finalization for that next one will change that date. So both of those =
+dates will be Monday.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">5:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And also mine. Two =
+dates changed. Yeah, there you go. Sorry, I just want to make sure we =
+capture that there too.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><s=
+pan style=3D"color:#64748b;font-size:14px">5:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Perfect. And then =
+the draft status reporting. I would just say status reporting dashboard =
+developed. Like, we don&#x27;t take off to a draft because you&#x27;re =
+already going to trigger his. Wait a minute. Why are we at draft P. So this=
+ is good. Okay, so then if you go to the second. So give me one second. We =
+should remove the graph then.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica=
+</span><span style=3D"color:#64748b;font-size:14px">5:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">=
+5:29</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">It&#x27;s an hourly detail. Calendar developed. SID calendar finalized.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">5:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">5:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep. Before.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">5:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Before we leave this=
+ slide, though, one quick one.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</s=
+pan><span style=3D"color:#64748b;font-size:14px">5:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So logistics for on =
+site.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">5:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Can that be 627 or =
+segregation would be saying that should be 623 also.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">5=
+:46</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So logistics for on site. I agree, but that was the same thing. =
+It&#x27;s just. Yes, it&#x27;s just that one is. What are we trying to =
+communicate there, guys? Is it a repeat? It&#x27;s just on site.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">6:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">This is making sure =
+that we have lunch, that people can get in. The cars are done. All of =
+that&#x27;s done. That&#x27;s what we&#x27;re gonna have Pierce to finalize=
+ when he comes back. Yeah, can we go to the 24th? Because the only thing is=
+ I don&#x27;t know exactly what Pierce did, and I&#x27;ve tried connecting =
+in with.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">6:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I think =
+that&#x27;s fine. 25th, because that&#x27;s more logistics. Yeah, I think =
+that&#x27;s good. We just want to make sure we.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">6:24</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Get everybody in the building. Yep.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">6=
+:26</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">No, I&#x27;m not sitting on a parking.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">6:28</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Lot doing our testing.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><s=
+pan style=3D"color:#64748b;font-size:14px">6:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It has to be done. =
+It has to be done. But. Okay, so sit at the top. Let&#x27;s just change =
+those dates to make sure they align at this slide. So that&#x27;s fine. No,=
+ if you go to that second slide. So top portion, change that to the 23rd.=
+</div></div><div style=3D"margin-bottom:0;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">6:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The other thing I =
+want to call out here is our team is aligned that we can have APAC and EMEA=
+ start testing. So what we&#x27;re going to do is we&#x27;re going to have =
+a handoff, if you will, on the July 1st or 2nd. We got to figure that out =
+explicitly with the APAC and Maya team. I did Paying Benny just to see if =
+he can help support us in getting NMA Elite.</div></div></div><div =
+style=3D"margin-top:36px;text-align:center;color:#64748b;font-size:14px;pad=
+ding:20px;border-top:1px solid #e2e8f0"><p style=3D"margin:0;margin-bottom:=
+8px">Captured with Wave AI Note Taker</p><p style=3D"margin:0;font-size:12p=
+x">Your AI-powered companion</p></div></div></div></div></html>
+----_NmP-85f57efa4c01eb50-Part_1--

@@ -1,0 +1,1002 @@
+MIME-Version: 1.0
+Date: Thu, 19 Jun 2025 21:21:56 -0400
+References: <010001978480c3fc-3775a71e-0ca2-4060-9e5a-e969d8327927-000000@email.amazonses.com>
+In-Reply-To: <010001978480c3fc-3775a71e-0ca2-4060-9e5a-e969d8327927-000000@email.amazonses.com>
+Message-ID: <CAOat4ZAnFU+BycUZMaHNq2bJ=O03MpAY0_-fdpJk-uBiNZTXVQ@mail.gmail.com>
+Subject: Fwd: UAT Preparation and Integration Testing Updates
+From: Mac Connolly <mac@macconnolly.com>
+To: save@mem.ai
+Content-Type: multipart/alternative; boundary="0000000000002128060637f6b04d"
+
+--0000000000002128060637f6b04d
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+---------- Forwarded message ---------
+From: Wave AI Note Taker <summary@email.wave.co>
+Date: Wed, Jun 18, 2025 at 3:25=E2=80=AFPM
+Subject: UAT Preparation and Integration Testing Updates
+To: <mac@macconnolly.com>
+
+
+[image: Wave AI Logo]UAT Preparation and Integration Testing Updates
+=E2=9C=A8 View Your Session on the Web
+<https://app.wave.co/sessions/8432674B-0E12-45F9-BB61-BF8EEFEBC3E4?lastLogi=
+nParam=3Dgoogle>
+=F0=9F=93=9DSummary
+Main Topics Discussed1. UAT (User Acceptance Testing) Preparation for July
+
+   -
+
+   *Tester Identification:*
+   - Discussion on who should be involved in the upcoming UAT for July,
+      focusing on assembling the right list of business testers.
+      - There was ambiguity about which teams should supply testers,
+      especially for indirect vs. direct procurement and manufacturing site
+      levels.
+      - The responsibility for selecting appropriate testers (especially
+      UAT function leads) was emphasized, but the necessity of clear
+      communication about test scope and changes was highlighted.
+   -
+
+   *Test Scope and Objectives:*
+   - Main question among team members: understanding what exactly needs
+      testing and what changes are happening.
+      - Once this information (what=E2=80=99s changing, what results are ex=
+pected)
+      is clear, it becomes easier to select appropriate testers.
+   -
+
+   *Progress Update:*
+   - Integration testing scheduled to start next week and continue through
+      the end of June.
+      - Delays in beginning testing with LIMS and Ecosys were noted as
+      major blockers, but good progress is now being reported.
+      - Of 76 integration points, those related to LIMS and Ecosys were the
+      last to be addressed.
+   -
+
+   *ERP Process Overview:*
+   - Full order-to-cash process will be tested, including multiple entry
+      channels (portal, EDI, phone, email).
+      - Emphasis that business operational processes (pick, pack, ship,
+      invoice, etc.) are not changing; only output documentation is.
+      - All output documents will now display "solstice" instead of
+      "Honeywell", and terms and conditions updated accordingly.
+      - Label changes are outside the current project scope.
+   -
+
+   *Testing Involvement:*
+   - Most UAT will not require hands-on SAP transaction testing by end
+      users=E2=80=94this will be automated.
+      - Some scripts requiring manual output validation will need written
+      sign-off for audit compliance.
+      - Key business areas from which testers are required: manufacturing,
+      quality, logistics.
+   -
+
+   *Participant Assignments and Gaps:*
+   - Named individuals being pulled for specific functions (e.g., Jerry
+      Sanderson for APO and planning).
+      - A requirement of "three in a box" (three testers/resource people
+      per function to avoid single points of failure).
+      - Logistics and GTS (trade and compliance) have assigned names, while
+      manufacturing is still pending final assignments.
+
+2. Communication Issues and Next Steps
+
+   - Clarification needed regarding what=E2=80=99s being tested and what is
+   changing for testers.
+   - Written validation required for certain outputs to ensure auditability=
+.
+   - Lists of testers by functional area are in preparation, with some
+   handed off and others still being finalized.
+   - Discussion ongoing about needed resources and next steps to ensure
+   readiness for July=E2=80=99s UAT.
+
+ImagesImage 1
+
+   - Shows a laptop screen with a Microsoft Teams (or similar) virtual
+   meeting titled "Connect on UAT Site Applications and Test Scope".
+   - Multiple participants present, some external, some with muted
+   microphones.
+   - Chat window includes brief messages about identifying further
+   applications and participants.
+   - The bottom of the screen shows an open code editor (likely Visual
+   Studio Code) with log output about assembling context, indicating a
+   participant is multitasking, possibly working on automation or
+   documentation relevant to the meeting.
+   - Desk items (marker, papers) suggest an active work environment,
+   supporting the notion of simultaneous collaboration and technical work.
+
+Image 2
+
+   - Screenshot from the same or similar virtual meeting platform showing
+   participant details and meeting controls.
+   - Confirms participation by six named individuals with mute status shown=
+.
+   - Organizer marked, with Sriram on hold, indicating dynamic
+   participation.
+   - Code editor visible in the background, supporting the idea that
+   technical preparations or documentation are occurring in parallel with t=
+he
+   meeting.
+   - Partial visualization of a marker and wood surface (desk area),
+   confirming a live/working setting during the meeting.
+
+Action Items / Follow-Ups
+
+   - Finalize and distribute clear documentation detailing what=E2=80=99s c=
+hanging,
+   what needs to be tested, and success criteria for UAT participants.
+   - Complete the assignment of all required business testers, especially
+   for manufacturing.
+   - Ensure there are at least three testers per function to avoid single
+   points of failure.
+   - Collect written validation from required business functions for audit
+   trail.
+   - Continue progress on integrating LIMS and Ecosys test points so all 76
+   integration points receive full test coverage by end of June.
+
+------------------------------
+
+If further details or breakdowns on any specific discussion point are
+needed, please specify the focus area.
+=F0=9F=8E=99=EF=B8=8FTranscription
+Jessica0:02
+See, and while I'm trying to find that the other one is from your
+organization, you know who should be involved in the testing of the uat.
+Testing for July.
+Bill0:23
+Big question.
+Jessica0:28
+Yeah.
+Bill0:29
+That's what we talked about the other day is I think we've got the ISC
+applications list, but I think there's more. Jessa, you were IMing the
+other day as well. I'm not sure. Same list or not.
+Jessa0:46
+That's what I was. So I'm getting up to speed in this. But Bill. And I'm
+going to put in the chat. I had these apps as well.
+Jessica0:56
+See what you got there that I.
+Jessa0:58
+Think we need to identify business testers on. I'm not sure if this is the
+right team for that.
+Bill1:10
+Those.
+Jessica1:11
+The TMC one is for me. Yeah.
+Jessa1:14
+Okay.
+Jessica1:15
+The rest of the. Well, I mean, I value. Yeah. You know, for indirect
+procurement, sure. But I don't know if this is the right team for indirect
+procurement. Direct procurement, probably be the right team.
+Stephen1:29
+Probably not that list. At least this conversation. First manufacturing
+site level. I don't think so, Jessica.
+Bill1:36
+I mean, through my team. Yeah, but I don't know. Oh, that's Mahala. Okay. I
+mean, those folks are who you have listed as a UAT function lead. Should be
+quite capable of finding a test resource.
+Jessa1:58
+Okay.
+Bill1:58
+Question everyone's having is they don't know what they're testing. So
+what's changing? What should be tested as results. When they get that
+information, then they're more capable of finding a tester.
+Jessica2:16
+But, yeah, we've been putting that together. I don't know if, Jessica, if
+you got it handy or I can pull it up. The stuff we just worked on.
+Jessa2:27
+My file or your file, the one.
+Jessica2:28
+You were working on with the lovely color coding and all that you put
+together. Yep, yep. And I can walk Steve and Sriram through it. Okay. So
+from an ERP perspective, at a highest. The highest level, you know, we're
+going to be testing. We're going to do integration testing starting next
+week and run through the end of the month. Anything that, you know doesn't
+work, we'll be doing defect fixing and trying to make sure that all the
+communication channels. And I know we just now got started testing finally
+with LIMS and Ecosys, and I'm seeing good progress on that. So you know
+that that's happening finally, because I know we were delayed for a long
+time on that. That was the biggest chunk of the 76 integration points that
+we weren't able to get tested until just now. We are ripping through them
+so think of it as order to cache Steve Sriram. You know, we're going to, we
+got entry channels, portal, edi, pick up the phone, email, you know, we
+want to take an order any way we can get it from a customer, right? So
+we're going to start there and then we're going to move that. We're going
+to have a material the customer is trying to buy and so that, you know,
+we're going to move all the way through. Now these aren't in the right
+sequence here, but you know the sequence as well as I do, you know, so
+purchase order, customer purchase gets created, sales order, sales order
+goes down so that it gets manufactured if need be, or if it's something we
+have in stock, you know, we go and pull it, pick it, pack it, ship it, bill
+it, you know, invoice it, bill it, you get paid, book revenue. And along
+the way, every step of that way there's a, an artifact or output or a form
+that's created. So the good news for your teams is that from a process
+standpoint, nothing's changing. The way that they pick pack, shipped, you
+know, yesterday is the same way they're going to do tomorrow. The
+difference being is that now every one of those output forms that they
+create many, many times a day are going to say solstice and the terms and
+conditions are going to be, you know, modified to say solstice on those as
+well, instead of Honeywell. And so, you know, we've been doing a little
+upfront work on that with guys that probably work for you, like on the
+certificate of conformance, making sure that everywhere it says Honeywell,
+we're not changing the labels. That's an effort that's beyond the scope of
+soft spin. Okay, but those folks, they're not going to have to have hands
+on keyboards, you know, like we would normally do in uat. They're not going
+to be, you know, running SAP transactions or T codes. We're automating all
+of that for them, for the end to end processes and then for some mini
+scripts where we only need to create a certain output that isn't captured
+in the order to cash chain. We'll need validation from them and it's got to
+be, you know, written validation so that we're auditable. You know, we've
+got the proof that, you know, Joe from quality signed off on this. So from,
+you know, mostly from manufacturing, let's say manufacturing, quality,
+logistics, when I need someone. The rest of them, you know, are CX
+functions, gts, you know, for trade and compliance. And we've got Jerry
+Sanderson, who's working with us from an APO and a planning standpoint, and
+he's pulling together some names of people he'll have for us by tomorrow.
+Because we gotta have three in a box. You know, the CIO said three in a
+box. It can't be one person. We got a single point of failure. Something
+happens, we're stopped. Because this is iterative, right? We can't close it
+out until we've gone through that whole chain. Is that any of that making
+sense? Is it helpful?
+Bill6:15
+It does, it does.
+Sriram6:17
+I mean, so.
+Jessica6:18
+So.
+Sriram6:18
+So we're. We're gapped here on. You got the names for logistics, right? I
+would imagine GTS got the name for order management and all.
+Jessica6:32
+I don't think I have gts, do I?
+Sriram6:35
+I gave it to SRI yesterday. Oh, Sent four names.
+Jessica6:42
+Yeah, you're right. I got that from Vicki. Yep. I put those in. Yep. I'm
+good to go.
+Sriram6:45
+There should be good there. Manufacturing now. I don't know, Stephen. Do we
+have a.
+Bill6:53
+Was it.
+
+Captured with Wave AI Note Taker
+
+Your AI-powered companion
+
+--0000000000002128060637f6b04d
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div><br></div><div><br><div class=3D"gmail_quote gmail_quote_container"><d=
+iv dir=3D"ltr" class=3D"gmail_attr">---------- Forwarded message ---------<=
+br>From: <strong class=3D"gmail_sendername" dir=3D"auto">Wave AI Note Taker=
+</strong> <span dir=3D"auto">&lt;<a href=3D"mailto:summary@email.wave.co">s=
+ummary@email.wave.co</a>&gt;</span><br>Date: Wed, Jun 18, 2025 at 3:25=E2=
+=80=AFPM<br>Subject: UAT Preparation and Integration Testing Updates<br>To:=
+  &lt;<a href=3D"mailto:mac@macconnolly.com">mac@macconnolly.com</a>&gt;<br=
+></div><br><br><div style=3D"font-family:-apple-system,BlinkMacSystemFont,&=
+quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;margin:0px;padding:0p=
+x;background-color:rgb(244,244,244)"><div style=3D"width:100%;max-width:604=
+px;margin:0px auto;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif"><div style=3D"background-image=
+:url(&quot;https://upcdn.io/W142iax/raw/email/banner_clean.png&quot;);backg=
+round-size:cover;background-position:center center;width:604px;height:297px=
+;margin:0px auto;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe U=
+I&quot;,Roboto,Helvetica,Arial,sans-serif"><table cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" width=3D"100%" height=3D"100%" style=3D"font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif"><tbody style=3D"font-family:-apple-system,BlinkMacSystemFont=
+,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><tr style=3D"font-=
+family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helveti=
+ca,Arial,sans-serif"><td valign=3D"center" align=3D"center" style=3D"paddin=
+g:0px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Rob=
+oto,Helvetica,Arial,sans-serif"><img src=3D"https://upcdn.io/W142iax/raw/em=
+ail/logo_white.png" alt=3D"Wave AI Logo" style=3D"width: 41px; height: 58px=
+; max-width: 41px; margin-bottom: 10px; font-family: -apple-system, BlinkMa=
+cSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif;"><=
+h1 style=3D"font-size:32px;margin:0px;padding:0px 0px 10px;text-align:cente=
+r;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif;color:white">UAT Preparation and Integration Tes=
+ting Updates</h1></td></tr></tbody></table></div><div style=3D"max-width:60=
+0px;margin:0px auto;padding:32px 20px;font-family:-apple-system,BlinkMacSys=
+temFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><div style=
+=3D"text-align:center;margin-bottom:32px;font-family:-apple-system,BlinkMac=
+SystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><a href=
+=3D"https://app.wave.co/sessions/8432674B-0E12-45F9-BB61-BF8EEFEBC3E4?lastL=
+oginParam=3Dgoogle" style=3D"padding:12px 24px;border-radius:8px;text-decor=
+ation:none;font-weight:500;font-size:16px;display:inline-block;margin-top:8=
+px;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(230,240,=
+255);color:rgb(0,102,204)" target=3D"_blank">=E2=9C=A8 View Your Session on=
+ the Web</a></div><div style=3D"text-align:center;margin-bottom:36px;font-f=
+amily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetic=
+a,Arial,sans-serif"></div><div style=3D"padding:28px;border-radius:12px;bor=
+der:1px solid rgb(226,232,240);margin-bottom:28px;font-family:-apple-system=
+,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"=
+><h3 style=3D"font-size:20px;font-weight:600;margin-top:0px;margin-bottom:2=
+0px;display:flex;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe U=
+I&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(15,23,42)"><span style=
+=3D"font-size:24px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif">=F0=9F=93=9D</span>Summary</h3=
+><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;colo=
+r:rgb(71,85,105)"><div style=3D"font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><h2 style=3D"font=
+-weight:500;padding-top:20px;font-size:2rem;font-family:-apple-system,Blink=
+MacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">Main =
+Topics Discussed</h2><h3 style=3D"font-weight:500;padding-top:20px;font-siz=
+e:1.75rem;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;=
+,Roboto,Helvetica,Arial,sans-serif">1. UAT (User Acceptance Testing) Prepar=
+ation for July</h3><ul style=3D"font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><p style=3D"font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+"><strong style=3D"font-weight:bold;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">Tester Identi=
+fication:</strong></p>
+<ul style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Discussion on who should be involved=
+ in the upcoming UAT for July, focusing on assembling the right list of bus=
+iness testers.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">There was ambiguity about which team=
+s should supply testers, especially for indirect vs. direct procurement and=
+ manufacturing site levels.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">The responsibility for selecting app=
+ropriate testers (especially UAT function leads) was emphasized, but the ne=
+cessity of clear communication about test scope and changes was highlighted=
+.</li>
+</ul>
+</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><p style=3D"font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+"><strong style=3D"font-weight:bold;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">Test Scope an=
+d Objectives:</strong></p>
+<ul style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Main question among team members: un=
+derstanding what exactly needs testing and what changes are happening.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Once this information (what=E2=80=99=
+s changing, what results are expected) is clear, it becomes easier to selec=
+t appropriate testers.</li>
+</ul>
+</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><p style=3D"font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+"><strong style=3D"font-weight:bold;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">Progress Upda=
+te:</strong></p>
+<ul style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Integration testing scheduled to sta=
+rt next week and continue through the end of June.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Delays in beginning testing with LIM=
+S and Ecosys were noted as major blockers, but good progress is now being r=
+eported.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Of 76 integration points, those rela=
+ted to LIMS and Ecosys were the last to be addressed.</li>
+</ul>
+</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><p style=3D"font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+"><strong style=3D"font-weight:bold;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">ERP Process O=
+verview:</strong></p>
+<ul style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Full order-to-cash process will be t=
+ested, including multiple entry channels (portal, EDI, phone, email).</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Emphasis that business operational p=
+rocesses (pick, pack, ship, invoice, etc.) are not changing; only output do=
+cumentation is.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">All output documents will now displa=
+y &quot;solstice&quot; instead of &quot;Honeywell&quot;, and terms and cond=
+itions updated accordingly.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Label changes are outside the curren=
+t project scope.</li>
+</ul>
+</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><p style=3D"font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+"><strong style=3D"font-weight:bold;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">Testing Invol=
+vement:</strong></p>
+<ul style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Most UAT will not require hands-on S=
+AP transaction testing by end users=E2=80=94this will be automated.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Some scripts requiring manual output=
+ validation will need written sign-off for audit compliance.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Key business areas from which tester=
+s are required: manufacturing, quality, logistics.</li>
+</ul>
+</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><p style=3D"font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+"><strong style=3D"font-weight:bold;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">Participant A=
+ssignments and Gaps:</strong></p>
+<ul style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Named individuals being pulled for s=
+pecific functions (e.g., Jerry Sanderson for APO and planning).</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">A requirement of &quot;three in a bo=
+x&quot; (three testers/resource people per function to avoid single points =
+of failure).</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Logistics and GTS (trade and complia=
+nce) have assigned names, while manufacturing is still pending final assign=
+ments.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif">2. Communication Issues and Next Steps</h3><ul style=3D"font=
+-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvet=
+ica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Clarification needed regarding what=
+=E2=80=99s being tested and what is changing for testers.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Written validation required for cert=
+ain outputs to ensure auditability.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Lists of testers by functional area =
+are in preparation, with some handed off and others still being finalized.<=
+/li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Discussion ongoing about needed reso=
+urces and next steps to ensure readiness for July=E2=80=99s UAT.</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif">Images</h2><h3 style=3D"font-weight:500;padding-top:20px;font-s=
+ize:1.75rem;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quo=
+t;,Roboto,Helvetica,Arial,sans-serif">Image 1</h3><ul style=3D"font-family:=
+-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Aria=
+l,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Shows a laptop screen with a Microso=
+ft Teams (or similar) virtual meeting titled &quot;Connect on UAT Site Appl=
+ications and Test Scope&quot;.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Multiple participants present, some =
+external, some with muted microphones.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Chat window includes brief messages =
+about identifying further applications and participants.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">The bottom of the screen shows an op=
+en code editor (likely Visual Studio Code) with log output about assembling=
+ context, indicating a participant is multitasking, possibly working on aut=
+omation or documentation relevant to the meeting.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Desk items (marker, papers) suggest =
+an active work environment, supporting the notion of simultaneous collabora=
+tion and technical work.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif">Image 2</h3><ul style=3D"font-family:-apple-system,BlinkMacS=
+ystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Screenshot from the same or similar =
+virtual meeting platform showing participant details and meeting controls.<=
+/li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Confirms participation by six named =
+individuals with mute status shown.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Organizer marked, with Sriram on hol=
+d, indicating dynamic participation.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Code editor visible in the backgroun=
+d, supporting the idea that technical preparations or documentation are occ=
+urring in parallel with the meeting.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Partial visualization of a marker an=
+d wood surface (desk area), confirming a live/working setting during the me=
+eting.</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif">Action Items / Follow-Ups</h2><ul style=3D"font-family:-apple-s=
+ystem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-s=
+erif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Finalize and distribute clear docume=
+ntation detailing what=E2=80=99s changing, what needs to be tested, and suc=
+cess criteria for UAT participants.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Complete the assignment of all requi=
+red business testers, especially for manufacturing.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Ensure there are at least three test=
+ers per function to avoid single points of failure.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Collect written validation from requ=
+ired business functions for audit trail.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Continue progress on integrating LIM=
+S and Ecosys test points so all 76 integration points receive full test cov=
+erage by end of June.</li>
+</ul>
+<hr style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<p style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quo=
+t;,Roboto,Helvetica,Arial,sans-serif">If further details or breakdowns on a=
+ny specific discussion point are needed, please specify the focus area.</p>
+</div></div></div><div style=3D"padding:28px;border-radius:12px;border:1px =
+solid rgb(226,232,240);font-family:-apple-system,BlinkMacSystemFont,&quot;S=
+egoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><h3 style=3D"font-size:20p=
+x;font-weight:600;margin-top:0px;margin-bottom:20px;display:flex;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif;color:rgb(15,23,42)"><span style=3D"font-size:24px;font-fami=
+ly:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,A=
+rial,sans-serif">=F0=9F=8E=99=EF=B8=8F</span>Transcription</h3><div style=
+=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px=
+;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,=
+250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;marg=
+in-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;marg=
+in-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jessica</span>=
+<span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,=
+&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,13=
+9)">0:02</span></div><div style=3D"font-size:16px;line-height:1.6;font-fami=
+ly:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,A=
+rial,sans-serif;color:rgb(71,85,105)">See, and while I&#39;m trying to find=
+ that the other one is from your organization, you know who should be invol=
+ved in the testing of the uat. Testing for July.</div></div><div style=3D"m=
+argin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;bord=
+er-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,2=
+52);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bo=
+ttom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-ri=
+ght:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Bill</span><span st=
+yle=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Se=
+goe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">0:23=
+</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-appl=
+e-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,san=
+s-serif;color:rgb(71,85,105)">Big question.</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-le=
+ft-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);b=
+order-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:=
+8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robot=
+o,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8=
+px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto=
+,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jessica</span><span styl=
+e=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">0:28</=
+span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif;color:rgb(71,85,105)">Yeah.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;border-radius:8px;border-left-width:4px;border-left-style:s=
+olid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robo=
+to,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left=
+-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-f=
+amily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetic=
+a,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-fa=
+mily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica=
+,Arial,sans-serif;color:rgb(59,130,246)">Bill</span><span style=3D"font-siz=
+e:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">0:29</span></div><d=
+iv style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkM=
+acSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:r=
+gb(71,85,105)">That&#39;s what we talked about the other day is I think we&=
+#39;ve got the ISC applications list, but I think there&#39;s more. Jessa, =
+you were IMing the other day as well. I&#39;m not sure. Same list or not.</=
+div></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;b=
+order-left-width:4px;border-left-style:solid;font-family:-apple-system,Blin=
+kMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;backg=
+round-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=
+=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystem=
+Font,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D=
+"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemF=
+ont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130=
+,246)">Jessa</span><span style=3D"font-size:14px;font-family:-apple-system,=
+BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;c=
+olor:rgb(100,116,139)">0:46</span></div><div style=3D"font-size:16px;line-h=
+eight:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;=
+,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">That&#39;s what I =
+was. So I&#39;m getting up to speed in this. But Bill. And I&#39;m going to=
+ put in the chat. I had these apps as well.</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-le=
+ft-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);b=
+order-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:=
+8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robot=
+o,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8=
+px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto=
+,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jessica</span><span styl=
+e=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">0:56</=
+span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif;color:rgb(71,85,105)">See what you got there that I.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-widt=
+h:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,=
+&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb=
+(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex=
+;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600=
+;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe =
+UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jessa</sp=
+an><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFo=
+nt,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116=
+,139)">0:58</span></div><div style=3D"font-size:16px;line-height:1.6;font-f=
+amily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetic=
+a,Arial,sans-serif;color:rgb(71,85,105)">Think we need to identify business=
+ testers on. I&#39;m not sure if this is the right team for that.</div></di=
+v><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-le=
+ft-width:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-co=
+lor:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"displ=
+ay:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quo=
+t;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-wei=
+ght:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Bi=
+ll</span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSy=
+stemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(1=
+00,116,139)">1:10</span></div><div style=3D"font-size:16px;line-height:1.6;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif;color:rgb(71,85,105)">Those.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px=
+;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,=
+250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;marg=
+in-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;marg=
+in-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jessica</span>=
+<span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,=
+&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,13=
+9)">1:11</span></div><div style=3D"font-size:16px;line-height:1.6;font-fami=
+ly:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,A=
+rial,sans-serif;color:rgb(71,85,105)">The TMC one is for me. Yeah.</div></d=
+iv><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-l=
+eft-width:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSys=
+temFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-c=
+olor:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"disp=
+lay:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&qu=
+ot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-we=
+ight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quo=
+t;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">J=
+essa</span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMac=
+SystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb=
+(100,116,139)">1:14</span></div><div style=3D"font-size:16px;line-height:1.=
+6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Okay.</div></div><div styl=
+e=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4p=
+x;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quo=
+t;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248=
+,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;mar=
+gin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;mar=
+gin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jessica</span=
+><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont=
+,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,1=
+39)">1:15</span></div><div style=3D"font-size:16px;line-height:1.6;font-fam=
+ily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,=
+Arial,sans-serif;color:rgb(71,85,105)">The rest of the. Well, I mean, I val=
+ue. Yeah. You know, for indirect procurement, sure. But I don&#39;t know if=
+ this is the right team for indirect procurement. Direct procurement, proba=
+bly be the right team.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;border-radius:8px;border-left-width:4px;border-left-style:solid;font-f=
+amily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetic=
+a,Arial,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(=
+59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-appl=
+e-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,san=
+s-serif"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple=
+-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans=
+-serif;color:rgb(59,130,246)">Stephen</span><span style=3D"font-size:14px;f=
+ont-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Hel=
+vetica,Arial,sans-serif;color:rgb(100,116,139)">1:29</span></div><div style=
+=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystem=
+Font,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85=
+,105)">Probably not that list. At least this conversation. First manufactur=
+ing site level. I don&#39;t think so, Jessica.</div></div><div style=3D"mar=
+gin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border=
+-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe =
+UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252=
+);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bott=
+om:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-righ=
+t:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Rob=
+oto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Bill</span><span styl=
+e=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">1:36</=
+span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif;color:rgb(71,85,105)">I mean, through my team. Yeah, but I don&#39;t =
+know. Oh, that&#39;s Mahala. Okay. I mean, those folks are who you have lis=
+ted as a UAT function lead. Should be quite capable of finding a test resou=
+rce.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-radius=
+:8px;border-left-width:4px;border-left-style:solid;font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div =
+style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacS=
+ystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span sty=
+le=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSy=
+stemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(5=
+9,130,246)">Jessa</span><span style=3D"font-size:14px;font-family:-apple-sy=
+stem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-se=
+rif;color:rgb(100,116,139)">1:58</span></div><div style=3D"font-size:16px;l=
+ine-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Okay.</div></=
+div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-=
+left-width:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSy=
+stemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-=
+color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"dis=
+play:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&q=
+uot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-w=
+eight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&qu=
+ot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">=
+Bill</span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMac=
+SystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb=
+(100,116,139)">1:58</span></div><div style=3D"font-size:16px;line-height:1.=
+6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Question everyone&#39;s ha=
+ving is they don&#39;t know what they&#39;re testing. So what&#39;s changin=
+g? What should be tested as results. When they get that information, then t=
+hey&#39;re more capable of finding a tester.</div></div><div style=3D"margi=
+n-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-l=
+eft-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);=
+border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom=
+:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robo=
+to,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:=
+8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robot=
+o,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jessica</span><span sty=
+le=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">2:16<=
+/span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple=
+-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans=
+-serif;color:rgb(71,85,105)">But, yeah, we&#39;ve been putting that togethe=
+r. I don&#39;t know if, Jessica, if you got it handy or I can pull it up. T=
+he stuff we just worked on.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;border-radius:8px;border-left-width:4px;border-left-style:solid;f=
+ont-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Hel=
+vetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-color=
+:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:=
+-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Aria=
+l,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-family:-=
+apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial=
+,sans-serif;color:rgb(59,130,246)">Jessa</span><span style=3D"font-size:14p=
+x;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif;color:rgb(100,116,139)">2:27</span></div><div st=
+yle=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSys=
+temFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71=
+,85,105)">My file or your file, the one.</div></div><div style=3D"margin-bo=
+ttom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-=
+style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quo=
+t;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);bord=
+er-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px=
+;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,H=
+elvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif;color:rgb(59,130,246)">Jessica</span><span style=
+=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">2:28</s=
+pan></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-s=
+ystem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-s=
+erif;color:rgb(71,85,105)">You were working on with the lovely color coding=
+ and all that you put together. Yep, yep. And I can walk Steve and Sriram t=
+hrough it. Okay. So from an ERP perspective, at a highest. The highest leve=
+l, you know, we&#39;re going to be testing. We&#39;re going to do integrati=
+on testing starting next week and run through the end of the month. Anythin=
+g that, you know doesn&#39;t work, we&#39;ll be doing defect fixing and try=
+ing to make sure that all the communication channels. And I know we just no=
+w got started testing finally with LIMS and Ecosys, and I&#39;m seeing good=
+ progress on that. So you know that that&#39;s happening finally, because I=
+ know we were delayed for a long time on that. That was the biggest chunk o=
+f the 76 integration points that we weren&#39;t able to get tested until ju=
+st now. We are ripping through them so think of it as order to cache Steve =
+Sriram. You know, we&#39;re going to, we got entry channels, portal, edi, p=
+ick up the phone, email, you know, we want to take an order any way we can =
+get it from a customer, right? So we&#39;re going to start there and then w=
+e&#39;re going to move that. We&#39;re going to have a material the custome=
+r is trying to buy and so that, you know, we&#39;re going to move all the w=
+ay through. Now these aren&#39;t in the right sequence here, but you know t=
+he sequence as well as I do, you know, so purchase order, customer purchase=
+ gets created, sales order, sales order goes down so that it gets manufactu=
+red if need be, or if it&#39;s something we have in stock, you know, we go =
+and pull it, pick it, pack it, ship it, bill it, you know, invoice it, bill=
+ it, you get paid, book revenue. And along the way, every step of that way =
+there&#39;s a, an artifact or output or a form that&#39;s created. So the g=
+ood news for your teams is that from a process standpoint, nothing&#39;s ch=
+anging. The way that they pick pack, shipped, you know, yesterday is the sa=
+me way they&#39;re going to do tomorrow. The difference being is that now e=
+very one of those output forms that they create many, many times a day are =
+going to say solstice and the terms and conditions are going to be, you kno=
+w, modified to say solstice on those as well, instead of Honeywell. And so,=
+ you know, we&#39;ve been doing a little upfront work on that with guys tha=
+t probably work for you, like on the certificate of conformance, making sur=
+e that everywhere it says Honeywell, we&#39;re not changing the labels. Tha=
+t&#39;s an effort that&#39;s beyond the scope of soft spin. Okay, but those=
+ folks, they&#39;re not going to have to have hands on keyboards, you know,=
+ like we would normally do in uat. They&#39;re not going to be, you know, r=
+unning SAP transactions or T codes. We&#39;re automating all of that for th=
+em, for the end to end processes and then for some mini scripts where we on=
+ly need to create a certain output that isn&#39;t captured in the order to =
+cash chain. We&#39;ll need validation from them and it&#39;s got to be, you=
+ know, written validation so that we&#39;re auditable. You know, we&#39;ve =
+got the proof that, you know, Joe from quality signed off on this. So from,=
+ you know, mostly from manufacturing, let&#39;s say manufacturing, quality,=
+ logistics, when I need someone. The rest of them, you know, are CX functio=
+ns, gts, you know, for trade and compliance. And we&#39;ve got Jerry Sander=
+son, who&#39;s working with us from an APO and a planning standpoint, and h=
+e&#39;s pulling together some names of people he&#39;ll have for us by tomo=
+rrow. Because we gotta have three in a box. You know, the CIO said three in=
+ a box. It can&#39;t be one person. We got a single point of failure. Somet=
+hing happens, we&#39;re stopped. Because this is iterative, right? We can&#=
+39;t close it out until we&#39;ve gone through that whole chain. Is that an=
+y of that making sense? Is it helpful?</div></div><div style=3D"margin-bott=
+om:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-st=
+yle:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;=
+,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border=
+-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;f=
+ont-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Hel=
+vetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif;color:rgb(59,130,246)">Bill</span><span style=3D"fon=
+t-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quo=
+t;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">6:15</span></d=
+iv><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,B=
+linkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;co=
+lor:rgb(71,85,105)">It does, it does.</div></div><div style=3D"margin-botto=
+m:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-sty=
+le:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-=
+left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;fon=
+t-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helve=
+tica,Arial,sans-serif;color:rgb(59,130,246)">Sriram</span><span style=3D"fo=
+nt-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">6:17</span></=
+div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,=
+BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;c=
+olor:rgb(71,85,105)">I mean, so.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;border-radius:8px;border-left-width:4px;border-left-style:so=
+lid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robot=
+o,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-=
+color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-fa=
+mily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica=
+,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-fam=
+ily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,=
+Arial,sans-serif;color:rgb(59,130,246)">Jessica</span><span style=3D"font-s=
+ize:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">6:18</span></div>=
+<div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,Blin=
+kMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color=
+:rgb(71,85,105)">So.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;border-radius:8px;border-left-width:4px;border-left-style:solid;font-fam=
+ily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,=
+Arial,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59=
+,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-s=
+ystem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-s=
+erif;color:rgb(59,130,246)">Sriram</span><span style=3D"font-size:14px;font=
+-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvet=
+ica,Arial,sans-serif;color:rgb(100,116,139)">6:18</span></div><div style=3D=
+"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,10=
+5)">So we&#39;re. We&#39;re gapped here on. You got the names for logistics=
+, right? I would imagine GTS got the name for order management and all.</di=
+v></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;bor=
+der-left-width:4px;border-left-style:solid;font-family:-apple-system,BlinkM=
+acSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;backgro=
+und-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D=
+"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"fo=
+nt-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont=
+,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,24=
+6)">Jessica</span><span style=3D"font-size:14px;font-family:-apple-system,B=
+linkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;co=
+lor:rgb(100,116,139)">6:32</span></div><div style=3D"font-size:16px;line-he=
+ight:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">I don&#39;t think I=
+ have gts, do I?</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+order-radius:8px;border-left-width:4px;border-left-style:solid;font-family:=
+-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Aria=
+l,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130=
+,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+;color:rgb(59,130,246)">Sriram</span><span style=3D"font-size:14px;font-fam=
+ily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,=
+Arial,sans-serif;color:rgb(100,116,139)">6:35</span></div><div style=3D"fon=
+t-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&q=
+uot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">=
+I gave it to SRI yesterday. Oh, Sent four names.</div></div><div style=3D"m=
+argin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;bord=
+er-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,2=
+52);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bo=
+ttom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-ri=
+ght:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jessica</span><span=
+ style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">6=
+:42</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif;color:rgb(71,85,105)">Yeah, you&#39;re right. I got that from Vi=
+cki. Yep. I put those in. Yep. I&#39;m good to go.</div></div><div style=3D=
+"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;bo=
+rder-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Se=
+goe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250=
+,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-=
+bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot=
+;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-=
+right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;=
+,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Sriram</span><spa=
+n style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quo=
+t;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">=
+6:45</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-=
+apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial=
+,sans-serif;color:rgb(71,85,105)">There should be good there. Manufacturing=
+ now. I don&#39;t know, Stephen. Do we have a.</div></div><div style=3D"mar=
+gin-bottom:0px;padding:16px;border-radius:8px;border-left-width:4px;border-=
+left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe U=
+I&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252)=
+;border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-botto=
+m:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Rob=
+oto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right=
+:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robo=
+to,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Bill</span><span style=
+=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">6:53</s=
+pan></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-s=
+ystem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-s=
+erif;color:rgb(71,85,105)">Was it.</div></div></div><div style=3D"margin-to=
+p:36px;text-align:center;font-size:14px;padding:20px;border-top-width:1px;b=
+order-top-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Se=
+goe UI&quot;,Roboto,Helvetica,Arial,sans-serif;border-top-color:rgb(226,232=
+,240);color:rgb(100,116,139)"><p style=3D"margin:0px 0px 8px;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif">Captured with Wave AI Note Taker</p><p style=3D"margin:0px;font=
+-size:12px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot=
+;,Roboto,Helvetica,Arial,sans-serif">Your AI-powered companion</p></div></d=
+iv></div></div></div></div>
+
+--0000000000002128060637f6b04d--

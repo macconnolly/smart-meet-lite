@@ -1,0 +1,1769 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:adf:a403:0:b0:3a4:dc5b:9678 with SMTP id d3csp2910595wra;
+        Tue, 3 Jun 2025 17:26:34 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGiT+IQ5iBfDM74wbZtJoAZYPsxI6T5lsQgaYLHtZyshLk68g9TwUGB0Rp64XS61xOx9yaH
+X-Received: by 2002:a05:620a:4802:b0:7d0:a1ac:e83a with SMTP id af79cd13be357-7d2198934bfmr163389685a.16.1748996794009;
+        Tue, 03 Jun 2025 17:26:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748996793; cv=none;
+        d=google.com; s=arc-20240605;
+        b=fkOTUR8EF5Je3AFx/mA0zS3oAj/mbI4+aAxvrSSTvW1ugHnMFo5+Mxn2h18hPNupdF
+         HfyfOszGwhCw13QHAXGgHvwHSFQCW6S82kI4mxVbcI4SC9EdwKhAmvPd3SZRNvQqCf1O
+         I5e4hdGTvlQISbg1knfZwr0ZHNetqLl3FX5JAo7QDYQOw6i/aScJr/m7T4LE38M4sQXS
+         lF1zrbI2F+DH9g5o22BjCU28VcFQJjlcrIMUbywmOU2+5YodzCS/TrsXSycQgcOA2gv6
+         izYRmyFdtm9/rbMmty65m0A7pUPd7dFtv0l0FOLCkkvo8C7A7i/b+ESpwRm3TNk85m+8
+         2BOA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=O13WKRqosnWl3f5DdAdNFcvpnC4H6yG2hjuZuiNaQks=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=LVUBp3RdoUzPJTqQ848qMItkPS62G6/w41G0U1HqZ9EbSJE0G69OKA/i0gYH5Nn+C/
+         l667zrc42sIIe4w1Zqg8JN9x8CcmjCg0AeFPW7VmOyj99cGQRo3G/VqDSNjRjp+4DWPx
+         CF68dD8dYwfiNF+rC76yuQnDcpSf/ZSBLTq/i5VqOGHhM+szK7DVQZ1k3MSKB/0wm1Ta
+         mft2dTqYpYc4Hmk3/jgk/vmDTTlu4Bd/SYlh1Ua/U/sUwjfn+9EynocyJaZcjxBWEb9I
+         U43oHJCAD7sJlUvITsAOgnBc6JxygTHc2nSK13Xlp7Zdj6VTMeODHPUc5blGQ7zmvfdF
+         V4wA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=kld8FTbb;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=osLIHgnr;
+       spf=pass (google.com: domain of 0100019738552340-2f70b767-0e21-4a95-899b-2ef56e3aa6c9-000000@send.email.wave.co designates 54.240.9.112 as permitted sender) smtp.mailfrom=0100019738552340-2f70b767-0e21-4a95-899b-2ef56e3aa6c9-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <0100019738552340-2f70b767-0e21-4a95-899b-2ef56e3aa6c9-000000@send.email.wave.co>
+Received: from a9-112.smtp-out.amazonses.com (a9-112.smtp-out.amazonses.com. [54.240.9.112])
+        by mx.google.com with ESMTPS id af79cd13be357-7d09a1e04a8si1347804985a.211.2025.06.03.17.26.33
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 03 Jun 2025 17:26:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 0100019738552340-2f70b767-0e21-4a95-899b-2ef56e3aa6c9-000000@send.email.wave.co designates 54.240.9.112 as permitted sender) client-ip=54.240.9.112;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=kld8FTbb;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=osLIHgnr;
+       spf=pass (google.com: domain of 0100019738552340-2f70b767-0e21-4a95-899b-2ef56e3aa6c9-000000@send.email.wave.co designates 54.240.9.112 as permitted sender) smtp.mailfrom=0100019738552340-2f70b767-0e21-4a95-899b-2ef56e3aa6c9-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1748996793;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=4iSFh2bglvGpvdBE4HGxJbsTasfsTaeGhb8YDfS55n8=;
+	b=kld8FTbbPmaJW0p7Xe2HtAMnQJ2umTB3k5KDfNSxS2q8zl0vvu6pq8WuKHTpylcX
+	84rJZxWynsEsLinHCOWjU6BZ4vB5zlPDHDSjD8pQyHC1hjZ35glX5z/CxdoS+CcfEkj
+	sUzAOKWFZr6VaZKRzQXKzqWcRAHOnIPYUq4EUk/E=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1748996793;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=4iSFh2bglvGpvdBE4HGxJbsTasfsTaeGhb8YDfS55n8=;
+	b=osLIHgnrF3B/oKdqjyJdIzlV/gzZ4ajp8bODBawsgZOhV0KItLmVJxlkTrpckQye
+	Y1qUigf38KRviTocx1iH4MsHE7LGQQDHa7rQNPPi4a6mkQRR8a6ZJdVlj14GMlj/G/y
+	bM7iTbtgr2nN87tG2gqTmEZT5kNMg+EGzCWfcsaQ=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Automated Tracking and Dashboard Planning Progress
+Message-ID: <0100019738552340-2f70b767-0e21-4a95-899b-2ef56e3aa6c9-000000@email.amazonses.com>
+Date: Wed, 4 Jun 2025 00:26:33 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-b18fe883f5efd7ba-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.06.04-54.240.9.112
+
+----_NmP-b18fe883f5efd7ba-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Automated Tracking and Dashboard Planning Progress
+
+# Meeting Summary =E2=80=93 June 3, 2025
+
+## Attendees
+- Mac
+- Justin
+- Rakesh
+- Additional participants referenced (Sean, Jeff, GDS, supply =
+chain/workstream representatives)
+
+---
+
+## Main Topics Discussed
+
+### 1. **Data Flow and Source Systems**
+
+#### **Smartsheet vs. Capital =
+Edge**
+- Smartsheet serves as the *source of truth* for work plans.
+- Work plan data is synced automatically from Smartsheet to Capital Edge.
+- App details inventory is initially collected, cleaned, and imported to =
+Smartsheet, which then propagates to other systems as needed.
+
+#### **Accuracy & Maintenance of Data**
+- Most workstreams maintain =
+relatively accurate work plans in Smartsheet, with only a few exceptions =
+(=E2=80=9Cone or two outliers=E2=80=9D).
+- Particular challenge: DCN and =
+Dex maintain their own Smartsheet workspaces, requiring manual processes to=
+ aggregate their data.
+
+---
+
+### 2. **PMO Reporting and Tracker Design**
+
+#### **Automation and Integration with Tools**
+- Key trackers (heat map, =
+master tracker, UAT go-live burn down) pull data automatically from =
+Smartsheet, enabling near real-time reporting.
+- Current mapping captures =
+80=E2=80=9390% of needed data; remaining data targets to be reviewed and =
+captured during UAT/MOS (Management Operating System) cadence.
+
+#### **Design Approach**
+- Initiated a "design backwards" approach: =
+outlined dashboard requirements first, then modeled underlying data =
+structures accordingly, keeping future dashboard views in scope.
+
+---
+
+### 3. **BRV Readiness and System Inventory Progress**
+
+#### **BRV Tracker**
+- The Operational Excellence (OpSep) team is =
+developing the BRV tracker.
+- The tracker links individual processes to =
+multiple systems (many-to-many relationship), capturing every =
+process-system touchpoint as a distinct row with corresponding testing =
+milestones.
+
+#### **System Inventory**
+- Inventory submitted and imported; =
+requires ongoing data cleanup.
+- Updated system-inventory views to feed =
+into Capital Edge and enable process-level test tracking.
+- Tracker to include all combinations: function, sub-function, process, and=
+ system.
+
+#### **Testing Accountability and Scope**
+- The dashboards will help clarify end-to-end testing requirements and =
+ensure all workstreams align on mutual dependencies.
+- Distinct SBOs:
+  - All UAT activities (full scope)
+  - Subset for BRV-relevant =
+systems/processes (those impacting 8.1 go-live event specifically).
+
+---
+
+### 4. **Dashboards and Visualization**
+
+#### **Dashboard Requirements**
+- Primary dashboard to show status for all systems: number of apps in SIT, =
+UAT, completed KT, and other key metrics.
+- Requirement for dynamic, visual=
+ reporting: e.g. pie charts, histograms, burndown charts.
+- Example dashboards from previous projects (e.g., J&J) reviewed as design =
+templates.
+- Suggestion to display both a high-level visual view and a =
+backend sheet for data compilation.
+- Visualization to enable =
+slicing/filtering (e.g., by BRV scope, function, sub-function, system).
+
+#### **Data Hygiene and Phase Approach**
+- Recognized need for parallel =
+data hygiene work: cleaning and enriching workstream work plan data as =
+dashboards are built.
+- Plan to map desired data detail levels and =
+communicate with workstreams for data enrichment.
+- Immediate focus: build =
+dashboard with current data, flag obvious gaps, and progressively clean =
+data with workstreams over the next two weeks.
+
+---
+
+### 5. **Licensing & Technology**
+
+#### **Smartsheet Licensing**
+- Smartsheet Premium license quote acquired: $1,496/year (intended for team=
+ use; to be billed as a technology fee under the SOW/invoicing procedures).
+- Action: Add Rakesh to licensing discussion with Sean for processing.
+
+---
+
+### 6. **Next Steps and Coordination**
+
+#### **System View and Process =
+Mapping**
+- Mac to provide Justin with current data models and sample Excel=
+ files as input for Smartsheet build-out.
+- Rakesh to share additional =
+wireframes and dashboard examples; Justin to mock up dashboard =
+visualizations in Smartsheet or Excel.
+
+#### **Calendar Planning**
+- Need to create a coordinated calendar for milestone activities (for =
+example, UAT, go-live, KT, etc.).
+- Rakesh to share past calendar view =
+examples.
+- Plan to develop a rolling agenda/calendar, starting with =
+initial content today for activities beginning tomorrow.
+
+#### **Collaboration and Feedback Loop**
+- Justin to review and comment on =
+the data model, noting feasibility and flagging any columns or integrations=
+ that are impractical or require manual upkeep.
+- Plan for follow-up =
+alignment later in the afternoon on dashboard prototypes and data model.
+
+---
+
+## Action Items
+
+1. **System Tracker Build**
+   - Justin to review and=
+ further develop the outline/model, using Mac's shared Excel data, and =
+validate against Rakesh=E2=80=99s requirements.
+   - Begin Smartsheet =
+prototype build with available data; dummy data to be used where necessary.
+
+2. **Dashboard Visualization**
+   - Rakesh to send visual dashboard =
+examples to Justin and Mac (pie charts, burndowns, at-risk statuses, etc.).
+   - Justin to create initial dashboard mockups based on shared =
+requirements and examples for stakeholder review.
+
+3. **Data Model =
+Refinement**
+   - All to review and refine data sources, connections, and =
+required detail. Workstreams to be engaged to provide/process additional, =
+more granular data as gaps are identified.
+
+4. **Licensing**
+   - Rakesh to coordinate with Sean regarding Smartsheet licensing =
+procurement and internal allocation as a technology fee.
+
+5. **Calendar Coordination**
+   - Rakesh to send calendar view examples; =
+Team to agree on calendar layout and start calendaring milestones/meetings.
+
+6. **Reporting Structure**
+   - Continue to automate reporting flows where=
+ possible; flag columns/processes that are manual for subsequent =
+simplification.
+
+---
+
+## Follow-Up Points
+
+- **Dashboard feedback =
+session:** To be scheduled later this afternoon for reviewing initial =
+dashboard mockups and confirming alignment on the data model and visual =
+approach.
+- **Ongoing data hygiene:** Parallel effort with workstreams to =
+improve data quality and completeness over the next two weeks.
+- **Calendar deployment:** Begin adding key activities and planned meetings=
+ to shared calendar starting "tomorrow" (June 4, 2025).
+- **Licensing finalization:** Expected to be actioned later today or =
+tomorrow (June 3=E2=80=934, 2025).
+
+---
+
+## Notable Dates and Figures
+
+- **Today:** June 3, 2025 =E2=80=93 Meeting date.
+- **BRV 8.1:** Go-live =
+milestone (August 1, 2025), with additional system go-lives planned for =
+June, July, and into September=E2=80=93October 2025.
+- **Smartsheet Premium license:** $1,496/year (team plan).
+- **Applications in scope:** ~200 total, with specific focus on 82 for =
+full-scope tracking; subset of ~22=E2=80=9323 associated with BRV 8.1.
+
+---
+
+## Summary
+
+The meeting focused on establishing clear ownership and =
+automation for system inventory and BRV readiness trackers, standardizing =
+dashboards for systems and processes, planning out next steps for data =
+model and dashboard prototyping, progressing data hygiene in parallel, and =
+finalizing logistic matters around Smartsheet licensing and calendar =
+coordination. Key action items and follow-ups are aimed at accelerating =
+reporting readiness while ensuring data quality catches up to evolving =
+business requirements and timeline milestones.
+
+Transcript:
+0:00
+It.
+
+0:27
+Smartsheet, which direction does it. Which direction does it sync? Like, is=
+ the source data for all of the app, like, the work plans? For example, is =
+it in smartsheet or is it in Capital Edge?
+
+0:41
+So the source data for =
+work plans is smartsheet, and then it sinks into Capital Edge.
+
+0:47
+Okay.
+
+0:48
+And then source data for any app details is the. The inventory which =
+syncs into smartsheet.
+
+0:56
+Got it. How accurate do you feel like the =
+smartsheet data is? Like, are work streams generally good at keeping it up =
+to date?
+
+1:08
+Yeah, no, the work plans are. I mean, except for, like, one =
+or two outliers, they are pretty. It's pretty good data.
+
+1:18
+Awesome.
+
+1:20
+I guess the one challenge that might happen is DCN and Dex doesn't =
+actually host their work plans in our workspace. They host it in their own =
+workspace. So it's been historically kind of hard to pull data =
+automatically from sheets that they have. It's more of a manual effort.
+
+1:44
+That's fine. Does it get pulled. Is it, like, a part of the. Like, the=
+ PMO cadence? Does it get pulled into the. Like, there's the heat map, and =
+then there's the master tracker, and then the UAT go live, burn down one. =
+Does it get pulled into those automatically?
+
+2:05
+Yeah, those are all =
+automatic.
+
+2:07
+So those are the ones that I have tentatively mapped our =
+columns to. Just from those two or three, I think that we have 80 or 90% of=
+ the data that we need. And the trick is going to be building it in a way =
+that provides a foundation for the views that are going to come after this.=
+ So what we did is sort of design backwards. So we outlined what we want on=
+ this dashboard and what we needed to show and designed a data model =
+backwards from it. And there's two or three more views, depending on how we=
+ want to cut it. That will come after this. And so what we need to do is =
+just build with that in mind.
+
+2:59
+Okay, that makes sense. Paperbush.
+
+3:04
+Hey. Sorry. Late, guys.
+
+3:05
+Hey. So I was just giving Justin the =
+background for the systems tracker that we need to build. Justin, one of =
+the pieces that I have. Excuse me. Yet to review. Is the BRV readiness =
+tracker. But from those three that we discussed, I think that there's a =
+very clear path to in Smartsheet pulling 85% of the source data that we =
+need, and the rest will mark as review during the UAT MoS cadence with the =
+work streams themselves to update.
+
+3:51
+Yep. Yep, that makes sense. And =
+all of this smart, at least everything that's the source of truth is =
+smartsheet, can be linked Pretty easily, automatically. So it should be =
+good there by the BRV tracker. Is that the one that the opsep team is =
+making on?
+
+4:12
+If you recall, there's a system inventory piece we =
+submitted, which is what they're doing, which is they've imported that, we =
+need to obviously clean that up. And that's part of the system inventory =
+that Max talking about. Once we get that updated view, we can go in and =
+update the Capital Edge with that new updated view. The second part of that=
+ is they're linking that to the BRV process tracker to say this process is =
+touching these many systems or it's the many to many. So they're creating a=
+ separate tab that says, okay, this process goes to this system to test it.=
+ Another process goes to the same system to test it. So they're creating a =
+row for each of those touch points, but that's going to follow on to the =
+BRV process tracker that they're maintaining.
+
+5:06
+Okay, that sounds, that sounds harsh.
+
+5:10
+It's a rule for every time it =
+touches the same system so that they know that, you know, process X touches=
+ system, system A and that's complete, that testing is complete or it's, =
+you know, on, you know, date X.
+
+5:26
+So I already have a preliminary view =
+of it. I can show you. It's the. Let me share my screen. I'll show you that=
+ view at least. And this is obviously without access to that process =
+tracker. But what Rakesh is talking about is all of the functions for each =
+of their sub functions in the actual process that it supports. So down to =
+the digital marketing level, labeling applications, this one is something =
+in China. Everything that's build back, everything I misspoke. Everything =
+that's not TSA is going to probably need to be reviewed for like a UAT =
+component. And so that view that Rakesh was talking about with the =
+processes are one row per process. So an application might be listed =
+multiple times. So it's all of the unique combinations of function, sub =
+function, process and system everywhere that it touches so that you can =
+roll it up and say for any given system, what are all of the processes that=
+ it touches and where do we need to coordinate the UAT testing? So an app =
+like an ERP might touch HR and finance. And historically the gap is that =
+those teams are very good at executing in their own silos and some of them =
+are already working towards UAT testing or engaging in it and some of the =
+other folks haven't been aligned to that. And so there's those =
+interdependencies that need to be accounted for and that's what this view =
+effectively does between these systems. It lets everyone know what needs to=
+ be tested so they can align their testing schedules or at least know what =
+else needs to be tested outside of just their silo. Right Rakesh?
+
+7:36
+Okay.
+
+7:39
+And so we're mainly interested in everything that's not TSA. =
+Some of the TSA's. Okay, so here's one of the intricacies is that this is =
+why I was asking about the data hygiene is there's that BRV column in the =
+heat map, the application heat map and sometimes it's marked as no but they=
+ have provided UAT and SAT start and end dates. So they marked no for BRV =
+impact, no BRV impact and they provided testing dates. And so we need to. =
+This is like the alignment that we are going to go drive in the MOS is what=
+ testing is required. What's the end to end process? Here it says it's =
+legal applications quote to cache and what's the UAT component and what's =
+the end to end process? So is there UAT that we need to account for or not?
+
+8:49
+This is just like so column J then really isn't just limited to just =
+BRV scope, it's really the scope is for all of UAT prior to day one.
+
+9:03
+Yes. And that's different from the systems view which is that other tracker=
+ that we need to build which is only the BRV scope. The 82 applications.
+
+9:17
+No, no, no, no, no. The 82 applications is everything Mac BRV is an =
+event that is around 8. 1. It's a start of soft spin. So again there are =
+move as is build back applications that are going to go through testing and=
+ go live in June and July. There are a subset of applications that will go =
+live on August 1st with the BRV. There are a bunch of applications that =
+will go live post that Aug. 1, let's say Aug. 5 to Sept. 30 or Oct. 1 as =
+part of the build back and move as is all of these are again they're all =
+prior to day one. So in this particular case in HSE my read on it is it's =
+not related to BRV 81 go live. It needs to go live sometime. And they're =
+completing the testing in September and going live I presume sometime in =
+September or on day one. So we just have to. So there's a. There's a =
+distinction between what is the 22 or 23 systems that are there for an 8.1 =
+associated go live versus every other thing going live elsewhere. So the =
+UAT is really all the apps that are 82 plus however many there are and then=
+ the BRV is a subset of that 82 which is just related to 8.1. Got it.
+
+10:48
+And I think really though, there doesn't really need to be any =
+duplicative efforts. Right, you can just build this for all of it and then =
+just have.
+
+10:59
+A filter for brv. Yes.
+
+11:02
+Okay, sounds good.
+
+11:04
+The only the. Yeah, so, yeah, yeah, let me not say anything more, so.
+
+11:15
+Don'T leave us hanging.
+
+11:16
+Okay.
+
+11:23
+What were you going to =
+say, Rakesh?
+
+11:25
+I was just thinking out loud on. So the data is there. =
+We just need to get it in the right format and start, you know, have it in =
+smartsheets and start dashboarding on it. We can then refine how the =
+dashboard looks, but at some point, you know, the data is there. We just =
+need the same fields and with flags we can, you know, we. To. To Justin's =
+point, we can slice to say this is in scope for brv. This is in scope for, =
+you know, this is. This is BRV related, this is non brv, but in the same =
+time frame and things of that nature. So that we can run through a separate=
+ flag. We can create as a column. But the idea would be to put all 200 apps=
+ into the Tracker 296 and say, yeah, this 82 is. I think you already have =
+it there, but this 82 is this and this. The challenge I have there, Justin,=
+ here is some of these dates, the hygiene and the plans are not right. This=
+ sit and UAT dates are way off. Or there's also the added piece here where =
+it's not necessary. For example, there's a process that's changing, but =
+that will touch a system. The system doesn't necessarily need to change. So=
+ is that system in scope for brv? Yes, because it is touching a process =
+that's changing at BRV. But is there a UAT? So it could be a TS8 system, =
+but it's being touched on 8.1 to validate a process. So I'd like to include=
+ those sort of things to say, yes, this is in scope for BRV and the kind of=
+ testing is nothing from a system perspective, but only from a process =
+perspective. So that's the kind of information I'd like to get on the =
+dashboard as well. But to do that, the model has to show that that system =
+is a. Is a BRV system, if you will.
+
+13:27
+I think that that's what I was =
+trying to do here. Right. Like for the. These TSA ISC apps.
+
+13:39
+Sorry, I took over screen sharing just one Thing. Just a few points, I =
+guess. I think the first biggest challenge that we can do internally is. So=
+ this is the view that I know you guys are used to, but the back end to =
+this is something that I don't want anyone to see because it's an eyesore. =
+But it is just a compilation of all the data that I can get from work plans=
+ and then I can slice it into a more manageable view. I think setting that =
+up is pretty easy and it can be pretty automated from all the work plans. =
+Once that view is ready, then there can be one effort to make it back end =
+fully compiled data sheet and then an actual report view and then there can=
+ be another parallel effort, I think for data hygiene. I do agree that a =
+lot of our work plans are definitely more at a high level than what's =
+probably needed for this exercise. What we can do is really, I think it =
+should come from these work streams. Agree, Good example. Since their work =
+plans are actually very.
+
+15:02
+Good, we don't have to let that stop us. =
+Right. I think that that's the caveat that we have communicated is that we,=
+ we will build the dashboards with the data that we have on hand. And the, =
+I don't want to say the accuracy, but the accuracy is something that we =
+will work with the work streams to enhance as we go through the next two =
+weeks in the areas that we have gaps or need to gather more information. =
+Right. Or update things like the UAT testing schedule. I know that they =
+have them. It might not just be in their plan.
+
+15:41
+We just need them to load it into the work plans. And I think especially if=
+ they already have it and it's a pretty simple ask, they're all pretty =
+comfortable with smartsheet. Now, objectively, this is kind of shit. It's =
+very high level. But I'm sure they have more granular data. And I think =
+really the only effort there that really needs to be done is kind of map =
+out what we want to ask for, what level of detail that we need and then =
+really just go and ask for it. And I'm sure they'll have it. And that data =
+hygiene can be done in parallel as the reports are being built.
+
+16:27
+Can we start building the report and then to everything Mac just said, can =
+we start building that dashboard Views of these are the apps in scope. =
+These are however, how many are in sit, These are how many in uat, These =
+are how many that have completed kt. You know those metrics that you had =
+there, Mac, on that page, I think we need a visual view of all of this data=
+ and start building it.
+
+16:58
+Exactly. That's. I completely agree. And =
+that's why one way or another, I think that we can, once we're aligned on =
+that, just the model, we can put dummy data in there, which is, I mean, =
+I've taken a best effort to populate it with all of the business processes =
+and the systems and everything and send that to GDS and ask them to build a=
+ model on top of it or build a dashboard.
+
+17:31
+On top of it. It won't be =
+business. I wouldn't worry about business processes. There's a separate =
+tracker for mapping business processes to systems. But I would want system =
+sub function, everything else there. So don't. They're two separate things.
+
+17:44
+Yes.
+
+17:44
+The system inventory stuff that Jeff wants as a first =
+pass is we should really get a lay of the land from the work plans or other=
+ elsewhere. What are the systems that are in play? Have they got the right =
+people for pitches and catches? Have they done KT for those? Have they =
+identified all the test scripts? Is it an sit? Have they done, you know, =
+uat? When is UAT happening and when is go live? So that view we should put =
+on a visual and start displaying. Hygiene can come after that because it =
+will show it all over the place. We can say this is what it looks like, =
+it's crap. But that's the hygiene portion. The next portion of this is the =
+process view of businesses are testing processes. They're touching systems.=
+ Some of these systems are getting changed. So they need to align some of =
+their testing with. With the windows that it has set up. Other systems are =
+not getting changed, but they touch them. So this is the view of business =
+process map to the systems. So that's a secondary view that we can create =
+either mark sheets or capital Edge. But the first step is this visual of a =
+dashboard on where are we with all the systems. And because there are lots =
+of systems in SIT today, we need to start displaying what that tracker =
+looks like. What that visual looks like.
+
+19:07
+Yeah, I think we've got it.
+
+19:09
+Okay, so that's what I want to start looking at. And like I said, =
+hygiene is step two.
+
+19:18
+Agreed.
+
+19:21
+And then actually on that note, =
+Rakesh, I actually just got a quote for Smartsheet Premium licenses. Okay, =
+can I just, can I just add you to this email chain with eye?
+
+19:35
+Shawn, Sean.
+
+19:36
+Yeah, yeah, yeah, yeah. It's, I think it's like 1400 a =
+year, which is pretty good. 1496 a year.
+
+19:44
+Is it for one person? Is it=
+ for a team?
+
+19:46
+Is it for 12 people?
+
+19:49
+Okay, let's do that. Maybe =
+we Put it under technology fee so we can give a code to it and say, yeah, =
+this is a technology fee for 12 of us. I think there's a tech fee already =
+built in, into our sow or in our invoicing, so internally at least. So yeah=
+, send it to Sean and I will action it perhaps later today or tomorrow, but=
+. Okay, so I'll let you guys continue the background. Let me get you all =
+this data back on the some sample dashboards as well as for the supply =
+chain because as a next step I want us to start calendaring things, but I =
+need to work with you on just putting it on a calendar. So. Yep, I'm just =
+going to go back into the background, guys. So I'll let you all continue.
+
+20:40
+Yeah, I'm just taking a look at this one that you just sent me, but I=
+ guess this is the system process map. So I think, Justin, what would be =
+probably the next step here is to start to build the outline and validate =
+it with Rakesh, either in Smartsheet or in Excel. I had stuck it in Excel =
+and I can send it to you with the model that Rakesh and I had discussed =
+with all of the columns and let you take a look probably and see what we =
+have and what we don't and start to build the Smartsheet and then in =
+parallel, Rakesh, we can wireframe out the dashboard if you have examples =
+for the systems view.
+
+21:40
+Yep, sorry, that makes sense to me.
+
+21:43
+Okay, so can you help mock up something that shows up as a dashboard? Yeah,=
+ yeah, let's start, you know, histogram, pie charts and let me, let me go =
+back. I told you, Mac, I will get you an example from some of the projects.=
+ Let me look at that right now and get us some examples so we can at least =
+start getting a view into what, you know, decent or good looks like for =
+this. Give me one second, let me share some examples and give me a second =
+here. Just pulling up some samples from the past. So can you all, can you =
+both see my screen?
+
+24:44
+Yeah.
+
+24:45
+Okay, so let me pull this up from =
+my J and J example. I probably have a few more, but cut over. So something =
+like this would be good where this is for an LE work. But we can do =
+something similar. I'm thinking just from a stupid PowerPoint. Okay. When =
+this decides to open, but if not, let's go look at this. So I'm thinking =
+something like this as a burn down. The expectation is that, you know, if I=
+ do it here, so I have a work stream across these systems and I can do a =
+poll I forget the regions for now, but I have a view of this was for =
+everything across all work stream for the legal close or pre legal close. =
+But you can look at it as an execution view to say, you know, this sort of =
+a dashboard, there's go live completed, go live in progress, number of apps=
+, there's a burn. This is for cutover but you could do the same thing for =
+burn down for go live to say some systems are in uat. So this is a view =
+that progressively will change. It's a point in time view but it's a =
+dynamic one that changes every. As apps move into tsa, as apps move into =
+out of Sit, UAT into go lives. So you could have the work stream here and =
+you could have go live dates here to say okay, pre brv, BRV and post brv. =
+And you could have numbers in here that show the burn down. There are other=
+ charts here that. So Mac, I was looking at this for a rolling calendar. =
+This is how I'm thinking we should set up this. And so this, this is what =
+I'm expecting us to develop in a short while to say okay, let's do this =
+over the next couple of weeks but let's over plan. Where do I have. Let me =
+see if this is not open. Okay, so that was one example I gave of just what =
+a dashboard would look like and other dashboards here would be, you know, =
+something like this that shows, you know, this is again completed start at =
+risk, behind schedule on track. Da da da. So this will again change but it =
+gets a view on, you know, things have started on track, you know, there's =
+some behind schedule again from the dates. We could do this for SAT or UAT =
+or go lives. This could be a go live tracker. But this is again you could =
+have you know, status on this many in SIT, this many in UAT etc. So this is=
+ one, this is another view where you know, if you double click a slice into=
+ a particular we may not have region but we may want to do sub function. We=
+ have a view into this. Similarly I expect PMO to create process views but =
+from a system progression view we can double click and if you double click =
+into this you will get a view of. Okay, yeah, this many systems here and =
+this many systems. So again just examples of how I'm thinking we should =
+show execution dashboard and again see if these resonate with you. But =
+again this is how I'm thinking we should start hygiene later but at least =
+the dashboards we should start showing so that Jeff can react to it and say=
+ yeah, this visual looks good. This doesn't tell me everything I need to =
+know. Add a few more boxes here, remove this, etc.
+
+28:39
+Yep.
+
+28:41
+Right. So let me send these slides and paste them here so we kind of get a =
+view into. Into how we can. Again, this is not how we absolutely need to do=
+ it, but it's a view into. Oh, I thought I pasted everything. It's an =
+example of a visual that, you know, types of visuals we should be able to =
+show in the dashboarding. Why is this doing one by one? Okay, this is not, =
+I'm not liking this. You know what, I'll just send you both all the. Just =
+these four slides separately. Screw pasting it here. You guys can get an =
+example of the slide, how we're progressing and obviously the data model =
+should reflect that.
+
+30:14
+Yeah. So Justin, here, I'm going to just drop =
+the link into the model that I wrote here. So this is based on the =
+conversations that we've had and then also the dashboards that we've talked=
+ about.
+
+30:36
+Ok, sounds good. I do need to hop over to another call, but =
+yeah, I'll definitely review these and then connect with you.
+
+30:44
+That's fine.
+
+30:45
+If we want to review that sometime later this, this =
+afternoon to see what is possible or how you guys are thinking through this=
+, it'll be super helpful.
+
+30:53
+And that's really what Justin, I'm looking=
+ for from you. There's a column in here with like what I speculate to be =
+the source table and then the process to update this column. Some of it, =
+we're going to collect updates as a part of the operating cadence that we =
+have and we're planning on that. And then some of it. I need your, like I =
+need you to flag anything that is hard to do or doesn't exist that doesn't =
+say manual basically.
+
+31:25
+Okay, yeah, I can, I, can I, I see that. Yeah.=
+ I'll, I'll put in some comments and then send us a file back. Cool.
+
+31:33
+Yeah, that would be awesome. And then once we're aligned on that, I think =
+it should be pretty easy to get it loaded. It sounds like you have the =
+underlying data all in that back end, so I'm not sure what the timeline =
+looks like for that. But in the meantime, Rakesh will take a look at those =
+dashboards and then also work on the calendar view IO.
+
+31:55
+Yeah, yeah, and let's connect on the calendar view because I'd like =
+something. Let me shoot you over again. I'm not looking to over engineer it=
+. I just want us to put things on a calendar and start start sending out =
+the emails with a. With the agenda. And like I said, we'll develop the =
+content for it today, but, you know, starting with tomorrow, so. So let me =
+send you that calendar view of what I was looking and, you know, just. Yeah=
+, cool.
+
+32:22
+Yep.
+
+32:23
+All right. Thanks, guys.
+
+32:24
+Sounds great.
+
+32:24
+Thank you.
+
+32:25
+Thanks, Justin. Appreciate it.
+----_NmP-b18fe883f5efd7ba-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Automated =
+Tracking and Dashboard Planning Progress</h1></td></tr></table></div><div =
+style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/6EBC3DEE-7A79-4500-89C0-A13535D70603?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h1 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2.5rem">Meeting Summary =E2=80=93 June 3, 2025</h1><h2 =
+style=3D"font-weight:500;padding-top:20px;font-size:2rem">Attendees</h2><ul=
+>
+<li>Mac</li>
+<li>Justin</li>
+<li>Rakesh</li>
+<li>Additional participants =
+referenced (Sean, Jeff, GDS, supply chain/workstream representatives)</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">=
+Main Topics Discussed</h2><h3 style=3D"font-weight:500;padding-top:20px;fon=
+t-size:1.75rem">1. <strong style=3D"font-weight:bold">Data Flow and Source =
+Systems</strong></h3><h4 style=3D"font-weight:500;padding-top:20px;font-siz=
+e:1.5rem"><strong style=3D"font-weight:bold">Smartsheet vs. Capital =
+Edge</strong></h4><ul>
+<li>Smartsheet serves as the <em =
+style=3D"font-style:italic">source of truth</em> for work plans.</li>
+<li>Work plan data is synced automatically from Smartsheet to Capital Edge.=
+</li>
+<li>App details inventory is initially collected, cleaned, and =
+imported to Smartsheet, which then propagates to other systems as needed.=
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+5rem"><strong style=3D"font-weight:bold">Accuracy &amp; Maintenance of =
+Data</strong></h4><ul>
+<li>Most workstreams maintain relatively accurate =
+work plans in Smartsheet, with only a few exceptions (=E2=80=9Cone or two =
+outliers=E2=80=9D).</li>
+<li>Particular challenge: DCN and Dex maintain =
+their own Smartsheet workspaces, requiring manual processes to aggregate =
+their data.</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px=
+;font-size:1.75rem">2. <strong style=3D"font-weight:bold">PMO Reporting and=
+ Tracker Design</strong></h3><h4 style=3D"font-weight:500;padding-top:20px;=
+font-size:1.5rem"><strong style=3D"font-weight:bold">Automation and =
+Integration with Tools</strong></h4><ul>
+<li>Key trackers (heat map, master=
+ tracker, UAT go-live burn down) pull data automatically from Smartsheet, =
+enabling near real-time reporting.</li>
+<li>Current mapping captures =
+80=E2=80=9390% of needed data; remaining data targets to be reviewed and =
+captured during UAT/MOS (Management Operating System) cadence.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem"><strong =
+style=3D"font-weight:bold">Design Approach</strong></h4><ul>
+<li>Initiated a &quot;design backwards&quot; approach: outlined dashboard =
+requirements first, then modeled underlying data structures accordingly, =
+keeping future dashboard views in scope.</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">3. <strong=
+ style=3D"font-weight:bold">BRV Readiness and System Inventory =
+Progress</strong></h3><h4 style=3D"font-weight:500;padding-top:20px;font-si=
+ze:1.5rem"><strong style=3D"font-weight:bold">BRV Tracker</strong></h4><ul>
+<li>The Operational Excellence (OpSep) team is developing the BRV tracker.=
+</li>
+<li>The tracker links individual processes to multiple systems =
+(many-to-many relationship), capturing every process-system touchpoint as a=
+ distinct row with corresponding testing milestones.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem"><strong =
+style=3D"font-weight:bold">System Inventory</strong></h4><ul>
+<li>Inventory submitted and imported; requires ongoing data cleanup.</li>
+<li>Updated system-inventory views to feed into Capital Edge and enable =
+process-level test tracking.</li>
+<li>Tracker to include all combinations: =
+function, sub-function, process, and system.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem"><strong =
+style=3D"font-weight:bold">Testing Accountability and =
+Scope</strong></h4><ul>
+<li>The dashboards will help clarify end-to-end =
+testing requirements and ensure all workstreams align on mutual =
+dependencies.</li>
+<li>Distinct SBOs:<ul>
+<li>All UAT activities (full =
+scope)</li>
+<li>Subset for BRV-relevant systems/processes (those impacting =
+8.1 go-live event specifically).</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">4. <strong=
+ style=3D"font-weight:bold">Dashboards and Visualization</strong></h3><h4 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.5rem"><strong =
+style=3D"font-weight:bold">Dashboard Requirements</strong></h4><ul>
+<li>Primary dashboard to show status for all systems: number of apps in SIT=
+, UAT, completed KT, and other key metrics.</li>
+<li>Requirement for =
+dynamic, visual reporting: e.g. pie charts, histograms, burndown charts.=
+</li>
+<li>Example dashboards from previous projects (e.g., J&amp;J) =
+reviewed as design templates.</li>
+<li>Suggestion to display both a =
+high-level visual view and a backend sheet for data compilation.</li>
+<li>Visualization to enable slicing/filtering (e.g., by BRV scope, function=
+, sub-function, system).</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-to=
+p:20px;font-size:1.5rem"><strong style=3D"font-weight:bold">Data Hygiene =
+and Phase Approach</strong></h4><ul>
+<li>Recognized need for parallel data =
+hygiene work: cleaning and enriching workstream work plan data as =
+dashboards are built.</li>
+<li>Plan to map desired data detail levels and =
+communicate with workstreams for data enrichment.</li>
+<li>Immediate focus: build dashboard with current data, flag obvious gaps, =
+and progressively clean data with workstreams over the next two weeks.</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">5. <strong style=3D"font-weight:bold">Licensing &amp; =
+Technology</strong></h3><h4 style=3D"font-weight:500;padding-top:20px;font-=
+size:1.5rem"><strong style=3D"font-weight:bold">Smartsheet =
+Licensing</strong></h4><ul>
+<li>Smartsheet Premium license quote acquired: =
+$1,496/year (intended for team use; to be billed as a technology fee under =
+the SOW/invoicing procedures).</li>
+<li>Action: Add Rakesh to licensing =
+discussion with Sean for processing.</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">6. <strong=
+ style=3D"font-weight:bold">Next Steps and Coordination</strong></h3><h4 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.5rem"><strong =
+style=3D"font-weight:bold">System View and Process Mapping</strong></h4><ul=
+>
+<li>Mac to provide Justin with current data models and sample Excel files=
+ as input for Smartsheet build-out.</li>
+<li>Rakesh to share additional =
+wireframes and dashboard examples; Justin to mock up dashboard =
+visualizations in Smartsheet or Excel.</li>
+</ul>
+<h4 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.5rem"><strong =
+style=3D"font-weight:bold">Calendar Planning</strong></h4><ul>
+<li>Need to create a coordinated calendar for milestone activities (for =
+example, UAT, go-live, KT, etc.).</li>
+<li>Rakesh to share past calendar =
+view examples.</li>
+<li>Plan to develop a rolling agenda/calendar, starting=
+ with initial content today for activities beginning tomorrow.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem"><strong =
+style=3D"font-weight:bold">Collaboration and Feedback =
+Loop</strong></h4><ul>
+<li>Justin to review and comment on the data model, =
+noting feasibility and flagging any columns or integrations that are =
+impractical or require manual upkeep.</li>
+<li>Plan for follow-up alignment=
+ later in the afternoon on dashboard prototypes and data model.</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Action=
+ Items</h2><ol>
+<li><p><strong style=3D"font-weight:bold">System Tracker =
+Build</strong></p>
+<ul>
+<li>Justin to review and further develop the =
+outline/model, using Mac&#39;s shared Excel data, and validate against =
+Rakesh=E2=80=99s requirements.</li>
+<li>Begin Smartsheet prototype build =
+with available data; dummy data to be used where necessary.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Dashboard =
+Visualization</strong></p>
+<ul>
+<li>Rakesh to send visual dashboard =
+examples to Justin and Mac (pie charts, burndowns, at-risk statuses, etc.).=
+</li>
+<li>Justin to create initial dashboard mockups based on shared =
+requirements and examples for stakeholder review.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Data Model =
+Refinement</strong></p>
+<ul>
+<li>All to review and refine data sources, =
+connections, and required detail. Workstreams to be engaged to =
+provide/process additional, more granular data as gaps are identified.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Licensing</strong></p=
+>
+<ul>
+<li>Rakesh to coordinate with Sean regarding Smartsheet licensing =
+procurement and internal allocation as a technology fee.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Calendar Coordination</strong></p=
+>
+<ul>
+<li>Rakesh to send calendar view examples; Team to agree on calendar=
+ layout and start calendaring milestones/meetings.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Reporting Structure</strong></p>
+<ul>
+<li>Continue to automate reporting flows where possible; flag =
+columns/processes that are manual for subsequent simplification.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:=
+2rem">Follow-Up Points</h2><ul>
+<li><strong style=3D"font-weight:bold">Dash=
+board feedback session:</strong> To be scheduled later this afternoon for =
+reviewing initial dashboard mockups and confirming alignment on the data =
+model and visual approach.</li>
+<li><strong style=3D"font-weight:bold">Ongo=
+ing data hygiene:</strong> Parallel effort with workstreams to improve data=
+ quality and completeness over the next two weeks.</li>
+<li><strong style=3D"font-weight:bold">Calendar deployment:</strong> Begin =
+adding key activities and planned meetings to shared calendar starting =
+&quot;tomorrow&quot; (June 4, 2025).</li>
+<li><strong =
+style=3D"font-weight:bold">Licensing finalization:</strong> Expected to be =
+actioned later today or tomorrow (June 3=E2=80=934, 2025).</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Notabl=
+e Dates and Figures</h2><ul>
+<li><strong style=3D"font-weight:bold">Today:<=
+/strong> June 3, 2025 =E2=80=93 Meeting date.</li>
+<li><strong =
+style=3D"font-weight:bold">BRV 8.1:</strong> Go-live milestone (August 1, =
+2025), with additional system go-lives planned for June, July, and into =
+September=E2=80=93October 2025.</li>
+<li><strong style=3D"font-weight:bold"=
+>Smartsheet Premium license:</strong> $1,496/year (team plan).</li>
+<li><strong style=3D"font-weight:bold">Applications in scope:</strong> ~200=
+ total, with specific focus on 82 for full-scope tracking; subset of =
+~22=E2=80=9323 associated with BRV 8.1.</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Summary</h2><=
+p>The meeting focused on establishing clear ownership and automation for =
+system inventory and BRV readiness trackers, standardizing dashboards for =
+systems and processes, planning out next steps for data model and dashboard=
+ prototyping, progressing data hygiene in parallel, and finalizing logistic=
+ matters around Smartsheet licensing and calendar coordination. Key action =
+items and follow-ups are aimed at accelerating reporting readiness while =
+ensuring data quality catches up to evolving business requirements and =
+timeline milestones.</p>
+</div></div></div><div style=3D"background-color:#=
+ffffff;padding:28px;border-radius:12px;border:1px solid =
+#e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0=
+, 0.06)"><h3 style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-t=
+op:0;margin-bottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription</h3><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Justin</span><span style=3D"color:#64748b;font-size:14px=
+">0:00</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">It.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">0:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Smartsheet, which =
+direction does it. Which direction does it sync? Like, is the source data =
+for all of the app, like, the work plans? For example, is it in smartsheet =
+or is it in Capital Edge?</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span>=
+<span style=3D"color:#64748b;font-size:14px">0:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So the source data =
+for work plans is smartsheet, and then it sinks into Capital Edge.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">0:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">0:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then source data=
+ for any app details is the. The inventory which syncs into smartsheet.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">0:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Got it. How accurate=
+ do you feel like the smartsheet data is? Like, are work streams generally =
+good at keeping it up to date?</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin<=
+/span><span style=3D"color:#64748b;font-size:14px">1:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, no, the work =
+plans are. I mean, except for, like, one or two outliers, they are pretty. =
+It&#x27;s pretty good data.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">1:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Awesome.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">1:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I guess the one =
+challenge that might happen is DCN and Dex doesn&#x27;t actually host their=
+ work plans in our workspace. They host it in their own workspace. So =
+it&#x27;s been historically kind of hard to pull data automatically from =
+sheets that they have. It&#x27;s more of a manual effort.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">1:=
+44</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">That&#x27;s fine. Does it get pulled. Is it, like, a part of the. Like, =
+the PMO cadence? Does it get pulled into the. Like, there&#x27;s the heat =
+map, and then there&#x27;s the master tracker, and then the UAT go live, =
+burn down one. Does it get pulled into those automatically?</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Justin</span><span style=3D"color:#64748b;font-size:14px=
+">2:05</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah, those are all automatic.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</s=
+pan><span style=3D"color:#64748b;font-size:14px">2:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So those are the =
+ones that I have tentatively mapped our columns to. Just from those two or =
+three, I think that we have 80 or 90% of the data that we need. And the =
+trick is going to be building it in a way that provides a foundation for =
+the views that are going to come after this. So what we did is sort of =
+design backwards. So we outlined what we want on this dashboard and what we=
+ needed to show and designed a data model backwards from it. And =
+there&#x27;s two or three more views, depending on how we want to cut it. =
+That will come after this. And so what we need to do is just build with =
+that in mind.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">2:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, that makes =
+sense. Paperbush.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">3:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Hey. Sorry. Late, =
+guys.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">3:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Hey. So I was just =
+giving Justin the background for the systems tracker that we need to build.=
+ Justin, one of the pieces that I have. Excuse me. Yet to review. Is the =
+BRV readiness tracker. But from those three that we discussed, I think that=
+ there&#x27;s a very clear path to in Smartsheet pulling 85% of the source =
+data that we need, and the rest will mark as review during the UAT MoS =
+cadence with the work streams themselves to update.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Justin</span><span style=3D"color:#64748b;font-size:14px"=
+>3:51</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yep. Yep, that makes sense. And all of this smart, at least everything =
+that&#x27;s the source of truth is smartsheet, can be linked Pretty easily,=
+ automatically. So it should be good there by the BRV tracker. Is that the =
+one that the opsep team is making on?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>4:12</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">If you recall, there&#x27;s a system inventory piece we submitted, which=
+ is what they&#x27;re doing, which is they&#x27;ve imported that, we need =
+to obviously clean that up. And that&#x27;s part of the system inventory =
+that Max talking about. Once we get that updated view, we can go in and =
+update the Capital Edge with that new updated view. The second part of that=
+ is they&#x27;re linking that to the BRV process tracker to say this =
+process is touching these many systems or it&#x27;s the many to many. So =
+they&#x27;re creating a separate tab that says, okay, this process goes to =
+this system to test it. Another process goes to the same system to test it.=
+ So they&#x27;re creating a row for each of those touch points, but =
+that&#x27;s going to follow on to the BRV process tracker that they&#x27;re=
+ maintaining.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">5:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, that sounds, =
+that sounds harsh.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">5:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;s a rule for=
+ every time it touches the same system so that they know that, you know, =
+process X touches system, system A and that&#x27;s complete, that testing =
+is complete or it&#x27;s, you know, on, you know, date X.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">5:=
+26</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So I already have a preliminary view of it. I can show you. It&#x27;s =
+the. Let me share my screen. I&#x27;ll show you that view at least. And =
+this is obviously without access to that process tracker. But what Rakesh =
+is talking about is all of the functions for each of their sub functions in=
+ the actual process that it supports. So down to the digital marketing =
+level, labeling applications, this one is something in China. Everything =
+that&#x27;s build back, everything I misspoke. Everything that&#x27;s not =
+TSA is going to probably need to be reviewed for like a UAT component. And =
+so that view that Rakesh was talking about with the processes are one row =
+per process. So an application might be listed multiple times. So it&#x27;s=
+ all of the unique combinations of function, sub function, process and =
+system everywhere that it touches so that you can roll it up and say for =
+any given system, what are all of the processes that it touches and where =
+do we need to coordinate the UAT testing? So an app like an ERP might touch=
+ HR and finance. And historically the gap is that those teams are very good=
+ at executing in their own silos and some of them are already working =
+towards UAT testing or engaging in it and some of the other folks =
+haven&#x27;t been aligned to that. And so there&#x27;s those =
+interdependencies that need to be accounted for and that&#x27;s what this =
+view effectively does between these systems. It lets everyone know what =
+needs to be tested so they can align their testing schedules or at least =
+know what else needs to be tested outside of just their silo. Right Rakesh?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">7:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">7:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And so we&#x27;re =
+mainly interested in everything that&#x27;s not TSA. Some of the TSA&#x27;s=
+. Okay, so here&#x27;s one of the intricacies is that this is why I was =
+asking about the data hygiene is there&#x27;s that BRV column in the heat =
+map, the application heat map and sometimes it&#x27;s marked as no but they=
+ have provided UAT and SAT start and end dates. So they marked no for BRV =
+impact, no BRV impact and they provided testing dates. And so we need to. =
+This is like the alignment that we are going to go drive in the MOS is what=
+ testing is required. What&#x27;s the end to end process? Here it says =
+it&#x27;s legal applications quote to cache and what&#x27;s the UAT =
+component and what&#x27;s the end to end process? So is there UAT that we =
+need to account for or not?</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span>=
+<span style=3D"color:#64748b;font-size:14px">8:49</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">This is just like so=
+ column J then really isn&#x27;t just limited to just BRV scope, it&#x27;s =
+really the scope is for all of UAT prior to day one.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">9:=
+03</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yes. And that&#x27;s different from the systems view which is that other=
+ tracker that we need to build which is only the BRV scope. The 82 =
+applications.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">9:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, no, no, no, no. =
+The 82 applications is everything Mac BRV is an event that is around 8. 1. =
+It&#x27;s a start of soft spin. So again there are move as is build back =
+applications that are going to go through testing and go live in June and =
+July. There are a subset of applications that will go live on August 1st =
+with the BRV. There are a bunch of applications that will go live post that=
+ Aug. 1, let&#x27;s say Aug. 5 to Sept. 30 or Oct. 1 as part of the build =
+back and move as is all of these are again they&#x27;re all prior to day =
+one. So in this particular case in HSE my read on it is it&#x27;s not =
+related to BRV 81 go live. It needs to go live sometime. And they&#x27;re =
+completing the testing in September and going live I presume sometime in =
+September or on day one. So we just have to. So there&#x27;s a. =
+There&#x27;s a distinction between what is the 22 or 23 systems that are =
+there for an 8.1 associated go live versus every other thing going live =
+elsewhere. So the UAT is really all the apps that are 82 plus however many =
+there are and then the BRV is a subset of that 82 which is just related to =
+8.1. Got it.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">10:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And I think really =
+though, there doesn&#x27;t really need to be any duplicative efforts. Right=
+, you can just build this for all of it and then just have.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px=
+">10:59</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">A filter for brv. Yes.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span>=
+<span style=3D"color:#64748b;font-size:14px">11:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, sounds good.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">11:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The only the. Yeah, =
+so, yeah, yeah, let me not say anything more, so.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">11=
+:15</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Don&#x27;T leave us hanging.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin<=
+/span><span style=3D"color:#64748b;font-size:14px">11:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">11:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">What were you going =
+to say, Rakesh?</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">11:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I was just thinking =
+out loud on. So the data is there. We just need to get it in the right =
+format and start, you know, have it in smartsheets and start dashboarding =
+on it. We can then refine how the dashboard looks, but at some point, you =
+know, the data is there. We just need the same fields and with flags we can=
+, you know, we. To. To Justin&#x27;s point, we can slice to say this is in =
+scope for brv. This is in scope for, you know, this is. This is BRV related=
+, this is non brv, but in the same time frame and things of that nature. So=
+ that we can run through a separate flag. We can create as a column. But =
+the idea would be to put all 200 apps into the Tracker 296 and say, yeah, =
+this 82 is. I think you already have it there, but this 82 is this and this=
+. The challenge I have there, Justin, here is some of these dates, the =
+hygiene and the plans are not right. This sit and UAT dates are way off. Or=
+ there&#x27;s also the added piece here where it&#x27;s not necessary. For =
+example, there&#x27;s a process that&#x27;s changing, but that will touch a=
+ system. The system doesn&#x27;t necessarily need to change. So is that =
+system in scope for brv? Yes, because it is touching a process that&#x27;s =
+changing at BRV. But is there a UAT? So it could be a TS8 system, but =
+it&#x27;s being touched on 8.1 to validate a process. So I&#x27;d like to =
+include those sort of things to say, yes, this is in scope for BRV and the =
+kind of testing is nothing from a system perspective, but only from a =
+process perspective. So that&#x27;s the kind of information I&#x27;d like =
+to get on the dashboard as well. But to do that, the model has to show that=
+ that system is a. Is a BRV system, if you will.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">13=
+:27</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I think that that&#x27;s what I was trying to do here. Right. Like for =
+the. These TSA ISC apps.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span>=
+<span style=3D"color:#64748b;font-size:14px">13:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sorry, I took over =
+screen sharing just one Thing. Just a few points, I guess. I think the =
+first biggest challenge that we can do internally is. So this is the view =
+that I know you guys are used to, but the back end to this is something =
+that I don&#x27;t want anyone to see because it&#x27;s an eyesore. But it =
+is just a compilation of all the data that I can get from work plans and =
+then I can slice it into a more manageable view. I think setting that up is=
+ pretty easy and it can be pretty automated from all the work plans. Once =
+that view is ready, then there can be one effort to make it back end fully =
+compiled data sheet and then an actual report view and then there can be =
+another parallel effort, I think for data hygiene. I do agree that a lot of=
+ our work plans are definitely more at a high level than what&#x27;s =
+probably needed for this exercise. What we can do is really, I think it =
+should come from these work streams. Agree, Good example. Since their work =
+plans are actually very.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">15:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Good, we don&#x27;t =
+have to let that stop us. Right. I think that that&#x27;s the caveat that =
+we have communicated is that we, we will build the dashboards with the data=
+ that we have on hand. And the, I don&#x27;t want to say the accuracy, but =
+the accuracy is something that we will work with the work streams to =
+enhance as we go through the next two weeks in the areas that we have gaps =
+or need to gather more information. Right. Or update things like the UAT =
+testing schedule. I know that they have them. It might not just be in their=
+ plan.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">15:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We just need them to=
+ load it into the work plans. And I think especially if they already have =
+it and it&#x27;s a pretty simple ask, they&#x27;re all pretty comfortable =
+with smartsheet. Now, objectively, this is kind of shit. It&#x27;s very =
+high level. But I&#x27;m sure they have more granular data. And I think =
+really the only effort there that really needs to be done is kind of map =
+out what we want to ask for, what level of detail that we need and then =
+really just go and ask for it. And I&#x27;m sure they&#x27;ll have it. And =
+that data hygiene can be done in parallel as the reports are being built.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">16:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Can we start =
+building the report and then to everything Mac just said, can we start =
+building that dashboard Views of these are the apps in scope. These are =
+however, how many are in sit, These are how many in uat, These are how many=
+ that have completed kt. You know those metrics that you had there, Mac, on=
+ that page, I think we need a visual view of all of this data and start =
+building it.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">16:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Exactly. That&#x27;s=
+. I completely agree. And that&#x27;s why one way or another, I think that =
+we can, once we&#x27;re aligned on that, just the model, we can put dummy =
+data in there, which is, I mean, I&#x27;ve taken a best effort to populate =
+it with all of the business processes and the systems and everything and =
+send that to GDS and ask them to build a model on top of it or build a =
+dashboard.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">17:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">On top of it. It =
+won&#x27;t be business. I wouldn&#x27;t worry about business processes. =
+There&#x27;s a separate tracker for mapping business processes to systems. =
+But I would want system sub function, everything else there. So don&#x27;t.=
+ They&#x27;re two separate things.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</s=
+pan><span style=3D"color:#64748b;font-size:14px">17:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px=
+">17:44</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">The system inventory stuff that Jeff wants as a first pass is we =
+should really get a lay of the land from the work plans or other elsewhere.=
+ What are the systems that are in play? Have they got the right people for =
+pitches and catches? Have they done KT for those? Have they identified all =
+the test scripts? Is it an sit? Have they done, you know, uat? When is UAT =
+happening and when is go live? So that view we should put on a visual and =
+start displaying. Hygiene can come after that because it will show it all =
+over the place. We can say this is what it looks like, it&#x27;s crap. But =
+that&#x27;s the hygiene portion. The next portion of this is the process =
+view of businesses are testing processes. They&#x27;re touching systems. =
+Some of these systems are getting changed. So they need to align some of =
+their testing with. With the windows that it has set up. Other systems are =
+not getting changed, but they touch them. So this is the view of business =
+process map to the systems. So that&#x27;s a secondary view that we can =
+create either mark sheets or capital Edge. But the first step is this =
+visual of a dashboard on where are we with all the systems. And because =
+there are lots of systems in SIT today, we need to start displaying what =
+that tracker looks like. What that visual looks like.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">19=
+:07</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, I think we&#x27;ve got it.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>19:09</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Okay, so that&#x27;s what I want to start looking at. And like I said, =
+hygiene is step two.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">19:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Agreed.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">19:21</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then actually on=
+ that note, Rakesh, I actually just got a quote for Smartsheet Premium =
+licenses. Okay, can I just, can I just add you to this email chain with eye=
+?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">19:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Shawn, Sean.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">19:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, yeah, =
+yeah. It&#x27;s, I think it&#x27;s like 1400 a year, which is pretty good. =
+1496 a year.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">19:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Is it for one person=
+? Is it for a team?</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span>=
+<span style=3D"color:#64748b;font-size:14px">19:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Is it for 12 people?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">19:49</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, let&#x27;s do =
+that. Maybe we Put it under technology fee so we can give a code to it and =
+say, yeah, this is a technology fee for 12 of us. I think there&#x27;s a =
+tech fee already built in, into our sow or in our invoicing, so internally =
+at least. So yeah, send it to Sean and I will action it perhaps later today=
+ or tomorrow, but. Okay, so I&#x27;ll let you guys continue the background.=
+ Let me get you all this data back on the some sample dashboards as well as=
+ for the supply chain because as a next step I want us to start calendaring=
+ things, but I need to work with you on just putting it on a calendar. So. =
+Yep, I&#x27;m just going to go back into the background, guys. So I&#x27;ll=
+ let you all continue.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">20:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I&#x27;m just =
+taking a look at this one that you just sent me, but I guess this is the =
+system process map. So I think, Justin, what would be probably the next =
+step here is to start to build the outline and validate it with Rakesh, =
+either in Smartsheet or in Excel. I had stuck it in Excel and I can send it=
+ to you with the model that Rakesh and I had discussed with all of the =
+columns and let you take a look probably and see what we have and what we =
+don&#x27;t and start to build the Smartsheet and then in parallel, Rakesh, =
+we can wireframe out the dashboard if you have examples for the systems =
+view.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">21:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep, sorry, that =
+makes sense to me.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">21:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so can you =
+help mock up something that shows up as a dashboard? Yeah, yeah, let&#x27;s=
+ start, you know, histogram, pie charts and let me, let me go back. I told =
+you, Mac, I will get you an example from some of the projects. Let me look =
+at that right now and get us some examples so we can at least start getting=
+ a view into what, you know, decent or good looks like for this. Give me =
+one second, let me share some examples and give me a second here. Just =
+pulling up some samples from the past. So can you all, can you both see my =
+screen?</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">24:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">24:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so let me pull=
+ this up from my J and J example. I probably have a few more, but cut over.=
+ So something like this would be good where this is for an LE work. But we =
+can do something similar. I&#x27;m thinking just from a stupid PowerPoint. =
+Okay. When this decides to open, but if not, let&#x27;s go look at this. So=
+ I&#x27;m thinking something like this as a burn down. The expectation is =
+that, you know, if I do it here, so I have a work stream across these =
+systems and I can do a poll I forget the regions for now, but I have a view=
+ of this was for everything across all work stream for the legal close or =
+pre legal close. But you can look at it as an execution view to say, you =
+know, this sort of a dashboard, there&#x27;s go live completed, go live in =
+progress, number of apps, there&#x27;s a burn. This is for cutover but you =
+could do the same thing for burn down for go live to say some systems are =
+in uat. So this is a view that progressively will change. It&#x27;s a point=
+ in time view but it&#x27;s a dynamic one that changes every. As apps move =
+into tsa, as apps move into out of Sit, UAT into go lives. So you could =
+have the work stream here and you could have go live dates here to say okay=
+, pre brv, BRV and post brv. And you could have numbers in here that show =
+the burn down. There are other charts here that. So Mac, I was looking at =
+this for a rolling calendar. This is how I&#x27;m thinking we should set up=
+ this. And so this, this is what I&#x27;m expecting us to develop in a =
+short while to say okay, let&#x27;s do this over the next couple of weeks =
+but let&#x27;s over plan. Where do I have. Let me see if this is not open. =
+Okay, so that was one example I gave of just what a dashboard would look =
+like and other dashboards here would be, you know, something like this that=
+ shows, you know, this is again completed start at risk, behind schedule on=
+ track. Da da da. So this will again change but it gets a view on, you know=
+, things have started on track, you know, there&#x27;s some behind schedule=
+ again from the dates. We could do this for SAT or UAT or go lives. This =
+could be a go live tracker. But this is again you could have you know, =
+status on this many in SIT, this many in UAT etc. So this is one, this is =
+another view where you know, if you double click a slice into a particular =
+we may not have region but we may want to do sub function. We have a view =
+into this. Similarly I expect PMO to create process views but from a system=
+ progression view we can double click and if you double click into this you=
+ will get a view of. Okay, yeah, this many systems here and this many =
+systems. So again just examples of how I&#x27;m thinking we should show =
+execution dashboard and again see if these resonate with you. But again =
+this is how I&#x27;m thinking we should start hygiene later but at least =
+the dashboards we should start showing so that Jeff can react to it and say=
+ yeah, this visual looks good. This doesn&#x27;t tell me everything I need =
+to know. Add a few more boxes here, remove this, etc.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">28=
+:39</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yep.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">28:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right. So let me =
+send these slides and paste them here so we kind of get a view into. Into =
+how we can. Again, this is not how we absolutely need to do it, but =
+it&#x27;s a view into. Oh, I thought I pasted everything. It&#x27;s an =
+example of a visual that, you know, types of visuals we should be able to =
+show in the dashboarding. Why is this doing one by one? Okay, this is not, =
+I&#x27;m not liking this. You know what, I&#x27;ll just send you both all =
+the. Just these four slides separately. Screw pasting it here. You guys can=
+ get an example of the slide, how we&#x27;re progressing and obviously the =
+data model should reflect that.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</sp=
+an><span style=3D"color:#64748b;font-size:14px">30:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So Justin, =
+here, I&#x27;m going to just drop the link into the model that I wrote here=
+. So this is based on the conversations that we&#x27;ve had and then also =
+the dashboards that we&#x27;ve talked about.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Justin</span><span style=3D"color:#64748b;font-size:14px"=
+>30:36</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Ok, sounds good. I do need to hop over to another call, but yeah, =
+I&#x27;ll definitely review these and then connect with you.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">30:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;s fine.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">30:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">If we want to review=
+ that sometime later this, this afternoon to see what is possible or how =
+you guys are thinking through this, it&#x27;ll be super helpful.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">30:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And that&#x27;s =
+really what Justin, I&#x27;m looking for from you. There&#x27;s a column in=
+ here with like what I speculate to be the source table and then the =
+process to update this column. Some of it, we&#x27;re going to collect =
+updates as a part of the operating cadence that we have and we&#x27;re =
+planning on that. And then some of it. I need your, like I need you to flag=
+ anything that is hard to do or doesn&#x27;t exist that doesn&#x27;t say =
+manual basically.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span>=
+<span style=3D"color:#64748b;font-size:14px">31:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, yeah, I can, I=
+, can I, I see that. Yeah. I&#x27;ll, I&#x27;ll put in some comments and =
+then send us a file back. Cool.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</sp=
+an><span style=3D"color:#64748b;font-size:14px">31:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, that would be =
+awesome. And then once we&#x27;re aligned on that, I think it should be =
+pretty easy to get it loaded. It sounds like you have the underlying data =
+all in that back end, so I&#x27;m not sure what the timeline looks like for=
+ that. But in the meantime, Rakesh will take a look at those dashboards and=
+ then also work on the calendar view IO.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>31:55</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah, yeah, and let&#x27;s connect on the calendar view because =
+I&#x27;d like something. Let me shoot you over again. I&#x27;m not looking =
+to over engineer it. I just want us to put things on a calendar and start =
+start sending out the emails with a. With the agenda. And like I said, =
+we&#x27;ll develop the content for it today, but, you know, starting with =
+tomorrow, so. So let me send you that calendar view of what I was looking =
+and, you know, just. Yeah, cool.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</sp=
+an><span style=3D"color:#64748b;font-size:14px">32:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px=
+">32:23</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">All right. Thanks, guys.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</sp=
+an><span style=3D"color:#64748b;font-size:14px">32:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sounds great.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">32:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Thank you.=
+</div></div><div style=3D"margin-bottom:0;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">32:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Thanks, Justin. =
+Appreciate it.</div></div></div><div style=3D"margin-top:36px;text-align:ce=
+nter;color:#64748b;font-size:14px;padding:20px;border-top:1px solid =
+#e2e8f0"><p style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note=
+ Taker</p><p style=3D"margin:0;font-size:12px">Your AI-powered =
+companion</p></div></div></div></div></html>
+----_NmP-b18fe883f5efd7ba-Part_1--

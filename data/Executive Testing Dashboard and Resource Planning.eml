@@ -1,0 +1,3139 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a05:6000:26d2:b0:3a5:23aa:6f43 with SMTP id 18csp967773wrm;
+        Fri, 20 Jun 2025 16:34:32 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE954bpRW1DcmxEq+VNubSHd1PPAALcsWKpJKN+GJtUYNl/Dx9+eBCnLZVvRY5cJ6z71OTO
+X-Received: by 2002:a05:6214:2129:b0:6fb:5ac8:2b79 with SMTP id 6a1803df08f44-6fd0a4f4ea3mr95064486d6.19.1750462471621;
+        Fri, 20 Jun 2025 16:34:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750462471; cv=none;
+        d=google.com; s=arc-20240605;
+        b=PfhmABY6lQxjX5wBJl/x4U2S31HmwfkyYraxmSGd/3hlklXDdvl6LISd+9v/ElzHsQ
+         Gf17C1kkttBZAa5kbpVxmAgmCHC7SKEFJNIMwstqh9b5gyzDmPS+lKjQkMPj1CIyLdV+
+         EFgd0+JPNWWX6AEQZ+TJd3Ny7uxkERQoRvCcc8RBIUQ1cTZzhmgauaXLnV56xqa9W4nH
+         lt4fK3h4TY8O9FavWQWo0EUvsiEnniUNR8P9jtDgiDe+xnsW9ZSSY5zH6R5ee3CuLMpp
+         aMKi/LtDKRLk/a1cYOeQoYB28zZjlRSbOELYOk+bmpNmMwPfq4mgHKVmZAc0Rv+PvL2c
+         xFKA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=u+9ERY1nfbwnDx4A+EAvE1COSBcY8kL3ORcqyFHF5T0=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=kxGNwqs8OJ92ceU8g/gBKFtasV2UoMZNnDxVIm6Vz2K1gaOt2b94l2n4QvRMcNhYnN
+         8VuAnlf5L+iWDmSNnmdEKhjYQ8KaAONErrpTdPSqwAyVyFTuY088E9Tfs23qO+7huZle
+         r/Ah2Dp/A0bp6QDzSIf4yKjz77ZlpVzHBPX/zYML39ZdfBcqLFTPBQeg9Sku6+7bAM99
+         DHjLvnG4rYo7qUqKonoUwgb5vpBddle9WxNlrkf0vMUMRocqUT7MpY9vgNEFcEPuX+IP
+         q4wqcFC5uR6ybpW7K9I81WiIm71FjaXo10cbIdEz/+QJOOmvLXNBBYE0b/nI0WSxogk5
+         FNng==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=MARMoIut;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=PHAu4R33;
+       spf=pass (google.com: domain of 010001978fb19b1b-2c82a6f2-70b2-42bd-8ac2-b497d62e42f2-000000@send.email.wave.co designates 54.240.9.31 as permitted sender) smtp.mailfrom=010001978fb19b1b-2c82a6f2-70b2-42bd-8ac2-b497d62e42f2-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <010001978fb19b1b-2c82a6f2-70b2-42bd-8ac2-b497d62e42f2-000000@send.email.wave.co>
+Received: from a9-31.smtp-out.amazonses.com (a9-31.smtp-out.amazonses.com. [54.240.9.31])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd093e0543si32891016d6.82.2025.06.20.16.34.31
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 20 Jun 2025 16:34:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 010001978fb19b1b-2c82a6f2-70b2-42bd-8ac2-b497d62e42f2-000000@send.email.wave.co designates 54.240.9.31 as permitted sender) client-ip=54.240.9.31;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=MARMoIut;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=PHAu4R33;
+       spf=pass (google.com: domain of 010001978fb19b1b-2c82a6f2-70b2-42bd-8ac2-b497d62e42f2-000000@send.email.wave.co designates 54.240.9.31 as permitted sender) smtp.mailfrom=010001978fb19b1b-2c82a6f2-70b2-42bd-8ac2-b497d62e42f2-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1750462471;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=75yJwiyldT3/4ObIbVRNxBcibxYZ07Ly/2BuB72a4VU=;
+	b=MARMoIutj3caQPBjCd9oxGi6PlD7R4Jx2+gmCa0bgPHLbE83LxeSuFebpH+ZnsV3
+	Nfajb+wS72wGFzcQLU7kAMBtoWjjbQciL8q8j3ocS/qPY5bPtC6f8j8uycAFY/0SvEE
+	3HfM8j1GGSPWbNATjZRGyiAcBPpD65NI+iduJpwA=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1750462471;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=75yJwiyldT3/4ObIbVRNxBcibxYZ07Ly/2BuB72a4VU=;
+	b=PHAu4R33e8pfMtggoDX17yVjkTqbTcNbElJIzEPZwtCbrj5j2tHCGDF0dk73moXk
+	fg6QfKUUQ9ZlDn1tKR6LXHliJYxjfi473cn1d3ro7kawlIx2fIqfjZUC56fRti2bPHD
+	15KGX8zy0aj/p0l66ZQNq3CWnuSbeU1o/o8KrFgQ=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Executive Testing Dashboard and Resource Planning
+Message-ID: <010001978fb19b1b-2c82a6f2-70b2-42bd-8ac2-b497d62e42f2-000000@email.amazonses.com>
+Date: Fri, 20 Jun 2025 23:34:30 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-58a6a38b6f86bbfe-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.06.20-54.240.9.31
+
+----_NmP-58a6a38b6f86bbfe-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Executive Testing Dashboard and Resource Planning
+
+# Meeting Summary: =
+Testing Dashboard & Resource Planning Discussion
+
+**Date:** June 20th, 2025=
+ =20
+**Attendees:** (Implied, not specified; primary speakers referenced as=
+ "you", "he", "Jeff", "Arpit", "Bill", etc.) =20
+**Duration:** Not stated =
+=20
+**Purpose:** Align on structuring the UAT/testing dashboard for =
+executive-level reporting, refine resource mapping against the Athens =
+census, and review outstanding action items.
+
+---
+
+## 1. Main Topics =
+Discussed
+
+### 1.1 Trade Compliance Reporting & Dashboard Structure
+
+- **Current State:** =20
+  - Trade compliance reports as a single line with=
+ six scripts; discussion whether to split by manual vs. automated scripts.
+  - PowerPoint & Excel dashboards have inconsistent representation.
+  - Suggestion to split Trade Compliance into two rows: =
+=E2=80=9CManual=E2=80=9D (3 scripts) and =E2=80=9CAutomated=E2=80=9D (3 =
+scripts) or add two additional columns.
+- **Key Considerations:** =20
+  - Executive (Jeff-level) reporting should not be overly =
+detailed=E2=80=94focus on automation vs. manual, total scripts, and =
+outcomes (pass/fail).
+  - Importance of indicating the nature of the =
+defect=E2=80=94whether it's human or technical.
+  - Consensus that a clear =
+breakdown (manual/auto) with color-coding would add value.
+  - Decision to add columns for total, manual, and automated scripts, with =
+color highlights for automated scripts.
+
+### 1.2 HR Country-Level Testing
+
+- **Current State:** =20
+  - Discussion on testing for HR/payroll parallel =
+runs.
+  - 26 countries require parallel payroll tests; this is not a =
+traditional test script but an outsourced service.
+  - Data to be sourced =
+from Arpit or Sandra; Arpit confirmed list =E2=80=9Cin transit.=E2=80=9D
+- **Reporting:** =20
+  - Row to be added for each country.
+  - Pass/fail tracked per country; if 10 countries have tests run and 7 =
+pass, record as 10 total, 7 pass, 3 fail.
+
+### 1.3 Dashboard Alignment and =
+Best Practice Replication
+
+- **Comparison to Other Dashboards:** =20
+  - Reference to dashboards created by Bill as standard for reporting =
+progress.
+  - Focus on scenario-level (not step-level) status for pass, =
+fail, in progress, not run.
+  - Recommendation to replicate four key status=
+ fields: pass, in progress, failed, not run.
+- **Implementation:** =20
+  - Add these columns to the unified dashboard for all test workstreams.
+  - Maintain total, manual, and auto script columns; ensure the ordering =
+matches best practice.
+
+### 1.4 Tester Name Consolidation and Athens =
+Resource Mapping
+
+- **Data Source Issues:** =20
+  - Difficulty accessing =
+protected census file; password issues discussed and resolved (=E2=80=9CAM =
+2025=E2=80=9D).
+  - Consolidation of tester names from multiple sources (e.=
+g., BRB validation tracker, ERP/Finance UAT lists, HR teams).
+- **Lookup Strategy:** =20
+  - Gather all business tester names from all =
+available files, remove duplicates, and match to 3,500 Athens inventory.
+  - Granularity needed by workstream/function for analysis (e.g., for CCEX,=
+ list number of testers vs. names matched).
+- **Next Steps:** =20
+  - Clean and organize the complete tester list with department and =
+function, then perform lookup against census.
+
+### 1.5 Action Register & =
+Scheduling
+
+- **Closeout Table:** =20
+  - Pierce=E2=80=99s action items to =
+be compiled into a table with clear action owners and due dates for =
+accountability.
+  - Ensuring granular, trackable closeout actions (e.g., =
+finalize food, other pre-workshop requirements).
+- **Schedule =
+Communication:** =20
+  - Noted delay: Commitment to Jeff to publish =
+schedule by today was not met.
+- **Prep for Monday=E2=80=99s Call:** =20
+  - Need to finalize dashboard changes and resource mapping for =
+Monday=E2=80=99s prep meeting (noted as at 6:66 Central, i.e., presumably =
+7:06 or a typo).
+- **Workshop Logistics:** =20
+  - Workshop at WakeSpace on=
+ Wednesday; plans to arrive Monday or Tuesday night to avoid weather, to be=
+ finalized.
+
+---
+
+## 2. Specific Extended Discussions & Details
+
+### 2.1 Dashboard Design: Manual vs. Automated Test Scripts
+- Explored different options for displaying manual and automated tests in =
+the dashboard, including using rows or columns, color-coding, and =
+aggregation.
+- Emphasis on executive-friendly representation=E2=80=94only =
+split manual/auto where meaningful, otherwise aggregate.
+- Agreement on maintaining concise dashboard with only impactful breakdowns=
+.
+
+### 2.2 Data Integrity & File Access
+- Extensive effort spent =
+troubleshooting file access and verifying completeness of tester lists.
+- Determined missing tester data from specific files/folders.
+- Action to ping colleagues for access to restricted finance tester lists.
+
+### 2.3 Test Progress Metrics & Reporting Drilldown
+- Decided to report on =E2=80=9Cpass,=E2=80=9D =E2=80=9Cin progress,=
+=E2=80=9D =E2=80=9Cfail,=E2=80=9D =E2=80=9Cnot run.=E2=80=9D
+- Unit testing numbers discussed, but current focus is future SIT (System =
+Integration Testing) numbers starting Monday.
+- Consistency across =
+workstreams (ERP, Finance, etc.) is critical.
+
+### 2.4 HR Testing =E2=80=93=
+ Payroll Parallel
+- Not traditional test scripts; needs to be represented =
+in dashboard as one per country.
+- Results tracked by country (pass/fail).
+- Aligning communication for executives on country-level testing rather =
+than by individual test case.
+
+### 2.5 Data Consolidation for =
+Tester-In-Perimeter Tracking
+- Multiple sources for tester names; need for =
+one harmonized and deduplicated list.
+- Plan to use business =
+function/workstream granularity to demonstrate =E2=80=9Ccoverage=E2=80=9D =
+for executive audiences.
+
+---
+
+## 3. Action Items
+
+| #  | Action           =
+                                   | Owner      | Due Date         | =
+Status/Notes                          |
+|----|-----------------------------=
+------------------------|------------|------------------|------------------=
+---------------------|
+| 1  | Add columns for Manual/Auto/Total test =
+scripts      | Dashboard  | Before Monday    | Color-code automated scripts=
+          |
+| 2  | Add HR row(s) for 26 countries=E2=80=99 payroll parallel=
+    | Dashboard  | Before Monday    | Data from Arpit/Sandra               =
+ |
+| 3  | Add status columns ("pass", "in progress", "fail", "not run") | =
+Dashboard | Before Monday | Match Bill=E2=80=99s dashboard conventions    |
+| 4  | Consolidate tester names from all sources           | Assigned   | =
+Before Monday    | Include ERP, Finance, HR, BRB, etc.   |
+| 5  | Perform lookup vs Athens 3500 census                | Assigned   | =
+Before Monday    | Granularity by workstream/function    |
+| 6  | Ping for missing/correct finance access             | Assigned   | =
+Immediate        | Awaiting responses from contacts      |
+| 7  | Clean tester list, deduplicate, upload to SharePoint| Assigned   | =
+Before Monday    |                                      |
+| 8  | Compile/track closeout actions in a table           | Assigned   | =
+Immediate        | For Pierce & others, table format     |
+| 9  | Prepare dashboard & resource updates for Monday call| Dashboard  | =
+By Monday        | Prioritize dashboard progress         |
+| 10 | Finalize workshop travel plans                      | Individual | =
+ASAP             | Workshop at WakeSpace, Wed            |
+
+---
+
+## 4. Follow-Up & Next Meetings
+
+- **Monday:** =20
+  - Internal deadline =
+for dashboard and tester mapping updates; prep for scheduled call.
+- **Further File Access:** =20
+  - Follow up with Finance/HR contacts for =
+missing data access; ensure completeness before reporting.
+- **Workshop:** =20
+  - Scheduled for Wednesday at WakeSpace; team to =
+arrive Monday/Tuesday night as appropriate.
+- **No Weekend Calls Planned:**=
+ =20
+  - Communication to proceed via online channels; send links/status as=
+ work is completed.
+- **SharePoint Updates:** =20
+  - Share updated =
+files/links as soon as available for review.
+
+---
+
+## 5. Key Points / =
+Reminders
+
+- Priority is executive-friendly reporting =E2=80=94 avoid =
+unnecessary technical granularity.
+- Focus on clarity: concise breakdowns =
+for pass/fail and manual/auto; highlight exceptions and gaps.
+- Effective resource mapping critical to demonstrate in-perimeter tester =
+allocation for each business area.
+- Track all closeout actions in simple, =
+transparent format for accountability.
+
+---
+
+**End of Summary**
+
+Transcript:
+0:00
+Like let's take Trade compliance. Trade compliance was one=
+ of the sub functions. He may have six scripts and we have three and three.=
+ So we should. In our reporting. Going back to your PowerPoint, you had =
+your reporting for trade compliance under one of the sub functions. Maybe =
+we just call out three manual, three automatic has two rows in there and. =
+And we report out on those.
+
+0:28
+We're here on trade compliance.
+
+0:30
+No, on your Excel. On your PowerPoint. If you go away from your Excel.
+
+0:35
+Into your report PowerPoint slide. Yeah, yeah. It's not switching back=
+ very well today to this one.
+
+0:48
+The. No, slide four.
+
+0:53
+And put it here in the dashboard.
+
+0:55
+Well, yeah, so like Trade =
+compliance is here. Number of scripts three. You could always say three and=
+ three as a bottom, like, you know, trade compliance A, manual, B automatic=
+, or vice versa. Say three and three and report out on that.
+
+1:12
+Go manual, automatic. So you could split this in two.
+
+1:17
+Or even two rows. You could under. Under trace lines, you could add a.
+
+1:22
+Row for the manual ones underneath it.
+
+1:25
+That says manual and =
+automatic. Or you could add two columns, whatever it is. But it would be =
+easier to add two rows underneath and say manual and automatic.
+
+1:35
+But this is going to get really.
+
+1:37
+Long, really, really quick to talk =
+about, do we just.
+
+1:42
+We have to roll it up somehow?
+
+1:46
+So then the question is, how do you then indicate what's failed, what is, =
+you know, so maybe, you know, that's why I'm saying we have to have, you =
+know. So we say it's manual with system integration, but there's two of =
+them, so I don't get that. So, for example, let's go to Trade Compliance in=
+ your sheet 5. I want to make sure that the 3 and 3, I want to take a look =
+at what the 3 and 3 are for. Trade compliance. Yeah, let's go there and see=
+ how it's represented. We say it's six and it's three and three. So if you =
+look at sheet five, you've got trade compliance, you got import, export, =
+automated and pure manual. So then the question here is, is it worth saying=
+ that three steps are, three scripts are automated and three scripts are =
+manual? And there was an error or a defect, and that was a defect, which =
+was in step three. So it was not a human error, it was an automated =
+scripting configuration error.
+
+2:54
+Well, I mean, you made a very good =
+point at an executive of Jeff's level. I don't think that he cares. Was it =
+the human doing the test or the human clicking the button to go to the =
+external system to do the test? They care about what caused the problem. =
+And what are you doing to resolve it? We don't need five types of this. =
+Maybe just two.
+
+3:22
+That goes back to what you want to show in your sheet=
+ five. Maybe then the sheet five is just. We show three manual to your =
+point. Add two columns into sheet. Sorry, sheet four. If you go into sheet =
+four or even to your slide number four, you know, we just show, you know, =
+auto, manual, three and three. We just add this as two columns there total =
+scripts, auto, manual and then pass, fail. Maybe that's all it is. If you =
+go back to your.
+
+3:51
+Yeah, I want to do it in Excel.
+
+3:52
+PowerPoint. Yeah, let's do it in Excel. So move over your PowerPoint into =
+this Excel. Just copy that whole cell into here. Yeah, copy your whole =
+PowerPoint for slide 4, that whole table in here. So you can add. After a =
+number of scripts, you can add a couple of columns that say auto and manual=
+.
+
+4:17
+Yeah, number of scripts and. But why does he. Do you think auto and=
+ manual? Was this like part of the same question? Like the counts of.
+
+4:37
+Because the scope of testing. And he wants to know whether again, he as an =
+executive doesn't need to, but he wants to know how this is. Because there =
+are scripts running there that is really more. Not physical. Hands on =
+keyboard. You know, when they see this error and there's a defect, are they=
+ just validating that this output was wrong or are they actually going =
+through and doing this and getting, you know, making errors and having =
+defects, etc. So he as an executive wants to know that level of detail. So =
+we shouldn't do much more. We should just give him that. Two more rows. =
+Let's say six, three and three. So if you add a couple more columns, just =
+start a new tab, new sheet.
+
+5:30
+I was just gonna split it. Oh, I guess =
+you can't split it in.
+
+5:36
+You also want total. Yeah, you want tote. So =
+maybe three columns total manual, auto. And you can put that under script. =
+Or maybe it's a subheader underneath the scripts. Right. Scripts goes up =
+and you say total manual auto.
+
+6:07
+And then you can color code them. So =
+for order management 3 and 3.
+
+6:11
+Order management was 10 and 0 or 5 and =
+0. And maybe you just highlight the manual ones or you just highlight the =
+automated, automated ones. Because everything else is mostly manual. =
+There's only 26 automated. So you just highlight them less. So you can say =
+Auto Management's five, the three in trade, the seven in finance, etc.
+
+6:36
+Yeah.
+
+6:37
+So those get a color. Maybe it's a gray color, red or =
+something that's says it's automated. Then he knows that that's an end to =
+end script. It's in these areas and this is the output. So we shouldn't =
+change the right hand side of pass fail not started. It's just a matter of =
+now adding this. But again. Yeah. So let's spend a couple of minutes on =
+this. I want to talk about the rest of the activities we need to do for =
+Monday.
+
+7:07
+Yeah. So the other one, I tried to open the file with the =
+names of all of the folks to map it against our list.
+
+7:18
+Okay.
+
+7:18
+And I don't know if I need to try it again. The password wasn't right. I'm =
+just trying to get it open and see because we have a full list of all of =
+the names. And this should be like a two minute exercise.
+
+7:35
+Yeah. If it's a lookup against the 3500 names. Yes.
+
+7:39
+Yeah. Like we.
+
+7:40
+So he cannot send you. This is a. This is a sensitive file. So he =
+cannot send you per compliance. He has to do it with a password.
+
+7:48
+Yeah, yeah, yeah. I'm just trying to see if I typed it in wrong or what the=
+ issue was. But so that's item number two. Like item number one is the =
+dashboard view for Jeff, which is just that table.
+
+8:02
+And we should add also the HR. So let's just write down in your PowerPoint =
+what we need to do. So add a couple of columns to this slide number four. =
+Then add a bottom row on HR because that would be for 26 countries. So you =
+need to add 26. We need to get that from Arpit or Sandra.
+
+8:29
+Yeah, I pinged Arpit about it already. Okay. I think he pinged me back.
+
+8:38
+So we should add a row for however many there are. Excuse me, on hr =
+there are this.
+
+8:45
+Teams thing is switching back and forth just drives =
+me so crazy. Arpit said in transit we'll share the list. It's in the =
+tracker on the appendix slide. And I said there's no test script for adp. =
+It's an outsource of service. There's something called payroll parallel =
+testing, meaning run payroll on two system parallel to see if the values =
+match. If values match, test complete. Hence payroll parallel will run for =
+26 countries.
+
+9:19
+So just put 26 as a total scripts.
+
+9:23
+Yeah.
+
+9:25
+And we're going to run pass fail 1 for however many they run per country. =
+We should track it here and say, Jeff, we have 26 countries. There's =
+payroll testing for each country. They pass files along and they tell us =
+what's passed, what's failed. So if they've run 10 scripts, if they've run =
+10 countries and seven passed. Then we do 10, seven and three. So it'll be =
+reporting at a country level, but as a line item here.
+
+9:53
+Yep.
+
+9:56
+Okay, so that's on this tracker and.
+
+10:01
+Then we also need to do. So =
+this is the dashboard for Jeff.
+
+10:08
+Now take a look at the dashboards =
+that these guys have created. The two excels that Bill started off.
+
+10:15
+With and those were so good.
+
+10:18
+So let's replicate that. Not. Do you =
+have that? Can you pull that?
+
+10:22
+Yeah, I've got it up in here. Let me. =
+This one, I think.
+
+10:29
+So here he's got past or na in progress. Failed, =
+not run. So I think we should call those out. Maybe pull all three into our=
+ tracker into our dashboard.
+
+10:39
+Yeah, the things that Shrinivas doesn't=
+.
+
+10:44
+Don't worry about the right hand side. We don't care about steps.
+
+10:47
+Okay.
+
+10:47
+We only care about scenarios on the left hand side. So =
+the number would be the same. So here he's got 27, but eventually he'll go =
+to the 51 for tax and end to end and all those he'll type in manually. This=
+ is a bit more automated than 27.
+
+11:04
+Yeah.
+
+11:06
+So you can think of the net number as 51 but we should say pass RNA in =
+progress. Failed, not run. We should lift these two, these four and put it =
+in our dashboard.
+
+11:16
+Yeah, I mean number like our total past right now =
+are 10 and not run is. Well I guess from this it's 17.
+
+11:29
+So I don't think so. Unit testing. Right. So they've not started sit. So =
+when you do this on Monday or when we do this on Monday, they're going to =
+start running these for sit on Monday.
+
+11:43
+Then what are those 10 that =
+have.
+
+11:44
+Done for our unit testing? So where is the 10 that are done?
+
+11:53
+They were in.
+
+11:54
+In.
+
+11:54
+I don't think they're in this file. =
+Actually they are the.
+
+12:03
+This is finance.
+
+12:05
+Yeah.
+
+12:05
+This is not the erp. So you need to go to the ERP stuff.
+
+12:10
+Yeah, I thought he would.
+
+12:11
+This is. This is. This is their. No, no, =
+no, no. They're two different Excel workbooks. This is SHAS Finance.
+
+12:17
+Yeah, it's the. This one. Right.
+
+12:28
+Okay. So. Yes. So none of them.
+
+12:32
+Yeah, we don't have time. Yeah, yeah.
+
+12:35
+So unless. What's the =
+eight? Tosca. So Tosca, he's run eight and not run. So that's just. Tosca =
+is just testing out things.
+
+12:43
+Yeah.
+
+12:44
+So the rest of this stuff =
+order edi. Yeah. So none of them have run. But you should take this number =
+51 and you know, we should break out of the five or whatever. We know how =
+however many are automated. Automated and manual. So ideally we have these =
+four fields total script and a further breakdown of that number which is =
+manual auto. It's a couple more columns and then these four columns should =
+be in our dashboard.
+
+13:13
+Exactly. So ultimately it's going to be =
+progress.
+
+13:16
+Full.
+
+13:17
+Yeah, because we added to hours. Just.
+
+13:22
+Well, we had pass failed, not run. Yeah, look at our page number. 4.
+
+13:28
+Yeah, we had total manual auto.
+
+13:33
+So pass fail not started. Yeah, so. =
+So we should add one more in progress in the same order that he has. But =
+you get the idea. So on your notes, at the bottom of this, just say =
+replicate what the four parameters that this guy has in our tracker. =
+Replicate ERP's test tracking into our dashboard. Okay, so that's dashboard=
+ and then Athens Resource. That's the other one that you're going to do a =
+lookup.
+
+14:36
+And do we just want to include the like the raw percentage =
+of the testers that are in perimeter?
+
+14:46
+What I think we should do is =
+not raw what he wants to know by function, however, how many are in =
+perimeter. So you should look up that. The 3500 against those names. So =
+your, your data source on the left hand side, if you look at our. So let's =
+see how the table would look like. So if you want to start adding or =
+listing out the columns, you should have. You should have function in your.=
+ In your table. In. Yeah, on the left hand side you should have function or=
+ function or work stream or a name. Right. Because you might say this =
+person. Is it maybe function department. No. So second column is department=
+, third column is name. So because I don't know what the census. I have not=
+ opened the census file.
+
+15:39
+Well, I want to do that with you right now =
+real quick because I couldn't get it to open with that password. Yeah, let =
+me try it again. So it was AM22. Oh, there's maybe a space at the end of =
+that AM 2025. Let's see. I'm sure it'll be like any other census. Like who =
+put it together? Ey. Yeah, yeah. EID name. You gotta split that.
+
+16:16
+Can you share?
+
+16:19
+Oh yeah. It's EID name with. It's got to be. Is it =
+essential? Are you there? I am, yeah. What do you think? Like where. Do you=
+ have any idea what these mean? Svg, svu, sve, svx.
+
+17:14
+Yes, those are the business units. So that's okay though. So you have =
+department, supply chain.
+
+17:22
+Yeah.
+
+17:23
+And you've got the name. So I=
+ think that's where we should. You should be able to Pick up.
+
+17:32
+Like which departments are Athena, or you.
+
+17:37
+Could do the flip. And if=
+ you've got all the individual names, you come against here and search for =
+it.
+
+17:43
+I have all the individual. I've got all the individual names and=
+ not the unique.
+
+17:48
+Well, okay. Do you have individual. So are you sure=
+ it's only 98 between how. Sriram's ERP list or Srinivasa Finance list, =
+Bill's ERP list, Gokul or what's his name, Sriram. Supply chain list. Yeah,=
+ all of that stuff in there. And you only get 98 names.
+
+18:10
+Yeah, unique.
+
+18:11
+Okay.
+
+18:11
+I mean, we had about. I think it was =
+about 200. Yeah. And it was like three on average. It was a little under =
+three. It was like 2.7 names. Well, I guess the number of BRV is like =
+against the number of BRV apps and against the number of. What are we, 48 =
+or 49 total?
+
+18:38
+Whatever the number is. Yeah, across the 48.
+
+18:40
+Yeah, exactly. So we were like.
+
+18:42
+Or the new number, whatever it may =
+end up being if we need to add a few more.
+
+18:45
+Yeah, ccex.
+
+18:47
+Yeah. So we. Oh, that's the other piece of it. So when we're done with this=
+, we need to clean up that list and make sure that that list is good and =
+address the concerns that these guys may have.
+
+18:57
+Yeah, so. So this one. How can I tell which one of these is Athens and =
+what's Honeywell?
+
+19:03
+All of them are Athens. All of these are 3, 500 =
+people moving to Athens.
+
+19:08
+Got it, Got it.
+
+19:09
+Okay, so this is an Athens census file. So what you would need to do is =
+look this up against that list that you have of 200 or 300. Not mece names =
+or 98 unique names. I would rather just look it up against that whole. So =
+if I'm you, I think this is what you're doing is, you know, take all the =
+names that's comma separated, all that from that are Excel BRB validation =
+tracker, plus add all the names in each of those tabs that says business or=
+ systems Leads. Business. Business teams. Then add all the names from. From=
+ Srinivas and Bill's testing trackers that says business teams. Add all the=
+ names from HR tag.
+
+20:02
+That's what. That's the names that we're missing=
+. Because I took all of the tabs that are in this Excel in our 1.0 Excel, =
+but I didn't take the ones from Srinivas and Bill. That's the gap.
+
+20:16
+They may be duplicate, they may not be, but we can't risk it. So include =
+those because eventually Those need to go into that tab, into that sheet =
+and reference. But yeah, so that's why I'm saying that universe would be. =
+Be put everything on one single row, remove duplicates, and then. Or it's =
+not one single row, one single sheet, and then later on you can remove =
+duplicates.
+
+20:42
+Yeah, who cares about the duplicates?
+
+20:44
+Right? And then look up that. Those names against the 3,500 people.
+
+20:48
+Yeah, so the gap here is to pull in. Yeah, I see like erp, UAT team. All of=
+ the. Where are their testers?
+
+21:05
+There should be business teams in. In=
+ the tester names. In Srinivas's and Bill's files. There should be a tester=
+, UAT test test team or something. Go to.
+
+21:21
+To.
+
+21:24
+Script tracker unit. Testing. No, not this. The other file. Okay, here it =
+be here. So he's got. No, not this one. Actually.
+
+21:40
+No, it should be because this is the only one I have for.
+
+21:43
+This is test case summary. No, if you go to the folder, there are two files=
+. So if you click on the links I sent you, there's a. They open up =
+SharePoint.
+
+21:56
+One of the two. I downloaded both of them. One, it was =
+this one. ERP test cases. And then UAT ERP script tracking. And the finance=
+ one.
+
+22:08
+Open up the file. Open up the. Open up. Not the file. Open up =
+the folder. Like, click on the link I sent you.
+
+22:15
+Okay, not those two. Yeah, okay, I see what you're.
+
+22:29
+So you have here, not those scripts. You have at the bottom. UAT test =
+script scenarios. And you have. No, not this. Too quick. So click on uat. =
+Yeah, click on that one.
+
+22:52
+Sourcing.
+
+22:53
+No, no, no. That one. Uat,=
+ ERP Script tracker.
+
+22:58
+Uat.
+
+22:59
+The second. The second one. The =
+second. Excel. There.
+
+23:02
+Athens.
+
+23:04
+Yes. So in here is the same =
+file. So it's not this file. There's another file. So let's go back to the =
+folder. There's another file that's called do this last. Mini scripts. Edi =
+UAT scripts. Huh. Something is missing. So sorry. So the folder I sent you.
+
+23:40
+Let me try the second link.
+
+23:44
+No, it shouldn't be. No, no, no. =
+The folder I sent you should have everything in there. I see like many more=
+ folders in there. Many more files in there.
+
+23:53
+I think you have different.
+
+23:55
+So. Okay. Okay, click on the one I just =
+sent you. Now.
+
+24:03
+That'S the same. Let me look at the email, because I =
+could open it. I think I could open it from the email where he granted me =
+access. UAT test scripts.
+
+24:18
+Yes.
+
+24:27
+Edi, UAT test cases.
+
+24:29
+No, there should be a draft ERP test Cases summary.
+
+24:32
+No, I don't have it.
+
+24:35
+So let me open. Let me just share my screen, =
+and so make sure you are. So when I go into UAT test scripts, I'm seeing =
+these things. Test case summary, Athens, UAT script folder. So I see all =
+these Excels in here.
+
+24:48
+No.
+
+24:51
+Do you not see that?
+
+24:52
+No, I do not. What's the count at the bottom of yours?
+
+24:56
+11.
+
+24:56
+Yeah, mine is 8.
+
+24:59
+Unless he's hidden some of these.
+
+25:02
+I'm sure that he has.
+
+25:05
+Okay, so I think what I posted was this one to=
+ you, right?
+
+25:08
+Yeah, you did.
+
+25:09
+I'm gonna. Okay, so just look at =
+that. That one. Because the script tracker is the tracker. But this test =
+case summary has. And let me open this here so we can see it. So hopefully =
+you have that. So here he's got the UAT team, where he's got the names =
+against erp.
+
+25:25
+UAT team.
+
+25:26
+Yeah. And business. Business team. So =
+these are all the names that we need to add against your lookup.
+
+25:31
+The business team.
+
+25:33
+The business team, because they are the UAT =
+testers.
+
+25:36
+Okay.
+
+25:42
+So.
+
+25:42
+Yeah, and that's for erp. Gonna =
+drop those in now, and I'll reshare here.
+
+25:50
+And then you would need to=
+ do the same on the Finance link I sent you.
+
+25:54
+Yeah, Finance. I have let me reshare. But, yeah, the finance one was just =
+Finance. Didn't have finance in it.
+
+26:27
+No, not this one. It was the =
+calendar. This one. So I pulled the UAT team. Business team as well. Oh, =
+this is erp.
+
+26:34
+Yeah, I pulled this one. That.
+
+26:37
+Okay, what about the Finance folder? Click on the Finance link. I sent you.
+
+26:53
+The Finance Athens.
+
+26:57
+No, it's the one below. I think there was=
+ a couple of links after that I sent you. Yeah, so that was the first one =
+that was erp. No, there was a couple of links it.
+
+27:09
+Finance. Here we go.
+
+27:11
+Yeah, there you go. So. Oh, he's given you =
+access to one. Interesting. Both of them have not given you. Can you pin =
+both to make sure that I have two. You have one?
+
+27:26
+Yeah, I did. I pinged them earlier and requested access, and they have both=
+ left me on rut. So I. I'll ping them again and say, hey, I'm trying to =
+build this.
+
+27:40
+Yeah, yeah, just ping them again and I will send that in=
+ the meantime because. Because you don't have that. So let me download both=
+ and send to you. So this one you'd need. Do you have the ERP one?
+
+27:53
+Yeah, you have the ERP one.
+
+27:55
+And then the other one you would need is=
+ Finance. The UAT team, details for finance, which is what the second file =
+is.
+
+28:04
+Yeah.
+
+28:05
+So which I don't think you have access to.
+
+28:07
+I don't think so either. I pulled the ERP business team into to our =
+amalgamated list but I just gotta go through okay probably and do what I =
+did for the other ones and just split them out erp. I mean like it's going =
+to be a sliding scale of completeness on that one. Like we can, we'll =
+probably get the split by how many of these we find in the Athens inventory=
+ and then break it down and add the granularity around by function or by =
+process or whatever.
+
+29:06
+You don't need it by function. I think the =
+point is on the left hand side what it would be interesting to do is if you=
+ can actually so your sheet. So what I would suggest you look up is in your=
+ tracker we have by function, by process, area, whatever, actually even by =
+workstream. So you have ERP and within that you've got like a lot of supply=
+ chain people and everything else. And then the ERP tester. So there's =
+stuff. I think that's what you need to break it down. In fact break it down=
+ by work stream. That's there. So let's look at our BRB validation tracker.=
+ What? So validation number row sheet one. So if you just break it down by =
+business function and you've got all the names on the right. Right. So like=
+ for CCEX you just say ccex. These are, you know, you call out the business=
+ function and then the test name. So here you would have 1, 2, 3, 4, 5, 6, =
+7. The others repeat. So probably seven rows, you'd say ccx x ccxy ccxz =
+ccxabcd.
+
+30:33
+Yep.
+
+30:34
+So you'll have seven rows for ccx and these =
+names. Yeah, similarly the other. So that way when you have however many =
+rows, let's say workshop stream as well a business function and then the =
+name, that name you can then look up against your 3500 people and see yay, =
+nay. And that way your pivot, you'll be able to say in ccx I've got 20 =
+testers and 10 names found.
+
+31:06
+Yes, exactly.
+
+31:08
+And that's kind of what he would.
+
+31:10
+Look for to go back to CCEX to =
+this level, to go back and.
+
+31:14
+Say hey guys, I need more names or tax. =
+I've got 20 names. Two internal. Yeah, two insources. Yeah, that's the kind=
+ of thing I think insight he would want when he says show me the testers in=
+ the perimeter.
+
+31:28
+Yeah, okay, well let me get it split out and cleaned=
+ up and I'LL get. I need to drop this file in SharePoint and clean it up. =
+Like spend an hour cleaning it up.
+
+31:41
+Okay, no worries. And then =
+whatever else in the dashboard, I think we just keep it. Well, let's work =
+on that for Monday. I will need to work on how I think the defect should =
+look like, how the MOs should be run. All of that stuff I need to think =
+through over the next few hours and days to. So that for this Monday prep =
+call with appears that it's there. Are you on that prep call?
+
+32:07
+666 Central, they asked me about that. I told them I was in mountain time. =
+So I don't know if she sent.
+
+32:15
+It to me, so she probably didn't. =
+That's fine.
+
+32:20
+Yeah, that's perfectly fine. I think it's going to =
+require. I was talking to. I mean, I. I think it's going to require a high =
+degree of, like, planning it out for Pierce for him to get it done. So =
+that's what we did with our actions. That. That page that we worked on with=
+ the end of the week, like closeout items, I got really granular with what =
+we need Pierce to do or what Jessica wanted Pierce to do.
+
+32:55
+Okay. Okay. Can you share that? Because I want to make sure. Share that =
+slide with me.
+
+32:59
+I want to make sure that one.
+
+33:00
+Of these is put in a table and that we. We talk about it.
+
+33:07
+She's like, make sure that he finalizes the food. And I was like, what do =
+you mean? Yes, yes, yes, the food.
+
+33:14
+He. She's on vacation.
+
+33:15
+Yeah, yeah, yeah.
+
+33:18
+So I think all of these are closeouts for him. =
+Okay, good. So, yeah, we're already late. We told Jeff we would publish the=
+ schedule today, but. Okay, so let me take a read at this. There are quite =
+a few things. I'd like this in a table so that we can start tracking.
+
+33:39
+Okay.
+
+33:40
+Is this done? Is this done right? You know, action owner=
+, due date.
+
+33:44
+Yeah. Okay.
+
+33:45
+So. So because it's that much easier =
+to track it and give it to people and say you're late than, you know, words=
+ on a PowerPoint. So I'll take this. Do that. But yes. So the couple of =
+action items for you, the names against that, and then the dashboard and I =
+will work on the rest of the stuff around mos.
+
+34:07
+Okay, sounds good.
+
+34:09
+All right. Just ping me your over whenever you're done and you want =
+me to review or if you post it on some SharePoint file, just ping me. We =
+don't need to necessarily catch up.
+
+34:19
+At least not until Sunday or =
+Monday.
+
+34:22
+Yeah, yeah.
+
+34:25
+So, yeah, I'LL send you the link.
+
+34:27
+Okay. Okay. Okay. Whatever you can't get done today, get done. So I don't =
+want you working on a weekend.
+
+34:34
+Yeah, so cool.
+
+34:37
+All right. So when are you coming in? Monday night?
+
+34:40
+I. Tuesday night? I'm not sure. I really want to avoid the weather. I was =
+thinking about going in on Sunday night or I'll do Monday night probably.
+
+34:54
+Okay.
+
+34:56
+But I need to. I haven't gotten that far.
+
+34:59
+Okay. Yeah, whatever it is. Just make this thing. So I think it's. So the =
+workshop is Wednesday at wakespace, so we'll be there Tuesday, so.
+
+35:09
+Okay. I think, yeah, Monday night would be fine. Okay.
+
+35:12
+Okay, cool.
+
+35:14
+Well, thanks, Rakesh. I'll talk to you a little bit. Or if I don't =
+have a great weekend.
+
+35:20
+Yeah, just ping me. I don't think we need to =
+get on a call or anything. Just send me where the links are and then give =
+me sort of an ETA when you'll be done so I can at least take a look. If you=
+. If it's gonna be done Sunday, just let me know. So I won't. I won't try =
+to log in.
+
+35:40
+Alrighty.
+
+35:42
+Cool.
+
+35:43
+Okay, thank you.
+
+35:44
+All right. Great weekend.
+
+35:47
+Yeah.
+
+35:48
+All right, thanks.
+
+35:48
+Take. It's.
+----_NmP-58a6a38b6f86bbfe-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Executive =
+Testing Dashboard and Resource Planning</h1></td></tr></table></div><div =
+style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/47E85EFA-161B-4437-846F-36E2E90C72A8?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h1 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2.5rem">Meeting Summary: Testing Dashboard &amp; Resource =
+Planning Discussion</h1><p><strong style=3D"font-weight:bold">Date:</strong=
+> June 20th, 2025<br /><strong style=3D"font-weight:bold">Attendees:</stron=
+g> (Implied, not specified; primary speakers referenced as &quot;you&quot;,=
+ &quot;he&quot;, &quot;Jeff&quot;, &quot;Arpit&quot;, &quot;Bill&quot;, etc=
+.)<br /><strong style=3D"font-weight:bold">Duration:</strong> Not stated<br=
+ /><strong style=3D"font-weight:bold">Purpose:</strong> Align on =
+structuring the UAT/testing dashboard for executive-level reporting, refine=
+ resource mapping against the Athens census, and review outstanding action =
+items.</p>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2=
+rem">1. Main Topics Discussed</h2><h3 style=3D"font-weight:500;padding-top:=
+20px;font-size:1.75rem">1.1 Trade Compliance Reporting &amp; Dashboard =
+Structure</h3><ul>
+<li><strong style=3D"font-weight:bold">Current =
+State:</strong>  <ul>
+<li>Trade compliance reports as a single line with =
+six scripts; discussion whether to split by manual vs. automated scripts.=
+</li>
+<li>PowerPoint &amp; Excel dashboards have inconsistent =
+representation.</li>
+<li>Suggestion to split Trade Compliance into two =
+rows: =E2=80=9CManual=E2=80=9D (3 scripts) and =E2=80=9CAutomated=E2=80=9D =
+(3 scripts) or add two additional columns.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Key Considerations:</strong>  <ul>
+<li>Executive (Jeff-level) reporting should not be overly =
+detailed=E2=80=94focus on automation vs. manual, total scripts, and =
+outcomes (pass/fail).</li>
+<li>Importance of indicating the nature of the =
+defect=E2=80=94whether it&#39;s human or technical.</li>
+<li>Consensus that a clear breakdown (manual/auto) with color-coding would =
+add value.</li>
+<li>Decision to add columns for total, manual, and =
+automated scripts, with color highlights for automated scripts.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">1.2 HR Country-Level Testing</h3><ul>
+<li><strong =
+style=3D"font-weight:bold">Current State:</strong>  <ul>
+<li>Discussion on testing for HR/payroll parallel runs.</li>
+<li>26 countries require parallel payroll tests; this is not a traditional =
+test script but an outsourced service.</li>
+<li>Data to be sourced from =
+Arpit or Sandra; Arpit confirmed list =E2=80=9Cin transit.=E2=80=9D</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Reporting:</strong>  =
+<ul>
+<li>Row to be added for each country.</li>
+<li>Pass/fail tracked per =
+country; if 10 countries have tests run and 7 pass, record as 10 total, 7 =
+pass, 3 fail.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-t=
+op:20px;font-size:1.75rem">1.3 Dashboard Alignment and Best Practice =
+Replication</h3><ul>
+<li><strong style=3D"font-weight:bold">Comparison to =
+Other Dashboards:</strong>  <ul>
+<li>Reference to dashboards created by =
+Bill as standard for reporting progress.</li>
+<li>Focus on scenario-level =
+(not step-level) status for pass, fail, in progress, not run.</li>
+<li>Recommendation to replicate four key status fields: pass, in progress, =
+failed, not run.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Im=
+plementation:</strong>  <ul>
+<li>Add these columns to the unified dashboard=
+ for all test workstreams.</li>
+<li>Maintain total, manual, and auto script=
+ columns; ensure the ordering matches best practice.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">1.4 Tester=
+ Name Consolidation and Athens Resource Mapping</h3><ul>
+<li><strong style=3D"font-weight:bold">Data Source Issues:</strong>  <ul>
+<li>Difficulty accessing protected census file; password issues discussed =
+and resolved (=E2=80=9CAM 2025=E2=80=9D).</li>
+<li>Consolidation of tester =
+names from multiple sources (e.g., BRB validation tracker, ERP/Finance UAT =
+lists, HR teams).</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">L=
+ookup Strategy:</strong>  <ul>
+<li>Gather all business tester names from =
+all available files, remove duplicates, and match to 3,500 Athens inventory=
+.</li>
+<li>Granularity needed by workstream/function for analysis (e.g., =
+for CCEX, list number of testers vs. names matched).</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Next Steps:</strong>  <ul>
+<li>Clean and organize the complete tester list with department and =
+function, then perform lookup against census.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">1.5 Action=
+ Register &amp; Scheduling</h3><ul>
+<li><strong style=3D"font-weight:bold">=
+Closeout Table:</strong>  <ul>
+<li>Pierce=E2=80=99s action items to be =
+compiled into a table with clear action owners and due dates for =
+accountability.</li>
+<li>Ensuring granular, trackable closeout actions (e.g=
+., finalize food, other pre-workshop requirements).</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Schedule Communication:</strong>  =
+<ul>
+<li>Noted delay: Commitment to Jeff to publish schedule by today was =
+not met.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Prep for =
+Monday=E2=80=99s Call:</strong>  <ul>
+<li>Need to finalize dashboard =
+changes and resource mapping for Monday=E2=80=99s prep meeting (noted as at=
+ 6:66 Central, i.e., presumably 7:06 or a typo).</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Workshop Logistics:</strong>  <ul>
+<li>Workshop at WakeSpace on Wednesday; plans to arrive Monday or Tuesday =
+night to avoid weather, to be finalized.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">2. Specific =
+Extended Discussions &amp; Details</h2><h3 style=3D"font-weight:500;padding=
+-top:20px;font-size:1.75rem">2.1 Dashboard Design: Manual vs. Automated =
+Test Scripts</h3><ul>
+<li>Explored different options for displaying manual =
+and automated tests in the dashboard, including using rows or columns, =
+color-coding, and aggregation.</li>
+<li>Emphasis on executive-friendly =
+representation=E2=80=94only split manual/auto where meaningful, otherwise =
+aggregate.</li>
+<li>Agreement on maintaining concise dashboard with only =
+impactful breakdowns.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:2=
+0px;font-size:1.75rem">2.2 Data Integrity &amp; File Access</h3><ul>
+<li>Extensive effort spent troubleshooting file access and verifying =
+completeness of tester lists.</li>
+<li>Determined missing tester data from =
+specific files/folders.</li>
+<li>Action to ping colleagues for access to =
+restricted finance tester lists.</li>
+</ul>
+<h3 style=3D"font-weight:500;pa=
+dding-top:20px;font-size:1.75rem">2.3 Test Progress Metrics &amp; Reporting=
+ Drilldown</h3><ul>
+<li>Decided to report on =E2=80=9Cpass,=E2=80=9D =
+=E2=80=9Cin progress,=E2=80=9D =E2=80=9Cfail,=E2=80=9D =E2=80=9Cnot run.=
+=E2=80=9D</li>
+<li>Unit testing numbers discussed, but current focus is =
+future SIT (System Integration Testing) numbers starting Monday.</li>
+<li>Consistency across workstreams (ERP, Finance, etc.) is critical.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">2.4 =
+HR Testing =E2=80=93 Payroll Parallel</h3><ul>
+<li>Not traditional test =
+scripts; needs to be represented in dashboard as one per country.</li>
+<li>Results tracked by country (pass/fail).</li>
+<li>Aligning communication=
+ for executives on country-level testing rather than by individual test =
+case.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">2.5 Data Consolidation for Tester-In-Perimeter Tracking</h3><ul>
+<li>Multiple sources for tester names; need for one harmonized and =
+deduplicated list.</li>
+<li>Plan to use business function/workstream =
+granularity to demonstrate =E2=80=9Ccoverage=E2=80=9D for executive =
+audiences.</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;=
+font-size:2rem">3. Action Items</h2><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Owner</th>
+<th>Due Date</th>
+<th>Status/Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Add columns for Manual/Auto/Total=
+ test scripts</td>
+<td>Dashboard</td>
+<td>Before Monday</td>
+<td>Color-code automated scripts</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Add HR row(s) for 26 countries=E2=80=99 payroll parallel</td>
+<td>Dashboard</td>
+<td>Before Monday</td>
+<td>Data from Arpit/Sandra</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Add status columns (&quot;pass&quot;, &quot;in =
+progress&quot;, &quot;fail&quot;, &quot;not run&quot;)</td>
+<td>Dashboard</td>
+<td>Before Monday</td>
+<td>Match Bill=E2=80=99s =
+dashboard conventions</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Consolidate tester =
+names from all sources</td>
+<td>Assigned</td>
+<td>Before Monday</td>
+<td>Include ERP, Finance, HR, BRB, etc.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Perform lookup vs Athens 3500 census</td>
+<td>Assigned</td>
+<td>Before Monday</td>
+<td>Granularity by workstream/function</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Ping for missing/correct finance access</td>
+<td>Assigned</td>
+<td>Immediate</td>
+<td>Awaiting responses from =
+contacts</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Clean tester list, deduplicate, =
+upload to SharePoint</td>
+<td>Assigned</td>
+<td>Before Monday</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Compile/track closeout actions in a =
+table</td>
+<td>Assigned</td>
+<td>Immediate</td>
+<td>For Pierce &amp; others=
+, table format</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Prepare dashboard &amp; =
+resource updates for Monday call</td>
+<td>Dashboard</td>
+<td>By Monday</td>
+<td>Prioritize dashboard progress</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Finalize workshop travel plans</td>
+<td>Individual</td>
+<td>ASAP</td>
+<td>Workshop at WakeSpace, Wed</td>
+</tr>
+</tbody></table>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">4. Follow-Up =
+&amp; Next Meetings</h2><ul>
+<li><strong style=3D"font-weight:bold">Monday:=
+</strong>  <ul>
+<li>Internal deadline for dashboard and tester mapping =
+updates; prep for scheduled call.</li>
+</ul>
+</li>
+<li><strong =
+style=3D"font-weight:bold">Further File Access:</strong>  <ul>
+<li>Follow up with Finance/HR contacts for missing data access; ensure =
+completeness before reporting.</li>
+</ul>
+</li>
+<li><strong =
+style=3D"font-weight:bold">Workshop:</strong>  <ul>
+<li>Scheduled for Wednesday at WakeSpace; team to arrive Monday/Tuesday =
+night as appropriate.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bol=
+d">No Weekend Calls Planned:</strong>  <ul>
+<li>Communication to proceed =
+via online channels; send links/status as work is completed.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">SharePoint Updates:</strong>  =
+<ul>
+<li>Share updated files/links as soon as available for review.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font=
+-size:2rem">5. Key Points / Reminders</h2><ul>
+<li>Priority is =
+executive-friendly reporting =E2=80=94 avoid unnecessary technical =
+granularity.</li>
+<li>Focus on clarity: concise breakdowns for pass/fail =
+and manual/auto; highlight exceptions and gaps.</li>
+<li>Effective resource mapping critical to demonstrate in-perimeter tester =
+allocation for each business area.</li>
+<li>Track all closeout actions in =
+simple, transparent format for accountability.</li>
+</ul>
+<hr />
+<p><strong style=3D"font-weight:bold">End of Summary</strong></p>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0,=
+ 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex;align-i=
+tems:center;gap:8px"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</=
+span>Transcription</h3><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">0:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Like let&#x27;s take=
+ Trade compliance. Trade compliance was one of the sub functions. He may =
+have six scripts and we have three and three. So we should. In our =
+reporting. Going back to your PowerPoint, you had your reporting for trade =
+compliance under one of the sub functions. Maybe we just call out three =
+manual, three automatic has two rows in there and. And we report out on =
+those.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">0:28</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">We&#x27;re =
+here on trade compliance.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">0:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, on your Excel. =
+On your PowerPoint. If you go away from your Excel.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">0:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Into your report =
+PowerPoint slide. Yeah, yeah. It&#x27;s not switching back very well today =
+to this one.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">0:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The. No, slide four.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">0:53</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">And put it =
+here in the dashboard.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">0:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Well, yeah, so like =
+Trade compliance is here. Number of scripts three. You could always say =
+three and three as a bottom, like, you know, trade compliance A, manual, B =
+automatic, or vice versa. Say three and three and report out on that.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">1:12</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Go manual, =
+automatic. So you could split this in two.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>1:17</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Or even two rows. You could under. Under trace lines, you could add a.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">1:22</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Row for the =
+manual ones underneath it.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">1:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That says manual and=
+ automatic. Or you could add two columns, whatever it is. But it would be =
+easier to add two rows underneath and say manual and automatic.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">1:35</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">But this is =
+going to get really.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">1:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Long, really, really=
+ quick to talk about, do we just.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unident=
+ified colleague</span><span style=3D"color:#64748b;font-size:14px">1:42</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">We =
+have to roll it up somehow?</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">1:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So then the question=
+ is, how do you then indicate what&#x27;s failed, what is, you know, so =
+maybe, you know, that&#x27;s why I&#x27;m saying we have to have, you know.=
+ So we say it&#x27;s manual with system integration, but there&#x27;s two =
+of them, so I don&#x27;t get that. So, for example, let&#x27;s go to Trade =
+Compliance in your sheet 5. I want to make sure that the 3 and 3, I want to=
+ take a look at what the 3 and 3 are for. Trade compliance. Yeah, =
+let&#x27;s go there and see how it&#x27;s represented. We say it&#x27;s six=
+ and it&#x27;s three and three. So if you look at sheet five, you&#x27;ve =
+got trade compliance, you got import, export, automated and pure manual. So=
+ then the question here is, is it worth saying that three steps are, three =
+scripts are automated and three scripts are manual? And there was an error =
+or a defect, and that was a defect, which was in step three. So it was not =
+a human error, it was an automated scripting configuration error.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">2:54</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Well, I mean=
+, you made a very good point at an executive of Jeff&#x27;s level. I =
+don&#x27;t think that he cares. Was it the human doing the test or the =
+human clicking the button to go to the external system to do the test? They=
+ care about what caused the problem. And what are you doing to resolve it? =
+We don&#x27;t need five types of this. Maybe just two.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>3:22</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">That goes back to what you want to show in your sheet five. Maybe then =
+the sheet five is just. We show three manual to your point. Add two columns=
+ into sheet. Sorry, sheet four. If you go into sheet four or even to your =
+slide number four, you know, we just show, you know, auto, manual, three =
+and three. We just add this as two columns there total scripts, auto, =
+manual and then pass, fail. Maybe that&#x27;s all it is. If you go back to =
+your.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">3:51</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I want=
+ to do it in Excel.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">3:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">PowerPoint. Yeah, =
+let&#x27;s do it in Excel. So move over your PowerPoint into this Excel. =
+Just copy that whole cell into here. Yeah, copy your whole PowerPoint for =
+slide 4, that whole table in here. So you can add. After a number of =
+scripts, you can add a couple of columns that say auto and manual.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">4:17</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, number=
+ of scripts and. But why does he. Do you think auto and manual? Was this =
+like part of the same question? Like the counts of.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>4:37</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Because the scope of testing. And he wants to know whether again, he as =
+an executive doesn&#x27;t need to, but he wants to know how this is. =
+Because there are scripts running there that is really more. Not physical. =
+Hands on keyboard. You know, when they see this error and there&#x27;s a =
+defect, are they just validating that this output was wrong or are they =
+actually going through and doing this and getting, you know, making errors =
+and having defects, etc. So he as an executive wants to know that level of =
+detail. So we shouldn&#x27;t do much more. We should just give him that. =
+Two more rows. Let&#x27;s say six, three and three. So if you add a couple =
+more columns, just start a new tab, new sheet.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">5:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I was just gonna =
+split it. Oh, I guess you can&#x27;t split it in.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>5:36</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">You also want total. Yeah, you want tote. So maybe three columns total =
+manual, auto. And you can put that under script. Or maybe it&#x27;s a =
+subheader underneath the scripts. Right. Scripts goes up and you say total =
+manual auto.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">6:07</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">And then you=
+ can color code them. So for order management 3 and 3.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>6:11</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Order management was 10 and 0 or 5 and 0. And maybe you just highlight =
+the manual ones or you just highlight the automated, automated ones. =
+Because everything else is mostly manual. There&#x27;s only 26 automated. =
+So you just highlight them less. So you can say Auto Management&#x27;s five=
+, the three in trade, the seven in finance, etc.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">6:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">6:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So those get a color=
+. Maybe it&#x27;s a gray color, red or something that&#x27;s says it&#x27;s=
+ automated. Then he knows that that&#x27;s an end to end script. It&#x27;s =
+in these areas and this is the output. So we shouldn&#x27;t change the =
+right hand side of pass fail not started. It&#x27;s just a matter of now =
+adding this. But again. Yeah. So let&#x27;s spend a couple of minutes on =
+this. I want to talk about the rest of the activities we need to do for =
+Monday.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">7:07</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So the=
+ other one, I tried to open the file with the names of all of the folks to =
+map it against our list.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">7:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">7:18</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">And I =
+don&#x27;t know if I need to try it again. The password wasn&#x27;t right. =
+I&#x27;m just trying to get it open and see because we have a full list of =
+all of the names. And this should be like a two minute exercise.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">7:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. If it&#x27;s a=
+ lookup against the 3500 names. Yes.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">7:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Like we.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">7:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So he cannot send =
+you. This is a. This is a sensitive file. So he cannot send you per =
+compliance. He has to do it with a password.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">7:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, yeah. =
+I&#x27;m just trying to see if I typed it in wrong or what the issue was. =
+But so that&#x27;s item number two. Like item number one is the dashboard =
+view for Jeff, which is just that table.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>8:02</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">And we should add also the HR. So let&#x27;s just write down in your =
+PowerPoint what we need to do. So add a couple of columns to this slide =
+number four. Then add a bottom row on HR because that would be for 26 =
+countries. So you need to add 26. We need to get that from Arpit or Sandra.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">8:29</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I =
+pinged Arpit about it already. Okay. I think he pinged me back.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">8:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So we should add a =
+row for however many there are. Excuse me, on hr there are this.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">8:45</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Teams thing =
+is switching back and forth just drives me so crazy. Arpit said in transit =
+we&#x27;ll share the list. It&#x27;s in the tracker on the appendix slide. =
+And I said there&#x27;s no test script for adp. It&#x27;s an outsource of =
+service. There&#x27;s something called payroll parallel testing, meaning =
+run payroll on two system parallel to see if the values match. If values =
+match, test complete. Hence payroll parallel will run for 26 countries.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">9:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So just put 26 as a =
+total scripts.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">9:23</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">9:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And we&#x27;re going=
+ to run pass fail 1 for however many they run per country. We should track =
+it here and say, Jeff, we have 26 countries. There&#x27;s payroll testing =
+for each country. They pass files along and they tell us what&#x27;s passed=
+, what&#x27;s failed. So if they&#x27;ve run 10 scripts, if they&#x27;ve =
+run 10 countries and seven passed. Then we do 10, seven and three. So =
+it&#x27;ll be reporting at a country level, but as a line item here.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">9:53</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yep.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">9:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so that&#x27;s=
+ on this tracker and.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">10:01</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Then we =
+also need to do. So this is the dashboard for Jeff.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>10:08</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Now take a look at the dashboards that these guys have created. The two=
+ excels that Bill started off.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unident=
+ified colleague</span><span style=3D"color:#64748b;font-size:14px">10:15</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">With =
+and those were so good.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">10:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So let&#x27;s =
+replicate that. Not. Do you have that? Can you pull that?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">10:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I&#x27;ve got =
+it up in here. Let me. This one, I think.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>10:29</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">So here he&#x27;s got past or na in progress. Failed, not run. So I =
+think we should call those out. Maybe pull all three into our tracker into =
+our dashboard.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">10:39</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, the =
+things that Shrinivas doesn&#x27;t.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>10:44</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Don&#x27;t worry about the right hand side. We don&#x27;t care about =
+steps.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">10:47</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">10:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We only care about =
+scenarios on the left hand side. So the number would be the same. So here =
+he&#x27;s got 27, but eventually he&#x27;ll go to the 51 for tax and end to=
+ end and all those he&#x27;ll type in manually. This is a bit more =
+automated than 27.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">11:04</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">11:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So you can think of =
+the net number as 51 but we should say pass RNA in progress. Failed, not =
+run. We should lift these two, these four and put it in our dashboard.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">11:16</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I =
+mean number like our total past right now are 10 and not run is. Well I =
+guess from this it&#x27;s 17.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh<=
+/span><span style=3D"color:#64748b;font-size:14px">11:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So I don&#x27;t =
+think so. Unit testing. Right. So they&#x27;ve not started sit. So when you=
+ do this on Monday or when we do this on Monday, they&#x27;re going to =
+start running these for sit on Monday.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">11:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Then what are those =
+10 that have.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">11:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Done for our unit =
+testing? So where is the 10 that are done?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">11:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">They were in.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">11:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">In.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">11:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I don&#x27;t think =
+they&#x27;re in this file. Actually they are the.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>12:03</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">This is finance.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">12:05</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">12:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">This is not the erp.=
+ So you need to go to the ERP stuff.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">12:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I thought he =
+would.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">12:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">This is. This is. =
+This is their. No, no, no, no. They&#x27;re two different Excel workbooks. =
+This is SHAS Finance.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">12:17</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, =
+it&#x27;s the. This one. Right.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh<=
+/span><span style=3D"color:#64748b;font-size:14px">12:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. So. Yes. So =
+none of them.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">12:32</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, we =
+don&#x27;t have time. Yeah, yeah.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh<=
+/span><span style=3D"color:#64748b;font-size:14px">12:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So unless. =
+What&#x27;s the eight? Tosca. So Tosca, he&#x27;s run eight and not run. So=
+ that&#x27;s just. Tosca is just testing out things.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">12:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">12:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So the rest of this =
+stuff order edi. Yeah. So none of them have run. But you should take this =
+number 51 and you know, we should break out of the five or whatever. We =
+know how however many are automated. Automated and manual. So ideally we =
+have these four fields total script and a further breakdown of that number =
+which is manual auto. It&#x27;s a couple more columns and then these four =
+columns should be in our dashboard.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">13:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Exactly. So =
+ultimately it&#x27;s going to be progress.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>13:16</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Full.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">13:17</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, =
+because we added to hours. Just.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh<=
+/span><span style=3D"color:#64748b;font-size:14px">13:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Well, we had pass =
+failed, not run. Yeah, look at our page number. 4.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">13:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, we had total =
+manual auto.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">13:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So pass fail not =
+started. Yeah, so. So we should add one more in progress in the same order =
+that he has. But you get the idea. So on your notes, at the bottom of this,=
+ just say replicate what the four parameters that this guy has in our =
+tracker. Replicate ERP&#x27;s test tracking into our dashboard. Okay, so =
+that&#x27;s dashboard and then Athens Resource. That&#x27;s the other one =
+that you&#x27;re going to do a lookup.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">14:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And do we just want =
+to include the like the raw percentage of the testers that are in perimeter=
+?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">14:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">What I think we =
+should do is not raw what he wants to know by function, however, how many =
+are in perimeter. So you should look up that. The 3500 against those names.=
+ So your, your data source on the left hand side, if you look at our. So =
+let&#x27;s see how the table would look like. So if you want to start =
+adding or listing out the columns, you should have. You should have =
+function in your. In your table. In. Yeah, on the left hand side you should=
+ have function or function or work stream or a name. Right. Because you =
+might say this person. Is it maybe function department. No. So second =
+column is department, third column is name. So because I don&#x27;t know =
+what the census. I have not opened the census file.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">15:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Well, I want to do =
+that with you right now real quick because I couldn&#x27;t get it to open =
+with that password. Yeah, let me try it again. So it was AM22. Oh, =
+there&#x27;s maybe a space at the end of that AM 2025. Let&#x27;s see. =
+I&#x27;m sure it&#x27;ll be like any other census. Like who put it together=
+? Ey. Yeah, yeah. EID name. You gotta split that.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>16:16</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Can you share?</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">16:19</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Oh yeah. =
+It&#x27;s EID name with. It&#x27;s got to be. Is it essential? Are you =
+there? I am, yeah. What do you think? Like where. Do you have any idea what=
+ these mean? Svg, svu, sve, svx.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh<=
+/span><span style=3D"color:#64748b;font-size:14px">17:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes, those are the =
+business units. So that&#x27;s okay though. So you have department, supply =
+chain.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">17:22</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">17:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And you&#x27;ve got =
+the name. So I think that&#x27;s where we should. You should be able to =
+Pick up.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">17:32</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Like which =
+departments are Athena, or you.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh<=
+/span><span style=3D"color:#64748b;font-size:14px">17:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Could do the flip. =
+And if you&#x27;ve got all the individual names, you come against here and =
+search for it.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">17:43</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">I have all =
+the individual. I&#x27;ve got all the individual names and not the unique.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">17:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Well, okay. Do you =
+have individual. So are you sure it&#x27;s only 98 between how. =
+Sriram&#x27;s ERP list or Srinivasa Finance list, Bill&#x27;s ERP list, =
+Gokul or what&#x27;s his name, Sriram. Supply chain list. Yeah, all of that=
+ stuff in there. And you only get 98 names.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">18:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, unique.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">18:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">18:11</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">I mean, we =
+had about. I think it was about 200. Yeah. And it was like three on average=
+. It was a little under three. It was like 2.7 names. Well, I guess the =
+number of BRV is like against the number of BRV apps and against the number=
+ of. What are we, 48 or 49 total?</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh<=
+/span><span style=3D"color:#64748b;font-size:14px">18:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Whatever the number =
+is. Yeah, across the 48.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">18:40</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, =
+exactly. So we were like.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">18:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Or the new number, =
+whatever it may end up being if we need to add a few more.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">18:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, ccex.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">18:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So we. Oh, =
+that&#x27;s the other piece of it. So when we&#x27;re done with this, we =
+need to clean up that list and make sure that that list is good and address=
+ the concerns that these guys may have.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">18:57</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, so. So this =
+one. How can I tell which one of these is Athens and what&#x27;s Honeywell?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">19:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All of them are =
+Athens. All of these are 3, 500 people moving to Athens.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">19:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Got it, Got it.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">19:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so this is an =
+Athens census file. So what you would need to do is look this up against =
+that list that you have of 200 or 300. Not mece names or 98 unique names. I=
+ would rather just look it up against that whole. So if I&#x27;m you, I =
+think this is what you&#x27;re doing is, you know, take all the names =
+that&#x27;s comma separated, all that from that are Excel BRB validation =
+tracker, plus add all the names in each of those tabs that says business or=
+ systems Leads. Business. Business teams. Then add all the names from. From=
+ Srinivas and Bill&#x27;s testing trackers that says business teams. Add =
+all the names from HR tag.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">20:02</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;s=
+ what. That&#x27;s the names that we&#x27;re missing. Because I took all of=
+ the tabs that are in this Excel in our 1.0 Excel, but I didn&#x27;t take =
+the ones from Srinivas and Bill. That&#x27;s the gap.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>20:16</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">They may be duplicate, they may not be, but we can&#x27;t risk it. So =
+include those because eventually Those need to go into that tab, into that =
+sheet and reference. But yeah, so that&#x27;s why I&#x27;m saying that =
+universe would be. Be put everything on one single row, remove duplicates, =
+and then. Or it&#x27;s not one single row, one single sheet, and then later=
+ on you can remove duplicates.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unident=
+ified colleague</span><span style=3D"color:#64748b;font-size:14px">20:42</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah,=
+ who cares about the duplicates?</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh<=
+/span><span style=3D"color:#64748b;font-size:14px">20:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right? And then look=
+ up that. Those names against the 3,500 people.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">20:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, so the gap =
+here is to pull in. Yeah, I see like erp, UAT team. All of the. Where are =
+their testers?</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">21:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">There should be =
+business teams in. In the tester names. In Srinivas&#x27;s and Bill&#x27;s =
+files. There should be a tester, UAT test test team or something. Go to.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">21:21</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">To.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">21:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Script tracker unit.=
+ Testing. No, not this. The other file. Okay, here it be here. So he&#x27;s=
+ got. No, not this one. Actually.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unident=
+ified colleague</span><span style=3D"color:#64748b;font-size:14px">21:40</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">No, =
+it should be because this is the only one I have for.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>21:43</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">This is test case summary. No, if you go to the folder, there are two =
+files. So if you click on the links I sent you, there&#x27;s a. They open =
+up SharePoint.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">21:56</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">One of the =
+two. I downloaded both of them. One, it was this one. ERP test cases. And =
+then UAT ERP script tracking. And the finance one.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>22:08</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Open up the file. Open up the. Open up. Not the file. Open up the =
+folder. Like, click on the link I sent you.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">22:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, not those two.=
+ Yeah, okay, I see what you&#x27;re.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>22:29</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">So you have here, not those scripts. You have at the bottom. UAT test =
+script scenarios. And you have. No, not this. Too quick. So click on uat. =
+Yeah, click on that one.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">22:52</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Sourcing.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">22:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, no, no. That one=
+. Uat, ERP Script tracker.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">22:58</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Uat.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">22:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The second. The =
+second one. The second. Excel. There.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">23:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Athens.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">23:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes. So in here is =
+the same file. So it&#x27;s not this file. There&#x27;s another file. So =
+let&#x27;s go back to the folder. There&#x27;s another file that&#x27;s =
+called do this last. Mini scripts. Edi UAT scripts. Huh. Something is =
+missing. So sorry. So the folder I sent you.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">23:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Let me try the =
+second link.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">23:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, it =
+shouldn&#x27;t be. No, no, no. The folder I sent you should have everything=
+ in there. I see like many more folders in there. Many more files in there.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">23:53</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">I think you=
+ have different.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">23:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So. Okay. Okay, =
+click on the one I just sent you. Now.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">24:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;S the same=
+. Let me look at the email, because I could open it. I think I could open =
+it from the email where he granted me access. UAT test scripts.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">24:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">24:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Edi, UAT test cases.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">24:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, there should be =
+a draft ERP test Cases summary.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unident=
+ified colleague</span><span style=3D"color:#64748b;font-size:14px">24:32</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">No, I=
+ don&#x27;t have it.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">24:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So let me open. Let =
+me just share my screen, and so make sure you are. So when I go into UAT =
+test scripts, I&#x27;m seeing these things. Test case summary, Athens, UAT =
+script folder. So I see all these Excels in here.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">24:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>24:51</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Do you not see that?</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">24:52</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">No, I do =
+not. What&#x27;s the count at the bottom of yours?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>24:56</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">11.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">24:56</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, mine =
+is 8.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">24:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Unless he&#x27;s =
+hidden some of these.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">25:02</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m =
+sure that he has.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">25:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so I think =
+what I posted was this one to you, right?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">25:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, you did.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">25:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m gonna. Okay=
+, so just look at that. That one. Because the script tracker is the tracker=
+. But this test case summary has. And let me open this here so we can see =
+it. So hopefully you have that. So here he&#x27;s got the UAT team, where =
+he&#x27;s got the names against erp.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">25:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">UAT team.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">25:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. And business. =
+Business team. So these are all the names that we need to add against your =
+lookup.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">25:31</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">The =
+business team.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">25:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The business team, =
+because they are the UAT testers.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unident=
+ified colleague</span><span style=3D"color:#64748b;font-size:14px">25:36</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">25:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">25:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, and =
+that&#x27;s for erp. Gonna drop those in now, and I&#x27;ll reshare here.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">25:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then you would =
+need to do the same on the Finance link I sent you.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">25:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, Finance. I =
+have let me reshare. But, yeah, the finance one was just Finance. =
+Didn&#x27;t have finance in it.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh<=
+/span><span style=3D"color:#64748b;font-size:14px">26:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, not this one. It=
+ was the calendar. This one. So I pulled the UAT team. Business team as =
+well. Oh, this is erp.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">26:34</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I =
+pulled this one. That.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">26:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, what about the=
+ Finance folder? Click on the Finance link. I sent you.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">26:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The Finance Athens.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">26:57</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, it&#x27;s the =
+one below. I think there was a couple of links after that I sent you. Yeah,=
+ so that was the first one that was erp. No, there was a couple of links it=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">27:09</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Finance. =
+Here we go.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">27:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, there you go. =
+So. Oh, he&#x27;s given you access to one. Interesting. Both of them have =
+not given you. Can you pin both to make sure that I have two. You have one?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">27:26</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I did=
+. I pinged them earlier and requested access, and they have both left me on=
+ rut. So I. I&#x27;ll ping them again and say, hey, I&#x27;m trying to =
+build this.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">27:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, just =
+ping them again and I will send that in the meantime because. Because you =
+don&#x27;t have that. So let me download both and send to you. So this one =
+you&#x27;d need. Do you have the ERP one?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">27:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, you have the =
+ERP one.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">27:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then the other =
+one you would need is Finance. The UAT team, details for finance, which is =
+what the second file is.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">28:04</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">28:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So which I =
+don&#x27;t think you have access to.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">28:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I don&#x27;t think =
+so either. I pulled the ERP business team into to our amalgamated list but =
+I just gotta go through okay probably and do what I did for the other ones =
+and just split them out erp. I mean like it&#x27;s going to be a sliding =
+scale of completeness on that one. Like we can, we&#x27;ll probably get the=
+ split by how many of these we find in the Athens inventory and then break =
+it down and add the granularity around by function or by process or =
+whatever.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">29:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You don&#x27;t need =
+it by function. I think the point is on the left hand side what it would be=
+ interesting to do is if you can actually so your sheet. So what I would =
+suggest you look up is in your tracker we have by function, by process, =
+area, whatever, actually even by workstream. So you have ERP and within =
+that you&#x27;ve got like a lot of supply chain people and everything else.=
+ And then the ERP tester. So there&#x27;s stuff. I think that&#x27;s what =
+you need to break it down. In fact break it down by work stream. =
+That&#x27;s there. So let&#x27;s look at our BRB validation tracker. What? =
+So validation number row sheet one. So if you just break it down by =
+business function and you&#x27;ve got all the names on the right. Right. So=
+ like for CCEX you just say ccex. These are, you know, you call out the =
+business function and then the test name. So here you would have 1, 2, 3, 4=
+, 5, 6, 7. The others repeat. So probably seven rows, you&#x27;d say ccx x =
+ccxy ccxz ccxabcd.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">30:33</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yep.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">30:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So you&#x27;ll have =
+seven rows for ccx and these names. Yeah, similarly the other. So that way =
+when you have however many rows, let&#x27;s say workshop stream as well a =
+business function and then the name, that name you can then look up against=
+ your 3500 people and see yay, nay. And that way your pivot, you&#x27;ll be=
+ able to say in ccx I&#x27;ve got 20 testers and 10 names found.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">31:06</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yes, =
+exactly.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">31:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And that&#x27;s kind=
+ of what he would.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">31:10</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Look for to=
+ go back to CCEX to this level, to go back and.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>31:14</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Say hey guys, I need more names or tax. I&#x27;ve got 20 names. Two =
+internal. Yeah, two insources. Yeah, that&#x27;s the kind of thing I think =
+insight he would want when he says show me the testers in the perimeter.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">31:28</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, okay,=
+ well let me get it split out and cleaned up and I&#x27;LL get. I need to =
+drop this file in SharePoint and clean it up. Like spend an hour cleaning =
+it up.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">31:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, no worries. =
+And then whatever else in the dashboard, I think we just keep it. Well, =
+let&#x27;s work on that for Monday. I will need to work on how I think the =
+defect should look like, how the MOs should be run. All of that stuff I =
+need to think through over the next few hours and days to. So that for this=
+ Monday prep call with appears that it&#x27;s there. Are you on that prep =
+call?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">32:07</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">666 Central=
+, they asked me about that. I told them I was in mountain time. So I =
+don&#x27;t know if she sent.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span=
+><span style=3D"color:#64748b;font-size:14px">32:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It to me, so she =
+probably didn&#x27;t. That&#x27;s fine.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">32:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, that&#x27;s =
+perfectly fine. I think it&#x27;s going to require. I was talking to. I =
+mean, I. I think it&#x27;s going to require a high degree of, like, =
+planning it out for Pierce for him to get it done. So that&#x27;s what we =
+did with our actions. That. That page that we worked on with the end of the=
+ week, like closeout items, I got really granular with what we need Pierce =
+to do or what Jessica wanted Pierce to do.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>32:55</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Okay. Okay. Can you share that? Because I want to make sure. Share that=
+ slide with me.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">32:59</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">I want to =
+make sure that one.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">33:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Of these is put in a=
+ table and that we. We talk about it.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">33:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">She&#x27;s like, =
+make sure that he finalizes the food. And I was like, what do you mean? Yes=
+, yes, yes, the food.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">33:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">He. She&#x27;s on =
+vacation.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">33:15</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah,=
+ yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">33:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So I think all of =
+these are closeouts for him. Okay, good. So, yeah, we&#x27;re already late.=
+ We told Jeff we would publish the schedule today, but. Okay, so let me =
+take a read at this. There are quite a few things. I&#x27;d like this in a =
+table so that we can start tracking.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">33:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">33:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Is this done? Is =
+this done right? You know, action owner, due date.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">33:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">33:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So. So because =
+it&#x27;s that much easier to track it and give it to people and say =
+you&#x27;re late than, you know, words on a PowerPoint. So I&#x27;ll take =
+this. Do that. But yes. So the couple of action items for you, the names =
+against that, and then the dashboard and I will work on the rest of the =
+stuff around mos.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">34:07</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, =
+sounds good.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">34:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right. Just ping=
+ me your over whenever you&#x27;re done and you want me to review or if you=
+ post it on some SharePoint file, just ping me. We don&#x27;t need to =
+necessarily catch up.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">34:19</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">At least =
+not until Sunday or Monday.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">34:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">34:25</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So, yeah, =
+I&#x27;LL send you the link.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span=
+><span style=3D"color:#64748b;font-size:14px">34:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. Okay. Okay. =
+Whatever you can&#x27;t get done today, get done. So I don&#x27;t want you =
+working on a weekend.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">34:34</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, so =
+cool.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">34:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right. So when =
+are you coming in? Monday night?</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unident=
+ified colleague</span><span style=3D"color:#64748b;font-size:14px">34:40</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">I. =
+Tuesday night? I&#x27;m not sure. I really want to avoid the weather. I was=
+ thinking about going in on Sunday night or I&#x27;ll do Monday night =
+probably.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">34:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">34:56</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">But I need =
+to. I haven&#x27;t gotten that far.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>34:59</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Okay. Yeah, whatever it is. Just make this thing. So I think it&#x27;s.=
+ So the workshop is Wednesday at wakespace, so we&#x27;ll be there Tuesday,=
+ so.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">35:09</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. I =
+think, yeah, Monday night would be fine. Okay.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>35:12</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Okay, cool.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">35:14</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Well, =
+thanks, Rakesh. I&#x27;ll talk to you a little bit. Or if I don&#x27;t have=
+ a great weekend.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">35:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, just ping me. =
+I don&#x27;t think we need to get on a call or anything. Just send me where=
+ the links are and then give me sort of an ETA when you&#x27;ll be done so =
+I can at least take a look. If you. If it&#x27;s gonna be done Sunday, just=
+ let me know. So I won&#x27;t. I won&#x27;t try to log in.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">35:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Alrighty.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">35:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Cool.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">35:43</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, thank=
+ you.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">35:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right. Great =
+weekend.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">35:47</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">35:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right, thanks.=
+</div></div><div style=3D"margin-bottom:0;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+colleague</span><span style=3D"color:#64748b;font-size:14px">35:48</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Take. =
+It&#x27;s.</div></div></div><div style=3D"margin-top:36px;text-align:center=
+;color:#64748b;font-size:14px;padding:20px;border-top:1px solid #e2e8f0"><p=
+ style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note =
+Taker</p><p style=3D"margin:0;font-size:12px">Your AI-powered =
+companion</p></div></div></div></div></html>
+----_NmP-58a6a38b6f86bbfe-Part_1--

@@ -1,0 +1,1466 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:adf:ce0f:0:b0:391:3c18:836e with SMTP id p15csp526172wrn;
+        Fri, 28 Mar 2025 06:12:08 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEYmXz7/4hpsWLpKC85uPPi9W7++98rRNB4cNnyp2f3NH+Gnw6KSt8TJyUH3Qy4p7RhW89v
+X-Received: by 2002:a05:620a:2992:b0:7c5:48bc:8c89 with SMTP id af79cd13be357-7c5eda0dcfamr993282585a.27.1743167528219;
+        Fri, 28 Mar 2025 06:12:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743167528; cv=none;
+        d=google.com; s=arc-20240605;
+        b=KRoSyqXrSoAtcjQkpDm3eRbYZk+Tbce2IZeaGo+MSwubXLILAQJqXeqAzEybS8Vs8+
+         1FXEok2jXgw3EkqwUc3HO4qM2Fb6o9zYvoxgTxafBXoXx+QDSFkbu1OVXX4C578Lxi5Z
+         3+WZ0iFWyaH5hk6a91h3+CCJEpIYYYp8KPY+RQP2wBNuqLKpial9Imxs5f+UaWnMHmNp
+         XfdlIndZYZnTHan9iTd+4IHRHg4eTT54RLrsJO4icfTLtHrvydeAjCZL+qgo1uTCT7yJ
+         xwA1pg/ncEsjQ6e7Sh2mK6O3ZPbfXiWKh4utVRn7Q3k0B+lYPYSsMkFRdj8DxorB02uR
+         CzdA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=RpPyHqqucCOPLANmbtSSRTDqxXNSw0kmPX3ux3DHIbs=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=Eh6dHnkQy4qtEpyxM5o+4oxfS8PpCkSHv28ezvaJOi72Ztlqzx8YrzotuykrBeB39/
+         9RO7Hk6HSImRBVGGzq8wfPUEuHPU3tzJd8LrxDS8LIZpmjlYfEtH/zq8fSTV9SfG+J0R
+         j56QHcIbhQqHMSN21mO0jRJlGMf1lFKduUueHRZo7cRSgBPRLg/FWfDautI5b50Z2W01
+         2PZOMmddzMK4mcPuFieWvpiNKvoiqkEeEv1v5Q5pmv+FIFJmL3eLWRtn9s71QZujgOQu
+         NrcXgR7fZ9bv6y+5cuDMSf4YSlK5hlr6JG+VbQVREIzP05yQbqLr6emqouNH6nRU5YxU
+         RXLg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=CVsi7BnL;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=C1Rr8JoD;
+       spf=pass (google.com: domain of 01000195dce199cb-da961a5d-fe6b-4e6d-bbd8-89618403633f-000000@send.email.wave.co designates 54.240.9.31 as permitted sender) smtp.mailfrom=01000195dce199cb-da961a5d-fe6b-4e6d-bbd8-89618403633f-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <01000195dce199cb-da961a5d-fe6b-4e6d-bbd8-89618403633f-000000@send.email.wave.co>
+Received: from a9-31.smtp-out.amazonses.com (a9-31.smtp-out.amazonses.com. [54.240.9.31])
+        by mx.google.com with ESMTPS id a1e0cc1a2514c-871a855c19asi156260241.16.2025.03.28.06.12.07
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 28 Mar 2025 06:12:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 01000195dce199cb-da961a5d-fe6b-4e6d-bbd8-89618403633f-000000@send.email.wave.co designates 54.240.9.31 as permitted sender) client-ip=54.240.9.31;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=CVsi7BnL;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=C1Rr8JoD;
+       spf=pass (google.com: domain of 01000195dce199cb-da961a5d-fe6b-4e6d-bbd8-89618403633f-000000@send.email.wave.co designates 54.240.9.31 as permitted sender) smtp.mailfrom=01000195dce199cb-da961a5d-fe6b-4e6d-bbd8-89618403633f-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1743167527;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=5L0jV8mgExzQbn3TRmIaviZCIxSRHZF77S1tIa2VLFk=;
+	b=CVsi7BnLE7r23b59rJ3VW/i9HkyFMBFu4af4bfhsa4Mn9MEmrjn5k8u0F9Tzh4uJ
+	CfpJh2VFJ+wbugYRACIXoTVMbfM40218wQuxvnq+I9EqpgvDg6pTd9K3Ib5B23mzn9J
+	tlh5vNHx0WUgPAH5uQFE2O8aXx2p79Kj9r5Eanbg=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1743167527;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=5L0jV8mgExzQbn3TRmIaviZCIxSRHZF77S1tIa2VLFk=;
+	b=C1Rr8JoD1SYGv3d9cjoK2E2CvaY/O7Oi60N4tZQGghDbqndKRRz08uFue8pBqCeo
+	Fwo3DokHPTSSd1BD9Ym+YHVXJjAQKHPe3ip7Hma5QUUH4+B0MmK/6LjxN3qXH+Y2sXv
+	CaxezO4nXfvDoiNkeaTzwEktuJM3E5+WH/PMcQfU=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Project Challenges and Action Items Discussion Summary
+Message-ID: <01000195dce199cb-da961a5d-fe6b-4e6d-bbd8-89618403633f-000000@email.amazonses.com>
+Date: Fri, 28 Mar 2025 13:12:07 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-860b810669f27538-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.03.28-54.240.9.31
+
+----_NmP-860b810669f27538-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Project Challenges and Action Items Discussion Summary
+
+## Project Discussion Summary
+
+### Overview
+The team is discussing the =
+progress and challenges related to application transfer and costing within =
+the project. Key topics include formulating arguments, handling standalone =
+applications, coordinating with Colin Gillis, managing risks, and ensuring =
+timely communication and action items.
+
+### Main Topics Discussed
+
+#### 1. **Formulating Arguments**
+- **Step 1:** Define the core argument =
+for the project.
+- **Step 2:** Address the claim that certain applications =
+were previously unseen, emphasizing that awareness existed for almost a =
+year.
+- **Step 3:** Develop a rough standalone costing for the applications=
+ to avoid confusion and ensure clarity.
+
+#### 2. **Standalone Costing and =
+Application Review**
+- Discussion on creating standalone cost estimates for=
+ engineering applications.
+- Mention of past experiences with standalone =
+costing in smaller telecom deals.
+- Emphasis on reviewing standalone =
+components and assessing direct payments.
+- Example: Allocating costs based=
+ on location (e.g., Team Center France and Italy) to reflect in the =
+business unit's profit and loss.
+
+#### 3. **Coordination with Colin =
+Gillis**
+- **Risks Identified:** Colin Gillis's location affects the =
+billing allocation model.
+- **Action Items:**
+  - Follow up with Colin to =
+obtain detailed cost breakdowns for applications.
+  - Schedule a call on =
+Tuesday at 3:30 PM with Colin to address outstanding issues.
+  - Ensure communication includes all relevant parties, such as Tori for =
+Rockford-related contacts.
+ =20
+#### 4. **Risk Management and Landing Zone =
+Issues**
+- **Primary Risk:** Lack of a landing zone for business-managed =
+applications, leading to potential delays and data placement issues.
+- **Potential Consequences:** Delays in copying applications, inability to =
+retain intellectual property (IP), and challenges in infrastructure =
+procurement.
+- **Mitigation Strategies:**
+  - Raise concerns in the EI =
+Cyber call.
+  - Clearly communicate risks to stakeholders and seek =
+appropriate responses.
+  - Propose proactive communication to contract =
+teams about delays and revised forecasts.
+
+#### 5. **Communication and =
+Follow-Up Actions**
+- **Internal Communication:** Develop a compelling =
+internal story to present to DT and other teams by end of day Monday.
+- **External Communication:** Draft and send a note to the contracts team =
+highlighting overdue tasks and revised timelines.
+- **Resource =
+Allocation:** Utilize the new resource in Rockford to obtain purchase =
+orders and track additional contracts.
+
+### Action Items
+
+1. **By End of Day Monday:**
+   - Develop an internal narrative for DT.
+  =20
+2. **Monday:**
+   - Follow up with Colin Gillis to request detailed =
+application costing information.
+   - Schedule and prepare for the call =
+with Colin on Tuesday at 3:30 PM.
+  =20
+3. **Tuesday:**
+   - Participate in the call with Colin Gillis to address outstanding =
+costing and application details.
+  =20
+4. **Ongoing:**
+   - Work with Tori to engage Rockford contacts.
+   - Coordinate with =
+Stevie=E2=80=99s team to identify super users and procure necessary =
+infrastructure.
+   - Respond to Dean with a softened message assuring =
+support while addressing current tasks.
+   - Draft and send a proactive =
+communication to the contracts team regarding delays and risks.
+
+### Follow-Ups
+
+- **Coordination with Colin Gillis:**
+  - Ensure timely response and detailed costing information.
+  - Address any gaps in application costing across different locations.
+ =20
+- **Infrastructure Procurement:**
+  - Schedule time with the Rockford =
+resource to obtain necessary purchase orders.
+  - Track down additional =
+Rockford contracts and ensure integration with Claire=E2=80=99s team.
+ =20
+- **Communication with Contracts Team:**
+  - Draft a clear and professional=
+ update on project delays and risk assessments.
+  - Highlight the need for =
+timely support to mitigate risks associated with landing zone =
+unavailability.
+
+### Key Points and Figures
+
+- **Budget Allocation:** =
+Engineering licenses cost approximately $100 million, distributed based on =
+location-specific allocation metrics.
+- **Application Breakdown:**=20
+  - 40% included in the standalone.
+  - 30% included in the business unit's=
+ profit and loss.
+  - Remaining 30% to be addressed with additional costing=
+ (e.g., $500k estimated).
+- **Deadlines:**
+  - **Monday:** Internal =
+narrative ready and follow-ups initiated.
+  - **Tuesday at 3:30 PM:** Call =
+with Colin Gillis.
+ =20
+- **Resources:**
+  - New resource available in =
+Rockford to assist with purchase orders and contract tracking.
+  - Collaboration with Tori to leverage contacts for Rockford-related tasks=
+.
+
+### Risks Identified
+
+- **Colin Gillis's Data Handling:** Potential =
+incomplete accounting of application costs outside his area.
+- **Landing Zone Unavailability:** Delays in copying applications due to =
+lack of infrastructure, risking project timelines.
+- **Communication =
+Gaps:** Delays in addressing overdue tasks could escalate risks and impact =
+project outcomes.
+
+### Mitigation Strategies
+
+- **Proactive =
+Communication:** Clearly communicate delays and risks to stakeholders to =
+manage expectations.
+- **Resource Utilization:** Leverage new and existing =
+resources to obtain necessary data and support.
+- **Risk Documentation:** =
+Document identified risks and mitigation actions for transparency and =
+accountability.
+
+---
+
+This summary provides a comprehensive overview of the=
+ discussed topics, action items, follow-ups, key figures, and identified =
+risks, ensuring clarity and direction for the team moving forward.
+
+Transcript:
+0:00
+Three million. Right. Like do we just use pet and pen? =
+Like. So anyway, I haven't seen the standalone from Redwood because I =
+wasn't around. So that's sort of. Step one is like what's our argument then=
+? Step two is they're saying we haven't seen these apps before so then we =
+need to bump it up and we've already done this, but we need to bump it up =
+against what was shared. You remember when we first started, we had like =
+six bombs to work against. One of them was the file that was shared on the =
+data site. So they're going to say I never knew about this when really =
+they've known about this for almost a year. So that's point number two. And=
+ then point number three is, all right, everything being sort of forgotten.=
+ What's like a rough standalone for the apps that we are saying you guys.
+
+0:53
+Are getting a rough standalone.
+
+0:56
+Cost this as well. I need to put=
+ it in paper so it's not confusing for you.
+
+0:59
+Yeah, I'm. But so can you=
+ dumb it down for me?
+
+1:04
+I mean I have to do it on paper. I can't do it =
+verbally because it's like. Have you done standalone before? Okay.
+
+1:14
+I mean, yeah, I did standalone costing before but it was small. It was like=
+ a really small telecom deal.
+
+1:20
+Yeah. Yeah. So this isn't. It's not =
+going to be. It's going to be reviewing a standalone and then the other =
+component to this, which is kind of where Tim's at, is look if they're =
+direct paid already. So I guess I'll take a step back. The biggest risk is =
+Colin Gillis's location because that is used like they bill allocation =
+model. And so what that means is let's just say the all engineering =
+licenses cost 100 million. Everyone gets a peanut butter spread based on an=
+ allocation metric and like things like Team Center France, TeamCenter =
+Italy. They should be paid for by actuation Engineering in France and in =
+Italy. So they're already included in the bu profit and loss. There's a =
+whole bunch of things I just need to sort of walk you through the process =
+on. But it's, it's a. It's a. Like it's gonna. We need to sort of have a =
+really good response by end of day Monday. So today we need a good story =
+internally like DT and then we can share it with sort of teams on Monday. =
+That's a big one for today.
+
+2:40
+Sure. What's the story look like in your =
+head? Like not knowing it and having dived into it. But like what's that =
+what's like a. Two sentences. What's the story?
+
+2:51
+What I'm hoping to say is you're like, like your 5 million analysis is =
+heavily overstated. Of the engineering apps that are being transferred or =
+TSA'd X amount of them, like 40 of them are included in the standalone and =
+then another 30% are included in the. Like be like the BU profit and loss. =
+And then what's that leave? 30%. All right, like we'll agree to like, we =
+should probably include 500k or something that's in my head, sort of. What =
+are we, 50% we included in the standalone. So you've known about this from =
+diligence. Ideally, it won't. It won't come out that way, I don't think.
+
+3:54
+Okay, so it's about how we spend it and how does Colin Gillis fit into=
+ it.
+
+4:00
+So if it's. We essentially. Yeah, so we're saying that like. And=
+ this is where there's another statement to hear is if we put in the =
+standalone that engineering tooling costs $3 million, then they've known =
+about this for years. But what's going to happen is we might have to go to =
+each individual app and say, all right, NI Berestand, what's the rough =
+licensing for this one? Like Siemens, what's the rough licensing for this =
+one? You know that kind of stuff, don't you think?
+
+4:31
+Isn't that what they were doing that they didn't want to share with us?
+
+4:39
+I'm not sure what that is.
+
+4:41
+I think that, like the last time that=
+ we had the conversation with Colin Gillis, that's exactly what they were =
+doing is in building out that costing, my understanding was that they were =
+determining which applications fall into TSA Eno1 or DT, and then the rough=
+ approximate cost for those. And when I was asking Colin Gillis about, hey,=
+ can we get. I just wanted a list of. Here's all of the apps and then =
+here's their cost to like to work on that breakdown of TSA Eno 1. Here's =
+the like, individual contributing cost that makes up this, like wider =
+bucket and here's how it's accounted for. And they said no. And that's when=
+ we got into the conversation about building in buffer. Right.
+
+5:35
+So I guess, I guess that. What I'm trying to understand is I felt that =
+there was a. That's what we're working with Colin on what he's including, =
+what he's not including. Has he responded to that?
+
+5:51
+I need to follow up with him today again about that.
+
+5:58
+Did you follow up with him yesterday?
+
+6:00
+No, we talked about it in the =
+afternoon and I didn't send him the email yet.
+
+6:11
+Okay.
+
+6:14
+But we sent him the list of. It's very easy. Yes or no how many licenses =
+and for the ones that are big that we know about I think that we've been =
+doing that diligence on our own like the Veristand one. How much does this =
+cost? How many users associated with it? Is it Ian outside of Colin? =
+Because my fear is that Colin's only accounted for stuff in his area and =
+then outside of Rockford there's other things.
+
+6:53
+Okay, okay. So. Okay, so I think let's follow up with Colin on this one =
+asking when he can sort of help provide this. We're probably going to need =
+a. A call anyway.
+
+7:07
+I'm just gonna send a call on Monday. Well we have =
+a call I think let me see if we still have our call on Monday or Tuesday =
+with Colin and I think that that's when we can sort of corner him about. If=
+ we to your point can get our. Colin Gillis is going to be. Yeah. Tuesday =
+at 3:30.
+
+7:40
+Yeah, we can't wait until. So can you follow up with him and=
+ say hey Colin, is it possible to complete the below or complete the =
+attached and just ask for by when? Yeah, because I thought we have the EM01=
+ Tactical Item List that I thought we're just trying to tick this one off.
+
+7:58
+Yeah.
+
+8:03
+But so like just. And maybe just ping him around put me. =
+Can you please make sure I'm on the pings in the emails though just pushes =
+back or like he's tidy. I can follow up. Okay, so timber. What's your focus=
+ for today?
+
+8:27
+So a good part out of that contract conversation at 6am =
+Was I do have a resource in Rockford now.
+
+8:35
+Yeah.
+
+8:35
+So those TSA ones I'm gonna reach out to that resource, try and schedule.
+
+8:39
+Some time with them.
+
+8:39
+Be like hey can we get purchase orders for =
+these so we can look at them see if they're truly dedicated and or not and =
+then also track down any of the additional Rockford contracts because =
+Claire's team doesn't have access to anything Rockford so gonna continue to=
+ push that way. And then did anything come from the Jason Despina =
+conversation yesterday about what we can share and what we can't share? I =
+would like to. It's already too late. You could drops off at noon but I =
+want to hit the ground running and make sure everything's set for any =
+copies that we can start to work on and consider even if I have to go in =
+and Say hey, hypothetically, if we can, you know, start some planning, can =
+we use this app as an example to do some planning if we have to copy. I've =
+also pushed for Alex to kind of look at the original SMO list that he has. =
+So it's not data that we've shared with him as far as dispositions, but =
+starting to identify super users for all his applications that he gave me =
+the list for. So worst case scenario, you can start to get those and we'll =
+identify those and get that ticked off of our work schedule as well. So =
+that's kind of just pushing around all of that fun stuff.
+
+10:00
+Yeah. Okay, so update on that one was Dean responded with, and I'm just =
+responding now with a very bullshit answer which was like I asked that the =
+function assembly leads do this with your support. Can you send us a list =
+of function contacts and we can make sure you get engaged, supported =
+properly? Like, like it's like we're already working with them. Like we =
+don't need, we need their approval, we don't need their support. So I guess=
+ long story short is like I'm just gonna respond like I just need to be =
+softer about like we've got it, don't worry about it and anything would do.=
+ Is it mostly engineering, right. Or is it all functions?
+
+10:49
+So from the sharing of data the functions have seen what those dispositions=
+ are and they're comfortable with it.
+
+10:56
+Right.
+
+10:56
+So even in the call with Ben Rossi the other day, he's like, I have no =
+problem with you sharing this information. If we need to get someone in =
+Wolverhampton moving these things, go ahead. But that's not legal, right? =
+For information sharing and for a lot of it is engineering applications. So=
+ we need to have that information sharing availability at least to Stevie =
+and her team to, to use their best judgment to identify three people who =
+can go out and procure the infrastructure as needed, whether that be a VPC =
+or an actual server. So that's, that's primary number one.
+
+11:30
+So is that for day one or for day two?
+
+11:33
+Day one. Anything as a copy?
+
+11:39
+Yeah, if we need to go and get infrastructure like we're in, like if =
+we need actual infrastructure like not just a, a shared drive like wearing =
+District Blackwood, that's not good.
+
+11:54
+So there's some short sighted =
+things in here that some of the functional leads are starting to realize.
+
+11:59
+Right.
+
+12:00
+So we've put copies for 100 some odd applications. Yeah=
+, the assumption on that is okay, yes, we need these copied for actuations =
+use. No one's gonna say come back and said we need these copied because =
+Colin wants to retain the IP and we've confirmed that these ones that we're=
+ worried about actuations use, they're already on actuation hardware on the=
+ actuation network and actuation has access to it. It's Collins that =
+doesn't have that.
+
+12:33
+Right, okay. Yeah. So he's talking about. It's =
+almost like a reverse copy, right?
+
+12:37
+Exactly. So we're going to have =
+some of those kind of. Spoke to Claire all wrote about that a little bit =
+yesterday with the five homegrown applications that she's got in Indonesia.=
+ I'm like, do you guys want to retain any of this information? She's like, =
+I need to talk to the team over there to see what we need to retain. So =
+they're kind of looking at it from that reverse copy aspect of it. But =
+we're going to have to have some Collins people DT people go, yes, we want =
+to keep this, we need to move it over. But again we need that landing zone.
+
+13:10
+Yeah, yeah, yeah. There's an EI Cyber call today. I forwarded that =
+one to you, Tim. That's where like we can raise a concern on a date. If we =
+don't have luck on this, we're just going to start putting stuff wherever =
+we want to put it. It's not great, it's not a good strategy, but we just =
+need to sort of save where it goes so that when they do the lift on day two=
+, we can say, hey guys, you need to pull all of these shares into the =
+migrate to Saffron Scope. Yeah, really don't want to go that route. But =
+like being literally two months out and you haven't got a landing zone. =
+It's just beyond like a shared drive, like just beyond ridiculous to me.
+
+13:54
+You don't have a landing zone. You haven't told anyone what's coming =
+home. So I. We have no one, we have, we have no one that you know, can =
+start. I'm trying to backdoor this as best I possibly can without getting =
+into legal trouble here. But if they're business managed apps, guess what? =
+It's the business that supports it, not DT. Yeah, so it's not DTs already =
+said this is on a business to figure out and we're like, okay, let us tell =
+the business so they can start figuring out legal's like maybe, maybe we =
+wait a little while. Right. So sooner or later it's going to be either you =
+let us tell them or you just move all of these to TSA and figure it out. =
+But we're not dt. We Want to actually do the work?
+
+14:42
+Yeah. Yeah. All right. Now let's. It's a fair point. Let's have this call =
+today, Tim. And that way we like, we've done our diligence with the EY team=
+ so then we can raise risks according appropriately without like. Cuz =
+that's kind of the cardinal sin, right? Is throwing another EY team under =
+the bus. Once we have the call today, it's. The gloves are off. So. But I'm=
+ completely with you. Like this is. Yeah, I'm with you. Like I, I can't say=
+ more about it without getting fired up because it's just. There's just so =
+like there's just a lot of base things that you'd expect to have in place =
+by now. We. We. I feel like we had them in place. Six weeks out on Hornet. =
+It was a three month sign to close. So like. Yeah.
+
+15:35
+Anywho, just lack of forethought and it happens and it's fun. This isn't an=
+ easy company to work around. But when we're getting raked over the coals =
+because we've got stuff due for copies and we have no place to copy.
+
+15:51
+Yeah. No, I'm with you and I. It will like it's. Yeah. Once we clear the UI=
+ hurdle today, then it goes up as a risk like shared driver landing zones =
+are not in place to enable business managed apps. Copies, copy execution or=
+ something. Right, Exactly. Like we can word it pretty viciously. Like 120 =
+copies scheduled for the next two weeks will be delayed because the landing=
+ zone isn't available. Everyone's like shit. Right? Like that's a. Yep, =
+that's. That'll get. Well, not two weeks because we pushed the dates out. =
+But like it's. Yeah. Anyway, I think. I think we're good. So Mac, I'm gonna=
+ work with you on this Saffron ask and let's maybe just jump on a call in a=
+ minute. Timbo, let us know if you. Who was the Rockford person. That name.=
+ It's all good. I don't. I haven't heard of that name. Just any contact. =
+Put Tori in. Tori's got some reasonable pull at Rockford.
+
+16:58
+Yep. Okay.
+
+17:01
+So just pull her into anything with regards to that. Okay, we'll do.
+
+17:06
+Yeah. I'm just glad I got the resource now to. To go forth and the. =
+The team's willing to work with us. Just sometimes it. A lot of the times =
+they don't have the data.
+
+17:17
+Do we. Do we want to bring them into the =
+Stevie call or do we keep Stevie like. Yeah. It's a different call. Sorry.
+
+17:28
+No, I don't think we need to bring her. Them into the Stevie call per=
+ se. I think we're gonna have to just get to a point where. When. What do =
+you think that's actually viable and what. What's truly a risk to us on =
+some of these transfer contracts. We're gonna have to make the. The judge =
+or have Collins make a judgment call of. Okay, these are supposedly used by=
+ five people. We can't find a PO for it. Are we truly concerned from an =
+actuation point of view that day one's going to break should anything. =
+Should anything with the contract not happen? Right. So we're gonna have to=
+ just make that call.
+
+18:07
+Yeah, well. And that's what we like. And this =
+is where I'm just cautious that I think we just need to maybe. Tim, just =
+maybe send a. A note like a reply all to your contracts call yesterday. =
+Because Jose's on that. I'd almost like to be proactive and say, hey, based=
+ on yesterday's call, we're running well behind. I had a 6am call with the =
+UK, Claire Drake. We've got a. What we think is a path to move forward. But=
+ just letting you know that like the contract, like this task is well =
+overdue and if he cares enough, he'll come in off the top rope. If he =
+doesn't, we've put it into an email. The legal guy was on the email. Like, =
+I think this is just our chance to softly say, hey, we're well behind. =
+We've reforecast the. The date. If you could draft that note, Tim, just so =
+that's a big cya for you and for us. Yep, that would be great.
+
+19:16
+If.
+
+19:16
+I'll draft that. Send it over just for making sure that you've worked=
+ with a few of these people before and.
+
+19:22
+Yeah, yeah, yeah, the league=
+. Like it's. It's not like a. Like we're here to scare you. It's just like =
+this is like this is a known risk and this is what we're doing to move =
+forward. It's. There may be potential that not all these are obtained by =
+day one, I guess. Real. So.
+
+19:37
+Yeah.
+
+19:38
+And he knew that. So. Okay.
+
+19:44
+Yep. I'll drive that and get that over here.
+
+19:48
+Cool. Thanks, mate. All right, let's catch up in a jiffy.
+
+19:53
+Yeah. Let me know when you're free. Anthony. I'm at my desk.
+
+19:57
+All right, cool. All right, thank you.
+
+19:59
+Thanks.
+
+19:59
+Bye.
+----_NmP-860b810669f27538-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Project =
+Challenges and Action Items Discussion Summary</h1></td></tr></table></div>=
+<div style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/9E82E547-B6C8-42AB-89E7-FCE9B623F97A?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session</a></div><div style=3D"text-align:center;margin-bottom:36=
+px"></div><div style=3D"background-color:#ffffff;padding:28px;border-radius=
+:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0=
+ 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h2 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2rem">Project Discussion Summary</h2><h3 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">Overview</h3><p>The team is discussing the progress and challenges =
+related to application transfer and costing within the project. Key topics =
+include formulating arguments, handling standalone applications, =
+coordinating with Colin Gillis, managing risks, and ensuring timely =
+communication and action items.</p>
+<h3 style=3D"font-weight:500;padding-to=
+p:20px;font-size:1.75rem">Main Topics Discussed</h3><h4 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.5rem">1. <strong =
+style=3D"font-weight:bold">Formulating Arguments</strong></h4><ul>
+<li><strong style=3D"font-weight:bold">Step 1:</strong> Define the core =
+argument for the project.</li>
+<li><strong style=3D"font-weight:bold">Step =
+2:</strong> Address the claim that certain applications were previously =
+unseen, emphasizing that awareness existed for almost a year.</li>
+<li><strong style=3D"font-weight:bold">Step 3:</strong> Develop a rough =
+standalone costing for the applications to avoid confusion and ensure =
+clarity.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size=
+:1.5rem">2. <strong style=3D"font-weight:bold">Standalone Costing and =
+Application Review</strong></h4><ul>
+<li>Discussion on creating standalone =
+cost estimates for engineering applications.</li>
+<li>Mention of past =
+experiences with standalone costing in smaller telecom deals.</li>
+<li>Emphasis on reviewing standalone components and assessing direct =
+payments.</li>
+<li>Example: Allocating costs based on location (e.g., Team =
+Center France and Italy) to reflect in the business unit&#39;s profit and =
+loss.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+5rem">3. <strong style=3D"font-weight:bold">Coordination with Colin =
+Gillis</strong></h4><ul>
+<li><strong style=3D"font-weight:bold">Risks =
+Identified:</strong> Colin Gillis&#39;s location affects the billing =
+allocation model.</li>
+<li><strong style=3D"font-weight:bold">Action =
+Items:</strong><ul>
+<li>Follow up with Colin to obtain detailed cost =
+breakdowns for applications.</li>
+<li>Schedule a call on Tuesday at 3:30 PM=
+ with Colin to address outstanding issues.</li>
+<li>Ensure communication =
+includes all relevant parties, such as Tori for Rockford-related contacts.=
+</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-=
+size:1.5rem">4. <strong style=3D"font-weight:bold">Risk Management and =
+Landing Zone Issues</strong></h4><ul>
+<li><strong style=3D"font-weight:bold=
+">Primary Risk:</strong> Lack of a landing zone for business-managed =
+applications, leading to potential delays and data placement issues.</li>
+<li><strong style=3D"font-weight:bold">Potential Consequences:</strong> =
+Delays in copying applications, inability to retain intellectual property =
+(IP), and challenges in infrastructure procurement.</li>
+<li><strong style=3D"font-weight:bold">Mitigation Strategies:</strong><ul>
+<li>Raise concerns in the EI Cyber call.</li>
+<li>Clearly communicate risks=
+ to stakeholders and seek appropriate responses.</li>
+<li>Propose proactive communication to contract teams about delays and =
+revised forecasts.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padd=
+ing-top:20px;font-size:1.5rem">5. <strong style=3D"font-weight:bold">Commun=
+ication and Follow-Up Actions</strong></h4><ul>
+<li><strong =
+style=3D"font-weight:bold">Internal Communication:</strong> Develop a =
+compelling internal story to present to DT and other teams by end of day =
+Monday.</li>
+<li><strong style=3D"font-weight:bold">External =
+Communication:</strong> Draft and send a note to the contracts team =
+highlighting overdue tasks and revised timelines.</li>
+<li><strong style=3D"font-weight:bold">Resource Allocation:</strong> =
+Utilize the new resource in Rockford to obtain purchase orders and track =
+additional contracts.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:2=
+0px;font-size:1.75rem">Action Items</h3><ol>
+<li><p><strong =
+style=3D"font-weight:bold">By End of Day Monday:</strong></p>
+<ul>
+<li>Develop an internal narrative for DT.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Monday:</strong></p>
+<ul>
+<li>Follow up with Colin Gillis to request detailed application costing =
+information.</li>
+<li>Schedule and prepare for the call with Colin on =
+Tuesday at 3:30 PM.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Tuesday:</strong></p>
+<ul>
+<li>Participate in the call with Colin Gillis to address outstanding =
+costing and application details.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Ongoing:</strong></p>
+<ul>
+<li>Work with Tori to engage Rockford contacts.</li>
+<li>Coordinate with Stevie=E2=80=99s team to identify super users and =
+procure necessary infrastructure.</li>
+<li>Respond to Dean with a softened =
+message assuring support while addressing current tasks.</li>
+<li>Draft and send a proactive communication to the contracts team =
+regarding delays and risks.</li>
+</ul>
+</li>
+</ol>
+<h3 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">Follow-Ups</h3><ul>
+<li><p><strong style=3D"font-weight:bold">Coordi=
+nation with Colin Gillis:</strong></p>
+<ul>
+<li>Ensure timely response and =
+detailed costing information.</li>
+<li>Address any gaps in application =
+costing across different locations.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Infrastructure =
+Procurement:</strong></p>
+<ul>
+<li>Schedule time with the Rockford resource=
+ to obtain necessary purchase orders.</li>
+<li>Track down additional =
+Rockford contracts and ensure integration with Claire=E2=80=99s team.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Communication with =
+Contracts Team:</strong></p>
+<ul>
+<li>Draft a clear and professional update=
+ on project delays and risk assessments.</li>
+<li>Highlight the need for =
+timely support to mitigate risks associated with landing zone =
+unavailability.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding=
+-top:20px;font-size:1.75rem">Key Points and Figures</h3><ul>
+<li><p><strong style=3D"font-weight:bold">Budget Allocation:</strong> =
+Engineering licenses cost approximately $100 million, distributed based on =
+location-specific allocation metrics.</p>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Application Breakdown:</strong> </p>
+<ul>
+<li>40% included in the standalone.</li>
+<li>30% included in the business =
+unit&#39;s profit and loss.</li>
+<li>Remaining 30% to be addressed with =
+additional costing (e.g., $500k estimated).</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Deadlines:</strong></p>
+<ul>
+<li><strong style=3D"font-weight:bold">Monday:</strong> Internal narrative =
+ready and follow-ups initiated.</li>
+<li><strong style=3D"font-weight:bold"=
+>Tuesday at 3:30 PM:</strong> Call with Colin Gillis.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Resources:</strong></p>
+<ul>
+<li>New resource available in Rockford to assist with purchase orders and =
+contract tracking.</li>
+<li>Collaboration with Tori to leverage contacts =
+for Rockford-related tasks.</li>
+</ul>
+</li>
+</ul>
+<h3 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">Risks =
+Identified</h3><ul>
+<li><strong style=3D"font-weight:bold">Colin =
+Gillis&#39;s Data Handling:</strong> Potential incomplete accounting of =
+application costs outside his area.</li>
+<li><strong =
+style=3D"font-weight:bold">Landing Zone Unavailability:</strong> Delays in =
+copying applications due to lack of infrastructure, risking project =
+timelines.</li>
+<li><strong style=3D"font-weight:bold">Communication =
+Gaps:</strong> Delays in addressing overdue tasks could escalate risks and =
+impact project outcomes.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-to=
+p:20px;font-size:1.75rem">Mitigation Strategies</h3><ul>
+<li><strong style=3D"font-weight:bold">Proactive Communication:</strong> =
+Clearly communicate delays and risks to stakeholders to manage expectations=
+.</li>
+<li><strong style=3D"font-weight:bold">Resource =
+Utilization:</strong> Leverage new and existing resources to obtain =
+necessary data and support.</li>
+<li><strong style=3D"font-weight:bold">Ris=
+k Documentation:</strong> Document identified risks and mitigation actions =
+for transparency and accountability.</li>
+</ul>
+<hr />
+<p>This summary provides a comprehensive overview of the discussed topics, =
+action items, follow-ups, key figures, and identified risks, ensuring =
+clarity and direction for the team moving forward.</p>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0,=
+ 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex;align-i=
+tems:center;gap:8px"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</=
+span>Transcription</h3><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">0:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Three million. Right=
+. Like do we just use pet and pen? Like. So anyway, I haven&#x27;t seen the=
+ standalone from Redwood because I wasn&#x27;t around. So that&#x27;s sort =
+of. Step one is like what&#x27;s our argument then? Step two is =
+they&#x27;re saying we haven&#x27;t seen these apps before so then we need =
+to bump it up and we&#x27;ve already done this, but we need to bump it up =
+against what was shared. You remember when we first started, we had like =
+six bombs to work against. One of them was the file that was shared on the =
+data site. So they&#x27;re going to say I never knew about this when really=
+ they&#x27;ve known about this for almost a year. So that&#x27;s point =
+number two. And then point number three is, all right, everything being =
+sort of forgotten. What&#x27;s like a rough standalone for the apps that we=
+ are saying you guys.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><sp=
+an style=3D"color:#64748b;font-size:14px">0:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Are getting a rough =
+standalone.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">0:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Cost this as well. I=
+ need to put it in paper so it&#x27;s not confusing for you.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><span =
+style=3D"color:#64748b;font-size:14px">0:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I&#x27;m. But =
+so can you dumb it down for me?</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony=
+</span><span style=3D"color:#64748b;font-size:14px">1:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I mean I have to do =
+it on paper. I can&#x27;t do it verbally because it&#x27;s like. Have you =
+done standalone before? Okay.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</sp=
+an><span style=3D"color:#64748b;font-size:14px">1:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I mean, yeah, I did =
+standalone costing before but it was small. It was like a really small =
+telecom deal.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">1:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Yeah. So this =
+isn&#x27;t. It&#x27;s not going to be. It&#x27;s going to be reviewing a =
+standalone and then the other component to this, which is kind of where =
+Tim&#x27;s at, is look if they&#x27;re direct paid already. So I guess =
+I&#x27;ll take a step back. The biggest risk is Colin Gillis&#x27;s =
+location because that is used like they bill allocation model. And so what =
+that means is let&#x27;s just say the all engineering licenses cost 100 =
+million. Everyone gets a peanut butter spread based on an allocation metric=
+ and like things like Team Center France, TeamCenter Italy. They should be =
+paid for by actuation Engineering in France and in Italy. So they&#x27;re =
+already included in the bu profit and loss. There&#x27;s a whole bunch of =
+things I just need to sort of walk you through the process on. But =
+it&#x27;s, it&#x27;s a. It&#x27;s a. Like it&#x27;s gonna. We need to sort =
+of have a really good response by end of day Monday. So today we need a =
+good story internally like DT and then we can share it with sort of teams =
+on Monday. That&#x27;s a big one for today.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Tim</span><span style=3D"color:#64748b;font-size:14px">2:=
+40</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Sure. What&#x27;s the story look like in your head? Like not knowing it =
+and having dived into it. But like what&#x27;s that what&#x27;s like a. Two=
+ sentences. What&#x27;s the story?</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthon=
+y</span><span style=3D"color:#64748b;font-size:14px">2:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">What I&#x27;m hoping=
+ to say is you&#x27;re like, like your 5 million analysis is heavily =
+overstated. Of the engineering apps that are being transferred or =
+TSA&#x27;d X amount of them, like 40 of them are included in the standalone=
+ and then another 30% are included in the. Like be like the BU profit and =
+loss. And then what&#x27;s that leave? 30%. All right, like we&#x27;ll =
+agree to like, we should probably include 500k or something that&#x27;s in =
+my head, sort of. What are we, 50% we included in the standalone. So =
+you&#x27;ve known about this from diligence. Ideally, it won&#x27;t. It =
+won&#x27;t come out that way, I don&#x27;t think.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Tim</span><span style=3D"color:#64748b;font-size:14px">3:=
+54</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay, so it&#x27;s about how we spend it and how does Colin Gillis fit =
+into it.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">4:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So if it&#x27;s. We =
+essentially. Yeah, so we&#x27;re saying that like. And this is where =
+there&#x27;s another statement to hear is if we put in the standalone that =
+engineering tooling costs $3 million, then they&#x27;ve known about this =
+for years. But what&#x27;s going to happen is we might have to go to each =
+individual app and say, all right, NI Berestand, what&#x27;s the rough =
+licensing for this one? Like Siemens, what&#x27;s the rough licensing for =
+this one? You know that kind of stuff, don&#x27;t you think?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><span =
+style=3D"color:#64748b;font-size:14px">4:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Isn&#x27;t that what=
+ they were doing that they didn&#x27;t want to share with us?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">4:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m not sure =
+what that is.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><span =
+style=3D"color:#64748b;font-size:14px">4:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think that, like =
+the last time that we had the conversation with Colin Gillis, that&#x27;s =
+exactly what they were doing is in building out that costing, my =
+understanding was that they were determining which applications fall into =
+TSA Eno1 or DT, and then the rough approximate cost for those. And when I =
+was asking Colin Gillis about, hey, can we get. I just wanted a list of. =
+Here&#x27;s all of the apps and then here&#x27;s their cost to like to work=
+ on that breakdown of TSA Eno 1. Here&#x27;s the like, individual =
+contributing cost that makes up this, like wider bucket and here&#x27;s how=
+ it&#x27;s accounted for. And they said no. And that&#x27;s when we got =
+into the conversation about building in buffer. Right.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">5:35</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">So I guess, I guess that. What I&#x27;m trying to understand is I felt =
+that there was a. That&#x27;s what we&#x27;re working with Colin on what =
+he&#x27;s including, what he&#x27;s not including. Has he responded to that=
+?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><span =
+style=3D"color:#64748b;font-size:14px">5:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I need to follow up =
+with him today again about that.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony=
+</span><span style=3D"color:#64748b;font-size:14px">5:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Did you follow up =
+with him yesterday?</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><sp=
+an style=3D"color:#64748b;font-size:14px">6:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, we talked about =
+it in the afternoon and I didn&#x27;t send him the email yet.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">6:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><span =
+style=3D"color:#64748b;font-size:14px">6:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">But we sent him the =
+list of. It&#x27;s very easy. Yes or no how many licenses and for the ones =
+that are big that we know about I think that we&#x27;ve been doing that =
+diligence on our own like the Veristand one. How much does this cost? How =
+many users associated with it? Is it Ian outside of Colin? Because my fear =
+is that Colin&#x27;s only accounted for stuff in his area and then outside =
+of Rockford there&#x27;s other things.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">6:53</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Okay, okay. So. Okay, so I think let&#x27;s follow up with Colin on =
+this one asking when he can sort of help provide this. We&#x27;re probably =
+going to need a. A call anyway.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</sp=
+an><span style=3D"color:#64748b;font-size:14px">7:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m just gonna =
+send a call on Monday. Well we have a call I think let me see if we still =
+have our call on Monday or Tuesday with Colin and I think that that&#x27;s =
+when we can sort of corner him about. If we to your point can get our. =
+Colin Gillis is going to be. Yeah. Tuesday at 3:30.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">7:40</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah, we can&#x27;t wait until. So can you follow up with him and say =
+hey Colin, is it possible to complete the below or complete the attached =
+and just ask for by when? Yeah, because I thought we have the EM01 Tactical=
+ Item List that I thought we&#x27;re just trying to tick this one off.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><span =
+style=3D"color:#64748b;font-size:14px">7:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">8:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">But so like just. =
+And maybe just ping him around put me. Can you please make sure I&#x27;m on=
+ the pings in the emails though just pushes back or like he&#x27;s tidy. I =
+can follow up. Okay, so timber. What&#x27;s your focus for today?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Claire</span><span=
+ style=3D"color:#64748b;font-size:14px">8:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So a good part out =
+of that contract conversation at 6am Was I do have a resource in Rockford =
+now.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">8:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Claire</span><span=
+ style=3D"color:#64748b;font-size:14px">8:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So those TSA ones =
+I&#x27;m gonna reach out to that resource, try and schedule.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">8:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Some time with them.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Claire</span><span=
+ style=3D"color:#64748b;font-size:14px">8:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Be like hey can we =
+get purchase orders for these so we can look at them see if they&#x27;re =
+truly dedicated and or not and then also track down any of the additional =
+Rockford contracts because Claire&#x27;s team doesn&#x27;t have access to =
+anything Rockford so gonna continue to push that way. And then did anything=
+ come from the Jason Despina conversation yesterday about what we can share=
+ and what we can&#x27;t share? I would like to. It&#x27;s already too late.=
+ You could drops off at noon but I want to hit the ground running and make =
+sure everything&#x27;s set for any copies that we can start to work on and =
+consider even if I have to go in and Say hey, hypothetically, if we can, =
+you know, start some planning, can we use this app as an example to do some=
+ planning if we have to copy. I&#x27;ve also pushed for Alex to kind of =
+look at the original SMO list that he has. So it&#x27;s not data that =
+we&#x27;ve shared with him as far as dispositions, but starting to identify=
+ super users for all his applications that he gave me the list for. So =
+worst case scenario, you can start to get those and we&#x27;ll identify =
+those and get that ticked off of our work schedule as well. So that&#x27;s =
+kind of just pushing around all of that fun stuff.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">10:00</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah. Okay, so update on that one was Dean responded with, and =
+I&#x27;m just responding now with a very bullshit answer which was like I =
+asked that the function assembly leads do this with your support. Can you =
+send us a list of function contacts and we can make sure you get engaged, =
+supported properly? Like, like it&#x27;s like we&#x27;re already working =
+with them. Like we don&#x27;t need, we need their approval, we don&#x27;t =
+need their support. So I guess long story short is like I&#x27;m just gonna=
+ respond like I just need to be softer about like we&#x27;ve got it, =
+don&#x27;t worry about it and anything would do. Is it mostly engineering, =
+right. Or is it all functions?</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Claire<=
+/span><span style=3D"color:#64748b;font-size:14px">10:49</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So from the sharing =
+of data the functions have seen what those dispositions are and =
+they&#x27;re comfortable with it.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony=
+</span><span style=3D"color:#64748b;font-size:14px">10:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Claire</span><span=
+ style=3D"color:#64748b;font-size:14px">10:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So even in the call =
+with Ben Rossi the other day, he&#x27;s like, I have no problem with you =
+sharing this information. If we need to get someone in Wolverhampton moving=
+ these things, go ahead. But that&#x27;s not legal, right? For information =
+sharing and for a lot of it is engineering applications. So we need to have=
+ that information sharing availability at least to Stevie and her team to, =
+to use their best judgment to identify three people who can go out and =
+procure the infrastructure as needed, whether that be a VPC or an actual =
+server. So that&#x27;s, that&#x27;s primary number one.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">11:30</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">So is that for day one or for day two?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Claire</span><span style=3D"color:#64748b;font-size:14px"=
+>11:33</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Day one. Anything as a copy?</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony=
+</span><span style=3D"color:#64748b;font-size:14px">11:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, if we need to =
+go and get infrastructure like we&#x27;re in, like if we need actual =
+infrastructure like not just a, a shared drive like wearing District =
+Blackwood, that&#x27;s not good.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Claire<=
+/span><span style=3D"color:#64748b;font-size:14px">11:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So there&#x27;s some=
+ short sighted things in here that some of the functional leads are =
+starting to realize.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><sp=
+an style=3D"color:#64748b;font-size:14px">11:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Claire</span><span=
+ style=3D"color:#64748b;font-size:14px">12:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So we&#x27;ve put =
+copies for 100 some odd applications. Yeah, the assumption on that is okay,=
+ yes, we need these copied for actuations use. No one&#x27;s gonna say come=
+ back and said we need these copied because Colin wants to retain the IP =
+and we&#x27;ve confirmed that these ones that we&#x27;re worried about =
+actuations use, they&#x27;re already on actuation hardware on the actuation=
+ network and actuation has access to it. It&#x27;s Collins that =
+doesn&#x27;t have that.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span=
+><span style=3D"color:#64748b;font-size:14px">12:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right, okay. Yeah. =
+So he&#x27;s talking about. It&#x27;s almost like a reverse copy, right?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Claire</span><span=
+ style=3D"color:#64748b;font-size:14px">12:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Exactly. So =
+we&#x27;re going to have some of those kind of. Spoke to Claire all wrote =
+about that a little bit yesterday with the five homegrown applications that=
+ she&#x27;s got in Indonesia. I&#x27;m like, do you guys want to retain any=
+ of this information? She&#x27;s like, I need to talk to the team over =
+there to see what we need to retain. So they&#x27;re kind of looking at it =
+from that reverse copy aspect of it. But we&#x27;re going to have to have =
+some Collins people DT people go, yes, we want to keep this, we need to =
+move it over. But again we need that landing zone.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">13:10</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah, yeah, yeah. There&#x27;s an EI Cyber call today. I forwarded =
+that one to you, Tim. That&#x27;s where like we can raise a concern on a =
+date. If we don&#x27;t have luck on this, we&#x27;re just going to start =
+putting stuff wherever we want to put it. It&#x27;s not great, it&#x27;s =
+not a good strategy, but we just need to sort of save where it goes so that=
+ when they do the lift on day two, we can say, hey guys, you need to pull =
+all of these shares into the migrate to Saffron Scope. Yeah, really =
+don&#x27;t want to go that route. But like being literally two months out =
+and you haven&#x27;t got a landing zone. It&#x27;s just beyond like a =
+shared drive, like just beyond ridiculous to me.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Claire</span><span style=3D"color:#64748b;font-size:14px"=
+>13:54</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">You don&#x27;t have a landing zone. You haven&#x27;t told anyone =
+what&#x27;s coming home. So I. We have no one, we have, we have no one that=
+ you know, can start. I&#x27;m trying to backdoor this as best I possibly =
+can without getting into legal trouble here. But if they&#x27;re business =
+managed apps, guess what? It&#x27;s the business that supports it, not DT. =
+Yeah, so it&#x27;s not DTs already said this is on a business to figure out=
+ and we&#x27;re like, okay, let us tell the business so they can start =
+figuring out legal&#x27;s like maybe, maybe we wait a little while. Right. =
+So sooner or later it&#x27;s going to be either you let us tell them or you=
+ just move all of these to TSA and figure it out. But we&#x27;re not dt. We=
+ Want to actually do the work?</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony=
+</span><span style=3D"color:#64748b;font-size:14px">14:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Yeah. All =
+right. Now let&#x27;s. It&#x27;s a fair point. Let&#x27;s have this call =
+today, Tim. And that way we like, we&#x27;ve done our diligence with the EY=
+ team so then we can raise risks according appropriately without like. Cuz =
+that&#x27;s kind of the cardinal sin, right? Is throwing another EY team =
+under the bus. Once we have the call today, it&#x27;s. The gloves are off. =
+So. But I&#x27;m completely with you. Like this is. Yeah, I&#x27;m with you=
+. Like I, I can&#x27;t say more about it without getting fired up because =
+it&#x27;s just. There&#x27;s just so like there&#x27;s just a lot of base =
+things that you&#x27;d expect to have in place by now. We. We. I feel like =
+we had them in place. Six weeks out on Hornet. It was a three month sign to=
+ close. So like. Yeah.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Claire</span>=
+<span style=3D"color:#64748b;font-size:14px">15:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Anywho, just lack of=
+ forethought and it happens and it&#x27;s fun. This isn&#x27;t an easy =
+company to work around. But when we&#x27;re getting raked over the coals =
+because we&#x27;ve got stuff due for copies and we have no place to copy.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">15:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. No, I&#x27;m =
+with you and I. It will like it&#x27;s. Yeah. Once we clear the UI hurdle =
+today, then it goes up as a risk like shared driver landing zones are not =
+in place to enable business managed apps. Copies, copy execution or =
+something. Right, Exactly. Like we can word it pretty viciously. Like 120 =
+copies scheduled for the next two weeks will be delayed because the landing=
+ zone isn&#x27;t available. Everyone&#x27;s like shit. Right? Like =
+that&#x27;s a. Yep, that&#x27;s. That&#x27;ll get. Well, not two weeks =
+because we pushed the dates out. But like it&#x27;s. Yeah. Anyway, I think.=
+ I think we&#x27;re good. So Mac, I&#x27;m gonna work with you on this =
+Saffron ask and let&#x27;s maybe just jump on a call in a minute. Timbo, =
+let us know if you. Who was the Rockford person. That name. It&#x27;s all =
+good. I don&#x27;t. I haven&#x27;t heard of that name. Just any contact. =
+Put Tori in. Tori&#x27;s got some reasonable pull at Rockford.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Claire</span><span=
+ style=3D"color:#64748b;font-size:14px">16:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep. Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">17:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So just pull her =
+into anything with regards to that. Okay, we&#x27;ll do.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Claire</span><span style=3D"color:#64748b;font-size:14px"=
+>17:06</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah. I&#x27;m just glad I got the resource now to. To go forth and the=
+. The team&#x27;s willing to work with us. Just sometimes it. A lot of the =
+times they don&#x27;t have the data.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">17:17</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Do we. Do we want to bring them into the Stevie call or do we keep =
+Stevie like. Yeah. It&#x27;s a different call. Sorry.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Claire</span><span style=3D"color:#64748b;font-size:14px"=
+>17:28</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">No, I don&#x27;t think we need to bring her. Them into the Stevie call =
+per se. I think we&#x27;re gonna have to just get to a point where. When. =
+What do you think that&#x27;s actually viable and what. What&#x27;s truly a=
+ risk to us on some of these transfer contracts. We&#x27;re gonna have to =
+make the. The judge or have Collins make a judgment call of. Okay, these =
+are supposedly used by five people. We can&#x27;t find a PO for it. Are we =
+truly concerned from an actuation point of view that day one&#x27;s going =
+to break should anything. Should anything with the contract not happen? =
+Right. So we&#x27;re gonna have to just make that call.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">18:07</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah, well. And that&#x27;s what we like. And this is where I&#x27;m =
+just cautious that I think we just need to maybe. Tim, just maybe send a. A=
+ note like a reply all to your contracts call yesterday. Because =
+Jose&#x27;s on that. I&#x27;d almost like to be proactive and say, hey, =
+based on yesterday&#x27;s call, we&#x27;re running well behind. I had a 6am=
+ call with the UK, Claire Drake. We&#x27;ve got a. What we think is a path =
+to move forward. But just letting you know that like the contract, like =
+this task is well overdue and if he cares enough, he&#x27;ll come in off =
+the top rope. If he doesn&#x27;t, we&#x27;ve put it into an email. The =
+legal guy was on the email. Like, I think this is just our chance to softly=
+ say, hey, we&#x27;re well behind. We&#x27;ve reforecast the. The date. If =
+you could draft that note, Tim, just so that&#x27;s a big cya for you and =
+for us. Yep, that would be great.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</sp=
+an><span style=3D"color:#64748b;font-size:14px">19:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">If.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Claire</span><span style=3D"color:#64748b;font-size:14px"=
+>19:16</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">I&#x27;ll draft that. Send it over just for making sure that =
+you&#x27;ve worked with a few of these people before and.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">19:22</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah, yeah, yeah, the league. Like it&#x27;s. It&#x27;s not like a. =
+Like we&#x27;re here to scare you. It&#x27;s just like this is like this is=
+ a known risk and this is what we&#x27;re doing to move forward. It&#x27;s.=
+ There may be potential that not all these are obtained by day one, I guess=
+. Real. So.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Claire</span><span=
+ style=3D"color:#64748b;font-size:14px">19:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">19:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And he knew that. So=
+. Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Claire</span><span=
+ style=3D"color:#64748b;font-size:14px">19:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep. I&#x27;ll drive=
+ that and get that over here.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony=
+</span><span style=3D"color:#64748b;font-size:14px">19:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Cool. Thanks, mate. =
+All right, let&#x27;s catch up in a jiffy.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Tim</span><span style=3D"color:#64748b;font-size:14px">19=
+:53</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. Let me know when you&#x27;re free. Anthony. I&#x27;m at my desk.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">19:57</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right, cool. All=
+ right, thank you.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><sp=
+an style=3D"color:#64748b;font-size:14px">19:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Thanks.=
+</div></div><div style=3D"margin-bottom:0;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">19:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Bye.=
+</div></div></div><div style=3D"margin-top:36px;text-align:center;color:#64=
+748b;font-size:14px;padding:20px;border-top:1px solid #e2e8f0"><p =
+style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note Taker</p><p=
+ style=3D"margin:0;font-size:12px">Your AI-powered companion</p></div></div=
+></div></div></html>
+----_NmP-860b810669f27538-Part_1--

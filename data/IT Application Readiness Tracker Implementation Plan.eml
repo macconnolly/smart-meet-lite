@@ -1,0 +1,1159 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:adf:a403:0:b0:3a4:dc5b:9678 with SMTP id d3csp2311424wra;
+        Mon, 2 Jun 2025 13:32:23 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGdTjUoz0Nko4S26E/Ulol+0JyF6Co8K490CpbyDcoKGLoCy7ttx4WRUmZxC/5Q5kUKzqt8
+X-Received: by 2002:a05:6214:f6a:b0:6fa:c81a:6202 with SMTP id 6a1803df08f44-6facec00c52mr203853706d6.29.1748896343233;
+        Mon, 02 Jun 2025 13:32:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748896343; cv=none;
+        d=google.com; s=arc-20240605;
+        b=h2+65hE/VBlaS81MuGXGhMHamk65D6zar0W8cZj2K78YuAJiagk1rAhOumLXO3qcyk
+         D3x6oNGN9PmOxpZ9HMjzyKKMVJDrobECwF8S1dA4z9UCVtLXwyxzNFTz4lT3qro8aie/
+         AYllXSa6QabHtKoSh1UGvTwif+w612W+cC7GGiUghsTtse6+118hVRMM4dNeuzkFC6NP
+         WXjwCHGjL1Qt5MiDahrUMqjBnmuVGOTrGk1tmWF1un0CSx7/MGq+HVaJndbg0PKn7QfG
+         lhlHpaKf/5S30BL87LfN9+Vkq6GPcwM225m0Ot5J0iBTGx54fMq78igLpM0GyPPIswaF
+         WbEA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=40F45mGO9HBfJDAWpslrGq9hctptbtl7zTxwdmlgEjY=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=T19LHrX/QKGwpfEs1C7UamgWjDxbrDXnIdS6dPJi4yVwGl+nbKuyjfIAu8p3seI311
+         VrPGI47h28QrXgJ8VlyysTkdAKNbQVS7NiAa50D0JzmigVxLSgOJhYyfUbO+gf37dfF0
+         hqQyLwib5R8ON8Imv095h3bUkQ7ximvAlq5pFZsV3XgZuHyVu5Xrp8fJEJDDya6sw5rH
+         AeTX0lwIke33cQxHEeY2tdGrxvEKd+eWsC112jZCw+VJhSgyMRoz9bjtTkc9V7n7MCwQ
+         BnlqZL1TOwnfU8WFtg35kbQc5kN4QeeLFqC40k5efkFA15zzRySO3/SPKqVQD8VLJwXz
+         ARug==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=b1gA8rOx;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=omx0bTUy;
+       spf=pass (google.com: domain of 0100019732586287-04ec6716-6563-42ff-b57d-5f4bfc35eb36-000000@send.email.wave.co designates 54.240.9.46 as permitted sender) smtp.mailfrom=0100019732586287-04ec6716-6563-42ff-b57d-5f4bfc35eb36-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <0100019732586287-04ec6716-6563-42ff-b57d-5f4bfc35eb36-000000@send.email.wave.co>
+Received: from a9-46.smtp-out.amazonses.com (a9-46.smtp-out.amazonses.com. [54.240.9.46])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fac6e59a2fsi106855796d6.215.2025.06.02.13.32.23
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 02 Jun 2025 13:32:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 0100019732586287-04ec6716-6563-42ff-b57d-5f4bfc35eb36-000000@send.email.wave.co designates 54.240.9.46 as permitted sender) client-ip=54.240.9.46;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=b1gA8rOx;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=omx0bTUy;
+       spf=pass (google.com: domain of 0100019732586287-04ec6716-6563-42ff-b57d-5f4bfc35eb36-000000@send.email.wave.co designates 54.240.9.46 as permitted sender) smtp.mailfrom=0100019732586287-04ec6716-6563-42ff-b57d-5f4bfc35eb36-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1748896342;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=AABKyW1D0o0mwkhH2vkSpImtH/sSdFPkG0hSvhGMU9c=;
+	b=b1gA8rOx/vMcIyFkYfSdHLdx98ISqiBRm/lmJm4Qyx0/1/brw2PPJhildY48JVHx
+	bcMHNWM1LeKOy15IDHiIN/qsX+ZowjmKEIp5GSgYa/vT69sGCirNioVXVvDIbreLEme
+	gB5C//pgzaSBy9/TZ1usBRnnM1vA3m/4laR19WxE=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1748896342;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=AABKyW1D0o0mwkhH2vkSpImtH/sSdFPkG0hSvhGMU9c=;
+	b=omx0bTUy7filmydKZ+sMg/r7MZ0nakI13PorUIW91Q0l6VAyUPsNM6TB1YbPiXzq
+	bqkTIPaZO6KTBtMOm6/VXab+Qy/YFmvplZB0OlUtBjTqAI1oHEjS/YswYk4fHJfQWJt
+	yHVVUmkA+65dx596lLkRA9+1SV3m6hCAlI+WdUi4=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: IT Application Readiness Tracker Implementation Plan
+Message-ID: <0100019732586287-04ec6716-6563-42ff-b57d-5f4bfc35eb36-000000@email.amazonses.com>
+Date: Mon, 2 Jun 2025 20:32:22 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-a42fcc26b3174de9-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.06.02-54.240.9.46
+
+----_NmP-a42fcc26b3174de9-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+IT Application Readiness Tracker Implementation Plan
+
+**Main Topics Discussed:**
+
+1. **Establishing an IT Application Tracker**
+    - The team is initiating a tracker to monitor the readiness and status =
+of ~80 IT applications for upcoming go-lives, specifically distinguishing =
+between:
+        - Applications going live in June/July (requiring SIT, UAT=
+, and go-live stages).
+        - Applications related to legal entity =
+changes, expected to go live around August 1.
+        - Additional =
+applications (build backs, move as is) set for post-July, into August or =
+September.
+    - The goal is to provide a detailed, dashboard-driven view =
+of progress across all applications in scope.
+
+2. **Transition from Excel =
+to Smartsheet**
+    - Initially, data will be collated in Excel before =
+being migrated to Smartsheet for better tracking, dashboarding, and =
+reporting capability.
+    - The Smartsheet will be used to provide =
+executive-level dashboard visuals (histograms, pie charts) for real-time =
+tracking.
+
+3. **Structural Requirements for the Tracker**
+    - Key columns/fields to be included:
+        - System (application) =
+name
+        - IT workstream/business function and sub-function
+        - Service owner (both from Honeywell and Athens, for =
+cloned/build-back apps)
+        - KT (Knowledge Transfer) completed status
+        - Test lead identified
+        - Test cases documented
+        - Test cases uploaded
+        - SIT (System Integration Testing) =
+start, end, and status
+        - UAT (User Acceptance Testing) start, end, =
+and status
+        - Go-live date/status
+        - Comments column for =
+additional context
+    - The intention is not to nest columns but rather =
+have each as a standalone field for clear tracking.
+
+4. **Governance and Coordination**
+    - The importance of project =
+management discipline is emphasized, addressing the need to =E2=80=9CPM the=
+ crap out of this=E2=80=9D due to coordinators depending heavily on the =
+project team.
+    - Each app will be tracked at a granular level, requiring=
+ significant coordinator input.
+    - Suggestions to engage Justin or the =
+GDS team for technical implementation of the tracker, with particular =
+reference to leveraging Audrey Park=E2=80=99s expertise in Smartsheet =
+dashboarding.
+
+5. **Calendar & Meeting Planning**
+    - Alongside the =
+tracker, a two-week calendar (spanning from June 2, 2025, to June 13, 2025)=
+ will be set up to align meetings and follow-ups, especially if missing =
+data or updates are identified through the tracker.
+
+6. **Dashboarding and Executive Reporting**
+    - The tracker will feed =
+into executive dashboarding tools for regular reporting to leadership (e.g.=
+, =E2=80=9CTsukai=E2=80=9D and others), illustrating key KPIs:
+        - % SIT completed, % UAT started/completed, % KT =
+complete/incomplete, number of go-lives, etc.
+    - Data hygiene is =
+recognized as a concern; teams will be expected to clean up and validate =
+reported data, supplemented with automated pulls where possible.
+
+7. **Defect Management**
+    - Defects will not be tracked in this primary =
+tracker; dedicated defect and Hypercare trackers will be referenced for =
+managing UAT issues and post-go-live support.
+
+**Action Items & =
+Follow-ups:**
+
+- Prepare the initial list and structure in Excel; migrate =
+to Smartsheet.
+- Identify and enter approximately 80 in-scope applications =
+(build back, move as is, outsourced, legal entity-related, etc.) into the =
+tracker.
+- Reach out to Justin (GDS) and Audrey Park for Smartsheet =
+implementation support/tips.
+- Populate the tracker with existing data and =
+set up a dashboard view for executives by Friday of the current week.
+- Schedule and organize meetings for missing updates/data between June =
+2=E2=80=9313, 2025.
+- Determine each team=E2=80=99s windows for SIT and UAT=
+, ensuring flexibility to capture variations in timing.
+- Run weekly (or as needed) executive reports using the dashboard.
+- Ensure teams clean up or validate data periodically before reporting.
+
+**Key Dates Mentioned:**
+- Tracker and calendar planning starts June 2, =
+2025.
+- Target period for alignment and calendar: June 2=E2=80=9313, 2025.
+- Application go-lives: Some in June/July 2025; legal entity apps around =
+August 1, 2025; others post-July into August/September.
+- Dashboard and tracker expected to be viewable/executable by Friday (June =
+6, 2025).
+ =20
+**Participants Referenced:**
+- Justin (GDS team), Audrey =
+Park (Smartsheet expertise), Avinash (coordination), possible executive =
+stakeholders (Tsukai), and other unnamed IT workstream leads.
+
+---
+
+This summary encapsulates the planning, technical, and organizational =
+efforts discussed in the transcript for building a detailed IT application =
+readiness tracker and associated reporting/dashboards, along with steps for=
+ ensuring accountability and data quality across workstreams through =
+mid-June 2025.
+
+Transcript:
+0:01
+And start putting down. So based on the =
+notes we captured, you may want to just pull up in Excel and we start doing=
+ this and then we'll see how we can turn it into a smartsheet.
+
+0:12
+Yep.
+
+0:12
+Definitely two things I want to do in the conversation today. One is =
+to get this tracker going and we'll see how we can get Justin or GDS to =
+help us in that. Two, calendaring all these things for this mos. So we need=
+ to kind of say, okay, if I don't have this, I need to set up a meeting. So=
+, you know, based on the tracker, I don't have this, I don't have that. =
+Let's go set up a meeting. So I want to do like a two week calendar between=
+ today and the 6th or 13th, essentially to have alignment across all these =
+IT work streams and these functions.
+
+0:50
+Yep, yep. Give me one second.
+
+0:54
+Yeah, yeah, yeah. Take your time. Because I realize, you know, from =
+Avinash and these guys, you know, they, they're meant to be the =
+coordinators, but it's clear, it's. If it wasn't already for me that =
+they're looking at us to spoon feed them everything.
+
+1:09
+Yeah.
+
+1:10
+And so we need to PM the crap out of this in terms of just bringing that =
+structure in place of, you know, know we're going to hit this every single =
+day and drive, drive to the, to the details.
+
+1:23
+Yep, absolutely. Here, =
+I'm just pulling up this Excel and then I'll share. Trying to load it. Turn=
+ it. Oh, there we go. I got it open on my computer. Okay, so let me just =
+share this one. Oops. So folks have gone in and populated all of these, =
+which is great.
+
+1:55
+Okay.
+
+1:58
+And I guess.
+
+1:59
+And they've added some comments. Okay, yeah, see comments in column P. Okay=
+.
+
+2:16
+Oh, great.
+
+2:17
+Need to understand what applications these cover. =
+Okay, fine.
+
+2:27
+So for today, I guess there's a couple things we can =
+start to plan out. What do we want to track? I still have that underlying =
+question of who is like at what level of granularity is this going to be =
+tracked at? It sounds like all of these or a lot of these work streams have=
+ their own processes ongoing. Right. For uat, from that, like the ISC touch=
+ base. Like so from the ISC touch base, they were showing all of those. =
+Like each work stream, I guess had like a status or a plan or it seemed =
+like there were some with plans that included uat. And so to get down to =
+the level of detail that we need to build some of the dashboards, as Peirce=
+ is expecting, all of those people have to come to someone and say here at =
+the individual test or scenario level, here's everything that we have =
+planned which is not light touch.
+
+3:37
+Well that's where we'll have the =
+coordinator. So think of it this way. What the way I'm seeing this play out=
+. So let's look at UAT. So there are simply from an IT lens you've got let =
+us say our number 80 something applications. There are some applications =
+going live in June and July that have to go through SIT UAT go live. There =
+are some applications going live on, in and around August 1st that are =
+related to the legal entity or thereabouts. So that those have a broader =
+like an ERP that has an SIT UAT cycle or multiple windows. And then you =
+have another non BRV related set of applications that are like the build =
+backs and the move as is that are going to post July, so July, August or =
+post August. So August and September. For each of those applications we =
+need to track status and dashboarding on where things are in terms of go =
+live readiness. So that's one set of tracker we need to have. So if you =
+think about it and let's maybe put open up a PowerPoint and we'll just jot =
+down these, pencil in these bullet points and say will need a tracker for =
+these BRV and non BRV at an app level we are going to use where you have =
+applications to touch. We'll have a view of if you want to pull up.
+
+5:21
+This was our previous dashboard page where we had said like three talk =
+about systems functional end to end. I guess the application level needs to=
+. Is like what we're missing here.
+
+5:33
+Well, application systems, right. =
+So it's. So I'm talking of let's say tracker number one where the apps are =
+the rows and we're going to have. Let's also add the service owner, right? =
+So service owner, let's add in so in parentheses when you have all that =
+stuff there, start with service owner. Start with maybe we call it service =
+owner identified or point of POC service owner identified. And then maybe a=
+ second thing is test lead identified. The third one is if the service =
+owner is there. Let's say for example an app is being built back. It is =
+being built back from Honeywell which is essentially like a clone. It's =
+moving into Athens. So we need to know if there is a knowledge transfer =
+that has happened. So we also need something around KT to say I've cloned =
+this app, I've transferred all the knowledge to this person and the Athens =
+side that's going to run it now, so that service owner would have had to do=
+ that from an IT perspective. And then you're going to get into, okay, sit =
+dates, UAT dates and go live dates. So sit, start, end or complete, you =
+know, start and end. And you can say status, you know, is in progress, or =
+complete or not started and then, or delayed and then UAT the same thing. =
+So this is purely from a systems perspective. We can look at the non TS8 =
+systems that have this. Now later on we can do something for the TS8 =
+systems as well. But let's at least start with this as a tracker having =
+these fields and then we can possibly have 50 or 60 or 70 rows for each of =
+the systems for each of the apps in the inventory.
+
+7:45
+Yep.
+
+7:48
+So this is the first tracker that we need. So the first actually you may =
+want to start off with. So first number one is the service owner. The first=
+ bullet point is service owner identified and then KT completed, service =
+owner slash poc. And then, you know, the next thing is the test lead. And =
+then the next thing is we could just say test cases documented. Test cases.=
+ I'm trying to give a couple more of, you know, test cases documented, test=
+ cases developed and you know, are uploaded into say Jira or whatever tool =
+it is. We could say, you know, so first one is test cases documented. The =
+second one, the second bullet point there would be, you know, test cases =
+uploaded. Okay. Keep it at a single level. I don't want nesting here. Just =
+these are different columns. So test cases documented. In fact, if you, if =
+you take it one step back, we have to see if.
+
+9:23
+Do we want to track the functions?
+
+9:24
+Let's assume that. Say that again,=
+ do we want to.
+
+9:27
+Track like the functions that it touches?
+
+9:30
+Well, no, this is a system. So we should say actually work stream or it, =
+you know, we should call another first column, should be it workstream, =
+whether it's, you know, if it's something that's a supply chain or a =
+finance, you know, app. So business, you can say business, you know, =
+business app or whatever. Our standard naming is business, business =
+function, sub function. Right. So function, slash, sub function, maybe a =
+couple of those. And then you've got the service owner, you've got the test=
+ lead, you've got the test cases documented. And then the next bullet is =
+test cases uploaded. Don't. Yeah, don't do parentheses. I want them =
+multiple. So the first thing there is you're documenting. I need 20 test =
+cases. How many do I have? You know, how many have I do I need to create? =
+And then at the end of the day, all 20 need to be uploaded in. So test =
+cases documented, test cases uploaded, and then we know it's into the =
+tracking tool. So that's fine. So just say test cases uploaded. You already=
+ got test cases completed. Well, let's do this. Remove that for now. Remove=
+. Remove that completed for now. And you could remove the poc because =
+that's done. You need to add. Okay, just say KT completed.
+
+11:17
+And remove to Athens poc.
+
+11:19
+Yeah. Yep, yep. I would also say one thing=
+ here. I would add Honeywell service owner, the second bullet. Honeywell =
+service owner poc. I would add a third bullet. That's Athens service owner,=
+ poc. Because if this is a move as is, then it's, they're probably the same=
+ name. But if it's a build back and it's a clone, then it's likely that =
+there's a good chance that somebody else in Athens. So we've got KT =
+completed.
+
+12:02
+What about like the system name.
+
+12:06
+System? That is the systems, that's the app name. So the app as a row, it =
+says, you know, column number one would be AppX. And then the next part of =
+that, the rest of it would be functions and all the other stuff. So yeah, =
+you could put system name as, you know. So column one. So systems tracker =
+would be system one. Yeah, our system name is the first one actually. Then =
+can you move KT completed after Athens service owner? The intent is that =
+they, they identify the leads. Okay, test lead, test documented, sit start.=
+ Let's, you know, let's, let's parse this out. So sit, start sitting and =
+then sit completion status and then we'll do the same for uat. Okay. And =
+then we should have go live. So this is essentially like a project plan, =
+but we should have this as a tracker for every app that is in scope. So in =
+scope meaning the move as is the build backs, the clones and all of the =
+legal entity changes. So can you repeat that? So we should have this for =
+all the apps that are in scope, that are for BRV or non brv. So anything =
+that's a. So anything that's a build back, anything that's a move as is =
+build back includes the clones, anything that's outsourced, whether it's =
+legal entity related or non legal entity related. And I think there's about=
+ 80 something of them that a ballpark number that we. So we should have =
+about 80 something rows that we're tracking.
+
+14:41
+So that covers build back outsourced.
+
+14:44
+Build back outsourced, move as=
+ is. And I'm thinking lib without but lib without probably means they take =
+the data if needed and move it. And I don't think we need to track it here,=
+ even though there might be some sign off that all data is moved. But I =
+think so at a dashboard level, this is what we can, this is what the model =
+should track. So that at any one point, if you run a BI dashboard or =
+something on this that says I've got play this out. 80 apps in scope, 20 of=
+ them in situation, 10 of them in UAT, 90% KT completed, you know, two of =
+them have gone live, etc. So we're going to have, you know, that view and =
+we'll be able to publish it week on week.
+
+15:51
+Do you want to track =
+defects here?
+
+16:02
+Not here. That would come in the cutover Hypercare. =
+There's a separate thing for Hypercare that may be a double click into UAT =
+complete. So similar to what, what pre was sharing on the defects and the =
+resolution and how many have been resolved, etc. We may want to double =
+click into a UAT tracker. We'll have to see what they already have in Jira =
+or whatever tool it is and do. We don't want to, I don't want to reinvent =
+anything. They may have something and we can repurpose. But this should be =
+in a smartsheet and we can run a report on it that provides some dashboard =
+view that now people can say here's a histogram of things happening. So you=
+ can see that it will move from left to right. Eventually every one of =
+these would go live, but they would be in different phases at different =
+points. So week and week we could run a report. So this is what we should =
+mock up as a view in either histogram view or a pie chart or something or a=
+ blend of both or just boxes three that we'll be able to track status on =
+this.
+
+17:24
+Yep. Okay.
+
+17:27
+So if I'm Sukai, I come in today and I go, =
+oh, I've got 20 apps in Sid that are completing that are 80% complete. I've=
+ got 10 apps that are starting UAT, have started UAT and I've completed 57%=
+ of my knowledge transfer. And by the way, I'm behind on 10, 20% of my =
+knowledge transfer hasn't even started yet. And then I am, you know, to the=
+ other point you had on defects. Maybe she goes into the next tracker. If =
+she double clicks into UAT tracker to see how is that progressing for uat. =
+Right. So that's a secondary tracker but at a high level she or the =
+leadership should be able to get a view of what's the progress on these =
+applications. So that's tracker number one at a system level. And this is =
+what we need to work with Justin or whoever in GDS on our team to see if we=
+ can create this in smartsheets and pull the data we have. How comfortable =
+are you with smartsheets?
+
+18:34
+I've used it a lot. You know who's used it=
+ the most though? Who built some of the best? Audrey park on GE Healthcare =
+built this incredibly complicated dashboard and reporting structure for GE =
+Healthcare that was used all the way until the end for. Yes, she was. She =
+got really good at it. So I know that Audrey is good at smartsheet and I =
+have a fair amount of experience as well. Well, so between the two of us, =
+I'm not sure what Justin's bandwidth looks like or.
+
+19:10
+Yeah. And I know Audrey is busy this week as well. But let we can talk to =
+Audrey, see if she can spend some time on that for us or at least.
+
+19:19
+Provide some lessons learned. Some like tips from like she was actually =
+implementing it.
+
+19:25
+Okay.
+
+19:26
+And I was kind of helping guide her =
+direction. And so I would love to just maybe take half an hour and say if =
+you don't implement this, can you tell me what you would do for this?
+
+19:38
+Because what I would like to do is get a dashboard going with the =
+right histograms and the charts, et cetera. That's really more executive =
+level that Tsukai can come into that dashboard and refresh and say this is =
+the data that feeds it. And precisely what we mentioned a bit earlier, I =
+have a status view on how things are progressing. So that's step number one=
+ that we want to get a view in by Friday and populate this with accurate =
+data. Now, hygiene of the data is a different story. You heard on the all =
+IT connect that the supply chain team said, oh, we've started sit. The ERP =
+team said, we've started sit. Great, let's start reporting on it. Right? =
+Wrong, let's report on it. Let them clean up the data and go in here and =
+clean it up. Right. So where it's automated, pull great. If not, we, we =
+show them the data that this is what it is from the thing. They can =
+overwrite it and you know, understand what this, you know, the thing is, =
+what I also want to get out of this is different teams may have different =
+UAT dates. Generally the window, the windows 620 to 715 supply chain may =
+say it's 623 to 629 and they're done. ERP may say 620 to 627, 77 to 715. =
+They may have multiple windows. So we need to give that provision for them =
+to. To be able to. What I want to also do is get that calendar view. Right.=
+ So the other ask that. So this is so step number one, we need this systems=
+ view dashboard that people can get to do we have end of day connect.
+
+21:21
+Yeah, Right now.
+
+21:22
+Really? Okay, so let's get on that and then =
+we'll come back and continue with this.
+
+21:26
+Okay, cool. Sounds great. =
+Thanks for catching by.
+----_NmP-a42fcc26b3174de9-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">IT =
+Application Readiness Tracker Implementation Plan</h1></td></tr></table></d=
+iv><div style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/543F1A0B-8078-457E-98FC-CF9A85980863?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><p><strong style=3D"font-weight:bold">Main=
+ Topics Discussed:</strong></p>
+<ol>
+<li><p><strong =
+style=3D"font-weight:bold">Establishing an IT Application =
+Tracker</strong></p>
+<ul>
+<li>The team is initiating a tracker to monitor =
+the readiness and status of ~80 IT applications for upcoming go-lives, =
+specifically distinguishing between:<ul>
+<li>Applications going live in =
+June/July (requiring SIT, UAT, and go-live stages).</li>
+<li>Applications related to legal entity changes, expected to go live =
+around August 1.</li>
+<li>Additional applications (build backs, move as is)=
+ set for post-July, into August or September.</li>
+</ul>
+</li>
+<li>The goal is to provide a detailed, dashboard-driven view of progress =
+across all applications in scope.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Transition from Excel to Smartsheet</strong></p>
+<ul>
+<li>Initially, data will be collated in Excel before being migrated to=
+ Smartsheet for better tracking, dashboarding, and reporting capability.=
+</li>
+<li>The Smartsheet will be used to provide executive-level dashboard =
+visuals (histograms, pie charts) for real-time tracking.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Structural Requirements for the =
+Tracker</strong></p>
+<ul>
+<li>Key columns/fields to be included:<ul>
+<li>System (application) name</li>
+<li>IT workstream/business function and =
+sub-function</li>
+<li>Service owner (both from Honeywell and Athens, for =
+cloned/build-back apps)</li>
+<li>KT (Knowledge Transfer) completed =
+status</li>
+<li>Test lead identified</li>
+<li>Test cases documented</li>
+<li>Test cases uploaded</li>
+<li>SIT (System Integration Testing) start, =
+end, and status</li>
+<li>UAT (User Acceptance Testing) start, end, and =
+status</li>
+<li>Go-live date/status</li>
+<li>Comments column for additional=
+ context</li>
+</ul>
+</li>
+<li>The intention is not to nest columns but =
+rather have each as a standalone field for clear tracking.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Governance and =
+Coordination</strong></p>
+<ul>
+<li>The importance of project management =
+discipline is emphasized, addressing the need to =E2=80=9CPM the crap out =
+of this=E2=80=9D due to coordinators depending heavily on the project team.=
+</li>
+<li>Each app will be tracked at a granular level, requiring =
+significant coordinator input.</li>
+<li>Suggestions to engage Justin or the=
+ GDS team for technical implementation of the tracker, with particular =
+reference to leveraging Audrey Park=E2=80=99s expertise in Smartsheet =
+dashboarding.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Ca=
+lendar &amp; Meeting Planning</strong></p>
+<ul>
+<li>Alongside the tracker, =
+a two-week calendar (spanning from June 2, 2025, to June 13, 2025) will be =
+set up to align meetings and follow-ups, especially if missing data or =
+updates are identified through the tracker.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Dashboarding and Executive =
+Reporting</strong></p>
+<ul>
+<li>The tracker will feed into executive =
+dashboarding tools for regular reporting to leadership (e.g., =
+=E2=80=9CTsukai=E2=80=9D and others), illustrating key KPIs:<ul>
+<li>% SIT completed, % UAT started/completed, % KT complete/incomplete, =
+number of go-lives, etc.</li>
+</ul>
+</li>
+<li>Data hygiene is recognized as=
+ a concern; teams will be expected to clean up and validate reported data, =
+supplemented with automated pulls where possible.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Defect Management</strong></p>
+<ul>
+<li>Defects will not be tracked in this primary tracker; dedicated =
+defect and Hypercare trackers will be referenced for managing UAT issues =
+and post-go-live support.</li>
+</ul>
+</li>
+</ol>
+<p><strong =
+style=3D"font-weight:bold">Action Items &amp; Follow-ups:</strong></p>
+<ul>
+<li>Prepare the initial list and structure in Excel; migrate to Smartsheet.=
+</li>
+<li>Identify and enter approximately 80 in-scope applications (build =
+back, move as is, outsourced, legal entity-related, etc.) into the tracker.=
+</li>
+<li>Reach out to Justin (GDS) and Audrey Park for Smartsheet =
+implementation support/tips.</li>
+<li>Populate the tracker with existing =
+data and set up a dashboard view for executives by Friday of the current =
+week.</li>
+<li>Schedule and organize meetings for missing updates/data =
+between June 2=E2=80=9313, 2025.</li>
+<li>Determine each team=E2=80=99s =
+windows for SIT and UAT, ensuring flexibility to capture variations in =
+timing.</li>
+<li>Run weekly (or as needed) executive reports using the =
+dashboard.</li>
+<li>Ensure teams clean up or validate data periodically =
+before reporting.</li>
+</ul>
+<p><strong style=3D"font-weight:bold">Key =
+Dates Mentioned:</strong></p>
+<ul>
+<li>Tracker and calendar planning starts=
+ June 2, 2025.</li>
+<li>Target period for alignment and calendar: June =
+2=E2=80=9313, 2025.</li>
+<li>Application go-lives: Some in June/July 2025; =
+legal entity apps around August 1, 2025; others post-July into =
+August/September.</li>
+<li>Dashboard and tracker expected to be =
+viewable/executable by Friday (June 6, 2025).</li>
+</ul>
+<p><strong style=3D"font-weight:bold">Participants Referenced:</strong></p>
+<ul>
+<li>Justin (GDS team), Audrey Park (Smartsheet expertise), Avinash =
+(coordination), possible executive stakeholders (Tsukai), and other unnamed=
+ IT workstream leads.</li>
+</ul>
+<hr />
+<p>This summary encapsulates the =
+planning, technical, and organizational efforts discussed in the transcript=
+ for building a detailed IT application readiness tracker and associated =
+reporting/dashboards, along with steps for ensuring accountability and data=
+ quality across workstreams through mid-June 2025.</p>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0,=
+ 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex;align-i=
+tems:center;gap:8px"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</=
+span>Transcription</h3><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Male =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">0:01</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">And start =
+putting down. So based on the notes we captured, you may want to just pull =
+up in Excel and we start doing this and then we&#x27;ll see how we can turn=
+ it into a smartsheet.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown =
+Female Speaker</span><span style=3D"color:#64748b;font-size:14px">0:12</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yep.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Male =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">0:12</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Definitely two=
+ things I want to do in the conversation today. One is to get this tracker =
+going and we&#x27;ll see how we can get Justin or GDS to help us in that. =
+Two, calendaring all these things for this mos. So we need to kind of say, =
+okay, if I don&#x27;t have this, I need to set up a meeting. So, you know, =
+based on the tracker, I don&#x27;t have this, I don&#x27;t have that. =
+Let&#x27;s go set up a meeting. So I want to do like a two week calendar =
+between today and the 6th or 13th, essentially to have alignment across all=
+ these IT work streams and these functions.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unknown Female Speaker</span><span =
+style=3D"color:#64748b;font-size:14px">0:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep, yep. Give me =
+one second.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Male =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">0:54</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, =
+yeah. Take your time. Because I realize, you know, from Avinash and these =
+guys, you know, they, they&#x27;re meant to be the coordinators, but =
+it&#x27;s clear, it&#x27;s. If it wasn&#x27;t already for me that =
+they&#x27;re looking at us to spoon feed them everything.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unknown Female Speaker</span><span =
+style=3D"color:#64748b;font-size:14px">1:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Male =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">1:10</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">And so we need=
+ to PM the crap out of this in terms of just bringing that structure in =
+place of, you know, know we&#x27;re going to hit this every single day and =
+drive, drive to the, to the details.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unknown Female Speaker</span><span =
+style=3D"color:#64748b;font-size:14px">1:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep, absolutely. =
+Here, I&#x27;m just pulling up this Excel and then I&#x27;ll share. Trying =
+to load it. Turn it. Oh, there we go. I got it open on my computer. Okay, =
+so let me just share this one. Oops. So folks have gone in and populated =
+all of these, which is great.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown=
+ Male Speaker</span><span style=3D"color:#64748b;font-size:14px">1:55</span=
+></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Female =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">1:58</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">And I guess.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Male =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">1:59</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">And =
+they&#x27;ve added some comments. Okay, yeah, see comments in column P. =
+Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Female =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">2:16</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, great.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Male =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">2:17</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Need to =
+understand what applications these cover. Okay, fine.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unknown Female Speaker</span><span =
+style=3D"color:#64748b;font-size:14px">2:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So for today, I =
+guess there&#x27;s a couple things we can start to plan out. What do we =
+want to track? I still have that underlying question of who is like at what=
+ level of granularity is this going to be tracked at? It sounds like all of=
+ these or a lot of these work streams have their own processes ongoing. =
+Right. For uat, from that, like the ISC touch base. Like so from the ISC =
+touch base, they were showing all of those. Like each work stream, I guess =
+had like a status or a plan or it seemed like there were some with plans =
+that included uat. And so to get down to the level of detail that we need =
+to build some of the dashboards, as Peirce is expecting, all of those =
+people have to come to someone and say here at the individual test or =
+scenario level, here&#x27;s everything that we have planned which is not =
+light touch.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Male =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">3:37</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Well =
+that&#x27;s where we&#x27;ll have the coordinator. So think of it this way.=
+ What the way I&#x27;m seeing this play out. So let&#x27;s look at UAT. So =
+there are simply from an IT lens you&#x27;ve got let us say our number 80 =
+something applications. There are some applications going live in June and =
+July that have to go through SIT UAT go live. There are some applications =
+going live on, in and around August 1st that are related to the legal =
+entity or thereabouts. So that those have a broader like an ERP that has an=
+ SIT UAT cycle or multiple windows. And then you have another non BRV =
+related set of applications that are like the build backs and the move as =
+is that are going to post July, so July, August or post August. So August =
+and September. For each of those applications we need to track status and =
+dashboarding on where things are in terms of go live readiness. So =
+that&#x27;s one set of tracker we need to have. So if you think about it =
+and let&#x27;s maybe put open up a PowerPoint and we&#x27;ll just jot down =
+these, pencil in these bullet points and say will need a tracker for these =
+BRV and non BRV at an app level we are going to use where you have =
+applications to touch. We&#x27;ll have a view of if you want to pull up.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Female =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">5:21</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">This was our =
+previous dashboard page where we had said like three talk about systems =
+functional end to end. I guess the application level needs to. Is like what=
+ we&#x27;re missing here.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Male =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">5:33</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Well, =
+application systems, right. So it&#x27;s. So I&#x27;m talking of let&#x27;s=
+ say tracker number one where the apps are the rows and we&#x27;re going to=
+ have. Let&#x27;s also add the service owner, right? So service owner, =
+let&#x27;s add in so in parentheses when you have all that stuff there, =
+start with service owner. Start with maybe we call it service owner =
+identified or point of POC service owner identified. And then maybe a =
+second thing is test lead identified. The third one is if the service owner=
+ is there. Let&#x27;s say for example an app is being built back. It is =
+being built back from Honeywell which is essentially like a clone. =
+It&#x27;s moving into Athens. So we need to know if there is a knowledge =
+transfer that has happened. So we also need something around KT to say =
+I&#x27;ve cloned this app, I&#x27;ve transferred all the knowledge to this =
+person and the Athens side that&#x27;s going to run it now, so that service=
+ owner would have had to do that from an IT perspective. And then =
+you&#x27;re going to get into, okay, sit dates, UAT dates and go live dates=
+. So sit, start, end or complete, you know, start and end. And you can say =
+status, you know, is in progress, or complete or not started and then, or =
+delayed and then UAT the same thing. So this is purely from a systems =
+perspective. We can look at the non TS8 systems that have this. Now later =
+on we can do something for the TS8 systems as well. But let&#x27;s at least=
+ start with this as a tracker having these fields and then we can possibly =
+have 50 or 60 or 70 rows for each of the systems for each of the apps in =
+the inventory.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Female =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">7:45</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yep.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Male =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">7:48</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">So this is the=
+ first tracker that we need. So the first actually you may want to start =
+off with. So first number one is the service owner. The first bullet point =
+is service owner identified and then KT completed, service owner slash poc.=
+ And then, you know, the next thing is the test lead. And then the next =
+thing is we could just say test cases documented. Test cases. I&#x27;m =
+trying to give a couple more of, you know, test cases documented, test =
+cases developed and you know, are uploaded into say Jira or whatever tool =
+it is. We could say, you know, so first one is test cases documented. The =
+second one, the second bullet point there would be, you know, test cases =
+uploaded. Okay. Keep it at a single level. I don&#x27;t want nesting here. =
+Just these are different columns. So test cases documented. In fact, if you=
+, if you take it one step back, we have to see if.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unknown Female Speaker</span><span =
+style=3D"color:#64748b;font-size:14px">9:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Do we want to track =
+the functions?</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Male =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">9:24</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Let&#x27;s =
+assume that. Say that again, do we want to.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unknown Female Speaker</span><span =
+style=3D"color:#64748b;font-size:14px">9:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Track like the =
+functions that it touches?</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Male =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">9:30</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Well, no, this=
+ is a system. So we should say actually work stream or it, you know, we =
+should call another first column, should be it workstream, whether =
+it&#x27;s, you know, if it&#x27;s something that&#x27;s a supply chain or a=
+ finance, you know, app. So business, you can say business, you know, =
+business app or whatever. Our standard naming is business, business =
+function, sub function. Right. So function, slash, sub function, maybe a =
+couple of those. And then you&#x27;ve got the service owner, you&#x27;ve =
+got the test lead, you&#x27;ve got the test cases documented. And then the =
+next bullet is test cases uploaded. Don&#x27;t. Yeah, don&#x27;t do =
+parentheses. I want them multiple. So the first thing there is you&#x27;re =
+documenting. I need 20 test cases. How many do I have? You know, how many =
+have I do I need to create? And then at the end of the day, all 20 need to =
+be uploaded in. So test cases documented, test cases uploaded, and then we =
+know it&#x27;s into the tracking tool. So that&#x27;s fine. So just say =
+test cases uploaded. You already got test cases completed. Well, let&#x27;s=
+ do this. Remove that for now. Remove. Remove that completed for now. And =
+you could remove the poc because that&#x27;s done. You need to add. Okay, =
+just say KT completed.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown =
+Female Speaker</span><span style=3D"color:#64748b;font-size:14px">11:17</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">And =
+remove to Athens poc.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Male =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">11:19</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Yep, =
+yep. I would also say one thing here. I would add Honeywell service owner, =
+the second bullet. Honeywell service owner poc. I would add a third bullet.=
+ That&#x27;s Athens service owner, poc. Because if this is a move as is, =
+then it&#x27;s, they&#x27;re probably the same name. But if it&#x27;s a =
+build back and it&#x27;s a clone, then it&#x27;s likely that there&#x27;s a=
+ good chance that somebody else in Athens. So we&#x27;ve got KT completed.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Female =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">12:02</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">What about =
+like the system name.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Male =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">12:06</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">System? That =
+is the systems, that&#x27;s the app name. So the app as a row, it says, you=
+ know, column number one would be AppX. And then the next part of that, the=
+ rest of it would be functions and all the other stuff. So yeah, you could =
+put system name as, you know. So column one. So systems tracker would be =
+system one. Yeah, our system name is the first one actually. Then can you =
+move KT completed after Athens service owner? The intent is that they, they=
+ identify the leads. Okay, test lead, test documented, sit start. =
+Let&#x27;s, you know, let&#x27;s, let&#x27;s parse this out. So sit, start =
+sitting and then sit completion status and then we&#x27;ll do the same for =
+uat. Okay. And then we should have go live. So this is essentially like a =
+project plan, but we should have this as a tracker for every app that is in=
+ scope. So in scope meaning the move as is the build backs, the clones and =
+all of the legal entity changes. So can you repeat that? So we should have =
+this for all the apps that are in scope, that are for BRV or non brv. So =
+anything that&#x27;s a. So anything that&#x27;s a build back, anything =
+that&#x27;s a move as is build back includes the clones, anything =
+that&#x27;s outsourced, whether it&#x27;s legal entity related or non legal=
+ entity related. And I think there&#x27;s about 80 something of them that a=
+ ballpark number that we. So we should have about 80 something rows that =
+we&#x27;re tracking.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown =
+Female Speaker</span><span style=3D"color:#64748b;font-size:14px">14:41</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So =
+that covers build back outsourced.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknow=
+n Male Speaker</span><span style=3D"color:#64748b;font-size:14px">14:44</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Build =
+back outsourced, move as is. And I&#x27;m thinking lib without but lib =
+without probably means they take the data if needed and move it. And I =
+don&#x27;t think we need to track it here, even though there might be some =
+sign off that all data is moved. But I think so at a dashboard level, this =
+is what we can, this is what the model should track. So that at any one =
+point, if you run a BI dashboard or something on this that says I&#x27;ve =
+got play this out. 80 apps in scope, 20 of them in situation, 10 of them in=
+ UAT, 90% KT completed, you know, two of them have gone live, etc. So =
+we&#x27;re going to have, you know, that view and we&#x27;ll be able to =
+publish it week on week.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown =
+Female Speaker</span><span style=3D"color:#64748b;font-size:14px">15:51</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Do you=
+ want to track defects here?</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Male=
+ Speaker</span><span style=3D"color:#64748b;font-size:14px">16:02</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Not here. =
+That would come in the cutover Hypercare. There&#x27;s a separate thing for=
+ Hypercare that may be a double click into UAT complete. So similar to what=
+, what pre was sharing on the defects and the resolution and how many have =
+been resolved, etc. We may want to double click into a UAT tracker. =
+We&#x27;ll have to see what they already have in Jira or whatever tool it =
+is and do. We don&#x27;t want to, I don&#x27;t want to reinvent anything. =
+They may have something and we can repurpose. But this should be in a =
+smartsheet and we can run a report on it that provides some dashboard view =
+that now people can say here&#x27;s a histogram of things happening. So you=
+ can see that it will move from left to right. Eventually every one of =
+these would go live, but they would be in different phases at different =
+points. So week and week we could run a report. So this is what we should =
+mock up as a view in either histogram view or a pie chart or something or a=
+ blend of both or just boxes three that we&#x27;ll be able to track status =
+on this.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Female =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">17:24</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yep. Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Male =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">17:27</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">So if =
+I&#x27;m Sukai, I come in today and I go, oh, I&#x27;ve got 20 apps in Sid =
+that are completing that are 80% complete. I&#x27;ve got 10 apps that are =
+starting UAT, have started UAT and I&#x27;ve completed 57% of my knowledge =
+transfer. And by the way, I&#x27;m behind on 10, 20% of my knowledge =
+transfer hasn&#x27;t even started yet. And then I am, you know, to the =
+other point you had on defects. Maybe she goes into the next tracker. If =
+she double clicks into UAT tracker to see how is that progressing for uat. =
+Right. So that&#x27;s a secondary tracker but at a high level she or the =
+leadership should be able to get a view of what&#x27;s the progress on =
+these applications. So that&#x27;s tracker number one at a system level. =
+And this is what we need to work with Justin or whoever in GDS on our team =
+to see if we can create this in smartsheets and pull the data we have. How =
+comfortable are you with smartsheets?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unknown Female Speaker</span><span =
+style=3D"color:#64748b;font-size:14px">18:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;ve used it a =
+lot. You know who&#x27;s used it the most though? Who built some of the =
+best? Audrey park on GE Healthcare built this incredibly complicated =
+dashboard and reporting structure for GE Healthcare that was used all the =
+way until the end for. Yes, she was. She got really good at it. So I know =
+that Audrey is good at smartsheet and I have a fair amount of experience as=
+ well. Well, so between the two of us, I&#x27;m not sure what Justin&#x27;s=
+ bandwidth looks like or.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Male =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">19:10</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. And I =
+know Audrey is busy this week as well. But let we can talk to Audrey, see =
+if she can spend some time on that for us or at least.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unknown Female Speaker</span><span =
+style=3D"color:#64748b;font-size:14px">19:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Provide some lessons=
+ learned. Some like tips from like she was actually implementing it.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Male =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">19:25</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Female =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">19:26</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">And I was =
+kind of helping guide her direction. And so I would love to just maybe take=
+ half an hour and say if you don&#x27;t implement this, can you tell me =
+what you would do for this?</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Male =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">19:38</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">Because what =
+I would like to do is get a dashboard going with the right histograms and =
+the charts, et cetera. That&#x27;s really more executive level that Tsukai =
+can come into that dashboard and refresh and say this is the data that =
+feeds it. And precisely what we mentioned a bit earlier, I have a status =
+view on how things are progressing. So that&#x27;s step number one that we =
+want to get a view in by Friday and populate this with accurate data. Now, =
+hygiene of the data is a different story. You heard on the all IT connect =
+that the supply chain team said, oh, we&#x27;ve started sit. The ERP team =
+said, we&#x27;ve started sit. Great, let&#x27;s start reporting on it. =
+Right? Wrong, let&#x27;s report on it. Let them clean up the data and go in=
+ here and clean it up. Right. So where it&#x27;s automated, pull great. If =
+not, we, we show them the data that this is what it is from the thing. They=
+ can overwrite it and you know, understand what this, you know, the thing =
+is, what I also want to get out of this is different teams may have =
+different UAT dates. Generally the window, the windows 620 to 715 supply =
+chain may say it&#x27;s 623 to 629 and they&#x27;re done. ERP may say 620 =
+to 627, 77 to 715. They may have multiple windows. So we need to give that =
+provision for them to. To be able to. What I want to also do is get that =
+calendar view. Right. So the other ask that. So this is so step number one,=
+ we need this systems view dashboard that people can get to do we have end =
+of day connect.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown =
+Female Speaker</span><span style=3D"color:#64748b;font-size:14px">21:21</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, =
+Right now.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Male =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">21:22</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">Really? Okay,=
+ so let&#x27;s get on that and then we&#x27;ll come back and continue with =
+this.</div></div><div style=3D"margin-bottom:0;padding:16px;background-colo=
+r:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown Female =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">21:26</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, cool. =
+Sounds great. Thanks for catching by.</div></div></div><div =
+style=3D"margin-top:36px;text-align:center;color:#64748b;font-size:14px;pad=
+ding:20px;border-top:1px solid #e2e8f0"><p style=3D"margin:0;margin-bottom:=
+8px">Captured with Wave AI Note Taker</p><p style=3D"margin:0;font-size:12p=
+x">Your AI-powered companion</p></div></div></div></div></html>
+----_NmP-a42fcc26b3174de9-Part_1--

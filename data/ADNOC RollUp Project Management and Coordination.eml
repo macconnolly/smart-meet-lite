@@ -1,0 +1,1006 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a5d:48c9:0:b0:3a5:23aa:6f43 with SMTP id p9csp320362wrs;
+        Wed, 4 Jun 2025 12:34:44 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFvD+ZYe6qptrQKDCd9Z9cr816bMIlWohOtyp+HtkpJyMKiKxPHDupFnesAy5yS/+MKQYpO
+X-Received: by 2002:a05:6214:20e3:b0:6f5:106a:270e with SMTP id 6a1803df08f44-6faf7032990mr54189676d6.44.1749065684343;
+        Wed, 04 Jun 2025 12:34:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749065684; cv=none;
+        d=google.com; s=arc-20240605;
+        b=DFjs3RBBl1WId2+QuQEMwCOJYd0yPgPRTTxirEDC8UcbwZe2esWF0Go0UsPnL5UxO/
+         9PfZCwey4xsXHrmK7P8znMtXeQ4Ao+7lSxWtUmevNIWfXL3v/hY/36f0FODXIAiV836F
+         DZkWNnJrGS2Bl68GEfJRd0KPw+2VUhBNKvuTBgeGBIMgiWA8yJ3EbfNqdSY0XbAeLFCe
+         BPUP38lVNrbArOp5vrbyIwcJJKNdeCSBNqB2Zaqozx7rQcSLnikK3zqybW4v5RJAi669
+         +ufZE4u+PNh3RbkmJZ2fbh3xt7lspfRsymgjVYVH2N45mEmfGLQlh23ekXuem8qUqFon
+         Ql4w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=WgMHy/cBp5sCh1ETSJ9hd30EeOglvt3t6XjvaimbBiU=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=IzAw1IkYwITNImgCC3U3n6EiEoAy6ar/dZa3OVedcwY3/itVuc1hWEEqPXgFdcVl8+
+         iO3+7Bz8VdvIJGTgGKTBLWzNVS4D4kr622RxYiohzHXIbq9sRmMfCJ5sLGtxv0Fv2rj3
+         p8ArBZggInyrB+70LYvcfuV9M3KUcvH4pCyrH0vuEZgJHUhF5NnOPzMjBO2d8qTFZBKm
+         wzMmsmdkJPTW7whq8ITjd9SSjzEEsSo0nKJXJwryGftTB5MAXSAy/xg88KnpZI1WiTgN
+         CrwB4yjBUD6LCUTol+mmF7gOSF15jucw6+FiPTaaUEexLyuy8DIaYpNt8zkTG4kMBu2F
+         fSpQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=AMSf4SBq;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=A3loEGI+;
+       spf=pass (google.com: domain of 010001973c705306-810c905b-7f22-437c-a32f-24deb95f0378-000000@send.email.wave.co designates 54.240.9.33 as permitted sender) smtp.mailfrom=010001973c705306-810c905b-7f22-437c-a32f-24deb95f0378-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <010001973c705306-810c905b-7f22-437c-a32f-24deb95f0378-000000@send.email.wave.co>
+Received: from a9-33.smtp-out.amazonses.com (a9-33.smtp-out.amazonses.com. [54.240.9.33])
+        by mx.google.com with ESMTPS id af79cd13be357-7d09a304aa5si1630900285a.516.2025.06.04.12.34.44
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 04 Jun 2025 12:34:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 010001973c705306-810c905b-7f22-437c-a32f-24deb95f0378-000000@send.email.wave.co designates 54.240.9.33 as permitted sender) client-ip=54.240.9.33;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=AMSf4SBq;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=A3loEGI+;
+       spf=pass (google.com: domain of 010001973c705306-810c905b-7f22-437c-a32f-24deb95f0378-000000@send.email.wave.co designates 54.240.9.33 as permitted sender) smtp.mailfrom=010001973c705306-810c905b-7f22-437c-a32f-24deb95f0378-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1749065683;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=mUEbfzzCnPdupN19a0qPh0+/scZWh3VNDvYHmSMj2VI=;
+	b=AMSf4SBqlW3ASxKjfkZzCZODC9U9On/AaPVjp+NAKhl40/9pAxelv30T1c94sbIB
+	VZnOWcw3k8O5xeEeDjTJTIb6mx/vKRWPjPRX6odvFI+83IdmffD6Syk5vr9E+FREcv8
+	GNN1nP7BEcmPHOL1moFDu5mQpjgb/4w6iXfMzp20=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1749065683;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=mUEbfzzCnPdupN19a0qPh0+/scZWh3VNDvYHmSMj2VI=;
+	b=A3loEGI+sHcwF8SKQmkPD757x81egj1/iUd1tYk1gOUQM+wX+iOwJoQbVX09WGDs
+	xCnyYYb5/y6dK+RMZHtgmgaxLd8DcFSx+WTXUwOP22jfVRCWyCsEiOfiQ50kLoLdzeQ
+	Jf3TB4Rv9AAwvcuDl+fAJhF8H9a7sF/VylY5lqvg=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: ADNOC RollUp Project Management and Coordination
+Message-ID: <010001973c705306-810c905b-7f22-437c-a32f-24deb95f0378-000000@email.amazonses.com>
+Date: Wed, 4 Jun 2025 19:34:43 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-2bdd79cf19195689-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.06.04-54.240.9.33
+
+----_NmP-2bdd79cf19195689-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+ADNOC Roll-Up Project Management and Coordination
+
+### Main Topics =
+Discussed
+
+#### 1. Involvement in ADNOC Global Chems Business Roll-Up
+- The speaker was recently approached to get involved with ADNOC=E2=80=99s =
+(Abu Dhabi National Oil Company) global chemicals business roll-up.
+- There is initial confusion and uncertainty about connections or prior =
+dealings with ADNOC or contacts in Abu Dhabi, as the speaker admits knowing=
+ "zero or maybe a hundred" people but not directly.
+- References are made to Swanson potentially being involved with either =
+Saudi or Abu Dhabi efforts.
+
+#### 2. Team Structure in the Energy Practice
+- Members currently active in the energy practice include the speaker, JC, =
+Mark Lowy, and Cynthia Hubbard.
+- Mark Lowy's upcoming retirement is noted =
+(possibly within this year).
+- Discussion about available resources like =
+USB drives, indicating some technical or operational requirements.
+
+#### 3. Project Management and Testing Overview
+- The group is working on =
+several project management items:
+    - UAT (User Acceptance Testing) =
+calendar.
+    - Pager and Excel files listing service owners and systems.
+    - Ensuring everyone fills in missing information.
+    - Creating and aligning on a RACI (Responsible, Accountable, Consulted,=
+ and Informed) matrix to clarify roles and responsibilities.
+    - The end goal is to have a consolidated and detailed test calendar =
+that covers various teams (Supply Chain, HR, ERP/Finance) on a week-by-week=
+ basis.
+
+#### 4. System Tracker and Reporting Requirements
+- Discussion about the BRB (Business Readiness/Release Blocker) tracker and=
+ the need to ensure adequate columns are present for effective reporting.
+    - There are flags and data points regarding which systems are required =
+for "legal entity go live," day one readiness, and their impact on legal =
+entities.
+    - Issues of alignment: clarifying whether certain systems =
+count as BRB or if additional systems need to be included.
+    - Need to return and validate these details to ensure accurate tracking=
+ and reporting.
+
+#### 5. Scheduling and Logistics
+- Venue options for =
+ongoing team gatherings are discussed (e.g., Dean's, an Italian steakhouse,=
+ or lobby of JW).
+    - One participant cannot make the follow-on session =
+due to a conflicting strategy call.
+- There is an urgency to progress on a =
+long to-do list, with recognition that outstanding items must be completed =
+soon or will risk delay beyond the current week.
+
+#### 6. Personal and Team=
+ Dynamics
+- Mutual recognition that the team has communicated more =
+in-person today than in the past four months.
+- A lighter moment is shared =
+about an upcoming parents versus kids soccer match (for a 9-year-old son), =
+with jokes about the anticipated physical toll.
+
+### Action Items & =
+Follow-Ups
+
+- **Calendar & Documentation**
+    - Gather and update UAT =
+dates, service owner/system Excel lists, and ensure all missing data is =
+provided.
+    - Review and firm up the RACI matrix for roles and =
+responsibilities.
+    - Develop a consolidated test calendar that visually =
+represents all team test activities by function and date.
+
+- **System Tracking**
+    - Re-examine the BRB tracker, add any needed =
+columns for reporting, especially concerning legal entity go lives and day =
+one system dependencies.
+    - Validate current flags/data points to avoid =
+misalignment, ensuring the correct systems are included for BRB and legal =
+entity impacts.
+
+- **Meetings & Collaboration**
+    - Finalize team =
+gathering location.
+    - Address time-sensitive action items to avoid =
+project slippage.
+    - Improve ongoing team communications and =
+documentation sharing.
+
+### Noteworthy Dates and Figures
+
+- **June 4, 2025:** Date of conversation.
+- **Mark Lowy=E2=80=99s =
+retirement:** Planned for this year.
+- **Upcoming Soccer Match:** In two =
+hours from the meeting (for a 9-year-old's team).
+
+---
+
+This summary structures the discussions, priorities, and immediate next =
+steps discussed in the meeting, ensuring project clarity and effective =
+follow-through.
+
+Transcript:
+0:05
+Let me grab my truck.
+
+0:06
+Okay.
+
+1:18
+You know, Rakesh, just when you think you're finally getting settled down, =
+the head of Oil and Gas says ADNOC is doing this global chems business roll=
+ up. You need to get involved. Do you know how many people I know adnoc?
+
+1:41
+I would say zero or maybe a hundred.
+
+1:46
+No one. I don't even know a=
+ name.
+
+1:50
+Padlock.
+
+1:52
+Abu Dhabi.
+
+1:53
+Ah. Okay, okay, okay, okay.
+
+1:54
+Abu Dhabi.
+
+1:55
+National Abu Dhabi. Nash. Okay. Swanson was dealing =
+something. I don't know if it was Saudi or Abu Dhabi. Might be different. =
+Okay. Wow.
+
+2:13
+It's good to be needed.
+
+2:16
+That is always a good =
+feeling. Who do we have in energy in our practice? You, jc, Mark Lowy and =
+Cynthia Hubbard. Cynthia. Okay.
+
+2:33
+Mark's retiring.
+
+2:34
+Yeah, I heard Mark. Is he this year? Okay.
+
+2:44
+Okay. If not.
+
+2:53
+Well, you got a USB for the other one?
+
+2:55
+Oh, yeah. It'll be fine. I. I =
+still have some left.
+
+2:59
+Okay. I'll be fine otherwise. Yeah. Okay.
+
+3:09
+So then what's item number? So we have one calendar, UAT dates, pager, =
+Excel two Excel of the service owners, systems. Systems.
+
+3:27
+Okay.
+
+3:28
+So that we can send around.
+
+3:31
+Fill in what you have. Yeah, and then we =
+will get fill in for what's missing.
+
+3:37
+Yes.
+
+3:38
+A slide and a matrix of the racy which we will align on here.
+
+3:43
+For roles and responsibilities.
+
+3:44
+Yeah, we need to update that.
+
+3:46
+So review that. Let's take a look at that. And I truly, what I truly like =
+is I'd like to get to a view that's. I don't think I have it here. I would =
+like to get out of here. A test calendar. After all these conversations, =
+the true outcome is I want a test calendar, not just UAT calendar, but I =
+want to say based on these UAT calendars, if you look at our decks, you =
+have a calendar view month, you know, week by week that says, you know, =
+supply chain X is here, is doing this and is doing this. And you know, it's=
+ not here. ERP or HR is doing here and you know, here. So I want a =
+consolidated calendar view that people can take and say, okay, supply chain=
+, all the process testings, if it's not end to end. But let's say their =
+functional processes are tested in these two aligning with all of these =
+calendar year 80 dates. They may be touching ISE, they may be touching CCX =
+here, they may be touching ERP here, but you've got a view of supply chain.=
+ It's. This is a calendar for hr. They only do one at this point. Er, you =
+know, ERP team or finance, maybe this is you know, finance, maybe they do =
+it here and they do it here. So I want a calendar view like this as an end =
+game that people can say, okay, this is where teams are testing because =
+everything we're reporting on would be progress on these. But for now let's=
+ start with these three and let's get a view and let's start reviewing what=
+ it looks like. And we should talk about the system tracker, what we need =
+to track these guys. So can you look at the BRB tracker again? I want to =
+make sure that if it's not there that we add in some columns in there that =
+we can start reporting on.
+
+6:27
+Yeah.
+
+6:28
+If we need to build them.
+
+6:30
+Okay, so there's a bunch of columns that are not in here.
+
+6:33
+So critical for legal entity go live. We need to validate that.
+
+6:40
+This is calculated, I think.
+
+6:42
+No, it's just coming in from the flags =
+we have set up in the smartsheets. We went in and set up flags as to =
+whether it's needed for BRV or day one.
+
+6:51
+Okay.
+
+6:52
+That is this piece.
+
+6:53
+Yeah.
+
+6:54
+So right now we've said that these 20=
+ are BRV. We have not included that. They're touching them and they're =
+needed for BRB. So we need to align on. Is it 20 plus three or is it just =
+20? So the flag you see is BRB day one is just because we identified it's =
+BRB day one. It's a 22 for BRB. It is not.
+
+7:19
+It's not based on the date=
+.
+
+7:21
+No, it's when we said it's getting impacted and changed like an erp=
+.
+
+7:25
+It's not the go on date.
+
+7:27
+No, it's not a go live date. It's =
+truly whether it's a legal entity related impact.
+
+7:34
+Oh, I see what you're saying. Like it's a LE based, so that's erp.
+
+7:38
+There's LE work. But for this UAT during brb, they're touching three other =
+systems that we've said that's a day one issue or something else. So we =
+need to go back and validate that. What?
+
+8:05
+It's right down the street. =
+We can walk there.
+
+8:07
+Yeah, it doesn't matter anywhere. It's good. It's =
+just a team gathering. Is Dean's a decent place?
+
+8:12
+Yeah, it's great.
+
+8:13
+What is Dean's?
+
+8:14
+It's like Italian. It's in the.
+
+8:20
+Steakhouse Follow on session app vendor support strategy. I can't make that=
+ one.
+
+8:26
+It's in the lobby of the JW down there.
+
+8:29
+Okay.
+
+9:09
+The tsa. But no, I have to go spend a strategy call. Okay. We may need to =
+work tonight.
+
+9:15
+Okay.
+
+9:16
+There's a long. There's in the long list. =
+We just kind of all. There's like 10 explanations coming through.
+
+9:27
+Okay.
+
+9:28
+All stuff we knew about and stuff.
+
+9:30
+But like, there's stuff that if we.
+
+9:32
+Don'T get it done soon, we're not=
+ going get it done this week.
+
+9:34
+Okay. All right. Okay. Hey, can you =
+hear me? Talk to each other More today than we have in the last four months=
+. I know, right? Well, Sam, I got a parents versus kids soccer match in =
+about two hours time, so you may be lying down for the next week. Is this =
+for your daughter or son?
+
+10:00
+No.
+
+10:00
+So my son, 9 year old. These =
+kids are good.
+----_NmP-2bdd79cf19195689-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">ADNOC =
+Roll-Up Project Management and Coordination</h1></td></tr></table></div><di=
+v style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/5152f298-e89e-49c7-896d-aa375e8c8602?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h3 style=3D"font-weight:500;padding-top:2=
+0px;font-size:1.75rem">Main Topics Discussed</h3><h4 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.5rem">1. Involvement =
+in ADNOC Global Chems Business Roll-Up</h4><ul>
+<li>The speaker was =
+recently approached to get involved with ADNOC=E2=80=99s (Abu Dhabi =
+National Oil Company) global chemicals business roll-up.</li>
+<li>There is initial confusion and uncertainty about connections or prior =
+dealings with ADNOC or contacts in Abu Dhabi, as the speaker admits knowing=
+ &quot;zero or maybe a hundred&quot; people but not directly.</li>
+<li>References are made to Swanson potentially being involved with either =
+Saudi or Abu Dhabi efforts.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding=
+-top:20px;font-size:1.5rem">2. Team Structure in the Energy =
+Practice</h4><ul>
+<li>Members currently active in the energy practice =
+include the speaker, JC, Mark Lowy, and Cynthia Hubbard.</li>
+<li>Mark Lowy&#39;s upcoming retirement is noted (possibly within this =
+year).</li>
+<li>Discussion about available resources like USB drives, =
+indicating some technical or operational requirements.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem">3. Project =
+Management and Testing Overview</h4><ul>
+<li>The group is working on =
+several project management items:<ul>
+<li>UAT (User Acceptance Testing) =
+calendar.</li>
+<li>Pager and Excel files listing service owners and systems=
+.</li>
+<li>Ensuring everyone fills in missing information.</li>
+<li>Creating and aligning on a RACI (Responsible, Accountable, Consulted, =
+and Informed) matrix to clarify roles and responsibilities.</li>
+<li>The end goal is to have a consolidated and detailed test calendar that =
+covers various teams (Supply Chain, HR, ERP/Finance) on a week-by-week =
+basis.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px=
+;font-size:1.5rem">4. System Tracker and Reporting Requirements</h4><ul>
+<li>Discussion about the BRB (Business Readiness/Release Blocker) tracker =
+and the need to ensure adequate columns are present for effective reporting=
+.<ul>
+<li>There are flags and data points regarding which systems are =
+required for &quot;legal entity go live,&quot; day one readiness, and their=
+ impact on legal entities.</li>
+<li>Issues of alignment: clarifying whether=
+ certain systems count as BRB or if additional systems need to be included.=
+</li>
+<li>Need to return and validate these details to ensure accurate =
+tracking and reporting.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500=
+;padding-top:20px;font-size:1.5rem">5. Scheduling and Logistics</h4><ul>
+<li>Venue options for ongoing team gatherings are discussed (e.g., =
+Dean&#39;s, an Italian steakhouse, or lobby of JW).<ul>
+<li>One participant cannot make the follow-on session due to a conflicting =
+strategy call.</li>
+</ul>
+</li>
+<li>There is an urgency to progress on a =
+long to-do list, with recognition that outstanding items must be completed =
+soon or will risk delay beyond the current week.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem">6. Personal=
+ and Team Dynamics</h4><ul>
+<li>Mutual recognition that the team has =
+communicated more in-person today than in the past four months.</li>
+<li>A lighter moment is shared about an upcoming parents versus kids soccer=
+ match (for a 9-year-old son), with jokes about the anticipated physical =
+toll.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">Action Items &amp; Follow-Ups</h3><ul>
+<li><p><strong =
+style=3D"font-weight:bold">Calendar &amp; Documentation</strong></p>
+<ul>
+<li>Gather and update UAT dates, service owner/system Excel lists, and =
+ensure all missing data is provided.</li>
+<li>Review and firm up the RACI =
+matrix for roles and responsibilities.</li>
+<li>Develop a consolidated test=
+ calendar that visually represents all team test activities by function and=
+ date.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">System =
+Tracking</strong></p>
+<ul>
+<li>Re-examine the BRB tracker, add any needed =
+columns for reporting, especially concerning legal entity go lives and day =
+one system dependencies.</li>
+<li>Validate current flags/data points to =
+avoid misalignment, ensuring the correct systems are included for BRB and =
+legal entity impacts.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Meetings &amp; Collaboration</strong></p>
+<ul>
+<li>Finalize team gathering location.</li>
+<li>Address time-sensitive =
+action items to avoid project slippage.</li>
+<li>Improve ongoing team =
+communications and documentation sharing.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">Noteworthy=
+ Dates and Figures</h3><ul>
+<li><strong style=3D"font-weight:bold">June 4, =
+2025:</strong> Date of conversation.</li>
+<li><strong =
+style=3D"font-weight:bold">Mark Lowy=E2=80=99s retirement:</strong> Planned=
+ for this year.</li>
+<li><strong style=3D"font-weight:bold">Upcoming Soccer=
+ Match:</strong> In two hours from the meeting (for a 9-year-old&#39;s =
+team).</li>
+</ul>
+<hr />
+<p>This summary structures the discussions, =
+priorities, and immediate next steps discussed in the meeting, ensuring =
+project clarity and effective follow-through.</p>
+</div></div></div><div =
+style=3D"background-color:#ffffff;padding:28px;border-radius:12px;border:1p=
+x solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 =
+rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-size:20px;font-weight:=
+600;margin-top:0;margin-bottom:20px;display:flex;align-items:center;gap:8px=
+"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription<=
+/h3><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">0:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Let me grab my truck=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</span><span =
+style=3D"color:#64748b;font-size:14px">0:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">1:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You know, Rakesh, =
+just when you think you&#x27;re finally getting settled down, the head of =
+Oil and Gas says ADNOC is doing this global chems business roll up. You =
+need to get involved. Do you know how many people I know adnoc?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</span><span =
+style=3D"color:#64748b;font-size:14px">1:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I would say zero or =
+maybe a hundred.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">1:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No one. I don&#x27;t=
+ even know a name.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</span><sp=
+an style=3D"color:#64748b;font-size:14px">1:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Padlock.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">1:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Abu Dhabi.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</span><span =
+style=3D"color:#64748b;font-size:14px">1:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Ah. Okay, okay, okay=
+, okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">1:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Abu Dhabi.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</span><span =
+style=3D"color:#64748b;font-size:14px">1:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">National Abu Dhabi. =
+Nash. Okay. Swanson was dealing something. I don&#x27;t know if it was =
+Saudi or Abu Dhabi. Might be different. Okay. Wow.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>2:13</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">It&#x27;s good to be needed.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</sp=
+an><span style=3D"color:#64748b;font-size:14px">2:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That is always a =
+good feeling. Who do we have in energy in our practice? You, jc, Mark Lowy =
+and Cynthia Hubbard. Cynthia. Okay.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>2:33</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Mark&#x27;s retiring.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</span><sp=
+an style=3D"color:#64748b;font-size:14px">2:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I heard Mark. =
+Is he this year? Okay.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">2:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. If not.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</span><span =
+style=3D"color:#64748b;font-size:14px">2:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Well, you got a USB =
+for the other one?</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified<=
+/span><span style=3D"color:#64748b;font-size:14px">2:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, yeah. It&#x27;ll=
+ be fine. I. I still have some left.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sam</span><span style=3D"color:#64748b;font-size:14px">2:=
+59</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay. I&#x27;ll be fine otherwise. Yeah. Okay.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified</span><span style=3D"color:#64748b;font-size=
+:14px">3:09</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">So then what&#x27;s item number? So we have one calendar, UAT =
+dates, pager, Excel two Excel of the service owners, systems. Systems.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</span><span =
+style=3D"color:#64748b;font-size:14px">3:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified</span=
+><span style=3D"color:#64748b;font-size:14px">3:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So that we can send =
+around.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</span><span =
+style=3D"color:#64748b;font-size:14px">3:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Fill in what you =
+have. Yeah, and then we will get fill in for what&#x27;s missing.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified</span=
+><span style=3D"color:#64748b;font-size:14px">3:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Sam</span><span style=3D"color:#64748b;font-size:14px">3=
+:38</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">A slide and a matrix of the racy which we will align on here.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">3:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">For roles and =
+responsibilities.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified<=
+/span><span style=3D"color:#64748b;font-size:14px">3:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, we need to =
+update that.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</span><span =
+style=3D"color:#64748b;font-size:14px">3:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So review that. =
+Let&#x27;s take a look at that. And I truly, what I truly like is I&#x27;d =
+like to get to a view that&#x27;s. I don&#x27;t think I have it here. I =
+would like to get out of here. A test calendar. After all these =
+conversations, the true outcome is I want a test calendar, not just UAT =
+calendar, but I want to say based on these UAT calendars, if you look at =
+our decks, you have a calendar view month, you know, week by week that says=
+, you know, supply chain X is here, is doing this and is doing this. And =
+you know, it&#x27;s not here. ERP or HR is doing here and you know, here. =
+So I want a consolidated calendar view that people can take and say, okay, =
+supply chain, all the process testings, if it&#x27;s not end to end. But =
+let&#x27;s say their functional processes are tested in these two aligning =
+with all of these calendar year 80 dates. They may be touching ISE, they =
+may be touching CCX here, they may be touching ERP here, but you&#x27;ve =
+got a view of supply chain. It&#x27;s. This is a calendar for hr. They only=
+ do one at this point. Er, you know, ERP team or finance, maybe this is you=
+ know, finance, maybe they do it here and they do it here. So I want a =
+calendar view like this as an end game that people can say, okay, this is =
+where teams are testing because everything we&#x27;re reporting on would be=
+ progress on these. But for now let&#x27;s start with these three and =
+let&#x27;s get a view and let&#x27;s start reviewing what it looks like. =
+And we should talk about the system tracker, what we need to track these =
+guys. So can you look at the BRB tracker again? I want to make sure that if=
+ it&#x27;s not there that we add in some columns in there that we can start=
+ reporting on.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified</span=
+><span style=3D"color:#64748b;font-size:14px">6:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</span><span =
+style=3D"color:#64748b;font-size:14px">6:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">If we need to build =
+them.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified</span=
+><span style=3D"color:#64748b;font-size:14px">6:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so =
+there&#x27;s a bunch of columns that are not in here.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sam</span><span style=3D"color:#64748b;font-size:14px">6:=
+33</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So critical for legal entity go live. We need to validate that.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified</span=
+><span style=3D"color:#64748b;font-size:14px">6:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">This is calculated, =
+I think.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</span><span =
+style=3D"color:#64748b;font-size:14px">6:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, it&#x27;s just =
+coming in from the flags we have set up in the smartsheets. We went in and =
+set up flags as to whether it&#x27;s needed for BRV or day one.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified</span=
+><span style=3D"color:#64748b;font-size:14px">6:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</span><span =
+style=3D"color:#64748b;font-size:14px">6:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That is this piece.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified</span=
+><span style=3D"color:#64748b;font-size:14px">6:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</span><span =
+style=3D"color:#64748b;font-size:14px">6:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So right now =
+we&#x27;ve said that these 20 are BRV. We have not included that. =
+They&#x27;re touching them and they&#x27;re needed for BRB. So we need to =
+align on. Is it 20 plus three or is it just 20? So the flag you see is BRB =
+day one is just because we identified it&#x27;s BRB day one. It&#x27;s a 22=
+ for BRB. It is not.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified<=
+/span><span style=3D"color:#64748b;font-size:14px">7:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;s not based =
+on the date.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</span><span =
+style=3D"color:#64748b;font-size:14px">7:21</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, it&#x27;s when =
+we said it&#x27;s getting impacted and changed like an erp.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Unidentified</span><span style=3D"color:#64748b;font-siz=
+e:14px">7:25</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">It&#x27;s not the go on date.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sam</span><span style=3D"color:#64748b;font-size:14px">7:=
+27</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">No, it&#x27;s not a go live date. It&#x27;s truly whether it&#x27;s a =
+legal entity related impact.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified=
+</span><span style=3D"color:#64748b;font-size:14px">7:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, I see what =
+you&#x27;re saying. Like it&#x27;s a LE based, so that&#x27;s erp.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</span><span =
+style=3D"color:#64748b;font-size:14px">7:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">There&#x27;s LE work=
+. But for this UAT during brb, they&#x27;re touching three other systems =
+that we&#x27;ve said that&#x27;s a day one issue or something else. So we =
+need to go back and validate that. What?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified</span><span style=3D"color:#64748b;font-size=
+:14px">8:05</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">It&#x27;s right down the street. We can walk there.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</span><span =
+style=3D"color:#64748b;font-size:14px">8:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, it =
+doesn&#x27;t matter anywhere. It&#x27;s good. It&#x27;s just a team =
+gathering. Is Dean&#x27;s a decent place?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Unidentified</span><span style=3D"color:#64748b;font-size=
+:14px">8:12</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">Yeah, it&#x27;s great.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</sp=
+an><span style=3D"color:#64748b;font-size:14px">8:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">What is Dean&#x27;s?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified</span=
+><span style=3D"color:#64748b;font-size:14px">8:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;s like =
+Italian. It&#x27;s in the.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</span><sp=
+an style=3D"color:#64748b;font-size:14px">8:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Steakhouse Follow on=
+ session app vendor support strategy. I can&#x27;t make that one.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified</span=
+><span style=3D"color:#64748b;font-size:14px">8:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;s in the =
+lobby of the JW down there.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</span><sp=
+an style=3D"color:#64748b;font-size:14px">8:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">9:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The tsa. But no, I =
+have to go spend a strategy call. Okay. We may need to work tonight.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</span><span =
+style=3D"color:#64748b;font-size:14px">9:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">9:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">There&#x27;s a long.=
+ There&#x27;s in the long list. We just kind of all. There&#x27;s like 10 =
+explanations coming through.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</span><s=
+pan style=3D"color:#64748b;font-size:14px">9:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">9:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All stuff we knew =
+about and stuff.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sam</span><sp=
+an style=3D"color:#64748b;font-size:14px">9:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">But like, =
+there&#x27;s stuff that if we.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh<=
+/span><span style=3D"color:#64748b;font-size:14px">9:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Don&#x27;T get it =
+done soon, we&#x27;re not going get it done this week.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sam</span><span style=3D"color:#64748b;font-size:14px">9:=
+34</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay. All right. Okay. Hey, can you hear me? Talk to each other More =
+today than we have in the last four months. I know, right? Well, Sam, I got=
+ a parents versus kids soccer match in about two hours time, so you may be =
+lying down for the next week. Is this for your daughter or son?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">10:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No.</div></div><div =
+style=3D"margin-bottom:0;padding:16px;background-color:#f8fafc;border-radiu=
+s:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-items=
+:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Sam</span><span style=3D"color:#64748b;font-size:14px">10:00=
+</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So=
+ my son, 9 year old. These kids are good.</div></div></div><div =
+style=3D"margin-top:36px;text-align:center;color:#64748b;font-size:14px;pad=
+ding:20px;border-top:1px solid #e2e8f0"><p style=3D"margin:0;margin-bottom:=
+8px">Captured with Wave AI Note Taker</p><p style=3D"margin:0;font-size:12p=
+x">Your AI-powered companion</p></div></div></div></div></html>
+----_NmP-2bdd79cf19195689-Part_1--

@@ -1,0 +1,1993 @@
+MIME-Version: 1.0
+Date: Thu, 19 Jun 2025 21:21:08 -0400
+References: <0100019784776bdb-ad34f332-5c40-4c53-9fac-a7946b5672d8-000000@email.amazonses.com>
+In-Reply-To: <0100019784776bdb-ad34f332-5c40-4c53-9fac-a7946b5672d8-000000@email.amazonses.com>
+Message-ID: <CAOat4ZA2db-UwWHn_CABep4JC+3t3aXyPAGc4iFAwngEi81t+w@mail.gmail.com>
+Subject: Fwd: Regional User Acceptance Testing Planning Overview
+From: Mac Connolly <mac@macconnolly.com>
+To: save@mem.ai
+Content-Type: multipart/alternative; boundary="0000000000004858cb0637f6ad24"
+
+--0000000000004858cb0637f6ad24
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+---------- Forwarded message ---------
+From: Wave AI Note Taker <summary@email.wave.co>
+Date: Wed, Jun 18, 2025 at 3:15=E2=80=AFPM
+Subject: Regional User Acceptance Testing Planning Overview
+To: <mac@macconnolly.com>
+
+
+[image: Wave AI Logo]Regional User Acceptance Testing Planning Overview
+=E2=9C=A8 View Your Session on the Web
+<https://app.wave.co/sessions/1d02e1ec-35b7-4729-8473-57504ada62f1?lastLogi=
+nParam=3Dgoogle>
+=F0=9F=93=9DSummary
+
+Meeting focused on planning regional User Acceptance Testing (UAT)
+sessions, identifying resource allocation, establishing scheduling needs
+across various global regions, and clarifying dependencies and overlapping
+concerns.
+------------------------------
+Main Topics Discussed1. UAT Session Scheduling Across Regions
+
+   -
+
+   *Regions Involved*
+   - Americas (US)
+      - EMEA (Europe, Middle East, and Africa)
+      - APAC (Asia-Pacific)
+   -
+
+   *Remote Session Timing*
+   - Sessions will not be simultaneous across regions.
+      - US Team: Testing roughly from 8:00=E2=80=9315:00 (local time),
+      Monday=E2=80=93Friday.
+      - EMEA and APAC teams have their own windows (exact time zones to be
+      confirmed, with reference made to time differences, e.g.,
+Ireland and APAC).
+      - Each regional resource will collaborate with regional business
+      partners during their daylight hours.
+   -
+
+   *On-Site Sessions*
+   - Easier to calendar and coordinate compared to remote sessions.
+   -
+
+   *Resource Notes*
+   - Important to capture regional concerns and overlapping resources
+      (especially for cross-region functions like finance).
+      - Regional teams: Americas, EMEA, APAC
+      - Note overlapping resources since these could become risk points.
+
+------------------------------
+2. Resource Allocation & Test Plan DurationOrder Management
+
+   - ~24 scenarios to run =E2=80=93 expected to take the whole week.
+   - No overlapping resource concerns for regional teams (Americas, EMEA,
+   APAC).
+
+Logistics
+
+   - One day per week (spread across weeks as 1+1 for multiple functions).
+   - Applies to all three regions.
+   - No major regional or overlapping concerns raised.
+
+Finance & Related Functions
+
+   - FI: 5 days over 3 regions.
+   - AP Cofax, Lease Accelerator, Concur, Black Line, Banking Web, HRC Cash
+   Up, FSCM, Tax Application: Mostly 5 days per region, with some exception=
+s
+   (e.g., Tax Application: 4 days; Tax Rate: 2 days; Hyperion: 3 days).
+   - Highlighted challenge: APAC entry controller not yet
+   identified=E2=80=94resource gap noted.
+
+Manufacturing, Sourcing, Planning
+
+   - Planning: 1 day
+   - Manufacturing & Sourcing: 5 days each
+   - Multiple teams run in parallel; dependencies called out where relevant=
+.
+
+------------------------------
+3. Dependency Tracking & Sequencing
+
+   - Dependencies discussed extensively, especially:
+      - *Order Management* is a key predecessor (e.g., credit check depends
+      on order creation).
+      - Other dependencies: Banking, cash application, compliance, tax
+      applications.
+      - Proposal to use indexing or alphabetical (A=E2=80=93Z) columns to d=
+enote
+      dependencies for clear reporting and sequencing.
+
+------------------------------
+4. Reporting & Documentation Improvements
+
+   - Suggestions to:
+      - Add columns for resource notes, dependencies, regions.
+      - Possibly create multiple tabs in documentation for each region (for
+      organizational clarity).
+      - Alphabetize or numerically index dependency relationships for
+      clarity.
+
+------------------------------
+Action Items & Follow-Ups
+
+   - Capture regional resource concerns and overlapping risks in the
+   =E2=80=98Resource Notes=E2=80=99 column.
+   - Finalize resource identification for APAC finance entry controller.
+   - Document precise testing time windows for each region, referencing
+   time differences as needed.
+   - Add or update dependency indexing in UAT plans.
+   - Consider splitting UAT plans/tabs based on region for clearer
+   organization.
+   - Spell check and finalize documentation.
+   - Validate scope and allocations where items are still gray (e.g., Tax
+   Rate application scope).
+   - Confirm resource assignments for all tools (e.g., Lease Accelerator,
+   Concur, Black Line, etc.).
+   - Sequence dependencies in the test schedule using the agreed indexing
+   approach.
+
+------------------------------
+Key Dates & Timeframes Mentioned
+
+   - *Today=E2=80=99s Date:* June 18th, 2025
+   - *Testing Windows:* US team from 8:00=E2=80=9315:00, other regions to b=
+e
+   confirmed.
+   - *Order Management:* Whole week required for test execution.
+   - *Finance and numerous related areas:* Approximately five days per test
+   cycle.
+   - *Build completion for Lease Accelerator:* Expected sometime next week.
+
+------------------------------
+Noted Risks
+
+   - Overlapping resources (e.g., finance roles spanning multiple regions).
+   - Pending identification of critical APAC resources.
+   - Dependencies in test scenarios mean certain areas can't be completed
+   until predecessors finish (especially in order management & finance
+   modules).
+
+------------------------------
+Additional Notes
+
+   - Parallel runs for some teams; clearer sequencing required for
+   dependent scenarios.
+   - Team members are encouraged to index dependencies and spell check
+   before final accounting.
+   - Aim for clarity in reporting for the next day=E2=80=99s review.
+
+------------------------------
+
+This summary provides a structured overview of the meeting=E2=80=99s discus=
+sions,
+key decisions, identified challenges, and action points regarding the setup
+and management of regional UAT sessions.
+=F0=9F=8E=99=EF=B8=8FTranscription
+Audrey0:02
+I mean, one thing that I don't know how we communicate it, maybe you guys
+can help me digest it. But for the remote sessions, okay, the UAT ones, you
+know, we're going to have sessions during the, you know, in the APEC
+regions, the EMEA regions and the U. S regions. So they won't all be at the
+same time, you know. Okay, so how do we illustrate that?
+Jessica0:32
+Is the. Yeah. Is the APATH team going to be doing the same testing that
+like the US Team is doing their company code?
+Audrey0:46
+So, you know, for instance, you know, there's a whole team of people that
+I, Audrey and I eventually are going to add to the resource UAT plans that
+we just got this morning from our business partner over there, Agnes. She,
+you know, they're going to be testing an arv, you know, that week. They're
+going to do some sit there next week and it'd be onerous for us to say,
+listen, you know, we're going to start testing at midnight because it's
+works best for the eastern U.S. so, you know, roughly, you know, our
+resources that are regional are going to work with their regional
+counterparts to do the testing for the robot week. Now for the on site one,
+you know, it's much more easy to calendar.
+Jessica1:36
+Yeah.
+Audrey1:37
+But you know, it's going to be just windows. For the others, you know, from
+eight to eight to three, you know, Monday through Friday, you know, the US
+Team is going to be testing all those things. And then from, you know,
+three to 11, you know, you get my point, right? And then 11 to seven. Yeah,
+we'll be the APAC team. Three to 11, you know, I don't have my
+international calendar in front of me, so I don't remember what the time
+difference is between here and Ireland.
+Jessica2:08
+So let's just capture that under the resource note. So in the resource
+notes column, I want to capture toothpaste. One is there's regional
+concerns for the moment and we'll note that. But then also the second thing
+is if there is overlapping resources like finance, if there's overlapping
+resources like in finance, I do want to at least note those because there's
+potential risk concern there. So order management, how many days do.
+Srinivas2:44
+You think.
+Jessica2:47
+From it? One day, two days, three days?
+Audrey2:51
+Well, that's a whole bunch of scripts. That's lion's share. That's, you
+know, that's like 24 scenarios we're gonna have to run. Okay, so it's gonna
+take the whole week.
+Shiny3:01
+The whole week.
+Jessica3:04
+And then do you have resources concerns? And I will spell check all those
+later guys.
+Audrey3:07
+I don't.
+Jessica3:08
+I'm not good with spelling. So are there regional teams that need to run
+this and do you have overlapping resource concerns?
+Audrey3:16
+Regional teams, no concerns.
+Jessica3:19
+Okay, what are the regional teams? How many do you have?
+Audrey3:24
+Three.
+Jessica3:25
+What are they? America.
+Srinivas3:27
+Yeah.
+Audrey3:28
+Emea.
+Srinivas3:31
+Yep.
+Jessica3:32
+Okay, let's note here what the regions are because that I think may help us
+to build it out. Because like for example the calendaring that shiny box
+brought up. If we have enough EMEA APAC breakouts for our organizational
+purposes, we may want to create separate tabs for them. Okay, Logistics,
+how many days?
+Audrey3:56
+One day per week. So one remote one.
+Jessica4:03
+And then any regional concerns or overlapping resource concerns.
+Audrey4:07
+Nothing has been raised to me. Same regions.
+Jessica4:11
+Oh, all three regions.
+Audrey4:13
+Yeah, for all.
+Jessica4:15
+Oh, every single one of yours has all three regions.
+Audrey4:18
+It does.
+Jessica4:19
+Okay, so quick question for you. Do you also have the same thing with all
+three regions?
+Srinivas4:25
+Yeah, I can quickly comment on that. So for FI it's like five days and the
+three regions and then the challenge is about APAC entry controller
+identified yet and the business finance 7. That's the resource gap for AFI.
+For AP Cofax. AP Cofax.
+Jessica4:55
+I just, I was. I just want to copy paste are these. You're gonna have all
+three regions nears as well?
+Srinivas5:04
+I think for conquer I'll have to double check but for even for lease
+accelerator as well. So for work UI it's gonna be most likely America.
+Right. The resource based in US is gonna do that black line. I might expect
+all the three regions these accelerator. I think this I would limit to
+America and APAC because I have a geocit who is working on this and then I
+have resource here. AP GoFax. Banking. Yeah, banking web. Three regions HRC
+cash up. It's only two regions. America and EMEA. FSCM. That's most likely
+SCM. We have grown up in the US. Yeah, I think if SCM two three regions tax
+application it's gonna be US and EMEA.
+Jessica6:06
+Sorry, both of them or one for both of them? America. Jamea.
+Srinivas6:11
+Yeah.
+Jessica6:22
+Okay, I will come back to you in one second. So sorry, don't back. Back to
+you. Trade compliance. How many days?
+Audrey6:30
+Oh, that should be now. When I say one day, that's one day per week. So
+you're capturing it that way or do you want to put it as 2?
+Shiny6:38
+I think it would be total.
+Srinivas6:41
+Total.
+Audrey6:41
+Then it'll be two for logistics.
+Shiny6:44
+One plus one. Maybe just say one plus one to know.
+Jessica6:47
+Oh, one for trade and one for compliance.
+Audrey6:52
+No, they're the same Thing one for.
+Jessica6:54
+Week one and one for week two.
+Audrey6:56
+Thank you.
+Shiny6:58
+Oh, then we should just say one day.
+Audrey7:00
+Sorry.
+Srinivas7:00
+Okay. All right.
+Audrey7:02
+So that's the story we're telling. I'm fine with that. Okay. For finance,
+it's 5. Planning is 1. Manufacturing and source sourcing are 5. Tosca 5,
+EDI 5.
+Jessica7:32
+Do you have any overlapping resource concerns?
+Audrey7:37
+Well, in finance, you know, we've illustrated that before, right?
+Jessica7:40
+Yeah. But the rest of these are pretty much individual teams so that like
+for example, I see manufacturing sourcing, task to all say five days of
+testing. But it's really different teams of people that are just all gonna
+be running in parallel. So you don't really need to worry about.
+Audrey8:04
+They'll be running like box cars, you know.
+Shiny8:06
+Yeah, and I was gonna call that out as in the interdependencies.
+Jessica8:10
+Right.
+Audrey8:11
+You do your thing, I do mine. I can't do mine until you do yours.
+Jessica8:15
+Got it.
+Shiny8:16
+Okay.
+Jessica8:17
+All right, that's. That's fine. Okay, so trinity box down to yours.
+Srinivas8:24
+Yeah. Fy. I think it. It goes all the. All days. Right. Like keep it five
+days. Ap, co, five days banking, five days hrc, cash up mostly. Five days
+credit collection, five days tax application. They will still test and give
+it four days tax application. 13 tax rate. It's going to be two days. I
+believe it's a gray area for me. I don't know. I don't have any scope
+finalized yet. I'll have to circle back on this Hyperion. It's going to be
+three days black line. It's going to be all the five days because it's.
+It's integrated with erp. It's the least accelerator I think you can
+highlight because it's not ready. The bill will be completed sometime next
+week. SAP concur. I think two days.
+Shiny9:24
+Is there a dependency here, Srinivas? I'm just trying to look at
+interdependency and sequencing. One before, two after five.
+Srinivas9:32
+Dependency will be with order management. Right. If order management is
+creating an order, then credit comes into picture. So. So that's in the
+dependency. If no orders, then I can't do a credit check. That's
+dependency. Okay, can we maybe index these and.
+Shiny9:51
+Add a column with indexing for dependency with that book? Jessica.
+Audrey9:58
+Like.
+Jessica10:00
+You mean just like.
+Shiny10:02
+Like call them A through Z or.
+Srinivas10:03
+1 through 10 or A.
+Shiny10:05
+Let's just alphabetize it. You know, call. Call A through Z and then you
+can go to, you know, B and say it's dependent.
+Srinivas10:13
+A, D and F. Do you want to simplify this reporting for tomorrow. Then if
+you have a detailed view, then you can probably have that.
+Audrey10:21
+The durations.
+Shiny10:22
+Yes, but from a dependency, those dependencies are going to be constant.
+Srinivas10:27
+Oh, that's. I agree.
+Jessica10:46
+You're just saying. For example, order management's one. You just talked
+about credit, so this would be a one.
+Audrey10:51
+Correct.
+Jessica10:52
+Correct, yeah. Literally predecessors like we do in a schedule.
+Shiny10:57
+Right. So that when we sequence this and at least lay it out, it'll. It'll
+make sense.
+Jessica11:02
+Yeah.
+Srinivas11:03
+And for fy, I think we still need auto management. Right. Without an auto
+posting there isn't.
+Audrey11:12
+Absolutely. That's the tip of the spear.
+Srinivas11:16
+Then you have vendor payments. Then I think the accounts table comes in the
+picture. Where do you have.
+Jessica11:28
+This one?
+Srinivas11:28
+Yeah.
+Jessica11:30
+Is dependent on.
+Shiny11:33
+Order management.
+Srinivas11:35
+Yeah. Banking to scroll up. Order management, logistics, compliance. What
+else? I think the cash up has dependency. The banking. So that's the key
+area. Cash app has dependency. Banking. That's number 12, I believe. Then
+tax applications. So IP run is overall ERP dependency. I'm not sure how you
+want to do like that work. You answer the IP and it's overall. Yeah. Right.
+So once the postings and everything is done, I think you need reporting to
+be sent to our.
+
+Captured with Wave AI Note Taker
+
+Your AI-powered companion
+
+--0000000000004858cb0637f6ad24
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div><br></div><div><br><div class=3D"gmail_quote gmail_quote_container"><d=
+iv dir=3D"ltr" class=3D"gmail_attr">---------- Forwarded message ---------<=
+br>From: <strong class=3D"gmail_sendername" dir=3D"auto">Wave AI Note Taker=
+</strong> <span dir=3D"auto">&lt;<a href=3D"mailto:summary@email.wave.co">s=
+ummary@email.wave.co</a>&gt;</span><br>Date: Wed, Jun 18, 2025 at 3:15=E2=
+=80=AFPM<br>Subject: Regional User Acceptance Testing Planning Overview<br>=
+To:  &lt;<a href=3D"mailto:mac@macconnolly.com">mac@macconnolly.com</a>&gt;=
+<br></div><br><br><div style=3D"font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;margin:0px;padding=
+:0px;background-color:rgb(244,244,244)"><div style=3D"width:100%;max-width:=
+604px;margin:0px auto;font-family:-apple-system,BlinkMacSystemFont,&quot;Se=
+goe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><div style=3D"background-im=
+age:url(&quot;https://upcdn.io/W142iax/raw/email/banner_clean.png&quot;);ba=
+ckground-size:cover;background-position:center center;width:604px;height:29=
+7px;margin:0px auto;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif"><table cellpadding=3D"0" cell=
+spacing=3D"0" border=3D"0" width=3D"100%" height=3D"100%" style=3D"font-fam=
+ily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,=
+Arial,sans-serif"><tbody style=3D"font-family:-apple-system,BlinkMacSystemF=
+ont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><tr style=3D"fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif"><td valign=3D"center" align=3D"center" style=3D"pad=
+ding:0px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif"><img src=3D"https://upcdn.io/W142iax/raw=
+/email/logo_white.png" alt=3D"Wave AI Logo" style=3D"width: 41px; height: 5=
+8px; max-width: 41px; margin-bottom: 10px; font-family: -apple-system, Blin=
+kMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif;=
+"><h1 style=3D"font-size:32px;margin:0px;padding:0px 0px 10px;text-align:ce=
+nter;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robo=
+to,Helvetica,Arial,sans-serif;color:white">Regional User Acceptance Testing=
+ Planning Overview</h1></td></tr></tbody></table></div><div style=3D"max-wi=
+dth:600px;margin:0px auto;padding:32px 20px;font-family:-apple-system,Blink=
+MacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><div =
+style=3D"text-align:center;margin-bottom:32px;font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><a =
+href=3D"https://app.wave.co/sessions/1d02e1ec-35b7-4729-8473-57504ada62f1?l=
+astLoginParam=3Dgoogle" style=3D"padding:12px 24px;border-radius:8px;text-d=
+ecoration:none;font-weight:500;font-size:16px;display:inline-block;margin-t=
+op:8px;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(230,=
+240,255);color:rgb(0,102,204)" target=3D"_blank">=E2=9C=A8 View Your Sessio=
+n on the Web</a></div><div style=3D"text-align:center;margin-bottom:36px;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif"></div><div style=3D"padding:28px;border-radius:12px=
+;border:1px solid rgb(226,232,240);margin-bottom:28px;font-family:-apple-sy=
+stem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-se=
+rif"><h3 style=3D"font-size:20px;font-weight:600;margin-top:0px;margin-bott=
+om:20px;display:flex;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(15,23,42)"><span st=
+yle=3D"font-size:24px;font-family:-apple-system,BlinkMacSystemFont,&quot;Se=
+goe UI&quot;,Roboto,Helvetica,Arial,sans-serif">=F0=9F=93=9D</span>Summary<=
+/h3><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,=
+BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;c=
+olor:rgb(71,85,105)"><div style=3D"font-family:-apple-system,BlinkMacSystem=
+Font,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><p style=3D"fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Meeting focused on planning regional User Acceptanc=
+e Testing (UAT) sessions, identifying resource allocation, establishing sch=
+eduling needs across various global regions, and clarifying dependencies an=
+d overlapping concerns.</p>
+<hr style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif">Main Topics Discussed</h2><h3 style=3D"font-weight:500;padding-=
+top:20px;font-size:1.75rem;font-family:-apple-system,BlinkMacSystemFont,&qu=
+ot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">1. UAT Session Schedul=
+ing Across Regions</h3><ul style=3D"font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><p style=3D"font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+"><strong style=3D"font-weight:bold;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">Regions Invol=
+ved</strong>  </p>
+<ul style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Americas (US)</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">EMEA (Europe, Middle East, and Afric=
+a)</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">APAC (Asia-Pacific)</li>
+</ul>
+</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><p style=3D"font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+"><strong style=3D"font-weight:bold;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">Remote Sessio=
+n Timing</strong>  </p>
+<ul style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Sessions will not be simultaneous ac=
+ross regions.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">US Team: Testing roughly from 8:00=
+=E2=80=9315:00 (local time), Monday=E2=80=93Friday.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">EMEA and APAC teams have their own w=
+indows (exact time zones to be confirmed, with reference made to time diffe=
+rences, e.g., Ireland and APAC).</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Each regional resource will collabor=
+ate with regional business partners during their daylight hours.</li>
+</ul>
+</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><p style=3D"font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+"><strong style=3D"font-weight:bold;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">On-Site Sessi=
+ons</strong>  </p>
+<ul style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Easier to calendar and coordinate co=
+mpared to remote sessions.</li>
+</ul>
+</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><p style=3D"font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+"><strong style=3D"font-weight:bold;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">Resource Note=
+s</strong>  </p>
+<ul style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Important to capture regional concer=
+ns and overlapping resources (especially for cross-region functions like fi=
+nance).</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Regional teams: Americas, EMEA, APAC=
+</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Note overlapping resources since the=
+se could become risk points.</li>
+</ul>
+</li>
+</ul>
+<hr style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif">2. Resource Allocation &amp; Test Plan Duration</h3><h4 styl=
+e=3D"font-weight:500;padding-top:20px;font-size:1.5rem;font-family:-apple-s=
+ystem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-s=
+erif">Order Management</h4><ul style=3D"font-family:-apple-system,BlinkMacS=
+ystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">~24 scenarios to run =E2=80=93 expec=
+ted to take the whole week.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">No overlapping resource concerns for=
+ regional teams (Americas, EMEA, APAC).</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem;font-family:=
+-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Aria=
+l,sans-serif">Logistics</h4><ul style=3D"font-family:-apple-system,BlinkMac=
+SystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">One day per week (spread across week=
+s as 1+1 for multiple functions).</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Applies to all three regions.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">No major regional or overlapping con=
+cerns raised.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem;font-family:=
+-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Aria=
+l,sans-serif">Finance &amp; Related Functions</h4><ul style=3D"font-family:=
+-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Aria=
+l,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">FI: 5 days over 3 regions.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">AP Cofax, Lease Accelerator, Concur,=
+ Black Line, Banking Web, HRC Cash Up, FSCM, Tax Application: Mostly 5 days=
+ per region, with some exceptions (e.g., Tax Application: 4 days; Tax Rate:=
+ 2 days; Hyperion: 3 days).</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Highlighted challenge: APAC entry co=
+ntroller not yet identified=E2=80=94resource gap noted.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem;font-family:=
+-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Aria=
+l,sans-serif">Manufacturing, Sourcing, Planning</h4><ul style=3D"font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Planning: 1 day</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Manufacturing &amp; Sourcing: 5 days=
+ each</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Multiple teams run in parallel; depe=
+ndencies called out where relevant.</li>
+</ul>
+<hr style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif">3. Dependency Tracking &amp; Sequencing</h3><ul style=3D"fon=
+t-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helve=
+tica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Dependencies discussed extensively, =
+especially:<ul style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;=
+Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Order Management</strong> is a key predecessor (e.g=
+., credit check depends on order creation).</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Other dependencies: Banking, cash ap=
+plication, compliance, tax applications.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Proposal to use indexing or alphabet=
+ical (A=E2=80=93Z) columns to denote dependencies for clear reporting and s=
+equencing.</li>
+</ul>
+</li>
+</ul>
+<hr style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif">4. Reporting &amp; Documentation Improvements</h3><ul style=
+=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robot=
+o,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Suggestions to:<ul style=3D"font-fam=
+ily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,=
+Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Add columns for resource notes, depe=
+ndencies, regions.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Possibly create multiple tabs in doc=
+umentation for each region (for organizational clarity).</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Alphabetize or numerically index dep=
+endency relationships for clarity.</li>
+</ul>
+</li>
+</ul>
+<hr style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif">Action Items &amp; Follow-Ups</h2><ul style=3D"font-family:-app=
+le-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sa=
+ns-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Capture regional resource concerns a=
+nd overlapping risks in the =E2=80=98Resource Notes=E2=80=99 column.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Finalize resource identification for=
+ APAC finance entry controller.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Document precise testing time window=
+s for each region, referencing time differences as needed.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Add or update dependency indexing in=
+ UAT plans.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Consider splitting UAT plans/tabs ba=
+sed on region for clearer organization.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Spell check and finalize documentati=
+on.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Validate scope and allocations where=
+ items are still gray (e.g., Tax Rate application scope).</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Confirm resource assignments for all=
+ tools (e.g., Lease Accelerator, Concur, Black Line, etc.).</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Sequence dependencies in the test sc=
+hedule using the agreed indexing approach.</li>
+</ul>
+<hr style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif">Key Dates &amp; Timeframes Mentioned</h2><ul style=3D"font-fami=
+ly:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,A=
+rial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Today=E2=80=99s Date:</strong> June 18th, 2025</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Testing Windows:</strong> US team from 8:00=E2=80=
+=9315:00, other regions to be confirmed.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Order Management:</strong> Whole week required for =
+test execution.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Finance and numerous related areas:</strong> Approx=
+imately five days per test cycle.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Build completion for Lease Accelerator:</strong> Ex=
+pected sometime next week.</li>
+</ul>
+<hr style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif">Noted Risks</h2><ul style=3D"font-family:-apple-system,BlinkMac=
+SystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Overlapping resources (e.g., finance=
+ roles spanning multiple regions).</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Pending identification of critical A=
+PAC resources.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Dependencies in test scenarios mean =
+certain areas can&#39;t be completed until predecessors finish (especially =
+in order management &amp; finance modules).</li>
+</ul>
+<hr style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif">Additional Notes</h2><ul style=3D"font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Parallel runs for some teams; cleare=
+r sequencing required for dependent scenarios.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Team members are encouraged to index=
+ dependencies and spell check before final accounting.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Aim for clarity in reporting for the=
+ next day=E2=80=99s review.</li>
+</ul>
+<hr style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<p style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quo=
+t;,Roboto,Helvetica,Arial,sans-serif">This summary provides a structured ov=
+erview of the meeting=E2=80=99s discussions, key decisions, identified chal=
+lenges, and action points regarding the setup and management of regional UA=
+T sessions.</p>
+</div></div></div><div style=3D"padding:28px;border-radius:12px;border:1px =
+solid rgb(226,232,240);font-family:-apple-system,BlinkMacSystemFont,&quot;S=
+egoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><h3 style=3D"font-size:20p=
+x;font-weight:600;margin-top:0px;margin-bottom:20px;display:flex;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif;color:rgb(15,23,42)"><span style=3D"font-size:24px;font-fami=
+ly:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,A=
+rial,sans-serif">=F0=9F=8E=99=EF=B8=8F</span>Transcription</h3><div style=
+=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px=
+;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,=
+250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;marg=
+in-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;marg=
+in-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Audrey</span><=
+span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&=
+quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139=
+)">0:02</span></div><div style=3D"font-size:16px;line-height:1.6;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif;color:rgb(71,85,105)">I mean, one thing that I don&#39;t kno=
+w how we communicate it, maybe you guys can help me digest it. But for the =
+remote sessions, okay, the UAT ones, you know, we&#39;re going to have sess=
+ions during the, you know, in the APEC regions, the EMEA regions and the U.=
+ S regions. So they won&#39;t all be at the same time, you know. Okay, so h=
+ow do we illustrate that?</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;border-radius:8px;border-left-width:4px;border-left-style:solid;fon=
+t-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helve=
+tica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-color:r=
+gb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-family:-ap=
+ple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,s=
+ans-serif;color:rgb(59,130,246)">Jessica</span><span style=3D"font-size:14p=
+x;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif;color:rgb(100,116,139)">0:32</span></div><div st=
+yle=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSys=
+temFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71=
+,85,105)">Is the. Yeah. Is the APATH team going to be doing the same testin=
+g that like the US Team is doing their company code?</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px=
+;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,=
+250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;marg=
+in-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;marg=
+in-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Audrey</span><=
+span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&=
+quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139=
+)">0:46</span></div><div style=3D"font-size:16px;line-height:1.6;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif;color:rgb(71,85,105)">So, you know, for instance, you know, =
+there&#39;s a whole team of people that I, Audrey and I eventually are goin=
+g to add to the resource UAT plans that we just got this morning from our b=
+usiness partner over there, Agnes. She, you know, they&#39;re going to be t=
+esting an arv, you know, that week. They&#39;re going to do some sit there =
+next week and it&#39;d be onerous for us to say, listen, you know, we&#39;r=
+e going to start testing at midnight because it&#39;s works best for the ea=
+stern U.S. so, you know, roughly, you know, our resources that are regional=
+ are going to work with their regional counterparts to do the testing for t=
+he robot week. Now for the on site one, you know, it&#39;s much more easy t=
+o calendar.</div></div><div style=3D"margin-bottom:16px;padding:16px;border=
+-radius:8px;border-left-width:4px;border-left-style:solid;font-family:-appl=
+e-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,san=
+s-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)=
+"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,Bl=
+inkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><s=
+pan style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;colo=
+r:rgb(59,130,246)">Jessica</span><span style=3D"font-size:14px;font-family:=
+-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Aria=
+l,sans-serif;color:rgb(100,116,139)">1:36</span></div><div style=3D"font-si=
+ze:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;=
+Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Yeah=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8p=
+x;border-left-width:4px;border-left-style:solid;font-family:-apple-system,B=
+linkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;ba=
+ckground-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div sty=
+le=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=
+=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,=
+130,246)">Audrey</span><span style=3D"font-size:14px;font-family:-apple-sys=
+tem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-ser=
+if;color:rgb(100,116,139)">1:37</span></div><div style=3D"font-size:16px;li=
+ne-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">But you know, =
+it&#39;s going to be just windows. For the others, you know, from eight to =
+eight to three, you know, Monday through Friday, you know, the US Team is g=
+oing to be testing all those things. And then from, you know, three to 11, =
+you know, you get my point, right? And then 11 to seven. Yeah, we&#39;ll be=
+ the APAC team. Three to 11, you know, I don&#39;t have my international ca=
+lendar in front of me, so I don&#39;t remember what the time difference is =
+between here and Ireland.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;border-radius:8px;border-left-width:4px;border-left-style:solid;fon=
+t-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helve=
+tica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-color:r=
+gb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-family:-ap=
+ple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,s=
+ans-serif;color:rgb(59,130,246)">Jessica</span><span style=3D"font-size:14p=
+x;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif;color:rgb(100,116,139)">2:08</span></div><div st=
+yle=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSys=
+temFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71=
+,85,105)">So let&#39;s just capture that under the resource note. So in the=
+ resource notes column, I want to capture toothpaste. One is there&#39;s re=
+gional concerns for the moment and we&#39;ll note that. But then also the s=
+econd thing is if there is overlapping resources like finance, if there&#39=
+;s overlapping resources like in finance, I do want to at least note those =
+because there&#39;s potential risk concern there. So order management, how =
+many days do.</div></div><div style=3D"margin-bottom:16px;padding:16px;bord=
+er-radius:8px;border-left-width:4px;border-left-style:solid;font-family:-ap=
+ple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,s=
+ans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,24=
+6)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,=
+BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">=
+<span style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,B=
+linkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;co=
+lor:rgb(59,130,246)">Srinivas</span><span style=3D"font-size:14px;font-fami=
+ly:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,A=
+rial,sans-serif;color:rgb(100,116,139)">2:44</span></div><div style=3D"font=
+-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&qu=
+ot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Y=
+ou think.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-r=
+adius:8px;border-left-width:4px;border-left-style:solid;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)">=
+<div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,Blin=
+kMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><spa=
+n style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,Blink=
+MacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:=
+rgb(59,130,246)">Jessica</span><span style=3D"font-size:14px;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif;color:rgb(100,116,139)">2:47</span></div><div style=3D"font-size=
+:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Se=
+goe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">From i=
+t? One day, two days, three days?</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;border-radius:8px;border-left-width:4px;border-left-style:s=
+olid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robo=
+to,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left=
+-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-f=
+amily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetic=
+a,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-fa=
+mily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica=
+,Arial,sans-serif;color:rgb(59,130,246)">Audrey</span><span style=3D"font-s=
+ize:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">2:51</span></div>=
+<div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,Blin=
+kMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color=
+:rgb(71,85,105)">Well, that&#39;s a whole bunch of scripts. That&#39;s lion=
+&#39;s share. That&#39;s, you know, that&#39;s like 24 scenarios we&#39;re =
+gonna have to run. Okay, so it&#39;s gonna take the whole week.</div></div>=
+<div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left=
+-width:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystem=
+Font,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-colo=
+r:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display=
+:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;=
+Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weigh=
+t:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;S=
+egoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Shin=
+y</span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSys=
+temFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(10=
+0,116,139)">3:01</span></div><div style=3D"font-size:16px;line-height:1.6;f=
+ont-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Hel=
+vetica,Arial,sans-serif;color:rgb(71,85,105)">The whole week.</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-w=
+idth:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFo=
+nt,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:=
+rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:f=
+lex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Se=
+goe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:=
+600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jessic=
+a</span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSys=
+temFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(10=
+0,116,139)">3:04</span></div><div style=3D"font-size:16px;line-height:1.6;f=
+ont-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Hel=
+vetica,Arial,sans-serif;color:rgb(71,85,105)">And then do you have resource=
+s concerns? And I will spell check all those later guys.</div></div><div st=
+yle=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:=
+4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&q=
+uot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(2=
+48,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;m=
+argin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe U=
+I&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;m=
+argin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Audrey</spa=
+n><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,=
+139)">3:07</span></div><div style=3D"font-size:16px;line-height:1.6;font-fa=
+mily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica=
+,Arial,sans-serif;color:rgb(71,85,105)">I don&#39;t.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px=
+;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,=
+250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;marg=
+in-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;marg=
+in-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jessica</span>=
+<span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,=
+&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,13=
+9)">3:08</span></div><div style=3D"font-size:16px;line-height:1.6;font-fami=
+ly:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,A=
+rial,sans-serif;color:rgb(71,85,105)">I&#39;m not good with spelling. So ar=
+e there regional teams that need to run this and do you have overlapping re=
+source concerns?</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+order-radius:8px;border-left-width:4px;border-left-style:solid;font-family:=
+-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Aria=
+l,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130=
+,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+;color:rgb(59,130,246)">Audrey</span><span style=3D"font-size:14px;font-fam=
+ily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,=
+Arial,sans-serif;color:rgb(100,116,139)">3:16</span></div><div style=3D"fon=
+t-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&q=
+uot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">=
+Regional teams, no concerns.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;border-radius:8px;border-left-width:4px;border-left-style:solid;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-colo=
+r:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-family:=
+-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Aria=
+l,sans-serif;color:rgb(59,130,246)">Jessica</span><span style=3D"font-size:=
+14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robo=
+to,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">3:19</span></div><div=
+ style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMac=
+SystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb=
+(71,85,105)">Okay, what are the regional teams? How many do you have?</div>=
+</div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;borde=
+r-left-width:4px;border-left-style:solid;font-family:-apple-system,BlinkMac=
+SystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;backgroun=
+d-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"d=
+isplay:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,=
+&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font=
+-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&=
+quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)=
+">Audrey</span><span style=3D"font-size:14px;font-family:-apple-system,Blin=
+kMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color=
+:rgb(100,116,139)">3:24</span></div><div style=3D"font-size:16px;line-heigh=
+t:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Rob=
+oto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Three.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-wid=
+th:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont=
+,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rg=
+b(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:fle=
+x;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:60=
+0;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jessica<=
+/span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,=
+116,139)">3:25</span></div><div style=3D"font-size:16px;line-height:1.6;fon=
+t-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helve=
+tica,Arial,sans-serif;color:rgb(71,85,105)">What are they? America.</div></=
+div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-=
+left-width:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSy=
+stemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-=
+color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"dis=
+play:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&q=
+uot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-w=
+eight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&qu=
+ot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">=
+Srinivas</span><span style=3D"font-size:14px;font-family:-apple-system,Blin=
+kMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color=
+:rgb(100,116,139)">3:27</span></div><div style=3D"font-size:16px;line-heigh=
+t:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Rob=
+oto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Yeah.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-widt=
+h:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,=
+&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb=
+(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex=
+;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600=
+;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe =
+UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Audrey</s=
+pan><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemF=
+ont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,11=
+6,139)">3:28</span></div><div style=3D"font-size:16px;line-height:1.6;font-=
+family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helveti=
+ca,Arial,sans-serif;color:rgb(71,85,105)">Emea.</div></div><div style=3D"ma=
+rgin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;borde=
+r-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,25=
+2);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bot=
+tom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-rig=
+ht:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Srinivas</span><span=
+ style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">3=
+:31</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif;color:rgb(71,85,105)">Yep.</div></div><div style=3D"margin-botto=
+m:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-sty=
+le:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-=
+left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;fon=
+t-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helve=
+tica,Arial,sans-serif;color:rgb(59,130,246)">Jessica</span><span style=3D"f=
+ont-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">3:32</span><=
+/div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system=
+,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;=
+color:rgb(71,85,105)">Okay, let&#39;s note here what the regions are becaus=
+e that I think may help us to build it out. Because like for example the ca=
+lendaring that shiny box brought up. If we have enough EMEA APAC breakouts =
+for our organizational purposes, we may want to create separate tabs for th=
+em. Okay, Logistics, how many days?</div></div><div style=3D"margin-bottom:=
+16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-style=
+:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-le=
+ft-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font=
+-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvet=
+ica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-=
+family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helveti=
+ca,Arial,sans-serif;color:rgb(59,130,246)">Audrey</span><span style=3D"font=
+-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot=
+;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">3:56</span></di=
+v><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,Bl=
+inkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;col=
+or:rgb(71,85,105)">One day per week. So one remote one.</div></div><div sty=
+le=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4=
+px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&qu=
+ot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(24=
+8,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;ma=
+rgin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;ma=
+rgin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jessica</spa=
+n><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,=
+139)">4:03</span></div><div style=3D"font-size:16px;line-height:1.6;font-fa=
+mily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica=
+,Arial,sans-serif;color:rgb(71,85,105)">And then any regional concerns or o=
+verlapping resource concerns.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;border-radius:8px;border-left-width:4px;border-left-style:solid=
+;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,H=
+elvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-col=
+or:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif;color:rgb(59,130,246)">Audrey</span><span style=3D"font-size:=
+14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robo=
+to,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">4:07</span></div><div=
+ style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMac=
+SystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb=
+(71,85,105)">Nothing has been raised to me. Same regions.</div></div><div s=
+tyle=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width=
+:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&=
+quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(=
+248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;=
+margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe =
+UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;=
+margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe U=
+I&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jessica</s=
+pan><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemF=
+ont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,11=
+6,139)">4:11</span></div><div style=3D"font-size:16px;line-height:1.6;font-=
+family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helveti=
+ca,Arial,sans-serif;color:rgb(71,85,105)">Oh, all three regions.</div></div=
+><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-lef=
+t-width:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-col=
+or:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"displa=
+y:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weig=
+ht:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;=
+Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Aud=
+rey</span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacS=
+ystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(=
+100,116,139)">4:13</span></div><div style=3D"font-size:16px;line-height:1.6=
+;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,H=
+elvetica,Arial,sans-serif;color:rgb(71,85,105)">Yeah, for all.</div></div><=
+div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-=
+width:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemF=
+ont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color=
+:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:=
+flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;S=
+egoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight=
+:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Se=
+goe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jessi=
+ca</span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSy=
+stemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(1=
+00,116,139)">4:15</span></div><div style=3D"font-size:16px;line-height:1.6;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif;color:rgb(71,85,105)">Oh, every single one of your=
+s has all three regions.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;border-radius:8px;border-left-width:4px;border-left-style:solid;font=
+-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvet=
+ica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-color:rg=
+b(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-ap=
+ple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,s=
+ans-serif"><span style=3D"font-weight:600;margin-right:8px;font-family:-app=
+le-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sa=
+ns-serif;color:rgb(59,130,246)">Audrey</span><span style=3D"font-size:14px;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif;color:rgb(100,116,139)">4:18</span></div><div styl=
+e=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,8=
+5,105)">It does.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+order-radius:8px;border-left-width:4px;border-left-style:solid;font-family:=
+-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Aria=
+l,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130=
+,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+;color:rgb(59,130,246)">Jessica</span><span style=3D"font-size:14px;font-fa=
+mily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica=
+,Arial,sans-serif;color:rgb(100,116,139)">4:19</span></div><div style=3D"fo=
+nt-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&=
+quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)"=
+>Okay, so quick question for you. Do you also have the same thing with all =
+three regions?</div></div><div style=3D"margin-bottom:16px;padding:16px;bor=
+der-radius:8px;border-left-width:4px;border-left-style:solid;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,2=
+46)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system=
+,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"=
+><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,=
+BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;c=
+olor:rgb(59,130,246)">Srinivas</span><span style=3D"font-size:14px;font-fam=
+ily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,=
+Arial,sans-serif;color:rgb(100,116,139)">4:25</span></div><div style=3D"fon=
+t-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&q=
+uot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">=
+Yeah, I can quickly comment on that. So for FI it&#39;s like five days and =
+the three regions and then the challenge is about APAC entry controller ide=
+ntified yet and the business finance 7. That&#39;s the resource gap for AFI=
+. For AP Cofax. AP Cofax.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;border-radius:8px;border-left-width:4px;border-left-style:solid;fon=
+t-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helve=
+tica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-color:r=
+gb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-family:-ap=
+ple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,s=
+ans-serif;color:rgb(59,130,246)">Jessica</span><span style=3D"font-size:14p=
+x;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif;color:rgb(100,116,139)">4:55</span></div><div st=
+yle=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSys=
+temFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71=
+,85,105)">I just, I was. I just want to copy paste are these. You&#39;re go=
+nna have all three regions nears as well?</div></div><div style=3D"margin-b=
+ottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left=
+-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);bor=
+der-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8p=
+x;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px=
+;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,H=
+elvetica,Arial,sans-serif;color:rgb(59,130,246)">Srinivas</span><span style=
+=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">5:04</s=
+pan></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-s=
+ystem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-s=
+erif;color:rgb(71,85,105)">I think for conquer I&#39;ll have to double chec=
+k but for even for lease accelerator as well. So for work UI it&#39;s gonna=
+ be most likely America. Right. The resource based in US is gonna do that b=
+lack line. I might expect all the three regions these accelerator. I think =
+this I would limit to America and APAC because I have a geocit who is worki=
+ng on this and then I have resource here. AP GoFax. Banking. Yeah, banking =
+web. Three regions HRC cash up. It&#39;s only two regions. America and EMEA=
+. FSCM. That&#39;s most likely SCM. We have grown up in the US. Yeah, I thi=
+nk if SCM two three regions tax application it&#39;s gonna be US and EMEA.<=
+/div></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;=
+border-left-width:4px;border-left-style:solid;font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;back=
+ground-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=
+=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystem=
+Font,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D=
+"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemF=
+ont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130=
+,246)">Jessica</span><span style=3D"font-size:14px;font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+;color:rgb(100,116,139)">6:06</span></div><div style=3D"font-size:16px;line=
+-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quo=
+t;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Sorry, both of t=
+hem or one for both of them? America. Jamea.</div></div><div style=3D"margi=
+n-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-l=
+eft-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);=
+border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom=
+:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robo=
+to,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:=
+8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robot=
+o,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Srinivas</span><span st=
+yle=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Se=
+goe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">6:11=
+</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-appl=
+e-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,san=
+s-serif;color:rgb(71,85,105)">Yeah.</div></div><div style=3D"margin-bottom:=
+16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-style=
+:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-le=
+ft-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font=
+-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvet=
+ica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-=
+family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helveti=
+ca,Arial,sans-serif;color:rgb(59,130,246)">Jessica</span><span style=3D"fon=
+t-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quo=
+t;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">6:22</span></d=
+iv><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,B=
+linkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;co=
+lor:rgb(71,85,105)">Okay, I will come back to you in one second. So sorry, =
+don&#39;t back. Back to you. Trade compliance. How many days?</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-w=
+idth:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFo=
+nt,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:=
+rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:f=
+lex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Se=
+goe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:=
+600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Audrey=
+</span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100=
+,116,139)">6:30</span></div><div style=3D"font-size:16px;line-height:1.6;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif;color:rgb(71,85,105)">Oh, that should be now. When I=
+ say one day, that&#39;s one day per week. So you&#39;re capturing it that =
+way or do you want to put it as 2?</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;border-radius:8px;border-left-width:4px;border-left-style:=
+solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Rob=
+oto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-lef=
+t-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-=
+family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helveti=
+ca,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-f=
+amily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetic=
+a,Arial,sans-serif;color:rgb(59,130,246)">Shiny</span><span style=3D"font-s=
+ize:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">6:38</span></div>=
+<div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,Blin=
+kMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color=
+:rgb(71,85,105)">I think it would be total.</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-le=
+ft-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);b=
+order-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:=
+8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robot=
+o,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8=
+px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto=
+,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Srinivas</span><span sty=
+le=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">6:41<=
+/span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple=
+-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans=
+-serif;color:rgb(71,85,105)">Total.</div></div><div style=3D"margin-bottom:=
+16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-style=
+:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-le=
+ft-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font=
+-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvet=
+ica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-=
+family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helveti=
+ca,Arial,sans-serif;color:rgb(59,130,246)">Audrey</span><span style=3D"font=
+-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot=
+;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">6:41</span></di=
+v><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,Bl=
+inkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;col=
+or:rgb(71,85,105)">Then it&#39;ll be two for logistics.</div></div><div sty=
+le=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4=
+px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&qu=
+ot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(24=
+8,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;ma=
+rgin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;ma=
+rgin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Shiny</span>=
+<span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,=
+&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,13=
+9)">6:44</span></div><div style=3D"font-size:16px;line-height:1.6;font-fami=
+ly:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,A=
+rial,sans-serif;color:rgb(71,85,105)">One plus one. Maybe just say one plus=
+ one to know.</div></div><div style=3D"margin-bottom:16px;padding:16px;bord=
+er-radius:8px;border-left-width:4px;border-left-style:solid;font-family:-ap=
+ple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,s=
+ans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,24=
+6)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,=
+BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">=
+<span style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,B=
+linkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;co=
+lor:rgb(59,130,246)">Jessica</span><span style=3D"font-size:14px;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif;color:rgb(100,116,139)">6:47</span></div><div style=3D"font-=
+size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quo=
+t;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Oh=
+, one for trade and one for compliance.</div></div><div style=3D"margin-bot=
+tom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-s=
+tyle:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot=
+;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);borde=
+r-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;f=
+ont-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Hel=
+vetica,Arial,sans-serif;color:rgb(59,130,246)">Audrey</span><span style=3D"=
+font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">6:52</span>=
+</div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+;color:rgb(71,85,105)">No, they&#39;re the same Thing one for.</div></div><=
+div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-=
+width:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemF=
+ont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color=
+:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:=
+flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;S=
+egoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight=
+:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Se=
+goe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jessi=
+ca</span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSy=
+stemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(1=
+00,116,139)">6:54</span></div><div style=3D"font-size:16px;line-height:1.6;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif;color:rgb(71,85,105)">Week one and one for week tw=
+o.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8=
+px;border-left-width:4px;border-left-style:solid;font-family:-apple-system,=
+BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;b=
+ackground-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div st=
+yle=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSys=
+temFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=
+=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,=
+130,246)">Audrey</span><span style=3D"font-size:14px;font-family:-apple-sys=
+tem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-ser=
+if;color:rgb(100,116,139)">6:56</span></div><div style=3D"font-size:16px;li=
+ne-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Thank you.</di=
+v></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;bor=
+der-left-width:4px;border-left-style:solid;font-family:-apple-system,BlinkM=
+acSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;backgro=
+und-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D=
+"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"fo=
+nt-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont=
+,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,24=
+6)">Shiny</span><span style=3D"font-size:14px;font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;colo=
+r:rgb(100,116,139)">6:58</span></div><div style=3D"font-size:16px;line-heig=
+ht:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Oh, then we should ju=
+st say one day.</div></div><div style=3D"margin-bottom:16px;padding:16px;bo=
+rder-radius:8px;border-left-width:4px;border-left-style:solid;font-family:-=
+apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial=
+,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,=
+246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-system=
+,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;=
+color:rgb(59,130,246)">Audrey</span><span style=3D"font-size:14px;font-fami=
+ly:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,A=
+rial,sans-serif;color:rgb(100,116,139)">7:00</span></div><div style=3D"font=
+-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&qu=
+ot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">S=
+orry.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-radiu=
+s:8px;border-left-width:4px;border-left-style:solid;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div=
+ style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMac=
+SystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span st=
+yle=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacS=
+ystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(=
+59,130,246)">Srinivas</span><span style=3D"font-size:14px;font-family:-appl=
+e-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,san=
+s-serif;color:rgb(100,116,139)">7:00</span></div><div style=3D"font-size:16=
+px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Okay. All=
+ right.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-rad=
+ius:8px;border-left-width:4px;border-left-style:solid;font-family:-apple-sy=
+stem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-se=
+rif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><d=
+iv style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkM=
+acSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span =
+style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMa=
+cSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rg=
+b(59,130,246)">Audrey</span><span style=3D"font-size:14px;font-family:-appl=
+e-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,san=
+s-serif;color:rgb(100,116,139)">7:02</span></div><div style=3D"font-size:16=
+px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">So that&#=
+39;s the story we&#39;re telling. I&#39;m fine with that. Okay. For finance=
+, it&#39;s 5. Planning is 1. Manufacturing and source sourcing are 5. Tosca=
+ 5, EDI 5.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-=
+radius:8px;border-left-width:4px;border-left-style:solid;font-family:-apple=
+-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans=
+-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"=
+><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><sp=
+an style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,Blin=
+kMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color=
+:rgb(59,130,246)">Jessica</span><span style=3D"font-size:14px;font-family:-=
+apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial=
+,sans-serif;color:rgb(100,116,139)">7:32</span></div><div style=3D"font-siz=
+e:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;S=
+egoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Do yo=
+u have any overlapping resource concerns?</div></div><div style=3D"margin-b=
+ottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left=
+-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);bor=
+der-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8p=
+x;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px=
+;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,H=
+elvetica,Arial,sans-serif;color:rgb(59,130,246)">Audrey</span><span style=
+=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">7:37</s=
+pan></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-s=
+ystem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-s=
+erif;color:rgb(71,85,105)">Well, in finance, you know, we&#39;ve illustrate=
+d that before, right?</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;border-radius:8px;border-left-width:4px;border-left-style:solid;font-fa=
+mily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica=
+,Arial,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(5=
+9,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple=
+-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans=
+-serif"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif;color:rgb(59,130,246)">Jessica</span><span style=3D"font-size:14px;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif;color:rgb(100,116,139)">7:40</span></div><div style=
+=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystem=
+Font,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85=
+,105)">Yeah. But the rest of these are pretty much individual teams so that=
+ like for example, I see manufacturing sourcing, task to all say five days =
+of testing. But it&#39;s really different teams of people that are just all=
+ gonna be running in parallel. So you don&#39;t really need to worry about.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px=
+;border-left-width:4px;border-left-style:solid;font-family:-apple-system,Bl=
+inkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;bac=
+kground-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div styl=
+e=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=
+=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,=
+130,246)">Audrey</span><span style=3D"font-size:14px;font-family:-apple-sys=
+tem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-ser=
+if;color:rgb(100,116,139)">8:04</span></div><div style=3D"font-size:16px;li=
+ne-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">They&#39;ll be=
+ running like box cars, you know.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;border-radius:8px;border-left-width:4px;border-left-style:s=
+olid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robo=
+to,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left=
+-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-f=
+amily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetic=
+a,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-fa=
+mily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica=
+,Arial,sans-serif;color:rgb(59,130,246)">Shiny</span><span style=3D"font-si=
+ze:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">8:06</span></div><=
+div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,Blink=
+MacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:=
+rgb(71,85,105)">Yeah, and I was gonna call that out as in the interdependen=
+cies.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-radiu=
+s:8px;border-left-width:4px;border-left-style:solid;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div=
+ style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMac=
+SystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span st=
+yle=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacS=
+ystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(=
+59,130,246)">Jessica</span><span style=3D"font-size:14px;font-family:-apple=
+-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans=
+-serif;color:rgb(100,116,139)">8:10</span></div><div style=3D"font-size:16p=
+x;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe =
+UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Right.</di=
+v></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;bor=
+der-left-width:4px;border-left-style:solid;font-family:-apple-system,BlinkM=
+acSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;backgro=
+und-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D=
+"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"fo=
+nt-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont=
+,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,24=
+6)">Audrey</span><span style=3D"font-size:14px;font-family:-apple-system,Bl=
+inkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;col=
+or:rgb(100,116,139)">8:11</span></div><div style=3D"font-size:16px;line-hei=
+ght:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">You do your thing, I=
+ do mine. I can&#39;t do mine until you do yours.</div></div><div style=3D"=
+margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;bor=
+der-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,=
+252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-b=
+ottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;=
+,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-r=
+ight:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jessica</span><spa=
+n style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quo=
+t;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">=
+8:15</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-=
+apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial=
+,sans-serif;color:rgb(71,85,105)">Got it.</div></div><div style=3D"margin-b=
+ottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left=
+-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);bor=
+der-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8p=
+x;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px=
+;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,H=
+elvetica,Arial,sans-serif;color:rgb(59,130,246)">Shiny</span><span style=3D=
+"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">8:16</span=
+></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f;color:rgb(71,85,105)">Okay.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;border-radius:8px;border-left-width:4px;border-left-style:solid=
+;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,H=
+elvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-col=
+or:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif;color:rgb(59,130,246)">Jessica</span><span style=3D"font-size=
+:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Rob=
+oto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">8:17</span></div><di=
+v style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMa=
+cSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rg=
+b(71,85,105)">All right, that&#39;s. That&#39;s fine. Okay, so trinity box =
+down to yours.</div></div><div style=3D"margin-bottom:16px;padding:16px;bor=
+der-radius:8px;border-left-width:4px;border-left-style:solid;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,2=
+46)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system=
+,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"=
+><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,=
+BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;c=
+olor:rgb(59,130,246)">Srinivas</span><span style=3D"font-size:14px;font-fam=
+ily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,=
+Arial,sans-serif;color:rgb(100,116,139)">8:24</span></div><div style=3D"fon=
+t-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&q=
+uot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">=
+Yeah. Fy. I think it. It goes all the. All days. Right. Like keep it five d=
+ays. Ap, co, five days banking, five days hrc, cash up mostly. Five days cr=
+edit collection, five days tax application. They will still test and give i=
+t four days tax application. 13 tax rate. It&#39;s going to be two days. I =
+believe it&#39;s a gray area for me. I don&#39;t know. I don&#39;t have any=
+ scope finalized yet. I&#39;ll have to circle back on this Hyperion. It&#39=
+;s going to be three days black line. It&#39;s going to be all the five day=
+s because it&#39;s. It&#39;s integrated with erp. It&#39;s the least accele=
+rator I think you can highlight because it&#39;s not ready. The bill will b=
+e completed sometime next week. SAP concur. I think two days.</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-w=
+idth:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFo=
+nt,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:=
+rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:f=
+lex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Se=
+goe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:=
+600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Shiny<=
+/span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,=
+116,139)">9:24</span></div><div style=3D"font-size:16px;line-height:1.6;fon=
+t-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helve=
+tica,Arial,sans-serif;color:rgb(71,85,105)">Is there a dependency here, Sri=
+nivas? I&#39;m just trying to look at interdependency and sequencing. One b=
+efore, two after five.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;border-radius:8px;border-left-width:4px;border-left-style:solid;font-f=
+amily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetic=
+a,Arial,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(=
+59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-appl=
+e-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,san=
+s-serif"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple=
+-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans=
+-serif;color:rgb(59,130,246)">Srinivas</span><span style=3D"font-size:14px;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif;color:rgb(100,116,139)">9:32</span></div><div styl=
+e=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,8=
+5,105)">Dependency will be with order management. Right. If order managemen=
+t is creating an order, then credit comes into picture. So. So that&#39;s i=
+n the dependency. If no orders, then I can&#39;t do a credit check. That&#3=
+9;s dependency. Okay, can we maybe index these and.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px=
+;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,=
+250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;marg=
+in-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;marg=
+in-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Shiny</span><s=
+pan style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&q=
+uot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)=
+">9:51</span></div><div style=3D"font-size:16px;line-height:1.6;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif;color:rgb(71,85,105)">Add a column with indexing for dependen=
+cy with that book? Jessica.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;border-radius:8px;border-left-width:4px;border-left-style:solid;f=
+ont-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Hel=
+vetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-color=
+:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:=
+-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Aria=
+l,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-family:-=
+apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial=
+,sans-serif;color:rgb(59,130,246)">Audrey</span><span style=3D"font-size:14=
+px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto=
+,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">9:58</span></div><div s=
+tyle=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSy=
+stemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(7=
+1,85,105)">Like.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+order-radius:8px;border-left-width:4px;border-left-style:solid;font-family:=
+-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Aria=
+l,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130=
+,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+;color:rgb(59,130,246)">Jessica</span><span style=3D"font-size:14px;font-fa=
+mily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica=
+,Arial,sans-serif;color:rgb(100,116,139)">10:00</span></div><div style=3D"f=
+ont-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,=
+&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)=
+">You mean just like.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;border-radius:8px;border-left-width:4px;border-left-style:solid;font-fa=
+mily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica=
+,Arial,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(5=
+9,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple=
+-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans=
+-serif"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif;color:rgb(59,130,246)">Shiny</span><span style=3D"font-size:14px;font=
+-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvet=
+ica,Arial,sans-serif;color:rgb(100,116,139)">10:02</span></div><div style=
+=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystem=
+Font,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85=
+,105)">Like call them A through Z or.</div></div><div style=3D"margin-botto=
+m:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-sty=
+le:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-=
+left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;fon=
+t-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helve=
+tica,Arial,sans-serif;color:rgb(59,130,246)">Srinivas</span><span style=3D"=
+font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">10:03</span=
+></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f;color:rgb(71,85,105)">1 through 10 or A.</div></div><div style=3D"margin-=
+bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-lef=
+t-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);bo=
+rder-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8=
+px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto=
+,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8p=
+x;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Shiny</span><span style=
+=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">10:05</=
+span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif;color:rgb(71,85,105)">Let&#39;s just alphabetize it. You know, call. =
+Call A through Z and then you can go to, you know, B and say it&#39;s depen=
+dent.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-radiu=
+s:8px;border-left-width:4px;border-left-style:solid;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div=
+ style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMac=
+SystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span st=
+yle=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacS=
+ystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(=
+59,130,246)">Srinivas</span><span style=3D"font-size:14px;font-family:-appl=
+e-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,san=
+s-serif;color:rgb(100,116,139)">10:13</span></div><div style=3D"font-size:1=
+6px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">A, D and=
+ F. Do you want to simplify this reporting for tomorrow. Then if you have a=
+ detailed view, then you can probably have that.</div></div><div style=3D"m=
+argin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;bord=
+er-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,2=
+52);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bo=
+ttom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-ri=
+ght:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Audrey</span><span =
+style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;=
+Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">10=
+:21</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif;color:rgb(71,85,105)">The durations.</div></div><div style=3D"ma=
+rgin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;borde=
+r-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,25=
+2);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bot=
+tom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-rig=
+ht:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Shiny</span><span st=
+yle=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Se=
+goe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">10:2=
+2</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-app=
+le-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sa=
+ns-serif;color:rgb(71,85,105)">Yes, but from a dependency, those dependenci=
+es are going to be constant.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;border-radius:8px;border-left-width:4px;border-left-style:solid;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-colo=
+r:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-family:=
+-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Aria=
+l,sans-serif;color:rgb(59,130,246)">Srinivas</span><span style=3D"font-size=
+:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Rob=
+oto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">10:27</span></div><d=
+iv style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkM=
+acSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:r=
+gb(71,85,105)">Oh, that&#39;s. I agree.</div></div><div style=3D"margin-bot=
+tom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-s=
+tyle:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot=
+;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);borde=
+r-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;f=
+ont-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Hel=
+vetica,Arial,sans-serif;color:rgb(59,130,246)">Jessica</span><span style=3D=
+"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">10:46</spa=
+n></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-sys=
+tem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-ser=
+if;color:rgb(71,85,105)">You&#39;re just saying. For example, order managem=
+ent&#39;s one. You just talked about credit, so this would be a one.</div><=
+/div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border=
+-left-width:4px;border-left-style:solid;font-family:-apple-system,BlinkMacS=
+ystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background=
+-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"di=
+splay:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&=
+quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-=
+weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&q=
+uot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)"=
+>Audrey</span><span style=3D"font-size:14px;font-family:-apple-system,Blink=
+MacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:=
+rgb(100,116,139)">10:51</span></div><div style=3D"font-size:16px;line-heigh=
+t:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Rob=
+oto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Correct.</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-w=
+idth:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFo=
+nt,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:=
+rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:f=
+lex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Se=
+goe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:=
+600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Jessic=
+a</span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSys=
+temFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(10=
+0,116,139)">10:52</span></div><div style=3D"font-size:16px;line-height:1.6;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif;color:rgb(71,85,105)">Correct, yeah. Literally pre=
+decessors like we do in a schedule.</div></div><div style=3D"margin-bottom:=
+16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-style=
+:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-le=
+ft-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font=
+-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvet=
+ica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-=
+family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helveti=
+ca,Arial,sans-serif;color:rgb(59,130,246)">Shiny</span><span style=3D"font-=
+size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;=
+,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">10:57</span></di=
+v><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,Bl=
+inkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;col=
+or:rgb(71,85,105)">Right. So that when we sequence this and at least lay it=
+ out, it&#39;ll. It&#39;ll make sense.</div></div><div style=3D"margin-bott=
+om:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-st=
+yle:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;=
+,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border=
+-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;f=
+ont-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Hel=
+vetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif;color:rgb(59,130,246)">Jessica</span><span style=3D"=
+font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">11:02</span=
+></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f;color:rgb(71,85,105)">Yeah.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;border-radius:8px;border-left-width:4px;border-left-style:solid=
+;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,H=
+elvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-col=
+or:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif;color:rgb(59,130,246)">Srinivas</span><span style=3D"font-siz=
+e:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">11:03</span></div><=
+div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,Blink=
+MacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:=
+rgb(71,85,105)">And for fy, I think we still need auto management. Right. W=
+ithout an auto posting there isn&#39;t.</div></div><div style=3D"margin-bot=
+tom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-s=
+tyle:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot=
+;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);borde=
+r-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;f=
+ont-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Hel=
+vetica,Arial,sans-serif;color:rgb(59,130,246)">Audrey</span><span style=3D"=
+font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">11:12</span=
+></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f;color:rgb(71,85,105)">Absolutely. That&#39;s the tip of the spear.</div><=
+/div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border=
+-left-width:4px;border-left-style:solid;font-family:-apple-system,BlinkMacS=
+ystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background=
+-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"di=
+splay:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&=
+quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-=
+weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&q=
+uot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)"=
+>Srinivas</span><span style=3D"font-size:14px;font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;colo=
+r:rgb(100,116,139)">11:16</span></div><div style=3D"font-size:16px;line-hei=
+ght:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Then you have vendor=
+ payments. Then I think the accounts table comes in the picture. Where do y=
+ou have.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-ra=
+dius:8px;border-left-width:4px;border-left-style:solid;font-family:-apple-s=
+ystem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-s=
+erif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><=
+div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,Blink=
+MacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span=
+ style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkM=
+acSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:r=
+gb(59,130,246)">Jessica</span><span style=3D"font-size:14px;font-family:-ap=
+ple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,s=
+ans-serif;color:rgb(100,116,139)">11:28</span></div><div style=3D"font-size=
+:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Se=
+goe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">This o=
+ne?</div></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:=
+8px;border-left-width:4px;border-left-style:solid;font-family:-apple-system=
+,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;=
+background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div s=
+tyle=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSy=
+stemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span styl=
+e=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSys=
+temFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59=
+,130,246)">Srinivas</span><span style=3D"font-size:14px;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif;color:rgb(100,116,139)">11:28</span></div><div style=3D"font-size:16p=
+x;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe =
+UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Yeah.</div=
+></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;bord=
+er-left-width:4px;border-left-style:solid;font-family:-apple-system,BlinkMa=
+cSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;backgrou=
+nd-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"=
+display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont=
+,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"fon=
+t-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,=
+&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246=
+)">Jessica</span><span style=3D"font-size:14px;font-family:-apple-system,Bl=
+inkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;col=
+or:rgb(100,116,139)">11:30</span></div><div style=3D"font-size:16px;line-he=
+ight:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Is dependent on.</d=
+iv></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;bo=
+rder-left-width:4px;border-left-style:solid;font-family:-apple-system,Blink=
+MacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;backgr=
+ound-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=
+=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystem=
+Font,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D=
+"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemF=
+ont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130=
+,246)">Shiny</span><span style=3D"font-size:14px;font-family:-apple-system,=
+BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;c=
+olor:rgb(100,116,139)">11:33</span></div><div style=3D"font-size:16px;line-=
+height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot=
+;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Order management.=
+</div></div><div style=3D"margin-bottom:0px;padding:16px;border-radius:8px;=
+border-left-width:4px;border-left-style:solid;font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;back=
+ground-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=
+=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystem=
+Font,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D=
+"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemF=
+ont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130=
+,246)">Srinivas</span><span style=3D"font-size:14px;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f;color:rgb(100,116,139)">11:35</span></div><div style=3D"font-size:16px;li=
+ne-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Yeah. Banking =
+to scroll up. Order management, logistics, compliance. What else? I think t=
+he cash up has dependency. The banking. So that&#39;s the key area. Cash ap=
+p has dependency. Banking. That&#39;s number 12, I believe. Then tax applic=
+ations. So IP run is overall ERP dependency. I&#39;m not sure how you want =
+to do like that work. You answer the IP and it&#39;s overall. Yeah. Right. =
+So once the postings and everything is done, I think you need reporting to =
+be sent to our.</div></div></div><div style=3D"margin-top:36px;text-align:c=
+enter;font-size:14px;padding:20px;border-top-width:1px;border-top-style:sol=
+id;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto=
+,Helvetica,Arial,sans-serif;border-top-color:rgb(226,232,240);color:rgb(100=
+,116,139)"><p style=3D"margin:0px 0px 8px;font-family:-apple-system,BlinkMa=
+cSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">Capture=
+d with Wave AI Note Taker</p><p style=3D"margin:0px;font-size:12px;font-fam=
+ily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,=
+Arial,sans-serif">Your AI-powered companion</p></div></div></div></div></di=
+v></div>
+
+--0000000000004858cb0637f6ad24--

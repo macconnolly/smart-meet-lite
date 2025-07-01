@@ -1,0 +1,2538 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a5d:53c6:0:b0:391:3c18:836e with SMTP id a6csp4471142wrw;
+        Mon, 28 Apr 2025 06:20:48 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEPhh9PfAzAu6O5wKZzU4tdqRXKHpyg3OGYyiIHWng5v+5n6QSp9r9hnUhkovUgKqjyzIqe
+X-Received: by 2002:a05:620a:4c8b:b0:7c5:ccc0:2382 with SMTP id af79cd13be357-7c9619fa9b2mr1430951485a.52.1745846447776;
+        Mon, 28 Apr 2025 06:20:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745846447; cv=none;
+        d=google.com; s=arc-20240605;
+        b=ea1CfbCJ/PQOyDfGrRz/JDiNFi0gdFCO/mHq7VoVRzCd7xkSLQ8YcQktZdVKup/9AU
+         /Nsa7TYWeG5KsDGs27Jgyb89PkbrZD++bluw8YrwyKh13PDnK+TP+0lAxqf5XsPth4JC
+         HTxvdaYfnZH+g6dJ7JPD3zV+VL6VZ4QnqKrvDvmZS30wvfgkVgo0l1JK46Z0p4dYafzR
+         FjNxF8K8U9NAArkU6W3PVUQksNVJNCsEp3tAdkhJI9uetQ+meYVIApnwM5IhsG2J342Q
+         VJgpWRX3mQN98GjWBZ/La0j+y42GZ7Df417VxWYAJUHQo83FcmtGBT0nfcmc0CpNU0M2
+         phUA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=4WO0zG9kCSO5JH++CGU+2lxy/uGfigO25nvBnFNUCk8=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=jV1CxpgS83f8R+OsdCUk4E6PirafohfMxeY5wITaxtz2+8uUgU2BvfWd426qXVK+tl
+         eb1Sv6wY6jc1Zi5Bz9gHdWyTP2hkWhjuQJvoCb1Gy8Hd60C0PXvNW/srPkM0JdaK9Swx
+         dnQOfBzWBo7YhBVd1RmpRAs1DEsPd8QE9ISIah/l1mLXTsVhAZ2rHWIXpMjP2kz7u9Yj
+         Moo4o8uPdTvSdwyVLYmNSYCeQ4/5CuMPim+D7XDbXl/jzP70/tpzmzrft2hQfdgMYe2g
+         Qvka/vMPvgNUYg1ryGl5OQhh60hlvtS7jaQyu6GILOVYe9bespf1M+9tYS//hXllL87y
+         7FYQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=GYTHxBJO;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=nFDVDl+N;
+       spf=pass (google.com: domain of 010001967c8eaac3-fd15e0d4-b85d-4226-841f-c301a14c49fd-000000@send.email.wave.co designates 54.240.9.36 as permitted sender) smtp.mailfrom=010001967c8eaac3-fd15e0d4-b85d-4226-841f-c301a14c49fd-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <010001967c8eaac3-fd15e0d4-b85d-4226-841f-c301a14c49fd-000000@send.email.wave.co>
+Received: from a9-36.smtp-out.amazonses.com (a9-36.smtp-out.amazonses.com. [54.240.9.36])
+        by mx.google.com with ESMTPS id af79cd13be357-7c958eb7640si979118985a.461.2025.04.28.06.20.47
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 28 Apr 2025 06:20:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 010001967c8eaac3-fd15e0d4-b85d-4226-841f-c301a14c49fd-000000@send.email.wave.co designates 54.240.9.36 as permitted sender) client-ip=54.240.9.36;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=GYTHxBJO;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=nFDVDl+N;
+       spf=pass (google.com: domain of 010001967c8eaac3-fd15e0d4-b85d-4226-841f-c301a14c49fd-000000@send.email.wave.co designates 54.240.9.36 as permitted sender) smtp.mailfrom=010001967c8eaac3-fd15e0d4-b85d-4226-841f-c301a14c49fd-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1745846447;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=7gRqy4ofW26xFtfyt+MuETjafc6EDm/TXrH/1RNaWec=;
+	b=GYTHxBJOTKEkqUF26Xor8/6is9+6J6xtNY5vO9v6r8SH4LdYBqcOuZKebXQ58kvi
+	AEqHEGCfRgpGgOhb+bk8s+6xR5Er438asAHkGUr4eZhPmB6e8a85kyT/WwcM5MN/3M+
+	uBd9Qpn/iZC8LziGcnb3oSUV/UdlN9w6eItR/Rk0=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1745846447;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=7gRqy4ofW26xFtfyt+MuETjafc6EDm/TXrH/1RNaWec=;
+	b=nFDVDl+Naz15ifjs4b4dX78gU79lk4zpORuOgV4G1+pl3Wsp4eMzPoCm4hUSJ57B
+	GfWxYjxR8ClKe583mA+Olek8blNpipSvmQGjrc/sWWT1Q9y8Kvu1oWvHmNUYzu4SttQ
+	o1OljZRimkNSIpb9wqOsyjXQ02OxsUBySuOv8/J4=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Meeting Summary on Project Progress and Actions
+Message-ID: <010001967c8eaac3-fd15e0d4-b85d-4226-841f-c301a14c49fd-000000@email.amazonses.com>
+Date: Mon, 28 Apr 2025 13:20:46 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-150872fa03554473-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.04.28-54.240.9.36
+
+----_NmP-150872fa03554473-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Meeting Summary on Project Progress and Actions
+
+## Summary of Meeting
+
+### Date
+Monday, 20th of April
+
+### Main Topics Discussed
+
+#### 1. Progress on Excel Sheet and Sign-offs
+- **Status Update**: Six =
+applications have been completely done, tested, copied, and signed off by =
+both sides.
+- **Action**: An email will be sent to obtain the PDF =
+confirmations for these six applications to finalize them.
+
+#### 2. Chart Types and Reporting for Applications
+- **Discussion**: =
+Exploration of using a horizontal bar chart to represent tasks.
+- **Query**: Possibility of adapting the current task chart to display =
+applications.
+- **Outcome**: Agreement to create a column in the Master =
+Excel file to track completed applications per site, reflecting the status =
+accurately.
+
+#### 3. Master Excel vs Capital Edge Tracking
+- **Issue**: Discrepancy between Master Excel and Capital Edge in tracking =
+application completion.
+- **Resolution**:=20
+  - Completion statuses will =
+be updated in the Master Excel as the source for total applications.
+  - Capital Edge will reflect the completion based on the Master data to =
+ensure consistency.
+
+#### 4. Fortran Application Tasks and Book of Work
+- **Current Status**:=20
+  - Eight tasks in Capital Edge representing =
+Fortran are not fully aligned with the 62 line items in the Master Excel.
+- **Action Items**:
+  - Add individual Fortran application tasks into =
+Capital Edge to accurately represent the Book of Work.
+  - Ensure that each of the 62 applications is accounted for in the =
+tracking system.
+
+#### 5. Project Timelines and Deadlines
+- **Deadline**: End of the week for completing current tasks.
+- **Concerns**: Limited buffer time with only four to five weeks remaining.
+- **Strategy**: Prioritize substance over form to ensure task completion, =
+even if it requires reordering task execution.
+
+#### 6. Collaboration with =
+Indian Team
+- **Status**:=20
+  - Six applications completed for the India =
+site.
+  - Alignment meetings with Gopi and Mohan scheduled for the =
+following day.
+- **Challenges**:=20
+  - Upcoming Indian holiday on Thursday=
+ and many team members taking Friday off.
+- **Plan**:
+  - Aim to complete 60-70 applications by the holiday.
+  - Consider scheduling working sessions to enhance collaboration and =
+progress.
+
+#### 7. Progress on Rockford, Brookford, and Other Applications
+- **Rockford**: Progress is steady with ongoing working sessions.
+- **Brookford**: Not significantly problematic.
+- **Cats and Dogs =
+Applications**:=20
+  - Challenges with the buyer solution data extract =
+application.
+  - Identifying users and completing pending testing with Adam=
+.
+- **Synergy Project**:=20
+  - Positive progress with project setup and =
+live adjustments.
+
+#### 8. App Inventory Updates
+- **Status**:=20
+  - App inventory tab has been updated.
+  - Verification needed to ensure =
+all contracts and applications are correctly mapped.
+- **Action**:=20
+  - Mac to assist in finalizing the app inventory.
+  - Ensure accurate =
+formulas and data representation in the inventory.
+
+#### 9. TSA Applications and Communications
+- **Tasks**:=20
+  - Develop communications to users about access revocations.
+  - Plan due date for communications in two days.
+- **Strategy**:=20
+  - Utilize Stevie and her team to handle communications to avoid direct =
+communication channels.
+  - Ensure clear handoff of communication =
+responsibilities.
+
+#### 10. Change Management and Communication Channels
+- **Issue**:=20
+  - Need to maintain proper communication channels to avoid=
+ escalating issues unnecessarily.
+- **Guidelines**:=20
+  - Share files with Actuation only after thorough review.
+  - Include Disena in calls involving Actuation to maintain oversight.
+  - Ensure transparency with perimeter teams to prevent misunderstandings.
+
+#### 11. Non-Engineering HR Applications
+- **Decision**:=20
+  - Do not copy Indonesia HR applications to Capital Edge.
+  - Proceed with legal sign-offs without reverse copying to ensure logical =
+separation.
+
+#### 12. Upcoming Meetings and Deep Dives
+- **Plan**:=20
+  - Schedule a deep dive into Rockford to ensure accurate tracking.
+  - Monitor Polarian calls closely and inquire about progress delays.
+
+### Action Items
+
+1. **Send PDF Confirmations**
+   - Email to obtain PDF =
+confirmations for the six completed applications.
+
+2. **Update Master =
+Excel**
+   - Create a new column to track completed applications per site.
+
+3. **Integrate Fortran Tasks**
+   - Add 62 Fortran application tasks into =
+Capital Edge.
+
+4. **Schedule Alignment Meetings**
+   - Align with Gopi and =
+Mohan regarding the Indian team's progress.
+
+5. **Develop User =
+Communications**
+   - Assign Stevie and her team to draft and send =
+communications regarding TSA applications.
+
+6. **Finalize App Inventory**
+   - Collaborate with Mac to ensure the app inventory is accurate and =
+complete.
+
+7. **Deep Dive into Rockford**
+   - Organize an in-depth session=
+ to monitor and track Rockford's progress.
+
+8. **Monitor Polarian =
+Progress**
+   - Actively question and track progress during Polarian calls =
+to address any delays.
+
+9. **Include Disena in Relevant Calls**
+   - Ensure Disena is included as optional participants in calls involving =
+Actuation.
+
+10. **Handle Non-Engineering HR Applications**
+    - Proceed with legal sign-offs without reverse copying to Capital Edge.
+
+### Follow-up Points
+
+- **Email Confirmation**: Await PDF confirmations =
+for the six signed-off applications.
+- **Access to Excel**: Ensure all =
+relevant team members have access to the updated Master Excel file.
+- **Post-Holiday Progress**: Monitor the progress of the Indian team =
+post-holiday to meet deadlines.
+- **App Inventory Verification**: Complete =
+the verification of the app inventory with Mac=E2=80=99s assistance.
+- **Communication Effectiveness**: Confirm that Stevie=E2=80=99s team =
+effectively communicates with all users regarding TSA applications.
+- **Rockford Tracking**: Review the outcomes of the deep dive session into =
+Rockford.
+- **Polarian Call Insights**: Gather information from Polarian =
+calls to address any underlying issues or delays.
+
+### Additional Notes
+
+- **Ankle Injury Discussion**: Personal discussions included an update on =
+an ankle injury requiring medical attention. Not directly related to =
+project tasks but part of team rapport.
+
+---
+
+Transcript:
+0:00
+A ton to like, just like, oh, you want this Excel, a copy of this Excel and=
+ it's not that difficult. Then I wouldn't see it being an issue. But this =
+morning I was looking at the sheet and we have six completely done, like =
+tested, copied in the site, like signed off by both sides. So I'm going to =
+send out an email just so that I can get that PDF. I'm going to get that =
+PDF sent out an email so I can get that solidified and then at least we're =
+done. Done with at least six.
+
+0:32
+That's great. That's really good. Hey =
+Amber, just I guess a quick one. Do you know how we've got tasks? Like =
+we've got the. I don't know what kind of chart that is, to be honest. It's =
+kind of like a horizontal bar chart. We've got it by tasks that essentially=
+. Are we able to do that for apps now that we've got a couple complete to =
+test that chart out?
+
+0:59
+Yeah. Okay. Okay.
+
+1:01
+Am I making sense? So =
+I'm sick over the weekend, so my head's just a bit clogged, but essentially=
+ it's. I think it's the app volume one.
+
+1:10
+Yeah.
+
+1:14
+No, sorry, I lie. If you go to work. Plan, task report.
+
+1:19
+No, this is the extended report you're talking about this one, right?
+
+1:24
+I actually want the third one.
+
+1:26
+Sorry, the third one?
+
+1:29
+Yeah, the second, second one.
+
+1:33
+Second one, yeah.
+
+1:34
+So are we able to get this by. No, no, that was it. If you, if we ever get =
+that view by apps and I think you've done this before already. No, no, no, =
+the third one.
+
+1:48
+The third. Oh yeah, this one.
+
+1:50
+So Parry's just said, right, like if in the top, right? Barry, you've just =
+said that Bangalore is now what, 6 of 86 complete?
+
+1:59
+Uh huh. Okay.
+
+2:00
+Yeah.
+
+2:03
+And because I think, I don't know if this is feasible, =
+Amber, if it's a whole heap of work, don't worry about it. But this is the =
+view that Despina is dying to see. She can't correlate tasks to apps. And =
+like we could be 98% done, but we technically made. We could not have any =
+sign offs done. You know what I mean? Like, that's where she's just getting=
+ nervous. So just, just something to think about. Sorry, I didn't mean to. =
+I just wanted to shoot to this view because I. That's where Dispina is. =
+Like, well, how many apps have we done? I don't care about your task count.=
+ Like, I don't. It's like, what have you signed Sealed and delivered. And =
+that's kind of. Sorry, I just. I had to sort of. Because that question's =
+coming soon. Right, Right. Yeah.
+
+2:56
+Okay. So, yeah, basically what I'm =
+doing, I'm. I'm taking the app count here from our master, the Excel file.
+
+3:07
+So maybe if.
+
+3:08
+Yeah. So if we can create a column there and if we =
+can start similarly, I can do that. Like, similarly, what we have done, =
+like, loaded into Capital Edge. I can do that completed, something like =
+that, and then pull that status here so it can give us how many are =
+completed out of that particular site.
+
+3:32
+Yeah, that would be good. =
+Because I just think that's what we're going to deliver apps, we don't =
+really have to deliver tasks. So I think that's the thing. Sorry, Perry. =
+You can continue. Just.
+
+3:48
+One thing, though. So if this is pulling from=
+ the Master, I actually think that that might be better because that means =
+that that's the correct number of, like, four chan applications within that=
+ list. Right. So in theory, I don't need to get all the Fortran tasks =
+within Capital Edge. Right. Because then that wouldn't. No, I still feel =
+like the Fortran task would still be representative of the Book of Work =
+that we're doing for Fortran, which currently is the eight tasks we have in=
+ Capital Edge, which isn't as representative. So what do you want to do =
+there, Annie? So yesterday I had asked Umbert to add in the 4chan tasks =
+within capital Edge. And I know, Umber, you haven't gotten there yet =
+because you're a little confused. No worries at all. We can talk about it. =
+But how do we want to represent like that? So we're basically missing like.=
+ Like, we just have a Fortran section of, like, the eight tasks that =
+represent all of Fortran in Capital Edge versus the 62 line items we =
+actually do have in our Master. Does that make sense?
+
+5:03
+I'm not sure. The question is.
+
+5:05
+The question is, how do I represent =
+the Book of Work for Fortran? Do we want it in Capital Edge or do we keep =
+it in the Master? And the number of applications that gets done still gets =
+updated in that view that Umber is doing because it's connected to the =
+Master and not capital Ed.
+
+5:29
+Okay. Is the question to add things into =
+Cafe Join up. Sorry.
+
+5:34
+Okay, I can explain. So what Perry is asking =
+right now, for all the 62 Fortran application, we have this section =
+dedicated to Fortran, which is signifying all the 62 applications under =
+Fortran scripts. So what? She's asking whether we should create 62 line =
+items for each of the Individual Fortran applications or in C. Or we just =
+mark it as completed in the master for the completion or the representation=
+ perspective.
+
+6:05
+What's the source of the completion?
+
+6:11
+The master. Right. So the source of the completion. Amber, if you go back =
+to the power bi, that's the. You said that this is pulling from our master,=
+ right? Our Excel.
+
+6:25
+So this number the total apps is pulling from =
+Master. Yeah, yeah. So here, whatever completion is there, we have to do it=
+ in master. But like wherever you are seeing this difference, this is =
+pulling from the capital H. This is from Master. That's why there is a =
+difference in applications. Oh no, no, no, no. Sorry. For all the =
+applications I am pulling the values from master, not capital H. So that's =
+why you are seeing the number is 438. If we go to this view, this is the =
+Total number of application 371. This is pulling from capital S. That's why=
+ we see a difference in number. And that's why I. I published a note at the=
+ bottom as well. Makes sense.
+
+7:19
+No, it does. I guess just add in Kep =
+Edge should be the source for what we get marked as complete.
+
+7:27
+Yeah.
+
+7:28
+So if we just need to load in a singular task for each of the =
+remaining items then we can do that. Perfect. Cool. As long as it's a five =
+minute task then I'm good with it. If it takes any longer than that then we=
+ can just manage it offline. Cuz it should be done this week, right? Par.
+
+7:47
+Yeah, that's the goal. But Fortran tends to keep me up at night so I =
+don't know man, I'm hoping, I am hoping with my fingers crossed and I pray,=
+ I pray, hopefully it gets it. Okay.
+
+8:02
+So yeah, so I guess. And guys, =
+anything that gets delayed now is an actual risk. Like we've only got four =
+or five weeks to go and we have zero buffer now with any of this stuff. So =
+it's gotta be like it's. It's substance over form right now. Like if we =
+have to do task three instead before task two, I don't care. Let's just get=
+ it done. Because I feel like what would. Like what I'm seeing in a lot of =
+different areas is like valerian really frustrates me. They waited so long =
+to do a copy and then they worked out they couldn't do it. Right. Like it's=
+ just terrible anyway. Like it's just. So let's just do as much as we can =
+and then we'll do a little bit of cleanup and sign offs after the fact or =
+whatever. We need to do, but I just want to make sure we can get it done. =
+So I just sort of end with that there. But it sounds like we've got six on =
+the go for India so that's good.
+
+9:02
+Agreement. Yeah.
+
+9:05
+So Amber, what's Harry, anything else coming out of India Bengal we need to=
+ discuss?
+
+9:13
+Not yet. Nothing. Nothing really. I just want to get =
+alignment with Gopi and Mohan tomorrow. But the individual teams are =
+already working it and going in and doing the actual testing and sign offs.=
+ I'm just going to go get that email confirmation of the six done. So at =
+least that's buttoned off and then I can put that into Capital Edge and =
+we'll continue pushing it. Nothing that I need to raise just yet.
+
+9:44
+Yeah. Which is hopefully good.
+
+9:46
+Knock on wood. Crossing my fingers. =
+Nothing yet.
+
+9:51
+Yeah. Okay. And do they know it's due end of week?
+
+9:57
+Yeah. So Gopi wants it done end of week two and, and like this might be an =
+issue. I don't know. And correct me if I'm wrong, Amber, there is a, there =
+is a Indian holiday on Thursday.
+
+10:11
+Yes, it's holiday. Yeah, yeah, yeah=
+.
+
+10:15
+And then Mohan just told us that a lot of people are taking Friday=
+ off as well because of that.
+
+10:23
+So I think that's, that's okay. As =
+long as we're up in the 60 70s by that day, I think we're all right. If =
+we're sitting at 2030, then that's a really big issue. Sort of. Amber, are =
+there like, how's it being done? Are they just working it out between =
+themselves when they do it or is there scheduled sessions?
+
+10:46
+So I'm hopeful that they are doing a working session together. I have not =
+received any email communication on that.
+
+10:56
+I'm just thinking, Barry, =
+is it worth putting time on the calendar and be like, hey guys, like this =
+is a, an allotted slot that works for this and don't want to micromanage =
+but I just want to give them the option like, hey, this is a good time to =
+do it based on your calendar.
+
+11:14
+Yep. And we can probably do it like =
+India time and Umber can like.
+
+11:18
+Yeah, yeah.
+
+11:20
+So what I did is I actually went to their live sheet and I put in due dates=
+ on all of them. So it's. So they're. Well like they're in the she and =
+they're seeing that, hey, we want to get this done, we want to get this =
+done asap. So I did that. I did that prioritization per what we talked =
+about Friday and I think that's what kind of is pushing people to get =
+things done. And maybe it's going to be more than six. So I just checked =
+six this morning, but there's a chance people are continuing to do it.
+
+11:55
+Any chance I can get access to that Excel or.
+
+11:58
+No, it's on the college side.
+
+12:01
+And you cannot give access to my ey.
+
+12:05
+No, yeah, I can, I can continue giving you offline like copies but. =
+And I can share screen, but no.
+
+12:14
+I was just thinking like during =
+daytime. Are they making any progress? I can do a pulse check and then =
+probably I can shoot an email to Pradeep. That's what I was.
+
+12:23
+You know what we can do?
+
+12:25
+You know those GDS resources that do have =
+IDs, I can give them access and then you can kind of keep in touch with the=
+ GDS EY team and they can keep an eye for you. That might be an option.
+
+12:44
+Okay, let's talk after this call. Yeah. That themselves are burdened =
+with task and work.
+
+12:50
+So you can look at a sheet once.
+
+12:53
+Okay.
+
+12:53
+Yeah, yeah, yeah. Okay, let's see.
+
+12:59
+Okay.
+
+13:03
+Okay. Sorry, Paris, what were you saying?
+
+13:08
+No, I just want to know =
+what holiday it was.
+
+13:11
+So it's. It's in Bangalore. It's Bangalore Day =
+or Karnataka Day, so to say. And for us North Indians it's Labor Day, so =
+yeah, so it's almost kind of a national holiday. Not national, but yeah, =
+like public holiday for all these states in India.
+
+13:35
+Cool. Okay, never mind. That's all I had. And you're asking something?
+
+13:41
+No, no, I think Topango is in pretty good check. How's Brookford =
+looking?
+
+13:47
+Rockford is actually also not doing too bad. I'm more so =
+worried about the cats and dogs. Like the solution business manager just =
+got is. Is the buyer solution data extract. And that's one application =
+where I'm like, I don't have a actual user. So Bangalore uses the legacy =
+information but the database is maintained by Rockford. And I just got =
+Rachel Cunningham as a person so that I need a. I need to figure out in =
+terms of doors dots complete pending testing from Adam. I'm doing working =
+sessions almost every day just because I think Paul and Devendra and Adam =
+just kind of need time to just go through it and they wouldn't make time =
+otherwise. So Synergy is actually going well. We did a working session on =
+Friday where we set up the project and Adam wanted to do it. So we, again, =
+we just need more time. So I set up more time today and then so that's =
+going well. We actively already identified what needs to be moved and we're=
+ going to do it live together that way. We're. You know, everyone has eyes =
+on it. And then in terms of the copied, Chase sent back a Excel with where =
+everything lives, and a lot of them they already have access to and it's =
+already on their site. So we need to make sure that it still gets signed =
+off and there's someone on the call inside who will review it. Just because=
+ Chase says that he has it doesn't mean. You know, I still think we. We =
+still need both sides, right? So. So yeah. And then Fortran. Of course.
+
+15:48
+Yeah. Yeah. Okay. All right. Maybe let's do a deep. Like a bit of a =
+deep dive into Rockford this afternoon just to make sure we are tracking =
+good. What about. So that's that non functional. Sorry? Non functional. I =
+keep saying that. Non engineering. I think we did a few bespoke calls this =
+week on. Tim. I'll catch up with you. How's your ankle? What happened?
+
+16:15
+I don't flipping clue. Like yesterday I was playing with the kids and=
+ the niece and nephews and. Sorry. Saturday I was doing that. Everything =
+was fine. Yesterday I finally got to build the fence for my blueberry farm =
+and laid down and ate it. Just started swelling up and got no sleep and =
+just killing me. I don't know what the hell it is.
+
+16:42
+Damn. Even with ice, it still keeps going up.
+
+16:47
+Yeah. I remember last night. I got no sleep. I was tossing turn. I could =
+not find a comfortable spot. Anytime it moved.
+
+16:55
+Yeah.
+
+16:56
+But I'll figure it out.
+
+16:57
+Inside or outside.
+
+17:02
+It's. It's almost like the tendon. It's right. Right at the ankle, the =
+front part of the foot.
+
+17:09
+Oh. Like when you lift your foot up and that=
+ thing pops up like that tendon don't pop up. Yeah, like you kick something=
+. It.
+
+17:18
+I have no flipping clue. It's just swollen and like, I've had =
+bad ankle sprains before. There's no discoloration. It's not broken, but =
+it's just. Can't put any weight on it. It'll be fun going through the =
+airport tonight.
+
+17:32
+Yeah. Get it checked out before you do because if =
+it's something bad, you get a severe cankle coming into you, you don't get =
+canked up. He's still gonna.
+
+17:43
+Still gonna crush us all at golf =
+tomorrow.
+
+17:47
+That tomorrow or Thursday. I don't know, Wednesday.
+
+17:49
+It's just a joke. I'm sure it's at some point.
+
+17:54
+It's a simulation golf. So we're gonna be fine for Wednesday night. All =
+right. That's what you're talking about?
+
+18:01
+Yeah, sure.
+
+18:03
+Yeah. Yeah. Oh, Tim, if you could get it checked out like that. Be really. =
+I don't know how it works, but aren't like, don't feet like swell up when =
+you're like flying and stuff too? That's. Yeah, I'll figure it out.
+
+18:20
+I'll see what the doctor says, see what the diagnosis is and go from there.=
+ That's all I can do.
+
+18:28
+Yeah. Oh, let us know what happens, man.
+
+18:31
+Okay.
+
+18:32
+And then. Yeah, we'll. We'll go from there. Yeah. Okay.
+
+18:38
+So as far as non engineering hr, I'm not worried about. We're not =
+going to copy over the. The Indonesia apps. We're just gonna get legal on =
+that one just to get sign off because there's nothing they need and then =
+there's just some cats and dogs that are the other ones. So we got server =
+monkey off the comms list. I think everything else is. Is going fine with =
+that one.
+
+19:00
+Yeah.
+
+19:01
+I'll get the list together for you. It's the =
+awesome ones that I'm probably.
+
+19:03
+Does that mean we got more change =
+requests now?
+
+19:07
+Sorry?
+
+19:08
+Does that mean we've got more change =
+requests now?
+
+19:14
+No, the disposition is the same, but it's already =
+hosted in Indonesia for the HR applications, so it's copying over there. =
+We're just not doing the reverse copy back to columns.
+
+19:26
+Okay. Okay.
+
+19:29
+It's like the. It's like their TSA logical separation application, =
+which is already logically separated.
+
+19:37
+Yeah.
+
+19:38
+Based on individual, not. Not anything else. So I'm not changing =
+dispositions on that. I'm like, yep, technically it's already logically =
+separated. We're good.
+
+19:47
+Yeah. No. Okay. Okay. Yeah. Let us know sort =
+of what happens because we. Well, you're on the call with Chandra. Yeah, =
+Yeah, I just. She's. I think she's just agitated because of like what's =
+going on at the deal level right now. And any changes to her just seem to =
+irk her a little bit. So we just need to be cognizant of that. The one =
+thing that I'm kicking myself, and I don't know why I didn't bring it up, =
+is the apps we're flipping from dedicated transfer to dedicated tsa. I =
+didn't raise that with her at all and I don't know why.
+
+20:27
+With covering with Jose. I think we're good.
+
+20:30
+Yeah. I think it is at the deal level. She just needs to know. So I might =
+just have to ping her, unfortunately. But yeah, it would have been a good =
+time, especially while it's just her. When you have the rest of the SML on =
+the Corp dev team on they tend to. Someone raises an issue, and everyone =
+just sort of comes off the top rope trying to make it a bigger issue. It's =
+just what they do. Yeah. Yeah. Okay, cool. And then. So I think that's that=
+. And then I'll. Did we. It's Friday afternoon. I was starting to get sick,=
+ and I can't actually remember what we did Friday afternoon. The app =
+inventory. Is that updated, Perry?
+
+21:19
+Yeah, the app inventory tab is =
+updated, and I know tab was. Tim was gonna take a look at the other tab.
+
+21:26
+Okay.
+
+21:27
+Yeah, yeah.
+
+21:28
+It's starting to pull some stuff in. =
+Mac, I'm probably gonna need your help just to kind of get everything over =
+the line. I know you did a lot of work on that last week, but we took out =
+the ones that we didn't agree with that we didn't connect with Chandra on.
+
+21:41
+Okay.
+
+21:41
+So I've had to pull in a new app list, so we can go over=
+ real quick. I just made a copy and said update, so we just need to make =
+sure we got the right formulas. Pulling stuff in.
+
+21:51
+Yeah, I pasted as value, so hopefully we don't have formulas left. But I do=
+ hear what you're saying for the app inventory for all of the disposition =
+changes. We had written those. And then, Tim, if you just let me know which=
+ ones you did and did not show to Chandra, we can talk about next steps =
+there, too.
+
+22:14
+Yeah.
+
+22:14
+So the app inventory is correct. That's got=
+ everything that we showed and did not show to Chandra.
+
+22:20
+Perfect.
+
+22:20
+So, yeah, that's the golden copy. I know you had your app to contract=
+ mapping, and then I have an app to contract mapping update that I was kind=
+ of creating some formulas and pulling some stuff in. So if you don't mind =
+looking at that, because there's a few contracts that didn't get pulled in =
+and that kind of stuff.
+
+22:36
+Yeah.
+
+22:36
+Yeah, definitely.
+
+22:38
+Thank you.
+
+22:44
+Okay, so that's how that goes. We'll keep on keeping on. =
+Amber, where's today? On here? Monday, 20th of April. We've only got 10 =
+tasks due. Okay, that's good.
+
+23:00
+One thing I was going through just, =
+like, some of the tasks in general for the TSA applications. Like the tsa, =
+no action. I believe one of the tasks is to start drafting up =
+communications that we would send, if I remember this correctly. And some =
+of those. So for Bangalore, some, like, we do have a ton of TSA =
+applications. What. How do we have. We kind of thought about how we want to=
+ get those comms out. I say that because those tasks are coming up. Just =
+tsa, no action. There are tasks Related to. And I think it would be in =
+Bangalore Umber if it might be easier for you to.
+
+23:58
+I'm just thinking do we actually. Are we even responsible for that? So =
+generally like generally in deals you don't like we are communicating more =
+with the perimeter than we usually would. Because this is such a cluster I =
+would say by way of us sharing the final disposition listing with Stevie is=
+ our communication. Like it's on her and Alex and Andy and Mohan. Mohan may=
+ not have the list. He does.
+
+24:36
+He has his own like Bangalore list.
+
+24:39
+What do you mean his own?
+
+24:44
+This week. But yeah, I'll push Chris=
+ and Alex in that team to kind of start drafting communications.
+
+24:52
+Yeah, yeah. Because I'm just thinking like I don't think that's on us to =
+technically do like we. We don't want to get into like us being the comms =
+channel and everything that you've like a comms with. Let me take an act =
+like can you put that on the tactical list for me Harry is just understand =
+comms requirements for TS8 applications. Is it my history? Yeah. It might =
+just be a simple what's changing what's not kind of thing. But let me just =
+take that. When are they coming due? Ensure actuation and continued access.
+
+25:31
+Yeah. Like literally starting in two days.
+
+25:37
+Which one?
+
+25:38
+Up top. Under notepad. Bangalore Fire solution no action. Develop =
+communications to users stating access will be revoked on day one. Plan due=
+ date in two days.
+
+25:54
+Yeah, I think we go via the Stevie route here and=
+ leverage. And leverage her because I don't think it's on us to communicate=
+ to all the users like Stevie. That's literally your job in this and I know=
+ she's got a ton of other jobs but yeah, fair. Like we can't get stuck in =
+the. Hey, did you. Did the three people sitting in this office we don't =
+know about get this communication? Like we don't get stuck in that. As long=
+ as we're clear around like hey, we gave. I think this is the way it's =
+going to play. As long as we're clear that hey, we gave this to Stevie to =
+communicate out like our job's done.
+
+26:42
+Makes sense.
+
+26:43
+Yeah, I'll work with him on that and yeah, that'll flow.
+
+26:48
+Nice.
+
+26:48
+Because I'm. They're scheduling a meeting with Mohan and Rockford =
+hopefully for Wednesday. I gotta push them to start doing that now just so =
+that CD has understanding of tracking.
+
+27:01
+Okay. I guess the other thing=
+ as well is that like I feel like everyone's. I feel like they're all =
+engaged but in. Does Stevie know how much we're speaking with Mohan and =
+Adam and Chase.
+
+27:17
+I don't think she, she realizes it. I've talked to =
+Alex saying that it's being worked, but she just doesn't have visibility on=
+ what's been done and what's not. She's probably seen the, the Bangalore =
+tracker, but I don't think she's seen. We don't necessarily have a tracker =
+for Rockford so. But I think they're going to use the. Our centralized. The=
+ one that I kind of drafted for them just to kind of say hey guys, can you =
+update this so that we know where we're at and where we're behind?
+
+27:51
+Yeah.
+
+27:51
+And so both her and Andy will have. Have some understanding of=
+, of what's going on because right now I don't think they have any.
+
+27:58
+Yeah. And that's not unusual for the in perimeter teams. Like that's always=
+ a big. It's not good for change management but it's how this deal team =
+likes to operate. Just keep them in the dark and don't let them ask =
+questions. It's not really the secret to success I guess. Like Perry, you =
+remember from Hornet, right. Like getting access to perimeter was very =
+difficult.
+
+28:22
+Yeah. Yeah. It raised a lot of concerns if, if you =
+reached out to the perimeter for sure.
+
+28:29
+Yeah, you can get killed. =
+Which is why we're kind of like. Which is why like I don't love not having =
+someone from Collins with us like every step of the journey in case =
+something comes up. But so guys, whatever we do, just let's only ever share=
+ like make sure that I've seen every file that gets shared with Saffron. =
+Sorry with actuation like that's, that's kind of a non negotiable just to =
+make sure that we're not putting something out there that shouldn't be put =
+out there because that would get us in a, that would get us killed in, in =
+this situation. And that's why so team the other one. So team, anytime we =
+invite actuation to a call make sure you put dispina at like make sure =
+there's commons people on it. Right. Ey can't have a call directly with the=
+ perimeter. Like that puts us in a pretty bad like if we, if they don't =
+join that's okay, but as long as they're invited and they're included then =
+then we're good. I just don't want to have like a. Ey's been doing all =
+these calls with the prover that no one knew about. Like that's a, like =
+those Kind of words blow up quickly and people are pretty dramatic here, as=
+ you know. So just a heads up on.
+
+29:51
+On that one anti the working =
+sessions that I'm doing, just like with Paul, Devendra and Adam. Those are =
+like, fine though, right? Like, I can continue having that.
+
+30:02
+Yeah, but you've got Tori and all those, don't you?
+
+30:05
+Not on the working sessions. I don't have Tori on that.
+
+30:09
+Just put her as optional on those. Yeah, yeah, yeah. Just put her in =
+dispena as optional. They won't join. Yeah, but just put her. Just put them=
+ as optional.
+
+30:19
+Okay.
+
+30:21
+And like, well, I'll tell Tori tomorrow. =
+Like, hey, for visibility, we're going to put you on these meetings because=
+ then if no one joins, for example, and we're not having that issue, but if=
+ they don't, we can forward it to Tori and say, tori, no one's joining. =
+Need you to escalate. And she doesn't mind escalating. So that's her. Sure.
+
+30:46
+I'll. I'll add pouring this demand to my working sessions.
+
+30:52
+Okay. All right, cool. Is there anything else that we need to try? It seems=
+ like we're actually on okay with Cap Edge stuff, which took us a bit to =
+get there, but we. We. We did get there in the end. Any. Anything else we =
+need to discuss on. No, we're good. Okay. Right, Mac, are you good to still=
+ join the Polarian calls? We need to watch that one super closely. I'm a =
+bit nervous that they just. This. That was so. Like, they haven't done =
+anything since we left. Yeah. So if we can just sort of ask the why can't =
+we do this quicker? Like, what are we waiting for? Kind of stuff, like, =
+without being ourselves, obviously. But, like, I honestly don't know what =
+they've done in the last four. Four or five weeks since we left.
+
+32:02
+Yeah, absolutely.
+
+32:04
+So, yeah, if you could just sort of ask questions =
+on that, that'd be. That'd be good. Yep. Cool. Alrighty. Well, have a good =
+week, everyone. I'm sure I'll catch up with each of you sort of =
+individually throughout the day. Sounds great.
+
+32:19
+Thank you.
+
+32:20
+Cheers, guys.
+
+32:22
+See y'all tomorrow.
+----_NmP-150872fa03554473-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Meeting =
+Summary on Project Progress and Actions</h1></td></tr></table></div><div =
+style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/A80B53CE-3E85-4C03-A440-BB3777E1FA51?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h2 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2rem">Summary of Meeting</h2><h3 style=3D"font-weight:500;pad=
+ding-top:20px;font-size:1.75rem">Date</h3><p>Monday, 20th of April</p>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">Main =
+Topics Discussed</h3><h4 style=3D"font-weight:500;padding-top:20px;font-siz=
+e:1.5rem">1. Progress on Excel Sheet and Sign-offs</h4><ul>
+<li><strong style=3D"font-weight:bold">Status Update</strong>: Six =
+applications have been completely done, tested, copied, and signed off by =
+both sides.</li>
+<li><strong style=3D"font-weight:bold">Action</strong>: An=
+ email will be sent to obtain the PDF confirmations for these six =
+applications to finalize them.</li>
+</ul>
+<h4 style=3D"font-weight:500;padd=
+ing-top:20px;font-size:1.5rem">2. Chart Types and Reporting for =
+Applications</h4><ul>
+<li><strong style=3D"font-weight:bold">Discussion</st=
+rong>: Exploration of using a horizontal bar chart to represent tasks.</li>
+<li><strong style=3D"font-weight:bold">Query</strong>: Possibility of =
+adapting the current task chart to display applications.</li>
+<li><strong style=3D"font-weight:bold">Outcome</strong>: Agreement to =
+create a column in the Master Excel file to track completed applications =
+per site, reflecting the status accurately.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem">3. Master =
+Excel vs Capital Edge Tracking</h4><ul>
+<li><strong =
+style=3D"font-weight:bold">Issue</strong>: Discrepancy between Master Excel=
+ and Capital Edge in tracking application completion.</li>
+<li><strong style=3D"font-weight:bold">Resolution</strong>: <ul>
+<li>Completion statuses will be updated in the Master Excel as the source =
+for total applications.</li>
+<li>Capital Edge will reflect the completion =
+based on the Master data to ensure consistency.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem">4. Fortran =
+Application Tasks and Book of Work</h4><ul>
+<li><strong =
+style=3D"font-weight:bold">Current Status</strong>: <ul>
+<li>Eight tasks in Capital Edge representing Fortran are not fully aligned =
+with the 62 line items in the Master Excel.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Action Items</strong>:<ul>
+<li>Add individual Fortran application tasks into Capital Edge to =
+accurately represent the Book of Work.</li>
+<li>Ensure that each of the 62 =
+applications is accounted for in the tracking system.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem">5. =
+Project Timelines and Deadlines</h4><ul>
+<li><strong =
+style=3D"font-weight:bold">Deadline</strong>: End of the week for =
+completing current tasks.</li>
+<li><strong style=3D"font-weight:bold">Conce=
+rns</strong>: Limited buffer time with only four to five weeks remaining.=
+</li>
+<li><strong style=3D"font-weight:bold">Strategy</strong>: Prioritize =
+substance over form to ensure task completion, even if it requires =
+reordering task execution.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-=
+top:20px;font-size:1.5rem">6. Collaboration with Indian Team</h4><ul>
+<li><strong style=3D"font-weight:bold">Status</strong>: <ul>
+<li>Six applications completed for the India site.</li>
+<li>Alignment meetings with Gopi and Mohan scheduled for the following day.=
+</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Challenges</strong=
+>: <ul>
+<li>Upcoming Indian holiday on Thursday and many team members =
+taking Friday off.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">=
+Plan</strong>:<ul>
+<li>Aim to complete 60-70 applications by the holiday.=
+</li>
+<li>Consider scheduling working sessions to enhance collaboration and=
+ progress.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:=
+20px;font-size:1.5rem">7. Progress on Rockford, Brookford, and Other =
+Applications</h4><ul>
+<li><strong style=3D"font-weight:bold">Rockford</stro=
+ng>: Progress is steady with ongoing working sessions.</li>
+<li><strong style=3D"font-weight:bold">Brookford</strong>: Not =
+significantly problematic.</li>
+<li><strong style=3D"font-weight:bold">Cats=
+ and Dogs Applications</strong>: <ul>
+<li>Challenges with the buyer =
+solution data extract application.</li>
+<li>Identifying users and =
+completing pending testing with Adam.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Synergy Project</strong>: <ul>
+<li>Positive progress with project setup and live adjustments.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+5rem">8. App Inventory Updates</h4><ul>
+<li><strong =
+style=3D"font-weight:bold">Status</strong>: <ul>
+<li>App inventory tab has =
+been updated.</li>
+<li>Verification needed to ensure all contracts and =
+applications are correctly mapped.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Action</strong>: <ul>
+<li>Mac to assist in finalizing the app inventory.</li>
+<li>Ensure accurate formulas and data representation in the inventory.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1=
+.5rem">9. TSA Applications and Communications</h4><ul>
+<li><strong style=3D"font-weight:bold">Tasks</strong>: <ul>
+<li>Develop communications to users about access revocations.</li>
+<li>Plan due date for communications in two days.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Strategy</strong>: <ul>
+<li>Utilize Stevie and her team to handle communications to avoid direct =
+communication channels.</li>
+<li>Ensure clear handoff of communication =
+responsibilities.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;paddi=
+ng-top:20px;font-size:1.5rem">10. Change Management and Communication =
+Channels</h4><ul>
+<li><strong style=3D"font-weight:bold">Issue</strong>: =
+<ul>
+<li>Need to maintain proper communication channels to avoid escalating=
+ issues unnecessarily.</li>
+</ul>
+</li>
+<li><strong =
+style=3D"font-weight:bold">Guidelines</strong>: <ul>
+<li>Share files with Actuation only after thorough review.</li>
+<li>Include Disena in calls involving Actuation to maintain oversight.</li>
+<li>Ensure transparency with perimeter teams to prevent misunderstandings.=
+</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-=
+size:1.5rem">11. Non-Engineering HR Applications</h4><ul>
+<li><strong style=3D"font-weight:bold">Decision</strong>: <ul>
+<li>Do not copy Indonesia HR applications to Capital Edge.</li>
+<li>Proceed with legal sign-offs without reverse copying to ensure logical =
+separation.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top=
+:20px;font-size:1.5rem">12. Upcoming Meetings and Deep Dives</h4><ul>
+<li><strong style=3D"font-weight:bold">Plan</strong>: <ul>
+<li>Schedule a deep dive into Rockford to ensure accurate tracking.</li>
+<li>Monitor Polarian calls closely and inquire about progress delays.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1=
+.75rem">Action Items</h3><ol>
+<li><p><strong style=3D"font-weight:bold">Sen=
+d PDF Confirmations</strong></p>
+<ul>
+<li>Email to obtain PDF confirmations=
+ for the six completed applications.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Update Master Excel</strong></p>
+<ul>
+<li>Create a new column to track completed applications per site.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Integrate Fortran =
+Tasks</strong></p>
+<ul>
+<li>Add 62 Fortran application tasks into Capital =
+Edge.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Schedule =
+Alignment Meetings</strong></p>
+<ul>
+<li>Align with Gopi and Mohan =
+regarding the Indian team&#39;s progress.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Develop User =
+Communications</strong></p>
+<ul>
+<li>Assign Stevie and her team to draft =
+and send communications regarding TSA applications.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Finalize App =
+Inventory</strong></p>
+<ul>
+<li>Collaborate with Mac to ensure the app =
+inventory is accurate and complete.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Deep Dive into =
+Rockford</strong></p>
+<ul>
+<li>Organize an in-depth session to monitor and =
+track Rockford&#39;s progress.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Monitor Polarian Progress</strong></p>
+<ul>
+<li>Actively question and track progress during Polarian calls to address =
+any delays.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Incl=
+ude Disena in Relevant Calls</strong></p>
+<ul>
+<li>Ensure Disena is =
+included as optional participants in calls involving Actuation.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Handle Non-Engineering HR =
+Applications</strong></p>
+<ul>
+<li>Proceed with legal sign-offs without =
+reverse copying to Capital Edge.</li>
+</ul>
+</li>
+</ol>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">Follow-up =
+Points</h3><ul>
+<li><strong style=3D"font-weight:bold">Email =
+Confirmation</strong>: Await PDF confirmations for the six signed-off =
+applications.</li>
+<li><strong style=3D"font-weight:bold">Access to =
+Excel</strong>: Ensure all relevant team members have access to the updated=
+ Master Excel file.</li>
+<li><strong style=3D"font-weight:bold">Post-Holida=
+y Progress</strong>: Monitor the progress of the Indian team post-holiday =
+to meet deadlines.</li>
+<li><strong style=3D"font-weight:bold">App =
+Inventory Verification</strong>: Complete the verification of the app =
+inventory with Mac=E2=80=99s assistance.</li>
+<li><strong =
+style=3D"font-weight:bold">Communication Effectiveness</strong>: Confirm =
+that Stevie=E2=80=99s team effectively communicates with all users =
+regarding TSA applications.</li>
+<li><strong style=3D"font-weight:bold">Roc=
+kford Tracking</strong>: Review the outcomes of the deep dive session into =
+Rockford.</li>
+<li><strong style=3D"font-weight:bold">Polarian Call =
+Insights</strong>: Gather information from Polarian calls to address any =
+underlying issues or delays.</li>
+</ul>
+<h3 style=3D"font-weight:500;paddin=
+g-top:20px;font-size:1.75rem">Additional Notes</h3><ul>
+<li><strong style=3D"font-weight:bold">Ankle Injury Discussion</strong>: =
+Personal discussions included an update on an ankle injury requiring =
+medical attention. Not directly related to project tasks but part of team =
+rapport.</li>
+</ul>
+<hr />
+</div></div></div><div style=3D"background-color=
+:#ffffff;padding:28px;border-radius:12px;border:1px solid =
+#e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0=
+, 0.06)"><h3 style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-t=
+op:0;margin-bottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription</h3><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Amber</span><span style=3D"color:#64748b;font-size:14px"=
+>0:00</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">A ton to like, just like, oh, you want this Excel, a copy of this Excel =
+and it&#x27;s not that difficult. Then I wouldn&#x27;t see it being an =
+issue. But this morning I was looking at the sheet and we have six =
+completely done, like tested, copied in the site, like signed off by both =
+sides. So I&#x27;m going to send out an email just so that I can get that =
+PDF. I&#x27;m going to get that PDF sent out an email so I can get that =
+solidified and then at least we&#x27;re done. Done with at least six.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">0:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;s great. =
+That&#x27;s really good. Hey Amber, just I guess a quick one. Do you know =
+how we&#x27;ve got tasks? Like we&#x27;ve got the. I don&#x27;t know what =
+kind of chart that is, to be honest. It&#x27;s kind of like a horizontal =
+bar chart. We&#x27;ve got it by tasks that essentially. Are we able to do =
+that for apps now that we&#x27;ve got a couple complete to test that chart =
+out?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Umber</span><span =
+style=3D"color:#64748b;font-size:14px">0:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Okay. Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">1:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Am I making sense? =
+So I&#x27;m sick over the weekend, so my head&#x27;s just a bit clogged, =
+but essentially it&#x27;s. I think it&#x27;s the app volume one.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Umber</span><span =
+style=3D"color:#64748b;font-size:14px">1:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">1:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, sorry, I lie. If=
+ you go to work. Plan, task report.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Umber</span><span style=3D"color:#64748b;font-size:14px">=
+1:19</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">No, this is the extended report you&#x27;re talking about this one, =
+right?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">1:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I actually want the =
+third one.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Umber</span><span =
+style=3D"color:#64748b;font-size:14px">1:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sorry, the third one=
+?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">1:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, the second, =
+second one.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Umber</span><span =
+style=3D"color:#64748b;font-size:14px">1:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Second one, yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">1:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So are we able to =
+get this by. No, no, that was it. If you, if we ever get that view by apps =
+and I think you&#x27;ve done this before already. No, no, no, the third one=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Umber</span><span =
+style=3D"color:#64748b;font-size:14px">1:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The third. Oh yeah, =
+this one.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">1:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So Parry&#x27;s just=
+ said, right, like if in the top, right? Barry, you&#x27;ve just said that =
+Bangalore is now what, 6 of 86 complete?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Umber</span><span style=3D"color:#64748b;font-size:14px">=
+1:59</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Uh huh. Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><=
+span style=3D"color:#64748b;font-size:14px">2:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">2:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And because I think,=
+ I don&#x27;t know if this is feasible, Amber, if it&#x27;s a whole heap of=
+ work, don&#x27;t worry about it. But this is the view that Despina is =
+dying to see. She can&#x27;t correlate tasks to apps. And like we could be =
+98% done, but we technically made. We could not have any sign offs done. =
+You know what I mean? Like, that&#x27;s where she&#x27;s just getting =
+nervous. So just, just something to think about. Sorry, I didn&#x27;t mean =
+to. I just wanted to shoot to this view because I. That&#x27;s where =
+Dispina is. Like, well, how many apps have we done? I don&#x27;t care about=
+ your task count. Like, I don&#x27;t. It&#x27;s like, what have you signed =
+Sealed and delivered. And that&#x27;s kind of. Sorry, I just. I had to sort=
+ of. Because that question&#x27;s coming soon. Right, Right. Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Umber</span><span =
+style=3D"color:#64748b;font-size:14px">2:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. So, yeah, =
+basically what I&#x27;m doing, I&#x27;m. I&#x27;m taking the app count here=
+ from our master, the Excel file.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</=
+span><span style=3D"color:#64748b;font-size:14px">3:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So maybe if.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Umber</span><span =
+style=3D"color:#64748b;font-size:14px">3:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So if we can =
+create a column there and if we can start similarly, I can do that. Like, =
+similarly, what we have done, like, loaded into Capital Edge. I can do that=
+ completed, something like that, and then pull that status here so it can =
+give us how many are completed out of that particular site.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Perry</span><span style=3D"color:#64748b;font-size:14px"=
+>3:32</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, that would be good. Because I just think that&#x27;s what =
+we&#x27;re going to deliver apps, we don&#x27;t really have to deliver =
+tasks. So I think that&#x27;s the thing. Sorry, Perry. You can continue. =
+Just.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><span =
+style=3D"color:#64748b;font-size:14px">3:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">One thing, though. =
+So if this is pulling from the Master, I actually think that that might be =
+better because that means that that&#x27;s the correct number of, like, =
+four chan applications within that list. Right. So in theory, I don&#x27;t =
+need to get all the Fortran tasks within Capital Edge. Right. Because then =
+that wouldn&#x27;t. No, I still feel like the Fortran task would still be =
+representative of the Book of Work that we&#x27;re doing for Fortran, which=
+ currently is the eight tasks we have in Capital Edge, which isn&#x27;t as =
+representative. So what do you want to do there, Annie? So yesterday I had =
+asked Umbert to add in the 4chan tasks within capital Edge. And I know, =
+Umber, you haven&#x27;t gotten there yet because you&#x27;re a little =
+confused. No worries at all. We can talk about it. But how do we want to =
+represent like that? So we&#x27;re basically missing like. Like, we just =
+have a Fortran section of, like, the eight tasks that represent all of =
+Fortran in Capital Edge versus the 62 line items we actually do have in our=
+ Master. Does that make sense?</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</=
+span><span style=3D"color:#64748b;font-size:14px">5:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m not sure. =
+The question is.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><=
+span style=3D"color:#64748b;font-size:14px">5:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The question is, how=
+ do I represent the Book of Work for Fortran? Do we want it in Capital Edge=
+ or do we keep it in the Master? And the number of applications that gets =
+done still gets updated in that view that Umber is doing because it&#x27;s =
+connected to the Master and not capital Ed.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Perry</span><span style=3D"color:#64748b;font-size:14px">=
+5:29</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay. Is the question to add things into Cafe Join up. Sorry.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Umber</span><span =
+style=3D"color:#64748b;font-size:14px">5:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, I can explain.=
+ So what Perry is asking right now, for all the 62 Fortran application, we =
+have this section dedicated to Fortran, which is signifying all the 62 =
+applications under Fortran scripts. So what? She&#x27;s asking whether we =
+should create 62 line items for each of the Individual Fortran applications=
+ or in C. Or we just mark it as completed in the master for the completion =
+or the representation perspective.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry<=
+/span><span style=3D"color:#64748b;font-size:14px">6:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">What&#x27;s the =
+source of the completion?</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><=
+span style=3D"color:#64748b;font-size:14px">6:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The master. Right. =
+So the source of the completion. Amber, if you go back to the power bi, =
+that&#x27;s the. You said that this is pulling from our master, right? Our =
+Excel.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Umber</span><span =
+style=3D"color:#64748b;font-size:14px">6:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So this number the =
+total apps is pulling from Master. Yeah, yeah. So here, whatever completion=
+ is there, we have to do it in master. But like wherever you are seeing =
+this difference, this is pulling from the capital H. This is from Master. =
+That&#x27;s why there is a difference in applications. Oh no, no, no, no. =
+Sorry. For all the applications I am pulling the values from master, not =
+capital H. So that&#x27;s why you are seeing the number is 438. If we go to=
+ this view, this is the Total number of application 371. This is pulling =
+from capital S. That&#x27;s why we see a difference in number. And =
+that&#x27;s why I. I published a note at the bottom as well. Makes sense.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">7:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, it does. I guess=
+ just add in Kep Edge should be the source for what we get marked as =
+complete.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><span =
+style=3D"color:#64748b;font-size:14px">7:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">7:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So if we just need =
+to load in a singular task for each of the remaining items then we can do =
+that. Perfect. Cool. As long as it&#x27;s a five minute task then I&#x27;m =
+good with it. If it takes any longer than that then we can just manage it =
+offline. Cuz it should be done this week, right? Par.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amber</span><span style=3D"color:#64748b;font-size:14px">=
+7:47</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, that&#x27;s the goal. But Fortran tends to keep me up at night so =
+I don&#x27;t know man, I&#x27;m hoping, I am hoping with my fingers crossed=
+ and I pray, I pray, hopefully it gets it. Okay.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Perry</span><span style=3D"color:#64748b;font-size:14px">=
+8:02</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So yeah, so I guess. And guys, anything that gets delayed now is an =
+actual risk. Like we&#x27;ve only got four or five weeks to go and we have =
+zero buffer now with any of this stuff. So it&#x27;s gotta be like =
+it&#x27;s. It&#x27;s substance over form right now. Like if we have to do =
+task three instead before task two, I don&#x27;t care. Let&#x27;s just get =
+it done. Because I feel like what would. Like what I&#x27;m seeing in a lot=
+ of different areas is like valerian really frustrates me. They waited so =
+long to do a copy and then they worked out they couldn&#x27;t do it. Right.=
+ Like it&#x27;s just terrible anyway. Like it&#x27;s just. So let&#x27;s =
+just do as much as we can and then we&#x27;ll do a little bit of cleanup =
+and sign offs after the fact or whatever. We need to do, but I just want to=
+ make sure we can get it done. So I just sort of end with that there. But =
+it sounds like we&#x27;ve got six on the go for India so that&#x27;s good.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><span =
+style=3D"color:#64748b;font-size:14px">9:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Agreement. Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">9:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So Amber, =
+what&#x27;s Harry, anything else coming out of India Bengal we need to =
+discuss?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><span =
+style=3D"color:#64748b;font-size:14px">9:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Not yet. Nothing. =
+Nothing really. I just want to get alignment with Gopi and Mohan tomorrow. =
+But the individual teams are already working it and going in and doing the =
+actual testing and sign offs. I&#x27;m just going to go get that email =
+confirmation of the six done. So at least that&#x27;s buttoned off and then=
+ I can put that into Capital Edge and we&#x27;ll continue pushing it. =
+Nothing that I need to raise just yet.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Perry</span><span style=3D"color:#64748b;font-size:14px">=
+9:44</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. Which is hopefully good.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</=
+span><span style=3D"color:#64748b;font-size:14px">9:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Knock on wood. =
+Crossing my fingers. Nothing yet.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</=
+span><span style=3D"color:#64748b;font-size:14px">9:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Okay. And do =
+they know it&#x27;s due end of week?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amber</span><span style=3D"color:#64748b;font-size:14px">=
+9:57</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. So Gopi wants it done end of week two and, and like this might be =
+an issue. I don&#x27;t know. And correct me if I&#x27;m wrong, Amber, there=
+ is a, there is a Indian holiday on Thursday.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Umber</span><span style=3D"color:#64748b;font-size:14px">=
+10:11</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yes, it&#x27;s holiday. Yeah, yeah, yeah.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amber</span><span style=3D"color:#64748b;font-size:14px">=
+10:15</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">And then Mohan just told us that a lot of people are taking Friday off =
+as well because of that.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><=
+span style=3D"color:#64748b;font-size:14px">10:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So I think =
+that&#x27;s, that&#x27;s okay. As long as we&#x27;re up in the 60 70s by =
+that day, I think we&#x27;re all right. If we&#x27;re sitting at 2030, then=
+ that&#x27;s a really big issue. Sort of. Amber, are there like, how&#x27;s=
+ it being done? Are they just working it out between themselves when they =
+do it or is there scheduled sessions?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Umber</span><span style=3D"color:#64748b;font-size:14px">=
+10:46</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So I&#x27;m hopeful that they are doing a working session together. I =
+have not received any email communication on that.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Perry</span><span style=3D"color:#64748b;font-size:14px">=
+10:56</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I&#x27;m just thinking, Barry, is it worth putting time on the calendar =
+and be like, hey guys, like this is a, an allotted slot that works for this=
+ and don&#x27;t want to micromanage but I just want to give them the option=
+ like, hey, this is a good time to do it based on your calendar.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><span =
+style=3D"color:#64748b;font-size:14px">11:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep. And we can =
+probably do it like India time and Umber can like.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Perry</span><span style=3D"color:#64748b;font-size:14px">=
+11:18</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><span =
+style=3D"color:#64748b;font-size:14px">11:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So what I did is I =
+actually went to their live sheet and I put in due dates on all of them. So=
+ it&#x27;s. So they&#x27;re. Well like they&#x27;re in the she and =
+they&#x27;re seeing that, hey, we want to get this done, we want to get =
+this done asap. So I did that. I did that prioritization per what we talked=
+ about Friday and I think that&#x27;s what kind of is pushing people to get=
+ things done. And maybe it&#x27;s going to be more than six. So I just =
+checked six this morning, but there&#x27;s a chance people are continuing =
+to do it.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Umber</span><span =
+style=3D"color:#64748b;font-size:14px">11:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Any chance I can get=
+ access to that Excel or.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><=
+span style=3D"color:#64748b;font-size:14px">11:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, it&#x27;s on the=
+ college side.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Umber</span><span =
+style=3D"color:#64748b;font-size:14px">12:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And you cannot give =
+access to my ey.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><=
+span style=3D"color:#64748b;font-size:14px">12:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, yeah, I can, I =
+can continue giving you offline like copies but. And I can share screen, =
+but no.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Umber</span><span =
+style=3D"color:#64748b;font-size:14px">12:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I was just thinking =
+like during daytime. Are they making any progress? I can do a pulse check =
+and then probably I can shoot an email to Pradeep. That&#x27;s what I was.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">12:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You know what we can=
+ do?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><span =
+style=3D"color:#64748b;font-size:14px">12:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You know those GDS =
+resources that do have IDs, I can give them access and then you can kind of=
+ keep in touch with the GDS EY team and they can keep an eye for you. That =
+might be an option.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Umber</span><=
+span style=3D"color:#64748b;font-size:14px">12:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, let&#x27;s =
+talk after this call. Yeah. That themselves are burdened with task and work=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><span =
+style=3D"color:#64748b;font-size:14px">12:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So you can look at a=
+ sheet once.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">12:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Umber</span><span =
+style=3D"color:#64748b;font-size:14px">12:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, yeah. =
+Okay, let&#x27;s see.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><=
+span style=3D"color:#64748b;font-size:14px">12:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">13:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. Sorry, Paris, =
+what were you saying?</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><=
+span style=3D"color:#64748b;font-size:14px">13:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, I just want to =
+know what holiday it was.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Umber</span><=
+span style=3D"color:#64748b;font-size:14px">13:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So it&#x27;s. =
+It&#x27;s in Bangalore. It&#x27;s Bangalore Day or Karnataka Day, so to say=
+. And for us North Indians it&#x27;s Labor Day, so yeah, so it&#x27;s =
+almost kind of a national holiday. Not national, but yeah, like public =
+holiday for all these states in India.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amber</span><span style=3D"color:#64748b;font-size:14px">=
+13:35</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Cool. Okay, never mind. That&#x27;s all I had. And you&#x27;re asking =
+something?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">13:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, no, I think =
+Topango is in pretty good check. How&#x27;s Brookford looking?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><span =
+style=3D"color:#64748b;font-size:14px">13:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Rockford is actually=
+ also not doing too bad. I&#x27;m more so worried about the cats and dogs. =
+Like the solution business manager just got is. Is the buyer solution data =
+extract. And that&#x27;s one application where I&#x27;m like, I don&#x27;t =
+have a actual user. So Bangalore uses the legacy information but the =
+database is maintained by Rockford. And I just got Rachel Cunningham as a =
+person so that I need a. I need to figure out in terms of doors dots =
+complete pending testing from Adam. I&#x27;m doing working sessions almost =
+every day just because I think Paul and Devendra and Adam just kind of need=
+ time to just go through it and they wouldn&#x27;t make time otherwise. So =
+Synergy is actually going well. We did a working session on Friday where we=
+ set up the project and Adam wanted to do it. So we, again, we just need =
+more time. So I set up more time today and then so that&#x27;s going well. =
+We actively already identified what needs to be moved and we&#x27;re going =
+to do it live together that way. We&#x27;re. You know, everyone has eyes on=
+ it. And then in terms of the copied, Chase sent back a Excel with where =
+everything lives, and a lot of them they already have access to and =
+it&#x27;s already on their site. So we need to make sure that it still gets=
+ signed off and there&#x27;s someone on the call inside who will review it.=
+ Just because Chase says that he has it doesn&#x27;t mean. You know, I =
+still think we. We still need both sides, right? So. So yeah. And then =
+Fortran. Of course.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><=
+span style=3D"color:#64748b;font-size:14px">15:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Yeah. Okay. =
+All right. Maybe let&#x27;s do a deep. Like a bit of a deep dive into =
+Rockford this afternoon just to make sure we are tracking good. What about.=
+ So that&#x27;s that non functional. Sorry? Non functional. I keep saying =
+that. Non engineering. I think we did a few bespoke calls this week on. Tim=
+. I&#x27;ll catch up with you. How&#x27;s your ankle? What happened?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><span =
+style=3D"color:#64748b;font-size:14px">16:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I don&#x27;t =
+flipping clue. Like yesterday I was playing with the kids and the niece and=
+ nephews and. Sorry. Saturday I was doing that. Everything was fine. =
+Yesterday I finally got to build the fence for my blueberry farm and laid =
+down and ate it. Just started swelling up and got no sleep and just killing=
+ me. I don&#x27;t know what the hell it is.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Perry</span><span style=3D"color:#64748b;font-size:14px">=
+16:42</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Damn. Even with ice, it still keeps going up.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Tim</span><span style=3D"color:#64748b;font-size:14px">16=
+:47</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. I remember last night. I got no sleep. I was tossing turn. I could=
+ not find a comfortable spot. Anytime it moved.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Perry</span><span style=3D"color:#64748b;font-size:14px">=
+16:55</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><span =
+style=3D"color:#64748b;font-size:14px">16:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">But I&#x27;ll figure=
+ it out.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">16:57</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Inside or outside.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><span =
+style=3D"color:#64748b;font-size:14px">17:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;s. It&#x27;s=
+ almost like the tendon. It&#x27;s right. Right at the ankle, the front =
+part of the foot.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><=
+span style=3D"color:#64748b;font-size:14px">17:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh. Like when you =
+lift your foot up and that thing pops up like that tendon don&#x27;t pop up=
+. Yeah, like you kick something. It.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Tim</span><span style=3D"color:#64748b;font-size:14px">17=
+:18</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I have no flipping clue. It&#x27;s just swollen and like, I&#x27;ve had =
+bad ankle sprains before. There&#x27;s no discoloration. It&#x27;s not =
+broken, but it&#x27;s just. Can&#x27;t put any weight on it. It&#x27;ll be =
+fun going through the airport tonight.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Perry</span><span style=3D"color:#64748b;font-size:14px">=
+17:32</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. Get it checked out before you do because if it&#x27;s something =
+bad, you get a severe cankle coming into you, you don&#x27;t get canked up.=
+ He&#x27;s still gonna.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Chase</span><=
+span style=3D"color:#64748b;font-size:14px">17:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Still gonna crush us=
+ all at golf tomorrow.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><sp=
+an style=3D"color:#64748b;font-size:14px">17:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That tomorrow or =
+Thursday. I don&#x27;t know, Wednesday.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Chase</span><span style=3D"color:#64748b;font-size:14px">=
+17:49</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">It&#x27;s just a joke. I&#x27;m sure it&#x27;s at some point.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><span =
+style=3D"color:#64748b;font-size:14px">17:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;s a =
+simulation golf. So we&#x27;re gonna be fine for Wednesday night. All right=
+. That&#x27;s what you&#x27;re talking about?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Chase</span><span style=3D"color:#64748b;font-size:14px">=
+18:01</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, sure.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><span =
+style=3D"color:#64748b;font-size:14px">18:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Yeah. Oh, Tim,=
+ if you could get it checked out like that. Be really. I don&#x27;t know =
+how it works, but aren&#x27;t like, don&#x27;t feet like swell up when =
+you&#x27;re like flying and stuff too? That&#x27;s. Yeah, I&#x27;ll figure =
+it out.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><span =
+style=3D"color:#64748b;font-size:14px">18:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;ll see what =
+the doctor says, see what the diagnosis is and go from there. That&#x27;s =
+all I can do.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">18:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Oh, let us =
+know what happens, man.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><sp=
+an style=3D"color:#64748b;font-size:14px">18:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">18:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then. Yeah, =
+we&#x27;ll. We&#x27;ll go from there. Yeah. Okay.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Tim</span><span style=3D"color:#64748b;font-size:14px">18=
+:38</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So as far as non engineering hr, I&#x27;m not worried about. We&#x27;re =
+not going to copy over the. The Indonesia apps. We&#x27;re just gonna get =
+legal on that one just to get sign off because there&#x27;s nothing they =
+need and then there&#x27;s just some cats and dogs that are the other ones.=
+ So we got server monkey off the comms list. I think everything else is. Is=
+ going fine with that one.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><=
+span style=3D"color:#64748b;font-size:14px">19:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><span =
+style=3D"color:#64748b;font-size:14px">19:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;ll get the =
+list together for you. It&#x27;s the awesome ones that I&#x27;m probably.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">19:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Does that mean we =
+got more change requests now?</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</sp=
+an><span style=3D"color:#64748b;font-size:14px">19:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sorry?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">19:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Does that mean =
+we&#x27;ve got more change requests now?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Tim</span><span style=3D"color:#64748b;font-size:14px">19=
+:14</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">No, the disposition is the same, but it&#x27;s already hosted in =
+Indonesia for the HR applications, so it&#x27;s copying over there. =
+We&#x27;re just not doing the reverse copy back to columns.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Perry</span><span style=3D"color:#64748b;font-size:14px"=
+>19:26</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Okay. Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><sp=
+an style=3D"color:#64748b;font-size:14px">19:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;s like the. =
+It&#x27;s like their TSA logical separation application, which is already =
+logically separated.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><=
+span style=3D"color:#64748b;font-size:14px">19:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><span =
+style=3D"color:#64748b;font-size:14px">19:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Based on individual,=
+ not. Not anything else. So I&#x27;m not changing dispositions on that. =
+I&#x27;m like, yep, technically it&#x27;s already logically separated. =
+We&#x27;re good.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><=
+span style=3D"color:#64748b;font-size:14px">19:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. No. Okay. Okay=
+. Yeah. Let us know sort of what happens because we. Well, you&#x27;re on =
+the call with Chandra. Yeah, Yeah, I just. She&#x27;s. I think she&#x27;s =
+just agitated because of like what&#x27;s going on at the deal level right =
+now. And any changes to her just seem to irk her a little bit. So we just =
+need to be cognizant of that. The one thing that I&#x27;m kicking myself, =
+and I don&#x27;t know why I didn&#x27;t bring it up, is the apps we&#x27;re=
+ flipping from dedicated transfer to dedicated tsa. I didn&#x27;t raise =
+that with her at all and I don&#x27;t know why.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Tim</span><span style=3D"color:#64748b;font-size:14px">20=
+:27</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">With covering with Jose. I think we&#x27;re good.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Perry</span><span style=3D"color:#64748b;font-size:14px">=
+20:30</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. I think it is at the deal level. She just needs to know. So I =
+might just have to ping her, unfortunately. But yeah, it would have been a =
+good time, especially while it&#x27;s just her. When you have the rest of =
+the SML on the Corp dev team on they tend to. Someone raises an issue, and =
+everyone just sort of comes off the top rope trying to make it a bigger =
+issue. It&#x27;s just what they do. Yeah. Yeah. Okay, cool. And then. So I =
+think that&#x27;s that. And then I&#x27;ll. Did we. It&#x27;s Friday =
+afternoon. I was starting to get sick, and I can&#x27;t actually remember =
+what we did Friday afternoon. The app inventory. Is that updated, Perry?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><span =
+style=3D"color:#64748b;font-size:14px">21:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, the app =
+inventory tab is updated, and I know tab was. Tim was gonna take a look at =
+the other tab.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">21:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><span =
+style=3D"color:#64748b;font-size:14px">21:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><span =
+style=3D"color:#64748b;font-size:14px">21:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;s starting =
+to pull some stuff in. Mac, I&#x27;m probably gonna need your help just to =
+kind of get everything over the line. I know you did a lot of work on that =
+last week, but we took out the ones that we didn&#x27;t agree with that we =
+didn&#x27;t connect with Chandra on.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Perry</span><span style=3D"color:#64748b;font-size:14px">=
+21:41</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><span =
+style=3D"color:#64748b;font-size:14px">21:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So I&#x27;ve had to =
+pull in a new app list, so we can go over real quick. I just made a copy =
+and said update, so we just need to make sure we got the right formulas. =
+Pulling stuff in.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Chase</span><=
+span style=3D"color:#64748b;font-size:14px">21:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I pasted as =
+value, so hopefully we don&#x27;t have formulas left. But I do hear what =
+you&#x27;re saying for the app inventory for all of the disposition changes=
+. We had written those. And then, Tim, if you just let me know which ones =
+you did and did not show to Chandra, we can talk about next steps there, =
+too.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">22:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><span =
+style=3D"color:#64748b;font-size:14px">22:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So the app inventory=
+ is correct. That&#x27;s got everything that we showed and did not show to =
+Chandra.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Chase</span><span =
+style=3D"color:#64748b;font-size:14px">22:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Perfect.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><span =
+style=3D"color:#64748b;font-size:14px">22:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So, yeah, =
+that&#x27;s the golden copy. I know you had your app to contract mapping, =
+and then I have an app to contract mapping update that I was kind of =
+creating some formulas and pulling some stuff in. So if you don&#x27;t mind=
+ looking at that, because there&#x27;s a few contracts that didn&#x27;t get=
+ pulled in and that kind of stuff.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry<=
+/span><span style=3D"color:#64748b;font-size:14px">22:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Chase</span><span =
+style=3D"color:#64748b;font-size:14px">22:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, definitely.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><span =
+style=3D"color:#64748b;font-size:14px">22:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Thank you.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">22:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so that&#x27;s=
+ how that goes. We&#x27;ll keep on keeping on. Amber, where&#x27;s today? =
+On here? Monday, 20th of April. We&#x27;ve only got 10 tasks due. Okay, =
+that&#x27;s good.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><=
+span style=3D"color:#64748b;font-size:14px">23:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">One thing I was =
+going through just, like, some of the tasks in general for the TSA =
+applications. Like the tsa, no action. I believe one of the tasks is to =
+start drafting up communications that we would send, if I remember this =
+correctly. And some of those. So for Bangalore, some, like, we do have a =
+ton of TSA applications. What. How do we have. We kind of thought about how=
+ we want to get those comms out. I say that because those tasks are coming =
+up. Just tsa, no action. There are tasks Related to. And I think it would =
+be in Bangalore Umber if it might be easier for you to.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Perry</span><span style=3D"color:#64748b;font-size:14px">=
+23:58</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I&#x27;m just thinking do we actually. Are we even responsible for that?=
+ So generally like generally in deals you don&#x27;t like we are =
+communicating more with the perimeter than we usually would. Because this =
+is such a cluster I would say by way of us sharing the final disposition =
+listing with Stevie is our communication. Like it&#x27;s on her and Alex =
+and Andy and Mohan. Mohan may not have the list. He does.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amber</span><span style=3D"color:#64748b;font-size:14px">=
+24:36</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">He has his own like Bangalore list.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Perry</span><span style=3D"color:#64748b;font-size:14px">=
+24:39</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">What do you mean his own?</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><s=
+pan style=3D"color:#64748b;font-size:14px">24:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">This week. But yeah,=
+ I&#x27;ll push Chris and Alex in that team to kind of start drafting =
+communications.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><=
+span style=3D"color:#64748b;font-size:14px">24:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah. Because =
+I&#x27;m just thinking like I don&#x27;t think that&#x27;s on us to =
+technically do like we. We don&#x27;t want to get into like us being the =
+comms channel and everything that you&#x27;ve like a comms with. Let me =
+take an act like can you put that on the tactical list for me Harry is just=
+ understand comms requirements for TS8 applications. Is it my history? Yeah=
+. It might just be a simple what&#x27;s changing what&#x27;s not kind of =
+thing. But let me just take that. When are they coming due? Ensure =
+actuation and continued access.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</=
+span><span style=3D"color:#64748b;font-size:14px">25:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Like literally=
+ starting in two days.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><=
+span style=3D"color:#64748b;font-size:14px">25:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Which one?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><span =
+style=3D"color:#64748b;font-size:14px">25:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Up top. Under =
+notepad. Bangalore Fire solution no action. Develop communications to users=
+ stating access will be revoked on day one. Plan due date in two days.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">25:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I think we go =
+via the Stevie route here and leverage. And leverage her because I =
+don&#x27;t think it&#x27;s on us to communicate to all the users like =
+Stevie. That&#x27;s literally your job in this and I know she&#x27;s got a =
+ton of other jobs but yeah, fair. Like we can&#x27;t get stuck in the. Hey,=
+ did you. Did the three people sitting in this office we don&#x27;t know =
+about get this communication? Like we don&#x27;t get stuck in that. As long=
+ as we&#x27;re clear around like hey, we gave. I think this is the way =
+it&#x27;s going to play. As long as we&#x27;re clear that hey, we gave this=
+ to Stevie to communicate out like our job&#x27;s done.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amber</span><span style=3D"color:#64748b;font-size:14px">=
+26:42</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Makes sense.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><sp=
+an style=3D"color:#64748b;font-size:14px">26:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I&#x27;ll work=
+ with him on that and yeah, that&#x27;ll flow.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Perry</span><span style=3D"color:#64748b;font-size:14px">=
+26:48</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Nice.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><span =
+style=3D"color:#64748b;font-size:14px">26:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Because I&#x27;m. =
+They&#x27;re scheduling a meeting with Mohan and Rockford hopefully for =
+Wednesday. I gotta push them to start doing that now just so that CD has =
+understanding of tracking.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><=
+span style=3D"color:#64748b;font-size:14px">27:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. I guess the =
+other thing as well is that like I feel like everyone&#x27;s. I feel like =
+they&#x27;re all engaged but in. Does Stevie know how much we&#x27;re =
+speaking with Mohan and Adam and Chase.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Tim</span><span style=3D"color:#64748b;font-size:14px">27=
+:17</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I don&#x27;t think she, she realizes it. I&#x27;ve talked to Alex saying=
+ that it&#x27;s being worked, but she just doesn&#x27;t have visibility on =
+what&#x27;s been done and what&#x27;s not. She&#x27;s probably seen the, =
+the Bangalore tracker, but I don&#x27;t think she&#x27;s seen. We =
+don&#x27;t necessarily have a tracker for Rockford so. But I think =
+they&#x27;re going to use the. Our centralized. The one that I kind of =
+drafted for them just to kind of say hey guys, can you update this so that =
+we know where we&#x27;re at and where we&#x27;re behind?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Perry</span><span style=3D"color:#64748b;font-size:14px">=
+27:51</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Tim</span><span =
+style=3D"color:#64748b;font-size:14px">27:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And so both her and =
+Andy will have. Have some understanding of, of what&#x27;s going on because=
+ right now I don&#x27;t think they have any.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Perry</span><span style=3D"color:#64748b;font-size:14px">=
+27:58</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. And that&#x27;s not unusual for the in perimeter teams. Like =
+that&#x27;s always a big. It&#x27;s not good for change management but =
+it&#x27;s how this deal team likes to operate. Just keep them in the dark =
+and don&#x27;t let them ask questions. It&#x27;s not really the secret to =
+success I guess. Like Perry, you remember from Hornet, right. Like getting =
+access to perimeter was very difficult.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amber</span><span style=3D"color:#64748b;font-size:14px">=
+28:22</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. Yeah. It raised a lot of concerns if, if you reached out to the =
+perimeter for sure.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><=
+span style=3D"color:#64748b;font-size:14px">28:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, you can get =
+killed. Which is why we&#x27;re kind of like. Which is why like I =
+don&#x27;t love not having someone from Collins with us like every step of =
+the journey in case something comes up. But so guys, whatever we do, just =
+let&#x27;s only ever share like make sure that I&#x27;ve seen every file =
+that gets shared with Saffron. Sorry with actuation like that&#x27;s, =
+that&#x27;s kind of a non negotiable just to make sure that we&#x27;re not =
+putting something out there that shouldn&#x27;t be put out there because =
+that would get us in a, that would get us killed in, in this situation. And=
+ that&#x27;s why so team the other one. So team, anytime we invite =
+actuation to a call make sure you put dispina at like make sure =
+there&#x27;s commons people on it. Right. Ey can&#x27;t have a call =
+directly with the perimeter. Like that puts us in a pretty bad like if we, =
+if they don&#x27;t join that&#x27;s okay, but as long as they&#x27;re =
+invited and they&#x27;re included then then we&#x27;re good. I just =
+don&#x27;t want to have like a. Ey&#x27;s been doing all these calls with =
+the prover that no one knew about. Like that&#x27;s a, like those Kind of =
+words blow up quickly and people are pretty dramatic here, as you know. So =
+just a heads up on.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><=
+span style=3D"color:#64748b;font-size:14px">29:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">On that one anti the=
+ working sessions that I&#x27;m doing, just like with Paul, Devendra and =
+Adam. Those are like, fine though, right? Like, I can continue having that.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">30:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, but =
+you&#x27;ve got Tori and all those, don&#x27;t you?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amber</span><span style=3D"color:#64748b;font-size:14px">=
+30:05</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Not on the working sessions. I don&#x27;t have Tori on that.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">30:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Just put her as =
+optional on those. Yeah, yeah, yeah. Just put her in dispena as optional. =
+They won&#x27;t join. Yeah, but just put her. Just put them as optional.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><span =
+style=3D"color:#64748b;font-size:14px">30:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">30:21</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And like, well, =
+I&#x27;ll tell Tori tomorrow. Like, hey, for visibility, we&#x27;re going =
+to put you on these meetings because then if no one joins, for example, and=
+ we&#x27;re not having that issue, but if they don&#x27;t, we can forward =
+it to Tori and say, tori, no one&#x27;s joining. Need you to escalate. And =
+she doesn&#x27;t mind escalating. So that&#x27;s her. Sure.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Amber</span><span style=3D"color:#64748b;font-size:14px"=
+>30:46</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">I&#x27;ll. I&#x27;ll add pouring this demand to my working sessions.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">30:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. All right, =
+cool. Is there anything else that we need to try? It seems like we&#x27;re =
+actually on okay with Cap Edge stuff, which took us a bit to get there, but=
+ we. We. We did get there in the end. Any. Anything else we need to discuss=
+ on. No, we&#x27;re good. Okay. Right, Mac, are you good to still join the =
+Polarian calls? We need to watch that one super closely. I&#x27;m a bit =
+nervous that they just. This. That was so. Like, they haven&#x27;t done =
+anything since we left. Yeah. So if we can just sort of ask the why =
+can&#x27;t we do this quicker? Like, what are we waiting for? Kind of stuff=
+, like, without being ourselves, obviously. But, like, I honestly =
+don&#x27;t know what they&#x27;ve done in the last four. Four or five weeks=
+ since we left.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Chase</span><=
+span style=3D"color:#64748b;font-size:14px">32:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, absolutely.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">32:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So, yeah, if you =
+could just sort of ask questions on that, that&#x27;d be. That&#x27;d be =
+good. Yep. Cool. Alrighty. Well, have a good week, everyone. I&#x27;m sure =
+I&#x27;ll catch up with each of you sort of individually throughout the day=
+. Sounds great.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Umber</span><=
+span style=3D"color:#64748b;font-size:14px">32:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Thank you.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Perry</span><span =
+style=3D"color:#64748b;font-size:14px">32:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Cheers, guys.=
+</div></div><div style=3D"margin-bottom:0;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amber</span><span =
+style=3D"color:#64748b;font-size:14px">32:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">See y&#x27;all =
+tomorrow.</div></div></div><div style=3D"margin-top:36px;text-align:center;=
+color:#64748b;font-size:14px;padding:20px;border-top:1px solid #e2e8f0"><p =
+style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note Taker</p><p=
+ style=3D"margin:0;font-size:12px">Your AI-powered companion</p></div></div=
+></div></div></html>
+----_NmP-150872fa03554473-Part_1--

@@ -1,0 +1,2880 @@
+MIME-Version: 1.0
+Date: Tue, 17 Jun 2025 17:53:00 -0400
+References: <010001977f23839a-c96c4843-d460-4402-a671-1cf648c30a5d-000000@email.amazonses.com>
+In-Reply-To: <010001977f23839a-c96c4843-d460-4402-a671-1cf648c30a5d-000000@email.amazonses.com>
+Message-ID: <CAOat4ZDFAoB3y2+iJO7+to3MWKgrYBubUrwvdiXmu9=BJ5J9CA@mail.gmail.com>
+Subject: Fwd: Athens UAT Planning Collaboration and Escalation
+From: Mac Connolly <mac@macconnolly.com>
+To: save@mem.ai
+Content-Type: multipart/alternative; boundary="0000000000004dcb560637cb89e0"
+
+--0000000000004dcb560637cb89e0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+---------- Forwarded message ---------
+From: Wave AI Note Taker <summary@email.wave.co>
+Date: Tue, 17 Jun 2025 at 14:25
+Subject: Athens UAT Planning Collaboration and Escalation
+To: <mac@macconnolly.com>
+
+
+[image: Wave AI Logo]Athens UAT Planning Collaboration and Escalation
+=E2=9C=A8 View Your Session on the Web
+<https://app.wave.co/sessions/24DA4ECA-182E-46D2-A851-119A31309C14?lastLogi=
+nParam=3Dgoogle>
+=F0=9F=93=9DSummary
+Meeting Summary: Athens UAT Planning Session
+
+*Date:* June 17, 2025
+*Meeting Title:* Athens UAT Mid Day TB
+------------------------------
+Main Topics Discussed1. *UAT Functional Lead & Tester Identification*
+
+   - *Challenge:* Uncertainty about who should be listed as UAT functional
+   leads and testers for various modules=E2=80=94especially within SAP FSCM=
+ and
+   related sub-processes.
+   - *Resolution:*
+      - An updated list of tester names for FSCM was sourced from business
+      contacts and shared in both the chat and an Excel tracker for clarity=
+.
+      - For =E2=80=9CHoneywell UOP Credit=E2=80=9D only Nicholas has been i=
+dentified as a
+      tester; the team acknowledged a shortfall in the recommended number o=
+f
+      testers (three per process/module).
+      - Org chart gaps remain=E2=80=94several teams have either insufficien=
+t
+      testers or only one functional expert available.
+
+2. *Documentation and Tracker Updates*
+
+   - *Artifacts Shared:*
+      - Excel sheets tracking assignment of UAT leads and testers per
+      stream (Credit, Collections, Disputes).
+      - Links provided to both tester assignments and test script
+      repositories.
+      - Defect management trackers for both manual (finance-side) and
+      automated (ERP-side) testing were discussed, with a standardized appr=
+oach
+      still needed.
+   - *Linking and Integration:*
+      - Proposal to reference existing Excel files for comprehensive
+      scenario coverage and avoid duplicating data across trackers.
+      - Plan to timestamp shared files and establish a single source of
+      truth for reviewer convenience.
+
+3. *Module/Stream-Specific Assignments and Risks*
+
+   - *System Cross-Pollination:* Noted that some testers, such as Nicholas,
+   support multiple SPGs (UOP, AM), and many newly hired personnel (e.g., C=
+had
+   for Workiva) have not yet been onboarded or fully trained.
+   - *Known Org Gaps:*
+      - Explicit risks identified for cases where only one qualified tester
+      exists for critical business processes (e.g., Credit Transformation).
+      - Need to note risk and escalate where business units lack sufficient
+      testers/coverage.
+      - Focus on validating tester names for each workstream, especially
+      for coverage/backup in cases of absence.
+
+4. *Testing Process Details*
+
+   - *Manual vs. Automated Testing:*
+      - Finance-side testing is fully manual (Excel-based scripts and
+      defect tracking).
+      - ERP-side will be primarily automated (Tosca), with a need to
+      clarify which scenarios remain manual and link those appropriately.
+   - *Workflow Documentation:*
+      - Requirements to detail for each process: test scripts, scenario
+      coverage, automation status, validation and sign-off ownership,
+and defect
+      tracking location.
+      - Agreement to maintain separate workbooks for Finance (manual) and
+      ERP (automated), with clear referencing and segmentation.
+
+5. *Calendaring & Sequencing of UAT*
+
+   - *Status:*
+      - UAT sequencing and scheduling (=E2=80=9Ccalendaring=E2=80=9D) for t=
+he upcoming
+      two-week window is in progress.
+      - Blockers: Lack of final tester lists, pending business user
+      availability (notably Hyperion users unavailable the week of June 30 =
+for
+      consolidation/reporting).
+   - *Next Steps:*
+      - Commitment to produce a draft scheduling view (=E2=80=9Cversion 1=
+=E2=80=9D) by
+      tomorrow or the day after.
+      - Emphasis on the need for input from both finance and ERP teams to
+      ensure overlapping resources are properly sequenced.
+   - *Communication Dependencies:*
+      - Communicating UAT participation, timelines, and expectations is
+      pending finalization of names and scheduling; urgency expressed to av=
+oid
+      delays in business notifications.
+
+6. *Escalation & Follow-up on Gaps*
+
+   - *Immediate Gaps:*
+      - Several applications=E2=80=94tax for Mexico and Romania, Workiva,
+      Blackline=E2=80=94lack assigned testers or business leads.
+      - New hires cited, but not sufficiently onboarded (e.g., Chad for
+      Workiva).
+      - Discussion on leveraging knowledge transfer structures
+      (pitcher/catcher) to fill temporary gaps.
+   - *Escalation Path:*
+      - Will Johnson is the escalation point for unresolved finance-side
+      gaps.
+      - Action plan to identify and mark gaps (color-code, e.g., red) for
+      escalation by leadership as needed.
+
+------------------------------
+Action Items
+
+   1.
+
+   *Finalize UAT Tester Assignments*
+   - Jessica & Vicki to validate, populate, and escalate as needed for all
+      modules and processes where fewer than three testers are available, u=
+sing
+      latest data from business leads.
+      - Srinivas to provide missing tester names for tax (Mexico/Romania),
+      Workiva, and Blackline. If unavailable, escalate to Will Johnson or
+      appropriate leadership.
+   2.
+
+   *Update and Distribute Tracking Artifacts*
+   - Rakesh to link Excel-based tester lists to the overarching scenario
+      and BRV trackers.
+      - Mac to move all received files into the Athens UAT shared folder
+      and timestamp versions for reference.
+      - Confirm and highlight risks/gaps in tracker comments/remarks
+      columns.
+   3.
+
+   *Defect Tracking Consistency*
+   - Alignment required on one defect tracker per workstream (ERP/Tosca for
+      automated, Excel for manual).
+      - Add notes/links to each tracker for clarity as to the tool/method
+      used.
+   4.
+
+   *UAT Calendaring*
+   - Srinivas and Bill to draft initial calendar views for both Finance
+      (manual) and ERP (automated) UAT windows.
+      - Identify blackout periods (e.g., June 30=E2=80=93July 4, Hyperion u=
+ser
+      unavailability) and flag these in the calendar.
+   5.
+
+   *Communication Plan*
+   - Once tester names and calendars are validated, Jessica to draft and
+      distribute participation communications, setting expectations and
+      requesting business user vacation blackout/availability information.
+   6.
+
+   *Escalation of Gaps*
+   - Immediate escalation for:
+         - Tax testing resources for Mexico/Romania.
+         - Lack of testers for Workiva and Blackline.
+         - Any other process with less than three testers or where UAT
+         responsibility is not clearly assigned.
+      7.
+
+   *Follow-on Coordination*
+   - Schedule targeted working sessions with Srinivas, Rakesh, Vicki, and
+      Jessica to go line-by-line through the red/gap areas post-call.
+      - Connect with Will Johnson regarding finance-side escalation as
+      needed.
+
+------------------------------
+Follow-up Points
+
+   - *Daily/Ad-hoc Working Sessions:*
+      - Additional smaller, targeted meetings to address and close
+      resource/tester assignment gaps, with escalation if not rapidly resol=
+ved.
+   - *Reporting for Sukai Readiness Review (Tomorrow Morning):*
+      - Commitment to prepare a comprehensive deliverable for
+      workstream/tester/scenario coverage matrix and calendaring for tomorr=
+ow=E2=80=99s
+      session with Sukai.
+   - *End-of-Day 3:30/4:30 PM Check-In:*
+      - Bill to forward invite to ERP team. Key milestone to confirm ERP
+      automation coverage, scenario/tester assignment, and calendar status.
+   - *All-Hands Communication/Program Readiness:*
+      - Updated UAT readiness and sequencing slide to be shared at the
+      OpSep all-hands call tomorrow, with additional underlying detail as
+      required.
+
+------------------------------
+ImagesImage 1: Screenshot of "Athens UAT Mid Day TB" Chat Interface
+
+*Key Elements & Relevance:*
+
+   - *Purpose:* Illustrates the collaborative, cross-functional nature of
+   the meeting and chat-based coordination.
+   - *Visuals:*
+      - Chat participants from Honeywell and external domains with roles
+      specified (Credit, Dispute, Collections).
+      - Timestamping and re-invitation activity shows active coordination,
+      attendance management, and the need to keep all stakeholders aligned.
+      - Shared message box containing names and module assignments reflects
+      the effort to track, validate, and share tester assignments real-time=
+.
+      - Task bar shows supporting tools (Outlook, PowerPoint, Excel, Teams,
+      etc.), reflecting the multi-system coordination required for UAT
+readiness.
+   - *Significance:*
+      - Reflects urgency and iterative exchange necessary to finalize
+      documentation and resource plans.
+      - Reinforces reliance on digital collaboration for real-time
+      information sharing and rapid escalation.
+
+------------------------------
+Appendix
+
+   - *Key Dates/Deadlines:*
+      - Final tester names and schedule draft: by COB June 18, 2025.
+      - Sukai deliverable/readout: June 18, 2025, AM.
+      - OpSep all-hands update: June 18, 2025.
+      - UAT window critical blackout: Week of June 30, 2025 (Hyperion
+      consolidation period).
+
+------------------------------
+
+*End of Summary*
+=F0=9F=8E=99=EF=B8=8FTranscription
+Jessica0:00
+Who's the best person to connect with to make sure we have the right people
+in this UAT functional lead column here?
+Bill0:08
+Because I am, I guess, but I mean I'm relying. I don't know who any of
+these people are.
+Srinivas0:14
+Yeah. So I think I can help you out with this one. Do you want to filter
+by? I'm not sure what filters are applied. This is for fscm. SAP fscm.
+Right. So Chase Davidson, I'm not sure why his name is on there, but let me
+get to the names. Just give me one moment. I'm just trying to plug. Okay,
+I'm going to ping the names here in the chart window for you just to make
+it easier. These are the names for fscm. Basically FSCM includes your
+credit collection display. These are the names that will be participating
+in the uatn. These are the names that we have received from them and from
+the business.
+Jessica1:27
+Okay, so those are the names that should be in column O.
+Srinivas1:31
+Yes, that's correct.
+Jessica1:34
+Okay, so is there a list of those names somewhere?
+Srinivas1:40
+Can I share my screen for a quick one minute?
+Jessica1:43
+Yeah, absolutely.
+Srinivas1:44
+Give me a second. So I think I had a call. I think we all had a call.
+Myself, Bill and team here with Rakesh and I was walking him through this
+list. I know based on our meeting this morning with Sukai, I kind of put
+together some information for you so that make it easier for tomorrow's
+readout and then to your call session. Okay, just give me a second. Then
+again, my Excel sheet only talks about for non ERP applications. Right.
+Bill will cover for ERP applications. So here is an Excel sheet again I'm
+going to ping you the link. Okay, here is Excel sheet. The names that I
+pasted is over there for you basically for credit collection disputes. So I
+have one UAT lead business from business and then I have the users who will
+be participating it. And then there are three modules. For AIM we have
+three modules and uop. Because this process credit collection disputes is
+co mingled meaning 300 users will still log into 900 because this
+functionality back then was built on 900. Right. So that's why you see
+three different two different system UOPN and AM. Because you want AAM
+users to test as well. And we want UOP users to test functionality because
+they will be the 300 also will have separate FSCM after day one. So I can
+send you this. Jessica.
+Vicky3:13
+So just to. To be clear, on the one you were just on, Nicholas is the lead.
+But Nicholas, Alina and Elena are all going to be testers for the uop. And
+then Nicholas Yunus are going to be the two testers for the AM for credit
+dispute and collection.
+Srinivas3:38
+Yes, that's correct. So I've just listed him as a lead because he has
+provided his name as a lead and tester too.
+Vicky3:46
+Okay. Okay, I guess my question is, and I follow you, I just wanted to
+validate that. But on the second one where we talk about Honeywell am, you
+have two names now, not three. So what I want to make, what I, what I want
+to clarify is all of these three names interchangeable for am so they can
+be number one, two and three or are they not?
+Srinivas4:12
+It could be. It could change. Right? This is what they, these are the
+users. They think that they need to be participating in the am. Uat.
+Vicky4:20
+Right. But, but. Okay, let me ask the question different. Sakai wants to
+know, let's just take one of them. Honeywell UOP credit. She wants three
+names for Honeywell UOP credit alone. Forget about the others because if
+somebody's sick, if somebody isn't there, we need to have three names. I
+see one name. My question is for Honeywell UOP credit alone, can Elena,
+Elena and Nicholas all be testers just for Honeywell UOP credit or not? If
+the answer is no, we have to go back and find two more testers with
+Nicholas for Honeywell UOP credit only. That's what I'm trying to
+understand.
+Srinivas5:10
+Okay, so to answer your question today from credit team, he's the only one
+who is helping us forget about the AIM spin, right? For any project, he's
+the one who will be involved from Credit Transformation team that he
+involves for testing across the credit scenarios. So he said he himself
+will be participating it for doing the credit management testing like we
+did request for more names. We didn't receive it. Okay then when you are,
+when you talk about what is the scope, right, at the end of the day it's. I
+mean I understand the need for three names, but then if the scope is less,
+they might propose only one or two names. Right. But we will still go back
+and ask or if anyone can help, that would be great too. Rakesh, I see you
+have raised your hand.
+Rakesh5:59
+I think it was along those lines to what Vicky was saying. Right? I know
+Suga had said three names. So a couple of points on this. If the
+organization is big enough to have three names like Nicholas, if the
+existing Honeywell organization is just two people, we may need to get both
+the names. If it's got 10 people, then to Vicki's Point we may need to ask
+for additional names in case Nicholas is on a vacation, falls sick or
+something else. Right. So I think that's the ask is at least a primary,
+secondary and a tertiary but where the organization can support it.
+Vicky6:33
+Right. And tomorrow she's expecting a deliverable that says spreadsheet.
+Here's the business lead, Nicholas. Here's the the team that's going to
+test Nicholas, Elena, Elena. Here's what they're going to test. Honeywell
+UOP credit. Let's go to the next one. And then here are the three people
+that are going to test Honeywell UOP dispute and then Honeywell UOP
+collections. She's expecting that Jessica and I provide three names for
+each one of these or it's not a done deliverable.
+Jessica7:09
+Yeah but I think the problem on somebody is like particularly credit, there
+may not be anybody else in the business and that's unfortunately Becky.
+That's the distinction of if there's others in the business that are not
+giving us names that's on the business. There may not be others in the
+business that know this. And this one I'm looking at because I know like
+within our business we have one credit person. Nobody else knows how to do
+it.
+Vicky7:32
+Okay, we need to mark those specially Jessica.
+Jessica7:37
+Yeah, yeah, yeah. No, I'm alive. Question specific to this one for example
+is I see where it says Honeywell UOP and Honeywell am. But my question is
+is Nicholas a in UOP or in Advanced Materials today?
+Srinivas7:54
+I think when I we did ask the same question. So yes, we with they will be
+with Honeywell. Right. They're not. They're supporting cross funk across
+SPGs. So they don't. I mean we don't have a dedicated resources who have
+been identified identified as AM users yet for these three processes for
+credit collection disputes. So we have asked this question to Paul as well.
+Medium receiver, dedicated resource name will be going with Athens for
+these three processes.
+Rakesh8:22
+So I think part of that Jessica is also that the org hasn't been hired
+fully in yet.
+Jessica8:29
+That's where I'm getting at I want to understand better too is if this
+person is not in, this person hasn't been hired yet. We also need to note
+that because if the testing is being done by uop, the systems may work. But
+then there's a risk that the person who actually is going to be sitting in
+that steep hitting the buttons for advanced materials may not know how to
+do that because they're not doing UAT testing.
+Rakesh8:55
+They have not been hired, they have not done kt and they're not ready to.
+Yeah, it may not be ahead of, you know, uat.
+Vicky9:02
+Correct.
+Rakesh9:03
+So we do need to. To your point, I agree that we need to mark that as a
+risk and maybe that's by exception. Say, you know, Honeywell can do the
+test and sign off for us and get executive sign off, etc. But that's cart
+before horse. But I think, yes, at least those step one is probably knowing
+the gaps and then step two is decisioning on those gaps. So.
+Vicky9:24
+Correct. I just think, I just think we have to have answers to those
+questions. So when asked, we're all in agreement. This one only had one
+person. That's why this one, you know, they're not fully org yet, but the
+person who's going to do it is the closest to it until they get the person
+or so the risk is the, that it might not be the, you know, 100% because
+they may not know everything then, you know, I think it's up to us to be
+able to give that feedback. So we're identifying the risk at the same time.
+Rakesh9:59
+Okay, then how do we. So I think, Srinivas, how do we work with you to show
+that here?
+Vicky10:11
+Can we have notes, can we have a notes next to the remarks where you say
+who it is instead of. And I think the remarks are, is it the what or
+something? But just add the notes. It says it has a risk, a potential risk
+where we can say only one person for credit only.
+Jessica10:34
+Do we want to add that here or in the tracker?
+Vicky10:37
+Well, the tracker ultimately. Let me just say that the tracker ultimately.
+Yes.
+Srinivas10:43
+Yeah. So Rakesh, can you update your tracker?
+Rakesh10:47
+Yes, so give me one second. So on the, on the tracker and let me pull up
+the tracker and let's make sure that we've got this here. So what I have is
+the tracker here. Now what I was also going to do in this tracker, and I
+see people populating it here, is some of these names that are UAT test
+resources, primary, secondary. I was going to link them to the sheet that
+you had to say, for example, for the erp, for the finance brv, the core
+systems as well as the adjacent systems that you're touching. I was going
+to link them directly. Add a link here to the Excel you are having because
+what you also have is the list of scenarios or areas or work streams, if
+you will, and then the, the work streams, the scenarios and where the. What
+the scope of those are and links to existing scripts. Correct. So I was
+going to link that in here and say, you know, Refer to scenarios, you know,
+Workbook X that has, you know, the scenarios and the users and your Excel.
+Otherwise I think it may be quite cumbersome to add all the names in here
+in every Excel. It may be easier to add a link in here and add another tab
+that has your sheets.
+Srinivas12:09
+Yeah, I've just pinged you the link, Rakesh. Okay then I'm also going to
+ping the link for the test scripts that we reviewed together the finance so
+that way you have it everything ready for now.
+Rakesh12:23
+And did you share that link, that view as well?
+Srinivas12:27
+Not yet. Not here.
+Rakesh12:28
+Okay, so let's talk through this one then. So next steps on this sheet for
+the finance side. If you go back to sharing your sheet for a second.
+Srinivas12:40
+Yeah, give me a second.
+Rakesh12:46
+And we'll move, make a copy of these and move them over to the, the Athens
+UAT folder as well.
+Srinivas12:52
+Yeah, go ahead Rakesh.
+Rakesh12:54
+Yeah, no, I cannot see your screen.
+Srinivas12:56
+Oh, okay. No, give me a second. Yeah, I'm sharing now.
+Rakesh13:01
+Okay, so okay so this one is what you had in terms of. So Jessica, Vicky,
+this is the other piece on what Sukhai wanted on by work stream. What are
+the scenarios or scripts? What are the well essentially number of scripts
+and then what are the scenarios getting tested and where are the links to
+those? And then additionally the ask on is this fully automated automate,
+semi automated, manual what is the process of testing and then where is the
+defect tracker going to be? So in what we heard in Srinivas is that on, on
+the finance side they are not necessarily going to automate anything there.
+Everything will be a manual traditional testing. So what you have here is
+test scripts, links to the test scripts that are going to test these
+scenarios for ap Kofax or FI or Banking and you're going to manage your
+defects manually in an Excel and you're adding the tracker link to how that
+definitely defect management will occur.
+Vicky14:04
+Okay.
+Rakesh14:06
+Right. So again is that accurate? Okay, so I think the next step then and
+we'll get to the ERP section shortly. But questions or comments or thoughts
+on this, Jessica? Vicky.
+Vicky14:24
+The UAT defect tracker, are we consistent on where that, which, which
+tracker we're using? I mean we have so many. I just want to make sure that
+we all are, that it's all consistent as to where we're going to be tracking
+these who are aligned?
+Rakesh14:39
+I think the challenge would be for ERP portion. Everything is getting
+automated and Bill, you'll be speaking to this shortly. Everything is
+getting automated in Tosca. So the defect tracking management escalation
+Resolution will be in Tosca.
+Jessica14:55
+So let's. Sorry, finish your thought. I thought you were done.
+Rakesh14:59
+Yeah, no, no, no, I fairly don't. So go ahead.
+Jessica15:03
+No, I was gonna say. So can we just put a note next. I know it's a link
+which is a note next to the thing in Kafka because that's one of the next.
+Rakesh15:10
+No, no. So this one is for finance and it's all manual and it's a Excel
+tracker. This is. There's a second sheet, I think, Bill, that's work in
+progress, will have an update for you this afternoon. We'll share a similar
+sheet for erp. So the sub processes or the work streams under ERP and the
+remarks around what is the scope of that testing, number of scenarios
+there, the similar links.
+Vicky15:37
+To the test, automated.
+Rakesh15:39
+And then we will say automated. And then I don't think, Bill, we have a
+link to Tosca. We'll just say link. You know, we'll have to reach out to
+Tosca team to get reporting.
+Vicky15:49
+So may I make a suggestion on that link? You could say test case summary.
+Can you say finance test case summary. Then we can do ERP test.
+Rakesh15:59
+Oh, yeah. A second tab. We'll just add a second tab to it. Yes.
+Vicky16:02
+Yeah, but I just. Yeah, because I see that this says test case summary at
+the bottom. And I just want us to make sure, because to Jessica's point,
+that's finance.
+Srinivas16:13
+We haven't clumped this together yet. They're still working on.
+Rakesh16:20
+So we can even keep it separate. I know it's all integrated, but for the
+purposes today, we can say, you know, this is finance test case workbook.
+And then we'll have an ERP test case workbook.
+Vicky16:30
+Exactly. Especially since one's automated and one's not. Now, my question
+on the ERP side is it everything is automated in erp. A portion of it is
+automated in erp. Can you give me. Do we know what that looks like yet?
+Rakesh16:51
+Defer to you, Bill?
+Bill16:53
+Yeah, well, the majority, I would say the overwhelming majority of it is
+automated.
+Vicky17:02
+So how are we going to determine or identify, I guess is a better word, how
+are we going to identify those that are automated and those that are manual=
+?
+Bill17:11
+Well, I have the list.
+Vicky17:13
+Okay, so. So you'll have the, the validator or the UAT testers for that
+automated and. Or manual of erp, just like we have for finance, Correct?
+Rakesh17:30
+Yes.
+Vicky17:30
+Okay.
+Rakesh17:33
+That'S work in progress. And we'll, we'll get that. Let's, you know, we'll
+get an update on it in the end of day call, I think. I don't know. Bill and
+Sri, are you invited to that 3:30 check in? Sorry, 3:30 today or 4:30
+sometime today? I think that was an end check in. Right, right, right,
+right.
+Srinivas17:55
+Yes, I am invited to that.
+Rakesh17:57
+Okay. Okay. So again, Bill, I'm going to forward that invite to you. All
+right, so we should get a view of that, at least get a read into it so we
+know what the gaps are to prepare for the Sukai conversation tomorrow. So I
+think what else did we need? So I think we've answered a couple of
+questions there, Jessica and Vicki, on having a matrix of the work stream,
+counts of scenarios, the scope of that. These are the test scripts for it
+as they are today. Mind you, these test scripts will get refined and
+formatted and formalized, but they are as they are you know, today in the
+existing test scripts. And then we also have the manual automation view and
+you know, where the defect tracking will happen. So I think that answers a
+couple of questions. I think the second piece of it was the other Excel of
+all the list of testers. I think we saw that for the finance portion and
+then we'll get a view of it this afternoon on the. For the ERP portion. And
+then we can understand what the gaps are there as well so that we can
+comment out from tomorrow. What else? I think those were the three main
+ones for tomorrow. There was also the calendaring where we said that we'd
+come back in a day or so by end of tomorrow to show the sequencing and
+calendaring. So certainly not for tomorrow morning, but certainly for the
+following day. We'd need a view of the finalized calendaring.
+Vicky19:39
+So I hate to play devil's advocate, but I get asked this question
+consistently. Why do we not know the calendar and what's causing us to have
+to wait another day? We just got to be able to explain it, that's all. As
+to why it's taking one more day to get the calendar and why we're not able
+to do that simultaneously.
+Rakesh20:05
+I will defer to. I agree with you. I think it's work in progress. I think
+as they identify business availability for each of these, they'll have to
+calendar in. But I don't want to speak for you, Bill, or Srinivas. Yours is
+a manual process, Srinivas. So you'll have to sequence and calendar these
+in the right way. So at least start a view on that.
+Srinivas20:30
+Can someone repeat the question? I'm sorry.
+Rakesh20:34
+No worries. So the question was I, I volunteered a date and said we Will
+have it for a Thursday morning update to Sukai and the question back was
+why can't we have progress on it today, tomorrow and see where report on it
+tomorrow. So the question to you back is on the sequencing and calendaring
+for for those two week window. Where are we on that and do we have an
+initial view on it?
+Srinivas21:03
+No, I think we are still working on it for the two weeks of window. Right.
+How we will focus from finance perspective because like I mentioned some of
+the like from Hyperion right. The users will be not available the week of
+June 30 to a consolidation reporting out they do Correct. Then I'll have to
+go back and work with them when they're available and based on that I can
+plan.
+Rakesh21:32
+Sorry, can we put some a version one of it that has blocks that you can
+move around a bit later in a day or two I can do.
+Srinivas21:40
+It maybe tomorrow or day after because today has been completely squeezed
+in to get these scripts and everything ready for you. Right. The Excel
+sheet you saw.
+Rakesh21:50
+Yes.
+Srinivas21:50
+So that took most of my time. As you've seen I have like close to 19
+applications where I need to focus.
+Vicky21:58
+The reason that I'm asking is is because part of my communication is
+dependent upon what you all do because I have to ensure validation. I need
+to send a communication out to each of these users saying you know, okay,
+welcome to to doing the user acceptance testing or being part of the
+process. Here's what you can expect timeline wise and what we're looking to
+accomplish. Here's what we need from you. If you run into challenges or
+issues, please record them X place last and one of the things that I want
+to say that we need from you if you plan to take any vacation time at all,
+please let us know ASAP because we gotta validate because everybody's not
+going to be gone the whole time. We have people, you know, people in Asia
+can work while us people are on vacation. We just don't have the luxury of
+not having time. And she's going to ask this question other how many people
+are on vacation? Let's identify that know it and what's happening with
+comms. But I'm just letting you know I can't do anything with communication
+until we get things solidified. We gotta go to these businesses as a
+looking like we're a unit of one and not disparate all over the place. So
+the thing is.
+Srinivas23:20
+So what is the due date to send this communication up?
+Vicky23:23
+Well I should be, I should be sending that comms out right now because
+that's what she wanted me to do. But I know that it's taking us today to
+get the names of who I'm sending the communication to. So what I would say
+is that in the meeting tomorrow is I'm going to send the communication out
+tomorrow to these individuals. Because what Jessica is doing now as she's
+contacting the leads, we're validating those tester names and getting
+tester 1, 2, 3 where needed as well so that we're all on the same page so
+that Sakai will have what she's looking for and then we can say yes, we've
+done a communication to them, here's what they know, here's the timeline
+we've communicated, here's what to expect, etc.
+Srinivas24:10
+Okay, good enough. So Rakesh, then the window, whatever we have agreed now
+we will stick, we will still stick on to it except for HFM and FDS or FDS
+and this space. Okay, so hfm.
+Rakesh24:23
+Oh sorry. So let me make sure I'm following you. So the update that we had,
+it's not this but going back to. So the calendar view that we shared and
+let me pull that up here for everyone's sorry general info.
+Srinivas24:46
+So Bill, feel free to jump in. I know this. There is some cross functional
+efforts too between erp, non ERP on the UAT window. What will be shown here
+and then.
+Rakesh25:00
+All right, give me one second. For some reason Jessica, I think you had all
+the security enabled on that. So I'm even unable to open those files. But
+readiness tracking we said today. So this is a slide that is going to be
+presented presented an opsep all hands call tomorrow. So I need to work
+with you Bill and Srinivas on what are the changes we need to this. So let
+me open this and.
+Vicky25:34
+But as Sakai said, she's seen the slide and is okay with it. She wanted the
+next level of detail, correct?
+Rakesh25:40
+Correct. So this has not been socialized and the broader communication to
+the overall program. So we will do that tomorrow. But what you are
+suggesting then is exactly that is the double click.
+Srinivas25:56
+Is.
+Rakesh25:56
+The double click into this Srinivas is how am I calendaring this 7 11. Now
+let's start with the first piece you said HFM and something else will not
+be catering to this timeline for.
+Srinivas26:12
+The 630 to 7 4.
+Rakesh26:15
+Okay, so what will happen here for HFM? It will be only here.
+Srinivas26:21
+Yeah. Correct.
+Rakesh26:24
+Okay, so I think we need a double click. Let me make a comment here. Insert=
+.
+Srinivas26:32
+Because the team will be occupied for all the consolidation reporting.
+Right.
+Rakesh26:37
+Okay. So for consolidation and reporting finance HFM area.
+Srinivas26:47
+Yep.
+Rakesh26:49
+Testing starts and this goes back to. To the point that you were making,
+Vicki. So in fact, I think what we should do is I'm gonna move this here,
+but I would actually start doing a calendar of this a much different way.
+So what. Let me just do this. There's not many in here. We can do it in
+Excel. I'll move it in PowerPoint here. But.
+Jessica27:20
+Are you gonna do it based on function?
+Rakesh27:22
+Yes, I'm thinking by fun, you know, put a block of time and then we will
+move by depending on what you're saying. So it's by, you know, your ERP
+areas you gave and tell me if that is okay. Right, Bill, does that follow?
+Is that how you're also planning to do? Is it by your work streams or you
+have end to end? So is that, is that how you've already done that?
+Bill27:55
+End to end? For the most part, you know, there, there are some mini scripts
+that I'm going to be talking to the team about what they, where they see,
+you know, those being fit in. You know, a lot of times what we do is we all
+gather for the end to end scripts and then they break out. Do you know,
+with their function for so many scenarios that maybe the business has
+requested.
+Rakesh28:17
+Okay, again, so I. Let me work with you on it. But I think you get the
+picture that, you know, I think this is not, you know, it's. I think you
+all are much more deeper into this. But the idea would be to do a calendar
+view of function by function across your work streams when the blocks of
+timing will be. Has a starting point and then you can refine that on a
+calendar view. So at least we should get a view of that tomorrow to say
+here's what we're looking at and then continue to iterate it by end of day
+tomorrow. I guess that is the ask, Vicky, is by tomorrow you get that in a
+much better shape.
+Vicky28:57
+Well, we definitely have to have that in a better shape. She's going to ask
+the details. Her next question is going to be, okay, so let's look at ERP
+for seven steps. Who are the testers? And then we need to pull up the link
+that says here are the testers for each one of these scripts, who wrote the
+script, who validate the script, all that kind of. So she's going to want
+to know, you know, that we have that information together. Because with our
+time that we're having, her concern is we need to have all these different
+parallel activities happening to make sure. That we are not losing value,
+valuable time that we can't get back. So you're right. That calendar is
+great. If I click on the calendar and it's for ERP X and these are the
+users. Here are the three users for each one of the ones that we're going
+to work on. Here are the scripts that they're going to run. We're
+validating. The content of the scripts is fine. At least we have our
+strategy approach.
+Rakesh29:59
+Okay, so, Audrey, can you work with Bill? Bill on the ERP night? Can we get
+that calendar view today for how you're thinking it will?
+Bill30:10
+No, I don't think so. I don't. I mean, you know, my team is in India, so
+it's, you know, midnight there.
+Rakesh30:16
+Understood.
+Bill30:17
+I'm not going to wake them up, you know, to get a calendar.
+Srinivas30:20
+You.
+Vicky30:25
+Leave instructions for them to do it while we're sleeping. Do they work on
+it while we're sleep to have it available in the morning?
+Bill30:32
+Yeah, I have. I have done that already.
+Vicky30:34
+Okay.
+Srinivas30:35
+So in occasion. Vicky, I have a question. Right. It's great that we're
+doing. I mean, we are putting a lot of efforts to get these cleaned up and
+make sure we kind of position directionally for the uat. But there are a
+couple of challenges, though, right, where we need your help. I think I did
+highlight this multiple calls, but I never got any help. So let me share
+quickly my screen and then I need you help. Give me a second. Just give me
+a second. So one is I need to know for the business finance users.
+Vicky31:17
+I can't see your screen if you're sharing it.
+Srinivas31:20
+Yeah, give me a moment.
+Vicky31:22
+Oh, okay. All right. I just wanted to let you know I could if you were.
+Rakesh31:46
+While Srinivas is sharing. Hey, Mac, on your end, do you have access to the
+Athens UAT folder? I believe Jessica gave us access, right? Yes, correct.
+Okay, so can you move all these files that we'll get from Shrinivas, Bill
+and Audrey into those folders appropriately? Yeah, I'll work with you on
+that. So that later this afternoon we can talk reference it there. Yeah, I
+don't want to move these live ones, Srinivas that you are working.
+Srinivas32:15
+Yeah, I can take a copy and send it to you right after this.
+Jessica32:19
+Okay, thank you.
+Rakesh32:19
+Well, let's timestamp it and say, you know. Yeah, let's timestamp the
+copies we have.
+Srinivas32:25
+Sure. All right. So for finance, right. Especially in the F5 postings. When
+we do postings we need now we have names from entity controllers, right. We
+have Two names. One is for India and one is for America. We don't have one
+for apac. Right. And for us the contact has been always is Satish Krishna.
+He's from Fallen Things team. Now he's struggling to identify a name for
+apac. That's number one. Number two we are still looking for Apart from
+these entity controllers we need names for business finance. Who needs to
+be also be partis should be participating in the uat.
+Rakesh33:04
+So we don't have specifically the UAT function.
+Srinivas33:09
+I don't think so. I mean I, I have no issues if the UAT function is conclud
+that but I just want a confirmation. If you are okay then I'm okay. I have
+no issues then he has been a point of contact. But he's saying that he's
+telling us that these are the three or two individuals will be
+participating participating in the uat not by himself.
+Jessica33:31
+So I just want to make sure I understand. I've been looking more at the ERV
+validation tracker. How does this correlate back to that? Is this the end
+ends? Is that why it's not on the tracker or is this in some shape or form
+on the tracker?
+Srinivas33:48
+It's end to end somewhere. The EFI postings right where the class
+functional efforts takes place. It should be somewhere in there. But this
+is more specific to non ERP applications I'm referring.
+Rakesh34:00
+Yeah. So Jessica, the BRV tracker is at an application level so when they
+run these processes that are end to end they're going to take people so it
+won't nicely match one for every app even though you may have a function
+lead for an app. So these testers will likely run several scenarios end to
+end. So that's why I'm linking them. But it won't be a one to one match
+across the 49 lines there.
+Jessica34:26
+So really this file or the end to end and the VRE file need to be completed
+with UAT testers.
+Rakesh34:39
+They won't be too different. Those UAT testers, if I'm using an end to end
+process tester will touch a couple of systems to do it. So the the point
+like you know app number 17 they may touch that and app number 27 they may
+touch that to run this process. So they'll be considered testers on both.
+So I think we should use this list as the source. That's why my plan was to
+link this list against those cells to say across these BRV and BRV
+adjacent. These 4950 testers are going to cover this. Okay.
+Jessica35:16
+I've been linking people back to this BRB validation. So if you have more
+time this afternoo, let me work with you to get the names in the right file
+because I have a good chunk of names. The second thing I want to call out
+and this is why I just want to ask more questions is I have a connect. I
+said I have a connect. Vicky and I tomorrow with Will Johnson because I
+believe he is the overarching finance owner for uat. Right. Like he's not
+the individual one but if there is certain specific ones we're having issue
+with finance. Is he our point of contact that we need to escalate to?
+Rakesh35:50
+He is the overall OPSEP lead and the finance lead. He is delegated or
+designated in his areas points of contact. So we should be able to reach
+out to those as well. And let me get. Those are the names that you will see
+in the in the function league area.
+Srinivas36:13
+Okay. The next application that I have is tax application which is called
+especially for Mexico and Romania. We did reached out to the existing
+business leads who actually support or supports the general ongoing tax
+projects. Then when we reached out to them to align or you know, define the
+test script, they said hey look, I'm not moving with Athens, which means I
+am not the user to be involved for testing the ADCAM applications for tax.
+So that's when I think did escalate to Paul. Right. And I created a name
+for that this application and I need some help there similarly for multi
+work1.
+Vicky36:59
+Go ahead, go ahead Jessica.
+Jessica37:01
+So I think that's where Vicki and I can help and let's get tactical. So
+what I'd like to do if you guys can stay on and I don't know that we
+necessarily need the whole crowd for this. Let's go through line by line,
+start marking where there's gaps and then Trinivas, Vicki and I or I can
+send them out, let's start sending out those connection points. And even if
+like that's the type of stuff that we need to escalate immediately of if
+the person responds back to say hey, I'm not going with it, I'm not doing
+this.
+Srinivas37:31
+These are things that are going to.
+Jessica37:32
+Go to Shakai and Shakai's going to go to the right level of leadership to
+say either you give me a new person or this person needs a support because
+we're not at a point that these people really can say we're not supporting.
+So yeah, let's go through this and thank you.
+Srinivas37:50
+Whenever I've highlighted in red right that's the only areas where I need
+help I think rest of the processes, I think functions. I'm good. So I think
+I am going to anyway share this Excel file with Mac and Rakesh so they can
+summarize this for tomorrow's call.
+Jessica38:07
+Okay, so, so just, just so I'm.
+Vicky38:09
+Clear, everything you have marked and read is where we need to get an
+escalation point. So let's just go back to the, the Edcom invoicing, the
+Tax Act. You don't have a business need.
+Srinivas38:26
+Yes.
+Vicky38:26
+You get a UAT business and you need help to identify users. That's where
+the escalation point.
+Rakesh38:33
+Yes.
+Vicky38:35
+Okay.
+Srinivas38:37
+Same with Varkiva. For Varkiva at least they've given me lead name called
+Chad. He just joined last week or this week. Okay. I don't know the exact
+date of the joining but he just joined and he's still kind of getting up to
+speed. But then we don't have the names yet. Right. It's great that he's
+onboarding, they've onboarded him but we don't have the names yet. Who, who
+can probably work with us and the same situation.
+Vicky39:03
+Do you know.
+Rakesh39:11
+I think these are, these are all the new hires. Right. So these are the
+filling up the org and you know, names and seats. But maybe going through
+KT and not quick enough for uat. But I think to the other point this may be
+where there's an orange organizational gap where he may not have two
+testers to support him on this.
+Vicky39:29
+Right. And we put a comment there. But my point is, is that if he's a new
+hire, he has a boss. The boss knows that we're supposed to be doing this.
+So he's a new hire, he may not be able to do it. Who else can assist him?
+That's what I need to know.
+Jessica39:43
+I also we have the pitcher catchers in the KT checklist. So my strong
+speculation is up there. Someone new is coming in and the catcher, whoever
+that pitcher was, is likely going to be the person that should be
+connecting and aiding in uat. And what we should probably do. And this is
+where it's, you know, some of it might just be the messaging of, you know,
+the messaging to the pitcher of, you know, since you have to do knowledge
+transfer with your catcher, sit down with them and do the UAT together. So,
+so that's some of the conversations we need to have is some of these
+pitchers, because they're likely the person that's supposed to be the one
+supporting this are saying that we need to know, escalate.
+Rakesh40:27
+That may. Very well. Yeah, Jessica, that may end up being very well the
+case. I think the program knew that there would be some gaps and that I
+think early on there were some conversations that the Honeywell teams may
+help with uat. But I think it's the point that where the workstream leads
+have to sign off on it. So Will Johnson will have to agree to that and say
+yes, we'll help out and we sign off.
+Vicky40:51
+Agree.
+Jessica40:52
+Yeah.
+Rakesh40:53
+But again, we need to the point you're making. We need to highlight those
+gaps, escalate it and then get the decision.
+Vicky40:59
+Yeah.
+Rakesh41:02
+So I know this is coming up really well for finance. So Audrey, for the 4
+o' clock or 3:30. I keep forgetting when it is. Can we get a similar view
+or Bill, I should point out, will we be mature enough in terms of a view.
+Bill41:21
+A view of.
+Rakesh41:23
+Similar to what Srinivas is sharing of.
+Bill41:27
+If we can ever get off these. Yes, we could work on it.
+Rakesh41:31
+I will, I will, I will let. Yes. I don't mean to hold you back.
+Bill41:36
+No offense, but I mean we want. We know what you want. We want to work on
+it, but we need to have the time to work on it.
+Jessica41:42
+Why don't we do this? Why don't we let Bill and Audrey go and then Rakesh
+and Srinivas, whoever makes the most sense to stand up, call with Vicki and
+I so we can get the users aligned and we can keep everybody moving forward.
+Let's do that.
+Srinivas41:55
+Sure. Okay. Does that make you mean. The immediate help that I need is to
+get some names for the tax application line number 33. Resharing my screen.
+Sorry. Then there is application black line and then work here. These are
+the three applications where we need names. Again, please keep in mind for
+workiva, they've given the name as Chad, but he's brand new to Honeywell,
+so. But we need to get him up to speed or we need to reach out to his boss,
+find out is he the one who is coming help us with this testing.
+Bill42:24
+Yeah, we have gaps too. So you know what, what I'm gonna end up putting
+together, you know, we have many gaps, so if you guys can help with that as
+well, you know, we'll articulate it to you and you.
+Vicky42:37
+Absolutely.
+Jessica42:38
+Yeah, absolutely. We're here to be your pit bulls. Sometimes more like a
+chihuahua, but we're, we're here to help.
+Bill42:44
+I appreciate the help because we've been banging our heads against the wall
+for a while.
+Jessica42:48
+Yeah, I, I don't, I don't Want here to make friends. Neither is Becky. So
+we're here to figure out how we can get this supported. And if we can't get
+anywhere at our level, you know, we'll escalate to Sukai. I can also
+escalate to Jeff Hopkins if we need to, but. So let's do that. Let's get
+anything else for Bill or Audrey. If not, let's get them off the phone so
+they can actually do something. Didn't mean that disrespectfully. I just
+meant get you off the phone.
+Bill43:11
+It was perfectly fine the way you said it.
+Jessica43:13
+All right, good. And then let's get updates on here because, like, for
+example, Chad responded back to names for me. Chad also is not brand new.
+Chad is new, but like not day two new, more like six months new that worked
+with Chad in the past. So let's just talk through this a little bit because
+I also got a bunch of names, but I did it based off the BRB tracker. So I'm
+trying to figure out the best way to correlate what I got back to this, see
+where those remaining gaps are, and then start working to how we can
+escalate. So from this team, who besides myself and Vicki should be on the
+call, like stay on the call as we get names on here? Srinivas and Rakesh,
+or just Srinivas.
+Srinivas43:54
+I mean, I'm sorry, what else is needed from my set? I'm all in late for a
+call.
+Jessica44:02
+So what you have highlighted in red is only the support that you need.
+Srinivas44:08
+Yeah, I need business users who will be from business participating in the
+UAT for these applications, stacks applications in Workiva and BlackLink.
+That's all.
+Jessica44:19
+Okay, who's the best person? Because I got a bunch of names, but I got them
+based off of.
+Srinivas44:24
+The systems name for us for. Especially around Workiva and Blackline. We
+have been told that Chad and Satish then for tax application, they. They
+just gave us a name yesterday. His name is. Let me think of the name here.
+But I'm not sure if he's trying to help us. He's. He's from Finance. Yes.
+Yes.
+Jessica44:49
+Okay.
+Srinivas44:49
+But when I. When I talk. When I. When I started talking to Satish, Satish
+said that you should probably reach out to this person who uncalled los.
+But he did request a call back and I think my team did schedule a call with
+him to understand the expectations. Then after that, we didn't hear back
+anything. On the leaves for clarity.
+Jessica45:09
+This UAT team list is based. Focused more on the end to end Versus the BRB
+validation list is focused more on the systems and apps.
+Rakesh45:22
+Some of these are also. I do see systems in here. So there are for example
+Workiva capability you're testing, but you're using the Workiva system. So
+we have a line item in our tracker for Workiva Banking for example is a
+capability, but I don't. We may use five or six apps or four apps for
+banking. So we'll have to map that and say these names and banking all go
+against those four apps. Hyperion for example, you got Hyperion HFM and
+Hyperion Cash app or Hyperion Planning rather. So I presume this is hfm. So
+I shouldn't presume. But we should have to make those correlations to your
+point Jessica on some of these tie nicely to the apps. Some of them are a
+broader set of apps.
+Jessica46:10
+Can we make this one file? So make this one the end to end and then that
+one the app. That way it's all in one place.
+Rakesh46:20
+Yes, we can certainly do that.
+Srinivas46:21
+I'm going to show you this. So Mac is going to do that consultation.
+Rakesh46:24
+Yes, we will do that and that's why I was wanting to link it and add this
+as a second tab to that workbook. And we certainly can.
+Jessica46:31
+Okay. And I'm going to ask this one more time just for clarity. The one in
+the UAT file is the one should be using or the one that got emailed over is
+the one that I should be using.
+Srinivas46:44
+For finance. The one in the UAD file you should be referee.
+Jessica46:49
+Not just finance. I, I didn't start looking based on business function. I
+just started going down the list like.
+Srinivas46:58
+Apologies if I'm, if you're referring any different team channels. So I
+think that question is found to you believe.
+Jessica47:04
+Okay, so why don't we do this. Rakesh, can you stick around for like
+another 20, 30 minutes real quick?
+Rakesh47:10
+I will be able to in 7 minutes time so I, so I can join back at seven.
+Jessica47:16
+Okay, so why don't you do this? Why don't you just call me directly when
+you're ready to chat and I can get you and I can get the data organized.
+I'll pull Vicky and choose a belt wall.
+Rakesh47:25
+Yep, sounds good.
+Jessica47:26
+All right, thanks everyone.
+Rakesh47:27
+Thanks guys. All right, thank you.
+
+Captured with Wave AI Note Taker
+
+Your AI-powered companion
+
+--0000000000004dcb560637cb89e0
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-size:small;colo=
+r:#444444"><br></div><br><div class=3D"gmail_quote gmail_quote_container"><=
+div dir=3D"ltr" class=3D"gmail_attr">---------- Forwarded message ---------=
+<br>From: <strong class=3D"gmail_sendername" dir=3D"auto">Wave AI Note Take=
+r</strong> <span dir=3D"auto">&lt;<a href=3D"mailto:summary@email.wave.co">=
+summary@email.wave.co</a>&gt;</span><br>Date: Tue, 17 Jun 2025 at 14:25<br>=
+Subject: Athens UAT Planning Collaboration and Escalation<br>To:  &lt;<a hr=
+ef=3D"mailto:mac@macconnolly.com">mac@macconnolly.com</a>&gt;<br></div><br>=
+<br><div style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe =
+UI&quot;,Roboto,Helvetica,Arial,sans-serif;margin:0;padding:0;background-co=
+lor:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 auto;backgro=
+und-color:#ffffff"><div style=3D"background-image:url(https://upcdn.io/W142=
+iax/raw/email/banner_clean.png);background-size:cover;background-position:c=
+enter;width:604px;height:297px;margin:0 auto"><table cellpadding=3D"0" cell=
+spacing=3D"0" border=3D"0" width=3D"100%" height=3D"100%"><tbody><tr><td va=
+lign=3D"center" align=3D"center" style=3D"padding:0"><img src=3D"https://up=
+cdn.io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" style=3D"widt=
+h:41px;height:58px;max-width:41px;margin-bottom:10px"><h1 style=3D"color:wh=
+ite;font-size:32px;margin:0;padding:0 0 10px;text-align:center">Athens UAT =
+Planning Collaboration and Escalation</h1></td></tr></tbody></table></div><=
+div style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div style=3D=
+"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.co/sessi=
+ons/24DA4ECA-182E-46D2-A851-119A31309C14?lastLoginParam=3Dgoogle" style=3D"=
+background-color:#e6f0ff;color:#0066cc;padding:12px 24px;border-radius:8px;=
+text-decoration:none;font-weight:500;font-size:16px;display:inline-block;ma=
+rgin-top:8px;margin-bottom:8px" target=3D"_blank">=E2=9C=A8 View Your Sessi=
+on on the Web</a></div><div style=3D"text-align:center;margin-bottom:36px">=
+</div><div style=3D"background-color:#ffffff;padding:28px;border-radius:12p=
+x;border:1px solid #e2e8f0;margin-bottom:28px"><h3 style=3D"color:#0f172a;f=
+ont-size:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex"=
+><span style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6"><div><h1 style=3D"font-we=
+ight:500;padding-top:20px;font-size:2.5rem">Meeting Summary: Athens UAT Pla=
+nning Session</h1><p><strong style=3D"font-weight:bold">Date:</strong> June=
+ 17, 2025<br><strong style=3D"font-weight:bold">Meeting Title:</strong> Ath=
+ens UAT Mid Day TB</p>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Main Topics D=
+iscussed</h2><h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75re=
+m">1. <strong style=3D"font-weight:bold">UAT Functional Lead &amp; Tester I=
+dentification</strong></h3><ul>
+<li><strong style=3D"font-weight:bold">Challenge:</strong> Uncertainty abou=
+t who should be listed as UAT functional leads and testers for various modu=
+les=E2=80=94especially within SAP FSCM and related sub-processes.</li>
+<li><strong style=3D"font-weight:bold">Resolution:</strong>  <ul>
+<li>An updated list of tester names for FSCM was sourced from business cont=
+acts and shared in both the chat and an Excel tracker for clarity.  </li>
+<li>For =E2=80=9CHoneywell UOP Credit=E2=80=9D only Nicholas has been ident=
+ified as a tester; the team acknowledged a shortfall in the recommended num=
+ber of testers (three per process/module).  </li>
+<li>Org chart gaps remain=E2=80=94several teams have either insufficient te=
+sters or only one functional expert available.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">2. <strong=
+ style=3D"font-weight:bold">Documentation and Tracker Updates</strong></h3>=
+<ul>
+<li><strong style=3D"font-weight:bold">Artifacts Shared:</strong>  <ul>
+<li>Excel sheets tracking assignment of UAT leads and testers per stream (C=
+redit, Collections, Disputes).</li>
+<li>Links provided to both tester assignments and test script repositories.=
+</li>
+<li>Defect management trackers for both manual (finance-side) and automated=
+ (ERP-side) testing were discussed, with a standardized approach still need=
+ed.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Linking and Integration:</strong>  <=
+ul>
+<li>Proposal to reference existing Excel files for comprehensive scenario c=
+overage and avoid duplicating data across trackers.</li>
+<li>Plan to timestamp shared files and establish a single source of truth f=
+or reviewer convenience.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">3. <strong=
+ style=3D"font-weight:bold">Module/Stream-Specific Assignments and Risks</s=
+trong></h3><ul>
+<li><strong style=3D"font-weight:bold">System Cross-Pollination:</strong> N=
+oted that some testers, such as Nicholas, support multiple SPGs (UOP, AM), =
+and many newly hired personnel (e.g., Chad for Workiva) have not yet been o=
+nboarded or fully trained.</li>
+<li><strong style=3D"font-weight:bold">Known Org Gaps:</strong>  <ul>
+<li>Explicit risks identified for cases where only one qualified tester exi=
+sts for critical business processes (e.g., Credit Transformation).</li>
+<li>Need to note risk and escalate where business units lack sufficient tes=
+ters/coverage.</li>
+<li>Focus on validating tester names for each workstream, especially for co=
+verage/backup in cases of absence.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">4. <strong=
+ style=3D"font-weight:bold">Testing Process Details</strong></h3><ul>
+<li><strong style=3D"font-weight:bold">Manual vs. Automated Testing:</stron=
+g><ul>
+<li>Finance-side testing is fully manual (Excel-based scripts and defect tr=
+acking).</li>
+<li>ERP-side will be primarily automated (Tosca), with a need to clarify wh=
+ich scenarios remain manual and link those appropriately.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Workflow Documentation:</strong><ul>
+<li>Requirements to detail for each process: test scripts, scenario coverag=
+e, automation status, validation and sign-off ownership, and defect trackin=
+g location.</li>
+<li>Agreement to maintain separate workbooks for Finance (manual) and ERP (=
+automated), with clear referencing and segmentation.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">5. <strong=
+ style=3D"font-weight:bold">Calendaring &amp; Sequencing of UAT</strong></h=
+3><ul>
+<li><strong style=3D"font-weight:bold">Status:</strong>  <ul>
+<li>UAT sequencing and scheduling (=E2=80=9Ccalendaring=E2=80=9D) for the u=
+pcoming two-week window is in progress.</li>
+<li>Blockers: Lack of final tester lists, pending business user availabilit=
+y (notably Hyperion users unavailable the week of June 30 for consolidation=
+/reporting).</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Next Steps:</strong>  <ul>
+<li>Commitment to produce a draft scheduling view (=E2=80=9Cversion 1=E2=80=
+=9D) by tomorrow or the day after.</li>
+<li>Emphasis on the need for input from both finance and ERP teams to ensur=
+e overlapping resources are properly sequenced.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Communication Dependencies:</strong>=
+  <ul>
+<li>Communicating UAT participation, timelines, and expectations is pending=
+ finalization of names and scheduling; urgency expressed to avoid delays in=
+ business notifications.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">6. <strong=
+ style=3D"font-weight:bold">Escalation &amp; Follow-up on Gaps</strong></h3=
+><ul>
+<li><strong style=3D"font-weight:bold">Immediate Gaps:</strong>  <ul>
+<li>Several applications=E2=80=94tax for Mexico and Romania, Workiva, Black=
+line=E2=80=94lack assigned testers or business leads.</li>
+<li>New hires cited, but not sufficiently onboarded (e.g., Chad for Workiva=
+).</li>
+<li>Discussion on leveraging knowledge transfer structures (pitcher/catcher=
+) to fill temporary gaps.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Escalation Path:</strong>  <ul>
+<li>Will Johnson is the escalation point for unresolved finance-side gaps.<=
+/li>
+<li>Action plan to identify and mark gaps (color-code, e.g., red) for escal=
+ation by leadership as needed.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Action Items<=
+/h2><ol>
+<li><p><strong style=3D"font-weight:bold">Finalize UAT Tester Assignments</=
+strong></p>
+<ul>
+<li>Jessica &amp; Vicki to validate, populate, and escalate as needed for a=
+ll modules and processes where fewer than three testers are available, usin=
+g latest data from business leads.</li>
+<li>Srinivas to provide missing tester names for tax (Mexico/Romania), Work=
+iva, and Blackline. If unavailable, escalate to Will Johnson or appropriate=
+ leadership.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Update and Distribute Tracking Ar=
+tifacts</strong></p>
+<ul>
+<li>Rakesh to link Excel-based tester lists to the overarching scenario and=
+ BRV trackers.</li>
+<li>Mac to move all received files into the Athens UAT shared folder and ti=
+mestamp versions for reference.</li>
+<li>Confirm and highlight risks/gaps in tracker comments/remarks columns.</=
+li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Defect Tracking Consistency</stro=
+ng></p>
+<ul>
+<li>Alignment required on one defect tracker per workstream (ERP/Tosca for =
+automated, Excel for manual).</li>
+<li>Add notes/links to each tracker for clarity as to the tool/method used.=
+</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">UAT Calendaring</strong></p>
+<ul>
+<li>Srinivas and Bill to draft initial calendar views for both Finance (man=
+ual) and ERP (automated) UAT windows.</li>
+<li>Identify blackout periods (e.g., June 30=E2=80=93July 4, Hyperion user =
+unavailability) and flag these in the calendar.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Communication Plan</strong></p>
+<ul>
+<li>Once tester names and calendars are validated, Jessica to draft and dis=
+tribute participation communications, setting expectations and requesting b=
+usiness user vacation blackout/availability information.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Escalation of Gaps</strong></p>
+<ul>
+<li>Immediate escalation for:<ul>
+<li>Tax testing resources for Mexico/Romania.</li>
+<li>Lack of testers for Workiva and Blackline.</li>
+<li>Any other process with less than three testers or where UAT responsibil=
+ity is not clearly assigned.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Follow-on Coordination</strong></=
+p>
+<ul>
+<li>Schedule targeted working sessions with Srinivas, Rakesh, Vicki, and Je=
+ssica to go line-by-line through the red/gap areas post-call.</li>
+<li>Connect with Will Johnson regarding finance-side escalation as needed.<=
+/li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Follow-up Poi=
+nts</h2><ul>
+<li><strong style=3D"font-weight:bold">Daily/Ad-hoc Working Sessions:</stro=
+ng>  <ul>
+<li>Additional smaller, targeted meetings to address and close resource/tes=
+ter assignment gaps, with escalation if not rapidly resolved.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Reporting for Sukai Readiness Review=
+ (Tomorrow Morning):</strong><ul>
+<li>Commitment to prepare a comprehensive deliverable for workstream/tester=
+/scenario coverage matrix and calendaring for tomorrow=E2=80=99s session wi=
+th Sukai.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">End-of-Day 3:30/4:30 PM Check-In:</s=
+trong><ul>
+<li>Bill to forward invite to ERP team. Key milestone to confirm ERP automa=
+tion coverage, scenario/tester assignment, and calendar status.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">All-Hands Communication/Program Read=
+iness:</strong><ul>
+<li>Updated UAT readiness and sequencing slide to be shared at the OpSep al=
+l-hands call tomorrow, with additional underlying detail as required.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Images</h2><h=
+3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">Image 1: Scr=
+eenshot of &quot;Athens UAT Mid Day TB&quot; Chat Interface</h3><p><strong =
+style=3D"font-weight:bold">Key Elements &amp; Relevance:</strong></p>
+<ul>
+<li><strong style=3D"font-weight:bold">Purpose:</strong> Illustrates the co=
+llaborative, cross-functional nature of the meeting and chat-based coordina=
+tion.  </li>
+<li><strong style=3D"font-weight:bold">Visuals:</strong><ul>
+<li>Chat participants from Honeywell and external domains with roles specif=
+ied (Credit, Dispute, Collections).</li>
+<li>Timestamping and re-invitation activity shows active coordination, atte=
+ndance management, and the need to keep all stakeholders aligned.</li>
+<li>Shared message box containing names and module assignments reflects the=
+ effort to track, validate, and share tester assignments real-time.</li>
+<li>Task bar shows supporting tools (Outlook, PowerPoint, Excel, Teams, etc=
+.), reflecting the multi-system coordination required for UAT readiness.</l=
+i>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Significance:</strong><ul>
+<li>Reflects urgency and iterative exchange necessary to finalize documenta=
+tion and resource plans.</li>
+<li>Reinforces reliance on digital collaboration for real-time information =
+sharing and rapid escalation.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Appendix</h2>=
+<ul>
+<li><strong style=3D"font-weight:bold">Key Dates/Deadlines:</strong><ul>
+<li>Final tester names and schedule draft: by COB June 18, 2025.</li>
+<li>Sukai deliverable/readout: June 18, 2025, AM.</li>
+<li>OpSep all-hands update: June 18, 2025.</li>
+<li>UAT window critical blackout: Week of June 30, 2025 (Hyperion consolida=
+tion period).</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong style=3D"font-weight:bold">End of Summary</strong></p>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex"><span =
+style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription</h3><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-=
+bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">=
+Jessica</span><span style=3D"color:#64748b;font-size:14px">0:00</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Who&#39;s the =
+best person to connect with to make sure we have the right people in this U=
+AT functional lead column here?</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px so=
+lid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"c=
+olor:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span style=3D"co=
+lor:#64748b;font-size:14px">0:08</span></div><div style=3D"color:#475569;fo=
+nt-size:16px;line-height:1.6">Because I am, I guess, but I mean I&#39;m rel=
+ying. I don&#39;t know who any of these people are.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriniv=
+as</span><span style=3D"color:#64748b;font-size:14px">0:14</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So I think I =
+can help you out with this one. Do you want to filter by? I&#39;m not sure =
+what filters are applied. This is for fscm. SAP fscm. Right. So Chase David=
+son, I&#39;m not sure why his name is on there, but let me get to the names=
+. Just give me one moment. I&#39;m just trying to plug. Okay, I&#39;m going=
+ to ping the names here in the chart window for you just to make it easier.=
+ These are the names for fscm. Basically FSCM includes your credit collecti=
+on display. These are the names that will be participating in the uatn. The=
+se are the names that we have received from them and from the business.</di=
+v></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8f=
+afc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:=
+flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin=
+-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px">1:27=
+</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Ok=
+ay, so those are the names that should be in column O.</div></div><div styl=
+e=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius=
+:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-botto=
+m:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srini=
+vas</span><span style=3D"color:#64748b;font-size:14px">1:31</span></div><di=
+v style=3D"color:#475569;font-size:16px;line-height:1.6">Yes, that&#39;s co=
+rrect.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-siz=
+e:14px">1:34</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">Okay, so is there a list of those names somewhere?</div></div><di=
+v style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-=
+radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin=
+-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px"=
+>Srinivas</span><span style=3D"color:#64748b;font-size:14px">1:40</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Can I share =
+my screen for a quick one minute?</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D=
+"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><span style=
+=3D"color:#64748b;font-size:14px">1:43</span></div><div style=3D"color:#475=
+569;font-size:16px;line-height:1.6">Yeah, absolutely.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriniv=
+as</span><span style=3D"color:#64748b;font-size:14px">1:44</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Give me a second. S=
+o I think I had a call. I think we all had a call. Myself, Bill and team he=
+re with Rakesh and I was walking him through this list. I know based on our=
+ meeting this morning with Sukai, I kind of put together some information f=
+or you so that make it easier for tomorrow&#39;s readout and then to your c=
+all session. Okay, just give me a second. Then again, my Excel sheet only t=
+alks about for non ERP applications. Right. Bill will cover for ERP applica=
+tions. So here is an Excel sheet again I&#39;m going to ping you the link. =
+Okay, here is Excel sheet. The names that I pasted is over there for you ba=
+sically for credit collection disputes. So I have one UAT lead business fro=
+m business and then I have the users who will be participating it. And then=
+ there are three modules. For AIM we have three modules and uop. Because th=
+is process credit collection disputes is co mingled meaning 300 users will =
+still log into 900 because this functionality back then was built on 900. R=
+ight. So that&#39;s why you see three different two different system UOPN a=
+nd AM. Because you want AAM users to test as well. And we want UOP users to=
+ test functionality because they will be the 300 also will have separate FS=
+CM after day one. So I can send you this. Jessica.</div></div><div style=3D=
+"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px=
+;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8p=
+x"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicky</sp=
+an><span style=3D"color:#64748b;font-size:14px">3:13</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">So just to. To be clear, =
+on the one you were just on, Nicholas is the lead. But Nicholas, Alina and =
+Elena are all going to be testers for the uop. And then Nicholas Yunus are =
+going to be the two testers for the AM for credit dispute and collection.</=
+div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f=
+8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displa=
+y:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;marg=
+in-right:8px">Srinivas</span><span style=3D"color:#64748b;font-size:14px">3=
+:38</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6"=
+>Yes, that&#39;s correct. So I&#39;ve just listed him as a lead because he =
+has provided his name as a lead and tester too.</div></div><div style=3D"ma=
+rgin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bo=
+rder-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicky</span>=
+<span style=3D"color:#64748b;font-size:14px">3:46</span></div><div style=3D=
+"color:#475569;font-size:16px;line-height:1.6">Okay. Okay, I guess my quest=
+ion is, and I follow you, I just wanted to validate that. But on the second=
+ one where we talk about Honeywell am, you have two names now, not three. S=
+o what I want to make, what I, what I want to clarify is all of these three=
+ names interchangeable for am so they can be number one, two and three or a=
+re they not?</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div s=
+tyle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-w=
+eight:600;margin-right:8px">Srinivas</span><span style=3D"color:#64748b;fon=
+t-size:14px">4:12</span></div><div style=3D"color:#475569;font-size:16px;li=
+ne-height:1.6">It could be. It could change. Right? This is what they, thes=
+e are the users. They think that they need to be participating in the am. U=
+at.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-col=
+or:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"d=
+isplay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Vicky</span><span style=3D"color:#64748b;font-size:14px"=
+>4:20</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Right. But, but. Okay, let me ask the question different. Sakai wants to=
+ know, let&#39;s just take one of them. Honeywell UOP credit. She wants thr=
+ee names for Honeywell UOP credit alone. Forget about the others because if=
+ somebody&#39;s sick, if somebody isn&#39;t there, we need to have three na=
+mes. I see one name. My question is for Honeywell UOP credit alone, can Ele=
+na, Elena and Nicholas all be testers just for Honeywell UOP credit or not?=
+ If the answer is no, we have to go back and find two more testers with Nic=
+holas for Honeywell UOP credit only. That&#39;s what I&#39;m trying to unde=
+rstand.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Srinivas</span><span style=3D"color:#64748b;font-si=
+ze:14px">5:10</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Okay, so to answer your question today from credit team, he&#39;=
+s the only one who is helping us forget about the AIM spin, right? For any =
+project, he&#39;s the one who will be involved from Credit Transformation t=
+eam that he involves for testing across the credit scenarios. So he said he=
+ himself will be participating it for doing the credit management testing l=
+ike we did request for more names. We didn&#39;t receive it. Okay then when=
+ you are, when you talk about what is the scope, right, at the end of the d=
+ay it&#39;s. I mean I understand the need for three names, but then if the =
+scope is less, they might propose only one or two names. Right. But we will=
+ still go back and ask or if anyone can help, that would be great too. Rake=
+sh, I see you have raised your hand.</div></div><div style=3D"margin-bottom=
+:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4=
+px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span styl=
+e=3D"color:#64748b;font-size:14px">5:59</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">I think it was along those lines to wh=
+at Vicky was saying. Right? I know Suga had said three names. So a couple o=
+f points on this. If the organization is big enough to have three names lik=
+e Nicholas, if the existing Honeywell organization is just two people, we m=
+ay need to get both the names. If it&#39;s got 10 people, then to Vicki&#39=
+;s Point we may need to ask for additional names in case Nicholas is on a v=
+acation, falls sick or something else. Right. So I think that&#39;s the ask=
+ is at least a primary, secondary and a tertiary but where the organization=
+ can support it.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><d=
+iv style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fo=
+nt-weight:600;margin-right:8px">Vicky</span><span style=3D"color:#64748b;fo=
+nt-size:14px">6:33</span></div><div style=3D"color:#475569;font-size:16px;l=
+ine-height:1.6">Right. And tomorrow she&#39;s expecting a deliverable that =
+says spreadsheet. Here&#39;s the business lead, Nicholas. Here&#39;s the th=
+e team that&#39;s going to test Nicholas, Elena, Elena. Here&#39;s what the=
+y&#39;re going to test. Honeywell UOP credit. Let&#39;s go to the next one.=
+ And then here are the three people that are going to test Honeywell UOP di=
+spute and then Honeywell UOP collections. She&#39;s expecting that Jessica =
+and I provide three names for each one of these or it&#39;s not a done deli=
+verable.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-siz=
+e:14px">7:09</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">Yeah but I think the problem on somebody is like particularly cre=
+dit, there may not be anybody else in the business and that&#39;s unfortuna=
+tely Becky. That&#39;s the distinction of if there&#39;s others in the busi=
+ness that are not giving us names that&#39;s on the business. There may not=
+ be others in the business that know this. And this one I&#39;m looking at =
+because I know like within our business we have one credit person. Nobody e=
+lse knows how to do it.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b8=
+2f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b=
+82f6;font-weight:600;margin-right:8px">Vicky</span><span style=3D"color:#64=
+748b;font-size:14px">7:32</span></div><div style=3D"color:#475569;font-size=
+:16px;line-height:1.6">Okay, we need to mark those specially Jessica.</div>=
+</div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8faf=
+c;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fl=
+ex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-r=
+ight:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px">7:37</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah=
+, yeah, yeah. No, I&#39;m alive. Question specific to this one for example =
+is I see where it says Honeywell UOP and Honeywell am. But my question is i=
+s Nicholas a in UOP or in Advanced Materials today?</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriniv=
+as</span><span style=3D"color:#64748b;font-size:14px">7:54</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">I think when I we d=
+id ask the same question. So yes, we with they will be with Honeywell. Righ=
+t. They&#39;re not. They&#39;re supporting cross funk across SPGs. So they =
+don&#39;t. I mean we don&#39;t have a dedicated resources who have been ide=
+ntified identified as AM users yet for these three processes for credit col=
+lection disputes. So we have asked this question to Paul as well. Medium re=
+ceiver, dedicated resource name will be going with Athens for these three p=
+rocesses.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div styl=
+e=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weig=
+ht:600;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-siz=
+e:14px">8:22</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">So I think part of that Jessica is also that the org hasn&#39;t b=
+een hired fully in yet.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b8=
+2f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b=
+82f6;font-weight:600;margin-right:8px">Jessica</span><span style=3D"color:#=
+64748b;font-size:14px">8:29</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">That&#39;s where I&#39;m getting at I want to unde=
+rstand better too is if this person is not in, this person hasn&#39;t been =
+hired yet. We also need to note that because if the testing is being done b=
+y uop, the systems may work. But then there&#39;s a risk that the person wh=
+o actually is going to be sitting in that steep hitting the buttons for adv=
+anced materials may not know how to do that because they&#39;re not doing U=
+AT testing.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div st=
+yle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-we=
+ight:600;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-s=
+ize:14px">8:55</span></div><div style=3D"color:#475569;font-size:16px;line-=
+height:1.6">They have not been hired, they have not done kt and they&#39;re=
+ not ready to. Yeah, it may not be ahead of, you know, uat.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-=
+bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">=
+Vicky</span><span style=3D"color:#64748b;font-size:14px">9:02</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">Correct.</div></=
+div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex=
+;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-rig=
+ht:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">9:03</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So we d=
+o need to. To your point, I agree that we need to mark that as a risk and m=
+aybe that&#39;s by exception. Say, you know, Honeywell can do the test and =
+sign off for us and get executive sign off, etc. But that&#39;s cart before=
+ horse. But I think, yes, at least those step one is probably knowing the g=
+aps and then step two is decisioning on those gaps. So.</div></div><div sty=
+le=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radiu=
+s:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bott=
+om:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vick=
+y</span><span style=3D"color:#64748b;font-size:14px">9:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Correct. I just thin=
+k, I just think we have to have answers to those questions. So when asked, =
+we&#39;re all in agreement. This one only had one person. That&#39;s why th=
+is one, you know, they&#39;re not fully org yet, but the person who&#39;s g=
+oing to do it is the closest to it until they get the person or so the risk=
+ is the, that it might not be the, you know, 100% because they may not know=
+ everything then, you know, I think it&#39;s up to us to be able to give th=
+at feedback. So we&#39;re identifying the risk at the same time.</div></div=
+><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bor=
+der-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;ma=
+rgin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:=
+8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">9:59</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, then=
+ how do we. So I think, Srinivas, how do we work with you to show that here=
+?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"dis=
+play:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;m=
+argin-right:8px">Vicky</span><span style=3D"color:#64748b;font-size:14px">1=
+0:11</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">Can we have notes, can we have a notes next to the remarks where you say =
+who it is instead of. And I think the remarks are, is it the what or someth=
+ing? But just add the notes. It says it has a risk, a potential risk where =
+we can say only one person for credit only.</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border=
+-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><spa=
+n style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><s=
+pan style=3D"color:#64748b;font-size:14px">10:34</span></div><div style=3D"=
+color:#475569;font-size:16px;line-height:1.6">Do we want to add that here o=
+r in the tracker?</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><=
+div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;f=
+ont-weight:600;margin-right:8px">Vicky</span><span style=3D"color:#64748b;f=
+ont-size:14px">10:37</span></div><div style=3D"color:#475569;font-size:16px=
+;line-height:1.6">Well, the tracker ultimately. Let me just say that the tr=
+acker ultimately. Yes.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82=
+f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b8=
+2f6;font-weight:600;margin-right:8px">Srinivas</span><span style=3D"color:#=
+64748b;font-size:14px">10:43</span></div><div style=3D"color:#475569;font-s=
+ize:16px;line-height:1.6">Yeah. So Rakesh, can you update your tracker?</di=
+v></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8f=
+afc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:=
+flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin=
+-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">10:47=
+</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Ye=
+s, so give me one second. So on the, on the tracker and let me pull up the =
+tracker and let&#39;s make sure that we&#39;ve got this here. So what I hav=
+e is the tracker here. Now what I was also going to do in this tracker, and=
+ I see people populating it here, is some of these names that are UAT test =
+resources, primary, secondary. I was going to link them to the sheet that y=
+ou had to say, for example, for the erp, for the finance brv, the core syst=
+ems as well as the adjacent systems that you&#39;re touching. I was going t=
+o link them directly. Add a link here to the Excel you are having because w=
+hat you also have is the list of scenarios or areas or work streams, if you=
+ will, and then the, the work streams, the scenarios and where the. What th=
+e scope of those are and links to existing scripts. Correct. So I was going=
+ to link that in here and say, you know, Refer to scenarios, you know, Work=
+book X that has, you know, the scenarios and the users and your Excel. Othe=
+rwise I think it may be quite cumbersome to add all the names in here in ev=
+ery Excel. It may be easier to add a link in here and add another tab that =
+has your sheets.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><d=
+iv style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fo=
+nt-weight:600;margin-right:8px">Srinivas</span><span style=3D"color:#64748b=
+;font-size:14px">12:09</span></div><div style=3D"color:#475569;font-size:16=
+px;line-height:1.6">Yeah, I&#39;ve just pinged you the link, Rakesh. Okay t=
+hen I&#39;m also going to ping the link for the test scripts that we review=
+ed together the finance so that way you have it everything ready for now.</=
+div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f=
+8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displa=
+y:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;marg=
+in-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">12:=
+23</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">=
+And did you share that link, that view as well?</div></div><div style=3D"ma=
+rgin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bo=
+rder-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</sp=
+an><span style=3D"color:#64748b;font-size:14px">12:27</span></div><div styl=
+e=3D"color:#475569;font-size:16px;line-height:1.6">Not yet. Not here.</div>=
+</div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8faf=
+c;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fl=
+ex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-r=
+ight:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">12:28</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay=
+, so let&#39;s talk through this one then. So next steps on this sheet for =
+the finance side. If you go back to sharing your sheet for a second.</div><=
+/div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc=
+;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fle=
+x;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-ri=
+ght:8px">Srinivas</span><span style=3D"color:#64748b;font-size:14px">12:40<=
+/span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yea=
+h, give me a second.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6=
+"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f=
+6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#6474=
+8b;font-size:14px">12:46</span></div><div style=3D"color:#475569;font-size:=
+16px;line-height:1.6">And we&#39;ll move, make a copy of these and move the=
+m over to the, the Athens UAT folder as well.</div></div><div style=3D"marg=
+in-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bord=
+er-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><s=
+pan style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span=
+><span style=3D"color:#64748b;font-size:14px">12:52</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, go ahead Rakesh.</d=
+iv></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display=
+:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margi=
+n-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">12:5=
+4</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Y=
+eah, no, I cannot see your screen.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><span st=
+yle=3D"color:#64748b;font-size:14px">12:56</span></div><div style=3D"color:=
+#475569;font-size:16px;line-height:1.6">Oh, okay. No, give me a second. Yea=
+h, I&#39;m sharing now.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b8=
+2f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b=
+82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#6=
+4748b;font-size:14px">13:01</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">Okay, so okay so this one is what you had in terms=
+ of. So Jessica, Vicky, this is the other piece on what Sukhai wanted on by=
+ work stream. What are the scenarios or scripts? What are the well essentia=
+lly number of scripts and then what are the scenarios getting tested and wh=
+ere are the links to those? And then additionally the ask on is this fully =
+automated automate, semi automated, manual what is the process of testing a=
+nd then where is the defect tracker going to be? So in what we heard in Sri=
+nivas is that on, on the finance side they are not necessarily going to aut=
+omate anything there. Everything will be a manual traditional testing. So w=
+hat you have here is test scripts, links to the test scripts that are going=
+ to test these scenarios for ap Kofax or FI or Banking and you&#39;re going=
+ to manage your defects manually in an Excel and you&#39;re adding the trac=
+ker link to how that definitely defect management will occur.</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border=
+-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margi=
+n-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px=
+">Vicky</span><span style=3D"color:#64748b;font-size:14px">14:04</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.</div></=
+div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex=
+;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-rig=
+ht:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">14:06</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Right.=
+ So again is that accurate? Okay, so I think the next step then and we&#39;=
+ll get to the ERP section shortly. But questions or comments or thoughts on=
+ this, Jessica? Vicky.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82=
+f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b8=
+2f6;font-weight:600;margin-right:8px">Vicky</span><span style=3D"color:#647=
+48b;font-size:14px">14:24</span></div><div style=3D"color:#475569;font-size=
+:16px;line-height:1.6">The UAT defect tracker, are we consistent on where t=
+hat, which, which tracker we&#39;re using? I mean we have so many. I just w=
+ant to make sure that we all are, that it&#39;s all consistent as to where =
+we&#39;re going to be tracking these who are aligned?</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh=
+</span><span style=3D"color:#64748b;font-size:14px">14:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think the challeng=
+e would be for ERP portion. Everything is getting automated and Bill, you&#=
+39;ll be speaking to this shortly. Everything is getting automated in Tosca=
+. So the defect tracking management escalation Resolution will be in Tosca.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"disp=
+lay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;ma=
+rgin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px">=
+14:55</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So let&#39;s. Sorry, finish your thought. I thought you were done.</div>=
+</div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8faf=
+c;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fl=
+ex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-r=
+ight:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">14:59</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah=
+, no, no, no, I fairly don&#39;t. So go ahead.</div></div><div style=3D"mar=
+gin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bor=
+der-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">15:03</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">No, I was gonna say. So c=
+an we just put a note next. I know it&#39;s a link which is a note next to =
+the thing in Kafka because that&#39;s one of the next.</div></div><div styl=
+e=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius=
+:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-botto=
+m:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakes=
+h</span><span style=3D"color:#64748b;font-size:14px">15:10</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">No, no. So this one=
+ is for finance and it&#39;s all manual and it&#39;s a Excel tracker. This =
+is. There&#39;s a second sheet, I think, Bill, that&#39;s work in progress,=
+ will have an update for you this afternoon. We&#39;ll share a similar shee=
+t for erp. So the sub processes or the work streams under ERP and the remar=
+ks around what is the scope of that testing, number of scenarios there, the=
+ similar links.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><di=
+v style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fon=
+t-weight:600;margin-right:8px">Vicky</span><span style=3D"color:#64748b;fon=
+t-size:14px">15:37</span></div><div style=3D"color:#475569;font-size:16px;l=
+ine-height:1.6">To the test, automated.</div></div><div style=3D"margin-bot=
+tom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-lef=
+t:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span st=
+yle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span s=
+tyle=3D"color:#64748b;font-size:14px">15:39</span></div><div style=3D"color=
+:#475569;font-size:16px;line-height:1.6">And then we will say automated. An=
+d then I don&#39;t think, Bill, we have a link to Tosca. We&#39;ll just say=
+ link. You know, we&#39;ll have to reach out to Tosca team to get reporting=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"dis=
+play:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;m=
+argin-right:8px">Vicky</span><span style=3D"color:#64748b;font-size:14px">1=
+5:49</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">So may I make a suggestion on that link? You could say test case summary.=
+ Can you say finance test case summary. Then we can do ERP test.</div></div=
+><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bor=
+der-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;ma=
+rgin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:=
+8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">15:59</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, yeah.=
+ A second tab. We&#39;ll just add a second tab to it. Yes.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-b=
+ottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">V=
+icky</span><span style=3D"color:#64748b;font-size:14px">16:02</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, but I just=
+. Yeah, because I see that this says test case summary at the bottom. And I=
+ just want us to make sure, because to Jessica&#39;s point, that&#39;s fina=
+nce.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"=
+display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:60=
+0;margin-right:8px">Srinivas</span><span style=3D"color:#64748b;font-size:1=
+4px">16:13</span></div><div style=3D"color:#475569;font-size:16px;line-heig=
+ht:1.6">We haven&#39;t clumped this together yet. They&#39;re still working=
+ on.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"=
+display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:60=
+0;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14p=
+x">16:20</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">So we can even keep it separate. I know it&#39;s all integrated, but =
+for the purposes today, we can say, you know, this is finance test case wor=
+kbook. And then we&#39;ll have an ERP test case workbook.</div></div><div s=
+tyle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-rad=
+ius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bo=
+ttom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vi=
+cky</span><span style=3D"color:#64748b;font-size:14px">16:30</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Exactly. Especial=
+ly since one&#39;s automated and one&#39;s not. Now, my question on the ERP=
+ side is it everything is automated in erp. A portion of it is automated in=
+ erp. Can you give me. Do we know what that looks like yet?</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-=
+bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">=
+Rakesh</span><span style=3D"color:#64748b;font-size:14px">16:51</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Defer to you, =
+Bill?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D=
+"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:6=
+00;margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px=
+">16:53</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah, well, the majority, I would say the overwhelming majority of it =
+is automated.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-=
+weight:600;margin-right:8px">Vicky</span><span style=3D"color:#64748b;font-=
+size:14px">17:02</span></div><div style=3D"color:#475569;font-size:16px;lin=
+e-height:1.6">So how are we going to determine or identify, I guess is a be=
+tter word, how are we going to identify those that are automated and those =
+that are manual?</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><d=
+iv style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fo=
+nt-weight:600;margin-right:8px">Bill</span><span style=3D"color:#64748b;fon=
+t-size:14px">17:11</span></div><div style=3D"color:#475569;font-size:16px;l=
+ine-height:1.6">Well, I have the list.</div></div><div style=3D"margin-bott=
+om:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left=
+:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span sty=
+le=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicky</span><span sty=
+le=3D"color:#64748b;font-size:14px">17:13</span></div><div style=3D"color:#=
+475569;font-size:16px;line-height:1.6">Okay, so. So you&#39;ll have the, th=
+e validator or the UAT testers for that automated and. Or manual of erp, ju=
+st like we have for finance, Correct?</div></div><div style=3D"margin-botto=
+m:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:=
+4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span styl=
+e=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span sty=
+le=3D"color:#64748b;font-size:14px">17:30</span></div><div style=3D"color:#=
+475569;font-size:16px;line-height:1.6">Yes.</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border=
+-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><spa=
+n style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicky</span><spa=
+n style=3D"color:#64748b;font-size:14px">17:30</span></div><div style=3D"co=
+lor:#475569;font-size:16px;line-height:1.6">Okay.</div></div><div style=3D"=
+margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;=
+border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px=
+"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</sp=
+an><span style=3D"color:#64748b;font-size:14px">17:33</span></div><div styl=
+e=3D"color:#475569;font-size:16px;line-height:1.6">That&#39;S work in progr=
+ess. And we&#39;ll, we&#39;ll get that. Let&#39;s, you know, we&#39;ll get =
+an update on it in the end of day call, I think. I don&#39;t know. Bill and=
+ Sri, are you invited to that 3:30 check in? Sorry, 3:30 today or 4:30 some=
+time today? I think that was an end check in. Right, right, right, right.</=
+div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f=
+8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displa=
+y:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;marg=
+in-right:8px">Srinivas</span><span style=3D"color:#64748b;font-size:14px">1=
+7:55</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">Yes, I am invited to that.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"colo=
+r:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"col=
+or:#64748b;font-size:14px">17:57</span></div><div style=3D"color:#475569;fo=
+nt-size:16px;line-height:1.6">Okay. Okay. So again, Bill, I&#39;m going to =
+forward that invite to you. All right, so we should get a view of that, at =
+least get a read into it so we know what the gaps are to prepare for the Su=
+kai conversation tomorrow. So I think what else did we need? So I think we&=
+#39;ve answered a couple of questions there, Jessica and Vicki, on having a=
+ matrix of the work stream, counts of scenarios, the scope of that. These a=
+re the test scripts for it as they are today. Mind you, these test scripts =
+will get refined and formatted and formalized, but they are as they are you=
+ know, today in the existing test scripts. And then we also have the manual=
+ automation view and you know, where the defect tracking will happen. So I =
+think that answers a couple of questions. I think the second piece of it wa=
+s the other Excel of all the list of testers. I think we saw that for the f=
+inance portion and then we&#39;ll get a view of it this afternoon on the. F=
+or the ERP portion. And then we can understand what the gaps are there as w=
+ell so that we can comment out from tomorrow. What else? I think those were=
+ the three main ones for tomorrow. There was also the calendaring where we =
+said that we&#39;d come back in a day or so by end of tomorrow to show the =
+sequencing and calendaring. So certainly not for tomorrow morning, but cert=
+ainly for the following day. We&#39;d need a view of the finalized calendar=
+ing.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"=
+display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:60=
+0;margin-right:8px">Vicky</span><span style=3D"color:#64748b;font-size:14px=
+">19:39</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">So I hate to play devil&#39;s advocate, but I get asked this question =
+consistently. Why do we not know the calendar and what&#39;s causing us to =
+have to wait another day? We just got to be able to explain it, that&#39;s =
+all. As to why it&#39;s taking one more day to get the calendar and why we&=
+#39;re not able to do that simultaneously.</div></div><div style=3D"margin-=
+bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-=
+left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span=
+ style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><spa=
+n style=3D"color:#64748b;font-size:14px">20:05</span></div><div style=3D"co=
+lor:#475569;font-size:16px;line-height:1.6">I will defer to. I agree with y=
+ou. I think it&#39;s work in progress. I think as they identify business av=
+ailability for each of these, they&#39;ll have to calendar in. But I don&#3=
+9;t want to speak for you, Bill, or Srinivas. Yours is a manual process, Sr=
+inivas. So you&#39;ll have to sequence and calendar these in the right way.=
+ So at least start a view on that.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><span st=
+yle=3D"color:#64748b;font-size:14px">20:30</span></div><div style=3D"color:=
+#475569;font-size:16px;line-height:1.6">Can someone repeat the question? I&=
+#39;m sorry.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div s=
+tyle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-w=
+eight:600;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-=
+size:14px">20:34</span></div><div style=3D"color:#475569;font-size:16px;lin=
+e-height:1.6">No worries. So the question was I, I volunteered a date and s=
+aid we Will have it for a Thursday morning update to Sukai and the question=
+ back was why can&#39;t we have progress on it today, tomorrow and see wher=
+e report on it tomorrow. So the question to you back is on the sequencing a=
+nd calendaring for for those two week window. Where are we on that and do w=
+e have an initial view on it?</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px soli=
+d #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"col=
+or:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><span style=3D"=
+color:#64748b;font-size:14px">21:03</span></div><div style=3D"color:#475569=
+;font-size:16px;line-height:1.6">No, I think we are still working on it for=
+ the two weeks of window. Right. How we will focus from finance perspective=
+ because like I mentioned some of the like from Hyperion right. The users w=
+ill be not available the week of June 30 to a consolidation reporting out t=
+hey do Correct. Then I&#39;ll have to go back and work with them when they&=
+#39;re available and based on that I can plan.</div></div><div style=3D"mar=
+gin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bor=
+der-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">21:32</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">Sorry, can we put some a =
+version one of it that has blocks that you can move around a bit later in a=
+ day or two I can do.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f=
+6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82=
+f6;font-weight:600;margin-right:8px">Srinivas</span><span style=3D"color:#6=
+4748b;font-size:14px">21:40</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">It maybe tomorrow or day after because today has b=
+een completely squeezed in to get these scripts and everything ready for yo=
+u. Right. The Excel sheet you saw.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span styl=
+e=3D"color:#64748b;font-size:14px">21:50</span></div><div style=3D"color:#4=
+75569;font-size:16px;line-height:1.6">Yes.</div></div><div style=3D"margin-=
+bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-=
+left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span=
+ style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><s=
+pan style=3D"color:#64748b;font-size:14px">21:50</span></div><div style=3D"=
+color:#475569;font-size:16px;line-height:1.6">So that took most of my time.=
+ As you&#39;ve seen I have like close to 19 applications where I need to fo=
+cus.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"=
+display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:60=
+0;margin-right:8px">Vicky</span><span style=3D"color:#64748b;font-size:14px=
+">21:58</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">The reason that I&#39;m asking is is because part of my communication =
+is dependent upon what you all do because I have to ensure validation. I ne=
+ed to send a communication out to each of these users saying you know, okay=
+, welcome to to doing the user acceptance testing or being part of the proc=
+ess. Here&#39;s what you can expect timeline wise and what we&#39;re lookin=
+g to accomplish. Here&#39;s what we need from you. If you run into challeng=
+es or issues, please record them X place last and one of the things that I =
+want to say that we need from you if you plan to take any vacation time at =
+all, please let us know ASAP because we gotta validate because everybody&#3=
+9;s not going to be gone the whole time. We have people, you know, people i=
+n Asia can work while us people are on vacation. We just don&#39;t have the=
+ luxury of not having time. And she&#39;s going to ask this question other =
+how many people are on vacation? Let&#39;s identify that know it and what&#=
+39;s happening with comms. But I&#39;m just letting you know I can&#39;t do=
+ anything with communication until we get things solidified. We gotta go to=
+ these businesses as a looking like we&#39;re a unit of one and not dispara=
+te all over the place. So the thing is.</div></div><div style=3D"margin-bot=
+tom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-lef=
+t:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span st=
+yle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><span=
+ style=3D"color:#64748b;font-size:14px">23:20</span></div><div style=3D"col=
+or:#475569;font-size:16px;line-height:1.6">So what is the due date to send =
+this communication up?</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82=
+f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b8=
+2f6;font-weight:600;margin-right:8px">Vicky</span><span style=3D"color:#647=
+48b;font-size:14px">23:23</span></div><div style=3D"color:#475569;font-size=
+:16px;line-height:1.6">Well I should be, I should be sending that comms out=
+ right now because that&#39;s what she wanted me to do. But I know that it&=
+#39;s taking us today to get the names of who I&#39;m sending the communica=
+tion to. So what I would say is that in the meeting tomorrow is I&#39;m goi=
+ng to send the communication out tomorrow to these individuals. Because wha=
+t Jessica is doing now as she&#39;s contacting the leads, we&#39;re validat=
+ing those tester names and getting tester 1, 2, 3 where needed as well so t=
+hat we&#39;re all on the same page so that Sakai will have what she&#39;s l=
+ooking for and then we can say yes, we&#39;ve done a communication to them,=
+ here&#39;s what they know, here&#39;s the timeline we&#39;ve communicated,=
+ here&#39;s what to expect, etc.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px s=
+olid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"=
+color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><span style=
+=3D"color:#64748b;font-size:14px">24:10</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">Okay, good enough. So Rakesh, then the=
+ window, whatever we have agreed now we will stick, we will still stick on =
+to it except for HFM and FDS or FDS and this space. Okay, so hfm.</div></di=
+v><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bo=
+rder-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;m=
+argin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right=
+:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">24:23</span=
+></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Oh sorry=
+. So let me make sure I&#39;m following you. So the update that we had, it&=
+#39;s not this but going back to. So the calendar view that we shared and l=
+et me pull that up here for everyone&#39;s sorry general info.</div></div><=
+div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;borde=
+r-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;marg=
+in-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8p=
+x">Srinivas</span><span style=3D"color:#64748b;font-size:14px">24:46</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So Bill, =
+feel free to jump in. I know this. There is some cross functional efforts t=
+oo between erp, non ERP on the UAT window. What will be shown here and then=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"dis=
+play:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;m=
+argin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">=
+25:00</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">All right, give me one second. For some reason Jessica, I think you had =
+all the security enabled on that. So I&#39;m even unable to open those file=
+s. But readiness tracking we said today. So this is a slide that is going t=
+o be presented presented an opsep all hands call tomorrow. So I need to wor=
+k with you Bill and Srinivas on what are the changes we need to this. So le=
+t me open this and.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"=
+><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6=
+;font-weight:600;margin-right:8px">Vicky</span><span style=3D"color:#64748b=
+;font-size:14px">25:34</span></div><div style=3D"color:#475569;font-size:16=
+px;line-height:1.6">But as Sakai said, she&#39;s seen the slide and is okay=
+ with it. She wanted the next level of detail, correct?</div></div><div sty=
+le=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radiu=
+s:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bott=
+om:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rake=
+sh</span><span style=3D"color:#64748b;font-size:14px">25:40</span></div><di=
+v style=3D"color:#475569;font-size:16px;line-height:1.6">Correct. So this h=
+as not been socialized and the broader communication to the overall program=
+. So we will do that tomorrow. But what you are suggesting then is exactly =
+that is the double click.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3=
+b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#=
+3b82f6;font-weight:600;margin-right:8px">Srinivas</span><span style=3D"colo=
+r:#64748b;font-size:14px">25:56</span></div><div style=3D"color:#475569;fon=
+t-size:16px;line-height:1.6">Is.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px s=
+olid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"=
+color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D=
+"color:#64748b;font-size:14px">25:56</span></div><div style=3D"color:#47556=
+9;font-size:16px;line-height:1.6">The double click into this Srinivas is ho=
+w am I calendaring this 7 11. Now let&#39;s start with the first piece you =
+said HFM and something else will not be catering to this timeline for.</div=
+></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fa=
+fc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:f=
+lex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-=
+right:8px">Srinivas</span><span style=3D"color:#64748b;font-size:14px">26:1=
+2</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">T=
+he 630 to 7 4.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font=
+-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;fon=
+t-size:14px">26:15</span></div><div style=3D"color:#475569;font-size:16px;l=
+ine-height:1.6">Okay, so what will happen here for HFM? It will be only her=
+e.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-colo=
+r:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"di=
+splay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Srinivas</span><span style=3D"color:#64748b;font-size:14p=
+x">26:21</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">Yeah. Correct.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6=
+"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f=
+6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#6474=
+8b;font-size:14px">26:24</span></div><div style=3D"color:#475569;font-size:=
+16px;line-height:1.6">Okay, so I think we need a double click. Let me make =
+a comment here. Insert.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b8=
+2f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b=
+82f6;font-weight:600;margin-right:8px">Srinivas</span><span style=3D"color:=
+#64748b;font-size:14px">26:32</span></div><div style=3D"color:#475569;font-=
+size:16px;line-height:1.6">Because the team will be occupied for all the co=
+nsolidation reporting. Right.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px soli=
+d #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"col=
+or:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"co=
+lor:#64748b;font-size:14px">26:37</span></div><div style=3D"color:#475569;f=
+ont-size:16px;line-height:1.6">Okay. So for consolidation and reporting fin=
+ance HFM area.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font=
+-weight:600;margin-right:8px">Srinivas</span><span style=3D"color:#64748b;f=
+ont-size:14px">26:47</span></div><div style=3D"color:#475569;font-size:16px=
+;line-height:1.6">Yep.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82=
+f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b8=
+2f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#64=
+748b;font-size:14px">26:49</span></div><div style=3D"color:#475569;font-siz=
+e:16px;line-height:1.6">Testing starts and this goes back to. To the point =
+that you were making, Vicki. So in fact, I think what we should do is I&#39=
+;m gonna move this here, but I would actually start doing a calendar of thi=
+s a much different way. So what. Let me just do this. There&#39;s not many =
+in here. We can do it in Excel. I&#39;ll move it in PowerPoint here. But.</=
+div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f=
+8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displa=
+y:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;marg=
+in-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px">27=
+:20</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6"=
+>Are you gonna do it based on function?</div></div><div style=3D"margin-bot=
+tom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-lef=
+t:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span st=
+yle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span s=
+tyle=3D"color:#64748b;font-size:14px">27:22</span></div><div style=3D"color=
+:#475569;font-size:16px;line-height:1.6">Yes, I&#39;m thinking by fun, you =
+know, put a block of time and then we will move by depending on what you&#3=
+9;re saying. So it&#39;s by, you know, your ERP areas you gave and tell me =
+if that is okay. Right, Bill, does that follow? Is that how you&#39;re also=
+ planning to do? Is it by your work streams or you have end to end? So is t=
+hat, is that how you&#39;ve already done that?</div></div><div style=3D"mar=
+gin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bor=
+der-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><s=
+pan style=3D"color:#64748b;font-size:14px">27:55</span></div><div style=3D"=
+color:#475569;font-size:16px;line-height:1.6">End to end? For the most part=
+, you know, there, there are some mini scripts that I&#39;m going to be tal=
+king to the team about what they, where they see, you know, those being fit=
+ in. You know, a lot of times what we do is we all gather for the end to en=
+d scripts and then they break out. Do you know, with their function for so =
+many scenarios that maybe the business has requested.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh=
+</span><span style=3D"color:#64748b;font-size:14px">28:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, again, so I. L=
+et me work with you on it. But I think you get the picture that, you know, =
+I think this is not, you know, it&#39;s. I think you all are much more deep=
+er into this. But the idea would be to do a calendar view of function by fu=
+nction across your work streams when the blocks of timing will be. Has a st=
+arting point and then you can refine that on a calendar view. So at least w=
+e should get a view of that tomorrow to say here&#39;s what we&#39;re looki=
+ng at and then continue to iterate it by end of day tomorrow. I guess that =
+is the ask, Vicky, is by tomorrow you get that in a much better shape.</div=
+></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fa=
+fc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:f=
+lex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-=
+right:8px">Vicky</span><span style=3D"color:#64748b;font-size:14px">28:57</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Well=
+, we definitely have to have that in a better shape. She&#39;s going to ask=
+ the details. Her next question is going to be, okay, so let&#39;s look at =
+ERP for seven steps. Who are the testers? And then we need to pull up the l=
+ink that says here are the testers for each one of these scripts, who wrote=
+ the script, who validate the script, all that kind of. So she&#39;s going =
+to want to know, you know, that we have that information together. Because =
+with our time that we&#39;re having, her concern is we need to have all the=
+se different parallel activities happening to make sure. That we are not lo=
+sing value, valuable time that we can&#39;t get back. So you&#39;re right. =
+That calendar is great. If I click on the calendar and it&#39;s for ERP X a=
+nd these are the users. Here are the three users for each one of the ones t=
+hat we&#39;re going to work on. Here are the scripts that they&#39;re going=
+ to run. We&#39;re validating. The content of the scripts is fine. At least=
+ we have our strategy approach.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px so=
+lid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"c=
+olor:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"=
+color:#64748b;font-size:14px">29:59</span></div><div style=3D"color:#475569=
+;font-size:16px;line-height:1.6">Okay, so, Audrey, can you work with Bill? =
+Bill on the ERP night? Can we get that calendar view today for how you&#39;=
+re thinking it will?</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6=
+"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f=
+6;font-weight:600;margin-right:8px">Bill</span><span style=3D"color:#64748b=
+;font-size:14px">30:10</span></div><div style=3D"color:#475569;font-size:16=
+px;line-height:1.6">No, I don&#39;t think so. I don&#39;t. I mean, you know=
+, my team is in India, so it&#39;s, you know, midnight there.</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border=
+-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margi=
+n-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px=
+">Rakesh</span><span style=3D"color:#64748b;font-size:14px">30:16</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Understood.<=
+/div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#=
+f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displ=
+ay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">30:1=
+7</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">I=
+&#39;m not going to wake them up, you know, to get a calendar.</div></div><=
+div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;borde=
+r-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;marg=
+in-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8p=
+x">Srinivas</span><span style=3D"color:#64748b;font-size:14px">30:20</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">You.</div=
+></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fa=
+fc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:f=
+lex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-=
+right:8px">Vicky</span><span style=3D"color:#64748b;font-size:14px">30:25</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Leav=
+e instructions for them to do it while we&#39;re sleeping. Do they work on =
+it while we&#39;re sleep to have it available in the morning?</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border=
+-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margi=
+n-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px=
+">Bill</span><span style=3D"color:#64748b;font-size:14px">30:32</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I have. =
+I have done that already.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3=
+b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#=
+3b82f6;font-weight:600;margin-right:8px">Vicky</span><span style=3D"color:#=
+64748b;font-size:14px">30:34</span></div><div style=3D"color:#475569;font-s=
+ize:16px;line-height:1.6">Okay.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px so=
+lid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"c=
+olor:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><span style=
+=3D"color:#64748b;font-size:14px">30:35</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">So in occasion. Vicky, I have a questi=
+on. Right. It&#39;s great that we&#39;re doing. I mean, we are putting a lo=
+t of efforts to get these cleaned up and make sure we kind of position dire=
+ctionally for the uat. But there are a couple of challenges, though, right,=
+ where we need your help. I think I did highlight this multiple calls, but =
+I never got any help. So let me share quickly my screen and then I need you=
+ help. Give me a second. Just give me a second. So one is I need to know fo=
+r the business finance users.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px soli=
+d #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"col=
+or:#3b82f6;font-weight:600;margin-right:8px">Vicky</span><span style=3D"col=
+or:#64748b;font-size:14px">31:17</span></div><div style=3D"color:#475569;fo=
+nt-size:16px;line-height:1.6">I can&#39;t see your screen if you&#39;re sha=
+ring it.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Srinivas</span><span style=3D"color:#64748b;font-si=
+ze:14px">31:20</span></div><div style=3D"color:#475569;font-size:16px;line-=
+height:1.6">Yeah, give me a moment.</div></div><div style=3D"margin-bottom:=
+16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4p=
+x solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicky</span><span style=
+=3D"color:#64748b;font-size:14px">31:22</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">Oh, okay. All right. I just wanted to =
+let you know I could if you were.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D=
+"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=
+=3D"color:#64748b;font-size:14px">31:46</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">While Srinivas is sharing. Hey, Mac, o=
+n your end, do you have access to the Athens UAT folder? I believe Jessica =
+gave us access, right? Yes, correct. Okay, so can you move all these files =
+that we&#39;ll get from Shrinivas, Bill and Audrey into those folders appro=
+priately? Yeah, I&#39;ll work with you on that. So that later this afternoo=
+n we can talk reference it there. Yeah, I don&#39;t want to move these live=
+ ones, Srinivas that you are working.</div></div><div style=3D"margin-botto=
+m:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:=
+4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span styl=
+e=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><span s=
+tyle=3D"color:#64748b;font-size:14px">32:15</span></div><div style=3D"color=
+:#475569;font-size:16px;line-height:1.6">Yeah, I can take a copy and send i=
+t to you right after this.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #=
+3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:=
+#3b82f6;font-weight:600;margin-right:8px">Jessica</span><span style=3D"colo=
+r:#64748b;font-size:14px">32:19</span></div><div style=3D"color:#475569;fon=
+t-size:16px;line-height:1.6">Okay, thank you.</div></div><div style=3D"marg=
+in-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bord=
+er-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><s=
+pan style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><=
+span style=3D"color:#64748b;font-size:14px">32:19</span></div><div style=3D=
+"color:#475569;font-size:16px;line-height:1.6">Well, let&#39;s timestamp it=
+ and say, you know. Yeah, let&#39;s timestamp the copies we have.</div></di=
+v><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bo=
+rder-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;m=
+argin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right=
+:8px">Srinivas</span><span style=3D"color:#64748b;font-size:14px">32:25</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Sure. =
+All right. So for finance, right. Especially in the F5 postings. When we do=
+ postings we need now we have names from entity controllers, right. We have=
+ Two names. One is for India and one is for America. We don&#39;t have one =
+for apac. Right. And for us the contact has been always is Satish Krishna. =
+He&#39;s from Fallen Things team. Now he&#39;s struggling to identify a nam=
+e for apac. That&#39;s number one. Number two we are still looking for Apar=
+t from these entity controllers we need names for business finance. Who nee=
+ds to be also be partis should be participating in the uat.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-=
+bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">=
+Rakesh</span><span style=3D"color:#64748b;font-size:14px">33:04</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">So we don&#39;=
+t have specifically the UAT function.</div></div><div style=3D"margin-botto=
+m:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:=
+4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span styl=
+e=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><span s=
+tyle=3D"color:#64748b;font-size:14px">33:09</span></div><div style=3D"color=
+:#475569;font-size:16px;line-height:1.6">I don&#39;t think so. I mean I, I =
+have no issues if the UAT function is conclud that but I just want a confir=
+mation. If you are okay then I&#39;m okay. I have no issues then he has bee=
+n a point of contact. But he&#39;s saying that he&#39;s telling us that the=
+se are the three or two individuals will be participating participating in =
+the uat not by himself.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b8=
+2f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b=
+82f6;font-weight:600;margin-right:8px">Jessica</span><span style=3D"color:#=
+64748b;font-size:14px">33:31</span></div><div style=3D"color:#475569;font-s=
+ize:16px;line-height:1.6">So I just want to make sure I understand. I&#39;v=
+e been looking more at the ERV validation tracker. How does this correlate =
+back to that? Is this the end ends? Is that why it&#39;s not on the tracker=
+ or is this in some shape or form on the tracker?</div></div><div style=3D"=
+margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;=
+border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px=
+"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</=
+span><span style=3D"color:#64748b;font-size:14px">33:48</span></div><div st=
+yle=3D"color:#475569;font-size:16px;line-height:1.6">It&#39;s end to end so=
+mewhere. The EFI postings right where the class functional efforts takes pl=
+ace. It should be somewhere in there. But this is more specific to non ERP =
+applications I&#39;m referring.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px so=
+lid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"c=
+olor:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"=
+color:#64748b;font-size:14px">34:00</span></div><div style=3D"color:#475569=
+;font-size:16px;line-height:1.6">Yeah. So Jessica, the BRV tracker is at an=
+ application level so when they run these processes that are end to end the=
+y&#39;re going to take people so it won&#39;t nicely match one for every ap=
+p even though you may have a function lead for an app. So these testers wil=
+l likely run several scenarios end to end. So that&#39;s why I&#39;m linkin=
+g them. But it won&#39;t be a one to one match across the 49 lines there.</=
+div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f=
+8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displa=
+y:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;marg=
+in-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px">34=
+:26</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6"=
+>So really this file or the end to end and the VRE file need to be complete=
+d with UAT testers.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"=
+><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6=
+;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#64748=
+b;font-size:14px">34:39</span></div><div style=3D"color:#475569;font-size:1=
+6px;line-height:1.6">They won&#39;t be too different. Those UAT testers, if=
+ I&#39;m using an end to end process tester will touch a couple of systems =
+to do it. So the the point like you know app number 17 they may touch that =
+and app number 27 they may touch that to run this process. So they&#39;ll b=
+e considered testers on both. So I think we should use this list as the sou=
+rce. That&#39;s why my plan was to link this list against those cells to sa=
+y across these BRV and BRV adjacent. These 4950 testers are going to cover =
+this. Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div st=
+yle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-we=
+ight:600;margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-=
+size:14px">35:16</span></div><div style=3D"color:#475569;font-size:16px;lin=
+e-height:1.6">I&#39;ve been linking people back to this BRB validation. So =
+if you have more time this afternoo, let me work with you to get the names =
+in the right file because I have a good chunk of names. The second thing I =
+want to call out and this is why I just want to ask more questions is I hav=
+e a connect. I said I have a connect. Vicky and I tomorrow with Will Johnso=
+n because I believe he is the overarching finance owner for uat. Right. Lik=
+e he&#39;s not the individual one but if there is certain specific ones we&=
+#39;re having issue with finance. Is he our point of contact that we need t=
+o escalate to?</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font=
+-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;fon=
+t-size:14px">35:50</span></div><div style=3D"color:#475569;font-size:16px;l=
+ine-height:1.6">He is the overall OPSEP lead and the finance lead. He is de=
+legated or designated in his areas points of contact. So we should be able =
+to reach out to those as well. And let me get. Those are the names that you=
+ will see in the in the function league area.</div></div><div style=3D"marg=
+in-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bord=
+er-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><s=
+pan style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span=
+><span style=3D"color:#64748b;font-size:14px">36:13</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">Okay. The next applicatio=
+n that I have is tax application which is called especially for Mexico and =
+Romania. We did reached out to the existing business leads who actually sup=
+port or supports the general ongoing tax projects. Then when we reached out=
+ to them to align or you know, define the test script, they said hey look, =
+I&#39;m not moving with Athens, which means I am not the user to be involve=
+d for testing the ADCAM applications for tax. So that&#39;s when I think di=
+d escalate to Paul. Right. And I created a name for that this application a=
+nd I need some help there similarly for multi work1.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicky<=
+/span><span style=3D"color:#64748b;font-size:14px">36:59</span></div><div s=
+tyle=3D"color:#475569;font-size:16px;line-height:1.6">Go ahead, go ahead Je=
+ssica.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-siz=
+e:14px">37:01</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">So I think that&#39;s where Vicki and I can help and let&#39;s g=
+et tactical. So what I&#39;d like to do if you guys can stay on and I don&#=
+39;t know that we necessarily need the whole crowd for this. Let&#39;s go t=
+hrough line by line, start marking where there&#39;s gaps and then Trinivas=
+, Vicki and I or I can send them out, let&#39;s start sending out those con=
+nection points. And even if like that&#39;s the type of stuff that we need =
+to escalate immediately of if the person responds back to say hey, I&#39;m =
+not going with it, I&#39;m not doing this.</div></div><div style=3D"margin-=
+bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-=
+left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span=
+ style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><s=
+pan style=3D"color:#64748b;font-size:14px">37:31</span></div><div style=3D"=
+color:#475569;font-size:16px;line-height:1.6">These are things that are goi=
+ng to.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-siz=
+e:14px">37:32</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Go to Shakai and Shakai&#39;s going to go to the right level of =
+leadership to say either you give me a new person or this person needs a su=
+pport because we&#39;re not at a point that these people really can say we&=
+#39;re not supporting. So yeah, let&#39;s go through this and thank you.</d=
+iv></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display=
+:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margi=
+n-right:8px">Srinivas</span><span style=3D"color:#64748b;font-size:14px">37=
+:50</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6"=
+>Whenever I&#39;ve highlighted in red right that&#39;s the only areas where=
+ I need help I think rest of the processes, I think functions. I&#39;m good=
+. So I think I am going to anyway share this Excel file with Mac and Rakesh=
+ so they can summarize this for tomorrow&#39;s call.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessic=
+a</span><span style=3D"color:#64748b;font-size:14px">38:07</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so, so just, =
+just so I&#39;m.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><d=
+iv style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fo=
+nt-weight:600;margin-right:8px">Vicky</span><span style=3D"color:#64748b;fo=
+nt-size:14px">38:09</span></div><div style=3D"color:#475569;font-size:16px;=
+line-height:1.6">Clear, everything you have marked and read is where we nee=
+d to get an escalation point. So let&#39;s just go back to the, the Edcom i=
+nvoicing, the Tax Act. You don&#39;t have a business need.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-b=
+ottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">S=
+rinivas</span><span style=3D"color:#64748b;font-size:14px">38:26</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yes.</div></d=
+iv><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;b=
+order-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;=
+margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-righ=
+t:8px">Vicky</span><span style=3D"color:#64748b;font-size:14px">38:26</span=
+></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">You get =
+a UAT business and you need help to identify users. That&#39;s where the es=
+calation point.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><di=
+v style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fon=
+t-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;fo=
+nt-size:14px">38:33</span></div><div style=3D"color:#475569;font-size:16px;=
+line-height:1.6">Yes.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f=
+6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82=
+f6;font-weight:600;margin-right:8px">Vicky</span><span style=3D"color:#6474=
+8b;font-size:14px">38:35</span></div><div style=3D"color:#475569;font-size:=
+16px;line-height:1.6">Okay.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color=
+:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><span style=3D"co=
+lor:#64748b;font-size:14px">38:37</span></div><div style=3D"color:#475569;f=
+ont-size:16px;line-height:1.6">Same with Varkiva. For Varkiva at least they=
+&#39;ve given me lead name called Chad. He just joined last week or this we=
+ek. Okay. I don&#39;t know the exact date of the joining but he just joined=
+ and he&#39;s still kind of getting up to speed. But then we don&#39;t have=
+ the names yet. Right. It&#39;s great that he&#39;s onboarding, they&#39;ve=
+ onboarded him but we don&#39;t have the names yet. Who, who can probably w=
+ork with us and the same situation.</div></div><div style=3D"margin-bottom:=
+16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4p=
+x solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicky</span><span style=
+=3D"color:#64748b;font-size:14px">39:03</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">Do you know.</div></div><div style=3D"=
+margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;=
+border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px=
+"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</sp=
+an><span style=3D"color:#64748b;font-size:14px">39:11</span></div><div styl=
+e=3D"color:#475569;font-size:16px;line-height:1.6">I think these are, these=
+ are all the new hires. Right. So these are the filling up the org and you =
+know, names and seats. But maybe going through KT and not quick enough for =
+uat. But I think to the other point this may be where there&#39;s an orange=
+ organizational gap where he may not have two testers to support him on thi=
+s.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-colo=
+r:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"di=
+splay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Vicky</span><span style=3D"color:#64748b;font-size:14px">=
+39:29</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Right. And we put a comment there. But my point is, is that if he&#39;s =
+a new hire, he has a boss. The boss knows that we&#39;re supposed to be doi=
+ng this. So he&#39;s a new hire, he may not be able to do it. Who else can =
+assist him? That&#39;s what I need to know.</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border=
+-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><spa=
+n style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><s=
+pan style=3D"color:#64748b;font-size:14px">39:43</span></div><div style=3D"=
+color:#475569;font-size:16px;line-height:1.6">I also we have the pitcher ca=
+tchers in the KT checklist. So my strong speculation is up there. Someone n=
+ew is coming in and the catcher, whoever that pitcher was, is likely going =
+to be the person that should be connecting and aiding in uat. And what we s=
+hould probably do. And this is where it&#39;s, you know, some of it might j=
+ust be the messaging of, you know, the messaging to the pitcher of, you kno=
+w, since you have to do knowledge transfer with your catcher, sit down with=
+ them and do the UAT together. So, so that&#39;s some of the conversations =
+we need to have is some of these pitchers, because they&#39;re likely the p=
+erson that&#39;s supposed to be the one supporting this are saying that we =
+need to know, escalate.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b8=
+2f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b=
+82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#6=
+4748b;font-size:14px">40:27</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">That may. Very well. Yeah, Jessica, that may end u=
+p being very well the case. I think the program knew that there would be so=
+me gaps and that I think early on there were some conversations that the Ho=
+neywell teams may help with uat. But I think it&#39;s the point that where =
+the workstream leads have to sign off on it. So Will Johnson will have to a=
+gree to that and say yes, we&#39;ll help out and we sign off.</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border=
+-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margi=
+n-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px=
+">Vicky</span><span style=3D"color:#64748b;font-size:14px">40:51</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">Agree.</div><=
+/div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc=
+;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fle=
+x;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-ri=
+ght:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px">40:52</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"dis=
+play:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;m=
+argin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">=
+40:53</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">But again, we need to the point you&#39;re making. We need to highlight =
+those gaps, escalate it and then get the decision.</div></div><div style=3D=
+"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px=
+;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8p=
+x"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicky</sp=
+an><span style=3D"color:#64748b;font-size:14px">40:59</span></div><div styl=
+e=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.</div></div><div st=
+yle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radi=
+us:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bot=
+tom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rak=
+esh</span><span style=3D"color:#64748b;font-size:14px">41:02</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">So I know this is=
+ coming up really well for finance. So Audrey, for the 4 o&#39; clock or 3:=
+30. I keep forgetting when it is. Can we get a similar view or Bill, I shou=
+ld point out, will we be mature enough in terms of a view.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-b=
+ottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">B=
+ill</span><span style=3D"color:#64748b;font-size:14px">41:21</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">A view of.</div><=
+/div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc=
+;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fle=
+x;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-ri=
+ght:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">41:23</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Simil=
+ar to what Srinivas is sharing of.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span style=
+=3D"color:#64748b;font-size:14px">41:27</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">If we can ever get off these. Yes, we =
+could work on it.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><=
+div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;f=
+ont-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;=
+font-size:14px">41:31</span></div><div style=3D"color:#475569;font-size:16p=
+x;line-height:1.6">I will, I will, I will let. Yes. I don&#39;t mean to hol=
+d you back.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div st=
+yle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-we=
+ight:600;margin-right:8px">Bill</span><span style=3D"color:#64748b;font-siz=
+e:14px">41:36</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">No offense, but I mean we want. We know what you want. We want t=
+o work on it, but we need to have the time to work on it.</div></div><div s=
+tyle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-rad=
+ius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bo=
+ttom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Je=
+ssica</span><span style=3D"color:#64748b;font-size:14px">41:42</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">Why don&#39;t w=
+e do this? Why don&#39;t we let Bill and Audrey go and then Rakesh and Srin=
+ivas, whoever makes the most sense to stand up, call with Vicki and I so we=
+ can get the users aligned and we can keep everybody moving forward. Let&#3=
+9;s do that.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div s=
+tyle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-w=
+eight:600;margin-right:8px">Srinivas</span><span style=3D"color:#64748b;fon=
+t-size:14px">41:55</span></div><div style=3D"color:#475569;font-size:16px;l=
+ine-height:1.6">Sure. Okay. Does that make you mean. The immediate help tha=
+t I need is to get some names for the tax application line number 33. Resha=
+ring my screen. Sorry. Then there is application black line and then work h=
+ere. These are the three applications where we need names. Again, please ke=
+ep in mind for workiva, they&#39;ve given the name as Chad, but he&#39;s br=
+and new to Honeywell, so. But we need to get him up to speed or we need to =
+reach out to his boss, find out is he the one who is coming help us with th=
+is testing.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div st=
+yle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-we=
+ight:600;margin-right:8px">Bill</span><span style=3D"color:#64748b;font-siz=
+e:14px">42:24</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Yeah, we have gaps too. So you know what, what I&#39;m gonna end=
+ up putting together, you know, we have many gaps, so if you guys can help =
+with that as well, you know, we&#39;ll articulate it to you and you.</div><=
+/div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc=
+;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fle=
+x;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-ri=
+ght:8px">Vicky</span><span style=3D"color:#64748b;font-size:14px">42:37</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Absolu=
+tely.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D=
+"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:6=
+00;margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:1=
+4px">42:38</span></div><div style=3D"color:#475569;font-size:16px;line-heig=
+ht:1.6">Yeah, absolutely. We&#39;re here to be your pit bulls. Sometimes mo=
+re like a chihuahua, but we&#39;re, we&#39;re here to help.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-=
+bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">=
+Bill</span><span style=3D"color:#64748b;font-size:14px">42:44</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">I appreciate the=
+ help because we&#39;ve been banging our heads against the wall for a while=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"dis=
+play:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;m=
+argin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px"=
+>42:48</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah, I, I don&#39;t, I don&#39;t Want here to make friends. Neither is=
+ Becky. So we&#39;re here to figure out how we can get this supported. And =
+if we can&#39;t get anywhere at our level, you know, we&#39;ll escalate to =
+Sukai. I can also escalate to Jeff Hopkins if we need to, but. So let&#39;s=
+ do that. Let&#39;s get anything else for Bill or Audrey. If not, let&#39;s=
+ get them off the phone so they can actually do something. Didn&#39;t mean =
+that disrespectfully. I just meant get you off the phone.</div></div><div s=
+tyle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-rad=
+ius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bo=
+ttom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bi=
+ll</span><span style=3D"color:#64748b;font-size:14px">43:11</span></div><di=
+v style=3D"color:#475569;font-size:16px;line-height:1.6">It was perfectly f=
+ine the way you said it.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b=
+82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3=
+b82f6;font-weight:600;margin-right:8px">Jessica</span><span style=3D"color:=
+#64748b;font-size:14px">43:13</span></div><div style=3D"color:#475569;font-=
+size:16px;line-height:1.6">All right, good. And then let&#39;s get updates =
+on here because, like, for example, Chad responded back to names for me. Ch=
+ad also is not brand new. Chad is new, but like not day two new, more like =
+six months new that worked with Chad in the past. So let&#39;s just talk th=
+rough this a little bit because I also got a bunch of names, but I did it b=
+ased off the BRB tracker. So I&#39;m trying to figure out the best way to c=
+orrelate what I got back to this, see where those remaining gaps are, and t=
+hen start working to how we can escalate. So from this team, who besides my=
+self and Vicki should be on the call, like stay on the call as we get names=
+ on here? Srinivas and Rakesh, or just Srinivas.</div></div><div style=3D"m=
+argin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;b=
+order-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"=
+><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</s=
+pan><span style=3D"color:#64748b;font-size:14px">43:54</span></div><div sty=
+le=3D"color:#475569;font-size:16px;line-height:1.6">I mean, I&#39;m sorry, =
+what else is needed from my set? I&#39;m all in late for a call.</div></div=
+><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bor=
+der-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;ma=
+rgin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:=
+8px">Jessica</span><span style=3D"color:#64748b;font-size:14px">44:02</span=
+></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So what =
+you have highlighted in red is only the support that you need.</div></div><=
+div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;borde=
+r-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;marg=
+in-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8p=
+x">Srinivas</span><span style=3D"color:#64748b;font-size:14px">44:08</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I n=
+eed business users who will be from business participating in the UAT for t=
+hese applications, stacks applications in Workiva and BlackLink. That&#39;s=
+ all.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D=
+"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:6=
+00;margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:1=
+4px">44:19</span></div><div style=3D"color:#475569;font-size:16px;line-heig=
+ht:1.6">Okay, who&#39;s the best person? Because I got a bunch of names, bu=
+t I got them based off of.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #=
+3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:=
+#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><span style=3D"col=
+or:#64748b;font-size:14px">44:24</span></div><div style=3D"color:#475569;fo=
+nt-size:16px;line-height:1.6">The systems name for us for. Especially aroun=
+d Workiva and Blackline. We have been told that Chad and Satish then for ta=
+x application, they. They just gave us a name yesterday. His name is. Let m=
+e think of the name here. But I&#39;m not sure if he&#39;s trying to help u=
+s. He&#39;s. He&#39;s from Finance. Yes. Yes.</div></div><div style=3D"marg=
+in-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bord=
+er-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><s=
+pan style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span>=
+<span style=3D"color:#64748b;font-size:14px">44:49</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">Okay.</div></div><div sty=
+le=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radiu=
+s:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bott=
+om:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srin=
+ivas</span><span style=3D"color:#64748b;font-size:14px">44:49</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">But when I. When=
+ I talk. When I. When I started talking to Satish, Satish said that you sho=
+uld probably reach out to this person who uncalled los. But he did request =
+a call back and I think my team did schedule a call with him to understand =
+the expectations. Then after that, we didn&#39;t hear back anything. On the=
+ leaves for clarity.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6=
+"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f=
+6;font-weight:600;margin-right:8px">Jessica</span><span style=3D"color:#647=
+48b;font-size:14px">45:09</span></div><div style=3D"color:#475569;font-size=
+:16px;line-height:1.6">This UAT team list is based. Focused more on the end=
+ to end Versus the BRB validation list is focused more on the systems and a=
+pps.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"=
+display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:60=
+0;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14p=
+x">45:22</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">Some of these are also. I do see systems in here. So there are for ex=
+ample Workiva capability you&#39;re testing, but you&#39;re using the Worki=
+va system. So we have a line item in our tracker for Workiva Banking for ex=
+ample is a capability, but I don&#39;t. We may use five or six apps or four=
+ apps for banking. So we&#39;ll have to map that and say these names and ba=
+nking all go against those four apps. Hyperion for example, you got Hyperio=
+n HFM and Hyperion Cash app or Hyperion Planning rather. So I presume this =
+is hfm. So I shouldn&#39;t presume. But we should have to make those correl=
+ations to your point Jessica on some of these tie nicely to the apps. Some =
+of them are a broader set of apps.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><span sty=
+le=3D"color:#64748b;font-size:14px">46:10</span></div><div style=3D"color:#=
+475569;font-size:16px;line-height:1.6">Can we make this one file? So make t=
+his one the end to end and then that one the app. That way it&#39;s all in =
+one place.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div sty=
+le=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-wei=
+ght:600;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-si=
+ze:14px">46:20</span></div><div style=3D"color:#475569;font-size:16px;line-=
+height:1.6">Yes, we can certainly do that.</div></div><div style=3D"margin-=
+bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-=
+left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span=
+ style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><s=
+pan style=3D"color:#64748b;font-size:14px">46:21</span></div><div style=3D"=
+color:#475569;font-size:16px;line-height:1.6">I&#39;m going to show you thi=
+s. So Mac is going to do that consultation.</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border=
+-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><spa=
+n style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><sp=
+an style=3D"color:#64748b;font-size:14px">46:24</span></div><div style=3D"c=
+olor:#475569;font-size:16px;line-height:1.6">Yes, we will do that and that&=
+#39;s why I was wanting to link it and add this as a second tab to that wor=
+kbook. And we certainly can.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"colo=
+r:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><span style=3D"co=
+lor:#64748b;font-size:14px">46:31</span></div><div style=3D"color:#475569;f=
+ont-size:16px;line-height:1.6">Okay. And I&#39;m going to ask this one more=
+ time just for clarity. The one in the UAT file is the one should be using =
+or the one that got emailed over is the one that I should be using.</div></=
+div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex=
+;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-rig=
+ht:8px">Srinivas</span><span style=3D"color:#64748b;font-size:14px">46:44</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">For =
+finance. The one in the UAD file you should be referee.</div></div><div sty=
+le=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radiu=
+s:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bott=
+om:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jess=
+ica</span><span style=3D"color:#64748b;font-size:14px">46:49</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Not just finance.=
+ I, I didn&#39;t start looking based on business function. I just started g=
+oing down the list like.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b=
+82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3=
+b82f6;font-weight:600;margin-right:8px">Srinivas</span><span style=3D"color=
+:#64748b;font-size:14px">46:58</span></div><div style=3D"color:#475569;font=
+-size:16px;line-height:1.6">Apologies if I&#39;m, if you&#39;re referring a=
+ny different team channels. So I think that question is found to you believ=
+e.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-colo=
+r:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"di=
+splay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">47:04</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Okay, so why don&#39;t we do this. Rakesh, can you stick around for li=
+ke another 20, 30 minutes real quick?</div></div><div style=3D"margin-botto=
+m:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:=
+4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span styl=
+e=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span sty=
+le=3D"color:#64748b;font-size:14px">47:10</span></div><div style=3D"color:#=
+475569;font-size:16px;line-height:1.6">I will be able to in 7 minutes time =
+so I, so I can join back at seven.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><span sty=
+le=3D"color:#64748b;font-size:14px">47:16</span></div><div style=3D"color:#=
+475569;font-size:16px;line-height:1.6">Okay, so why don&#39;t you do this? =
+Why don&#39;t you just call me directly when you&#39;re ready to chat and I=
+ can get you and I can get the data organized. I&#39;ll pull Vicky and choo=
+se a belt wall.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><di=
+v style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fon=
+t-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;fo=
+nt-size:14px">47:25</span></div><div style=3D"color:#475569;font-size:16px;=
+line-height:1.6">Yep, sounds good.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><span sty=
+le=3D"color:#64748b;font-size:14px">47:26</span></div><div style=3D"color:#=
+475569;font-size:16px;line-height:1.6">All right, thanks everyone.</div></d=
+iv><div style=3D"margin-bottom:0;padding:16px;background-color:#f8fafc;bord=
+er-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;mar=
+gin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8=
+px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">47:27</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Thanks guy=
+s. All right, thank you.</div></div></div><div style=3D"margin-top:36px;tex=
+t-align:center;color:#64748b;font-size:14px;padding:20px;border-top:1px sol=
+id #e2e8f0"><p style=3D"margin:0;margin-bottom:8px">Captured with Wave AI N=
+ote Taker</p><p style=3D"margin:0;font-size:12px">Your AI-powered companion=
+</p></div></div></div></div></div></div>
+
+--0000000000004dcb560637cb89e0--

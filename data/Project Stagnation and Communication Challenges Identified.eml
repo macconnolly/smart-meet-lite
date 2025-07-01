@@ -1,0 +1,729 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a5d:53c6:0:b0:391:3c18:836e with SMTP id a6csp2947426wrw;
+        Thu, 24 Apr 2025 12:12:53 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGRTqgDNgdRgNDL3E9ge+JL8i8V9tlXTDZy3LGw/ZL1pR1E5pxCgYnK9vEx2raFZNdguee0
+X-Received: by 2002:a05:6102:2b83:b0:4c3:6ba1:3aac with SMTP id ada2fe7eead31-4d38cf2f542mr4284153137.3.1745521972917;
+        Thu, 24 Apr 2025 12:12:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745521972; cv=none;
+        d=google.com; s=arc-20240605;
+        b=ZQ7y6HyWgVRzG7Bo+10hm9MQgfqDeNaRzDnDZkaPmL8vKKzocWp+N8yjCaN0FgGPkJ
+         H8ry5KLvJpQsuLw8ItS7wcYCDbDSxhaUgUrByH71vc8d2C96abv9USv5ntqa7SU4KJb2
+         VThLsX9VINnd5DeDxwwW0qscjvqlqN3bk6JeK3uJ1zoO5+ZbMeqNWliO0EcWO0xL66hw
+         v55r4kLU0qNPAiVvMc7G8bG9pO67rFf033wITl73hzeXja/3vzRV46KfcVhd8miq2w/t
+         YETG3DvVQII7zr/KD+yzWITK10onDE2qwiiacU/4SC7VgW0XOtSd+NoBoCo2hsYkK4tW
+         mgYw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=Xl5o9/YTpup9i4X6oV864Pmj2Fk2P+PzJK4N9WL/+5I=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=HxHpFhn4ZzOjGk3W9BAB0yKW6BBNlU4vqPyECAVxT/FhT2hTKdPT6jHNBa1ptiXbKQ
+         CDfhxT2CjyPpgx4MbORXMqioN9IZ/UrUqpXK0L5lv7aaAm991eJ5YA9+uD5YVCKEd14v
+         YpO+BsPPn1C1oBRgzXZGKguzGrdkue0XcWBCJu/GDxXYXxm5cPMrTq0cK8r5B9513t6h
+         B0Q1gucEnrrQHYzcQm5fWPWvSMm3USPvWyjiEWqGnroHFuBqSvR7TcWTQ843tNzZngsI
+         dJRw6Gn2QFgeY4QJWvTRmyTxpNHdY3gTaZQJ86FxK/nf44xHyzDW06Fi3LDFLb5wD3lK
+         Arfw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=vVi0WFO2;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=ogwj7sGQ;
+       spf=pass (google.com: domain of 0100019669379447-3e3651a5-6f52-402e-a8c5-3f57402598f6-000000@send.email.wave.co designates 54.240.9.34 as permitted sender) smtp.mailfrom=0100019669379447-3e3651a5-6f52-402e-a8c5-3f57402598f6-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <0100019669379447-3e3651a5-6f52-402e-a8c5-3f57402598f6-000000@send.email.wave.co>
+Received: from a9-34.smtp-out.amazonses.com (a9-34.smtp-out.amazonses.com. [54.240.9.34])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4d3d76bdb5asi598048137.493.2025.04.24.12.12.52
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 24 Apr 2025 12:12:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 0100019669379447-3e3651a5-6f52-402e-a8c5-3f57402598f6-000000@send.email.wave.co designates 54.240.9.34 as permitted sender) client-ip=54.240.9.34;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=vVi0WFO2;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=ogwj7sGQ;
+       spf=pass (google.com: domain of 0100019669379447-3e3651a5-6f52-402e-a8c5-3f57402598f6-000000@send.email.wave.co designates 54.240.9.34 as permitted sender) smtp.mailfrom=0100019669379447-3e3651a5-6f52-402e-a8c5-3f57402598f6-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1745521972;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=ASQyQDC6OpqKk5qPJKU1UJmGGaRlb5jhpTk/G1ejc9I=;
+	b=vVi0WFO2pAvVXzLxTBYUmGipNyAEOIlySlL1I+kH0aPgpo9Y63HWnC7tjPX8MpO9
+	y1MVbP9knpKUw/1mWCdgBuYg2+crA+xEGErbG+OYfmvc9R0U5RMCIbfL54daO0HrfPm
+	RtKxLDKLtJ2xNFd7bNTzgPs0rBLjJ9/knEb1v6xw=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1745521972;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=ASQyQDC6OpqKk5qPJKU1UJmGGaRlb5jhpTk/G1ejc9I=;
+	b=ogwj7sGQuvobxf90IzrEHL7lmH2gGFxtqbIWmGINeh/uybQ5tposMzimaaWqtIsS
+	LjJi5ouHB+/q3MAtWS3gvJHA5sNHIO61juh6P9vN9KzSxfpRLIMmITZqH7djnioxSbx
+	Qy/+nuRXmTxmrLqcmazwCnbqfK29GYhOOZpdWUtE=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Project Stagnation and Communication Challenges Identified
+Message-ID: <0100019669379447-3e3651a5-6f52-402e-a8c5-3f57402598f6-000000@email.amazonses.com>
+Date: Thu, 24 Apr 2025 19:12:52 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-9bc66e8b80ababe6-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.04.24-54.240.9.34
+
+----_NmP-9bc66e8b80ababe6-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Project Stagnation and Communication Challenges Identified
+
+### Project Progress and Concerns
+- **Current Status**: Little to no =
+progress over the past month, with the team feeling stuck.
+- **Testing Issues**: The entire testing process is incomplete. Key aspects=
+ such as defining tests and scoping projects in India are still pending.
+- **Team Communication**: Rachel appears unaware of the project details, =
+leading to confusion and ineffective escalations.
+
+### Action Items
+1. **Test Planning**
+   - **Responsible**: Matt
+   - **Tasks**:
+     - Develop a test script, potentially using a Google Valerian template.
+     - Outline the necessary steps and resources for testing.
+
+2. **Drafting Communication**
+   - **Responsible**: Matt
+   - **Tasks**:
+     - Create a draft for an email to be sent today.
+     - Include a deadline of two working days for completing tests and =
+providing feedback.
+     - State that project copies will commence on =
+Tuesday, April 29th.
+
+3. **App Inventory Management**
+   - **Instructions**:
+     - If the disposition hasn=E2=80=99t changed, =
+retain the existing status.
+     - Duplicate column H to column I in the =
+spreadsheet.
+     - Highlight any changes and update the "Last updated" =
+date to April 25th.
+     - Use VLOOKUP to identify and address any blanks =
+or discrepancies.
+
+### Upcoming Deadlines
+- **Email Dispatch**: Must be =
+sent out by the end of the current day.
+- **Project Copies Start**: Tuesday=
+, April 29th.
+
+### Additional Notes
+- **Meeting Structure**: Current =
+working sessions lack structure, leading to inefficiency. Future sessions =
+should be more organized to ensure productivity.
+- **Oversight**: Concerns =
+were raised about the oversight by Nick, specifically regarding project =
+confirmations and deletions.
+
+Transcript:
+0:00
+Yeah. And so I. It doesn't =
+seem like much has happened at all, to be honest. So it feels like we're =
+sort of coming back into exactly where we were probably a month ago.
+
+0:18
+Yeah.
+
+0:19
+So with that being said, I want to document, like, how we're =
+going to do this test and make it an event. Not necessarily make it an =
+event, but make it a. If this doesn't happen by end of day Monday, you have=
+ no chance for, like, feedback and updates. And say when this was first =
+copied. You were provided this copy on X date. Like, you might need to just=
+ work with Bruce a bit on, like, how to work with Rachel or Bruce or =
+someone on, like, when was it first copied? We sent the email. Nothing's =
+been done. Like, you know what I mean?
+
+1:09
+I do, but can we zoom out a =
+bit? Like, are you talking about, like, an email or defining the tests or.
+
+1:16
+It's everything. We gotta get the whole testing thing done.
+
+1:18
+Yeah.
+
+1:20
+Right. And so what does that mean? So I need you to essentially=
+ work out what we would do to test this. What do we need to get in play? =
+Like, Rachel's close to clueless. She doesn't know what project we're =
+talking about. She doesn't know. It just seems like there's, like, no, =
+she's saying we need to escalate. And then when I ask what we escalate on, =
+there's no detail. Right. Like, do they need to do. What are they testing? =
+What do they need to.
+
+1:47
+I don't think we need an escalation. Like, =
+they're go's doing it now.
+
+1:57
+Like, go, am I missing something? Is =
+everything okay and I'm missing it or it's not okay?
+
+2:02
+Things are not okay. Like, they haven't done anything, but it's not an =
+escalation that will fix it. Right. Like, they just need to do the work. =
+Like, they just need to. Like, they still haven't even scoped out for India=
+. All of the pro. Like, they haven't even finished scoping out all of the =
+projects in India that they want to copy. Yeah, that's what Gopi and this =
+guy are doing tomorrow morning.
+
+2:29
+Was that with regards to common =
+blocks or was that something else?
+
+2:32
+No. Wait, what did you ask? Was it=
+ related to common blocks or something else?
+
+2:40
+Yeah, was it related to =
+common blocks?
+
+2:42
+There's only one project that's related to common =
+blocks, but that's not, like, the big one. No, they just. They still =
+haven't even identified for. I guess they're going through and tagging =
+specifically in the projects what they want to. What they need and what =
+they don't.
+
+3:00
+Okay. And that's not done yet.
+
+3:02
+No.
+
+3:05
+Yeah. I'm gonna make this go red.
+
+3:09
+So they have like a two hour =
+working session tomorrow morning.
+
+3:13
+You can't just do working sessions =
+without structure. That's the thing where like this is like a very =
+quintessential. We don't need ey. And then this just happens where things =
+just a lot of calls, a lot of sessions, but no structure.
+
+3:30
+Yeah.
+
+3:31
+So I think, Matt, what I need you to do is let's firm us up. Right. Like =
+let's work out. Put it like a test script together or and maybe just Google=
+ Valerian test script to be honest and just pull it together, the testing. =
+And then also just if you could draft a note based on what you know that I =
+don't know who's going to send it yet, but we send today saying if it's =
+essentially got two working days to complete this test and provide any =
+issues or like provide any updates or feedback.
+
+4:05
+Okay.
+
+4:06
+Yes. And then just put like project copies will start Tuesday, April 29th =
+or something.
+
+4:13
+Okay.
+
+4:14
+So let's get that one out because this one =
+worries me a bit and I've got like no faith in what they're. What they're =
+sharing.
+
+4:23
+No. Yeah, they. It's. It's definitely a mess. I just don't =
+understand what like what they've been doing this whole time.
+
+4:35
+Yeah, it's. It's not good. I don't like coming into those sessions and =
+being the. But it's pretty awkward. Like Project still needs confirmation =
+of work. I'm seeing some comments from 331. EOR project still needs =
+confirmation of work being deleted. So there's. And I can't call it out =
+because they had Nick overseeing it anyway. If you could pull that together=
+, let us know sort of what you end up with and then we'll go from there. =
+This one's come. We've got to get this email out today our time.
+
+5:36
+Yeah, definitely A question for you on the other thing though, real quick. =
+In your app inventory, if the disposition hasn't changed, should I just =
+keep it the same as before?
+
+5:48
+Oh yeah, yeah.
+
+5:50
+Okay.
+
+5:55
+Yeah, yeah. So yeah, yeah. If it like that's only for the changes. Right. =
+Just to help the from to.
+
+6:05
+Yeah.
+
+6:07
+And honestly you could probably=
+ just copy the whole thing over. You could probably duplicate the column =
+and just override it with whatever's new just because that's what we're =
+going to end up with. We're going to blow the initial original one away =
+anyway.
+
+6:21
+Okay.
+
+6:23
+So I think if you're looking at it now, it would =
+be if you're looking at like column H, you'll get blown away. So you can =
+copy, you can copy column H into column I. Yeah. And then anything with a =
+change, just highlight it. Well, it's going to have Last updated as fib 25.=
+ Sorry, 25.
+
+6:51
+Anyway, yeah, yeah, I'm going to leave it like this. I'm =
+just going to vlook up all of the, all of the change ones real quick and =
+then we can get it down to one. But let me just do this.
+
+7:07
+Yeah. And can you just do us a favor? Once you do, let's hold off because =
+I'm just trying to work out where do we have blanks? But let's come back to=
+ that. Yeah, let's come back to it. Yeah.
+
+7:33
+Okay. Okay, cool. I'm doing=
+ that now.
+
+7:37
+Thanks.
+----_NmP-9bc66e8b80ababe6-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Project =
+Stagnation and Communication Challenges Identified</h1></td></tr></table></=
+div><div style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/52AABF56-5088-417A-A4E5-9084C3BE599E?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h3 style=3D"font-weight:500;padding-top:2=
+0px;font-size:1.75rem">Project Progress and Concerns</h3><ul>
+<li><strong style=3D"font-weight:bold">Current Status</strong>: Little to =
+no progress over the past month, with the team feeling stuck.</li>
+<li><strong style=3D"font-weight:bold">Testing Issues</strong>: The entire =
+testing process is incomplete. Key aspects such as defining tests and =
+scoping projects in India are still pending.</li>
+<li><strong =
+style=3D"font-weight:bold">Team Communication</strong>: Rachel appears =
+unaware of the project details, leading to confusion and ineffective =
+escalations.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-=
+size:1.75rem">Action Items</h3><ol>
+<li><p><strong style=3D"font-weight:bol=
+d">Test Planning</strong></p>
+<ul>
+<li><strong style=3D"font-weight:bold">R=
+esponsible</strong>: Matt</li>
+<li><strong style=3D"font-weight:bold">Tasks=
+</strong>:<ul>
+<li>Develop a test script, potentially using a Google =
+Valerian template.</li>
+<li>Outline the necessary steps and resources for =
+testing.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Drafting Communication</strong></p>
+<ul>
+<li><strong style=3D"font-weight:bold">Responsible</strong>: Matt</li>
+<li><strong style=3D"font-weight:bold">Tasks</strong>:<ul>
+<li>Create a draft for an email to be sent today.</li>
+<li>Include a deadline of two working days for completing tests and =
+providing feedback.</li>
+<li>State that project copies will commence on =
+Tuesday, April 29th.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">App Inventory Management</strong></p>
+<ul>
+<li><strong style=3D"font-weight:bold">Instructions</strong>:<ul>
+<li>If the disposition hasn=E2=80=99t changed, retain the existing status.=
+</li>
+<li>Duplicate column H to column I in the spreadsheet.</li>
+<li>Highlight any changes and update the &quot;Last updated&quot; date to =
+April 25th.</li>
+<li>Use VLOOKUP to identify and address any blanks or =
+discrepancies.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">Upcoming =
+Deadlines</h3><ul>
+<li><strong style=3D"font-weight:bold">Email =
+Dispatch</strong>: Must be sent out by the end of the current day.</li>
+<li><strong style=3D"font-weight:bold">Project Copies Start</strong>: =
+Tuesday, April 29th.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20=
+px;font-size:1.75rem">Additional Notes</h3><ul>
+<li><strong =
+style=3D"font-weight:bold">Meeting Structure</strong>: Current working =
+sessions lack structure, leading to inefficiency. Future sessions should be=
+ more organized to ensure productivity.</li>
+<li><strong =
+style=3D"font-weight:bold">Oversight</strong>: Concerns were raised about =
+the oversight by Nick, specifically regarding project confirmations and =
+deletions.</li>
+</ul>
+</div></div></div><div style=3D"background-color:#fff=
+fff;padding:28px;border-radius:12px;border:1px solid #e2e8f0;box-shadow:0 =
+1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription</h3><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Project Manager</span><span style=3D"color:#64748b;font-=
+size:14px">0:00</span></div><div style=3D"color:#475569;font-size:16px;line=
+-height:1.6">Yeah. And so I. It doesn&#x27;t seem like much has happened at=
+ all, to be honest. So it feels like we&#x27;re sort of coming back into =
+exactly where we were probably a month ago.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Team Member</span><span style=3D"color:#64748b;font-size:=
+14px">0:18</span></div><div style=3D"color:#475569;font-size:16px;line-heig=
+ht:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Project =
+Manager</span><span style=3D"color:#64748b;font-size:14px">0:19</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">So with that =
+being said, I want to document, like, how we&#x27;re going to do this test =
+and make it an event. Not necessarily make it an event, but make it a. If =
+this doesn&#x27;t happen by end of day Monday, you have no chance for, like=
+, feedback and updates. And say when this was first copied. You were =
+provided this copy on X date. Like, you might need to just work with Bruce =
+a bit on, like, how to work with Rachel or Bruce or someone on, like, when =
+was it first copied? We sent the email. Nothing&#x27;s been done. Like, you=
+ know what I mean?</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Team =
+Member</span><span style=3D"color:#64748b;font-size:14px">1:09</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">I do, but can =
+we zoom out a bit? Like, are you talking about, like, an email or defining =
+the tests or.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Project =
+Manager</span><span style=3D"color:#64748b;font-size:14px">1:16</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;s =
+everything. We gotta get the whole testing thing done.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Team Member</span><span style=3D"color:#64748b;font-size:=
+14px">1:18</span></div><div style=3D"color:#475569;font-size:16px;line-heig=
+ht:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Project =
+Manager</span><span style=3D"color:#64748b;font-size:14px">1:20</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Right. And so =
+what does that mean? So I need you to essentially work out what we would do=
+ to test this. What do we need to get in play? Like, Rachel&#x27;s close to=
+ clueless. She doesn&#x27;t know what project we&#x27;re talking about. She=
+ doesn&#x27;t know. It just seems like there&#x27;s, like, no, she&#x27;s =
+saying we need to escalate. And then when I ask what we escalate on, =
+there&#x27;s no detail. Right. Like, do they need to do. What are they =
+testing? What do they need to.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Team =
+Member</span><span style=3D"color:#64748b;font-size:14px">1:47</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">I don&#x27;t =
+think we need an escalation. Like, they&#x27;re go&#x27;s doing it now.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Project =
+Manager</span><span style=3D"color:#64748b;font-size:14px">1:57</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Like, go, am I=
+ missing something? Is everything okay and I&#x27;m missing it or it&#x27;s=
+ not okay?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Team =
+Member</span><span style=3D"color:#64748b;font-size:14px">2:02</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">Things are not =
+okay. Like, they haven&#x27;t done anything, but it&#x27;s not an =
+escalation that will fix it. Right. Like, they just need to do the work. =
+Like, they just need to. Like, they still haven&#x27;t even scoped out for =
+India. All of the pro. Like, they haven&#x27;t even finished scoping out =
+all of the projects in India that they want to copy. Yeah, that&#x27;s what=
+ Gopi and this guy are doing tomorrow morning.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Project Manager</span><span style=3D"color:#64748b;font-s=
+ize:14px">2:29</span></div><div style=3D"color:#475569;font-size:16px;line-=
+height:1.6">Was that with regards to common blocks or was that something =
+else?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Team =
+Member</span><span style=3D"color:#64748b;font-size:14px">2:32</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">No. Wait, what =
+did you ask? Was it related to common blocks or something else?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Project =
+Manager</span><span style=3D"color:#64748b;font-size:14px">2:40</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, was it =
+related to common blocks?</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Team =
+Member</span><span style=3D"color:#64748b;font-size:14px">2:42</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">There&#x27;s =
+only one project that&#x27;s related to common blocks, but that&#x27;s not,=
+ like, the big one. No, they just. They still haven&#x27;t even identified =
+for. I guess they&#x27;re going through and tagging specifically in the =
+projects what they want to. What they need and what they don&#x27;t.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Project =
+Manager</span><span style=3D"color:#64748b;font-size:14px">3:00</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. And =
+that&#x27;s not done yet.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Team =
+Member</span><span style=3D"color:#64748b;font-size:14px">3:02</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">No.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Project =
+Manager</span><span style=3D"color:#64748b;font-size:14px">3:05</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. I&#x27;m=
+ gonna make this go red.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Team =
+Member</span><span style=3D"color:#64748b;font-size:14px">3:09</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">So they have =
+like a two hour working session tomorrow morning.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Project Manager</span><span style=3D"color:#64748b;font-s=
+ize:14px">3:13</span></div><div style=3D"color:#475569;font-size:16px;line-=
+height:1.6">You can&#x27;t just do working sessions without structure. =
+That&#x27;s the thing where like this is like a very quintessential. We =
+don&#x27;t need ey. And then this just happens where things just a lot of =
+calls, a lot of sessions, but no structure.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Team Member</span><span style=3D"color:#64748b;font-size:=
+14px">3:30</span></div><div style=3D"color:#475569;font-size:16px;line-heig=
+ht:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Project =
+Manager</span><span style=3D"color:#64748b;font-size:14px">3:31</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">So I think, =
+Matt, what I need you to do is let&#x27;s firm us up. Right. Like =
+let&#x27;s work out. Put it like a test script together or and maybe just =
+Google Valerian test script to be honest and just pull it together, the =
+testing. And then also just if you could draft a note based on what you =
+know that I don&#x27;t know who&#x27;s going to send it yet, but we send =
+today saying if it&#x27;s essentially got two working days to complete this=
+ test and provide any issues or like provide any updates or feedback.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Team =
+Member</span><span style=3D"color:#64748b;font-size:14px">4:05</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Project =
+Manager</span><span style=3D"color:#64748b;font-size:14px">4:06</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yes. And then =
+just put like project copies will start Tuesday, April 29th or something.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Team =
+Member</span><span style=3D"color:#64748b;font-size:14px">4:13</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Project =
+Manager</span><span style=3D"color:#64748b;font-size:14px">4:14</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">So let&#x27;s =
+get that one out because this one worries me a bit and I&#x27;ve got like =
+no faith in what they&#x27;re. What they&#x27;re sharing.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Team Member</span><span style=3D"color:#64748b;font-size:=
+14px">4:23</span></div><div style=3D"color:#475569;font-size:16px;line-heig=
+ht:1.6">No. Yeah, they. It&#x27;s. It&#x27;s definitely a mess. I just =
+don&#x27;t understand what like what they&#x27;ve been doing this whole =
+time.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Project =
+Manager</span><span style=3D"color:#64748b;font-size:14px">4:35</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, =
+it&#x27;s. It&#x27;s not good. I don&#x27;t like coming into those sessions=
+ and being the. But it&#x27;s pretty awkward. Like Project still needs =
+confirmation of work. I&#x27;m seeing some comments from 331. EOR project =
+still needs confirmation of work being deleted. So there&#x27;s. And I =
+can&#x27;t call it out because they had Nick overseeing it anyway. If you =
+could pull that together, let us know sort of what you end up with and then=
+ we&#x27;ll go from there. This one&#x27;s come. We&#x27;ve got to get this=
+ email out today our time.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Team =
+Member</span><span style=3D"color:#64748b;font-size:14px">5:36</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, =
+definitely A question for you on the other thing though, real quick. In =
+your app inventory, if the disposition hasn&#x27;t changed, should I just =
+keep it the same as before?</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Project =
+Manager</span><span style=3D"color:#64748b;font-size:14px">5:48</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Oh yeah, yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Team =
+Member</span><span style=3D"color:#64748b;font-size:14px">5:50</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Project =
+Manager</span><span style=3D"color:#64748b;font-size:14px">5:55</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah. So=
+ yeah, yeah. If it like that&#x27;s only for the changes. Right. Just to =
+help the from to.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Team =
+Member</span><span style=3D"color:#64748b;font-size:14px">6:05</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Project =
+Manager</span><span style=3D"color:#64748b;font-size:14px">6:07</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">And honestly =
+you could probably just copy the whole thing over. You could probably =
+duplicate the column and just override it with whatever&#x27;s new just =
+because that&#x27;s what we&#x27;re going to end up with. We&#x27;re going =
+to blow the initial original one away anyway.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Team Member</span><span style=3D"color:#64748b;font-size:=
+14px">6:21</span></div><div style=3D"color:#475569;font-size:16px;line-heig=
+ht:1.6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Project =
+Manager</span><span style=3D"color:#64748b;font-size:14px">6:23</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">So I think if =
+you&#x27;re looking at it now, it would be if you&#x27;re looking at like =
+column H, you&#x27;ll get blown away. So you can copy, you can copy column =
+H into column I. Yeah. And then anything with a change, just highlight it. =
+Well, it&#x27;s going to have Last updated as fib 25. Sorry, 25.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Team =
+Member</span><span style=3D"color:#64748b;font-size:14px">6:51</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">Anyway, yeah, =
+yeah, I&#x27;m going to leave it like this. I&#x27;m just going to vlook up=
+ all of the, all of the change ones real quick and then we can get it down =
+to one. But let me just do this.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Project=
+ Manager</span><span style=3D"color:#64748b;font-size:14px">7:07</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. And can=
+ you just do us a favor? Once you do, let&#x27;s hold off because I&#x27;m =
+just trying to work out where do we have blanks? But let&#x27;s come back =
+to that. Yeah, let&#x27;s come back to it. Yeah.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Team Member</span><span style=3D"color:#64748b;font-size:=
+14px">7:33</span></div><div style=3D"color:#475569;font-size:16px;line-heig=
+ht:1.6">Okay. Okay, cool. I&#x27;m doing that now.</div></div><div =
+style=3D"margin-bottom:0;padding:16px;background-color:#f8fafc;border-radiu=
+s:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-items=
+:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Project Manager</span><span style=3D"color:#64748b;font-size=
+:14px">7:37</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">Thanks.</div></div></div><div style=3D"margin-top:36px;text-align:=
+center;color:#64748b;font-size:14px;padding:20px;border-top:1px solid =
+#e2e8f0"><p style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note=
+ Taker</p><p style=3D"margin:0;font-size:12px">Your AI-powered =
+companion</p></div></div></div></div></html>
+----_NmP-9bc66e8b80ababe6-Part_1--

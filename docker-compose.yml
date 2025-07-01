@@ -1,0 +1,21 @@
+services:
+  qdrant:
+    image: qdrant/qdrant:v1.9.2 # Pin to a specific version for stability
+    container_name: smart-meet-lite-qdrant
+    ports:
+      - "6333:6333" # Host port:Container port
+      - "6334:6334" # REST API / Web UI
+    volumes:
+      # Use a named volume for the primary Qdrant storage.
+      # This is managed by Docker and is the recommended approach.
+      - qdrant_data:/qdrant/storage
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6334/readyz"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+# Define the named volume at the top level.
+volumes:
+  qdrant_data:

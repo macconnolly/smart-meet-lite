@@ -1,0 +1,3215 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a05:6000:154a:b0:391:3c18:836e with SMTP id 10csp840962wry;
+        Thu, 20 Mar 2025 11:23:07 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFq24iJeDpbknbB0erdnAtegcc0ZM3FHb5DBje7MC/OHdM/W1oWxBDccLtphex/jdtNGsRk
+X-Received: by 2002:a05:622a:5a9a:b0:474:f9f2:ecb with SMTP id d75a77b69052e-4771d97f183mr8086281cf.18.1742494987519;
+        Thu, 20 Mar 2025 11:23:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742494987; cv=none;
+        d=google.com; s=arc-20240605;
+        b=DKsq07gYjYkJtKPyOqPiyehTWzayc5o5qxCtpw1hB8BfqSaW80NJPL0c/YKu0JIRme
+         WVK3Co2KB2sLbq/ejHP5P198w8wWYZ06hpNIkK7ESlDysBsyga++8b8G6FIIgJov/M3W
+         IatM3hLWo0qWMz98LJ2nh1Qi+9xj+EY5QWnjZO9SyEwKM8u6VQSSoHjcbesSXEwUCUbv
+         r+V2NQEWUQzD6hsmssiT9z+iKFTJYCnI0jtuEUb0V38jma9j7CTKpvOBd730ADnhLIqv
+         Zg0sw7rqbu4V9Eo3nTwnijj6tlWCzxi+5frASGEOzdkeseJvnTYp5U+wYRZ0JWzgpnoG
+         RbLQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=ZPySKkhJw8mmaHW77p37L+dgG7weB9FVM2wWAa1j07c=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=X8b0jNGFQDUzApXJsfqDgVC5EEKh322XgMTU8KNkmMXKfkC9/8oZcRSb0zn+sBbuZf
+         IkEE26FcEtGw8aX1CyiT3ajG6Mn91vU/ZchFrRvN8pe4ka9MvcKQz3e/u9E7tEUCINUk
+         ELS2Jd6czy0x5ToSY2ANDkAMxJFhQngkwLOU86QaWMjf2xf+O41gjSwkUBDNBS5QUfvG
+         ttoC3AAygrrD2TRfo59AvQOwV4pXz8u/QdvlrOTd0HQztF3Vcnsun0Hhv0KkKYBgOGzE
+         /8INolXrkvAQZkngDSKF/r0dN1+8+VI/gBuWESIYjmNvw7gmVT2xjG0wOO4G1ct7eojS
+         pt8g==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=pV6rmsI4;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=p4hzQ2OQ;
+       spf=pass (google.com: domain of 01000195b4cb70ac-20c4c556-45e2-4db4-b8b0-bf5e3dd872d0-000000@send.email.wave.co designates 54.240.9.34 as permitted sender) smtp.mailfrom=01000195b4cb70ac-20c4c556-45e2-4db4-b8b0-bf5e3dd872d0-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <01000195b4cb70ac-20c4c556-45e2-4db4-b8b0-bf5e3dd872d0-000000@send.email.wave.co>
+Received: from a9-34.smtp-out.amazonses.com (a9-34.smtp-out.amazonses.com. [54.240.9.34])
+        by mx.google.com with ESMTPS id d75a77b69052e-4771d15ce5csi3459461cf.99.2025.03.20.11.23.07
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 20 Mar 2025 11:23:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 01000195b4cb70ac-20c4c556-45e2-4db4-b8b0-bf5e3dd872d0-000000@send.email.wave.co designates 54.240.9.34 as permitted sender) client-ip=54.240.9.34;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=pV6rmsI4;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=p4hzQ2OQ;
+       spf=pass (google.com: domain of 01000195b4cb70ac-20c4c556-45e2-4db4-b8b0-bf5e3dd872d0-000000@send.email.wave.co designates 54.240.9.34 as permitted sender) smtp.mailfrom=01000195b4cb70ac-20c4c556-45e2-4db4-b8b0-bf5e3dd872d0-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1742494986;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=IHSFvxT1HK+QLWXY88q3XYyesITZbTWx6ImRoCT0PGw=;
+	b=pV6rmsI4KC0SD+oeqBJTfA3SgQdTHmiSmcScMjhoQxdEQ78p2C4lS9sDFX09ciZz
+	Gkn70CHawhbLmixkO8XuyrG8QaKLov2XDTQgOAEZw7IsOOk7P4qlxtlD+qxiM/wvXvk
+	hffflEKds4OF1ET7rO+Y5XtMILWB/aZOjLXBrbgc=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1742494986;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=IHSFvxT1HK+QLWXY88q3XYyesITZbTWx6ImRoCT0PGw=;
+	b=p4hzQ2OQUynWJelOCKxKJOjk4yIDf4RBbF9gbwKL7rkiiKx4UlqBzKXBpjBCbgUG
+	es5p1V7KU+GGXI3vYOJ9nXJKEjKeSxWQeBJsT17gx6p3C4A/ara7mEneHkiDK+C6FxR
+	EanG2fv/NYO/kdeJxg4mCPfE+IfOehBf8BEFCczE=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Project Updates and Super User Assignments Discussed
+Message-ID: <01000195b4cb70ac-20c4c556-45e2-4db4-b8b0-bf5e3dd872d0-000000@email.amazonses.com>
+Date: Thu, 20 Mar 2025 18:23:06 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-59caf218dc7eff6a-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.03.20-54.240.9.34
+
+----_NmP-59caf218dc7eff6a-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Project Updates and Super User Assignments Discussed
+
+## Summary of Meeting
+
+### Attendees and Confirmations
+- **Attendees Confirmed:** Adam, Prashant,=
+ Nick, Todd, Amanda, Mac, Shankar, Mohan, Kumar, Kamaraya.
+- **Absent:** Rachel Gallagher (out of office today and tomorrow).
+
+### Spreadsheet and Project Discussion
+- **Spreadsheet Ownership:** =
+Majority handled by Rachel Gallagher.
+- **Gaps Identified:**=20
+  - Questions requiring input from Getci employees.
+  - Queries needing responses from a Wolverhampton representative (James =
+Goodchild).
+  - Certain spreadsheet lines not addressed due to lack of =
+relevant data.
+- **Action:** Highlight gaps in the spreadsheet for further =
+clarification.
+
+### Wolverhampton and UK Projects
+- **Project Locations =
+Discussed:** UK (Wolverhampton), Poland, Rockford.
+- **Current Projects:**
+  - **UK (Wolverhampton):** Only one project - Team Center (Actuation only)=
+.
+  - **Poland:** One user with a project in the Rockford instance, no =
+further access needed.
+- **Decisions Made:**
+  - Remove Collins user access=
+ from the Team Center project.
+  - Confirm removal of access for the single=
+ Poland user as they no longer require it.
+
+### ALM and Actuation Projects
+- **ALM Databases:**
+  - **Rockford Instance:** Minimal usage; test =
+equipment ALM Bularian database largely inactive.
+  - **Actuation =
+Projects:** Split between heavy aircraft (767, 737) and business jets =
+(managed by Rockford).
+- **MC21 High Lift Project:**
+  - **Ownership:** Managed by Bangalore engineers.
+  - **Data =
+Restriction:** Russian aircraft data must remain in the United States per =
+licensing agreements.
+  - **Access Management:** Limited access granted by =
+Rachel and another team member.
+  - **Action Required:** Determine ongoing =
+work responsibilities and data management location.
+
+### Super Users Identification
+- **Requirement:** Identify super users for =
+Actuation and Collins projects to manage user access.
+- **Potential Super Users:** Amanda and Adam offered to take on =
+responsibilities with necessary training.
+- **Current Status:** No existing=
+ super users identified for Rockford Actuation or Collins projects.
+- **Action Items:**
+  - Promote Amanda and Adam as super users with =
+appropriate training.
+  - Link super users with individuals responsible for=
+ access removal.
+
+### Action Items
+1. **User Access Removal:**
+   - Remove Collins users from Actuation-only projects.
+   - Remove Actuation users from Collins-only projects.
+2. **Spreadsheet Updates:**
+   - Add a column for Collins/Actuation status =
+in the project mapping spreadsheet.
+   - Validate and transfer relevant =
+data to create a formal list for super users.
+3. **Super Users =
+Assignment:**
+   - Assign Amanda and Adam as super users after necessary =
+training.
+   - Ensure they can manage and remove user access based on the =
+disposition.
+4. **Project Validation:**
+   - Validate that irrelevant =
+projects (non-Actuation/Collins) are closed or access removed.
+   - Confirm that critical projects like MC21 High Lift remain compliant =
+with data restrictions.
+
+### Timelines and Deadlines
+- **Initial Deadline:** Tomorrow (considered unreasonable).
+- **Adjusted Deadline:** Friday, [Insert Date] (28th).
+- **Final Submission:** Project plan to be locked in by Friday, subject to =
+confirmation from UK and Bangalore teams.
+
+### Follow-Up Meetings
+- **New Meeting Schedule:**
+  - **Frequency:** Twice a week (Monday and =
+Wednesday).
+  - **Time:** 8:30 AM to 9:30 AM Central Time.
+  - **Duration:** 1 hour per session.
+- **Participants:** Amanda, Adam, =
+Rachel Gallagher, Prashant, and relevant stakeholders.
+- **Purpose:**
+  - Sync with Bangalore and UK teams.
+  - Discuss progress on user access =
+removal and project validations.
+  - Address any emerging issues or delays.
+
+### Additional Notes
+- **Communication with Mohan and Shankar:**
+  - Reach out for updates on Bangalore projects.
+  - Combine calls with UK =
+team to streamline discussions.
+- **Technical Approach Validation:**
+  - Tasks related to validating project copies deemed Overcome by Events =
+(OBE) and no longer necessary.
+- **Finalizing User Lists:**
+  - Use the list compiled by Rachel and validate it before providing to =
+Bruce or Mohan for action.
+
+## Action Items
+- **Remove Access:**
+  - Collins users from Actuation projects.
+  - Actuation users from Collins=
+ projects.
+- **Identify and Assign Super Users:**
+  - Promote Amanda and =
+Adam with necessary training.
+- **Update and Validate Spreadsheets:**
+  - Add necessary columns and ensure data accuracy.
+- **Schedule and Conduct Follow-Up Meetings:**
+  - Implement new meeting =
+cadence on Monday and Wednesday.
+- **Confirm Deadlines:**
+  - Finalize project plan submission by Friday, [Insert Date].
+
+## Follow-Up
+- **Next Steps:**
+  - Amanda and Adam to receive training and =
+take on super user roles.
+  - Conduct follow-up meetings to ensure all =
+action items are progressing.
+  - Confirm user access removals and project =
+validations by the adjusted deadline.
+- **Next Meeting:**=20
+  - Scheduled for Monday and Wednesday, 8:30 AM to 9:30 AM Central Time.
+  - Include Amanda, Adam, Rachel Gallagher, Prashant, and relevant team =
+members.
+
+Transcript:
+1:20
+A couple more minutes for Adam to join, that's =
+who. And Prashant, I believe, both accepted.
+
+1:29
+Was Rachel Gallagher =
+invited to this meeting?
+
+1:32
+She was, but she said she's out of office =
+today and tomorrow. Is that correct?
+
+1:37
+That sounds right. Now that. Now=
+ that you say that, yes, that sounds right.
+
+1:40
+Okay. Just wanted to make=
+ sure.
+
+1:46
+As I say, I thought Rachel had done the majority of the work =
+in the spreadsheet. When she told me on. When we talked on Tuesday, I think=
+ there were a few questions that she had for resources outside of Rockford.=
+ There's quite a few lines on the spreadsheet that we don't touch. So there=
+ are some questions that need to be asked of a Getci employee. There's also=
+ some pieces that we need a Wolverhampton person to answer a question. I =
+believe that's James Goodchild. But we had entered that information into =
+the sheet, so need to understand what additional information you're looking=
+ for from us.
+
+2:47
+And maybe if we pull that sheet.
+
+2:49
+Up.
+
+2:52
+Rachel, we could highlight those gaps. Nick, I know that you have an agenda=
+ for this call and I don't want to derail you, but I think that for =
+Wolverhampton. Todd, correct me if I'm wrong, we did some outreach before. =
+I think that only had. Might have been Poland, actually. They had one =
+project hosted in Rockford and they didn't need access. What was the. What =
+was driving the Wolverhampton question?
+
+3:20
+Amanda, let me find the =
+spreadsheet here because I think that would just be the fastest.
+
+3:26
+Yeah, you can drop a link or share.
+
+3:28
+I think that was that Matt Hannah=
+. I believe that was the might.
+
+3:33
+Sorry, yeah, I need to go back and =
+check. But it was Matt Hanna, remember if it was Poland or Rockford or =
+Poland or Wolverhampton that he was talking about. But give me one second =
+and I will go check.
+
+3:51
+I think he was uk. Yeah, he was uk.
+
+3:53
+Yeah. Okay, that's what I thought. So UK only has one project and that's =
+the Team center one. So UK only has one project and that's the team center =
+and that's actuation only. So the only action there will be to remove the =
+Collins user. User access from that. And then Poland has like one person =
+that uses it. And I think they had a project in the us, Rockford instance, =
+but they don't need it going forward. I don't think that they need access. =
+So it's just that one team Center, Wolverhampton one. And I think that =
+we've done the diligence and can confirm that it's actuation only. I'm just=
+ trying to pull up that link that was shared.
+
+4:47
+I'm sharing my screen. Mac does that. Do you want me to drive?
+
+4:51
+Yeah, sure. Amanda, is this the one?
+
+4:56
+No sir. I need the complexity, =
+disposition and work item count sheet. I don't believe there was anything =
+actually to do in this sheet.
+
+5:06
+If you go over to click a Rockford =
+instance on the bottom left there, I think that that's what this.
+
+5:13
+There it is. Okay, thank you. So that's already been sorted. So we've =
+identified 451-2345. So one of our instances isn't showing up on the list. =
+That Belfara CP piece, line 114. Line 114 didn't show up on the other =
+spreadsheet. So we added it for most of the other stuff. I guess that first=
+ row is the best example. When I was saying that we don't use the instance.=
+ The test equipment ALM Bularian database. We opened it, we put one thing =
+in it, we're done. Never opened it since. So the majority of these don't =
+have anything useful to us. Now the rest of these. So ask Shankar at GT gc.=
+ We don't know what they're doing with their ALM stuff but that's not us. =
+So I have no one in Rockford who can answer those questions. So that's, =
+that's that piece and then same thing for some of those other ones. Row 112=
+ is a good example. Actuation. Rockford was never worked on primary =
+aircraft. So actuation was split in between what we call the big airplanes,=
+ right? 767, 737. The heavies and Rockford did the secondary class, the =
+business jets. So row 112 there is primaries. That's wolves. That's not us =
+or someone you know. Wolverhampton related. The other ones are probably =
+Collins owned and operated. Collins Tech Alerts, the product safety Office,=
+ Collins Team center, plm. We don't need any of those. But they're not ours=
+. So we're not sure if we should make that call or not. The only other one.=
+ So the first three unabashedly actuation. The Belfar SCP, that's for sure =
+us. That row 114 there, that's for sure us. We. We. That needs to go. We =
+don't think there's anything in those that we're really using. The only =
+item of interest here is going to be row 464 which is the MC21. High lift. =
+Whatever EM is that guy. Now that guy is a problem. He's a problem on two =
+fronts. One, he belongs to Bangalore. Well the work is being done by =
+Bangalore engineers. Okay. However, this is a Russian aircraft and so the =
+data for the Russian aircraft must remain in the United States per the =
+license agreement. So that's how Rockford inherited that particular piece. =
+So the management and the access to that database is granted by Rachel, I =
+think, and myself. Honestly, we have to grant them access to that on a =
+limited basis because we inherited it from Phoenix. But it is my =
+understanding that that particular piece of information must stay on the =
+United States or in the United States. It cannot be managed on a European =
+server and it certainly cannot be managed by an Indian server. The rest of =
+everything in there Rachel and I had identified as probably not belonging =
+to Rockford specifically and could be let go without repercussions for day =
+one. Does that make sense?
+
+9:07
+Yeah.
+
+9:08
+Okay.
+
+9:10
+We'Re looking at five total, is that correct?
+
+9:15
+Yeah, four and a half. I'm not sure what to call that MC21 one. But yes, =
+five specific ones.
+
+9:23
+If it makes you feel any better, there's Doors =
+data that's the same way for.
+
+9:26
+Oh Yeah, I bet.
+
+9:27
+21.
+
+9:27
+So I bet.
+
+9:29
+Sorry, go ahead.
+
+9:32
+No, go for it.
+
+9:33
+I mean I was just going to ask for that MC21 one. If Bangalore is doing the=
+ work after day one, who is going to be doing the work? Like does actuation=
+. Do you need a copy of that project? I assume that you do. It's like it's =
+actuation project. Bangalore's doing the work. Right. So you need a copy of=
+ that project.
+
+9:58
+That would be my guess. Now I'm. I'm obviously not on =
+the actuation program management side of the house anymore. Thank God. So =
+we need to find someone in Bangalore who can tell you if that project is =
+going with them. Are they done working on it? Have they finished? Have they=
+ started? What are they doing? That's the part that we just. We don't know.=
+ So because we aren't. We Rockford are not involved in that project =
+whatsoever. I can't even tell you who is working on that. I'm just going to=
+ direct you to Mohan, Kumar and Kamaraya and hope that he knows otherwise.
+
+10:41
+Yeah, okay. Yeah. We have similar cadence with Mohan and Shankar. =
+Similar to this one. We at some point were probably going to combine these =
+calls because we're actively working on the same thing. Just separate =
+instances. They have already gotten through this process of deciding which =
+projects are in scope or not. And so I think that that is what we had =
+talked about holding off until. But it would be helpful to get with Mohan =
+and Nick. We can just make a note that that will probably be our follow up =
+for the Bangalore Weekly or bi weekly cadence to talk through that app =
+because I know that that came up in our conversation Rachel yesterday with =
+Rachel Gallagher as well. And so I think that we need to ask them are they =
+done with the work? Is it still an open project? And then what type of data=
+ is in there? And someone needs to make that decision about whether or not =
+a copy gets made and where it gets stored and so on and so forth. So we can=
+ put that one to bed. And then I think these other ones make sense. Is =
+there anything, what is the filter that's applied on this sheet? Is there =
+anything else? 1. I just want to make sure that we're not missing anything =
+and thank you Amanda so much for adding that that project. Do we feel =
+confident that we have captured all of the projects that are important with=
+ this Four and a half.
+
+12:13
+So the answer there is truly the only one =
+that's actually. Oh, and I'm going to catch flack for this but truly the =
+only one that's actively being used by an actuation employee is the MC21 =
+high lift. Right. The Bangalore folks, they liked ALM, they got into it, =
+they're using it on a daily basis. The other four were opened and I believe=
+ there's stuff in there. Right? There's 13 files, 193 files. We move stuff =
+in there. Are any of those four being used on a day to day basis? No sir. =
+Have they been used in the last six to 18 months? No sir. Would any of them=
+ have been opened and used in the last 24 to 36 months? Now that's more of =
+a maybe. So is there information that is critical for day one for those =
+first three? We don't think so. We think the what's in. We don't have =
+access obviously, but we believe that what was loaded into those folders is=
+ duplicated in some other location. We just, you know, opened it to use the=
+ tool. Now that Belfara cp, I cannot make the same guarantee that might =
+actually have stuff in it. We had started BELFARA about when they showed us=
+ alm. I don't believe there's anything useful in there. I don't believe =
+it's anything we're actively working on. So to the previous question about =
+needing to test, you know, links and active links to workbooks and whatnot =
+within the database. None of those four would still need that activity. =
+Testing, making sure stuff works. I do not believe there is sufficient day =
+to day use of those four databases.
+
+14:13
+That's great news.
+
+14:15
+Can I ask a Quick question. Yeah, Amanda. So Amanda, would you be more =
+familiar with the Actuations users or the Collins users?
+
+14:28
+Depends on what it is.
+
+14:31
+Okay. Because we do have an ask around =
+identifying super users. And so, you know, I was just curious if you would =
+be the right person to help us identify super users on either the actuation=
+ side or the column side of the house.
+
+14:54
+I don't. Crandall, can you =
+remember did we ever get to a point where we had super users other than =
+nategov? Did anybody have that kind of access? I honestly don't remember.
+
+15:06
+Not that I'm aware of.
+
+15:08
+Okay, same. When I say we didn't use it=
+, I really mean we didn't use it. I don't know how many times I can express=
+ that. So from a super user standpoint, I honestly don't think there is =
+going to be a quote unquote super user identified for Rockford actuation =
+purposes. We just didn't use the tool flat out. From the Collins side. It =
+all belongs to nategov or whoever owns ALM these days. So if it's a Collins=
+ ALM management obviously goes up to somebody at corporate, so on and so =
+forth. So there are individual pieces now I can tell you. I guess maybe the=
+ best example. So row 114 there, that's Sheehan, the software manager. The =
+ex software manager for actuation. She doesn't work for Actuation anymore, =
+she works for Collins. Could she tell you what's in there? Maybe. Is she a =
+super user? No sir. No, I don't believe that I would identify anyone =
+currently in. If Adam Crandall is not your actuation super user, I don't =
+believe I have a resource identified for that purpose.
+
+16:30
+Yeah, essentially we're just looking for somebody that would be able to say=
+ I'm gonna look at a project and just make sure the people that do have =
+access is the appropriate list. Right. Just to make sure that when it comes=
+ to day one, there's no people from columns that are getting access to any =
+of these actuations projects.
+
+16:48
+Is that me? As the whatever my title =
+is supposed to be now I can make that for those top four projects. I can =
+make that determination and say this is Collins, this is actuation. Rebecca=
+ no longer needs access to the Collins or to the the actuation Belfast cp.
+
+17:10
+Yeah.
+
+17:11
+Okay, so we can provide you instructions with how to go =
+into the tool and say yep, no, these people don't need to be in there, =
+we'll remove them, whatever, right?
+
+17:19
+Yes, absolutely.
+
+17:20
+Okay.
+
+17:23
+Go ahead.
+
+17:24
+No, I'll just answer. Amanda, you would be removing =
+the Actuations folks from Collins Only projects.
+
+17:33
+Okay, that makes sense.
+
+17:35
+Just wanted to clarify that. Okay. And then =
+it sounded like Nate Gove would be the person removing Collins people from =
+actuations projects.
+
+17:47
+He's gonna kill me. Potentially. Maybe I would =
+reach out to Nate as a person to start with. I don't know that he owns =
+every ALM project. I do believe he is my. I'm going to call him a point of =
+contact. If it breaks, I'm going to call Nate and say, hey, Polarian isn't =
+doing what I expected to do. He is the person in Rockford I would contact. =
+However, I would caution that not all of the databases listed there belong =
+to Rockford. Some. Some are quite, quite a bit higher. I don't believe =
+there are any that would be. Be specific to Nate. They're going to be =
+corporate or Bangalore, that kind of thing. So he might be able to help. He=
+ would be the only quote, unquote, super user I could think of.
+
+18:40
+Yeah, that's just real quick, Rachel. If you want to filter on superuser =
+just in that column. And I think we should go back to the actual =
+spreadsheet. So I don't want to spend too much time on this. But we did =
+want to try to answer this question during this call. But so what you're =
+seeing on the screen right now, Amanda, Adam, are some tasks we have for =
+the execution phase. So basically just a few weeks from now, what we want =
+to do is we want to remove columns users and remove actuations users from =
+projects where it's actuations only or columns only, respectively. Right. =
+The person who can take that action is the super user. And so we need to =
+identify who that super user is for actuations and for Collins so they can =
+remove the other side from their projects.
+
+19:34
+So you're talking about =
+within the tool itself. Yes, ma'am. I would start with. So that's =
+definitely not me. And there is.
+
+19:44
+It might be Mohammed, which =
+Muhammad, Rachel. We had him on this call at the very beginning. I think =
+that he is. When we've spoken with Nate Gove, Nate directed us to him.
+
+20:00
+You talking about Mohammad?
+
+20:02
+Yes, Mohammad.
+
+20:03
+Well, but he, he again, he's a. He's a server admin. So he wouldn't =
+actually know the projects.
+
+20:09
+Right. That's fair.
+
+20:17
+And what we were hoping to do is to expedite our timeline by not requiring =
+Bruce Cohen to do. Do it for each of these. Not only does he. Because he =
+would then need the list of users because he doesn't know the projects =
+either. So our thesis was the super user knows the projects, they know the =
+people and they can remove access based on the disposition.
+
+20:46
+Yeah, but they would have to know the tool is what you're saying, right?
+
+20:49
+It seems like the gap is that they, you know, we won't have the =
+people in the tool who can, can do this.
+
+21:05
+I would say that Bangalore =
+does have a super user. Someone at Bangalore is able to add actuation folks=
+ to projects and create them. But Outlook would have eaten whoever that was=
+ many, many moons ago. I don't think I have that email anymore. But I want =
+to say that someone in Bangalore does that because they would have created =
+the projects for Rockford. I do not believe we participated in the physical=
+ creation of the projects for Rockford.
+
+21:49
+I don't want to get over my =
+skis but would we be able to promote you, Amanda and you Adam as super =
+users?
+
+22:00
+I would be happy to take that on but there's going to be a =
+little bit of a ramp up while somebody shows me how to open ALM because =
+I've never done that part so I don't think it would be a expedient =
+methodology. I would however be very happy to shoulder surf if someone else=
+ has tool access. I would be more than happy to sit with someone and say, =
+oh nope, not that guy, not that guy, not that guy. Which I believe is the =
+extent of what we're trying to do here.
+
+22:35
+Yeah, I think that's exactly=
+ right. And our gap is we don't have one person who's both sides of the =
+brain, if you will. Todd, Rachel, does that work for both of you? I mean we=
+ have to I guess now identify someone in the tool who can remove access and=
+ then link that person with Amanda. But I guess it has. We'd need one for =
+Rockford and one for Bangalore or I don't know Mac, if you have a, a =
+thought on that. Either.
+
+23:15
+I think you're on the right track.
+
+23:18
+Good, go ahead Mac.
+
+23:20
+No, I just said I think you're on the right =
+track.
+
+23:22
+Yeah, I agree. And I'm guessing Bruce and Mohan, those guys =
+could probably do a lot of those. Right?
+
+23:31
+So, so we're saying we want=
+ Bruce to. Because. Because that's what Bruce wants. Bruce said I need to =
+know who the users are and you know that that sounds like it would come =
+from Amanda and he could just do it. So I don't, and you know, I don't know=
+ Amanda, if we could get you an extract and you do it offline and we ship =
+it to Bruce. But I, I don't know the tool either. So I Can't. I can't =
+promise I can get you an extract.
+
+23:56
+I. I would imagine that if it was =
+anything like Doors. Excuse me. And I imagine or like the Simon's PLM team =
+Center portion. If PLM is similar to alm, then people are added in groups =
+and we can just get the list of groups and the people who are parts of =
+those groups and then identify the actuation resources fairly quickly that =
+way. I think if it's not, then it's a very tedious over the shoulder =
+reading somebody else's screen, but it is, it would have been possible to =
+do an offline thing for plm, so I'm assuming we can do it for alm, but =
+again we need to find somebody who actually can open the tool and tell us =
+whether that's the truth or not.
+
+24:46
+Yeah. And that's where Mac I think =
+was doing kind of the Polarian magic for us. And so yeah, I'd say it's =
+probably more steps than, than a simple export. Unless, correct me if I'm =
+wrong, Mac.
+
+25:03
+Yeah, I. I don't know if I can speak to that. I was. =
+Nate gave me access to poke around but I'm not sure just how involved of a =
+process it is. It doesn't seem hard, but I think that like these projects =
+vary, right? Like the ALM ones where we're just using Subversion as a =
+repository versus the ones where folks are actually going in and using =
+Polarian itself. I'm not sure how it will work, but I'm confident that it's=
+ possible. I just don't know how involved it is. Nick, we could probably =
+get together and I can just show you what I have and what I can get and =
+come to a determination.
+
+25:47
+Could I ask a question?
+
+25:49
+Yeah.
+
+25:51
+The sheet that we asked for that Rachel had sent out a link to was the says=
+ rockford polarian user 2 project something or other.
+
+26:05
+User project mapping.
+
+26:07
+Yes. That has the actuation users of those =
+projects specifically listed. So the only person who has access to the APS =
+test equipment project is Jacob Gregg. Does Jacob Gregg belong to Actuation=
+? Yes. Done. Can we just use that list and give that like it needs to be =
+modified a little bit. But if those are the actuation identified employees,=
+ can we just give that list to someone and say please remove these folks?
+
+26:42
+Yeah, I think as long as it's validated then yeah.
+
+26:51
+Sounds like a place to start. Yeah.
+
+26:55
+And so I guess Amanda, if you, =
+if you call that your extract, we'll go from there and. And Mac. Yeah, you =
+know, I think Mac did some of the data Updating and mapping on that piece. =
+And so, you know, if he's given us a thumbs up, then I think that's your =
+extract. And if you validate those people, then we can give that list to =
+Bruce or Mohan.
+
+27:19
+Okay. I think the easiest way then would be to take =
+the, the list that Rachel and I put together here and where there is a =
+column in this project mapping spreadsheet, this is assessment Gov. Perhaps=
+ I'll just add a column that says, you know, Collins actuation. Collins =
+actuation. We don't know all those good things. So I will move the =
+information that we put into the assessment spreadsheet into the project =
+mapping spreadsheet. And I think that gets us one more step closer to =
+having a formal list that can go to your super user position.
+
+27:59
+I see, so you're saying add the column, update the pivot table and then =
+it's a little more robust.
+
+28:05
+But I believe that should answer. Be able=
+ to answer most of the questions they would have for us. Yes.
+
+28:12
+Gotcha. Okay, Rachel, can you jump back to the. The other doc you were =
+sharing? So I think one question I had and sorry, just from the agenda and =
+I know we're at time, so. Amanda, Adam, can y'all stay on for maybe five or=
+ ten minutes longer?
+
+28:32
+I can, yes.
+
+28:35
+Was just the status of these=
+ dispositions. And so I see there's a lot of follow ups in column E, which =
+I think is the column you're going to transport, right?
+
+28:47
+Yes.
+
+28:48
+When do we think we can have this completely done? Because our timeline was=
+ tomorrow. If we need more time. Okay. But we just have to confirm because =
+our deadline to lock in our project plan is tomorrow.
+
+29:06
+I think tomorrow was an unreasonable expectation from the beginning.
+
+29:10
+No worries. That's completely, it's completely valid. We want that feedback=
+.
+
+29:16
+My concern is, is that we would. That we would need to confirm. So=
+ all of these pieces that don't belong to us from an actuation or a Colin =
+standpoint, that's one clock. All of these. Ask UK or ask Shankar. I will =
+get with Rachel and double check who these people are and so we can start =
+to talk to them for the, for the Bangalore ones. Did you guys want to ask =
+Shankar? Should I just reach out to Mohan? What would be the easiest =
+methodology there?
+
+30:01
+I don't see our next call with that team. I think=
+ we were thinking about combining these calls, so I do think it makes sense=
+ to make that bridge now. I don't see the separate call though. Rachel.
+
+30:13
+Tuesday morning.
+
+30:23
+Okay, so maybe the answer is that we just =
+tackle the UK ones and see how Far we get with the time difference, I would=
+ assume most of these are nos. I'm just going to throw that out there. I do=
+ not believe that the majority of these are necessary. I am fairly =
+fascinated with the primary 1, the line 112 there. I have no idea who in =
+Rockford would have access to that. It's not on our list or on the project =
+mapping list. So there's some crossover there that we need to figure out =
+where that came from, so on and so forth. So I would estimate that we'll =
+have answers by today's Thursday. They're already asleep. If they get =
+responsive tomorrow, we could say Monday for at least the UK portion of =
+this. But it depends on how early I can get up to catch those folks before =
+they log off for the day. So we'll say we'll try for Monday, see how we get=
+. I don't think it will happen tomorrow though.
+
+31:32
+Yeah, and sorry, I think I fat fingered and went on mute and was talking =
+and then I didn't want to interrupt you, but no worries. It's my fault. I =
+think if you could send that note just. And correct me if I'm if I misheard=
+, if you could send the note to Mohan and Shankar on the exercise. We're =
+mapping the users to the projects in the same file. We can combine the =
+phone calls that we have as long as the calendars are in sync. And I'll =
+stop there. Did I recap that correctly? And then let me know if we don't =
+want to combine the calls. But I think we should.
+
+32:19
+I think it makes sense. I. I have an email out to Mohan already and I have =
+not heard back from him yet. So I would not want to commit to a finish date=
+ until I hear from Mohan. But if we're going to talk to him on Tuesday =
+anyway, I think that's a good idea.
+
+32:38
+So Amanda and Adam, I'll add you=
+ both to the sync with the India team. Does that work?
+
+32:46
+Good for me.
+
+32:48
+Yep. What. What time is it?
+
+32:50
+It's going to be 8:30 Central.
+
+32:53
+Well, that's not bad. 8:30am Correct. All right. You have to check =
+sometimes.
+
+33:07
+And that's twice a week, right? Rachel? It's just Tuesday=
+. Thursday.
+
+33:10
+It's just Tuesday. You're on the cadence. Nick, I'm not =
+sure if you're following where I'm at.
+
+33:24
+I see it now.
+
+33:26
+Do you want it to be twice a week? Is that what we're thinking?
+
+33:30
+It should probably be twice a week and it should probably be longer than =
+half an hour with both the teams. So it should probably be one hour and =
+then twice a week. And I know that time on Thursday is already blocked with=
+ the program review, but I don't know how flexible calendars are for the =
+India team on that. Thursday, I think Friday morning would be fine as well.
+
+34:06
+So Tuesday, that could be a cultural thing. I'm not sure how late =
+India works on Friday nights.
+
+34:12
+Oh, excuse me. I'm sorry. I forget =
+that it's Friday night. Yep. But I do think a second meeting makes the most=
+ sense.
+
+34:28
+I mean, do we want to flip it to Monday, Wednesday and see =
+if.
+
+34:31
+We can to that if calendars work, I think Monday, Wednesday for =
+an hour each make a lot of sense. And then there's potential. Right. Once =
+we're. If we feel super confident, super ahead on the plan across both =
+instances, we can go to once a week. Right. And so that's our. That's our =
+reward, everybody. We. We have less meetings, but I don't think we're there=
+ yet. Any qualms with that on your side? Rachel? Amanda, Adam, Todd, Mac?
+
+35:09
+No, that sounds great.
+
+35:10
+Nope, run here.
+
+35:13
+Okay.
+
+35:16
+And so then Amanda, on the dispositioning task, we sync with that team as =
+of right now, Tuesday. Maybe we'll change the meeting cadence after Tuesday=
+. But we need the connection with Mohan to say our dispositions are =
+complete. Of course we need Mohan's feedback on that. But if you had an =
+assumption you can make on that time frame, because we do have to submit a =
+date tomorrow, what would your assumption be? And we're not going to say =
+Amanda told us, so don't worry. But we just need some type of direction to =
+that.
+
+35:53
+It might based off of this sheet, I think the fastest answer =
+is probably going to be next Friday. I don't want to commit to anything =
+sooner than that only because I haven't reached out to the UK folks at all.=
+ So I need to identify those resources and speak with them specifically. My=
+ guess, my best guess here is that very little of the remaining pieces here=
+ are actually day one transfers. But that's the piece I want the UK folks =
+to confirm for me. Most of this should be Collins data and should not be =
+required to transfer, but that's what I need from UK because we rock for do=
+ not access. So as soon as I hear from them, that's really going to be the =
+answer when we finish. So at this point in time, I will say Friday. It =
+should not take them longer than Friday to respond. And if it does, I will =
+request your assistance in moving this up the food chain.
+
+37:06
+Okay. I don't think there's an issue with next Friday, if we do have to =
+change it from then, then it's going to require cr, which means we have to =
+go up through the smo. So we hope to avoid that. But you know, the process =
+exists for a reason, so I don't think there's anything wrong with it. But =
+if we're aligned on next Friday, then let's go for it.
+
+37:39
+Victor, changing it accurately. We're changing this date to the 28th. Is =
+that correct? No, that would be the. That's Bangalore.
+
+38:00
+Yeah, they're both gonna be Bangalore, actually. I mean Bangalore. They're =
+both going to be the 28th because we're gonna sync those timelines.
+
+38:11
+But is it Bangalore complete?
+
+38:18
+Bangalore instance. For the Bangalore =
+instance. I need to get that update. I don't have that update.
+
+38:29
+Mac, were you following that? I'm not sure. I thought we were under the =
+impression they were complete.
+
+38:35
+Complete for what? Sorry?
+
+38:37
+For dispositioning.
+
+38:39
+Yeah, Bangalore, I think is complete. That was =
+my understanding.
+
+38:46
+Yeah, I think we can easily confirm that. But.
+
+38:49
+Well, I mean, we have that. I mean the Bangalore sheet, right? Like =
+we got the. The Bangalore projects from Mohan and Shankar and they've =
+tagged all of them. I think that we had asked them to go back and add =
+additional detail related to the number of work items. But the preliminary =
+disposition I think is complete.
+
+39:14
+I think it's simple enough for. =
+Simple enough for us to confirm that.
+
+39:18
+Yeah, let's drop them in here.
+
+39:21
+Because I'm gonna need. We're need to draft a pretty succinct agenda=
+ and descriptive agenda for Tuesday so I can add that. But if it's complete=
+, that's great.
+
+39:33
+Yeah, we're changing it to Monday Wednesday. Correct=
+.
+
+39:38
+If you think the short notice and people can attend, then, yeah, =
+we should do it now. Okay, but you have your weekly at that second half =
+hour on Mondays. But of course, I think that's a smaller group, so.
+
+40:02
+Yep. I was thinking to go from 8 to 9 Central.
+
+40:11
+That works for me.
+
+40:14
+Or either one. It doesn't matter.
+
+40:19
+Yeah, I am flexible to. To =
+whatever you schedule. I think it's the. The other resources.
+
+40:25
+Amanda and Adam, do you guys have any complaints to 8:30 to 9:30 Monday and=
+ Wednesday?
+
+40:37
+I don't believe so.
+
+40:43
+Looks like that's free for me=
+.
+
+40:46
+Yeah, I have a conflict on Monday, but I can swap that out with =
+somebody, so we should be okay.
+
+40:54
+And just to confirm that 8:30 =
+Central would be what, India time?
+
+41:01
+What, 13 and a half hours now? =
+Where's my world clock? It's like seven at night. Doesn't sound right.
+
+41:14
+Yep, I think that's right. So maybe we make it 8 to 9 just to be =
+cognizant for them to make that 6:30pm for them.
+
+41:25
+I'm fine with that. Anything that isn't a 3am meeting I'm good with.
+
+41:34
+Yep. Mac and I are on the west coast, so it's a 6am meeting for us.
+
+41:40
+It's always the challenge of working with the team in the uk. They get up =
+really early.
+
+41:47
+All right. I've added Adam, Amanda, Rachel Gallagher =
+and Prashant to the kids as well.
+
+41:56
+Lovely. And so I know we're well =
+over is try to look at these dates because we do have to lock them tomorrow=
+ and any date with your name on it, Adam or Amanda, we get your =
+confirmation and so I know we're well over time I have time. I can stay on =
+the call if we want to do it live. Also happy I think to send this offline =
+but we do need the feedback by end of day.
+
+42:38
+Well, I mean one of those=
+ is really simple. Confirm naming convention Valerian project copies ETRFD_=
+ project name in front of all these projects. Do we care?
+
+42:55
+I don't.
+
+42:58
+There you go, Mac. We don't care.
+
+43:02
+Well, I think that's only =
+for. I think that's only for the ones that we copy. For ones that we're not=
+ copying. We don't need to change the name on them. Cool.
+
+43:09
+You want to filter on Rockford and A.
+
+43:14
+Are there any projects that =
+are. I'll call it comments shared between consent actuations we've talked =
+about?
+
+43:20
+No, none. So the.
+
+43:22
+That's a good thing.
+
+43:24
+Well, what we're doing there is. As Rachel and I went through them, most of=
+ what we're seeing is so and so was added like Collins ALM management team =
+and Jacob Gregg is a member of that team. Is there actuation data there? No=
+. Were we added to the list because there's stuff we might be interested in=
+? Yes. Do we need that information? Nope. Too bad. So there's. There's =
+stuff. There's stuff in there. There's quite a bit of those kinds of pieces=
+ where there is no actuation specific data and there is not data that =
+actuation needs to do business or more importantly that's not duplicated =
+someplace else that they can get to. So none of the instances we, Rachel =
+and I made that determination that we would. It's an either or not a shared=
+. So for the majority of those pieces it truly black and white and the only=
+ ones we didn't know what they were using the database for are the ones =
+where we have to contact India or the UK.
+
+44:40
+Great answer. I like it.
+
+44:44
+All right, so row 19 then becomes 328.
+
+44:50
+Yep. So that would be the same as this counterpart one.
+
+44:53
+Right.
+
+44:56
+So both Adam and you will have it confirmed on the same day. Is that =
+what we're saying?
+
+45:00
+That sounds right. Yes.
+
+45:02
+All right, sounds good. Thank you.
+
+45:06
+Draft Valerian Project copy. Oh, =
+that's you guys. Not me. Not us. Not us. Not us. Not us. Not us. Not us. =
+Actuation user validation of Cloudme Project test copies. So when we get =
+down into the prototyping section, we are waiting for the magic super user.=
+ Oh, no, that's the next line. So what's the. What's 30 and 31, then?
+
+45:37
+I think that's validating the technical approach. Nick, you're on =
+mute. I'm not sure if you want to jump in.
+
+46:00
+Hey, all, can you hear me=
+?
+
+46:01
+Yes.
+
+46:02
+Yep.
+
+46:06
+All right, so for 30 and 31, it's =
+validation of the copy. Is that, yes, it now exists as a act_d._ new =
+project or.
+
+46:20
+Yes, I believe so.
+
+46:21
+Okay.
+
+46:23
+And Rachel, could you filter owner column for Adam or Rachel or Amanda?
+
+46:34
+And I think some of these. Amanda, we can almost say obe, because.
+
+46:38
+Yeah.
+
+46:38
+You're determined that we don't have to do them.
+
+46:41
+That's where I'm going. Yep.
+
+46:42
+Yep.
+
+46:43
+There's some stuff in here =
+I don't think we need to do anymore.
+
+46:46
+Yep. Which is great.
+
+46:48
+I think so, too. There's stuff we can do. Okay, so then 30 and 31 are. Open=
+ it. Make sure it works. Check it out. Okay. Which would require us having =
+access to the tool. That could be its own problem. So. All right, let me. =
+Let me walk through that in my head. Because if the answer to we have to =
+validate the project test copy, from an admin standpoint, it's did it copy =
+over? Did it work? I don't think either. And Crandall speak up, but I don't=
+ think either Adam or myself would know if it worked or not. We don't open =
+the tool as it is, so I don't think we would be able to tell you if it came=
+ over correctly or not. I don't know. Yeah, it opens. There's stuff in =
+there that's good.
+
+47:53
+I would say anything for copying is obe, though. =
+We're not copying anything. Essentially, all we're going to be doing here =
+is updating permissions on this instance.
+
+48:03
+Then do 30 and 31 become =
+obe by themselves?
+
+48:07
+I would say so. Anybody else disagree?
+
+48:10
+Yeah, I think I agree. Once we get that Confirmed validation from your =
+outstanding ones, Amanda. That we have to double check with people. If that=
+ becomes that everything is columns or activation specific, then those go =
+away.
+
+48:25
+All right, that gets rid of those. What else is due? Identify =
+super users. Well, is that really a task for Adam and I to work on that we =
+need to identify those super users?
+
+48:38
+Well, we just talked about that =
+one.
+
+48:40
+Yeah, I know. That's fine. That's why I'm asking.
+
+48:42
+Yeah, yeah, no worries. So I think we'd have to reword those based on the =
+strategy we just defined. So I took notes on that one. So we can. We can =
+skip those. If you can highlight the super user ones in yellow, Rachel, =
+we'll have to rename those.
+
+49:01
+All right. Row 45. Does that also become=
+ OBE now? I think if I. Nope.
+
+49:09
+I would agree.
+
+49:10
+Done.
+
+49:11
+I'm sorry, when we say obe, what does that mean?
+
+49:14
+Overcome by events. So the fact that we don't have any common project or =
+entangled projects we don't have.
+
+49:22
+Instead of the gray color just =
+then, I'd make the note.
+
+49:27
+You're saying to close.
+
+49:29
+Well, it sounds like there may not be. These projects may not exist, so we =
+may not need to validate. We don't have to validate something that doesn't =
+exist. If I'm understanding that correctly.
+
+49:40
+Yeah. It'll be based on =
+disposition.
+
+49:44
+Correct.
+
+49:48
+Okay.
+
+49:51
+So then the only. If I. If=
+. If I'm understanding correctly. 53, 54, 57. None of those are all obe as =
+well.
+
+50:04
+I think 54 stays.
+
+50:06
+Okay. All right.
+
+50:07
+Because that would be validating. That, like everything that is made for =
+actuation, though, is like four and a half projects.
+
+50:14
+We called out that.
+
+50:15
+They're good.
+
+50:16
+Okay. All right, that's =
+cool.
+
+50:20
+Yeah, that's a good catch.
+
+50:30
+Apologies, folks. I need to =
+drop. But, Nick, you've got this. Let me know if there's anything anybody =
+needs. Thank y'all.
+
+50:39
+Thanks. I think Your comment in 54 needs to be =
+updated. Right, Rachel, I think you said that that.
+----_NmP-59caf218dc7eff6a-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><div style=3D"font-family:-apple-system, =
+BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, =
+sans-serif;margin:0;padding:0;background-color:#f4f4f4"><div =
+style=3D"width:100%;max-width:604px;margin:0 auto;background-color:#ffffff"=
+><div style=3D"background-image:url(https://upcdn.io/W142iax/raw/email/bann=
+er_clean.png);background-size:cover;background-position:center;width:604px;=
+height:297px;margin:0 auto;position:relative"><table cellPadding=3D"0" =
+cellSpacing=3D"0" border=3D"0" width=3D"100%" height=3D"100%"><tr><td =
+valign=3D"center" align=3D"center" style=3D"padding:0"><img =
+src=3D"https://upcdn.io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI =
+Logo" style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><=
+h1 style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Project =
+Updates and Super User Assignments Discussed</h1></td></tr></table></div><d=
+iv style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/976EA4B5-9C78-49EC-9070-45074F900137?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View and Edit Your session on the Wave Web App</a></div><div =
+style=3D"text-align:center;margin-bottom:36px"></div><div =
+style=3D"background-color:#ffffff;padding:28px;border-radius:12px;border:1p=
+x solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 =
+rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex;align-i=
+tems:center;gap:8px"><span style=3D"font-size:24px">=F0=9F=93=9D</span>Summ=
+ary</h3><div style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h2 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2rem">Summary of Meeting</h2><h3 style=3D"font-weight:500;pad=
+ding-top:20px;font-size:1.75rem">Attendees and Confirmations</h3><ul>
+<li><strong style=3D"font-weight:bold">Attendees Confirmed:</strong> Adam, =
+Prashant, Nick, Todd, Amanda, Mac, Shankar, Mohan, Kumar, Kamaraya.</li>
+<li><strong style=3D"font-weight:bold">Absent:</strong> Rachel Gallagher =
+(out of office today and tomorrow).</li>
+</ul>
+<h3 style=3D"font-weight:500=
+;padding-top:20px;font-size:1.75rem">Spreadsheet and Project =
+Discussion</h3><ul>
+<li><strong style=3D"font-weight:bold">Spreadsheet =
+Ownership:</strong> Majority handled by Rachel Gallagher.</li>
+<li><strong style=3D"font-weight:bold">Gaps Identified:</strong> <ul>
+<li>Questions requiring input from Getci employees.</li>
+<li>Queries needing responses from a Wolverhampton representative (James =
+Goodchild).</li>
+<li>Certain spreadsheet lines not addressed due to lack of=
+ relevant data.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Act=
+ion:</strong> Highlight gaps in the spreadsheet for further clarification.=
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">Wolverhampton and UK Projects</h3><ul>
+<li><strong =
+style=3D"font-weight:bold">Project Locations Discussed:</strong> UK =
+(Wolverhampton), Poland, Rockford.</li>
+<li><strong =
+style=3D"font-weight:bold">Current Projects:</strong><ul>
+<li><strong style=3D"font-weight:bold">UK (Wolverhampton):</strong> Only =
+one project - Team Center (Actuation only).</li>
+<li><strong =
+style=3D"font-weight:bold">Poland:</strong> One user with a project in the =
+Rockford instance, no further access needed.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Decisions Made:</strong><ul>
+<li>Remove Collins user access from the Team Center project.</li>
+<li>Confirm removal of access for the single Poland user as they no longer =
+require it.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top=
+:20px;font-size:1.75rem">ALM and Actuation Projects</h3><ul>
+<li><strong style=3D"font-weight:bold">ALM Databases:</strong><ul>
+<li><strong style=3D"font-weight:bold">Rockford Instance:</strong> Minimal =
+usage; test equipment ALM Bularian database largely inactive.</li>
+<li><strong style=3D"font-weight:bold">Actuation Projects:</strong> Split =
+between heavy aircraft (767, 737) and business jets (managed by Rockford).=
+</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">MC21 High Lift =
+Project:</strong><ul>
+<li><strong style=3D"font-weight:bold">Ownership:</st=
+rong> Managed by Bangalore engineers.</li>
+<li><strong =
+style=3D"font-weight:bold">Data Restriction:</strong> Russian aircraft data=
+ must remain in the United States per licensing agreements.</li>
+<li><strong style=3D"font-weight:bold">Access Management:</strong> Limited =
+access granted by Rachel and another team member.</li>
+<li><strong style=3D"font-weight:bold">Action Required:</strong> Determine =
+ongoing work responsibilities and data management location.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">Super Users Identification</h3><ul>
+<li><strong =
+style=3D"font-weight:bold">Requirement:</strong> Identify super users for =
+Actuation and Collins projects to manage user access.</li>
+<li><strong style=3D"font-weight:bold">Potential Super Users:</strong> =
+Amanda and Adam offered to take on responsibilities with necessary training=
+.</li>
+<li><strong style=3D"font-weight:bold">Current Status:</strong> No =
+existing super users identified for Rockford Actuation or Collins projects.=
+</li>
+<li><strong style=3D"font-weight:bold">Action Items:</strong><ul>
+<li>Promote Amanda and Adam as super users with appropriate training.</li>
+<li>Link super users with individuals responsible for access removal.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1=
+.75rem">Action Items</h3><ol>
+<li><strong style=3D"font-weight:bold">User =
+Access Removal:</strong><ul>
+<li>Remove Collins users from Actuation-only =
+projects.</li>
+<li>Remove Actuation users from Collins-only projects.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Spreadsheet =
+Updates:</strong><ul>
+<li>Add a column for Collins/Actuation status in the =
+project mapping spreadsheet.</li>
+<li>Validate and transfer relevant data =
+to create a formal list for super users.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Super Users Assignment:</strong><ul>
+<li>Assign Amanda and Adam as super users after necessary training.</li>
+<li>Ensure they can manage and remove user access based on the disposition.=
+</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Project =
+Validation:</strong><ul>
+<li>Validate that irrelevant projects =
+(non-Actuation/Collins) are closed or access removed.</li>
+<li>Confirm that critical projects like MC21 High Lift remain compliant =
+with data restrictions.</li>
+</ul>
+</li>
+</ol>
+<h3 style=3D"font-weight:500=
+;padding-top:20px;font-size:1.75rem">Timelines and Deadlines</h3><ul>
+<li><strong style=3D"font-weight:bold">Initial Deadline:</strong> Tomorrow =
+(considered unreasonable).</li>
+<li><strong style=3D"font-weight:bold">Adju=
+sted Deadline:</strong> Friday, [Insert Date] (28th).</li>
+<li><strong style=3D"font-weight:bold">Final Submission:</strong> Project =
+plan to be locked in by Friday, subject to confirmation from UK and =
+Bangalore teams.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;f=
+ont-size:1.75rem">Follow-Up Meetings</h3><ul>
+<li><strong =
+style=3D"font-weight:bold">New Meeting Schedule:</strong><ul>
+<li><strong style=3D"font-weight:bold">Frequency:</strong> Twice a week =
+(Monday and Wednesday).</li>
+<li><strong style=3D"font-weight:bold">Time:</=
+strong> 8:30 AM to 9:30 AM Central Time.</li>
+<li><strong =
+style=3D"font-weight:bold">Duration:</strong> 1 hour per session.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Participants:</strong> =
+Amanda, Adam, Rachel Gallagher, Prashant, and relevant stakeholders.</li>
+<li><strong style=3D"font-weight:bold">Purpose:</strong><ul>
+<li>Sync with Bangalore and UK teams.</li>
+<li>Discuss progress on user =
+access removal and project validations.</li>
+<li>Address any emerging =
+issues or delays.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;paddi=
+ng-top:20px;font-size:1.75rem">Additional Notes</h3><ul>
+<li><strong style=3D"font-weight:bold">Communication with Mohan and =
+Shankar:</strong><ul>
+<li>Reach out for updates on Bangalore projects.</li>
+<li>Combine calls with UK team to streamline discussions.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Technical Approach =
+Validation:</strong><ul>
+<li>Tasks related to validating project copies =
+deemed Overcome by Events (OBE) and no longer necessary.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Finalizing User Lists:</strong><ul>
+<li>Use the list compiled by Rachel and validate it before providing to =
+Bruce or Mohan for action.</li>
+</ul>
+</li>
+</ul>
+<h2 =
+style=3D"font-weight:500;padding-top:20px;font-size:2rem">Action =
+Items</h2><ul>
+<li><strong style=3D"font-weight:bold">Remove =
+Access:</strong><ul>
+<li>Collins users from Actuation projects.</li>
+<li>Actuation users from Collins projects.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Identify and Assign Super =
+Users:</strong><ul>
+<li>Promote Amanda and Adam with necessary training.=
+</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Update and =
+Validate Spreadsheets:</strong><ul>
+<li>Add necessary columns and ensure =
+data accuracy.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Sche=
+dule and Conduct Follow-Up Meetings:</strong><ul>
+<li>Implement new meeting=
+ cadence on Monday and Wednesday.</li>
+</ul>
+</li>
+<li><strong =
+style=3D"font-weight:bold">Confirm Deadlines:</strong><ul>
+<li>Finalize project plan submission by Friday, [Insert Date].</li>
+</ul>
+</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">F=
+ollow-Up</h2><ul>
+<li><strong style=3D"font-weight:bold">Next =
+Steps:</strong><ul>
+<li>Amanda and Adam to receive training and take on =
+super user roles.</li>
+<li>Conduct follow-up meetings to ensure all action =
+items are progressing.</li>
+<li>Confirm user access removals and project =
+validations by the adjusted deadline.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Next Meeting:</strong> <ul>
+<li>Scheduled for Monday and Wednesday, 8:30 AM to 9:30 AM Central Time.=
+</li>
+<li>Include Amanda, Adam, Rachel Gallagher, Prashant, and relevant =
+team members.</li>
+</ul>
+</li>
+</ul>
+</div></div></div><div =
+style=3D"background-color:#ffffff;padding:28px;border-radius:12px;border:1p=
+x solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 =
+rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-size:20px;font-weight:=
+600;margin-top:0;margin-bottom:20px;display:flex;align-items:center;gap:8px=
+"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription<=
+/h3><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">1:20</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">A couple =
+more minutes for Adam to join, that&#x27;s who. And Prashant, I believe, =
+both accepted.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">1:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Was Rachel Gallagher=
+ invited to this meeting?</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">1:32</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">She was, but=
+ she said she&#x27;s out of office today and tomorrow. Is that correct?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">1:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That sounds right. =
+Now that. Now that you say that, yes, that sounds right.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rachel Gallagher</span><span style=3D"color:#64748b;font-=
+size:14px">1:40</span></div><div style=3D"color:#475569;font-size:16px;line=
+-height:1.6">Okay. Just wanted to make sure.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amanda</span><span style=3D"color:#64748b;font-size:14px"=
+>1:46</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">As I say, I thought Rachel had done the majority of the work in the =
+spreadsheet. When she told me on. When we talked on Tuesday, I think there =
+were a few questions that she had for resources outside of Rockford. =
+There&#x27;s quite a few lines on the spreadsheet that we don&#x27;t touch.=
+ So there are some questions that need to be asked of a Getci employee. =
+There&#x27;s also some pieces that we need a Wolverhampton person to answer=
+ a question. I believe that&#x27;s James Goodchild. But we had entered that=
+ information into the sheet, so need to understand what additional =
+information you&#x27;re looking for from us.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Nick</span><span style=3D"color:#64748b;font-size:14px">2=
+:47</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">And maybe if we pull that sheet.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Todd</span><span style=3D"color:#64748b;font-size:14px">2=
+:49</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Up.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">2:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Rachel, we could =
+highlight those gaps. Nick, I know that you have an agenda for this call =
+and I don&#x27;t want to derail you, but I think that for Wolverhampton. =
+Todd, correct me if I&#x27;m wrong, we did some outreach before. I think =
+that only had. Might have been Poland, actually. They had one project =
+hosted in Rockford and they didn&#x27;t need access. What was the. What was=
+ driving the Wolverhampton question?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amanda</span><span style=3D"color:#64748b;font-size:14px"=
+>3:20</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Amanda, let me find the spreadsheet here because I think that would just=
+ be the fastest.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">3:26</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, you =
+can drop a link or share.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Adam</span><s=
+pan style=3D"color:#64748b;font-size:14px">3:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think that was =
+that Matt Hannah. I believe that was the might.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Nick</span><span style=3D"color:#64748b;font-size:14px">3=
+:33</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Sorry, yeah, I need to go back and check. But it was Matt Hanna, =
+remember if it was Poland or Rockford or Poland or Wolverhampton that he =
+was talking about. But give me one second and I will go check.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Adam</span><span =
+style=3D"color:#64748b;font-size:14px">3:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think he was uk. =
+Yeah, he was uk.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><s=
+pan style=3D"color:#64748b;font-size:14px">3:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Okay, =
+that&#x27;s what I thought. So UK only has one project and that&#x27;s the =
+Team center one. So UK only has one project and that&#x27;s the team center=
+ and that&#x27;s actuation only. So the only action there will be to remove=
+ the Collins user. User access from that. And then Poland has like one =
+person that uses it. And I think they had a project in the us, Rockford =
+instance, but they don&#x27;t need it going forward. I don&#x27;t think =
+that they need access. So it&#x27;s just that one team Center, =
+Wolverhampton one. And I think that we&#x27;ve done the diligence and can =
+confirm that it&#x27;s actuation only. I&#x27;m just trying to pull up that=
+ link that was shared.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">4:47</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m =
+sharing my screen. Mac does that. Do you want me to drive?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Nick</span><span style=3D"color:#64748b;font-size:14px">4=
+:51</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, sure. Amanda, is this the one?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amanda</span><span style=3D"color:#64748b;font-size:14px"=
+>4:56</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">No sir. I need the complexity, disposition and work item count sheet. I =
+don&#x27;t believe there was anything actually to do in this sheet.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">5:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">If you go over to =
+click a Rockford instance on the bottom left there, I think that =
+that&#x27;s what this.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span>=
+<span style=3D"color:#64748b;font-size:14px">5:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">There it is. Okay, =
+thank you. So that&#x27;s already been sorted. So we&#x27;ve identified =
+451-2345. So one of our instances isn&#x27;t showing up on the list. That =
+Belfara CP piece, line 114. Line 114 didn&#x27;t show up on the other =
+spreadsheet. So we added it for most of the other stuff. I guess that first=
+ row is the best example. When I was saying that we don&#x27;t use the =
+instance. The test equipment ALM Bularian database. We opened it, we put =
+one thing in it, we&#x27;re done. Never opened it since. So the majority of=
+ these don&#x27;t have anything useful to us. Now the rest of these. So ask=
+ Shankar at GT gc. We don&#x27;t know what they&#x27;re doing with their =
+ALM stuff but that&#x27;s not us. So I have no one in Rockford who can =
+answer those questions. So that&#x27;s, that&#x27;s that piece and then =
+same thing for some of those other ones. Row 112 is a good example. =
+Actuation. Rockford was never worked on primary aircraft. So actuation was =
+split in between what we call the big airplanes, right? 767, 737. The =
+heavies and Rockford did the secondary class, the business jets. So row 112=
+ there is primaries. That&#x27;s wolves. That&#x27;s not us or someone you =
+know. Wolverhampton related. The other ones are probably Collins owned and =
+operated. Collins Tech Alerts, the product safety Office, Collins Team =
+center, plm. We don&#x27;t need any of those. But they&#x27;re not ours. So=
+ we&#x27;re not sure if we should make that call or not. The only other one=
+. So the first three unabashedly actuation. The Belfar SCP, that&#x27;s for=
+ sure us. That row 114 there, that&#x27;s for sure us. We. We. That needs =
+to go. We don&#x27;t think there&#x27;s anything in those that we&#x27;re =
+really using. The only item of interest here is going to be row 464 which =
+is the MC21. High lift. Whatever EM is that guy. Now that guy is a problem.=
+ He&#x27;s a problem on two fronts. One, he belongs to Bangalore. Well the =
+work is being done by Bangalore engineers. Okay. However, this is a Russian=
+ aircraft and so the data for the Russian aircraft must remain in the =
+United States per the license agreement. So that&#x27;s how Rockford =
+inherited that particular piece. So the management and the access to that =
+database is granted by Rachel, I think, and myself. Honestly, we have to =
+grant them access to that on a limited basis because we inherited it from =
+Phoenix. But it is my understanding that that particular piece of =
+information must stay on the United States or in the United States. It =
+cannot be managed on a European server and it certainly cannot be managed =
+by an Indian server. The rest of everything in there Rachel and I had =
+identified as probably not belonging to Rockford specifically and could be =
+let go without repercussions for day one. Does that make sense?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">9:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">9:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">9:10</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">We&#x27;Re =
+looking at five total, is that correct?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amanda</span><span style=3D"color:#64748b;font-size:14px"=
+>9:15</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, four and a half. I&#x27;m not sure what to call that MC21 one. But=
+ yes, five specific ones.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Adam</span><s=
+pan style=3D"color:#64748b;font-size:14px">9:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">If it makes you feel=
+ any better, there&#x27;s Doors data that&#x27;s the same way for.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">9:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh Yeah, I bet.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">9:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">21.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amanda</span><span style=3D"color:#64748b;font-size:14px"=
+>9:27</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So I bet.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">9:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sorry, go ahead.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Adam</span><span =
+style=3D"color:#64748b;font-size:14px">9:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, go for it.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">9:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I mean I was just =
+going to ask for that MC21 one. If Bangalore is doing the work after day =
+one, who is going to be doing the work? Like does actuation. Do you need a =
+copy of that project? I assume that you do. It&#x27;s like it&#x27;s =
+actuation project. Bangalore&#x27;s doing the work. Right. So you need a =
+copy of that project.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span>=
+<span style=3D"color:#64748b;font-size:14px">9:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That would be my =
+guess. Now I&#x27;m. I&#x27;m obviously not on the actuation program =
+management side of the house anymore. Thank God. So we need to find someone=
+ in Bangalore who can tell you if that project is going with them. Are they=
+ done working on it? Have they finished? Have they started? What are they =
+doing? That&#x27;s the part that we just. We don&#x27;t know. So because we=
+ aren&#x27;t. We Rockford are not involved in that project whatsoever. I =
+can&#x27;t even tell you who is working on that. I&#x27;m just going to =
+direct you to Mohan, Kumar and Kamaraya and hope that he knows otherwise.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">10:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, okay. Yeah. We=
+ have similar cadence with Mohan and Shankar. Similar to this one. We at =
+some point were probably going to combine these calls because we&#x27;re =
+actively working on the same thing. Just separate instances. They have =
+already gotten through this process of deciding which projects are in scope=
+ or not. And so I think that that is what we had talked about holding off =
+until. But it would be helpful to get with Mohan and Nick. We can just make=
+ a note that that will probably be our follow up for the Bangalore Weekly =
+or bi weekly cadence to talk through that app because I know that that came=
+ up in our conversation Rachel yesterday with Rachel Gallagher as well. And=
+ so I think that we need to ask them are they done with the work? Is it =
+still an open project? And then what type of data is in there? And someone =
+needs to make that decision about whether or not a copy gets made and where=
+ it gets stored and so on and so forth. So we can put that one to bed. And =
+then I think these other ones make sense. Is there anything, what is the =
+filter that&#x27;s applied on this sheet? Is there anything else? 1. I just=
+ want to make sure that we&#x27;re not missing anything and thank you =
+Amanda so much for adding that that project. Do we feel confident that we =
+have captured all of the projects that are important with this Four and a =
+half.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">12:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So the answer there =
+is truly the only one that&#x27;s actually. Oh, and I&#x27;m going to catch=
+ flack for this but truly the only one that&#x27;s actively being used by =
+an actuation employee is the MC21 high lift. Right. The Bangalore folks, =
+they liked ALM, they got into it, they&#x27;re using it on a daily basis. =
+The other four were opened and I believe there&#x27;s stuff in there. Right=
+? There&#x27;s 13 files, 193 files. We move stuff in there. Are any of =
+those four being used on a day to day basis? No sir. Have they been used in=
+ the last six to 18 months? No sir. Would any of them have been opened and =
+used in the last 24 to 36 months? Now that&#x27;s more of a maybe. So is =
+there information that is critical for day one for those first three? We =
+don&#x27;t think so. We think the what&#x27;s in. We don&#x27;t have access=
+ obviously, but we believe that what was loaded into those folders is =
+duplicated in some other location. We just, you know, opened it to use the =
+tool. Now that Belfara cp, I cannot make the same guarantee that might =
+actually have stuff in it. We had started BELFARA about when they showed us=
+ alm. I don&#x27;t believe there&#x27;s anything useful in there. I =
+don&#x27;t believe it&#x27;s anything we&#x27;re actively working on. So to=
+ the previous question about needing to test, you know, links and active =
+links to workbooks and whatnot within the database. None of those four =
+would still need that activity. Testing, making sure stuff works. I do not =
+believe there is sufficient day to day use of those four databases.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">14:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;s great =
+news.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">14:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Can I ask a Quick =
+question. Yeah, Amanda. So Amanda, would you be more familiar with the =
+Actuations users or the Collins users?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amanda</span><span style=3D"color:#64748b;font-size:14px"=
+>14:28</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Depends on what it is.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><s=
+pan style=3D"color:#64748b;font-size:14px">14:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. Because we do =
+have an ask around identifying super users. And so, you know, I was just =
+curious if you would be the right person to help us identify super users on=
+ either the actuation side or the column side of the house.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Amanda</span><span style=3D"color:#64748b;font-size:14px=
+">14:54</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">I don&#x27;t. Crandall, can you remember did we ever get to a point =
+where we had super users other than nategov? Did anybody have that kind of =
+access? I honestly don&#x27;t remember.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Todd</span><span style=3D"color:#64748b;font-size:14px">1=
+5:06</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Not that I&#x27;m aware of.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda<=
+/span><span style=3D"color:#64748b;font-size:14px">15:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, same. When I =
+say we didn&#x27;t use it, I really mean we didn&#x27;t use it. I =
+don&#x27;t know how many times I can express that. So from a super user =
+standpoint, I honestly don&#x27;t think there is going to be a quote =
+unquote super user identified for Rockford actuation purposes. We just =
+didn&#x27;t use the tool flat out. From the Collins side. It all belongs to=
+ nategov or whoever owns ALM these days. So if it&#x27;s a Collins ALM =
+management obviously goes up to somebody at corporate, so on and so forth. =
+So there are individual pieces now I can tell you. I guess maybe the best =
+example. So row 114 there, that&#x27;s Sheehan, the software manager. The =
+ex software manager for actuation. She doesn&#x27;t work for Actuation =
+anymore, she works for Collins. Could she tell you what&#x27;s in there? =
+Maybe. Is she a super user? No sir. No, I don&#x27;t believe that I would =
+identify anyone currently in. If Adam Crandall is not your actuation super =
+user, I don&#x27;t believe I have a resource identified for that purpose.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Adam</span><span =
+style=3D"color:#64748b;font-size:14px">16:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, essentially =
+we&#x27;re just looking for somebody that would be able to say I&#x27;m =
+gonna look at a project and just make sure the people that do have access =
+is the appropriate list. Right. Just to make sure that when it comes to day=
+ one, there&#x27;s no people from columns that are getting access to any of=
+ these actuations projects.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span>=
+<span style=3D"color:#64748b;font-size:14px">16:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Is that me? As the =
+whatever my title is supposed to be now I can make that for those top four =
+projects. I can make that determination and say this is Collins, this is =
+actuation. Rebecca no longer needs access to the Collins or to the the =
+actuation Belfast cp.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><s=
+pan style=3D"color:#64748b;font-size:14px">17:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Adam</span><span =
+style=3D"color:#64748b;font-size:14px">17:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so we can =
+provide you instructions with how to go into the tool and say yep, no, =
+these people don&#x27;t need to be in there, we&#x27;ll remove them, =
+whatever, right?</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span>=
+<span style=3D"color:#64748b;font-size:14px">17:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes, absolutely.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">17:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Adam</span><span =
+style=3D"color:#64748b;font-size:14px">17:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Go ahead.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">17:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, I&#x27;ll just =
+answer. Amanda, you would be removing the Actuations folks from Collins =
+Only projects.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">17:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, that makes =
+sense.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">17:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Just wanted to =
+clarify that. Okay. And then it sounded like Nate Gove would be the person =
+removing Collins people from actuations projects.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amanda</span><span style=3D"color:#64748b;font-size:14px"=
+>17:47</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">He&#x27;s gonna kill me. Potentially. Maybe I would reach out to Nate =
+as a person to start with. I don&#x27;t know that he owns every ALM project=
+. I do believe he is my. I&#x27;m going to call him a point of contact. If =
+it breaks, I&#x27;m going to call Nate and say, hey, Polarian isn&#x27;t =
+doing what I expected to do. He is the person in Rockford I would contact. =
+However, I would caution that not all of the databases listed there belong =
+to Rockford. Some. Some are quite, quite a bit higher. I don&#x27;t believe=
+ there are any that would be. Be specific to Nate. They&#x27;re going to be=
+ corporate or Bangalore, that kind of thing. So he might be able to help. =
+He would be the only quote, unquote, super user I could think of.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">18:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, that&#x27;s =
+just real quick, Rachel. If you want to filter on superuser just in that =
+column. And I think we should go back to the actual spreadsheet. So I =
+don&#x27;t want to spend too much time on this. But we did want to try to =
+answer this question during this call. But so what you&#x27;re seeing on =
+the screen right now, Amanda, Adam, are some tasks we have for the =
+execution phase. So basically just a few weeks from now, what we want to do=
+ is we want to remove columns users and remove actuations users from =
+projects where it&#x27;s actuations only or columns only, respectively. =
+Right. The person who can take that action is the super user. And so we =
+need to identify who that super user is for actuations and for Collins so =
+they can remove the other side from their projects.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amanda</span><span style=3D"color:#64748b;font-size:14px"=
+>19:34</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">So you&#x27;re talking about within the tool itself. Yes, ma&#x27;am. I=
+ would start with. So that&#x27;s definitely not me. And there is.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">19:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It might be Mohammed=
+, which Muhammad, Rachel. We had him on this call at the very beginning. I =
+think that he is. When we&#x27;ve spoken with Nate Gove, Nate directed us =
+to him.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Adam</span><span =
+style=3D"color:#64748b;font-size:14px">20:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You talking about =
+Mohammad?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">20:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes, Mohammad.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Adam</span><span =
+style=3D"color:#64748b;font-size:14px">20:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Well, but he, he =
+again, he&#x27;s a. He&#x27;s a server admin. So he wouldn&#x27;t actually =
+know the projects.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><s=
+pan style=3D"color:#64748b;font-size:14px">20:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right. That&#x27;s =
+fair.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">20:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And what we were =
+hoping to do is to expedite our timeline by not requiring Bruce Cohen to do=
+. Do it for each of these. Not only does he. Because he would then need the=
+ list of users because he doesn&#x27;t know the projects either. So our =
+thesis was the super user knows the projects, they know the people and they=
+ can remove access based on the disposition.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amanda</span><span style=3D"color:#64748b;font-size:14px"=
+>20:46</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah, but they would have to know the tool is what you&#x27;re saying, =
+right?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">20:49</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It seems like the =
+gap is that they, you know, we won&#x27;t have the people in the tool who =
+can, can do this.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span>=
+<span style=3D"color:#64748b;font-size:14px">21:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I would say that =
+Bangalore does have a super user. Someone at Bangalore is able to add =
+actuation folks to projects and create them. But Outlook would have eaten =
+whoever that was many, many moons ago. I don&#x27;t think I have that email=
+ anymore. But I want to say that someone in Bangalore does that because =
+they would have created the projects for Rockford. I do not believe we =
+participated in the physical creation of the projects for Rockford.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">21:49</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I don&#x27;t want to=
+ get over my skis but would we be able to promote you, Amanda and you Adam =
+as super users?</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span>=
+<span style=3D"color:#64748b;font-size:14px">22:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I would be happy to =
+take that on but there&#x27;s going to be a little bit of a ramp up while =
+somebody shows me how to open ALM because I&#x27;ve never done that part so=
+ I don&#x27;t think it would be a expedient methodology. I would however be=
+ very happy to shoulder surf if someone else has tool access. I would be =
+more than happy to sit with someone and say, oh nope, not that guy, not =
+that guy, not that guy. Which I believe is the extent of what we&#x27;re =
+trying to do here.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><s=
+pan style=3D"color:#64748b;font-size:14px">22:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I think =
+that&#x27;s exactly right. And our gap is we don&#x27;t have one person =
+who&#x27;s both sides of the brain, if you will. Todd, Rachel, does that =
+work for both of you? I mean we have to I guess now identify someone in the=
+ tool who can remove access and then link that person with Amanda. But I =
+guess it has. We&#x27;d need one for Rockford and one for Bangalore or I =
+don&#x27;t know Mac, if you have a, a thought on that. Either.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">23:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think you&#x27;re =
+on the right track.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Adam</span><s=
+pan style=3D"color:#64748b;font-size:14px">23:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Good, go ahead Mac.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">23:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, I just said I =
+think you&#x27;re on the right track.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Adam</span><span style=3D"color:#64748b;font-size:14px">2=
+3:22</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, I agree. And I&#x27;m guessing Bruce and Mohan, those guys could =
+probably do a lot of those. Right?</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</=
+span><span style=3D"color:#64748b;font-size:14px">23:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So, so we&#x27;re =
+saying we want Bruce to. Because. Because that&#x27;s what Bruce wants. =
+Bruce said I need to know who the users are and you know that that sounds =
+like it would come from Amanda and he could just do it. So I don&#x27;t, =
+and you know, I don&#x27;t know Amanda, if we could get you an extract and =
+you do it offline and we ship it to Bruce. But I, I don&#x27;t know the =
+tool either. So I Can&#x27;t. I can&#x27;t promise I can get you an extract=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">23:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I. I would imagine =
+that if it was anything like Doors. Excuse me. And I imagine or like the =
+Simon&#x27;s PLM team Center portion. If PLM is similar to alm, then people=
+ are added in groups and we can just get the list of groups and the people =
+who are parts of those groups and then identify the actuation resources =
+fairly quickly that way. I think if it&#x27;s not, then it&#x27;s a very =
+tedious over the shoulder reading somebody else&#x27;s screen, but it is, =
+it would have been possible to do an offline thing for plm, so I&#x27;m =
+assuming we can do it for alm, but again we need to find somebody who =
+actually can open the tool and tell us whether that&#x27;s the truth or not=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">24:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. And =
+that&#x27;s where Mac I think was doing kind of the Polarian magic for us. =
+And so yeah, I&#x27;d say it&#x27;s probably more steps than, than a simple=
+ export. Unless, correct me if I&#x27;m wrong, Mac.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Nick</span><span style=3D"color:#64748b;font-size:14px">2=
+5:03</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, I. I don&#x27;t know if I can speak to that. I was. Nate gave me =
+access to poke around but I&#x27;m not sure just how involved of a process =
+it is. It doesn&#x27;t seem hard, but I think that like these projects vary=
+, right? Like the ALM ones where we&#x27;re just using Subversion as a =
+repository versus the ones where folks are actually going in and using =
+Polarian itself. I&#x27;m not sure how it will work, but I&#x27;m confident=
+ that it&#x27;s possible. I just don&#x27;t know how involved it is. Nick, =
+we could probably get together and I can just show you what I have and what=
+ I can get and come to a determination.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amanda</span><span style=3D"color:#64748b;font-size:14px"=
+>25:47</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Could I ask a question?</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><s=
+pan style=3D"color:#64748b;font-size:14px">25:49</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">25:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The sheet that we =
+asked for that Rachel had sent out a link to was the says rockford polarian=
+ user 2 project something or other.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Todd</span><span style=3D"color:#64748b;font-size:14px">2=
+6:05</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">User project mapping.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span>=
+<span style=3D"color:#64748b;font-size:14px">26:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes. That has the =
+actuation users of those projects specifically listed. So the only person =
+who has access to the APS test equipment project is Jacob Gregg. Does Jacob=
+ Gregg belong to Actuation? Yes. Done. Can we just use that list and give =
+that like it needs to be modified a little bit. But if those are the =
+actuation identified employees, can we just give that list to someone and =
+say please remove these folks?</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</s=
+pan><span style=3D"color:#64748b;font-size:14px">26:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I think as =
+long as it&#x27;s validated then yeah.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amanda</span><span style=3D"color:#64748b;font-size:14px"=
+>26:51</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Sounds like a place to start. Yeah.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Todd</span><span style=3D"color:#64748b;font-size:14px">2=
+6:55</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">And so I guess Amanda, if you, if you call that your extract, we&#x27;ll=
+ go from there and. And Mac. Yeah, you know, I think Mac did some of the =
+data Updating and mapping on that piece. And so, you know, if he&#x27;s =
+given us a thumbs up, then I think that&#x27;s your extract. And if you =
+validate those people, then we can give that list to Bruce or Mohan.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">27:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. I think the =
+easiest way then would be to take the, the list that Rachel and I put =
+together here and where there is a column in this project mapping =
+spreadsheet, this is assessment Gov. Perhaps I&#x27;ll just add a column =
+that says, you know, Collins actuation. Collins actuation. We don&#x27;t =
+know all those good things. So I will move the information that we put into=
+ the assessment spreadsheet into the project mapping spreadsheet. And I =
+think that gets us one more step closer to having a formal list that can go=
+ to your super user position.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</s=
+pan><span style=3D"color:#64748b;font-size:14px">27:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I see, so =
+you&#x27;re saying add the column, update the pivot table and then =
+it&#x27;s a little more robust.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda<=
+/span><span style=3D"color:#64748b;font-size:14px">28:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">But I believe that =
+should answer. Be able to answer most of the questions they would have for =
+us. Yes.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">28:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Gotcha. Okay, Rachel=
+, can you jump back to the. The other doc you were sharing? So I think one =
+question I had and sorry, just from the agenda and I know we&#x27;re at =
+time, so. Amanda, Adam, can y&#x27;all stay on for maybe five or ten =
+minutes longer?</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span>=
+<span style=3D"color:#64748b;font-size:14px">28:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I can, yes.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">28:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Was just the status =
+of these dispositions. And so I see there&#x27;s a lot of follow ups in =
+column E, which I think is the column you&#x27;re going to transport, right=
+?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">28:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Todd</span><span style=3D"color:#64748b;font-size:14px">=
+28:48</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">When do we think we can have this completely done? Because our timeline =
+was tomorrow. If we need more time. Okay. But we just have to confirm =
+because our deadline to lock in our project plan is tomorrow.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">29:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think tomorrow was=
+ an unreasonable expectation from the beginning.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Todd</span><span style=3D"color:#64748b;font-size:14px">2=
+9:10</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">No worries. That&#x27;s completely, it&#x27;s completely valid. We want =
+that feedback.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">29:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">My concern is, is =
+that we would. That we would need to confirm. So all of these pieces that =
+don&#x27;t belong to us from an actuation or a Colin standpoint, =
+that&#x27;s one clock. All of these. Ask UK or ask Shankar. I will get with=
+ Rachel and double check who these people are and so we can start to talk =
+to them for the, for the Bangalore ones. Did you guys want to ask Shankar? =
+Should I just reach out to Mohan? What would be the easiest methodology =
+there?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">30:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I don&#x27;t see our=
+ next call with that team. I think we were thinking about combining these =
+calls, so I do think it makes sense to make that bridge now. I don&#x27;t =
+see the separate call though. Rachel.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rachel Gallagher</span><span style=3D"color:#64748b;font-=
+size:14px">30:13</span></div><div style=3D"color:#475569;font-size:16px;lin=
+e-height:1.6">Tuesday morning.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda<=
+/span><span style=3D"color:#64748b;font-size:14px">30:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so maybe the =
+answer is that we just tackle the UK ones and see how Far we get with the =
+time difference, I would assume most of these are nos. I&#x27;m just going =
+to throw that out there. I do not believe that the majority of these are =
+necessary. I am fairly fascinated with the primary 1, the line 112 there. I=
+ have no idea who in Rockford would have access to that. It&#x27;s not on =
+our list or on the project mapping list. So there&#x27;s some crossover =
+there that we need to figure out where that came from, so on and so forth. =
+So I would estimate that we&#x27;ll have answers by today&#x27;s Thursday. =
+They&#x27;re already asleep. If they get responsive tomorrow, we could say =
+Monday for at least the UK portion of this. But it depends on how early I =
+can get up to catch those folks before they log off for the day. So =
+we&#x27;ll say we&#x27;ll try for Monday, see how we get. I don&#x27;t =
+think it will happen tomorrow though.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Todd</span><span style=3D"color:#64748b;font-size:14px">3=
+1:32</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, and sorry, I think I fat fingered and went on mute and was talking=
+ and then I didn&#x27;t want to interrupt you, but no worries. It&#x27;s my=
+ fault. I think if you could send that note just. And correct me if =
+I&#x27;m if I misheard, if you could send the note to Mohan and Shankar on =
+the exercise. We&#x27;re mapping the users to the projects in the same file=
+. We can combine the phone calls that we have as long as the calendars are =
+in sync. And I&#x27;ll stop there. Did I recap that correctly? And then let=
+ me know if we don&#x27;t want to combine the calls. But I think we should.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">32:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think it makes =
+sense. I. I have an email out to Mohan already and I have not heard back =
+from him yet. So I would not want to commit to a finish date until I hear =
+from Mohan. But if we&#x27;re going to talk to him on Tuesday anyway, I =
+think that&#x27;s a good idea.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">32:38</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So Amanda =
+and Adam, I&#x27;ll add you both to the sync with the India team. Does that=
+ work?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">32:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Good for me.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">32:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep. What. What time=
+ is it?</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">32:50</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;s =
+going to be 8:30 Central.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span>=
+<span style=3D"color:#64748b;font-size:14px">32:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Well, that&#x27;s =
+not bad. 8:30am Correct. All right. You have to check sometimes.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">33:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And that&#x27;s =
+twice a week, right? Rachel? It&#x27;s just Tuesday. Thursday.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">33:10</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;s =
+just Tuesday. You&#x27;re on the cadence. Nick, I&#x27;m not sure if =
+you&#x27;re following where I&#x27;m at.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Todd</span><span style=3D"color:#64748b;font-size:14px">3=
+3:24</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I see it now.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">33:26</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Do you want=
+ it to be twice a week? Is that what we&#x27;re thinking?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Todd</span><span style=3D"color:#64748b;font-size:14px">3=
+3:30</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">It should probably be twice a week and it should probably be longer than=
+ half an hour with both the teams. So it should probably be one hour and =
+then twice a week. And I know that time on Thursday is already blocked with=
+ the program review, but I don&#x27;t know how flexible calendars are for =
+the India team on that. Thursday, I think Friday morning would be fine as =
+well.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">34:06</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So Tuesday,=
+ that could be a cultural thing. I&#x27;m not sure how late India works on =
+Friday nights.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">34:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, excuse me. =
+I&#x27;m sorry. I forget that it&#x27;s Friday night. Yep. But I do think a=
+ second meeting makes the most sense.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rachel Gallagher</span><span style=3D"color:#64748b;font-=
+size:14px">34:28</span></div><div style=3D"color:#475569;font-size:16px;lin=
+e-height:1.6">I mean, do we want to flip it to Monday, Wednesday and see if=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">34:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We can to that if =
+calendars work, I think Monday, Wednesday for an hour each make a lot of =
+sense. And then there&#x27;s potential. Right. Once we&#x27;re. If we feel =
+super confident, super ahead on the plan across both instances, we can go =
+to once a week. Right. And so that&#x27;s our. That&#x27;s our reward, =
+everybody. We. We have less meetings, but I don&#x27;t think we&#x27;re =
+there yet. Any qualms with that on your side? Rachel? Amanda, Adam, Todd, =
+Mac?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">35:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, that sounds =
+great.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Adam</span><span =
+style=3D"color:#64748b;font-size:14px">35:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Nope, run here.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">35:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">35:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And so then Amanda, =
+on the dispositioning task, we sync with that team as of right now, Tuesday=
+. Maybe we&#x27;ll change the meeting cadence after Tuesday. But we need =
+the connection with Mohan to say our dispositions are complete. Of course =
+we need Mohan&#x27;s feedback on that. But if you had an assumption you can=
+ make on that time frame, because we do have to submit a date tomorrow, =
+what would your assumption be? And we&#x27;re not going to say Amanda told =
+us, so don&#x27;t worry. But we just need some type of direction to that.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">35:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It might based off =
+of this sheet, I think the fastest answer is probably going to be next =
+Friday. I don&#x27;t want to commit to anything sooner than that only =
+because I haven&#x27;t reached out to the UK folks at all. So I need to =
+identify those resources and speak with them specifically. My guess, my =
+best guess here is that very little of the remaining pieces here are =
+actually day one transfers. But that&#x27;s the piece I want the UK folks =
+to confirm for me. Most of this should be Collins data and should not be =
+required to transfer, but that&#x27;s what I need from UK because we rock =
+for do not access. So as soon as I hear from them, that&#x27;s really going=
+ to be the answer when we finish. So at this point in time, I will say =
+Friday. It should not take them longer than Friday to respond. And if it =
+does, I will request your assistance in moving this up the food chain.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">37:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. I don&#x27;t =
+think there&#x27;s an issue with next Friday, if we do have to change it =
+from then, then it&#x27;s going to require cr, which means we have to go up=
+ through the smo. So we hope to avoid that. But you know, the process =
+exists for a reason, so I don&#x27;t think there&#x27;s anything wrong with=
+ it. But if we&#x27;re aligned on next Friday, then let&#x27;s go for it.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">37:39</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Victor, =
+changing it accurately. We&#x27;re changing this date to the 28th. Is that =
+correct? No, that would be the. That&#x27;s Bangalore.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Todd</span><span style=3D"color:#64748b;font-size:14px">3=
+8:00</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, they&#x27;re both gonna be Bangalore, actually. I mean Bangalore. =
+They&#x27;re both going to be the 28th because we&#x27;re gonna sync those =
+timelines.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">38:11</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">But is it =
+Bangalore complete?</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><s=
+pan style=3D"color:#64748b;font-size:14px">38:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Bangalore instance. =
+For the Bangalore instance. I need to get that update. I don&#x27;t have =
+that update.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">38:29</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Mac, were =
+you following that? I&#x27;m not sure. I thought we were under the =
+impression they were complete.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</s=
+pan><span style=3D"color:#64748b;font-size:14px">38:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Complete for what? =
+Sorry?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">38:37</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">For =
+dispositioning.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><s=
+pan style=3D"color:#64748b;font-size:14px">38:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, Bangalore, I =
+think is complete. That was my understanding.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Todd</span><span style=3D"color:#64748b;font-size:14px">3=
+8:46</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, I think we can easily confirm that. But.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Nick</span><span style=3D"color:#64748b;font-size:14px">3=
+8:49</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Well, I mean, we have that. I mean the Bangalore sheet, right? Like we =
+got the. The Bangalore projects from Mohan and Shankar and they&#x27;ve =
+tagged all of them. I think that we had asked them to go back and add =
+additional detail related to the number of work items. But the preliminary =
+disposition I think is complete.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</s=
+pan><span style=3D"color:#64748b;font-size:14px">39:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think it&#x27;s =
+simple enough for. Simple enough for us to confirm that.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Nick</span><span style=3D"color:#64748b;font-size:14px">3=
+9:18</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, let&#x27;s drop them in here.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Todd</span><span style=3D"color:#64748b;font-size:14px">3=
+9:21</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Because I&#x27;m gonna need. We&#x27;re need to draft a pretty succinct =
+agenda and descriptive agenda for Tuesday so I can add that. But if =
+it&#x27;s complete, that&#x27;s great.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rachel Gallagher</span><span style=3D"color:#64748b;font-=
+size:14px">39:33</span></div><div style=3D"color:#475569;font-size:16px;lin=
+e-height:1.6">Yeah, we&#x27;re changing it to Monday Wednesday. Correct.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">39:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">If you think the =
+short notice and people can attend, then, yeah, we should do it now. Okay, =
+but you have your weekly at that second half hour on Mondays. But of course=
+, I think that&#x27;s a smaller group, so.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rachel Gallagher</span><span style=3D"color:#64748b;font-=
+size:14px">40:02</span></div><div style=3D"color:#475569;font-size:16px;lin=
+e-height:1.6">Yep. I was thinking to go from 8 to 9 Central.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">40:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That works for me.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">40:14</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Or either =
+one. It doesn&#x27;t matter.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><=
+span style=3D"color:#64748b;font-size:14px">40:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I am flexible =
+to. To whatever you schedule. I think it&#x27;s the. The other resources.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">40:25</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Amanda and =
+Adam, do you guys have any complaints to 8:30 to 9:30 Monday and Wednesday?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">40:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I don&#x27;t believe=
+ so.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">40:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Looks like =
+that&#x27;s free for me.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span>=
+<span style=3D"color:#64748b;font-size:14px">40:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I have a =
+conflict on Monday, but I can swap that out with somebody, so we should be =
+okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">40:54</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">And just to=
+ confirm that 8:30 Central would be what, India time?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amanda</span><span style=3D"color:#64748b;font-size:14px"=
+>41:01</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">What, 13 and a half hours now? Where&#x27;s my world clock? It&#x27;s =
+like seven at night. Doesn&#x27;t sound right.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rachel Gallagher</span><span style=3D"color:#64748b;font-=
+size:14px">41:14</span></div><div style=3D"color:#475569;font-size:16px;lin=
+e-height:1.6">Yep, I think that&#x27;s right. So maybe we make it 8 to 9 =
+just to be cognizant for them to make that 6:30pm for them.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Amanda</span><span style=3D"color:#64748b;font-size:14px=
+">41:25</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">I&#x27;m fine with that. Anything that isn&#x27;t a 3am meeting =
+I&#x27;m good with.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">41:34</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yep. Mac =
+and I are on the west coast, so it&#x27;s a 6am meeting for us.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">41:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;s always the=
+ challenge of working with the team in the uk. They get up really early.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">41:47</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">All right. =
+I&#x27;ve added Adam, Amanda, Rachel Gallagher and Prashant to the kids as =
+well.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">41:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Lovely. And so I =
+know we&#x27;re well over is try to look at these dates because we do have =
+to lock them tomorrow and any date with your name on it, Adam or Amanda, we=
+ get your confirmation and so I know we&#x27;re well over time I have time.=
+ I can stay on the call if we want to do it live. Also happy I think to =
+send this offline but we do need the feedback by end of day.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">42:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Well, I mean one of =
+those is really simple. Confirm naming convention Valerian project copies =
+ETRFD_ project name in front of all these projects. Do we care?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">42:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I don&#x27;t.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">42:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">There you go, Mac. =
+We don&#x27;t care.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Adam</span><s=
+pan style=3D"color:#64748b;font-size:14px">43:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Well, I think =
+that&#x27;s only for. I think that&#x27;s only for the ones that we copy. =
+For ones that we&#x27;re not copying. We don&#x27;t need to change the name=
+ on them. Cool.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><s=
+pan style=3D"color:#64748b;font-size:14px">43:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You want to filter =
+on Rockford and A.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Adam</span><s=
+pan style=3D"color:#64748b;font-size:14px">43:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Are there any =
+projects that are. I&#x27;ll call it comments shared between consent =
+actuations we&#x27;ve talked about?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amanda</span><span style=3D"color:#64748b;font-size:14px"=
+>43:20</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">No, none. So the.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Adam</span><s=
+pan style=3D"color:#64748b;font-size:14px">43:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;s a good =
+thing.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">43:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Well, what =
+we&#x27;re doing there is. As Rachel and I went through them, most of what =
+we&#x27;re seeing is so and so was added like Collins ALM management team =
+and Jacob Gregg is a member of that team. Is there actuation data there? No=
+. Were we added to the list because there&#x27;s stuff we might be =
+interested in? Yes. Do we need that information? Nope. Too bad. So =
+there&#x27;s. There&#x27;s stuff. There&#x27;s stuff in there. There&#x27;s=
+ quite a bit of those kinds of pieces where there is no actuation specific =
+data and there is not data that actuation needs to do business or more =
+importantly that&#x27;s not duplicated someplace else that they can get to.=
+ So none of the instances we, Rachel and I made that determination that we =
+would. It&#x27;s an either or not a shared. So for the majority of those =
+pieces it truly black and white and the only ones we didn&#x27;t know what =
+they were using the database for are the ones where we have to contact =
+India or the UK.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Adam</span><s=
+pan style=3D"color:#64748b;font-size:14px">44:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Great answer. I like=
+ it.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">44:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right, so row 19=
+ then becomes 328.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">44:50</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yep. So =
+that would be the same as this counterpart one.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amanda</span><span style=3D"color:#64748b;font-size:14px"=
+>44:53</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Right.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">44:56</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So both =
+Adam and you will have it confirmed on the same day. Is that what =
+we&#x27;re saying?</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span>=
+<span style=3D"color:#64748b;font-size:14px">45:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That sounds right. =
+Yes.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">45:02</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">All right, =
+sounds good. Thank you.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span>=
+<span style=3D"color:#64748b;font-size:14px">45:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Draft Valerian =
+Project copy. Oh, that&#x27;s you guys. Not me. Not us. Not us. Not us. Not=
+ us. Not us. Not us. Actuation user validation of Cloudme Project test =
+copies. So when we get down into the prototyping section, we are waiting =
+for the magic super user. Oh, no, that&#x27;s the next line. So what&#x27;s=
+ the. What&#x27;s 30 and 31, then?</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel=
+ Gallagher</span><span style=3D"color:#64748b;font-size:14px">45:37</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">I think =
+that&#x27;s validating the technical approach. Nick, you&#x27;re on mute. =
+I&#x27;m not sure if you want to jump in.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Todd</span><span style=3D"color:#64748b;font-size:14px">4=
+6:00</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Hey, all, can you hear me?</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda<=
+/span><span style=3D"color:#64748b;font-size:14px">46:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Rachel Gallagher</span><span style=3D"color:#64748b;font=
+-size:14px">46:02</span></div><div style=3D"color:#475569;font-size:16px;li=
+ne-height:1.6">Yep.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span>=
+<span style=3D"color:#64748b;font-size:14px">46:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right, so for 30=
+ and 31, it&#x27;s validation of the copy. Is that, yes, it now exists as a=
+ act_d._ new project or.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">46:20</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yes, I =
+believe so.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">46:21</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">46:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And Rachel, could =
+you filter owner column for Adam or Rachel or Amanda?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Adam</span><span style=3D"color:#64748b;font-size:14px">4=
+6:34</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">And I think some of these. Amanda, we can almost say obe, because.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">46:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Adam</span><span =
+style=3D"color:#64748b;font-size:14px">46:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You&#x27;re =
+determined that we don&#x27;t have to do them.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amanda</span><span style=3D"color:#64748b;font-size:14px"=
+>46:41</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">That&#x27;s where I&#x27;m going. Yep.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Adam</span><span style=3D"color:#64748b;font-size:14px">4=
+6:42</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yep.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">46:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">There&#x27;s some =
+stuff in here I don&#x27;t think we need to do anymore.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Adam</span><span style=3D"color:#64748b;font-size:14px">4=
+6:46</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yep. Which is great.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span>=
+<span style=3D"color:#64748b;font-size:14px">46:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think so, too. =
+There&#x27;s stuff we can do. Okay, so then 30 and 31 are. Open it. Make =
+sure it works. Check it out. Okay. Which would require us having access to =
+the tool. That could be its own problem. So. All right, let me. Let me walk=
+ through that in my head. Because if the answer to we have to validate the =
+project test copy, from an admin standpoint, it&#x27;s did it copy over? =
+Did it work? I don&#x27;t think either. And Crandall speak up, but I =
+don&#x27;t think either Adam or myself would know if it worked or not. We =
+don&#x27;t open the tool as it is, so I don&#x27;t think we would be able =
+to tell you if it came over correctly or not. I don&#x27;t know. Yeah, it =
+opens. There&#x27;s stuff in there that&#x27;s good.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Adam</span><span style=3D"color:#64748b;font-size:14px">4=
+7:53</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I would say anything for copying is obe, though. We&#x27;re not copying =
+anything. Essentially, all we&#x27;re going to be doing here is updating =
+permissions on this instance.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda<=
+/span><span style=3D"color:#64748b;font-size:14px">48:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Then do 30 and 31 =
+become obe by themselves?</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Adam</span><s=
+pan style=3D"color:#64748b;font-size:14px">48:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I would say so. =
+Anybody else disagree?</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">48:10</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I =
+think I agree. Once we get that Confirmed validation from your outstanding =
+ones, Amanda. That we have to double check with people. If that becomes =
+that everything is columns or activation specific, then those go away.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">48:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right, that gets=
+ rid of those. What else is due? Identify super users. Well, is that really=
+ a task for Adam and I to work on that we need to identify those super =
+users?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">48:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Well, we just talked=
+ about that one.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span>=
+<span style=3D"color:#64748b;font-size:14px">48:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I know. =
+That&#x27;s fine. That&#x27;s why I&#x27;m asking.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Todd</span><span style=3D"color:#64748b;font-size:14px">4=
+8:42</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, yeah, no worries. So I think we&#x27;d have to reword those based =
+on the strategy we just defined. So I took notes on that one. So we can. We=
+ can skip those. If you can highlight the super user ones in yellow, Rachel=
+, we&#x27;ll have to rename those.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda=
+</span><span style=3D"color:#64748b;font-size:14px">49:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right. Row 45. =
+Does that also become OBE now? I think if I. Nope.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Adam</span><span style=3D"color:#64748b;font-size:14px">4=
+9:09</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I would agree.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span>=
+<span style=3D"color:#64748b;font-size:14px">49:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Done.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><span =
+style=3D"color:#64748b;font-size:14px">49:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m sorry, when=
+ we say obe, what does that mean?</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Adam</s=
+pan><span style=3D"color:#64748b;font-size:14px">49:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Overcome by events. =
+So the fact that we don&#x27;t have any common project or entangled =
+projects we don&#x27;t have.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><=
+span style=3D"color:#64748b;font-size:14px">49:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Instead of the gray =
+color just then, I&#x27;d make the note.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rachel Gallagher</span><span style=3D"color:#64748b;font-=
+size:14px">49:27</span></div><div style=3D"color:#475569;font-size:16px;lin=
+e-height:1.6">You&#x27;re saying to close.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Todd</span><span style=3D"color:#64748b;font-size:14px">4=
+9:29</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Well, it sounds like there may not be. These projects may not exist, so =
+we may not need to validate. We don&#x27;t have to validate something that =
+doesn&#x27;t exist. If I&#x27;m understanding that correctly.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">49:40</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. =
+It&#x27;ll be based on disposition.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Todd</span><span style=3D"color:#64748b;font-size:14px">4=
+9:44</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Correct.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">49:48</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">49:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So then the only. If=
+ I. If. If I&#x27;m understanding correctly. 53, 54, 57. None of those are =
+all obe as well.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">50:04</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">I think 54 =
+stays.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span><span=
+ style=3D"color:#64748b;font-size:14px">50:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. All right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">50:07</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Because =
+that would be validating. That, like everything that is made for actuation,=
+ though, is like four and a half projects.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Amanda</span><span style=3D"color:#64748b;font-size:14px"=
+>50:14</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">We called out that.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel =
+Gallagher</span><span style=3D"color:#64748b;font-size:14px">50:15</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">They&#x27;re good.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Amanda</span>=
+<span style=3D"color:#64748b;font-size:14px">50:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. All right, =
+that&#x27;s cool.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Todd</span><s=
+pan style=3D"color:#64748b;font-size:14px">50:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, that&#x27;s a =
+good catch.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">50:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Apologies, folks. I =
+need to drop. But, Nick, you&#x27;ve got this. Let me know if there&#x27;s =
+anything anybody needs. Thank y&#x27;all.</div></div><div =
+style=3D"margin-bottom:0;padding:16px;background-color:#f8fafc;border-radiu=
+s:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-items=
+:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Todd</span><span style=3D"color:#64748b;font-size:14px">50:3=
+9</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Thanks. I think Your comment in 54 needs to be updated. Right, Rachel, I=
+ think you said that that.</div></div></div><div style=3D"margin-top:36px;t=
+ext-align:center;color:#64748b;font-size:14px;padding:20px;border-top:1px =
+solid #e2e8f0"><p style=3D"margin:0;margin-bottom:8px">Captured with Wave =
+AI Note Taker</p><p style=3D"margin:0;font-size:12px">Your AI-powered =
+companion</p></div></div></div></div></html>
+----_NmP-59caf218dc7eff6a-Part_1--

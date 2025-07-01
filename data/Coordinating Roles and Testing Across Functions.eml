@@ -1,0 +1,269 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a05:6000:1106:b0:3a4:dc5b:9678 with SMTP id z6csp938528wrw;
+        Tue, 27 May 2025 12:31:04 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHA8dHUrqGd+XC1Nm0jF/886uR4z4o3Mgk4ep/3PjSVipwxIvXMBJHdyzq/fwE34jlCAFWG
+X-Received: by 2002:a05:6102:6f0a:b0:4e2:bbec:be3b with SMTP id ada2fe7eead31-4e42419b7a9mr11138035137.24.1748374263729;
+        Tue, 27 May 2025 12:31:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748374263; cv=none;
+        d=google.com; s=arc-20240605;
+        b=QvqVUG+IgZpd741uNJF2A3F9P4pSxRTrAotr0bHg23LpXH3pl9oArrBz4G5LgV7oI5
+         jqcjc3NGFW2igyTywQdskPbonGrCna5k9MtkYq1nol1Q+Ayu2rnibP4zfsVF2gn4kpxY
+         6Huu1NcT9Cf8wtMTN/WYpji8jIk9U3UGQNqrj9SAVuopik4GN0/jHQPVhugPb8cNSTz9
+         OJ2EBRNyV4Au+xwOQZ35Two3Ocw4pUKgKkF3XvGjOHOaholeY1XK6FMbWG+fdQir0pX/
+         +cfCz+P0FxUViiR09Uc4nph3w+7rzVkWBJoB3kqUeAg9nMu7AUbdrpVCCVgc+1y/FTEW
+         NDtg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=REoMfLE1dOr/K+/rDWgAHHFK2pOqHSL3SOAIZWC18/I=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=lVkMC3o6XO8tO+qUQXWvI2kzbnOYmrX7HqifIdHIDoUK941Ei0DushgzxhJAwTme9P
+         dlgAG4GhsvAgWUKK4zWUCjNHrxM+Bq5IjLDSifBxURm4A53MN058uE2kmyYZvVp7hvgy
+         onfc0NZcbeFY9p88QtJvUToJRK64XLa0Zi+ToY9Js31dym58lSHIpCHOp8loFROW09Wm
+         VaBLi+R9P2H9Qj4+ZA52k4Hu3tZz1vhWGxAUY8IK0VHQqWaagqXt6mOe1oLSfHbFXTy2
+         NVdo8u6SEbPjvW4Iq9xhZOa4md+R/Feq8men9JoFwfE84acWKXykSwGdsEBre+gB9QY6
+         TvZw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=Hl14w0rI;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=MW67ibmG;
+       spf=pass (google.com: domain of 01000197133a1541-d4053c7c-7662-41b9-b164-f076e1fe19c9-000000@send.email.wave.co designates 54.240.9.112 as permitted sender) smtp.mailfrom=01000197133a1541-d4053c7c-7662-41b9-b164-f076e1fe19c9-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <01000197133a1541-d4053c7c-7662-41b9-b164-f076e1fe19c9-000000@send.email.wave.co>
+Received: from a9-112.smtp-out.amazonses.com (a9-112.smtp-out.amazonses.com. [54.240.9.112])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fa98e0275fsi103190846d6.413.2025.05.27.12.31.03
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 27 May 2025 12:31:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 01000197133a1541-d4053c7c-7662-41b9-b164-f076e1fe19c9-000000@send.email.wave.co designates 54.240.9.112 as permitted sender) client-ip=54.240.9.112;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=Hl14w0rI;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=MW67ibmG;
+       spf=pass (google.com: domain of 01000197133a1541-d4053c7c-7662-41b9-b164-f076e1fe19c9-000000@send.email.wave.co designates 54.240.9.112 as permitted sender) smtp.mailfrom=01000197133a1541-d4053c7c-7662-41b9-b164-f076e1fe19c9-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1748374263;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=8E47RVBmOfZDBVBg3bdBafnK2J9P4Wb3uE/C77dxAro=;
+	b=Hl14w0rI2OD9DH+gdA3vtKHxaNpQAbG4NEMFPqe2c9MTfDfTOeftYO6seGoUBIsq
+	FafGnZ9T2r5je4YM59eVMtQs4GnHsVoBX3rX618CIY7rc0JCzxUyY6ptMc+C9+/68dM
+	5tZbpcgasBXAp+e3dpurOMjShmf+pmHaZdln6mRA=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1748374263;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=8E47RVBmOfZDBVBg3bdBafnK2J9P4Wb3uE/C77dxAro=;
+	b=MW67ibmGFbw/C3VfONp2eooe3mulO4Zi5TbGZM0PSxLA3Up/4J6PsdXcWEML9VDT
+	P1sSQ3Ywq7HpeR1xTp/0cgMeiYzv2VV24Zx5UUFrtEBphxI9Q1TYc7Dk4Xphf9Yw16Y
+	qJ/7a7zxqMyfW0aQ+rDS2rOSI5J0gqQP97WX6+nc=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Coordinating Roles and Testing Across Functions
+Message-ID: <01000197133a1541-d4053c7c-7662-41b9-b164-f076e1fe19c9-000000@email.amazonses.com>
+Date: Tue, 27 May 2025 19:31:03 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-9205ee3d557ad12e-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.05.27-54.240.9.112
+
+----_NmP-9205ee3d557ad12e-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Coordinating Roles and Testing Across Functions
+
+- **Main Objectives:**
+  - Collect and identify all relevant names involved in the process.
+  - Map out the specific roles of each identified individual.
+  - Assign coordinators to work with each business function or IT tower (e.=
+g., supply chain, finance) to determine testing needs.
+
+- **Process Overview:**
+  - Coordinators (like Pierce) are facilitators, =
+not sole owners of the process.
+  - Coordinators should reach out to =
+respective functions (such as supply chain or IT) to:
+    - Understand upcoming system and process changes.
+    - Collaboratively identify appropriate test scenarios.
+    - Return with a list of individuals (names) responsible for =
+coordination and testing.
+  - Each function may be subdivided into =
+sub-functions. For example, Finance might include Treasury, Controllership,=
+ or Record-to-Report, each requiring their own test lead.
+
+- **Tracking & Coordination:**
+  - A tracker is to be developed to ensure:
+    - All relevant function leads and test leads are identified for every =
+process or sub-function.
+    - Clear mapping between IT towers (also =
+referred to as "systems of towers" in Honeywell) and business =
+functions/sub-functions.
+  - The ultimate goal is to facilitate efficient =
+coordination and organization of the testing phase.
+
+- **Next Steps:**
+  - Continue discussions to finalize the coordination and mapping of roles =
+and responsibilities.
+  - Further clarification and follow-up may be needed=
+ to ensure comprehensive coverage across all functions and IT towers.
+
+Transcript:
+0:00
+All those names back to us. We need all the names =
+identified. We need their roles mapped out. We need them to start driving =
+and working with each function or each IT tower, for example, to start =
+identifying your scenarios and start setting up testing. Not testing, but a=
+ scope of what's to be tested. So Pierce is a coordinator, but he's not the=
+ be all and end all of all of these things with everybody. So Pierce can do=
+ his best to say it you work streams, go reach out to functions, supply =
+chain, it work with supply chain function to understand the scope of what's=
+ testing. You've got a bunch of systems that are changing. The function has=
+ a bunch of processes that are changing. Go figure out together what needs =
+to be your test scenario. Then you can come back and say, okay, these are =
+the names that you're going to coordinate with function. You've got a set =
+of coordinators. It you've got a bunch of test names. And then we can start=
+ working on how do we coordinate the testing. That's his role to do that. =
+The tracker. What we're looking to do is to develop precisely that view =
+that says, have I identified the names the function leads as well as the =
+test leads for every process or sub function. So, for example, Finance. =
+Finance may have treasury as a sub function that you need a lead for. It =
+may have controllership as a secondary that you may need a lead form, maybe=
+, you know, record report some functions within that, some sub functions =
+that you may need a view for. Has Finance identified all of those from an =
+IT perspective have systems of towers. So the ID towers in Honeywell, =
+they're called systems of towers. So the CR thing. Okay, sorry. All right, =
+now we'll get there. Let's. Let's continue the conversation in a little bit.
+----_NmP-9205ee3d557ad12e-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Coordinatin=
+g Roles and Testing Across Functions</h1></td></tr></table></div><div =
+style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/5bd7a195-3da2-4382-b51b-ffd581b31d98?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><ul>
+<li><p><strong =
+style=3D"font-weight:bold">Main Objectives:</strong></p>
+<ul>
+<li>Collect and identify all relevant names involved in the process.</li>
+<li>Map out the specific roles of each identified individual.</li>
+<li>Assign coordinators to work with each business function or IT tower (e.=
+g., supply chain, finance) to determine testing needs.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Process Overview:</strong></p>
+<ul>
+<li>Coordinators (like Pierce) are facilitators, not sole owners of =
+the process.</li>
+<li>Coordinators should reach out to respective functions=
+ (such as supply chain or IT) to:<ul>
+<li>Understand upcoming system and =
+process changes.</li>
+<li>Collaboratively identify appropriate test =
+scenarios.</li>
+<li>Return with a list of individuals (names) responsible =
+for coordination and testing.</li>
+</ul>
+</li>
+<li>Each function may be =
+subdivided into sub-functions. For example, Finance might include Treasury,=
+ Controllership, or Record-to-Report, each requiring their own test lead.=
+</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Tracking &amp; =
+Coordination:</strong></p>
+<ul>
+<li>A tracker is to be developed to =
+ensure:<ul>
+<li>All relevant function leads and test leads are identified =
+for every process or sub-function.</li>
+<li>Clear mapping between IT towers=
+ (also referred to as &quot;systems of towers&quot; in Honeywell) and =
+business functions/sub-functions.</li>
+</ul>
+</li>
+<li>The ultimate goal is=
+ to facilitate efficient coordination and organization of the testing phase=
+.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Next =
+Steps:</strong></p>
+<ul>
+<li>Continue discussions to finalize the =
+coordination and mapping of roles and responsibilities.</li>
+<li>Further clarification and follow-up may be needed to ensure =
+comprehensive coverage across all functions and IT towers.</li>
+</ul>
+</li>
+</ul>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px=
+;border-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0,=
+ 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;fo=
+nt-size:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex;a=
+lign-items:center;gap:8px"><span style=3D"font-size:24px">=F0=9F=8E=99=
+=EF=B8=8F</span>Transcription</h3><div style=3D"margin-bottom:0;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unidentified =
+Speaker</span><span style=3D"color:#64748b;font-size:14px">0:00</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">All those =
+names back to us. We need all the names identified. We need their roles =
+mapped out. We need them to start driving and working with each function or=
+ each IT tower, for example, to start identifying your scenarios and start =
+setting up testing. Not testing, but a scope of what&#x27;s to be tested. =
+So Pierce is a coordinator, but he&#x27;s not the be all and end all of all=
+ of these things with everybody. So Pierce can do his best to say it you =
+work streams, go reach out to functions, supply chain, it work with supply =
+chain function to understand the scope of what&#x27;s testing. You&#x27;ve =
+got a bunch of systems that are changing. The function has a bunch of =
+processes that are changing. Go figure out together what needs to be your =
+test scenario. Then you can come back and say, okay, these are the names =
+that you&#x27;re going to coordinate with function. You&#x27;ve got a set =
+of coordinators. It you&#x27;ve got a bunch of test names. And then we can =
+start working on how do we coordinate the testing. That&#x27;s his role to =
+do that. The tracker. What we&#x27;re looking to do is to develop precisely=
+ that view that says, have I identified the names the function leads as =
+well as the test leads for every process or sub function. So, for example, =
+Finance. Finance may have treasury as a sub function that you need a lead =
+for. It may have controllership as a secondary that you may need a lead =
+form, maybe, you know, record report some functions within that, some sub =
+functions that you may need a view for. Has Finance identified all of those=
+ from an IT perspective have systems of towers. So the ID towers in =
+Honeywell, they&#x27;re called systems of towers. So the CR thing. Okay, =
+sorry. All right, now we&#x27;ll get there. Let&#x27;s. Let&#x27;s continue=
+ the conversation in a little bit.</div></div></div><div =
+style=3D"margin-top:36px;text-align:center;color:#64748b;font-size:14px;pad=
+ding:20px;border-top:1px solid #e2e8f0"><p style=3D"margin:0;margin-bottom:=
+8px">Captured with Wave AI Note Taker</p><p style=3D"margin:0;font-size:12p=
+x">Your AI-powered companion</p></div></div></div></div></html>
+----_NmP-9205ee3d557ad12e-Part_1--

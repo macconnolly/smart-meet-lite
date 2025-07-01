@@ -1,0 +1,1569 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:adf:a403:0:b0:3a4:dc5b:9678 with SMTP id d3csp886374wra;
+        Fri, 30 May 2025 08:03:37 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGql7AaOlSqJMJt+K2aMBh9xCwmaD/OezPLEo/44qC9/IBK+iDhXK7gUPQXD2yIAM2fX/YU
+X-Received: by 2002:a05:600c:638e:b0:439:8878:5029 with SMTP id 5b1f17b1804b1-450d6b3571cmr38104125e9.2.1748617417460;
+        Fri, 30 May 2025 08:03:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748617417; cv=none;
+        d=google.com; s=arc-20240605;
+        b=XxkWDCQ/mLCQbAjrpSM1FxKMVomQ4zRj3sWbLuohoE1QSl8Sn4R0/0IfNPjePfy7LN
+         5w2rzZNwM7p+41hYY4OMueLD5EltxoHcB+T4elcZ92aO5k/6NiXXwNxKuzunzfBR/kK7
+         2YlNQFQfGVuB82U6GSMIqbMJHZjRdY1diCQAANgM0fIJqWiHWR0fkf3H4uuznNGQ9Cnk
+         NmdhcS6dcwwEEcx/q2jd4kJZWiDJzu6DIk/gieb0wdExwvYnHejjhwHhkz8UbRI132CC
+         upI2pfAmT5KWs0IXR8LRDpNVWC4zekcp7mGp6bI/SKJFPoJPiI6+erZiU1Hv987GUgb6
+         bs4g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=nS4CHYHYXGh2RT9Vh2HY9SlJIuMha1t5QgRpyD+jAsY=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=j0YsZvL83akbIxVEtTZM4cy70ZvMgXJdtGbuXZxFj+z6DoF8gvJTwcHVFj8j9ehjEV
+         rzRXl41hDlEHmr65uqMDoX1QTHAHDgNWklNmWOLDmXwQvmsf1NOqjJDsKi47nKgxVZLE
+         FJpiXAtBF+nkveMl+21ZQOgIi1GQbusdJCM0Z12MmWXlrASQm1fPmcgsobMBZfzmlVJ5
+         ttDOjjF9t/8T/7tJyjmxSXI8oU61Dlx7quyRLog3LVX/FCx1x2z2CRDFe1BncaHhk2Au
+         KcydLeJ1bdqdFNdYldNx46cgyjm9LC4Nh/5DFnE0L7RbCmYoAIR7lM31u/N0Rs53vB1F
+         UNNQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=p0xlWsmp;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=c2IG34SX;
+       spf=pass (google.com: domain of 0100019721b83878-a3585c71-abe7-495e-b956-5edb932689f9-000000@send.email.wave.co designates 54.240.9.99 as permitted sender) smtp.mailfrom=0100019721b83878-a3585c71-abe7-495e-b956-5edb932689f9-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <0100019721b83878-a3585c71-abe7-495e-b956-5edb932689f9-000000@send.email.wave.co>
+Received: from a9-99.smtp-out.amazonses.com (a9-99.smtp-out.amazonses.com. [54.240.9.99])
+        by mx.google.com with ESMTPS id 5b1f17b1804b1-450cfe1f2a3si28598455e9.178.2025.05.30.08.03.36
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 30 May 2025 08:03:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 0100019721b83878-a3585c71-abe7-495e-b956-5edb932689f9-000000@send.email.wave.co designates 54.240.9.99 as permitted sender) client-ip=54.240.9.99;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=p0xlWsmp;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=c2IG34SX;
+       spf=pass (google.com: domain of 0100019721b83878-a3585c71-abe7-495e-b956-5edb932689f9-000000@send.email.wave.co designates 54.240.9.99 as permitted sender) smtp.mailfrom=0100019721b83878-a3585c71-abe7-495e-b956-5edb932689f9-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1748617410;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=VY6dximrvJ0/ntmoOIerXnAaJoKB6Bpyqb3jJab7/68=;
+	b=p0xlWsmpIMNCls4kNrACmMeI7975RVwmyzi0h5gMWmWzVL/DU8eT+wTC3m+4J5ue
+	eUzaXj8v1PtzXW3p7mD/ROovMvyqF0z8RXfKtW9a63QszH/m/lUiCFenki+NwRyAnzz
+	pgD31yFpUqcMjoRj0T58C8A+9RjfajraINLcoK3I=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1748617410;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=VY6dximrvJ0/ntmoOIerXnAaJoKB6Bpyqb3jJab7/68=;
+	b=c2IG34SX9K5p/kTvkXTLpf9iX4bpWhXfWPBLgG7LF6WHj10QfVeHpKD8ZX/OBPin
+	pO696xjuUvbxOWpTjxDipWWKdjWRTIgFwYxVEi87YT52CZcEHcypp/EMEDhNzqRMhqB
+	UDtgvWT9hCrsPA+4DXr7GlplFMhL29+rtHjQycis=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Automation, Tracking, Severity, and Hypercare Coordination
+Message-ID: <0100019721b83878-a3585c71-abe7-495e-b956-5edb932689f9-000000@email.amazonses.com>
+Date: Fri, 30 May 2025 15:03:30 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-15c07f453d116f38-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.05.30-54.240.9.99
+
+----_NmP-15c07f453d116f38-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Automation, Tracking, Severity, and Hypercare Coordination
+
+# Meeting Summary =E2=80=93 May 30, 2025
+
+## Attendees
+- 8 active participants (including Organizer, External, and Unverified =
+members)
+- 2 additional invitees with no response
+- Detailed status of =
+attendees described under **Images**
+
+---
+
+## Main Topics Discussed
+
+### 1. Automation for Order Management and Hypercare
+- Proposal to automate the process of updating orders when incorrect entity=
+ or bank account information is received.
+  - The system would correct the =
+Purchase Order Service Order (POSO), notify the customer, and prompt them =
+to update records.
+- Goal: Reduce manual Hypercare effort and minimize =
+business disruption.
+- Point tabled for end-of-meeting return, emphasizing =
+future potential.
+
+### 2. Project Planning and Readiness Tracking
+#### a. Current Project Status
+- Activities covered: Knowledge Transfer =
+(KT), System Integration Testing (SIT), User Acceptance Testing (UAT), =
+Go-Live Readiness, Hypercare.
+- Post-kickoff steps included resource =
+identification and assignment of roles/responsibilities.
+- **Current delay**: Resource tracker not fully populated by May 23, as =
+targeted; ongoing follow-up to close gaps.
+- Alignment across IT =
+workstreams and business functions is in progress to clarify =
+responsibilities, processes, and data flows.
+
+#### b. Dashboard and =
+Tracking Tools
+- Sample dashboards and trackers in use:
+  - BRV Tracker (for business readiness and hiring plan)
+  - UAT Readiness Tracker (UAT progression, owner assignments, issue =
+tracking)
+- Emphasis on presenting clear visualizations for UAT progress, =
+including:
+  - Application name and leaders (Business & IT)
+  - Progression status (e.g., SIT, UAT) with simple heat map colors =
+(green/orange/red)
+  - Insights on defect/incidents by severity (Critical, =
+Major, Minor, etc.)
+  - Week-on-week trend analysis for open vs. closed =
+issues and backlog build-up
+  - Ability to drill down for specific issue =
+types and major disruptions
+
+### 3. Framework for Issue Severity and =
+Triaging
+- Structured levels for issue severity:
+  - Critical: Showstoppers=
+, risks to business continuity, must be fixed for Go-Live.
+  - High: Major, but with workarounds.
+  - Medium & Low: Non-blocking, =
+lower priority.
+- Agreement that consistency and qualitative assessment are=
+ more important than rigid user counts.
+- Questions raised about the =
+arbiter of severity:
+  - Suggestion: Trained users submit severity, but =
+must be audited, especially for High/Critical issues.
+  - Training customer service and IT desks with FAQs anticipated.
+  - Discussion of possibly leveraging an AI tool to analyze and assign =
+severity in future implementations, once adequate training data is gathered=
+.
+
+### 4. Centralized Issue Tracking and Governance
+- Need for:
+  - A single, central issue tracker visible across IT and business.
+  - A dedicated team (including a coordinator, possibly divided by time =
+zones) to own the backlog and severity tagging.
+- The escalation/triage =
+process should follow "follow-the-sun" model:
+  - Regional leads (existing =
+legal entities or LES resources, e.g., Olga for EMEA) coordinate handoffs =
+across APAC, EMEA, Americas.
+  - Each region provides daily pulse checks to=
+ feed into global status calls.
+
+### 5. UAT & SIT Schedule and Reporting
+- First UATs scheduled for June 20, with some "light touch" systems =
+beginning around June 13.
+- ~40 UAT items currently identified (precise =
+number to be confirmed post-meeting).
+- Supply chain SITs underway (20+ =
+active), with additional activity in ERP space.
+- Proposal: Start reporting=
+ SIT metrics using the UAT-style dashboard/framework now to validate =
+approach ahead of scale-up.
+- Weekly (initially, then potentially daily) =
+progress updates recommended, starting next Friday.
+=20
+### 6. Communication and Socialization for Hypercare
+- Framework must be simplified for communication with ops leadership =
+(OpSep) and for visibility in BRB workshops.
+- Intake channels (helpdesk, =
+customer service) need preparation in July with training/FAQs to handle =
+anticipated known issues prior to August business ramp-up.
+
+---
+
+## Action Items
+
+- **Resource Tracker Completion**: Continue chasing =
+business functions to submit resource names for the tracker (past May 23 =
+deadline).
+- **Dashboard Refinement**: Rakesh to add the missing Hypercare =
+dashboard sample to materials shared with Paul and others.
+- **Dashboard Practice Run**: Begin using SIT data to pilot the UAT-style =
+dashboard next week.
+- **Weekly Reporting**: Schedule recurring Friday =
+updates/report-outs starting next week; reassess frequency as Go-Live nears=
+.
+- **Severity Definition Training**: Develop and distribute consistent =
+severity definitions and train intake teams (FAQs, scenario Walkthroughs).
+- **AI Use Case Exploration**: Connect Paul with Monica and the appropriate=
+ AI project team to consider using current implementation as AI severity =
+pilot.
+- **Central Issue Tracker Setup**: Confirm ownership and process for=
+ a single cross-functional incident tracker.
+- **Regional Coordination**: =
+Clarify the assignment and IT involvement for regional coordinators =
+(=E2=80=9Ctwo-in-the-box=E2=80=9D model where needed).
+- **Ops Socialization**: Prepare simplified Hypercare story for OpSep and =
+BRB workshop on June 25.
+- **Progress Update**: Sukai and Jeff to =
+coordinate with PS2 for next Friday scheduling and dashboard rollout.
+
+---
+
+## Follow-up
+
+- Confirm precise numbers of current SITs and UATs; Rakesh to=
+ provide to Jeff.
+- Paul to connect with Monica regarding AI learning and =
+pilot options.
+- Prepare communication materials and training content for =
+July intake channel readiness.
+- BRB workshop agenda for June 25 to include=
+ preview of Hypercare and reporting dashboards.
+- Ongoing: Review =
+effectiveness of reporting framework and adjust as necessary.
+=20
+---
+
+## Images
+
+### Meeting Platform Screenshot
+
+- **Invite Management**: Top =
+bar allows sharing invites or dialing participants directly.
+- **Participant Status**:
+  - Eight attendees shown, with clear markers for=
+ role (Organizer), external affiliation, and verification status.
+  - Two persons invited with no response, plus one additional unverified =
+recent addition to the chat.
+- **Relevance**:
+  - Visual demonstrates =
+attention to security (external/unverified status).
+  - Confirms healthy participation and identifies potential onboarding =
+issues for unverified users.
+  - Useful for tracking attendance and =
+follow-up responsibility, especially as roles and assignments are =
+solidified in project trackers.
+
+---
+
+Transcript:
+0:00
+Entity or an old bank account and then have it change that POSO to the =
+right entity and send a note back to the customer that says we've amended =
+this order with the right information. You need to make sure you change it =
+in the system because that automation would greatly cut down on the effort =
+that we would need in Hypercare on that on the commercial side and just =
+reduce the overall business disruption. So anyway, I just, I, I didn't want=
+ to lose the thought. We can come back to it at the end, but with that, =
+Rakesh, I'll turn it over to you. Why don't you take us through the slides?
+
+0:34
+Yeah, so absolutely. Give me a second here. So again, I think a lot =
+of these, you know, a few of these we have touched upon that you point out.=
+ I think we've added in the appendix Sukhai and Jeff, so we'll certainly go=
+ through that. But again, I think this is just level setting. So to the =
+points you made, kt, uat, go live readiness, Hypercare, really the series =
+of activities happening there, I think where we are and what we've done =
+after the kickoff is identify resources, you know, the roles, =
+responsibilities. There are some gaps in there. We have a tracker that =
+we're still refining that. Actually, frankly, we're a bit behind because we=
+ said we would do that. We'd have all the names in from all the functions =
+and it by 523 and it's, you know, a few days later, so we're still chasing =
+people for that. And I think that's going to set up you peers to make sure =
+that you have all the names and you're successful here. But again that's =
+something we're tracking behind on. But again I think we've seen this view =
+of yes, the teams are going through SIT right now, the IT teams, they're =
+developing all the test scripts for it. From what we heard, we're setting =
+up those connects between IT work streams and the respective functions to =
+align on what are the processes in play, what are the systems to be touched=
+, what information flows through, what's available. So that's still work in=
+ progress over the next couple of weeks. But again this is how the sequence=
+ of events is planned for Obviously I think you and the PMO have the hiring=
+ plan tracking in place so that will tell us when seats are in the right =
+roles and KT has happened or what the status of that is to support the UAT =
+readiness. So again, all of these will be in that tracker, both in the BRB =
+tracker as well as the UAT readiness tracker. That will support it. But =
+again, I just want to lay that out and I think part of.
+
+2:29
+That'S a sample dashboard of what this is going to look like. So we're =
+going to get together, we're going to have some frequency of communication =
+on uat. You're going to come into this meeting and say here's where we are =
+on uat. What's that going to look like?
+
+2:45
+Yeah, so we do have some BRV =
+tracker. What I've not included here. Paul, let me make sure I have a view =
+into that. There are certain things around. There are some dashboards on =
+Hypercare, but particularly around. Let me go back in here, let me get that=
+ to you. It looks like I did not include that particular dashboard here as =
+a sample. But we do have that and I.
+
+3:14
+Would like us to work backwards =
+from the end in mind with me, myself and Sukai as the customer. So let me =
+tell you what I would want that to show. I would want to see the =
+application, the uat, what the application is. I would want to see who the =
+business UAT leader is, who the IT UAT leader is. And then I would want to =
+see the progression of the stages of that application testing for the =
+things that you laid out in there. So it could just be a block almost of =
+showing like you know, how much progression and some sort of a heat map on =
+how it's going to hey, we're in sit. Sit's green, sit's red, sit's orange. =
+And then on the forward ones for things that we're not yet into, like if =
+we're going to say we're doing sit, SAT sign off, then we're going to uat. =
+Then what is the projected start date for the uat? Right. Then I would want=
+ to see a readout of the number of, you know, defects or issues or and if =
+we want to just call like anything a defect, a training defect, an IT =
+defect, a data defect, they're all defects, they're all issue. We don't =
+call it defect. We could say they're issues.
+
+4:37
+Incidents.
+
+4:38
+Yeah right. They're non duplicated tickets. It's incidents. Whatever you =
+want to use for terminology. But I just want that, that, that sense check =
+of how noisy is it, how well is it going and you know, what is the total, =
+what is the, you know, critical, major, high, major, low, minor, whatever =
+terminology you choose. And then I'd like to see week on week is what's the=
+ trend line? Are we growing our defects or are we decreasing our defects? =
+And it doesn't have to be like super Sophisticated. It could just be an =
+arrow to the side, to the up, to the down. You know, we may, on certain =
+ones, want to drill down into the specifics of those and then any =
+commentary on the side.
+
+5:28
+And the key there, Jeff too, is not just =
+opened, but, but how we're building a backlog, right, because there's going=
+ to be weeks that we open more than we close, and then it develops a =
+backlog that we have to close tickets in order to get. So you see on this =
+chart right here, you see the trend lines of open and close, but then you =
+see the, the open count of what we're actually working with in any given =
+week.
+
+5:47
+Yeah, yeah. So I think this could. I just, you know, we're =
+gonna. What, what we're gonna. I mean, this is gonna be good at a high =
+level, but then we're going to need to. Because all applications are not =
+created equal. If this is HCM or this is ERP makes up 90% of this, then =
+that's going to be bad. If ERP and ACM are like 5% of this and it's other, =
+you know, it's, it's Documentum or it's Team center or it's something =
+that's really impacting one function. It's still important, but. But it's =
+not gonna be a threat to business continuity. Right. So what needs to come =
+out of this is we need that triaging with your expertise, with data =
+supporting it that we're, Sukai and I are applying our focus in the areas =
+that need our focus. Whether that's chasing users to get their testing done=
+ or it's, you know, making sure our leadership is aware that we have a =
+major issue that could impact our ability, you know, or the quality of our =
+go live because the HCM is running behind. You know, that's what we need to=
+ be able to get, get out of this. And so if we could just see it. It's =
+helpful for me to understand, you know, the volume of testing that's going =
+on at any one time because, you know, it will help me think about how hard =
+I press the functions on other things because I don't want to like, give =
+them a bunch of mandatory things to do right in the middle of a bunch of =
+testing that they need to do on the IT things. And we might, you know, =
+think about how we want to spread things out. Or I may go to, we may go to =
+the functions in OPSEP and say, say commercial. You've got like 10 UAT's =
+next week. Do you have the capacity, do you have the people set aside for =
+this. Right. It's just there's going to be a lot going on. The number of =
+issues that have flown into my desk today is like record high for a Friday.=
+ So I can tell we're, we're getting close to the go live because of the =
+number of thorny issues that are rolling in. And it's only gonna. It's only=
+ gonna get worse. Right? It's gonna. And so we need a robust process for it=
+.
+
+8:07
+Yeah. Just a couple comments to that point. I think that, you know,=
+ we'll bring something back to you on that. Around this entire process is =
+some pieces of this are very linear. Right. Where the first thing that we =
+have to look at is KT enables uat. In order to enable kt, we have to get =
+the hiring and the receivers and the catchers, all that stuff. Right. So =
+that left to right is something that we have contemplated in the data model=
+ that we'll have reporting for. The other thing that I just wanted to =
+comment on is around that you made a comment around the taxonomy of =
+severity. Not only is that important for normalizing, you know, what's =
+critical to go live, but it's also going to be in what we're proposing here=
+, part of the exit criteria of defining a successful completion of UAT to =
+call it done. We don't want it to be subjective. Right.
+
+8:56
+Yeah, this is absolutely critical. So I like, I like four levels, I think, =
+you know, low, medium, high, critical. You know, for me, critical is a =
+showstopper. It's like, it's a risk to business continuity. It's a. We =
+can't go live with it because of the severity of the. It's a block. Right. =
+High is again, I like the impact, but it's that there is a workaround, but =
+it's a significant many work. So actually your definitions align perfectly =
+with the way that I think about it. The user count is less, you know.
+
+9:40
+Yeah. In this context it's not. Yeah, it's. Yes, fair enough.
+
+9:44
+This is a somewhat qualitative and I'm completely comfortable with this =
+being a qualitative process. Right. It's just that it needs to be a =
+consistent qualitative process. So my question will be, who is the single =
+arbiter of the severity? Who's going to audit that and how does it get set?=
+ So when someone reports a ticket, do they put in the severity? Because we =
+train everybody and we give them this and they put in the severity. If =
+that's the process, which I'm fine with that process, someone's going to =
+need to go through those and say, nah, that's bullshit. That's not critical=
+. Right. Because otherwise people put everything in as critical because =
+they want it resolved in two hours.
+
+10:29
+See, that's, that's part of it, =
+I think as well, Jeff is part of the, you know, when you look at the =
+hypercare and triaging that we, you know, talk about and you know, what is =
+level zero, Level one, you know, it is, okay, there is, you know, it comes =
+in again, illustrative. But there is that, that vetting process up front =
+based on FAQs, based on the training to understand what is this impact. And=
+ they go through this sort of filtering before it gets in, into the rest of=
+ the process. So, yeah, you are spot on. I think some of that what I've =
+seen we've done is, you know, again, FAQs and education and train everybody=
+ ahead of time, particularly the service desk, on recognizing that severity=
+.
+
+11:16
+I think it'll be good to have another person that's going to be =
+the auditor. And I think just the reason why is while we will train people =
+as much as we can, certain people will still put things as critical because=
+ they feel it's critical. In their minds it's critical. But I think that =
+auditor, as they're looking at the holistic view, I think that person will =
+be able to better say, yeah, this is not a critical. Again, they won't be =
+auditing everything. They'll probably stay at the high and the critical. =
+But I do think it's going to be key for us to have someone that's auditing =
+this massive list that's going to be coming in.
+
+11:52
+Sukhai, why couldn't we train an AI model to do that?
+
+11:57
+Yeah, I would say the thing about the AI model is you would have to add to =
+already created, tested it and learned before you deploy it.
+
+12:08
+So maybe just because we're going to be processing a lot of data across a =
+lot of different applications, what would it take for us? What would it =
+take in terms of the way we would want to structure the data in the process=
+, that we could then take that data afterwards and turn that into an AI =
+model that you could use ongoing for winter. Right. But also for all of =
+your other IT cutovers. Right. Wouldn't that be somebody typed in, in plain=
+ language what the issue is? We have that broken out AI reads it and builds=
+ it and then assigns the severity to it so that you eliminate the reliance =
+on the individual to do it. But. And you also eliminate the need for =
+somebody to, you know, to try to check it and go through that. And we drive=
+ that consistency.
+
+13:06
+Yeah.
+
+13:07
+I just think it's a perfect use case=
+, and we should. Even if we can't monetize it for Athens, if we could use =
+the Athens to train the data, you could leverage that on Winter, and you =
+could leverage that on every other IT implementation that you get.
+
+13:22
+That use case. And we're deploying it on one of Dinesh's ERP projects =
+because it's small, it's contained, it's easy. No one's depending on it. =
+But let me talk back to the team that's in front of. And I think, Paul, I =
+put you in touch with Monica, but let me connect with that team. They =
+weren't planning to use this as their test model. They wanted something =
+smaller and easier. But let me connect with them to find out if they could =
+use this one versus the ERP project.
+
+13:51
+It could be both. It could just=
+ be, how do you want us to set up the data? And when people enter the =
+ticket. Right. And then we're gonna. There's gonna be something. They're =
+gonna have a point of view on it, and then we're gonna have a point of view=
+ on it. And, you know, that ticket status. I don't know. It was just a =
+thought, I think. I like that there's some opportunity here.
+
+14:11
+Yeah. I will say, Jeff, like, it is critical to have one central kind of =
+issue tracker where you can see kind of critical IT issues as well as =
+critical business issues. Right. Like things like payroll isn't functioning=
+. Right. Or certain suppliers are not able to process orders or things like=
+ that. And I do think that a central team has to kind of own that issue =
+list, and that'll kind of be part of their role, is ensuring that =
+criticality is appropriately tagged. Because even if you think about, like,=
+ on a weekly basis. Right. We want that full list, and we'd want, like, a =
+curated summary of that list to sort of report back to yourself, to report =
+up, you know, to GREV or what have you. So we do need that centralized.
+
+15:06
+Yeah. So I like this framework that you're showing here. My only =
+question is that we don't really have a regional structure other than under=
+ the legal entity work stream. Everything else is global. It's the =
+functions that are driving it. So region is like, we don't have different =
+applications in the region. So the only thing that would be regional would =
+be a subset of the les, which there. I think, because we have that regional=
+ structure already set up by country.
+
+15:40
+And.
+
+15:40
+You know, by entity, I would build that in there. But otherwise, I think =
+you go level two to. Or level zero to level two.
+
+15:48
+Two.
+
+15:51
+It's to sort of pick up things that come up immediately. Right. So =
+something happens in apac. The APAC regional team will be kind of on point =
+first and then by the time US wakes up, they're able to sort of spend some =
+time on it.
+
+16:06
+So it's really, they're triaging, but it's more not by =
+region, it's by time zone.
+
+16:12
+It's the fall of the sun.
+
+16:13
+It's a fall of the sun. Right. So okay, so it's not that we're expecting, =
+you know, it's. It's that. Okay, got it.
+
+16:20
+But, but they do have that =
+structure, right? So there is a regional lead and there is country leads. =
+Right? So like there, there is something we can leverage that exists.
+
+16:28
+So, so is the regional lead and country leader. Is that a Honeywell =
+person? Is that an EY person? Is that already in our plan? Is that =
+something new that we need to build? How do I think about who's the money =
+button?
+
+16:40
+I would think of them as the current LES resources. So Olga =
+for EMEA and things like that.
+
+16:48
+Yeah, but are they going to do the, =
+you know, all of the things in the region, including sop, you know, sopo, =
+including it, including uat.
+
+17:04
+I would consider them as like a =
+coordinator. Right. Like they're sort of the, they're that cross functional=
+ person that coordinates with regional IT or regional trade compliance, for=
+ example, or the regional functional teams.
+
+17:22
+So Piers, we'll have to =
+think about it from an IT perspective in the app landscape. A lot of these =
+are global, but there are some site specific or region specific apps, again=
+ more of an exception rather than the rule. But again we'll see from an IT =
+perspective, we'll have to see if, if something like that is needed or if =
+it's an overkill. But again it has to be follow the sun. We'll just have to=
+ see, you know, how that, that triage. If the triaging process and that =
+escalation process is, is set up well then it's it, you know, it's, the =
+process will work. It's just who's the coordinator that, that feeds IT in =
+and triages per the guiding principles.
+
+18:03
+It gets to Benny Peers =
+because Benny is an apac. We just think about who are the individuals as we=
+ move IT around. But I do think it needs to be IT specific because having =
+someone as a business leader, while important, they can move something from=
+ here to here, but they can't really look at it, prioritize it, understand =
+would need to Be someone that's it in nature. And so I like the format. I =
+just think that we just, if we can just put an IT spin on it, it'll be a =
+little bit more effective for us.
+
+18:34
+Let's just, let's put it two in =
+the box. So if we want to do a follow the sun and we're going to have a =
+regional, you know, report out, then they should have a war room and they =
+should be looking at what's coming in there and they should give us a pulse=
+ check on this is what we're seeing in, you know, apac and that should flow=
+ into, you know, I, I assume like we'll have a 7, 8am or 8am hypercare call=
+ and it'll be, here's the report out from apac. We've got this, you know, =
+has come in, this has come out. This is the top three or four issues. Then =
+we'll, we'll come in at lunch and it'll be, this is emia, this is what's =
+going on in emea. Then we'll have a connect at the end of the day and it's =
+like, hey, this is what's going on in the Americas. And this is what we're =
+deploying as fixes to APAC overnight, you know, what we're expecting to see=
+ there. And then it'll be rinse and repeat until we get into a stable =
+environment. When is the first UAT that we're doing, when does it start?
+
+19:40
+June 20th, I believe in fact some systems UAT that are light touch =
+are happening around June 13th. From the supply chain perspective. IT =
+supply chains got some.
+
+19:50
+How many do we have going on right now?
+
+19:53
+We have. Oh, let me get that number to you. The last count of it was =
+I think about 40 something. I will get you that exact number, Jeff.
+
+20:04
+So Rakesh, what I'd like to do is I want to start rolling the marble on =
+this sooner rather than later. You know, we can use SIT to kind of run it =
+through this. You won't have the regional flavor necessarily from sit, =
+that's fine. But the framework of hey, here's the dashboard. We got these =
+number of sits going that are going to turn into a uat. Here's the business=
+ owner, here's the IT owner, here's where we are. The SIT is red, green, =
+orange, red. Here's the defect burn down in the commentary. That piece of =
+it, we could start practicing.
+
+20:47
+Absolutely. Yeah.
+
+20:48
+So why don't we just start practicing that next week because the hypercare =
+stuff will be a little bit different. But it'll still follow that same =
+framework and then we can get a flavor for what's it going to look like? =
+Does it meet Sukai's and I's need? But even with that Sukai, like we're =
+running 42 sits. You should be reporting out on how the sits are going to =
+Sheila and to, you know, Scareco. Hey, you know, they don't even know we've=
+ got 42 sit. That's a great sign of progress. Hey, we got 42 SIDS going. =
+Here's the spectrum. We're collectively, you know, so putting that framing =
+on it at least as a weekly update now and maybe daily as we get a little =
+bit closer, I think would be a great communication for you to lead just, =
+you know, in that space.
+
+21:41
+I agree, Sukha. Absolutely. We'll get you =
+that. We've got about 20 plus in supply chain that, you know, based on the =
+conversations over the last couple of days that they're starting sit. And =
+then there's a few in ERP space. So that's ISE and erp.
+
+21:58
+Can we do that next Friday?
+
+22:00
+Yeah, let's put a next Friday on the =
+calendar. Just every Friday. And then once we feel like we got it down to =
+science and we don't need it, we can get rid of it.
+
+22:07
+So.
+
+22:08
+All right, Hannah can work on that.
+
+22:11
+Okay.
+
+22:12
+No, great.
+
+22:12
+Okay, good start. I think we're very much on the, you know, Sean, we're =
+very much off to the same page on severity. That's great. It matches up =
+exactly with the way I like to run these, these things. I think this is a =
+good framework so we'll want to get it to a little simpler of a story for =
+opsep. So let's, let's run roll the marble, you know, once or twice. But =
+then before we get into OR in the BRB workshop on the 25th, I want to go =
+through this is what hypercare is going to look like to start to socialize =
+that.
+
+22:50
+Yeah, agreed. And as well you. One of the comments on that =
+first page was that we need like the intake channels to, to be trained up =
+with FAQs and things like that on how to manage known issues that are going=
+ to come up. So a customer places the order with a wrong le. So all of that=
+ like training and FAQ kind of has to happen in July so that they're ready =
+for those known issues to pop up in August.
+
+23:18
+Okay, awesome.
+
+23:22
+All right, so lots of good action items takeaways here. Sukai, Jeff, we'll,=
+ we'll come back, circle back. We'll work with PS2 for scheduling next =
+Friday. And then we'll. We'll share what we. In terms of the dashboards and=
+ rolling the marble for us.
+
+23:37
+Okay? Thanks, guys.
+
+23:38
+Thanks, everyone.
+----_NmP-15c07f453d116f38-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Automation,=
+ Tracking, Severity, and Hypercare Coordination</h1></td></tr></table></div=
+><div style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/1EEEFA5F-1770-42E2-8CAC-631C7CBEA71D?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h1 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2.5rem">Meeting Summary =E2=80=93 May 30, 2025</h1><h2 =
+style=3D"font-weight:500;padding-top:20px;font-size:2rem">Attendees</h2><ul=
+>
+<li>8 active participants (including Organizer, External, and Unverified =
+members)</li>
+<li>2 additional invitees with no response</li>
+<li>Detailed status of attendees described under <strong =
+style=3D"font-weight:bold">Images</strong></li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Main Topics =
+Discussed</h2><h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">1. Automation for Order Management and Hypercare</h3><ul>
+<li>Proposal to automate the process of updating orders when incorrect =
+entity or bank account information is received.<ul>
+<li>The system would correct the Purchase Order Service Order (POSO), =
+notify the customer, and prompt them to update records.</li>
+</ul>
+</li>
+<li>Goal: Reduce manual Hypercare effort and minimize business disruption.=
+</li>
+<li>Point tabled for end-of-meeting return, emphasizing future =
+potential.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-si=
+ze:1.75rem">2. Project Planning and Readiness Tracking</h3><h4 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.5rem">a. Current =
+Project Status</h4><ul>
+<li>Activities covered: Knowledge Transfer (KT), =
+System Integration Testing (SIT), User Acceptance Testing (UAT), Go-Live =
+Readiness, Hypercare.</li>
+<li>Post-kickoff steps included resource =
+identification and assignment of roles/responsibilities.</li>
+<li><strong style=3D"font-weight:bold">Current delay</strong>: Resource =
+tracker not fully populated by May 23, as targeted; ongoing follow-up to =
+close gaps.</li>
+<li>Alignment across IT workstreams and business functions=
+ is in progress to clarify responsibilities, processes, and data flows.=
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+5rem">b. Dashboard and Tracking Tools</h4><ul>
+<li>Sample dashboards and =
+trackers in use:<ul>
+<li>BRV Tracker (for business readiness and hiring =
+plan)</li>
+<li>UAT Readiness Tracker (UAT progression, owner assignments, =
+issue tracking)</li>
+</ul>
+</li>
+<li>Emphasis on presenting clear =
+visualizations for UAT progress, including:<ul>
+<li>Application name and =
+leaders (Business &amp; IT)</li>
+<li>Progression status (e.g., SIT, UAT) =
+with simple heat map colors (green/orange/red)</li>
+<li>Insights on defect/incidents by severity (Critical, Major, Minor, etc.=
+)</li>
+<li>Week-on-week trend analysis for open vs. closed issues and =
+backlog build-up</li>
+<li>Ability to drill down for specific issue types =
+and major disruptions</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;p=
+adding-top:20px;font-size:1.75rem">3. Framework for Issue Severity and =
+Triaging</h3><ul>
+<li>Structured levels for issue severity:<ul>
+<li>Critical: Showstoppers, risks to business continuity, must be fixed for=
+ Go-Live.</li>
+<li>High: Major, but with workarounds.</li>
+<li>Medium &amp; Low: Non-blocking, lower priority.</li>
+</ul>
+</li>
+<li>Agreement that consistency and qualitative assessment are more =
+important than rigid user counts.</li>
+<li>Questions raised about the =
+arbiter of severity:<ul>
+<li>Suggestion: Trained users submit severity, but=
+ must be audited, especially for High/Critical issues.</li>
+<li>Training customer service and IT desks with FAQs anticipated.</li>
+<li>Discussion of possibly leveraging an AI tool to analyze and assign =
+severity in future implementations, once adequate training data is gathered=
+.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font=
+-size:1.75rem">4. Centralized Issue Tracking and Governance</h3><ul>
+<li>Need for:<ul>
+<li>A single, central issue tracker visible across IT and=
+ business.</li>
+<li>A dedicated team (including a coordinator, possibly =
+divided by time zones) to own the backlog and severity tagging.</li>
+</ul>
+</li>
+<li>The escalation/triage process should follow =
+&quot;follow-the-sun&quot; model:<ul>
+<li>Regional leads (existing legal =
+entities or LES resources, e.g., Olga for EMEA) coordinate handoffs across =
+APAC, EMEA, Americas.</li>
+<li>Each region provides daily pulse checks to =
+feed into global status calls.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">5. UAT =
+&amp; SIT Schedule and Reporting</h3><ul>
+<li>First UATs scheduled for June=
+ 20, with some &quot;light touch&quot; systems beginning around June 13.=
+</li>
+<li>~40 UAT items currently identified (precise number to be =
+confirmed post-meeting).</li>
+<li>Supply chain SITs underway (20+ active), =
+with additional activity in ERP space.</li>
+<li>Proposal: Start reporting =
+SIT metrics using the UAT-style dashboard/framework now to validate =
+approach ahead of scale-up.</li>
+<li>Weekly (initially, then potentially =
+daily) progress updates recommended, starting next Friday.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">6. =
+Communication and Socialization for Hypercare</h3><ul>
+<li>Framework must be simplified for communication with ops leadership =
+(OpSep) and for visibility in BRB workshops.</li>
+<li>Intake channels =
+(helpdesk, customer service) need preparation in July with training/FAQs to=
+ handle anticipated known issues prior to August business ramp-up.</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">=
+Action Items</h2><ul>
+<li><strong style=3D"font-weight:bold">Resource =
+Tracker Completion</strong>: Continue chasing business functions to submit =
+resource names for the tracker (past May 23 deadline).</li>
+<li><strong style=3D"font-weight:bold">Dashboard Refinement</strong>: =
+Rakesh to add the missing Hypercare dashboard sample to materials shared =
+with Paul and others.</li>
+<li><strong style=3D"font-weight:bold">Dashboard=
+ Practice Run</strong>: Begin using SIT data to pilot the UAT-style =
+dashboard next week.</li>
+<li><strong style=3D"font-weight:bold">Weekly =
+Reporting</strong>: Schedule recurring Friday updates/report-outs starting =
+next week; reassess frequency as Go-Live nears.</li>
+<li><strong style=3D"font-weight:bold">Severity Definition =
+Training</strong>: Develop and distribute consistent severity definitions =
+and train intake teams (FAQs, scenario Walkthroughs).</li>
+<li><strong style=3D"font-weight:bold">AI Use Case Exploration</strong>: =
+Connect Paul with Monica and the appropriate AI project team to consider =
+using current implementation as AI severity pilot.</li>
+<li><strong style=3D"font-weight:bold">Central Issue Tracker =
+Setup</strong>: Confirm ownership and process for a single cross-functional=
+ incident tracker.</li>
+<li><strong style=3D"font-weight:bold">Regional =
+Coordination</strong>: Clarify the assignment and IT involvement for =
+regional coordinators (=E2=80=9Ctwo-in-the-box=E2=80=9D model where needed)=
+.</li>
+<li><strong style=3D"font-weight:bold">Ops Socialization</strong>: =
+Prepare simplified Hypercare story for OpSep and BRB workshop on June 25.=
+</li>
+<li><strong style=3D"font-weight:bold">Progress Update</strong>: =
+Sukai and Jeff to coordinate with PS2 for next Friday scheduling and =
+dashboard rollout.</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-t=
+op:20px;font-size:2rem">Follow-up</h2><ul>
+<li>Confirm precise numbers of =
+current SITs and UATs; Rakesh to provide to Jeff.</li>
+<li>Paul to connect with Monica regarding AI learning and pilot options.=
+</li>
+<li>Prepare communication materials and training content for July =
+intake channel readiness.</li>
+<li>BRB workshop agenda for June 25 to =
+include preview of Hypercare and reporting dashboards.</li>
+<li>Ongoing: Review effectiveness of reporting framework and adjust as =
+necessary.</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;=
+font-size:2rem">Images</h2><h3 style=3D"font-weight:500;padding-top:20px;fo=
+nt-size:1.75rem">Meeting Platform Screenshot</h3><ul>
+<li><strong style=3D"font-weight:bold">Invite Management</strong>: Top bar =
+allows sharing invites or dialing participants directly.</li>
+<li><strong style=3D"font-weight:bold">Participant Status</strong>:<ul>
+<li>Eight attendees shown, with clear markers for role (Organizer), =
+external affiliation, and verification status.</li>
+<li>Two persons invited with no response, plus one additional unverified =
+recent addition to the chat.</li>
+</ul>
+</li>
+<li><strong =
+style=3D"font-weight:bold">Relevance</strong>:<ul>
+<li>Visual demonstrates =
+attention to security (external/unverified status).</li>
+<li>Confirms healthy participation and identifies potential onboarding =
+issues for unverified users.</li>
+<li>Useful for tracking attendance and =
+follow-up responsibility, especially as roles and assignments are =
+solidified in project trackers.</li>
+</ul>
+</li>
+</ul>
+<hr />
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0,=
+ 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex;align-i=
+tems:center;gap:8px"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</=
+span>Transcription</h3><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">0:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Entity or an old =
+bank account and then have it change that POSO to the right entity and send=
+ a note back to the customer that says we&#x27;ve amended this order with =
+the right information. You need to make sure you change it in the system =
+because that automation would greatly cut down on the effort that we would =
+need in Hypercare on that on the commercial side and just reduce the =
+overall business disruption. So anyway, I just, I, I didn&#x27;t want to =
+lose the thought. We can come back to it at the end, but with that, Rakesh,=
+ I&#x27;ll turn it over to you. Why don&#x27;t you take us through the =
+slides?</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">0:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, so absolutely.=
+ Give me a second here. So again, I think a lot of these, you know, a few =
+of these we have touched upon that you point out. I think we&#x27;ve added =
+in the appendix Sukhai and Jeff, so we&#x27;ll certainly go through that. =
+But again, I think this is just level setting. So to the points you made, =
+kt, uat, go live readiness, Hypercare, really the series of activities =
+happening there, I think where we are and what we&#x27;ve done after the =
+kickoff is identify resources, you know, the roles, responsibilities. There=
+ are some gaps in there. We have a tracker that we&#x27;re still refining =
+that. Actually, frankly, we&#x27;re a bit behind because we said we would =
+do that. We&#x27;d have all the names in from all the functions and it by =
+523 and it&#x27;s, you know, a few days later, so we&#x27;re still chasing =
+people for that. And I think that&#x27;s going to set up you peers to make =
+sure that you have all the names and you&#x27;re successful here. But again=
+ that&#x27;s something we&#x27;re tracking behind on. But again I think =
+we&#x27;ve seen this view of yes, the teams are going through SIT right now=
+, the IT teams, they&#x27;re developing all the test scripts for it. From =
+what we heard, we&#x27;re setting up those connects between IT work streams=
+ and the respective functions to align on what are the processes in play, =
+what are the systems to be touched, what information flows through, =
+what&#x27;s available. So that&#x27;s still work in progress over the next =
+couple of weeks. But again this is how the sequence of events is planned =
+for Obviously I think you and the PMO have the hiring plan tracking in =
+place so that will tell us when seats are in the right roles and KT has =
+happened or what the status of that is to support the UAT readiness. So =
+again, all of these will be in that tracker, both in the BRB tracker as =
+well as the UAT readiness tracker. That will support it. But again, I just =
+want to lay that out and I think part of.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:14px">2=
+:29</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">That&#x27;S a sample dashboard of what this is going to look like. So =
+we&#x27;re going to get together, we&#x27;re going to have some frequency =
+of communication on uat. You&#x27;re going to come into this meeting and =
+say here&#x27;s where we are on uat. What&#x27;s that going to look like?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">2:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, so we do have =
+some BRV tracker. What I&#x27;ve not included here. Paul, let me make sure =
+I have a view into that. There are certain things around. There are some =
+dashboards on Hypercare, but particularly around. Let me go back in here, =
+let me get that to you. It looks like I did not include that particular =
+dashboard here as a sample. But we do have that and I.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:14px">3=
+:14</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Would like us to work backwards from the end in mind with me, myself and=
+ Sukai as the customer. So let me tell you what I would want that to show. =
+I would want to see the application, the uat, what the application is. I =
+would want to see who the business UAT leader is, who the IT UAT leader is.=
+ And then I would want to see the progression of the stages of that =
+application testing for the things that you laid out in there. So it could =
+just be a block almost of showing like you know, how much progression and =
+some sort of a heat map on how it&#x27;s going to hey, we&#x27;re in sit. =
+Sit&#x27;s green, sit&#x27;s red, sit&#x27;s orange. And then on the =
+forward ones for things that we&#x27;re not yet into, like if we&#x27;re =
+going to say we&#x27;re doing sit, SAT sign off, then we&#x27;re going to =
+uat. Then what is the projected start date for the uat? Right. Then I would=
+ want to see a readout of the number of, you know, defects or issues or and=
+ if we want to just call like anything a defect, a training defect, an IT =
+defect, a data defect, they&#x27;re all defects, they&#x27;re all issue. We=
+ don&#x27;t call it defect. We could say they&#x27;re issues.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">4:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Incidents.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">4:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah right. =
+They&#x27;re non duplicated tickets. It&#x27;s incidents. Whatever you want=
+ to use for terminology. But I just want that, that, that sense check of =
+how noisy is it, how well is it going and you know, what is the total, what=
+ is the, you know, critical, major, high, major, low, minor, whatever =
+terminology you choose. And then I&#x27;d like to see week on week is =
+what&#x27;s the trend line? Are we growing our defects or are we decreasing=
+ our defects? And it doesn&#x27;t have to be like super Sophisticated. It =
+could just be an arrow to the side, to the up, to the down. You know, we =
+may, on certain ones, want to drill down into the specifics of those and =
+then any commentary on the side.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</s=
+pan><span style=3D"color:#64748b;font-size:14px">5:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And the key there, =
+Jeff too, is not just opened, but, but how we&#x27;re building a backlog, =
+right, because there&#x27;s going to be weeks that we open more than we =
+close, and then it develops a backlog that we have to close tickets in =
+order to get. So you see on this chart right here, you see the trend lines =
+of open and close, but then you see the, the open count of what we&#x27;re =
+actually working with in any given week.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:14px">5=
+:47</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, yeah. So I think this could. I just, you know, we&#x27;re gonna. =
+What, what we&#x27;re gonna. I mean, this is gonna be good at a high level,=
+ but then we&#x27;re going to need to. Because all applications are not =
+created equal. If this is HCM or this is ERP makes up 90% of this, then =
+that&#x27;s going to be bad. If ERP and ACM are like 5% of this and =
+it&#x27;s other, you know, it&#x27;s, it&#x27;s Documentum or it&#x27;s =
+Team center or it&#x27;s something that&#x27;s really impacting one =
+function. It&#x27;s still important, but. But it&#x27;s not gonna be a =
+threat to business continuity. Right. So what needs to come out of this is =
+we need that triaging with your expertise, with data supporting it that =
+we&#x27;re, Sukai and I are applying our focus in the areas that need our =
+focus. Whether that&#x27;s chasing users to get their testing done or =
+it&#x27;s, you know, making sure our leadership is aware that we have a =
+major issue that could impact our ability, you know, or the quality of our =
+go live because the HCM is running behind. You know, that&#x27;s what we =
+need to be able to get, get out of this. And so if we could just see it. =
+It&#x27;s helpful for me to understand, you know, the volume of testing =
+that&#x27;s going on at any one time because, you know, it will help me =
+think about how hard I press the functions on other things because I =
+don&#x27;t want to like, give them a bunch of mandatory things to do right =
+in the middle of a bunch of testing that they need to do on the IT things. =
+And we might, you know, think about how we want to spread things out. Or I =
+may go to, we may go to the functions in OPSEP and say, say commercial. =
+You&#x27;ve got like 10 UAT&#x27;s next week. Do you have the capacity, do =
+you have the people set aside for this. Right. It&#x27;s just there&#x27;s =
+going to be a lot going on. The number of issues that have flown into my =
+desk today is like record high for a Friday. So I can tell we&#x27;re, =
+we&#x27;re getting close to the go live because of the number of thorny =
+issues that are rolling in. And it&#x27;s only gonna. It&#x27;s only gonna =
+get worse. Right? It&#x27;s gonna. And so we need a robust process for it.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</span><span =
+style=3D"color:#64748b;font-size:14px">8:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Just a couple =
+comments to that point. I think that, you know, we&#x27;ll bring something =
+back to you on that. Around this entire process is some pieces of this are =
+very linear. Right. Where the first thing that we have to look at is KT =
+enables uat. In order to enable kt, we have to get the hiring and the =
+receivers and the catchers, all that stuff. Right. So that left to right is=
+ something that we have contemplated in the data model that we&#x27;ll have=
+ reporting for. The other thing that I just wanted to comment on is around =
+that you made a comment around the taxonomy of severity. Not only is that =
+important for normalizing, you know, what&#x27;s critical to go live, but =
+it&#x27;s also going to be in what we&#x27;re proposing here, part of the =
+exit criteria of defining a successful completion of UAT to call it done. =
+We don&#x27;t want it to be subjective. Right.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:14px">8=
+:56</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, this is absolutely critical. So I like, I like four levels, I =
+think, you know, low, medium, high, critical. You know, for me, critical is=
+ a showstopper. It&#x27;s like, it&#x27;s a risk to business continuity. =
+It&#x27;s a. We can&#x27;t go live with it because of the severity of the. =
+It&#x27;s a block. Right. High is again, I like the impact, but it&#x27;s =
+that there is a workaround, but it&#x27;s a significant many work. So =
+actually your definitions align perfectly with the way that I think about =
+it. The user count is less, you know.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>9:40</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. In this context it&#x27;s not. Yeah, it&#x27;s. Yes, fair enough.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">9:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">This is a somewhat =
+qualitative and I&#x27;m completely comfortable with this being a =
+qualitative process. Right. It&#x27;s just that it needs to be a consistent=
+ qualitative process. So my question will be, who is the single arbiter of =
+the severity? Who&#x27;s going to audit that and how does it get set? So =
+when someone reports a ticket, do they put in the severity? Because we =
+train everybody and we give them this and they put in the severity. If =
+that&#x27;s the process, which I&#x27;m fine with that process, =
+someone&#x27;s going to need to go through those and say, nah, that&#x27;s =
+bullshit. That&#x27;s not critical. Right. Because otherwise people put =
+everything in as critical because they want it resolved in two hours.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">10:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">See, that&#x27;s, =
+that&#x27;s part of it, I think as well, Jeff is part of the, you know, =
+when you look at the hypercare and triaging that we, you know, talk about =
+and you know, what is level zero, Level one, you know, it is, okay, there =
+is, you know, it comes in again, illustrative. But there is that, that =
+vetting process up front based on FAQs, based on the training to understand=
+ what is this impact. And they go through this sort of filtering before it =
+gets in, into the rest of the process. So, yeah, you are spot on. I think =
+some of that what I&#x27;ve seen we&#x27;ve done is, you know, again, FAQs =
+and education and train everybody ahead of time, particularly the service =
+desk, on recognizing that severity.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sukai</span><span style=3D"color:#64748b;font-size:14px">=
+11:16</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I think it&#x27;ll be good to have another person that&#x27;s going to =
+be the auditor. And I think just the reason why is while we will train =
+people as much as we can, certain people will still put things as critical =
+because they feel it&#x27;s critical. In their minds it&#x27;s critical. =
+But I think that auditor, as they&#x27;re looking at the holistic view, I =
+think that person will be able to better say, yeah, this is not a critical.=
+ Again, they won&#x27;t be auditing everything. They&#x27;ll probably stay =
+at the high and the critical. But I do think it&#x27;s going to be key for =
+us to have someone that&#x27;s auditing this massive list that&#x27;s going=
+ to be coming in.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><s=
+pan style=3D"color:#64748b;font-size:14px">11:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sukhai, why =
+couldn&#x27;t we train an AI model to do that?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sukai</span><span style=3D"color:#64748b;font-size:14px">=
+11:57</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, I would say the thing about the AI model is you would have to add =
+to already created, tested it and learned before you deploy it.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">12:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So maybe just =
+because we&#x27;re going to be processing a lot of data across a lot of =
+different applications, what would it take for us? What would it take in =
+terms of the way we would want to structure the data in the process, that =
+we could then take that data afterwards and turn that into an AI model that=
+ you could use ongoing for winter. Right. But also for all of your other IT=
+ cutovers. Right. Wouldn&#x27;t that be somebody typed in, in plain =
+language what the issue is? We have that broken out AI reads it and builds =
+it and then assigns the severity to it so that you eliminate the reliance =
+on the individual to do it. But. And you also eliminate the need for =
+somebody to, you know, to try to check it and go through that. And we drive=
+ that consistency.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukai</span><=
+span style=3D"color:#64748b;font-size:14px">13:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">13:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I just think =
+it&#x27;s a perfect use case, and we should. Even if we can&#x27;t monetize=
+ it for Athens, if we could use the Athens to train the data, you could =
+leverage that on Winter, and you could leverage that on every other IT =
+implementation that you get.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukai</span>=
+<span style=3D"color:#64748b;font-size:14px">13:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That use case. And =
+we&#x27;re deploying it on one of Dinesh&#x27;s ERP projects because =
+it&#x27;s small, it&#x27;s contained, it&#x27;s easy. No one&#x27;s =
+depending on it. But let me talk back to the team that&#x27;s in front of. =
+And I think, Paul, I put you in touch with Monica, but let me connect with =
+that team. They weren&#x27;t planning to use this as their test model. They=
+ wanted something smaller and easier. But let me connect with them to find =
+out if they could use this one versus the ERP project.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:14px">1=
+3:51</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">It could be both. It could just be, how do you want us to set up the =
+data? And when people enter the ticket. Right. And then we&#x27;re gonna. =
+There&#x27;s gonna be something. They&#x27;re gonna have a point of view on=
+ it, and then we&#x27;re gonna have a point of view on it. And, you know, =
+that ticket status. I don&#x27;t know. It was just a thought, I think. I =
+like that there&#x27;s some opportunity here.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Olga</span><span style=3D"color:#64748b;font-size:14px">1=
+4:11</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. I will say, Jeff, like, it is critical to have one central kind of=
+ issue tracker where you can see kind of critical IT issues as well as =
+critical business issues. Right. Like things like payroll isn&#x27;t =
+functioning. Right. Or certain suppliers are not able to process orders or =
+things like that. And I do think that a central team has to kind of own =
+that issue list, and that&#x27;ll kind of be part of their role, is =
+ensuring that criticality is appropriately tagged. Because even if you =
+think about, like, on a weekly basis. Right. We want that full list, and =
+we&#x27;d want, like, a curated summary of that list to sort of report back=
+ to yourself, to report up, you know, to GREV or what have you. So we do =
+need that centralized.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><s=
+pan style=3D"color:#64748b;font-size:14px">15:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So I like this=
+ framework that you&#x27;re showing here. My only question is that we =
+don&#x27;t really have a regional structure other than under the legal =
+entity work stream. Everything else is global. It&#x27;s the functions that=
+ are driving it. So region is like, we don&#x27;t have different =
+applications in the region. So the only thing that would be regional would =
+be a subset of the les, which there. I think, because we have that regional=
+ structure already set up by country.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sean</span><span style=3D"color:#64748b;font-size:14px">1=
+5:40</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">And.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">15:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You know, by entity,=
+ I would build that in there. But otherwise, I think you go level two to. =
+Or level zero to level two.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukai</span><=
+span style=3D"color:#64748b;font-size:14px">15:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Two.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Olga</span><span style=3D"color:#64748b;font-size:14px">=
+15:51</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">It&#x27;s to sort of pick up things that come up immediately. Right. So =
+something happens in apac. The APAC regional team will be kind of on point =
+first and then by the time US wakes up, they&#x27;re able to sort of spend =
+some time on it.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><s=
+pan style=3D"color:#64748b;font-size:14px">16:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So it&#x27;s really,=
+ they&#x27;re triaging, but it&#x27;s more not by region, it&#x27;s by time=
+ zone.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukai</span><span =
+style=3D"color:#64748b;font-size:14px">16:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;s the fall =
+of the sun.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">16:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;s a fall of =
+the sun. Right. So okay, so it&#x27;s not that we&#x27;re expecting, you =
+know, it&#x27;s. It&#x27;s that. Okay, got it.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Olga</span><span style=3D"color:#64748b;font-size:14px">1=
+6:20</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">But, but they do have that structure, right? So there is a regional lead=
+ and there is country leads. Right? So like there, there is something we =
+can leverage that exists.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><s=
+pan style=3D"color:#64748b;font-size:14px">16:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So, so is the =
+regional lead and country leader. Is that a Honeywell person? Is that an EY=
+ person? Is that already in our plan? Is that something new that we need to=
+ build? How do I think about who&#x27;s the money button?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Olga</span><span style=3D"color:#64748b;font-size:14px">1=
+6:40</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I would think of them as the current LES resources. So Olga for EMEA and=
+ things like that.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><s=
+pan style=3D"color:#64748b;font-size:14px">16:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, but are they =
+going to do the, you know, all of the things in the region, including sop, =
+you know, sopo, including it, including uat.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Olga</span><span style=3D"color:#64748b;font-size:14px">1=
+7:04</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I would consider them as like a coordinator. Right. Like they&#x27;re =
+sort of the, they&#x27;re that cross functional person that coordinates =
+with regional IT or regional trade compliance, for example, or the regional=
+ functional teams.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">17:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So Piers, we&#x27;ll=
+ have to think about it from an IT perspective in the app landscape. A lot =
+of these are global, but there are some site specific or region specific =
+apps, again more of an exception rather than the rule. But again we&#x27;ll=
+ see from an IT perspective, we&#x27;ll have to see if, if something like =
+that is needed or if it&#x27;s an overkill. But again it has to be follow =
+the sun. We&#x27;ll just have to see, you know, how that, that triage. If =
+the triaging process and that escalation process is, is set up well then =
+it&#x27;s it, you know, it&#x27;s, the process will work. It&#x27;s just =
+who&#x27;s the coordinator that, that feeds IT in and triages per the =
+guiding principles.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukai</span><=
+span style=3D"color:#64748b;font-size:14px">18:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It gets to Benny =
+Peers because Benny is an apac. We just think about who are the individuals=
+ as we move IT around. But I do think it needs to be IT specific because =
+having someone as a business leader, while important, they can move =
+something from here to here, but they can&#x27;t really look at it, =
+prioritize it, understand would need to Be someone that&#x27;s it in nature=
+. And so I like the format. I just think that we just, if we can just put =
+an IT spin on it, it&#x27;ll be a little bit more effective for us.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">18:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Let&#x27;s just, =
+let&#x27;s put it two in the box. So if we want to do a follow the sun and =
+we&#x27;re going to have a regional, you know, report out, then they should=
+ have a war room and they should be looking at what&#x27;s coming in there =
+and they should give us a pulse check on this is what we&#x27;re seeing in,=
+ you know, apac and that should flow into, you know, I, I assume like =
+we&#x27;ll have a 7, 8am or 8am hypercare call and it&#x27;ll be, =
+here&#x27;s the report out from apac. We&#x27;ve got this, you know, has =
+come in, this has come out. This is the top three or four issues. Then =
+we&#x27;ll, we&#x27;ll come in at lunch and it&#x27;ll be, this is emia, =
+this is what&#x27;s going on in emea. Then we&#x27;ll have a connect at the=
+ end of the day and it&#x27;s like, hey, this is what&#x27;s going on in =
+the Americas. And this is what we&#x27;re deploying as fixes to APAC =
+overnight, you know, what we&#x27;re expecting to see there. And then =
+it&#x27;ll be rinse and repeat until we get into a stable environment. When=
+ is the first UAT that we&#x27;re doing, when does it start?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">19:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">June 20th, I believe=
+ in fact some systems UAT that are light touch are happening around June =
+13th. From the supply chain perspective. IT supply chains got some.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">19:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">How many do we have =
+going on right now?</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">19:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We have. Oh, let me =
+get that number to you. The last count of it was I think about 40 something=
+. I will get you that exact number, Jeff.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:14px">2=
+0:04</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So Rakesh, what I&#x27;d like to do is I want to start rolling the =
+marble on this sooner rather than later. You know, we can use SIT to kind =
+of run it through this. You won&#x27;t have the regional flavor necessarily=
+ from sit, that&#x27;s fine. But the framework of hey, here&#x27;s the =
+dashboard. We got these number of sits going that are going to turn into a =
+uat. Here&#x27;s the business owner, here&#x27;s the IT owner, here&#x27;s =
+where we are. The SIT is red, green, orange, red. Here&#x27;s the defect =
+burn down in the commentary. That piece of it, we could start practicing.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">20:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Absolutely. Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">20:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So why don&#x27;t we=
+ just start practicing that next week because the hypercare stuff will be a=
+ little bit different. But it&#x27;ll still follow that same framework and =
+then we can get a flavor for what&#x27;s it going to look like? Does it =
+meet Sukai&#x27;s and I&#x27;s need? But even with that Sukai, like =
+we&#x27;re running 42 sits. You should be reporting out on how the sits are=
+ going to Sheila and to, you know, Scareco. Hey, you know, they don&#x27;t =
+even know we&#x27;ve got 42 sit. That&#x27;s a great sign of progress. Hey,=
+ we got 42 SIDS going. Here&#x27;s the spectrum. We&#x27;re collectively, =
+you know, so putting that framing on it at least as a weekly update now and=
+ maybe daily as we get a little bit closer, I think would be a great =
+communication for you to lead just, you know, in that space.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">21:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I agree, Sukha. =
+Absolutely. We&#x27;ll get you that. We&#x27;ve got about 20 plus in supply=
+ chain that, you know, based on the conversations over the last couple of =
+days that they&#x27;re starting sit. And then there&#x27;s a few in ERP =
+space. So that&#x27;s ISE and erp.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</=
+span><span style=3D"color:#64748b;font-size:14px">21:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Can we do that next =
+Friday?</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukai</span><span =
+style=3D"color:#64748b;font-size:14px">22:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, let&#x27;s put=
+ a next Friday on the calendar. Just every Friday. And then once we feel =
+like we got it down to science and we don&#x27;t need it, we can get rid of=
+ it.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">22:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sukai</span><span style=3D"color:#64748b;font-size:14px">=
+22:08</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">All right, Hannah can work on that.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:14px">2=
+2:11</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">22:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, great.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">22:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, good start. I =
+think we&#x27;re very much on the, you know, Sean, we&#x27;re very much off=
+ to the same page on severity. That&#x27;s great. It matches up exactly =
+with the way I like to run these, these things. I think this is a good =
+framework so we&#x27;ll want to get it to a little simpler of a story for =
+opsep. So let&#x27;s, let&#x27;s run roll the marble, you know, once or =
+twice. But then before we get into OR in the BRB workshop on the 25th, I =
+want to go through this is what hypercare is going to look like to start to=
+ socialize that.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Olga</span><s=
+pan style=3D"color:#64748b;font-size:14px">22:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, agreed. And as=
+ well you. One of the comments on that first page was that we need like the=
+ intake channels to, to be trained up with FAQs and things like that on how=
+ to manage known issues that are going to come up. So a customer places the=
+ order with a wrong le. So all of that like training and FAQ kind of has to=
+ happen in July so that they&#x27;re ready for those known issues to pop up=
+ in August.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">23:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, awesome.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">23:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right, so lots =
+of good action items takeaways here. Sukai, Jeff, we&#x27;ll, we&#x27;ll =
+come back, circle back. We&#x27;ll work with PS2 for scheduling next Friday=
+. And then we&#x27;ll. We&#x27;ll share what we. In terms of the dashboards=
+ and rolling the marble for us.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</s=
+pan><span style=3D"color:#64748b;font-size:14px">23:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay? Thanks, guys.=
+</div></div><div style=3D"margin-bottom:0;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">23:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Thanks, everyone.=
+</div></div></div><div style=3D"margin-top:36px;text-align:center;color:#64=
+748b;font-size:14px;padding:20px;border-top:1px solid #e2e8f0"><p =
+style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note Taker</p><p=
+ style=3D"margin:0;font-size:12px">Your AI-powered companion</p></div></div=
+></div></div></html>
+----_NmP-15c07f453d116f38-Part_1--

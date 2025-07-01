@@ -1,0 +1,2176 @@
+MIME-Version: 1.0
+Date: Thu, 19 Jun 2025 21:22:03 -0400
+References: <0100019784657744-a136d484-3b86-4608-a8ce-0499591000c3-000000@email.amazonses.com>
+In-Reply-To: <0100019784657744-a136d484-3b86-4608-a8ce-0499591000c3-000000@email.amazonses.com>
+Message-ID: <CAOat4ZBKXFWmonj5qMw7ZTMwpaS8QXMP9fo15EVgd_49R-6eVQ@mail.gmail.com>
+Subject: Fwd: UAT Scope Roles Risks And Testing Updates
+From: Mac Connolly <mac@macconnolly.com>
+To: save@mem.ai
+Content-Type: multipart/alternative; boundary="00000000000092fe250637f6b0b8"
+
+--00000000000092fe250637f6b0b8
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+---------- Forwarded message ---------
+From: Wave AI Note Taker <summary@email.wave.co>
+Date: Wed, Jun 18, 2025 at 2:55=E2=80=AFPM
+Subject: UAT Scope Roles Risks And Testing Updates
+To: <mac@macconnolly.com>
+
+
+[image: Wave AI Logo]UAT Scope Roles Risks And Testing Updates
+=E2=9C=A8 View Your Session on the Web
+<https://app.wave.co/sessions/A8F49EF2-5B80-4366-9EE7-C207029EE985?lastLogi=
+nParam=3Dgoogle>
+=F0=9F=93=9DSummary
+Main Topics Discussed1. UAT (User Acceptance Testing) Scope and Participant=
+s
+
+   - *Admin and Production Testing:* Both admin tasks and daily production
+   (including month-end close) will be tested.
+   - *Assigned Roles:*
+      - Admin tasks: names provided previously; differences discussed
+      between admin and closing process responsibilities.
+      - Day-to-day processing: managed by entity controllers; transactions
+      sourced via BlackLine.
+      - *Backup personnel:* Specific individuals named; backup roles
+      clarified.
+      - *Gap identified:* Uncertainty over the real user name(s) for
+      Athens=E2=80=99 team, especially for UAT and future admin role.
+
+2. Pending/Unfilled Roles
+
+   - BlackLine Admin and Data Admin for SAP Master Data have not been
+   filled. Interviews are scheduled, but no hires yet.
+   - A need was expressed for Israel-specific roles for these positions.
+
+3. UAT Application Coverage and Sequencing
+
+   - *Non-SAP Applications:* Discussion included Hyperion, Workiva, and RPA
+   Watts.
+   - *Timing:*
+      - Hyperion expected to be ready for UAT testing in July 2025.
+      - Workiva's UAT scope not yet finalized; its testing to be aligned
+      with the mock close (full end-to-end test using SAP, Hyperion, Workiv=
+a
+      integration).
+      - The consensus is to include Workiva testing as part of the mock
+      close rather than create a redundant standalone test due to high over=
+lap.
+
+4. Testing Approach and Concerns
+
+   - Primary testing goal: Validate integrations, data flow, and end-to-end
+   business process.
+   - Testing focus: Ensure all ERP-integrated applications function
+   post-separation (e.g., BlackLine, cash apps, financial supply chain
+   management).
+   - Detailed discussion on whether additional testing is required for new
+   entity setups in Hyperion, with consensus that minimal test loads are
+   reasonable but full consolidation tests are unnecessary at this stage.
+
+5. Key Risks and Escalations
+
+   - *User Gaps for E-invoicing (Mexico & Romania):*
+      - No definitive users identified for EDIcom (tax application) testing=
+.
+      - The process requires specific individuals (e.g., Juan Carlos) to
+      generate government-issued keys, but these roles are currently
+unfilled or
+      unsupported in the existing team due to spin-off transition.
+      - Lines 33 & 34 (related test cases) highlighted as escalation items
+      requiring urgent resolution and clearly marked for visibility.
+
+6. Names and Testers for Various Regions and Applications
+
+   - *BlackLine, Workiva, and SAP entity controllers:* Tester names largely
+   established except for APAC entity controller and tax roles.
+   - Possible changes in assigned testers for various regions based on
+   experience concerns.
+   - Business finance team for closing confirmed, with new person taking
+   over from Griselda for Athens.
+
+7. PowerApps and RPA Watts Testing
+
+   - PowerApps: Minimal testing required, primarily ensuring access per TSA
+   (Transitional Service Agreement) scope.
+   - RPA Watts: Mentioned briefly; to be included in similar
+   minimal-validation tests.
+
+8. Next Steps and Action Items
+
+   - *Open Actions:*
+      - Provide pending names for APAC entry controller and regional
+      testers where gaps exist.
+      - Follow up on hiring and onboarding for Data/Admin roles
+      (specifically for Israel and tax applications).
+      - Maintain and update non-SAP application coverage list, sharing with
+      relevant stakeholders.
+      - Highlight and escalate unresolved items for UAT, especially those
+      linked to compliance and e-invoicing.
+      - Organize communications to set expectations with broader teams for
+      UAT.
+
+Dates Mentioned
+
+   - *Today=E2=80=99s Date:* June 18, 2025
+   - *Testing for Hyperion:* July 2025
+   - *Mock Close/UAT Week:* Planning underway; specific dates not mentioned
+   but aligned to application readiness
+
+Summary Table of Key Testers/Resources
+Application Status/Testers (as of June 18, 2025) Gaps/Comments
+BlackLine List mostly finalized; backup defined APAC entity controller
+pending
+SAP Master Data Existing team plus pending hires (Israel-specific) Roles
+not filled; interviews scheduled
+Hyperion Ready for test in July 2025 Minimal new entity test loads deemed
+sufficient
+Workiva Scope not final; testing to be with mock close N/A
+EDIcom User unclear due to org changes; escalating Juan Carlos suggested
+but not confirmed
+PowerApps Minimal, access-only test; tester identified N/A
+RPA Watts Included for minimal testing N/A Follow-ups & Escalations
+
+   - *Immediate escalations:* E-invoicing/testing users for Mexico/Romania
+   (lines 33 & 34)
+   - *Resources/names:* Pending tester names from Satish for some regions;
+   tax resource still unfilled
+   - *Comms:* Prepare clear communications and escalation notes for
+   leadership and the wider project team
+
+Closing
+
+   - No open questions left for Bill.
+   - Satish to provide additional tester names.
+   - Team to regroup and connect offline for organizing escalations and
+   finishing prep for UAT.
+   - Broad thanks for participation and emphasis on communication to ensure
+   UAT readiness.
+
+=F0=9F=8E=99=EF=B8=8FTranscription
+Satish0:00
+Manual is the. Yeah, that person. So as part of the UAT we'll be testing
+the admin tasks as well as your day to day production processing tasks.
+Admin tasks. I've given you the names already. Day to day transaction
+processing will be done with entity controllers be day to day transactions
+or month and month close transactions. It will all come from black line
+from the entity controllers.
+Srinivas0:20
+So for blackline I have these three including you. Right?
+Satish0:24
+Yeah. This is a backup. So me as a backup.
+Srinivas0:30
+So again this is. I mean thanks Satish. I think this is Jessica and Vicky.
+The key risk that I see is again to Caesar's point as well. We need to find
+out the real name of the user for Athens. Right. Who needs to test this?
+Because it's great that Satish and King will be helping. But then at the
+end of the day who is going to take out. It's going to be someone from
+Athens, which we don't know yet. Right.
+Satish0:52
+So sorry to interrupt you Srinivas. The names I'm giving you Athens win
+quenched people. So for the admins it's a little different. But for closing
+process you see the first line. Emmanuel and CEO. He's going to be. He's in
+Caesar's team. He's going to be.
+Colin1:09
+He's Athens.
+Satish1:10
+He's Athens.
+Srinivas1:11
+Oh, he's Athens. Okay.
+Satish1:12
+And he's the future admin. He's being trained. But Akish. Actually Caesar,
+that one's still open, right? Black and black administer role Slopen.
+Right. Did we hire already?
+Colin1:24
+Which one?
+Satish1:25
+The blackline Admin and Data Admin for Master Data SAP.
+Srinivas1:28
+Master Administer Data Admin.
+Colin1:29
+No, we haven't found. I have a couple interviews scheduled but no, no hires
+yet.
+Satish1:36
+So that's still. We have our existing people there, Srinivas, but we need
+to find people who are going to be Israel specific.
+Srinivas1:46
+Okay, give me a second.
+Colin1:48
+Hey Satish. I hopped on. I probably need to just pop on and see if you guys
+need my input real quickly and then pop off because I've been on been on
+multiple calls that are overlapping. But I wanted to make sure if there's
+anything you needed from me that we talk through it. Are you guys going
+through the UAT needs?
+Satish2:09
+Right, so I voiced your concern, Colin, about not having clarity about
+exactly what all is happening in the UAT week. It was only SAP, but we are
+seeing other requests also coming in.
+Colin2:19
+Right.
+Satish2:19
+So Shrini was. Was sharing the non SAP applications that are being tested
+as well. If you want to take a quick look at that.
+Colin2:30
+Are these all being tested Like, I mean, I'm looking at the stuff on the
+last screen before you moved, like, Like Caesar, is. Is Hyperion ready to
+be tested right now? Yes. I mean, we're going to be ready for testing,
+which is in a month, but yes. Okay, so the testing's in July. Yep, it is
+Workiva. Like some of these. I'm just trying to make sure.
+Srinivas2:58
+Yeah, Workiva was highlighted. Sorry for interruption. Workiva. I have
+highlighted what the scope is, and then we don't have the scope yet for
+uat. So that's the reason you see comments here.
+Colin3:10
+Here's the thing. I think the UAT for Workiva is going to be accomplished
+during erv, Right? Because, I mean, what are they going to test in Workiva?
+They're going to test in Workiva the ability to consume all the schedules
+that they've defined and to build externally reported financial statements.
+Right. So to do Workiva, you need Hyperion. Right. Because you're going to
+do a consolidation in Hyperion, both an SBG consolidation and an external
+consolidation. You're then going to feed that information. You know,
+whatever information they pull into Workiva, you're going to pull data from
+SAP into Workiva, probably. Because, I mean, it really depends on how they
+populate their templates. Right. So, like, Workiva is going to get tested
+during the mock close, as will all the other SAP things. Like, to me, the
+UAT is to test the integrations and make sure all the pieces work. Right.
+But the mock close is going to. I mean, Workiva is going to get tested the
+same in the mock close as it would in the testing. So I think you probably
+test Workiva as part of the mock close because, I mean, I don't think
+you're going to. It's going to be very difficult. You're basically going to
+create another mock close if you try to do Workiva early.
+Srinivas4:23
+So I have a question. Colin, thank you for the detailed overview. So the
+question I have is, if Caesar is going to test HFM and FDS after the ERP
+completes their postings and everything, then don't you need Workiva to be
+tested along with your HIV mfds?
+Colin4:41
+I mean, I mean, I think. Not necessarily. I mean, like, we're not making,
+like, significant changes. I mean, I guess ERP has complexity that we don't
+have. There's so many integrations with ERP and so many systems. I mean,
+that's what you're doing here. You're trying to make sure that all the
+systems work when you separate them. Right. I think Hyperion is going to
+take the same file from SAP that it takes today. It's just going to be
+coming from a different company code, right?
+Srinivas5:10
+That's right.
+Colin5:11
+I think the mock close will test can we consolidate and do all the
+consolidation things work? Because what we're going to do in the
+consolidate in the BRV is we're going to run a consolidation for am. So I
+think, you know, it's not a live consolidation, right? So it is a test,
+right? So to me, that's like the integrated UAT for that. I mean, Cesar,
+tell me if you see it otherwise. If not, we're creating like basically a
+third mock close.
+Srinivas5:36
+If you want me to exclude this, I'll just. We will not discuss on this.
+We'll move on to the next open item.
+Colin5:43
+I mean, the only thing I would say if you wanted to do it would be a test
+into current Hyperion because you're going to create the new entities,
+right? I mean, if there's any thought that you need to load a test file for
+the new entities and there's value in it, that's fine. I don't think that
+there is because you're probably going to have to test load them once they
+go live, like, because they shouldn't materially be changing. It's not like
+we have to map a trial balance. The likelihood is that something is going
+to be amiss and it's going to load in some out of balance way and there's
+going to be some mapping corrections is my guess. I don't know, Cesar, if
+you have any thoughts on that. But that would be my concern. On the
+Hyperion side, like I would test all the ERP integrated applications,
+correct? I would test. I would test all the banking stuff, all the cash
+app, all the financial supply chain management. I test all of the stuff
+that, you know, like black line. I would test just to make sure, you know,
+there's the separation, you know, and anything that integrates into the ERP
+we probably should test.
+Srinivas6:48
+Right? Right. All right, then I think we'll start that topic.
+Satish6:53
+Thank you. So I was thinking of doing some test loads from the new
+entities, call it and Caesar, obviously we don't need to do that to hfs.
+Colin7:01
+You can. I mean, that's pretty low effort. I don't mind doing that. I'm
+just not going to do a full consolidation test. Right. If you want. If you
+wanted to load the files and you have time to do that, that's fine. I'm not
+overly concerned about it because we're going to test that when we do the
+load process. Yeah. I mean we didn't do that when we created the entities
+for ppe. Like and yeah, I would say that that was pretty similar to this.
+Right. Because we were basically doing the same thing where we were
+separating entities. We created a bunch of new entities. I mean it's
+pretty. As long as they're on the, on an ERP that exists today, it's very
+rare that there's anything new. Right. Because they're not creating any new
+accounts and the trial balance is imbalance. It's fine.
+Satish7:45
+The only thing I was focusing on was the rename and reuse bucket. So we
+have the same SAP company code mapping is changing to a new hfrm. Maybe
+that's.
+Colin7:53
+Maybe that is a good one to look at. I think that might be a good call out.
+Satish7:57
+Okay.
+Srinivas7:59
+Sorry for the interruption. Satish. While we have Colin, I have another
+item to discuss if that is okay with you.
+Colin8:05
+Sure.
+Srinivas8:05
+So Colin, for anyone, right. For the invoicing we have to it, I think
+Mexico, Romanian Scope and we did reached out to Juan Carlos, but we still
+didn't. I mean we weren't successful gathering the username or who the
+users are going to be. Do you know tax application for edicom?
+Colin8:27
+Is eddycom really us?
+Satish8:29
+Wouldn't that be.
+Colin8:31
+I mean, have you tried reaching out to somebody on Jason Sieber's team,
+like maybe George?
+Srinivas8:36
+They have given a name, Juan Carlos, but we did reach out to him, but he's
+still. We are unsuccessful in collecting.
+Colin8:44
+Do we know if it's a. I mean like Juan Carlos in controllership?
+Satish8:50
+Just to fill you in. Yeah. So I think in the current scenario there is
+some, some kind of a public key that the government issues for that
+application which is being managed by the controllership team in those
+regions. And that's the support that Vikram and the team are asking for.
+They were asking for somebody who can generate, go to the. Into the
+government site, generate that key and give it to the IT team so they can
+set up the integration.
+Colin9:17
+Right.
+Satish9:18
+That's the concern. Right? The main thing.
+Srinivas9:19
+Yes. And also. And also someone needs to test right after that.
+Satish9:24
+Yeah. So the person who's providing those tokens would be the tester. When
+I spoke to jc, he was saying that that person's not been hired yet for
+those regions, those countries. And that's where the gap was. And the
+current team was not supporting it. They were saying it's not part of their
+scope because it's going to be at and spin off. I raised that to JC to see
+if he can work it out with Bogdan and come up with a solution. I don't know
+what happened after that.
+Bill9:48
+Sorry, I needed to take a quick call. Which item were you specifically
+looking at? Which line?
+Srinivas9:54
+This one. The 33.
+Bill9:56
+All right. Can you put that in the notes very specifically that the
+existing team is not supporting and the new hire is not in there. Because
+this is something we will need to escalate tomorrow, slash, tonight. But
+just all escalations. Let's just highlight in yellow, since you have red on
+here already and know that needs an escalation.
+Colin10:20
+Trying to figure out, like, I don't recall us doing anything with etacon.
+That's why I was kind of surprised because Edicom is like an integrate. I
+mean, it's just the number. Like. Let's be very specific about what we're
+asking for. Right. If it's Juan Carlos needs to provide this registration
+number or whatever this number is, that's a very specific ask. And we
+should ask that question because, I mean, it's not something I'm familiar
+with.
+Srinivas10:45
+This is not on you. I'm just. We're just bringing it up on this call as we
+all are together. We did had a call with Juan Carlos on Monday, but he said
+he's gonna help us, but we haven't received any information yet, even after
+following up with him a couple of times. So that's a concerning. Now that
+we don't have the organization, we don't know what to test. So that's why
+we're calling out that. That as a risk for the upcoming sight and UAT.
+Colin11:12
+Got it.
+Bill11:13
+Would it be the same for line 34? Is that different in any way or is that's=
+.
+Srinivas11:19
+That's slightly different. I think once you have line 33, then you. You are
+covered for 34, Jessica.
+Bill11:26
+Okay, so for our purposes right now, just highlight. Is it. Let me just.
+Sorry. Just to be really clear, it's separate tests or do you just have a
+second line? Because you have a second.
+Srinivas11:37
+It's a separate test with. When we do. Otherwise, she added. She added. The
+second line is to perform end to end tests with erp. That's why she had a
+separate. Then you called out Gaurav, who's going to run that for us. So
+that's why.
+Bill11:50
+Okay, but to your point, it's the same resource that would theoretically do
+this? If we had a resource, yes. Okay. Let's just highlight line 34 as well=
+.
+Satish12:01
+Sure.
+Bill12:02
+In yellow.
+Srinivas12:03
+Okay. So anything else with Caesar, Satish and Colin? I think that's I'm
+good. I think I have the names for Black Line. I have the names except for
+AAC Entity Control. Right. Satish, which she will help us later in the.
+Satish12:17
+Okay, so I think I'm going to give you new names for all regions. They were
+saying those guys are not fully experienced. They might want to give us
+more experienced people for other regions as well. I'll get back to you
+tomorrow.
+Srinivas12:27
+Okay. Let me ask one more question, Satish, for the. When we call a
+business finance. I might be misunderstanding something here. These two
+folks and this, these three will be helping us from that perspective when
+it comes to close and all for closing.
+Satish12:44
+Yes. So when you say business finance, it's a, it's a vague term. Right. I
+agree with you. So they, they. That's the team that's running the close
+today for CP900 is the new person who's going to be taking over from
+Griselda for Athens.
+Srinivas12:58
+Okay, I think then Bill, we will have to use the same names for you as
+well. Right. In. In erp when you do our end to end testing, you have to, we
+have to engage these three. Okay. And there. And then what is those three
+names? Yeah, I'll ping you. Yeah. And then what is missing is the APAC
+entry control for now.
+Satish13:19
+Yeah, I'll provide that.
+Colin13:21
+Okay.
+Srinivas13:22
+Okay.
+Satish13:23
+And then non sapps. I mean I don't share this list after this but just to
+take a look at what's being covered for non SAP.
+Srinivas13:35
+I can ping you this link, you can take a look at it and let me know if you
+have any.
+Satish13:39
+Questions because Colin wanted to see this list as well. Colin, you had
+something about power apps. Was it the main concern you were raising?
+Colin13:48
+I think Junaid was going to follow up on the power apps user. I talked to
+him this morning and gave him a heads up that we need somebody to test
+that. My expectation was just to figure out what are we, what are we on the
+hook to figure out in terms of finding users to make sure that we close any
+gaps? I think the only one they reached out to me on was PowerApps but
+there might have been others. So I think this was good to go through this.
+Srinivas14:14
+So Colin, I'm working with Stephen Stelemak and from Athens. The current
+scope for power apps is the tsa. Right. So what maximum support in terms of
+testing is going to be the access. Correct. Is there anything, any
+different expectation from your side for PowerApps?
+Colin14:37
+No. I mean no concern on my side. I mean I think it's just getting the
+right people to do it. I haven't been involved in the day to day on power
+apps so I just want to make sure we have the right people.
+Srinivas14:50
+Yeah we do have resources. I think Steve is working through that. I can get
+more detailed information on that who will be testing but I mean it's going
+to be a very minimal efforts there except access. There's nothing else. We
+were going to test for PowerApps for day one because they're going to
+continue as is for as part of the tsa. Similarly for RPA Watts as well in
+case. If you want to talk about RPA Watts. Okay so then Jessica, Vicky, to
+summarize I have the names I think except for APAC entry controller we we
+don't have yet anything for tax and then for. We were good with work. You
+are we'll exclude based on the discussion we've just concluded. And then
+for Black line I have the names so I am kind of in a better position than
+yesterday.
+Bill15:42
+So the. The only question I have for you Bill is do you still have any open
+questions or did your questions get answered?
+Srinivas15:50
+If the Enrique and that team are the business finance vocals then that's
+all I need.
+Bill15:56
+Okay. All right. No, I think this was. This was good. And Shunivas Bill,
+you. We can connect at our conversation later just to make sure we identify
+which items we need to escalate. To everyone else, thank you for joining
+us. We appreciate it. We're just trying to get ourselves a bit more
+organized so we can really start getting some of the comms out to everyone
+on what to expect for uat. So we really appreciate your time.
+Srinivas16:22
+Thank you. Thanks everyone.
+Satish16:23
+Thank you.
+Bill16:24
+Thanks everyone.
+Srinivas16:25
+Bye.
+
+Captured with Wave AI Note Taker
+
+Your AI-powered companion
+
+--00000000000092fe250637f6b0b8
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div><br></div><div><br><div class=3D"gmail_quote gmail_quote_container"><d=
+iv dir=3D"ltr" class=3D"gmail_attr">---------- Forwarded message ---------<=
+br>From: <strong class=3D"gmail_sendername" dir=3D"auto">Wave AI Note Taker=
+</strong> <span dir=3D"auto">&lt;<a href=3D"mailto:summary@email.wave.co">s=
+ummary@email.wave.co</a>&gt;</span><br>Date: Wed, Jun 18, 2025 at 2:55=E2=
+=80=AFPM<br>Subject: UAT Scope Roles Risks And Testing Updates<br>To:  &lt;=
+<a href=3D"mailto:mac@macconnolly.com">mac@macconnolly.com</a>&gt;<br></div=
+><br><br><div style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;S=
+egoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;margin:0px;padding:0px;back=
+ground-color:rgb(244,244,244)"><div style=3D"width:100%;max-width:604px;mar=
+gin:0px auto;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><div style=3D"background-image:url(&=
+quot;https://upcdn.io/W142iax/raw/email/banner_clean.png&quot;);background-=
+size:cover;background-position:center center;width:604px;height:297px;margi=
+n:0px auto;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot=
+;,Roboto,Helvetica,Arial,sans-serif"><table cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" width=3D"100%" height=3D"100%" style=3D"font-family:-ap=
+ple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,s=
+ans-serif"><tbody style=3D"font-family:-apple-system,BlinkMacSystemFont,&qu=
+ot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><tr style=3D"font-fami=
+ly:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,A=
+rial,sans-serif"><td valign=3D"center" align=3D"center" style=3D"padding:0p=
+x;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif"><img src=3D"https://upcdn.io/W142iax/raw/email/=
+logo_white.png" alt=3D"Wave AI Logo" style=3D"width: 41px; height: 58px; ma=
+x-width: 41px; margin-bottom: 10px; font-family: -apple-system, BlinkMacSys=
+temFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif;"><h1 s=
+tyle=3D"font-size:32px;margin:0px;padding:0px 0px 10px;text-align:center;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif;color:white">UAT Scope Roles Risks And Testing Updat=
+es</h1></td></tr></tbody></table></div><div style=3D"max-width:600px;margin=
+:0px auto;padding:32px 20px;font-family:-apple-system,BlinkMacSystemFont,&q=
+uot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><div style=3D"text-al=
+ign:center;margin-bottom:32px;font-family:-apple-system,BlinkMacSystemFont,=
+&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><a href=3D"https://=
+app.wave.co/sessions/A8F49EF2-5B80-4366-9EE7-C207029EE985?lastLoginParam=3D=
+google" style=3D"padding:12px 24px;border-radius:8px;text-decoration:none;f=
+ont-weight:500;font-size:16px;display:inline-block;margin-top:8px;margin-bo=
+ttom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif;background-color:rgb(230,240,255);color:r=
+gb(0,102,204)" target=3D"_blank">=E2=9C=A8 View Your Session on the Web</a>=
+</div><div style=3D"text-align:center;margin-bottom:36px;font-family:-apple=
+-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans=
+-serif"></div><div style=3D"padding:28px;border-radius:12px;border:1px soli=
+d rgb(226,232,240);margin-bottom:28px;font-family:-apple-system,BlinkMacSys=
+temFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><h3 style=
+=3D"font-size:20px;font-weight:600;margin-top:0px;margin-bottom:20px;displa=
+y:flex;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif;color:rgb(15,23,42)"><span style=3D"font-si=
+ze:24px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif">=F0=9F=93=9D</span>Summary</h3><div style=
+=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystem=
+Font,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85=
+,105)"><div style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><h2 style=3D"font-weight:500=
+;padding-top:20px;font-size:2rem;font-family:-apple-system,BlinkMacSystemFo=
+nt,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">Main Topics Disc=
+ussed</h2><h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem;f=
+ont-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Hel=
+vetica,Arial,sans-serif">1. UAT (User Acceptance Testing) Scope and Partici=
+pants</h3><ul style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;S=
+egoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Admin and Production Testing:</strong> Both admin t=
+asks and daily production (including month-end close) will be tested.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Assigned Roles:</strong><ul style=3D"font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Admin tasks: names provided previous=
+ly; differences discussed between admin and closing process responsibilitie=
+s.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Day-to-day processing: managed by en=
+tity controllers; transactions sourced via BlackLine.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Backup personnel:</strong> Specific individuals nam=
+ed; backup roles clarified.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Gap identified:</strong> Uncertainty over the real =
+user name(s) for Athens=E2=80=99 team, especially for UAT and future admin =
+role.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif">2. Pending/Unfilled Roles</h3><ul style=3D"font-family:-appl=
+e-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,san=
+s-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">BlackLine Admin and Data Admin for S=
+AP Master Data have not been filled. Interviews are scheduled, but no hires=
+ yet.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">A need was expressed for Israel-spec=
+ific roles for these positions.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif">3. UAT Application Coverage and Sequencing</h3><ul style=3D"=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Non-SAP Applications:</strong> Discussion included =
+Hyperion, Workiva, and RPA Watts.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Timing:</strong><ul style=3D"font-family:-apple-sys=
+tem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-ser=
+if">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Hyperion expected to be ready for UA=
+T testing in July 2025.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Workiva&#39;s UAT scope not yet fina=
+lized; its testing to be aligned with the mock close (full end-to-end test =
+using SAP, Hyperion, Workiva integration).</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">The consensus is to include Workiva =
+testing as part of the mock close rather than create a redundant standalone=
+ test due to high overlap.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif">4. Testing Approach and Concerns</h3><ul style=3D"font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Primary testing goal: Validate integ=
+rations, data flow, and end-to-end business process.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Testing focus: Ensure all ERP-integr=
+ated applications function post-separation (e.g., BlackLine, cash apps, fin=
+ancial supply chain management).</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Detailed discussion on whether addit=
+ional testing is required for new entity setups in Hyperion, with consensus=
+ that minimal test loads are reasonable but full consolidation tests are un=
+necessary at this stage.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif">5. Key Risks and Escalations</h3><ul style=3D"font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">User Gaps for E-invoicing (Mexico &amp; Romania):</=
+strong><ul style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">No definitive users identified for E=
+DIcom (tax application) testing.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">The process requires specific indivi=
+duals (e.g., Juan Carlos) to generate government-issued keys, but these rol=
+es are currently unfilled or unsupported in the existing team due to spin-o=
+ff transition.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Lines 33 &amp; 34 (related test case=
+s) highlighted as escalation items requiring urgent resolution and clearly =
+marked for visibility.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif">6. Names and Testers for Various Regions and Applications</h=
+3><ul style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">BlackLine, Workiva, and SAP entity controllers:</st=
+rong> Tester names largely established except for APAC entity controller an=
+d tax roles.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Possible changes in assigned testers=
+ for various regions based on experience concerns.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Business finance team for closing co=
+nfirmed, with new person taking over from Griselda for Athens.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif">7. PowerApps and RPA Watts Testing</h3><ul style=3D"font-fam=
+ily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,=
+Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">PowerApps: Minimal testing required,=
+ primarily ensuring access per TSA (Transitional Service Agreement) scope.<=
+/li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">RPA Watts: Mentioned briefly; to be =
+included in similar minimal-validation tests.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif">8. Next Steps and Action Items</h3><ul style=3D"font-family:=
+-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Aria=
+l,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Open Actions:</strong><ul style=3D"font-family:-app=
+le-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sa=
+ns-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Provide pending names for APAC entry=
+ controller and regional testers where gaps exist.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Follow up on hiring and onboarding f=
+or Data/Admin roles (specifically for Israel and tax applications).</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Maintain and update non-SAP applicat=
+ion coverage list, sharing with relevant stakeholders.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Highlight and escalate unresolved it=
+ems for UAT, especially those linked to compliance and e-invoicing.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Organize communications to set expec=
+tations with broader teams for UAT.</li>
+</ul>
+</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif">Dates Mentioned</h2><ul style=3D"font-family:-apple-system,Blin=
+kMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Today=E2=80=99s Date:</strong> June 18, 2025</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Testing for Hyperion:</strong> July 2025</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Mock Close/UAT Week:</strong> Planning underway; sp=
+ecific dates not mentioned but aligned to application readiness</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif">Summary Table of Key Testers/Resources</h2><table style=3D"font=
+-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvet=
+ica,Arial,sans-serif">
+<thead style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif">
+<tr style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<th style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Application</th>
+<th style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Status/Testers (as of June 18, 2025)=
+</th>
+<th style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Gaps/Comments</th>
+</tr>
+</thead>
+<tbody style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif"><tr style=3D"font-family:-apple-s=
+ystem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-s=
+erif">
+<td style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">BlackLine</td>
+<td style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">List mostly finalized; backup define=
+d</td>
+<td style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">APAC entity controller pending</td>
+</tr>
+<tr style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<td style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">SAP Master Data</td>
+<td style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Existing team plus pending hires (Is=
+rael-specific)</td>
+<td style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Roles not filled; interviews schedul=
+ed</td>
+</tr>
+<tr style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<td style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Hyperion</td>
+<td style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Ready for test in July 2025</td>
+<td style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Minimal new entity test loads deemed=
+ sufficient</td>
+</tr>
+<tr style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<td style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Workiva</td>
+<td style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Scope not final; testing to be with =
+mock close</td>
+<td style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">N/A</td>
+</tr>
+<tr style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<td style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">EDIcom</td>
+<td style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">User unclear due to org changes; esc=
+alating</td>
+<td style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Juan Carlos suggested but not confir=
+med</td>
+</tr>
+<tr style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<td style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">PowerApps</td>
+<td style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Minimal, access-only test; tester id=
+entified</td>
+<td style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">N/A</td>
+</tr>
+<tr style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">
+<td style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">RPA Watts</td>
+<td style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Included for minimal testing</td>
+<td style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">N/A</td>
+</tr>
+</tbody></table>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif">Follow-ups &amp; Escalations</h2><ul style=3D"font-family:-appl=
+e-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,san=
+s-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Immediate escalations:</strong> E-invoicing/testing=
+ users for Mexico/Romania (lines 33 &amp; 34)</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Resources/names:</strong> Pending tester names from=
+ Satish for some regions; tax resource still unfilled</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif"><strong style=3D"font-weight:bold;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif">Comms:</strong> Prepare clear communications and es=
+calation notes for leadership and the wider project team</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif">Closing</h2><ul style=3D"font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">No open questions left for Bill.</li=
+>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Satish to provide additional tester =
+names.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Team to regroup and connect offline =
+for organizing escalations and finishing prep for UAT.</li>
+<li style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif">Broad thanks for participation and e=
+mphasis on communication to ensure UAT readiness.</li>
+</ul>
+</div></div></div><div style=3D"padding:28px;border-radius:12px;border:1px =
+solid rgb(226,232,240);font-family:-apple-system,BlinkMacSystemFont,&quot;S=
+egoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><h3 style=3D"font-size:20p=
+x;font-weight:600;margin-top:0px;margin-bottom:20px;display:flex;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif;color:rgb(15,23,42)"><span style=3D"font-size:24px;font-fami=
+ly:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,A=
+rial,sans-serif">=F0=9F=8E=99=EF=B8=8F</span>Transcription</h3><div style=
+=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px=
+;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,=
+250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;marg=
+in-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;marg=
+in-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Satish</span><=
+span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&=
+quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139=
+)">0:00</span></div><div style=3D"font-size:16px;line-height:1.6;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif;color:rgb(71,85,105)">Manual is the. Yeah, that person. So a=
+s part of the UAT we&#39;ll be testing the admin tasks as well as your day =
+to day production processing tasks. Admin tasks. I&#39;ve given you the nam=
+es already. Day to day transaction processing will be done with entity cont=
+rollers be day to day transactions or month and month close transactions. I=
+t will all come from black line from the entity controllers.</div></div><di=
+v style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-wi=
+dth:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:r=
+gb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:fl=
+ex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:6=
+00;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Sriniva=
+s</span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSys=
+temFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(10=
+0,116,139)">0:20</span></div><div style=3D"font-size:16px;line-height:1.6;f=
+ont-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Hel=
+vetica,Arial,sans-serif;color:rgb(71,85,105)">So for blackline I have these=
+ three including you. Right?</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;border-radius:8px;border-left-width:4px;border-left-style:solid;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-colo=
+r:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-family:=
+-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Aria=
+l,sans-serif;color:rgb(59,130,246)">Satish</span><span style=3D"font-size:1=
+4px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robot=
+o,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">0:24</span></div><div =
+style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacS=
+ystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(=
+71,85,105)">Yeah. This is a backup. So me as a backup.</div></div><div styl=
+e=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4p=
+x;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quo=
+t;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248=
+,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;mar=
+gin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;mar=
+gin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Srinivas</spa=
+n><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,=
+139)">0:30</span></div><div style=3D"font-size:16px;line-height:1.6;font-fa=
+mily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica=
+,Arial,sans-serif;color:rgb(71,85,105)">So again this is. I mean thanks Sat=
+ish. I think this is Jessica and Vicky. The key risk that I see is again to=
+ Caesar&#39;s point as well. We need to find out the real name of the user =
+for Athens. Right. Who needs to test this? Because it&#39;s great that Sati=
+sh and King will be helping. But then at the end of the day who is going to=
+ take out. It&#39;s going to be someone from Athens, which we don&#39;t kno=
+w yet. Right.</div></div><div style=3D"margin-bottom:16px;padding:16px;bord=
+er-radius:8px;border-left-width:4px;border-left-style:solid;font-family:-ap=
+ple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,s=
+ans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,24=
+6)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,=
+BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif">=
+<span style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,B=
+linkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;co=
+lor:rgb(59,130,246)">Satish</span><span style=3D"font-size:14px;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif;color:rgb(100,116,139)">0:52</span></div><div style=3D"font-s=
+ize:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">So =
+sorry to interrupt you Srinivas. The names I&#39;m giving you Athens win qu=
+enched people. So for the admins it&#39;s a little different. But for closi=
+ng process you see the first line. Emmanuel and CEO. He&#39;s going to be. =
+He&#39;s in Caesar&#39;s team. He&#39;s going to be.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px=
+;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,=
+250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;marg=
+in-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;marg=
+in-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Colin</span><s=
+pan style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&q=
+uot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)=
+">1:09</span></div><div style=3D"font-size:16px;line-height:1.6;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif;color:rgb(71,85,105)">He&#39;s Athens.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px=
+;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,=
+250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;marg=
+in-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;marg=
+in-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Satish</span><=
+span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&=
+quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139=
+)">1:10</span></div><div style=3D"font-size:16px;line-height:1.6;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif;color:rgb(71,85,105)">He&#39;s Athens.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px=
+;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,=
+250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;marg=
+in-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;marg=
+in-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Srinivas</span=
+><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont=
+,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,1=
+39)">1:11</span></div><div style=3D"font-size:16px;line-height:1.6;font-fam=
+ily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,=
+Arial,sans-serif;color:rgb(71,85,105)">Oh, he&#39;s Athens. Okay.</div></di=
+v><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-le=
+ft-width:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-co=
+lor:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"displ=
+ay:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quo=
+t;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-wei=
+ght:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Sa=
+tish</span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMac=
+SystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb=
+(100,116,139)">1:12</span></div><div style=3D"font-size:16px;line-height:1.=
+6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif;color:rgb(71,85,105)">And he&#39;s the future ad=
+min. He&#39;s being trained. But Akish. Actually Caesar, that one&#39;s sti=
+ll open, right? Black and black administer role Slopen. Right. Did we hire =
+already?</div></div><div style=3D"margin-bottom:16px;padding:16px;border-ra=
+dius:8px;border-left-width:4px;border-left-style:solid;font-family:-apple-s=
+ystem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-s=
+erif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><=
+div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,Blink=
+MacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span=
+ style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkM=
+acSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:r=
+gb(59,130,246)">Colin</span><span style=3D"font-size:14px;font-family:-appl=
+e-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,san=
+s-serif;color:rgb(100,116,139)">1:24</span></div><div style=3D"font-size:16=
+px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Which one=
+?</div></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8p=
+x;border-left-width:4px;border-left-style:solid;font-family:-apple-system,B=
+linkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;ba=
+ckground-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div sty=
+le=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=
+=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,=
+130,246)">Satish</span><span style=3D"font-size:14px;font-family:-apple-sys=
+tem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-ser=
+if;color:rgb(100,116,139)">1:25</span></div><div style=3D"font-size:16px;li=
+ne-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">The blackline =
+Admin and Data Admin for Master Data SAP.</div></div><div style=3D"margin-b=
+ottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left=
+-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);bor=
+der-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8p=
+x;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px=
+;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,H=
+elvetica,Arial,sans-serif;color:rgb(59,130,246)">Srinivas</span><span style=
+=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">1:28</s=
+pan></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-s=
+ystem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-s=
+erif;color:rgb(71,85,105)">Master Administer Data Admin.</div></div><div st=
+yle=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:=
+4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&q=
+uot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(2=
+48,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;m=
+argin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe U=
+I&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;m=
+argin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Colin</span=
+><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont=
+,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,1=
+39)">1:29</span></div><div style=3D"font-size:16px;line-height:1.6;font-fam=
+ily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,=
+Arial,sans-serif;color:rgb(71,85,105)">No, we haven&#39;t found. I have a c=
+ouple interviews scheduled but no, no hires yet.</div></div><div style=3D"m=
+argin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;bord=
+er-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,2=
+52);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bo=
+ttom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-ri=
+ght:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Satish</span><span =
+style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;=
+Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">1:=
+36</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-ap=
+ple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,s=
+ans-serif;color:rgb(71,85,105)">So that&#39;s still. We have our existing p=
+eople there, Srinivas, but we need to find people who are going to be Israe=
+l specific.</div></div><div style=3D"margin-bottom:16px;padding:16px;border=
+-radius:8px;border-left-width:4px;border-left-style:solid;font-family:-appl=
+e-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,san=
+s-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)=
+"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,Bl=
+inkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><s=
+pan style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;colo=
+r:rgb(59,130,246)">Srinivas</span><span style=3D"font-size:14px;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif;color:rgb(100,116,139)">1:46</span></div><div style=3D"font-s=
+ize:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Oka=
+y, give me a second.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;border-radius:8px;border-left-width:4px;border-left-style:solid;font-fam=
+ily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,=
+Arial,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59=
+,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-s=
+ystem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-s=
+erif;color:rgb(59,130,246)">Colin</span><span style=3D"font-size:14px;font-=
+family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helveti=
+ca,Arial,sans-serif;color:rgb(100,116,139)">1:48</span></div><div style=3D"=
+font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont=
+,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105=
+)">Hey Satish. I hopped on. I probably need to just pop on and see if you g=
+uys need my input real quickly and then pop off because I&#39;ve been on be=
+en on multiple calls that are overlapping. But I wanted to make sure if the=
+re&#39;s anything you needed from me that we talk through it. Are you guys =
+going through the UAT needs?</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;border-radius:8px;border-left-width:4px;border-left-style:solid;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-colo=
+r:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-family:=
+-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Aria=
+l,sans-serif;color:rgb(59,130,246)">Satish</span><span style=3D"font-size:1=
+4px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robot=
+o,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">2:09</span></div><div =
+style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacS=
+ystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(=
+71,85,105)">Right, so I voiced your concern, Colin, about not having clarit=
+y about exactly what all is happening in the UAT week. It was only SAP, but=
+ we are seeing other requests also coming in.</div></div><div style=3D"marg=
+in-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-=
+left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe U=
+I&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252)=
+;border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-botto=
+m:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Rob=
+oto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right=
+:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robo=
+to,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Colin</span><span styl=
+e=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">2:19</=
+span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif;color:rgb(71,85,105)">Right.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;border-radius:8px;border-left-width:4px;border-left-style:=
+solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Rob=
+oto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-lef=
+t-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-=
+family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helveti=
+ca,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-f=
+amily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetic=
+a,Arial,sans-serif;color:rgb(59,130,246)">Satish</span><span style=3D"font-=
+size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;=
+,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">2:19</span></div=
+><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;colo=
+r:rgb(71,85,105)">So Shrini was. Was sharing the non SAP applications that =
+are being tested as well. If you want to take a quick look at that.</div></=
+div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-=
+left-width:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSy=
+stemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-=
+color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"dis=
+play:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&q=
+uot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-w=
+eight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&qu=
+ot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">=
+Colin</span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMa=
+cSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rg=
+b(100,116,139)">2:30</span></div><div style=3D"font-size:16px;line-height:1=
+.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto=
+,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Are these all being teste=
+d Like, I mean, I&#39;m looking at the stuff on the last screen before you =
+moved, like, Like Caesar, is. Is Hyperion ready to be tested right now? Yes=
+. I mean, we&#39;re going to be ready for testing, which is in a month, but=
+ yes. Okay, so the testing&#39;s in July. Yep, it is Workiva. Like some of =
+these. I&#39;m just trying to make sure.</div></div><div style=3D"margin-bo=
+ttom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-=
+style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quo=
+t;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);bord=
+er-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px=
+;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,H=
+elvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif;color:rgb(59,130,246)">Srinivas</span><span style=
+=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">2:58</s=
+pan></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-s=
+ystem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-s=
+erif;color:rgb(71,85,105)">Yeah, Workiva was highlighted. Sorry for interru=
+ption. Workiva. I have highlighted what the scope is, and then we don&#39;t=
+ have the scope yet for uat. So that&#39;s the reason you see comments here=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8p=
+x;border-left-width:4px;border-left-style:solid;font-family:-apple-system,B=
+linkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;ba=
+ckground-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div sty=
+le=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=
+=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,=
+130,246)">Colin</span><span style=3D"font-size:14px;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f;color:rgb(100,116,139)">3:10</span></div><div style=3D"font-size:16px;lin=
+e-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Here&#39;s the =
+thing. I think the UAT for Workiva is going to be accomplished during erv, =
+Right? Because, I mean, what are they going to test in Workiva? They&#39;re=
+ going to test in Workiva the ability to consume all the schedules that the=
+y&#39;ve defined and to build externally reported financial statements. Rig=
+ht. So to do Workiva, you need Hyperion. Right. Because you&#39;re going to=
+ do a consolidation in Hyperion, both an SBG consolidation and an external =
+consolidation. You&#39;re then going to feed that information. You know, wh=
+atever information they pull into Workiva, you&#39;re going to pull data fr=
+om SAP into Workiva, probably. Because, I mean, it really depends on how th=
+ey populate their templates. Right. So, like, Workiva is going to get teste=
+d during the mock close, as will all the other SAP things. Like, to me, the=
+ UAT is to test the integrations and make sure all the pieces work. Right. =
+But the mock close is going to. I mean, Workiva is going to get tested the =
+same in the mock close as it would in the testing. So I think you probably =
+test Workiva as part of the mock close because, I mean, I don&#39;t think y=
+ou&#39;re going to. It&#39;s going to be very difficult. You&#39;re basical=
+ly going to create another mock close if you try to do Workiva early.</div>=
+</div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;borde=
+r-left-width:4px;border-left-style:solid;font-family:-apple-system,BlinkMac=
+SystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;backgroun=
+d-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"d=
+isplay:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,=
+&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font=
+-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&=
+quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)=
+">Srinivas</span><span style=3D"font-size:14px;font-family:-apple-system,Bl=
+inkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;col=
+or:rgb(100,116,139)">4:23</span></div><div style=3D"font-size:16px;line-hei=
+ght:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">So I have a question=
+. Colin, thank you for the detailed overview. So the question I have is, if=
+ Caesar is going to test HFM and FDS after the ERP completes their postings=
+ and everything, then don&#39;t you need Workiva to be tested along with yo=
+ur HIV mfds?</div></div><div style=3D"margin-bottom:16px;padding:16px;borde=
+r-radius:8px;border-left-width:4px;border-left-style:solid;font-family:-app=
+le-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sa=
+ns-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246=
+)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,B=
+linkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><=
+span style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,Bl=
+inkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;col=
+or:rgb(59,130,246)">Colin</span><span style=3D"font-size:14px;font-family:-=
+apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial=
+,sans-serif;color:rgb(100,116,139)">4:41</span></div><div style=3D"font-siz=
+e:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;S=
+egoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">I mea=
+n, I mean, I think. Not necessarily. I mean, like, we&#39;re not making, li=
+ke, significant changes. I mean, I guess ERP has complexity that we don&#39=
+;t have. There&#39;s so many integrations with ERP and so many systems. I m=
+ean, that&#39;s what you&#39;re doing here. You&#39;re trying to make sure =
+that all the systems work when you separate them. Right. I think Hyperion i=
+s going to take the same file from SAP that it takes today. It&#39;s just g=
+oing to be coming from a different company code, right?</div></div><div sty=
+le=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4=
+px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&qu=
+ot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(24=
+8,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;ma=
+rgin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;ma=
+rgin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Srinivas</sp=
+an><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFo=
+nt,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116=
+,139)">5:10</span></div><div style=3D"font-size:16px;line-height:1.6;font-f=
+amily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetic=
+a,Arial,sans-serif;color:rgb(71,85,105)">That&#39;s right.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-widt=
+h:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,=
+&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb=
+(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex=
+;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600=
+;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe =
+UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Colin</sp=
+an><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFo=
+nt,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116=
+,139)">5:11</span></div><div style=3D"font-size:16px;line-height:1.6;font-f=
+amily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetic=
+a,Arial,sans-serif;color:rgb(71,85,105)">I think the mock close will test c=
+an we consolidate and do all the consolidation things work? Because what we=
+&#39;re going to do in the consolidate in the BRV is we&#39;re going to run=
+ a consolidation for am. So I think, you know, it&#39;s not a live consolid=
+ation, right? So it is a test, right? So to me, that&#39;s like the integra=
+ted UAT for that. I mean, Cesar, tell me if you see it otherwise. If not, w=
+e&#39;re creating like basically a third mock close.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px=
+;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,=
+250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;marg=
+in-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;marg=
+in-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Srinivas</span=
+><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont=
+,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,1=
+39)">5:36</span></div><div style=3D"font-size:16px;line-height:1.6;font-fam=
+ily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,=
+Arial,sans-serif;color:rgb(71,85,105)">If you want me to exclude this, I&#3=
+9;ll just. We will not discuss on this. We&#39;ll move on to the next open =
+item.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-radiu=
+s:8px;border-left-width:4px;border-left-style:solid;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div=
+ style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMac=
+SystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span st=
+yle=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacS=
+ystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(=
+59,130,246)">Colin</span><span style=3D"font-size:14px;font-family:-apple-s=
+ystem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-s=
+erif;color:rgb(100,116,139)">5:43</span></div><div style=3D"font-size:16px;=
+line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">I mean, the =
+only thing I would say if you wanted to do it would be a test into current =
+Hyperion because you&#39;re going to create the new entities, right? I mean=
+, if there&#39;s any thought that you need to load a test file for the new =
+entities and there&#39;s value in it, that&#39;s fine. I don&#39;t think th=
+at there is because you&#39;re probably going to have to test load them onc=
+e they go live, like, because they shouldn&#39;t materially be changing. It=
+&#39;s not like we have to map a trial balance. The likelihood is that some=
+thing is going to be amiss and it&#39;s going to load in some out of balanc=
+e way and there&#39;s going to be some mapping corrections is my guess. I d=
+on&#39;t know, Cesar, if you have any thoughts on that. But that would be m=
+y concern. On the Hyperion side, like I would test all the ERP integrated a=
+pplications, correct? I would test. I would test all the banking stuff, all=
+ the cash app, all the financial supply chain management. I test all of the=
+ stuff that, you know, like black line. I would test just to make sure, you=
+ know, there&#39;s the separation, you know, and anything that integrates i=
+nto the ERP we probably should test.</div></div><div style=3D"margin-bottom=
+:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-styl=
+e:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-l=
+eft-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;fon=
+t-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helve=
+tica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font=
+-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvet=
+ica,Arial,sans-serif;color:rgb(59,130,246)">Srinivas</span><span style=3D"f=
+ont-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">6:48</span><=
+/div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system=
+,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;=
+color:rgb(71,85,105)">Right? Right. All right, then I think we&#39;ll start=
+ that topic.</div></div><div style=3D"margin-bottom:16px;padding:16px;borde=
+r-radius:8px;border-left-width:4px;border-left-style:solid;font-family:-app=
+le-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sa=
+ns-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246=
+)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,B=
+linkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><=
+span style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,Bl=
+inkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;col=
+or:rgb(59,130,246)">Satish</span><span style=3D"font-size:14px;font-family:=
+-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Aria=
+l,sans-serif;color:rgb(100,116,139)">6:53</span></div><div style=3D"font-si=
+ze:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;=
+Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Than=
+k you. So I was thinking of doing some test loads from the new entities, ca=
+ll it and Caesar, obviously we don&#39;t need to do that to hfs.</div></div=
+><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-lef=
+t-width:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-col=
+or:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"displa=
+y:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weig=
+ht:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;=
+Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Col=
+in</span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSy=
+stemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(1=
+00,116,139)">7:01</span></div><div style=3D"font-size:16px;line-height:1.6;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif;color:rgb(71,85,105)">You can. I mean, that&#39;s =
+pretty low effort. I don&#39;t mind doing that. I&#39;m just not going to d=
+o a full consolidation test. Right. If you want. If you wanted to load the =
+files and you have time to do that, that&#39;s fine. I&#39;m not overly con=
+cerned about it because we&#39;re going to test that when we do the load pr=
+ocess. Yeah. I mean we didn&#39;t do that when we created the entities for =
+ppe. Like and yeah, I would say that that was pretty similar to this. Right=
+. Because we were basically doing the same thing where we were separating e=
+ntities. We created a bunch of new entities. I mean it&#39;s pretty. As lon=
+g as they&#39;re on the, on an ERP that exists today, it&#39;s very rare th=
+at there&#39;s anything new. Right. Because they&#39;re not creating any ne=
+w accounts and the trial balance is imbalance. It&#39;s fine.</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-w=
+idth:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFo=
+nt,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:=
+rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:f=
+lex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Se=
+goe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:=
+600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Satish=
+</span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100=
+,116,139)">7:45</span></div><div style=3D"font-size:16px;line-height:1.6;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif;color:rgb(71,85,105)">The only thing I was focusing =
+on was the rename and reuse bucket. So we have the same SAP company code ma=
+pping is changing to a new hfrm. Maybe that&#39;s.</div></div><div style=3D=
+"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;bo=
+rder-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Se=
+goe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250=
+,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-=
+bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot=
+;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-=
+right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;=
+,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Colin</span><span=
+ style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">7=
+:53</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif;color:rgb(71,85,105)">Maybe that is a good one to look at. I thi=
+nk that might be a good call out.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;border-radius:8px;border-left-width:4px;border-left-style:s=
+olid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robo=
+to,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left=
+-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-f=
+amily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetic=
+a,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-fa=
+mily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica=
+,Arial,sans-serif;color:rgb(59,130,246)">Satish</span><span style=3D"font-s=
+ize:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">7:57</span></div>=
+<div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,Blin=
+kMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color=
+:rgb(71,85,105)">Okay.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;border-radius:8px;border-left-width:4px;border-left-style:solid;font-f=
+amily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetic=
+a,Arial,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(=
+59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-appl=
+e-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,san=
+s-serif"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple=
+-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans=
+-serif;color:rgb(59,130,246)">Srinivas</span><span style=3D"font-size:14px;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif;color:rgb(100,116,139)">7:59</span></div><div styl=
+e=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,8=
+5,105)">Sorry for the interruption. Satish. While we have Colin, I have ano=
+ther item to discuss if that is okay with you.</div></div><div style=3D"mar=
+gin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border=
+-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe =
+UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252=
+);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bott=
+om:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-righ=
+t:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Rob=
+oto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Colin</span><span sty=
+le=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">8:05<=
+/span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple=
+-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans=
+-serif;color:rgb(71,85,105)">Sure.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;border-radius:8px;border-left-width:4px;border-left-style:=
+solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Rob=
+oto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-lef=
+t-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-=
+family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helveti=
+ca,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-f=
+amily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetic=
+a,Arial,sans-serif;color:rgb(59,130,246)">Srinivas</span><span style=3D"fon=
+t-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quo=
+t;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">8:05</span></d=
+iv><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,B=
+linkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;co=
+lor:rgb(71,85,105)">So Colin, for anyone, right. For the invoicing we have =
+to it, I think Mexico, Romanian Scope and we did reached out to Juan Carlos=
+, but we still didn&#39;t. I mean we weren&#39;t successful gathering the u=
+sername or who the users are going to be. Do you know tax application for e=
+dicom?</div></div><div style=3D"margin-bottom:16px;padding:16px;border-radi=
+us:8px;border-left-width:4px;border-left-style:solid;font-family:-apple-sys=
+tem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-ser=
+if;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><di=
+v style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMa=
+cSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span s=
+tyle=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMac=
+SystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb=
+(59,130,246)">Colin</span><span style=3D"font-size:14px;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif;color:rgb(100,116,139)">8:27</span></div><div style=3D"font-size:16px=
+;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe U=
+I&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Is eddycom =
+really us?</div></div><div style=3D"margin-bottom:16px;padding:16px;border-=
+radius:8px;border-left-width:4px;border-left-style:solid;font-family:-apple=
+-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans=
+-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"=
+><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><sp=
+an style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,Blin=
+kMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color=
+:rgb(59,130,246)">Satish</span><span style=3D"font-size:14px;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif;color:rgb(100,116,139)">8:29</span></div><div style=3D"font-size=
+:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Se=
+goe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Wouldn=
+&#39;t that be.</div></div><div style=3D"margin-bottom:16px;padding:16px;bo=
+rder-radius:8px;border-left-width:4px;border-left-style:solid;font-family:-=
+apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial=
+,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,=
+246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-syste=
+m,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif=
+"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-system=
+,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;=
+color:rgb(59,130,246)">Colin</span><span style=3D"font-size:14px;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif;color:rgb(100,116,139)">8:31</span></div><div style=3D"font-=
+size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quo=
+t;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">I =
+mean, have you tried reaching out to somebody on Jason Sieber&#39;s team, l=
+ike maybe George?</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+border-radius:8px;border-left-width:4px;border-left-style:solid;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,13=
+0,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-sys=
+tem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-ser=
+if"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f;color:rgb(59,130,246)">Srinivas</span><span style=3D"font-size:14px;font-=
+family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helveti=
+ca,Arial,sans-serif;color:rgb(100,116,139)">8:36</span></div><div style=3D"=
+font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont=
+,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105=
+)">They have given a name, Juan Carlos, but we did reach out to him, but he=
+&#39;s still. We are unsuccessful in collecting.</div></div><div style=3D"m=
+argin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;bord=
+er-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,2=
+52);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bo=
+ttom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-ri=
+ght:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Colin</span><span s=
+tyle=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;S=
+egoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">8:4=
+4</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-app=
+le-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sa=
+ns-serif;color:rgb(71,85,105)">Do we know if it&#39;s a. I mean like Juan C=
+arlos in controllership?</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;border-radius:8px;border-left-width:4px;border-left-style:solid;font=
+-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvet=
+ica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-color:rg=
+b(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-ap=
+ple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,s=
+ans-serif"><span style=3D"font-weight:600;margin-right:8px;font-family:-app=
+le-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sa=
+ns-serif;color:rgb(59,130,246)">Satish</span><span style=3D"font-size:14px;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif;color:rgb(100,116,139)">8:50</span></div><div styl=
+e=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,8=
+5,105)">Just to fill you in. Yeah. So I think in the current scenario there=
+ is some, some kind of a public key that the government issues for that app=
+lication which is being managed by the controllership team in those regions=
+. And that&#39;s the support that Vikram and the team are asking for. They =
+were asking for somebody who can generate, go to the. Into the government s=
+ite, generate that key and give it to the IT team so they can set up the in=
+tegration.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-=
+radius:8px;border-left-width:4px;border-left-style:solid;font-family:-apple=
+-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans=
+-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"=
+><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><sp=
+an style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,Blin=
+kMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color=
+:rgb(59,130,246)">Colin</span><span style=3D"font-size:14px;font-family:-ap=
+ple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,s=
+ans-serif;color:rgb(100,116,139)">9:17</span></div><div style=3D"font-size:=
+16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Right.<=
+/div></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;=
+border-left-width:4px;border-left-style:solid;font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;back=
+ground-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=
+=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystem=
+Font,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D=
+"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemF=
+ont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130=
+,246)">Satish</span><span style=3D"font-size:14px;font-family:-apple-system=
+,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;=
+color:rgb(100,116,139)">9:18</span></div><div style=3D"font-size:16px;line-=
+height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot=
+;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">That&#39;s the co=
+ncern. Right? The main thing.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;border-radius:8px;border-left-width:4px;border-left-style:solid=
+;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,H=
+elvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-col=
+or:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif;color:rgb(59,130,246)">Srinivas</span><span style=3D"font-siz=
+e:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">9:19</span></div><d=
+iv style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkM=
+acSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:r=
+gb(71,85,105)">Yes. And also. And also someone needs to test right after th=
+at.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:=
+8px;border-left-width:4px;border-left-style:solid;font-family:-apple-system=
+,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;=
+background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div s=
+tyle=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSy=
+stemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span styl=
+e=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSys=
+temFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59=
+,130,246)">Satish</span><span style=3D"font-size:14px;font-family:-apple-sy=
+stem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-se=
+rif;color:rgb(100,116,139)">9:24</span></div><div style=3D"font-size:16px;l=
+ine-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Yeah. So the =
+person who&#39;s providing those tokens would be the tester. When I spoke t=
+o jc, he was saying that that person&#39;s not been hired yet for those reg=
+ions, those countries. And that&#39;s where the gap was. And the current te=
+am was not supporting it. They were saying it&#39;s not part of their scope=
+ because it&#39;s going to be at and spin off. I raised that to JC to see i=
+f he can work it out with Bogdan and come up with a solution. I don&#39;t k=
+now what happened after that.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;border-radius:8px;border-left-width:4px;border-left-style:solid=
+;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,H=
+elvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-col=
+or:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif;color:rgb(59,130,246)">Bill</span><span style=3D"font-size:14=
+px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto=
+,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">9:48</span></div><div s=
+tyle=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSy=
+stemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(7=
+1,85,105)">Sorry, I needed to take a quick call. Which item were you specif=
+ically looking at? Which line?</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;border-radius:8px;border-left-width:4px;border-left-style:soli=
+d;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-co=
+lor:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-fami=
+ly:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,A=
+rial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif;color:rgb(59,130,246)">Srinivas</span><span style=3D"font-si=
+ze:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">9:54</span></div><=
+div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,Blink=
+MacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:=
+rgb(71,85,105)">This one. The 33.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;border-radius:8px;border-left-width:4px;border-left-style:s=
+olid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robo=
+to,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left=
+-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-f=
+amily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetic=
+a,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-fa=
+mily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica=
+,Arial,sans-serif;color:rgb(59,130,246)">Bill</span><span style=3D"font-siz=
+e:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">9:56</span></div><d=
+iv style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkM=
+acSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:r=
+gb(71,85,105)">All right. Can you put that in the notes very specifically t=
+hat the existing team is not supporting and the new hire is not in there. B=
+ecause this is something we will need to escalate tomorrow, slash, tonight.=
+ But just all escalations. Let&#39;s just highlight in yellow, since you ha=
+ve red on here already and know that needs an escalation.</div></div><div s=
+tyle=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width=
+:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&=
+quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(=
+248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;=
+margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe =
+UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;=
+margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe U=
+I&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Colin</spa=
+n><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,=
+139)">10:20</span></div><div style=3D"font-size:16px;line-height:1.6;font-f=
+amily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetic=
+a,Arial,sans-serif;color:rgb(71,85,105)">Trying to figure out, like, I don&=
+#39;t recall us doing anything with etacon. That&#39;s why I was kind of su=
+rprised because Edicom is like an integrate. I mean, it&#39;s just the numb=
+er. Like. Let&#39;s be very specific about what we&#39;re asking for. Right=
+. If it&#39;s Juan Carlos needs to provide this registration number or what=
+ever this number is, that&#39;s a very specific ask. And we should ask that=
+ question because, I mean, it&#39;s not something I&#39;m familiar with.</d=
+iv></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;bo=
+rder-left-width:4px;border-left-style:solid;font-family:-apple-system,Blink=
+MacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;backgr=
+ound-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=
+=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystem=
+Font,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D=
+"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemF=
+ont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130=
+,246)">Srinivas</span><span style=3D"font-size:14px;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f;color:rgb(100,116,139)">10:45</span></div><div style=3D"font-size:16px;li=
+ne-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">This is not on=
+ you. I&#39;m just. We&#39;re just bringing it up on this call as we all ar=
+e together. We did had a call with Juan Carlos on Monday, but he said he&#3=
+9;s gonna help us, but we haven&#39;t received any information yet, even af=
+ter following up with him a couple of times. So that&#39;s a concerning. No=
+w that we don&#39;t have the organization, we don&#39;t know what to test. =
+So that&#39;s why we&#39;re calling out that. That as a risk for the upcomi=
+ng sight and UAT.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+border-radius:8px;border-left-width:4px;border-left-style:solid;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,13=
+0,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-sys=
+tem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-ser=
+if"><span style=3D"font-weight:600;margin-right:8px;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f;color:rgb(59,130,246)">Colin</span><span style=3D"font-size:14px;font-fam=
+ily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,=
+Arial,sans-serif;color:rgb(100,116,139)">11:12</span></div><div style=3D"fo=
+nt-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&=
+quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)"=
+>Got it.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-ra=
+dius:8px;border-left-width:4px;border-left-style:solid;font-family:-apple-s=
+ystem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-s=
+erif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><=
+div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,Blink=
+MacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span=
+ style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkM=
+acSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:r=
+gb(59,130,246)">Bill</span><span style=3D"font-size:14px;font-family:-apple=
+-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans=
+-serif;color:rgb(100,116,139)">11:13</span></div><div style=3D"font-size:16=
+px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Would it =
+be the same for line 34? Is that different in any way or is that&#39;s.</di=
+v></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;bor=
+der-left-width:4px;border-left-style:solid;font-family:-apple-system,BlinkM=
+acSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;backgro=
+und-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D=
+"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"fo=
+nt-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont=
+,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,24=
+6)">Srinivas</span><span style=3D"font-size:14px;font-family:-apple-system,=
+BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;c=
+olor:rgb(100,116,139)">11:19</span></div><div style=3D"font-size:16px;line-=
+height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot=
+;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">That&#39;s slight=
+ly different. I think once you have line 33, then you. You are covered for =
+34, Jessica.</div></div><div style=3D"margin-bottom:16px;padding:16px;borde=
+r-radius:8px;border-left-width:4px;border-left-style:solid;font-family:-app=
+le-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sa=
+ns-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246=
+)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,B=
+linkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><=
+span style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,Bl=
+inkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;col=
+or:rgb(59,130,246)">Bill</span><span style=3D"font-size:14px;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif;color:rgb(100,116,139)">11:26</span></div><div style=3D"font-siz=
+e:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;S=
+egoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Okay,=
+ so for our purposes right now, just highlight. Is it. Let me just. Sorry. =
+Just to be really clear, it&#39;s separate tests or do you just have a seco=
+nd line? Because you have a second.</div></div><div style=3D"margin-bottom:=
+16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-style=
+:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-le=
+ft-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font=
+-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvet=
+ica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-=
+family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helveti=
+ca,Arial,sans-serif;color:rgb(59,130,246)">Srinivas</span><span style=3D"fo=
+nt-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">11:37</span><=
+/div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system=
+,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;=
+color:rgb(71,85,105)">It&#39;s a separate test with. When we do. Otherwise,=
+ she added. She added. The second line is to perform end to end tests with =
+erp. That&#39;s why she had a separate. Then you called out Gaurav, who&#39=
+;s going to run that for us. So that&#39;s why.</div></div><div style=3D"ma=
+rgin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;borde=
+r-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,25=
+2);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bot=
+tom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-rig=
+ht:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Bill</span><span sty=
+le=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">11:50=
+</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-appl=
+e-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,san=
+s-serif;color:rgb(71,85,105)">Okay, but to your point, it&#39;s the same re=
+source that would theoretically do this? If we had a resource, yes. Okay. L=
+et&#39;s just highlight line 34 as well.</div></div><div style=3D"margin-bo=
+ttom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-=
+style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quo=
+t;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);bord=
+er-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px=
+;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,H=
+elvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif;color:rgb(59,130,246)">Satish</span><span style=3D=
+"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">12:01</spa=
+n></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-sys=
+tem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-ser=
+if;color:rgb(71,85,105)">Sure.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;border-radius:8px;border-left-width:4px;border-left-style:soli=
+d;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,=
+Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-co=
+lor:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-fami=
+ly:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,A=
+rial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif;color:rgb(59,130,246)">Bill</span><span style=3D"font-size:1=
+4px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robot=
+o,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">12:02</span></div><div=
+ style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMac=
+SystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb=
+(71,85,105)">In yellow.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;border-radius:8px;border-left-width:4px;border-left-style:solid;font-=
+family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helveti=
+ca,Arial,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb=
+(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-app=
+le-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sa=
+ns-serif"><span style=3D"font-weight:600;margin-right:8px;font-family:-appl=
+e-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,san=
+s-serif;color:rgb(59,130,246)">Srinivas</span><span style=3D"font-size:14px=
+;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,H=
+elvetica,Arial,sans-serif;color:rgb(100,116,139)">12:03</span></div><div st=
+yle=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSys=
+temFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71=
+,85,105)">Okay. So anything else with Caesar, Satish and Colin? I think tha=
+t&#39;s I&#39;m good. I think I have the names for Black Line. I have the n=
+ames except for AAC Entity Control. Right. Satish, which she will help us l=
+ater in the.</div></div><div style=3D"margin-bottom:16px;padding:16px;borde=
+r-radius:8px;border-left-width:4px;border-left-style:solid;font-family:-app=
+le-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sa=
+ns-serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246=
+)"><div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,B=
+linkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><=
+span style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,Bl=
+inkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;col=
+or:rgb(59,130,246)">Satish</span><span style=3D"font-size:14px;font-family:=
+-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Aria=
+l,sans-serif;color:rgb(100,116,139)">12:17</span></div><div style=3D"font-s=
+ize:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Oka=
+y, so I think I&#39;m going to give you new names for all regions. They wer=
+e saying those guys are not fully experienced. They might want to give us m=
+ore experienced people for other regions as well. I&#39;ll get back to you =
+tomorrow.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-r=
+adius:8px;border-left-width:4px;border-left-style:solid;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)">=
+<div style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,Blin=
+kMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><spa=
+n style=3D"font-weight:600;margin-right:8px;font-family:-apple-system,Blink=
+MacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:=
+rgb(59,130,246)">Srinivas</span><span style=3D"font-size:14px;font-family:-=
+apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial=
+,sans-serif;color:rgb(100,116,139)">12:27</span></div><div style=3D"font-si=
+ze:16px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;=
+Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Okay=
+. Let me ask one more question, Satish, for the. When we call a business fi=
+nance. I might be misunderstanding something here. These two folks and this=
+, these three will be helping us from that perspective when it comes to clo=
+se and all for closing.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;border-radius:8px;border-left-width:4px;border-left-style:solid;font-=
+family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helveti=
+ca,Arial,sans-serif;background-color:rgb(248,250,252);border-left-color:rgb=
+(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-family:-app=
+le-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sa=
+ns-serif"><span style=3D"font-weight:600;margin-right:8px;font-family:-appl=
+e-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,san=
+s-serif;color:rgb(59,130,246)">Satish</span><span style=3D"font-size:14px;f=
+ont-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Hel=
+vetica,Arial,sans-serif;color:rgb(100,116,139)">12:44</span></div><div styl=
+e=3D"font-size:16px;line-height:1.6;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,8=
+5,105)">Yes. So when you say business finance, it&#39;s a, it&#39;s a vague=
+ term. Right. I agree with you. So they, they. That&#39;s the team that&#39=
+;s running the close today for CP900 is the new person who&#39;s going to b=
+e taking over from Griselda for Athens.</div></div><div style=3D"margin-bot=
+tom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-s=
+tyle:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot=
+;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);borde=
+r-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;f=
+ont-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Hel=
+vetica,Arial,sans-serif;color:rgb(59,130,246)">Srinivas</span><span style=
+=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">12:58</=
+span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif;color:rgb(71,85,105)">Okay, I think then Bill, we will have to use th=
+e same names for you as well. Right. In. In erp when you do our end to end =
+testing, you have to, we have to engage these three. Okay. And there. And t=
+hen what is those three names? Yeah, I&#39;ll ping you. Yeah. And then what=
+ is missing is the APAC entry control for now.</div></div><div style=3D"mar=
+gin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border=
+-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe =
+UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252=
+);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bott=
+om:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-righ=
+t:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Rob=
+oto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Satish</span><span st=
+yle=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Se=
+goe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">13:1=
+9</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-app=
+le-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sa=
+ns-serif;color:rgb(71,85,105)">Yeah, I&#39;ll provide that.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-wid=
+th:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont=
+,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rg=
+b(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:fle=
+x;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:60=
+0;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Colin</s=
+pan><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemF=
+ont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,11=
+6,139)">13:21</span></div><div style=3D"font-size:16px;line-height:1.6;font=
+-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvet=
+ica,Arial,sans-serif;color:rgb(71,85,105)">Okay.</div></div><div style=3D"m=
+argin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;bord=
+er-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,2=
+52);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bo=
+ttom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-ri=
+ght:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Srinivas</span><spa=
+n style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quo=
+t;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">=
+13:22</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:=
+-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Aria=
+l,sans-serif;color:rgb(71,85,105)">Okay.</div></div><div style=3D"margin-bo=
+ttom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-=
+style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quo=
+t;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);bord=
+er-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px=
+;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,H=
+elvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;=
+font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,He=
+lvetica,Arial,sans-serif;color:rgb(59,130,246)">Satish</span><span style=3D=
+"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">13:23</spa=
+n></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-sys=
+tem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-ser=
+if;color:rgb(71,85,105)">And then non sapps. I mean I don&#39;t share this =
+list after this but just to take a look at what&#39;s being covered for non=
+ SAP.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-radiu=
+s:8px;border-left-width:4px;border-left-style:solid;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f;background-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div=
+ style=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMac=
+SystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span st=
+yle=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacS=
+ystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(=
+59,130,246)">Srinivas</span><span style=3D"font-size:14px;font-family:-appl=
+e-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,san=
+s-serif;color:rgb(100,116,139)">13:35</span></div><div style=3D"font-size:1=
+6px;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">I can pi=
+ng you this link, you can take a look at it and let me know if you have any=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8p=
+x;border-left-width:4px;border-left-style:solid;font-family:-apple-system,B=
+linkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;ba=
+ckground-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div sty=
+le=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=
+=3D"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,=
+130,246)">Satish</span><span style=3D"font-size:14px;font-family:-apple-sys=
+tem,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-ser=
+if;color:rgb(100,116,139)">13:39</span></div><div style=3D"font-size:16px;l=
+ine-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Questions bec=
+ause Colin wanted to see this list as well. Colin, you had something about =
+power apps. Was it the main concern you were raising?</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px=
+;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,=
+250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;marg=
+in-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;marg=
+in-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Colin</span><s=
+pan style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&q=
+uot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)=
+">13:48</span></div><div style=3D"font-size:16px;line-height:1.6;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif;color:rgb(71,85,105)">I think Junaid was going to follow up =
+on the power apps user. I talked to him this morning and gave him a heads u=
+p that we need somebody to test that. My expectation was just to figure out=
+ what are we, what are we on the hook to figure out in terms of finding use=
+rs to make sure that we close any gaps? I think the only one they reached o=
+ut to me on was PowerApps but there might have been others. So I think this=
+ was good to go through this.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;border-radius:8px;border-left-width:4px;border-left-style:solid=
+;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,H=
+elvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-col=
+or:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-famil=
+y:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ar=
+ial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif;color:rgb(59,130,246)">Srinivas</span><span style=3D"font-siz=
+e:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">14:14</span></div><=
+div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,Blink=
+MacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:=
+rgb(71,85,105)">So Colin, I&#39;m working with Stephen Stelemak and from At=
+hens. The current scope for power apps is the tsa. Right. So what maximum s=
+upport in terms of testing is going to be the access. Correct. Is there any=
+thing, any different expectation from your side for PowerApps?</div></div><=
+div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-=
+width:4px;border-left-style:solid;font-family:-apple-system,BlinkMacSystemF=
+ont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color=
+:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:=
+flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;S=
+egoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight=
+:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Se=
+goe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Colin=
+</span><span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSyst=
+emFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100=
+,116,139)">14:37</span></div><div style=3D"font-size:16px;line-height:1.6;f=
+ont-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Hel=
+vetica,Arial,sans-serif;color:rgb(71,85,105)">No. I mean no concern on my s=
+ide. I mean I think it&#39;s just getting the right people to do it. I have=
+n&#39;t been involved in the day to day on power apps so I just want to mak=
+e sure we have the right people.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;border-radius:8px;border-left-width:4px;border-left-style:so=
+lid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robot=
+o,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-left-=
+color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;font-fa=
+mily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica=
+,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;font-fam=
+ily:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,=
+Arial,sans-serif;color:rgb(59,130,246)">Srinivas</span><span style=3D"font-=
+size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;=
+,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">14:50</span></di=
+v><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-system,Bl=
+inkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;col=
+or:rgb(71,85,105)">Yeah we do have resources. I think Steve is working thro=
+ugh that. I can get more detailed information on that who will be testing b=
+ut I mean it&#39;s going to be a very minimal efforts there except access. =
+There&#39;s nothing else. We were going to test for PowerApps for day one b=
+ecause they&#39;re going to continue as is for as part of the tsa. Similarl=
+y for RPA Watts as well in case. If you want to talk about RPA Watts. Okay =
+so then Jessica, Vicky, to summarize I have the names I think except for AP=
+AC entry controller we we don&#39;t have yet anything for tax and then for.=
+ We were good with work. You are we&#39;ll exclude based on the discussion =
+we&#39;ve just concluded. And then for Black line I have the names so I am =
+kind of in a better position than yesterday.</div></div><div style=3D"margi=
+n-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;border-l=
+eft-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);=
+border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom=
+:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robo=
+to,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:=
+8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Robot=
+o,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Bill</span><span style=
+=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe=
+ UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">15:42</=
+span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-=
+system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-=
+serif;color:rgb(71,85,105)">So the. The only question I have for you Bill i=
+s do you still have any open questions or did your questions get answered?<=
+/div></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;=
+border-left-width:4px;border-left-style:solid;font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;back=
+ground-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=
+=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystem=
+Font,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D=
+"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemF=
+ont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130=
+,246)">Srinivas</span><span style=3D"font-size:14px;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f;color:rgb(100,116,139)">15:50</span></div><div style=3D"font-size:16px;li=
+ne-height:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">If the Enrique=
+ and that team are the business finance vocals then that&#39;s all I need.<=
+/div></div><div style=3D"margin-bottom:16px;padding:16px;border-radius:8px;=
+border-left-width:4px;border-left-style:solid;font-family:-apple-system,Bli=
+nkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;back=
+ground-color:rgb(248,250,252);border-left-color:rgb(59,130,246)"><div style=
+=3D"display:flex;margin-bottom:8px;font-family:-apple-system,BlinkMacSystem=
+Font,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D=
+"font-weight:600;margin-right:8px;font-family:-apple-system,BlinkMacSystemF=
+ont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130=
+,246)">Bill</span><span style=3D"font-size:14px;font-family:-apple-system,B=
+linkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;co=
+lor:rgb(100,116,139)">15:56</span></div><div style=3D"font-size:16px;line-h=
+eight:1.6;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;=
+,Roboto,Helvetica,Arial,sans-serif;color:rgb(71,85,105)">Okay. All right. N=
+o, I think this was. This was good. And Shunivas Bill, you. We can connect =
+at our conversation later just to make sure we identify which items we need=
+ to escalate. To everyone else, thank you for joining us. We appreciate it.=
+ We&#39;re just trying to get ourselves a bit more organized so we can real=
+ly start getting some of the comms out to everyone on what to expect for ua=
+t. So we really appreciate your time.</div></div><div style=3D"margin-botto=
+m:16px;padding:16px;border-radius:8px;border-left-width:4px;border-left-sty=
+le:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252);border-=
+left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bottom:8px;fo=
+nt-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helv=
+etica,Arial,sans-serif"><span style=3D"font-weight:600;margin-right:8px;fon=
+t-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helve=
+tica,Arial,sans-serif;color:rgb(59,130,246)">Srinivas</span><span style=3D"=
+font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&=
+quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">16:22</span=
+></div><div style=3D"font-size:16px;line-height:1.6;font-family:-apple-syst=
+em,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri=
+f;color:rgb(71,85,105)">Thank you. Thanks everyone.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px=
+;border-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,=
+250,252);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;marg=
+in-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;marg=
+in-right:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Satish</span><=
+span style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&=
+quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139=
+)">16:23</span></div><div style=3D"font-size:16px;line-height:1.6;font-fami=
+ly:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,A=
+rial,sans-serif;color:rgb(71,85,105)">Thank you.</div></div><div style=3D"m=
+argin-bottom:16px;padding:16px;border-radius:8px;border-left-width:4px;bord=
+er-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,2=
+52);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bo=
+ttom:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,=
+Roboto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-ri=
+ght:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,R=
+oboto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Bill</span><span st=
+yle=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;Se=
+goe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">16:2=
+4</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-app=
+le-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sa=
+ns-serif;color:rgb(71,85,105)">Thanks everyone.</div></div><div style=3D"ma=
+rgin-bottom:0px;padding:16px;border-radius:8px;border-left-width:4px;border=
+-left-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe =
+UI&quot;,Roboto,Helvetica,Arial,sans-serif;background-color:rgb(248,250,252=
+);border-left-color:rgb(59,130,246)"><div style=3D"display:flex;margin-bott=
+om:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Ro=
+boto,Helvetica,Arial,sans-serif"><span style=3D"font-weight:600;margin-righ=
+t:8px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Rob=
+oto,Helvetica,Arial,sans-serif;color:rgb(59,130,246)">Srinivas</span><span =
+style=3D"font-size:14px;font-family:-apple-system,BlinkMacSystemFont,&quot;=
+Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:rgb(100,116,139)">16=
+:25</span></div><div style=3D"font-size:16px;line-height:1.6;font-family:-a=
+pple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,=
+sans-serif;color:rgb(71,85,105)">Bye.</div></div></div><div style=3D"margin=
+-top:36px;text-align:center;font-size:14px;padding:20px;border-top-width:1p=
+x;border-top-style:solid;font-family:-apple-system,BlinkMacSystemFont,&quot=
+;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;border-top-color:rgb(226,=
+232,240);color:rgb(100,116,139)"><p style=3D"margin:0px 0px 8px;font-family=
+:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Ari=
+al,sans-serif">Captured with Wave AI Note Taker</p><p style=3D"margin:0px;f=
+ont-size:12px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&q=
+uot;,Roboto,Helvetica,Arial,sans-serif">Your AI-powered companion</p></div>=
+</div></div></div></div></div>
+
+--00000000000092fe250637f6b0b8--

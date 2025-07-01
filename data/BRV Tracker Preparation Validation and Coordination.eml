@@ -1,0 +1,2123 @@
+MIME-Version: 1.0
+Date: Mon, 16 Jun 2025 18:12:17 -0400
+References: <01000197797c6e97-88b41687-e60c-4e76-96ac-42d745d3e871-000000@email.amazonses.com>
+In-Reply-To: <01000197797c6e97-88b41687-e60c-4e76-96ac-42d745d3e871-000000@email.amazonses.com>
+Message-ID: <CAOat4ZCYZ7vVSYscp2-WSFaYL2Wz_wC0oPNt_k8QZyurGfzZDQ@mail.gmail.com>
+Subject: Fwd: BRV Tracker Preparation Validation and Coordination
+From: Mac Connolly <mac@macconnolly.com>
+To: save@mem.ai
+Content-Type: multipart/alternative; boundary="00000000000076af1a0637b7b09d"
+
+--00000000000076af1a0637b7b09d
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+---------- Forwarded message ---------
+From: Wave AI Note Taker <summary@email.wave.co>
+Date: Mon, 16 Jun 2025 at 12:04
+Subject: BRV Tracker Preparation Validation and Coordination
+To: <mac@macconnolly.com>
+
+
+[image: Wave AI Logo]BRV Tracker Preparation Validation and Coordination
+=E2=9C=A8 View Your Session on the Web
+<https://app.wave.co/sessions/301B0864-AB82-4665-9AE6-9173FD99B36C?lastLogi=
+nParam=3Dgoogle>
+=F0=9F=93=9DSummary
+Meeting Summary
+
+*Date:* June 16, 2025
+*Attendees:* Unspecified, but references made to Sakina, Gokul, Arpit,
+Harry Tong, Carlos, Cesar, Matt Trabusky, Jerry Sanderson, Veronica, Chad
+Montgomery, Eric, and others.
+*Main Focus:* Tracker preparation and validation processes for BRV and
+non-BRV applications, ensuring readiness for testers, and synchronizing
+with various teams.
+------------------------------
+Main Topics Discussed1. Tracker Preparation and Structure
+
+   - *Tracker Readiness:* Emphasis on having the tracker ready before
+   requesting information from teams.
+   - *Tabs Overview:*
+      - *615 Validation*
+      - *614 Validation*
+      - Creation of new tab: *616 BRV Validation* (named after the current
+      date for clarity).
+   - *Scope of Tabs:*
+      - Inclusion of both "adjacent" and "not adjacent" items.
+      - Highlighted the need to track environments and tester information.
+   - *Reference to Previous Trackers:*
+      - Mentioned ISE and finance trackers as models.
+      - Needed to incorporate aspects such as tester names for sit, planned
+      start/end, and validation of the correctness of included apps.
+
+2. Validation and Data Cleansing
+
+   - *Row and App Selection:*
+      - Remove unnecessary rows, particularly those not related to BRV.
+      - Inclusion strictly for items relevant to Finance and Supply Chain
+      (excluding those sent by Gokul for =E2=80=9Cbuild back and move as is=
+=E2=80=9D).
+      - Highlighted risk of duplicates=E2=80=94specific mention of apps lik=
+e
+      Blackline, Workiva, Hyperion HFM, SAP, Taxware, etc., and
+careful review of
+      names to prevent redundancy.
+   - *Naming Consistency:*
+      - Clean and standardize names in column A, based on recent updates by
+      Arpit and others.
+   - *Responsibility Assignment:*
+      - Assign workstream leads and service owner names.
+      - Identified the need for full names (e.g., Harry Tong, Matt
+      Trabusky).
+      - Athens IT Lead generally assigned to Harry Tong.
+   - *SIT/UAT Dates:*
+      - Planned SIT dates often set as NA for adjacents/non-changing apps.
+      - UAT and SIT schedules are highlighted, with reference to specific
+      milestone dates (e.g., 6/23=E2=80=937/2 for SIT, 7/7=E2=80=937/11 for=
+ UAT).
+      - Specific handling for exceptions, e.g., blue for past dates (e.g.,
+      row 37 =E2=80=93 6/10) and alignment for finance-related apps.
+
+3. Tracker Columns & Required Data Points
+
+   - *Key Columns Requested:*
+      - Work Stream Lead
+      - Service Owner
+      - Athens IT Lead (Harry Tong)
+      - Planned SIT Start/End (often NA)
+      - SIT Completion Status
+      - SIT Test Lead (Primary/Secondary)
+      - UAT Function Lead
+      - UAT Test Lead (Primary/Secondary)
+      - UAT Start/End
+      - UAT Completion Status
+      - Number of UAT Test Scripts Developed
+      - UAT System Environment (name, readiness, access provided, date
+      system is ready)
+      - UAT Schedule Alignment
+      - Notes/Last Update/Comments (move to end of sheet)
+   - *Format & Usability:*
+      - Columns and row structure need to match across both BRV and non-BRV
+      tabs for consistency.
+      - Facilitate multiple names per field for test leads and testers
+      (free-form text preferred).
+      - For certain apps/systems, fields may be set to NA if not applicable
+      (e.g., Microsoft 365).
+      - Emphasized need to validate the total count of applications
+      (targeting ~84, current count: 81).
+
+4. Cleaning and Finalizing Lists
+
+   - *Smartsheet Data Cleansing:*
+      - Prioritize reviewing and aligning the list in Smartsheet before
+      final population of tracker.
+      - Ensure only relevant items are transferred to the tracker for
+      consolidated reporting.
+   - *Handling Duplicate and Non-Applicable Entries:*
+      - Vigilance over duplicate entries or non-relevant apps.
+      - Will not include Gokul=E2=80=99s day-one list for this tracker iter=
+ation.
+      - Non-functional or untested systems (e.g., those with no UAT) may be
+      excluded unless required for field coverage.
+
+5. Process, Instructions, and Delegation
+
+   - *Instructions for Teams:*
+      - Prepare an instruction page=E2=80=94define expectations for what ea=
+ch
+      person/team needs to fill (applicability for BRV and non-BRV).
+      - Today=E2=80=99s focus is to have ERP and Finance fill out the BRV t=
+racker;
+      next week will shift to non-BRV items.
+   - *Division of Labor:*
+      - ERP and Finance teams responsible for 81-row tracker.
+      - Others (presumably supply chain, etc.) tasked with separate tracker
+      sections.
+   - *Use & Deployment:*
+      - Tracker may be deployed in Excel or in a dashboard/Smartsheet,
+      pending further confirmation.
+
+6. Slide Preparation for Stakeholder Reporting
+
+   - Discussed the need to prepare a summary slide for Sakina for the All
+   IT meeting.
+   - Noted that tracker updates are necessary prior to delivering this
+   slide/report.
+
+7. Miscellaneous/Process Adjustments
+
+   - *Breaks & Quick Actions:*
+      - Interim tasks invoked (e.g., attendee briefly stepping out for
+      eight minutes, need to update DT Connect, quick pings to colleagues).
+   - *Follow-Up and Urgency:*
+      - Referenced time constraints (e.g., Sakina=E2=80=99s doctor=E2=80=99=
+s appointment)
+      and need to finalize the slide for her.
+
+------------------------------
+Action Items
+
+   1. *Finalize Tracker Structure:*
+      - Create/clean up =E2=80=9CBRV validation 616=E2=80=9D tab, ensuring =
+all supply chain
+      and finance apps are present (excluding Gokul=E2=80=99s day-one items=
+).
+      - Mirror column structure/content to non-BRV tab for consistency.
+   2. *Clean Smartsheet Entries:*
+      - Review, update, and align app lists across Smartsheet and trackers
+      before population.
+   3. *Remove Redundant or Non-App Entries:*
+      - Delete unnecessary rows, duplicates, and ensure only valid
+      apps/systems are tracked.
+   4. *Populate Owner & Date Fields:*
+      - Assign correct workstream leads, service owners, and various
+      IT/business leads (referenced full names).
+      - Input all relevant planned dates for UAT/SIT or set as NA where
+      applicable.
+   5. *Add/Adjust Columns:*
+      - Add columns for SIT/UAT test leads (primary/secondary), status
+      fields, test scripts, system environment, and relevant notes.
+      - Enable free-form input to allow for multiple names where needed.
+   6. *Instruction Sheet:*
+      - Draft and include clear instruction page for tracker users on what
+      to fill, focusing first on BRV items this week, non-BRV next.
+   7. *Color and Formatting:*
+      - Remove interim/highlight colors for clarity until data validation
+      is complete.
+      - Implement finalized color coding after updates.
+   8. *Count Validation:*
+      - Check and ensure tracker application count matches expected (target
+      of 84; currently 81).
+   9. *Slide Preparation:*
+      - Draft and send a slide for Sakina summarizing the key status for
+      All IT meeting once tracker is current.
+   10. *Ongoing Population/Validation:*
+      - Assign teams (particularly ERP/Finance for BRV) to fill out the
+      tracker.
+      - Continue iterative review, particularly for UAT start/end and
+      system environment readiness.
+
+------------------------------
+Follow-up Points & Next Steps
+
+   -
+
+   *Confirmation of Tracker Usage:*
+   Final determination to be made regarding Excel vs. dashboard/Smartsheet
+   platform based on user needs or reporting requirements.
+   -
+
+   *Instruction Page Review:*
+   Validate and communicate the instruction sheet with all tracker
+   recipients; adjust based on feedback.
+   -
+
+   *Schedule Next Review:* Likely to reconvene next week for non-BRV focus
+   and to ensure completion of today=E2=80=99s action items.
+   -
+
+   *Share Tracker and Collect Fill-Outs:* Send final tracker to the
+   respective teams (ERP/Finance and others).
+   - Remind teams of which sections to fill depending on their group.
+   -
+
+   *Slide Submission for Sakina:* Confirm and send updated progress/status
+   slide for the All IT meeting post-tracker completion.
+
+------------------------------
+
+*Note:* Issues around app definitions, naming, potential for
+missing/duplicate entries, and precise date alignment were recurring themes
+and will require diligence and follow-up.
+=F0=9F=8E=99=EF=B8=8FTranscription
+Mac0:06
+So now if we're asking them to fill anything, we need the tracker ready. So
+do we have a tracker or something that they're going to fill out?
+Arpit0:14
+I was just thinking to have them Update the. The two tabs. The 615
+validation and the 614 validation.
+Mac0:25
+Okay, now the 614 validation, we said we would need to add the other ones.
+Arpit0:30
+Yeah, the.
+Mac0:31
+The not adjacents.
+Arpit0:33
+Exactly, the adjacents.
+Mac0:35
+And we need to track when that environment. What environment? You know, who
+are the testers. So essentially going back to the. The ISE and finance
+trackers. Because that's what we need to add in there. Because they need to
+add, you know, for sit. They need to add the tester names. They need to
+add. Well, let us think through that. How do you see that working? So you
+want to give them. So talk me through how you think filling out the 14.
+What would they fill for the 14? So why don't we look at the Excel and see
+what they need to fill out.
+Arpit1:18
+Yeah.
+Mac1:18
+And then we can come back and populate this quickly.
+Arpit1:22
+I mean we haven't added the columns actually. I guess they would need to
+just validate that the names are right. The plan start and end. Like it's
+one validate the dates.
+Mac1:36
+But this is readiness. It's not actual. This is tracking. So remember I
+said let's create another tab.
+Arpit1:43
+Yeah.
+Mac1:45
+So do that now. Yeah, move or move or copy and then.
+Arpit1:59
+But let's do it from the other one. Let's do it. Oh no, it is from this one=
+.
+Mac2:02
+No, no, it's this one. So move or copy and make a copy. Call it whatever
+date 616 BRV validation. 616. Okay, so. So this goes back to your data
+model because the data model had a lot of these. So you can remove rows
+through 24 for now.
+Arpit2:50
+In here. Oh yeah, yeah.
+Mac2:52
+Your rows 20 through 20. Whatever the sit. Just remove those rows.
+Arpit3:05
+And then we need the. There are the BRV adjacents. But it's really the.
+Mac3:11
+None of these are are they. Are they BRV adjacent? Okay, so look at what is
+BRV adjacent. We should have everything. 40 apps or something.
+Arpit3:22
+No, this is not all of them.
+Mac3:24
+Yeah, so we need to add the. All of the finance ones and these are wrong.
+So that's the other piece. We need to go back and clean this list in the
+smartsheets and elsewhere. That was the other action item we needed to in
+your. In your tracker is clean up smartsheet first. Are so on this. Let's.
+Let's get tactical here. So we need to add on your BRV validation 616.
+These ones from the non BRV. Right.
+Arpit4:02
+All the ones from Finance. All the ones from.
+Mac4:06
+So those would be the rows you would add from supply chain and Finance.
+Arpit4:09
+Yeah.
+Mac4:10
+And then. No, mind you, the stuff that Gokul sent as the PowerPoint
+embedded in there, don't add those because those are in this tracker for
+build back and move as is.
+Arpit4:23
+Okay.
+Mac4:25
+Because those are his that he's tracking for day one. So it's only the
+other rows in the Excel. The top rows in the Excel, however many rows there
+are. I think for supply chain, it. Whatever it is. Right. I mean 40 rows or
+something. 30, 37, 38 rows for ISC.
+Arpit4:48
+Yeah, let me just see because I feel like we had this on Friday. It was the=
+.
+Mac5:05
+Those you are not likely to get in the system data model because there was.
+A lot of them are on tsa. So they would never be build back or move as is.
+Arpit5:15
+Okay, let me.
+Mac5:16
+Some of them are. Yeah, but not all.
+Arpit5:22
+I'm just gonna get the finance one up at least.
+Mac5:25
+Yeah, finance one. So you would need to go to the PRV validation tab.
+Arpit5:36
+So I had put together. Let me just show you this one. Wait, the BRV
+validation tab because.
+Mac5:43
+Yeah, yeah, because they're brv. They're not. Not brv. I mean. Right, so
+this is where you need.
+Arpit5:48
+To add the finance and ISC ones.
+Mac5:51
+Yes, you will call them BRV adjacent.
+Arpit5:53
+Correct. And then these are. I need to remove.
+Mac6:01
+Remove that for now you can go back and add.
+Arpit6:09
+So all the finance ones are. So for brv there's all the finance ones.
+Mac6:23
+Move them to the right column. Now we need to make sure that there isn't a
+duplicate.
+Arpit6:38
+S face is duplicated.
+Mac6:41
+So the first four probably are.
+Arpit6:50
+Black line is on there. Is on there. Workiva is on there. Hyperion HFM is
+on there.
+Mac7:02
+Okay, so remove those other stuff like SAP is on there. 26, row 26 tax.
+Where eddycom. Da da da da da. Credit card payment. Eddie com is a
+duplicate. Remove that row 29.
+Arpit7:29
+Yeah.
+Mac7:34
+Okay, let's see. Credit card payments. Obviously we'll need to get the
+right app names when we say tax, wear and these other leasing, whatever the
+app names are, but call these all BRV adjacent. And then let's mark all of
+these as finance on the left. And actually you can clean the names out in
+column A. You know, Arpit and I have updated. So just clean that out. What
+do you mean the names RH up column A. Yeah, yeah. Okay, so these names
+Obviously some of these names we will have to look at like SAP FI testing.
+I do not know if there's an app for that.
+Arpit8:37
+I don't think there is. They said there was cross functional setup required
+for that.
+Mac8:42
+Right, right. So maybe there isn't an app. So let's keep it here, but we'll
+track through now. Let's go through the columns and see what we need here.
+Arpit8:53
+I've got the planned UAT start and ends for these.
+Mac8:57
+So move left. Move left. Move your mouse left. Okay, so. So here you are
+going to need work stream leads and I think that's hairy for all of them.
+Arpit9:10
+Yeah, we had two names. Let me. I'm just gonna share my full screen.
+Mac9:15
+Yeah, the sir, you had names and service owners.
+Arpit9:18
+Yeah.
+Mac9:20
+So Harry should be workstream lead and any other name should be your
+service owner name. No, yeah, I know she wanted full names. That's fine.
+Arpit9:33
+Yeah.
+Mac9:34
+So.
+Arpit9:40
+This is gonna take a while. Like you can go.
+Mac9:42
+I can go back and update the others. That's fine.
+Arpit9:55
+And yeah, I can go add the others from.
+Mac9:58
+So these are the service owners. And then we have from here Athens IT lead.
+Put Harry Tong for all of these.
+Arpit10:06
+Yeah, he said he was both sides.
+Mac10:09
+Yep.
+Arpit10:11
+Planned, Sit, start and end. Should we look this up?
+Mac10:18
+Sit, start and end. We should get it from. Well, again, this is the same
+date 6:23-72.
+Arpit10:28
+But they gave us specific dates for some of these.
+Mac10:30
+Those are uat, not sit.
+Arpit10:32
+Oh, this is sit.
+Mac10:33
+Okay, so sit. Because these are all part of the platform. 6:23 to 72. The
+same as the dates above.
+Arpit10:53
+Maybe it's going to take an hour.
+Mac10:54
+23 to 72. Okay.
+Arpit11:01
+Power.
+Mac11:03
+Technically speaking. You know what? We should not have SID on these. I
+would just say make them na. Make them na. Because these are adjacent.
+They're not changing. Yeah, yeah. Just make them NA for now. And actually,
+you know what? Even the three black ones above, just make them na. It's
+good on a visual, but on this freaking thing we need a cell field for each.
+So even those three make them na. Do you track to what I'm saying?
+Arpit11:48
+Yeah. Because these are the adjacents.
+Mac11:53
+Do you follow why I put them as na?
+Arpit11:55
+Sorry. Yeah. Because these are the adjacents. Right. Like nothing is
+changing.
+Mac12:02
+Correct. So there's. They're not going through. If they are going through
+testing, that's a day one testing. They'll go through. Not for this
+reporting.
+Arpit12:09
+Yeah.
+Mac12:11
+Okay. Then you've got the function lead from these guys that you may have
+to do individual lookups given it's in a different sequence.
+Arpit12:25
+Is that going to be the business?
+Mac12:28
+Yes, those UAT business. UAT lead.
+Arpit12:31
+Yeah.
+Mac12:36
+You could put one, you know put one name there.
+Arpit12:41
+Yeah.
+Mac12:42
+Carlos, I think the other. Yeah. Cesar or something.
+Arpit12:46
+Hyperion planning is.
+Mac12:50
+Oh, Matt T. Matt Trabusky. I think it's T R Y some. I think you could. We
+could look up his name. But yeah. B U S K I We'll certainly populate these.
+I think Jerry Sanderson, Veronica something. We'll. We'll need to get full
+names.
+Arpit13:15
+Yeah.
+Mac13:16
+Chad Montgomery, Eric whatever. Yeah. Okay. So you will populate those
+names. The UAT is the same as the 772 unless they say something different.
+On the.
+Arpit13:36
+On the sheet there was just that one.
+Mac13:41
+So there was something else. So just go through these two columns.
+Arpit13:44
+There was going to the Tom, is.
+Mac13:46
+That here or in supply chain?
+Arpit13:49
+It was this one because they wanted to do full UAT testing.
+Mac13:56
+Okay.
+Arpit13:57
+On the output file. So this was the Hyperion HFI.
+Mac14:00
+Okay. Okay. So outside that everything else is 77 to 7 11.
+Arpit14:04
+Yeah.
+Mac14:04
+Hyperion HFM above I think is already mentioned above.
+Arpit14:08
+Yeah, it is and it's already 7 7.
+Mac14:10
+Well yeah. Yeah. So everything else is 7 the same as above. Okay. Now for
+the purposes of this we should still say UAT schedule aligned. Actually can
+you do me a favor? The 610 that you see there, the. The row 37, can you
+make that blue? Because that's in the past and that's aligned now for these
+we should put the same 618 testers identified. We should put this as 619.
+Now this is going to be pressure tested. We need the testers identify. Now
+I think we need to start double clicking. This dashboard has to be double
+clicking more. So we may need. This is all about uat but again this is not
+executive dashboard anymore. Let's go back and look at the columns and non
+BRV and start populating. Right. Those are the columns we're going to need
+here. These columns are needed. But let's before column.
+Arpit15:30
+So this is then the call to action is to provide these days.
+Mac15:38
+A bit more we may need to add settled on the environment. Right. TSA exit
+planning. Okay. Yeah. So this last update and notes we may need to move to
+the end. Yeah. Can you on that last cell can you make it access to UAT
+environment provision and then the row below it we need to delete or clean.
+And then you can move the comments, the date update and the notes all the
+way to the end. So last column SNT.
+Arpit17:12
+It. Okay.
+Mac17:48
+All right, let's go back and see what else they may need to. So let's look
+at this slide. This sheet on the left. Let's actually go all the way here.
+So we need to replicate the same top level data the the columns in the
+other side. So we've got Athens IT lead. We've got planned SIT and UAT
+dates. We've got sit completion status. Now, a couple of things I think we
+were in the past, you had it in the 85 rows, but we killed it on this was
+sit test leads. Right. We need a name against those. So we need to add a
+column here in sit instead of sit completion, go to the left. So instead of
+sit completion, stat, maybe sit completion status is there, but before that
+we need to add no. Okay, so you should say UAT test leads. But you already
+have UAT function leads, right? So that's fine. I'm not talking. So, so
+again, in the sit column, in the sit.
+Arpit19:07
+Oh, oh, I see, I see.
+Mac19:11
+So after, after sit completion as a planned sit, between column K and L,
+add a row that is test leads, sit test situation. And then that's just
+names. Okay. And then we should have sit, maybe call it sit test lead,
+primary and secondary. Or maybe just as a test lead. And then for uat, we
+say UAT function lead. So column N, UAD function lead, uat. After that,
+let's add UAT test, UAT tester. So function lead could be, you know,
+Michael S maybe testing this or he may have somebody. But let's just say
+UAT test, UAT test secondary, UAT tester secondary. So the idea would be
+this is a free form text. When you put it in smartsheets, that people can
+go in and say Michael Sheets comma somebody else, comma somebody else. Like
+for example, in your ISE and finance, we've got a bunch of names saying
+somebody for collection, somebody for dunning, somebody for this, Veronica
+for this, and Cesar for this in the same column. So we should give them the
+opportunity to do that here.
+Arpit21:28
+Yeah.
+Mac21:29
+And now this may all get moved into. I don't know if we put it in an Excel.
+This is probably going to be in whatever tracker this woman is creating,
+whatever dashboard or sites. So let's, let's see there. Okay, so UAT now
+sit, UAT start and end. And then can we move to the right UAT completion
+status we should have? I'm sure because they talk about scenarios, we
+should talk about UAT at some point, I'm afraid we will be asked.
+Arpit22:13
+Number of test scripts we have test scripts developed. Can we just change
+it to number of test scripts developed?
+Mac22:23
+Yeah, so for, for. For this. So I think this was readiness, that is
+execution. So on the left hand side was execution. So here is. So we should
+say UAT schedule aligned. I don't know if testers identified. I mean, I
+suppose if there's some blank in the UAT function lead or UAT testers. So
+maybe we put. So let's just do this. Go back to column L and we will call
+that UAT testers primary slash secondary. Similarly, sid test lead. You can
+put, you know, in parentheses, P S. So here. Yeah, sit. Test lead, P S. So
+people can go in and say, this is my primary, this is secondary. And then
+similarly, uat, we'll call it UAT function lead. But UAT test lead, the
+next column O. So UAT test lead, P S, UAT test. Fine. Again, if it's lead
+or secondary, then it kind of defeats the purpose. But yeah, just say uac.
+Yeah, that's fine. UAT test lead prime. So now then, let's go back to the
+right. And they can put multiple names here. They can put, you know, Mac
+primary or cache secondary. So go in here to the right. UAT schedule
+aligned. So move the column U to after Q. So you, you. This is where.
+Arpit24:37
+You. This one after U.
+Mac24:40
+No, no, no. So QR after Q. So yeah, so move column U to after Q. So once
+they define the dates, they go in and. Okay, testers identified. Now if
+they don't have names, we know it's not identified. So it removed the
+color. There's probably more color at the bottom as well, but. And some of
+them may be na. So if. So we will go in and populate. So testers identified
+as, you know, remove that column. Okay, test scripts. UAT test scripts. So
+this is again, I think we need to. Let's move column T and U to the end.
+Go. Lives are all at the end. So just move those to the end. And we'll work
+with before notes or before updated dates or whatever. Yeah, just before
+column Z or just before last update. Yep. Okay, so UAT completion. So test
+scripts developed. I think. Let's see how we can rephrase that.
+Arpit27:14
+Do you want to ask about the number or the status? We need the number.
+Mac27:20
+We need number. So maybe the number informs the status. Yeah, so let's say
+number of test scripts. Number of UAT test scripts. Okay. And if they
+populate that, then it kind of is a proxy to say. Yeah, but it doesn't tell
+you if it's complete or not. They could fill up. They need 10, but they
+filled up. They've developed six. So. But yeah, this may the column order.
+We may need to reorder, but let's see. And then the next one is what's the
+next column system ready to test? I think so this is a yes, no, but it
+should probably have to do with. We wanted to to do. Let's put another
+column here, environment for uat. Let's add another column environment vuat
+and we'll reorder because I want people to indicate whether it's a, you
+know, they may say QA environment or you know, something else and then we
+should say. So the idea here is that that environment is ready by the time
+they say UAT start date. So we should add that in here. So column four, we
+may need to reorder after R or before R or something. But let's leave it
+for now. I just want to make sure that the logic flows that I have an
+environment for uat. They go in and say this is qa, this is dev. Some may
+not have the nice little stack of devqa prod. They may say, oh, this is
+testing in prod. And then if they say there's a system ready to test, then
+by that time they will know yes, no. Or they put a date. Maybe we say date,
+system ready to test and we should add it after. You know, we'll certainly
+move it after the UAT dates. Right. So I think move U and V both those
+columns actually hold off. Hold off yet. Hold off. Access to UAT
+environment provided. Yep. Okay, so move column U, V and W all three
+columns to the left of uat. Schedule aligned UAT after party. Okay. We
+said, oh, we also need to move the access to environment UV and W. So.
+Well, W at least. Yeah.
+Arpit31:18
+So I've scheduled a line number of scripts, environment date that the
+system is ready to test, access to the environment and then the overall
+status.
+Mac31:30
+So for all of these 82, some of them may be na, like, you know, Microsoft
+365 in this DCN or dex shit, you don't have a UA. You know, there may be
+nothing like a script there or something that's not relevant that a
+business utility know they're doing this business pilot. Maybe they test it
+in, I don't know, in a dev instance or something, I don't know for
+Microsoft. So it may not be neatly fitting in. If so they can go in and say
+NA or you know, something that says this is not applicable for this or it's
+done, but at least it gives us a view into the 80 plus systems. And how
+many do we have here? 84 I think. Right. We need to validate the rows here.
+How many rows are there currently?
+Arpit32:23
+82.
+Mac32:24
+82. It may be 80. 81 rows. So the count on the right bottom is 81. So I
+think we said it's 84, so we may need to look at a few more and see truly
+if it's 84 or whatever that number is. So we do need to validate that
+number. But I think now you have a tracker that we should give to the teams
+to go fill out. Now the key here is I think we need to fill this out for
+the BRV portion. Like this as well.
+Arpit32:56
+Yeah.
+Mac32:57
+Based on the two ISC and finance information they've given, we need to go
+fill that out.
+Arpit33:05
+Yep.
+Mac33:11
+So all these columns we added, we need to now keep the data here, UAT
+schedule. Da da da da da. These are all mostly valid, but I think at least
+for these. But then for the other ones we need to go validate. So for
+example, the system ready to test for one of These row number 24 may not be
+the same date as the one above.
+Arpit33:40
+Yeah.
+Mac33:43
+So we need to populate this. So the question then is what are we giving in
+the all IT connect? Because we need to make sure that people are going and
+populating. So let's go back. So step here is we need to make the BRV
+validation tab. You need to add the supply chain and the finance apps and
+make the columns all look the same as the non brv. All the columns we added
+need to go in here. Again those dates are blank. We don't know those dates.
+So that's where they need to fill. Are you tracking?
+Arpit34:22
+Yeah, I'm just highlighting.
+Mac34:25
+Sure. And maybe, you know, so do this for now remove the colors, like
+remove all the green, blue stuff, everything orange. So, so we can go back
+in and fill the colors and any updates and validation. But here people
+would need. It may or may not be the same like these apps. They may or may
+not. But again the columns on top need to be reflective of this. So people
+need to go in and fill out and we need our instruction page to have what do
+they need to fill out here for prv? I think today we should tell, you know,
+focus on BRV for the two people whether you know, the, the ERP team and
+then we should, we should also say next week we focus on the non brv.
+Arpit35:22
+So add in really quickly.
+Mac35:28
+I think actually we should do two things we should say for the ERP and
+Finance team, they go fill out the eight. 1 Tracker the teams and then for
+the others they go fill out the other tracker. I'll be right back. Give me
+a couple of seconds.
+Arpit35:50
+Okay.
+Mac35:52
+But yeah, move this information over to that sheet. But in the eight
+minutes we have left, I also want to make sure that we have a slide for
+Sakina because we need to send her stuff for the all it. So why don't we do
+this? Let me come back and then we'll talk about the slide.
+Arpit36:12
+Okay.
+Mac36:13
+What do we need to include? And then we can work on the sheet after that.
+Arpit36:15
+Okay.
+Mac36:16
+Ah, she's got a doctor's appointment so let me. Let me just ping her on
+this other one.
+Arpit36:27
+Who does Sakina?
+Mac36:30
+Yeah, let me finger on the DT connect. And where is the DT connect? Can you
+ping that? I think we had a touch Itsmo daily, right?
+Arpit36:42
+Yeah.
+Mac36:43
+Okay.
+Arpit36:54
+It.
+Mac37:21
+I'll be right back while you fill that out.
+Arpit37:23
+Okay.
+Mac37:23
+And we'll talk through the slides.
+Arpit37:25
+Okay.
+Mac37:45
+Fuck. All right, Mac, I'm back. But I'm just going to respond to a couple
+of pings here in the background.
+Arpit43:45
+Okay. For the ISC ones, adding these to the tracker, there were a couple
+that we mentioned during the conversation that we had with them is like
+full brv, right? And then some.
+Mac43:58
+No, full. Full UAT or sorry, full.
+Arpit44:00
+Yeah, sorry, full UAT and some that like we noted as like no testing at
+all. Like they're not even going to be testing it. Should we even include
+those?
+Mac44:12
+So keep in mind I don't want you to add. This is the other thing I said
+don't add the bottoms. Those are all Gokul's list. I told you don't add
+anything from there. It's only the one from the top. So let me. Let me
+share my screen.
+Arpit44:27
+Yeah.
+Mac44:29
+So going back to this supply chain stuff, that was excellent. Again, going
+back to their key systems, it's only this stuff on top. We need to add this
+stuff here like labview this. I told you don't add this. This is day one.
+It's only this stuff here that is brv.
+Arpit44:52
+Okay, let me add those really quick.
+Mac44:55
+Again use his original list. Obviously I know you have this other list with
+is finance and. Right. So whichever one you've moved into. Right, yeah.
+Arpit45:03
+This one.
+Mac45:04
+Yep.
+
+Captured with Wave AI Note Taker
+
+Your AI-powered companion
+
+--00000000000076af1a0637b7b09d
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-size:small;colo=
+r:#444444"><br></div><br><div class=3D"gmail_quote gmail_quote_container"><=
+div dir=3D"ltr" class=3D"gmail_attr">---------- Forwarded message ---------=
+<br>From: <strong class=3D"gmail_sendername" dir=3D"auto">Wave AI Note Take=
+r</strong> <span dir=3D"auto">&lt;<a href=3D"mailto:summary@email.wave.co">=
+summary@email.wave.co</a>&gt;</span><br>Date: Mon, 16 Jun 2025 at 12:04<br>=
+Subject: BRV Tracker Preparation Validation and Coordination<br>To:  &lt;<a=
+ href=3D"mailto:mac@macconnolly.com">mac@macconnolly.com</a>&gt;<br></div><=
+br><br><div style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Seg=
+oe UI&quot;,Roboto,Helvetica,Arial,sans-serif;margin:0;padding:0;background=
+-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 auto;back=
+ground-color:#ffffff"><div style=3D"background-image:url(https://upcdn.io/W=
+142iax/raw/email/banner_clean.png);background-size:cover;background-positio=
+n:center;width:604px;height:297px;margin:0 auto"><table cellpadding=3D"0" c=
+ellspacing=3D"0" border=3D"0" width=3D"100%" height=3D"100%"><tbody><tr><td=
+ valign=3D"center" align=3D"center" style=3D"padding:0"><img src=3D"https:/=
+/upcdn.io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" style=3D"w=
+idth:41px;height:58px;max-width:41px;margin-bottom:10px"><h1 style=3D"color=
+:white;font-size:32px;margin:0;padding:0 0 10px;text-align:center">BRV Trac=
+ker Preparation Validation and Coordination</h1></td></tr></tbody></table><=
+/div><div style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div st=
+yle=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.co=
+/sessions/301B0864-AB82-4665-9AE6-9173FD99B36C?lastLoginParam=3Dgoogle" sty=
+le=3D"background-color:#e6f0ff;color:#0066cc;padding:12px 24px;border-radiu=
+s:8px;text-decoration:none;font-weight:500;font-size:16px;display:inline-bl=
+ock;margin-top:8px;margin-bottom:8px" target=3D"_blank">=E2=9C=A8 View Your=
+ Session on the Web</a></div><div style=3D"text-align:center;margin-bottom:=
+36px"></div><div style=3D"background-color:#ffffff;padding:28px;border-radi=
+us:12px;border:1px solid #e2e8f0;margin-bottom:28px"><h3 style=3D"color:#0f=
+172a;font-size:20px;font-weight:600;margin-top:0;margin-bottom:20px;display=
+:flex"><span style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div s=
+tyle=3D"color:#475569;font-size:16px;line-height:1.6"><div><h1 style=3D"fon=
+t-weight:500;padding-top:20px;font-size:2.5rem">Meeting Summary</h1><p><str=
+ong style=3D"font-weight:bold">Date:</strong> June 16, 2025<br><strong styl=
+e=3D"font-weight:bold">Attendees:</strong> Unspecified, but references made=
+ to Sakina, Gokul, Arpit, Harry Tong, Carlos, Cesar, Matt Trabusky, Jerry S=
+anderson, Veronica, Chad Montgomery, Eric, and others.<br><strong style=3D"=
+font-weight:bold">Main Focus:</strong> Tracker preparation and validation p=
+rocesses for BRV and non-BRV applications, ensuring readiness for testers, =
+and synchronizing with various teams.</p>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Main Topics D=
+iscussed</h2><h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75re=
+m">1. Tracker Preparation and Structure</h3><ul>
+<li><strong style=3D"font-weight:bold">Tracker Readiness:</strong> Emphasis=
+ on having the tracker ready before requesting information from teams.</li>
+<li><strong style=3D"font-weight:bold">Tabs Overview:</strong> <ul>
+<li><em style=3D"font-style:italic">615 Validation</em></li>
+<li><em style=3D"font-style:italic">614 Validation</em></li>
+<li>Creation of new tab: <em style=3D"font-style:italic">616 BRV Validation=
+</em> (named after the current date for clarity).</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Scope of Tabs:</strong> <ul>
+<li>Inclusion of both &quot;adjacent&quot; and &quot;not adjacent&quot; ite=
+ms.</li>
+<li>Highlighted the need to track environments and tester information.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Reference to Previous Trackers:</str=
+ong> <ul>
+<li>Mentioned ISE and finance trackers as models.</li>
+<li>Needed to incorporate aspects such as tester names for sit, planned sta=
+rt/end, and validation of the correctness of included apps.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">2. Validat=
+ion and Data Cleansing</h3><ul>
+<li><strong style=3D"font-weight:bold">Row and App Selection:</strong><ul>
+<li>Remove unnecessary rows, particularly those not related to BRV.</li>
+<li>Inclusion strictly for items relevant to Finance and Supply Chain (excl=
+uding those sent by Gokul for =E2=80=9Cbuild back and move as is=E2=80=9D).=
+</li>
+<li>Highlighted risk of duplicates=E2=80=94specific mention of apps like Bl=
+ackline, Workiva, Hyperion HFM, SAP, Taxware, etc., and careful review of n=
+ames to prevent redundancy.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Naming Consistency:</strong> <ul>
+<li>Clean and standardize names in column A, based on recent updates by Arp=
+it and others.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Responsibility Assignment:</strong> =
+<ul>
+<li>Assign workstream leads and service owner names.</li>
+<li>Identified the need for full names (e.g., Harry Tong, Matt Trabusky).</=
+li>
+<li>Athens IT Lead generally assigned to Harry Tong.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">SIT/UAT Dates:</strong> <ul>
+<li>Planned SIT dates often set as NA for adjacents/non-changing apps.</li>
+<li>UAT and SIT schedules are highlighted, with reference to specific miles=
+tone dates (e.g., 6/23=E2=80=937/2 for SIT, 7/7=E2=80=937/11 for UAT).</li>
+<li>Specific handling for exceptions, e.g., blue for past dates (e.g., row =
+37 =E2=80=93 6/10) and alignment for finance-related apps.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">3. Tracker=
+ Columns &amp; Required Data Points</h3><ul>
+<li><strong style=3D"font-weight:bold">Key Columns Requested:</strong><ul>
+<li>Work Stream Lead</li>
+<li>Service Owner</li>
+<li>Athens IT Lead (Harry Tong)</li>
+<li>Planned SIT Start/End (often NA)</li>
+<li>SIT Completion Status</li>
+<li>SIT Test Lead (Primary/Secondary)</li>
+<li>UAT Function Lead</li>
+<li>UAT Test Lead (Primary/Secondary)</li>
+<li>UAT Start/End</li>
+<li>UAT Completion Status</li>
+<li>Number of UAT Test Scripts Developed</li>
+<li>UAT System Environment (name, readiness, access provided, date system i=
+s ready)</li>
+<li>UAT Schedule Alignment</li>
+<li>Notes/Last Update/Comments (move to end of sheet)</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Format &amp; Usability:</strong><ul>
+<li>Columns and row structure need to match across both BRV and non-BRV tab=
+s for consistency.</li>
+<li>Facilitate multiple names per field for test leads and testers (free-fo=
+rm text preferred).</li>
+<li>For certain apps/systems, fields may be set to NA if not applicable (e.=
+g., Microsoft 365).</li>
+<li>Emphasized need to validate the total count of applications (targeting =
+~84, current count: 81).</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">4. Cleanin=
+g and Finalizing Lists</h3><ul>
+<li><strong style=3D"font-weight:bold">Smartsheet Data Cleansing:</strong><=
+ul>
+<li>Prioritize reviewing and aligning the list in Smartsheet before final p=
+opulation of tracker.</li>
+<li>Ensure only relevant items are transferred to the tracker for consolida=
+ted reporting.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Handling Duplicate and Non-Applicabl=
+e Entries:</strong><ul>
+<li>Vigilance over duplicate entries or non-relevant apps.</li>
+<li>Will not include Gokul=E2=80=99s day-one list for this tracker iteratio=
+n.</li>
+<li>Non-functional or untested systems (e.g., those with no UAT) may be exc=
+luded unless required for field coverage.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">5. Process=
+, Instructions, and Delegation</h3><ul>
+<li><strong style=3D"font-weight:bold">Instructions for Teams:</strong><ul>
+<li>Prepare an instruction page=E2=80=94define expectations for what each p=
+erson/team needs to fill (applicability for BRV and non-BRV).</li>
+<li>Today=E2=80=99s focus is to have ERP and Finance fill out the BRV track=
+er; next week will shift to non-BRV items.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Division of Labor:</strong><ul>
+<li>ERP and Finance teams responsible for 81-row tracker.</li>
+<li>Others (presumably supply chain, etc.) tasked with separate tracker sec=
+tions.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Use &amp; Deployment:</strong><ul>
+<li>Tracker may be deployed in Excel or in a dashboard/Smartsheet, pending =
+further confirmation.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">6. Slide P=
+reparation for Stakeholder Reporting</h3><ul>
+<li>Discussed the need to prepare a summary slide for Sakina for the All IT=
+ meeting.</li>
+<li>Noted that tracker updates are necessary prior to delivering this slide=
+/report.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">7. Miscell=
+aneous/Process Adjustments</h3><ul>
+<li><strong style=3D"font-weight:bold">Breaks &amp; Quick Actions:</strong>=
+<ul>
+<li>Interim tasks invoked (e.g., attendee briefly stepping out for eight mi=
+nutes, need to update DT Connect, quick pings to colleagues).</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Follow-Up and Urgency:</strong><ul>
+<li>Referenced time constraints (e.g., Sakina=E2=80=99s doctor=E2=80=99s ap=
+pointment) and need to finalize the slide for her.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Action Items<=
+/h2><ol>
+<li><strong style=3D"font-weight:bold">Finalize Tracker Structure:</strong>=
+<ul>
+<li>Create/clean up =E2=80=9CBRV validation 616=E2=80=9D tab, ensuring all =
+supply chain and finance apps are present (excluding Gokul=E2=80=99s day-on=
+e items).</li>
+<li>Mirror column structure/content to non-BRV tab for consistency.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Clean Smartsheet Entries:</strong><u=
+l>
+<li>Review, update, and align app lists across Smartsheet and trackers befo=
+re population.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Remove Redundant or Non-App Entries:=
+</strong><ul>
+<li>Delete unnecessary rows, duplicates, and ensure only valid apps/systems=
+ are tracked.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Populate Owner &amp; Date Fields:</s=
+trong><ul>
+<li>Assign correct workstream leads, service owners, and various IT/busines=
+s leads (referenced full names).</li>
+<li>Input all relevant planned dates for UAT/SIT or set as NA where applica=
+ble.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Add/Adjust Columns:</strong><ul>
+<li>Add columns for SIT/UAT test leads (primary/secondary), status fields, =
+test scripts, system environment, and relevant notes.</li>
+<li>Enable free-form input to allow for multiple names where needed.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Instruction Sheet:</strong><ul>
+<li>Draft and include clear instruction page for tracker users on what to f=
+ill, focusing first on BRV items this week, non-BRV next.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Color and Formatting:</strong><ul>
+<li>Remove interim/highlight colors for clarity until data validation is co=
+mplete.</li>
+<li>Implement finalized color coding after updates.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Count Validation:</strong><ul>
+<li>Check and ensure tracker application count matches expected (target of =
+84; currently 81).</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Slide Preparation:</strong><ul>
+<li>Draft and send a slide for Sakina summarizing the key status for All IT=
+ meeting once tracker is current.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Ongoing Population/Validation:</stro=
+ng><ul>
+<li>Assign teams (particularly ERP/Finance for BRV) to fill out the tracker=
+.</li>
+<li>Continue iterative review, particularly for UAT start/end and system en=
+vironment readiness.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Follow-up Poi=
+nts &amp; Next Steps</h2><ul>
+<li><p><strong style=3D"font-weight:bold">Confirmation of Tracker Usage:</s=
+trong><br>Final determination to be made regarding Excel vs. dashboard/Smar=
+tsheet platform based on user needs or reporting requirements.</p>
+</li>
+<li><p><strong style=3D"font-weight:bold">Instruction Page Review:</strong>=
+<br>Validate and communicate the instruction sheet with all tracker recipie=
+nts; adjust based on feedback.</p>
+</li>
+<li><p><strong style=3D"font-weight:bold">Schedule Next Review:</strong>
+Likely to reconvene next week for non-BRV focus and to ensure completion of=
+ today=E2=80=99s action items.</p>
+</li>
+<li><p><strong style=3D"font-weight:bold">Share Tracker and Collect Fill-Ou=
+ts:</strong>
+Send final tracker to the respective teams (ERP/Finance and others).</p>
+<ul>
+<li>Remind teams of which sections to fill depending on their group.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Slide Submission for Sakina:</str=
+ong>
+Confirm and send updated progress/status slide for the All IT meeting post-=
+tracker completion.</p>
+</li>
+</ul>
+<hr>
+<p><strong style=3D"font-weight:bold">Note:</strong> Issues around app defi=
+nitions, naming, potential for missing/duplicate entries, and precise date =
+alignment were recurring themes and will require diligence and follow-up.</=
+p>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex"><span =
+style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription</h3><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-=
+bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">=
+Mac</span><span style=3D"color:#64748b;font-size:14px">0:06</span></div><di=
+v style=3D"color:#475569;font-size:16px;line-height:1.6">So now if we&#39;r=
+e asking them to fill anything, we need the tracker ready. So do we have a =
+tracker or something that they&#39;re going to fill out?</div></div><div st=
+yle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radi=
+us:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bot=
+tom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arp=
+it</span><span style=3D"color:#64748b;font-size:14px">0:14</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">I was just thinking=
+ to have them Update the. The two tabs. The 615 validation and the 614 vali=
+dation.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14=
+px">0:25</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">Okay, now the 614 validation, we said we would need to add the other =
+ones.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D=
+"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:6=
+00;margin-right:8px">Arpit</span><span style=3D"color:#64748b;font-size:14p=
+x">0:30</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah, the.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><di=
+v style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fon=
+t-weight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-=
+size:14px">0:31</span></div><div style=3D"color:#475569;font-size:16px;line=
+-height:1.6">The not adjacents.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px so=
+lid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"c=
+olor:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><span style=3D"c=
+olor:#64748b;font-size:14px">0:33</span></div><div style=3D"color:#475569;f=
+ont-size:16px;line-height:1.6">Exactly, the adjacents.</div></div><div styl=
+e=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius=
+:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-botto=
+m:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</=
+span><span style=3D"color:#64748b;font-size:14px">0:35</span></div><div sty=
+le=3D"color:#475569;font-size:16px;line-height:1.6">And we need to track wh=
+en that environment. What environment? You know, who are the testers. So es=
+sentially going back to the. The ISE and finance trackers. Because that&#39=
+;s what we need to add in there. Because they need to add, you know, for si=
+t. They need to add the tester names. They need to add. Well, let us think =
+through that. How do you see that working? So you want to give them. So tal=
+k me through how you think filling out the 14. What would they fill for the=
+ 14? So why don&#39;t we look at the Excel and see what they need to fill o=
+ut.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-col=
+or:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"d=
+isplay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Arpit</span><span style=3D"color:#64748b;font-size:14px"=
+>1:18</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14=
+px">1:18</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">And then we can come back and populate this quickly.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-b=
+ottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">A=
+rpit</span><span style=3D"color:#64748b;font-size:14px">1:22</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">I mean we haven&#=
+39;t added the columns actually. I guess they would need to just validate t=
+hat the names are right. The plan start and end. Like it&#39;s one validate=
+ the dates.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div st=
+yle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-we=
+ight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size=
+:14px">1:36</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">But this is readiness. It&#39;s not actual. This is tracking. So r=
+emember I said let&#39;s create another tab.</div></div><div style=3D"margi=
+n-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;borde=
+r-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><sp=
+an style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><sp=
+an style=3D"color:#64748b;font-size:14px">1:43</span></div><div style=3D"co=
+lor:#475569;font-size:16px;line-height:1.6">Yeah.</div></div><div style=3D"=
+margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;=
+border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px=
+"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span>=
+<span style=3D"color:#64748b;font-size:14px">1:45</span></div><div style=3D=
+"color:#475569;font-size:16px;line-height:1.6">So do that now. Yeah, move o=
+r move or copy and then.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b=
+82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3=
+b82f6;font-weight:600;margin-right:8px">Arpit</span><span style=3D"color:#6=
+4748b;font-size:14px">1:59</span></div><div style=3D"color:#475569;font-siz=
+e:16px;line-height:1.6">But let&#39;s do it from the other one. Let&#39;s d=
+o it. Oh no, it is from this one.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D=
+"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span style=3D"c=
+olor:#64748b;font-size:14px">2:02</span></div><div style=3D"color:#475569;f=
+ont-size:16px;line-height:1.6">No, no, it&#39;s this one. So move or copy a=
+nd make a copy. Call it whatever date 616 BRV validation. 616. Okay, so. So=
+ this goes back to your data model because the data model had a lot of thes=
+e. So you can remove rows through 24 for now.</div></div><div style=3D"marg=
+in-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bord=
+er-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><s=
+pan style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><s=
+pan style=3D"color:#64748b;font-size:14px">2:50</span></div><div style=3D"c=
+olor:#475569;font-size:16px;line-height:1.6">In here. Oh yeah, yeah.</div><=
+/div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc=
+;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fle=
+x;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-ri=
+ght:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">2:52</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Your rows=
+ 20 through 20. Whatever the sit. Just remove those rows.</div></div><div s=
+tyle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-rad=
+ius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bo=
+ttom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Ar=
+pit</span><span style=3D"color:#64748b;font-size:14px">3:05</span></div><di=
+v style=3D"color:#475569;font-size:16px;line-height:1.6">And then we need t=
+he. There are the BRV adjacents. But it&#39;s really the.</div></div><div s=
+tyle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-rad=
+ius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bo=
+ttom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Ma=
+c</span><span style=3D"color:#64748b;font-size:14px">3:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">None of these are ar=
+e they. Are they BRV adjacent? Okay, so look at what is BRV adjacent. We sh=
+ould have everything. 40 apps or something.</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border=
+-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><spa=
+n style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><spa=
+n style=3D"color:#64748b;font-size:14px">3:22</span></div><div style=3D"col=
+or:#475569;font-size:16px;line-height:1.6">No, this is not all of them.</di=
+v></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8f=
+afc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:=
+flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin=
+-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">3:24</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, =
+so we need to add the. All of the finance ones and these are wrong. So that=
+&#39;s the other piece. We need to go back and clean this list in the smart=
+sheets and elsewhere. That was the other action item we needed to in your. =
+In your tracker is clean up smartsheet first. Are so on this. Let&#39;s. Le=
+t&#39;s get tactical here. So we need to add on your BRV validation 616. Th=
+ese ones from the non BRV. Right.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D=
+"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><span style=3D=
+"color:#64748b;font-size:14px">4:02</span></div><div style=3D"color:#475569=
+;font-size:16px;line-height:1.6">All the ones from Finance. All the ones fr=
+om.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-col=
+or:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"d=
+isplay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">4=
+:06</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6"=
+>So those would be the rows you would add from supply chain and Finance.</d=
+iv></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display=
+:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margi=
+n-right:8px">Arpit</span><span style=3D"color:#64748b;font-size:14px">4:09<=
+/span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yea=
+h.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-colo=
+r:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"di=
+splay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">4:=
+10</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">=
+And then. No, mind you, the stuff that Gokul sent as the PowerPoint embedde=
+d in there, don&#39;t add those because those are in this tracker for build=
+ back and move as is.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f=
+6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82=
+f6;font-weight:600;margin-right:8px">Arpit</span><span style=3D"color:#6474=
+8b;font-size:14px">4:23</span></div><div style=3D"color:#475569;font-size:1=
+6px;line-height:1.6">Okay.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #=
+3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:=
+#3b82f6;font-weight:600;margin-right:8px">Mac</span><span style=3D"color:#6=
+4748b;font-size:14px">4:25</span></div><div style=3D"color:#475569;font-siz=
+e:16px;line-height:1.6">Because those are his that he&#39;s tracking for da=
+y one. So it&#39;s only the other rows in the Excel. The top rows in the Ex=
+cel, however many rows there are. I think for supply chain, it. Whatever it=
+ is. Right. I mean 40 rows or something. 30, 37, 38 rows for ISC.</div></di=
+v><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bo=
+rder-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;m=
+argin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right=
+:8px">Arpit</span><span style=3D"color:#64748b;font-size:14px">4:48</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, let =
+me just see because I feel like we had this on Friday. It was the.</div></d=
+iv><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;b=
+order-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;=
+margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-righ=
+t:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">5:05</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Those you a=
+re not likely to get in the system data model because there was. A lot of t=
+hem are on tsa. So they would never be build back or move as is.</div></div=
+><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bor=
+der-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;ma=
+rgin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:=
+8px">Arpit</span><span style=3D"color:#64748b;font-size:14px">5:15</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, let m=
+e.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-colo=
+r:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"di=
+splay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">5:=
+16</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">=
+Some of them are. Yeah, but not all.</div></div><div style=3D"margin-bottom=
+:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4=
+px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><span style=
+=3D"color:#64748b;font-size:14px">5:22</span></div><div style=3D"color:#475=
+569;font-size:16px;line-height:1.6">I&#39;m just gonna get the finance one =
+up at least.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div s=
+tyle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-w=
+eight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-siz=
+e:14px">5:25</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">Yeah, finance one. So you would need to go to the PRV validation =
+tab.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"=
+display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:60=
+0;margin-right:8px">Arpit</span><span style=3D"color:#64748b;font-size:14px=
+">5:36</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">So I had put together. Let me just show you this one. Wait, the BRV val=
+idation tab because.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6=
+"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f=
+6;font-weight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;=
+font-size:14px">5:43</span></div><div style=3D"color:#475569;font-size:16px=
+;line-height:1.6">Yeah, yeah, because they&#39;re brv. They&#39;re not. Not=
+ brv. I mean. Right, so this is where you need.</div></div><div style=3D"ma=
+rgin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bo=
+rder-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span>=
+<span style=3D"color:#64748b;font-size:14px">5:48</span></div><div style=3D=
+"color:#475569;font-size:16px;line-height:1.6">To add the finance and ISC o=
+nes.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"=
+display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:60=
+0;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">=
+5:51</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">Yes, you will call them BRV adjacent.</div></div><div style=3D"margin-bot=
+tom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-lef=
+t:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span st=
+yle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><span st=
+yle=3D"color:#64748b;font-size:14px">5:53</span></div><div style=3D"color:#=
+475569;font-size:16px;line-height:1.6">Correct. And then these are. I need =
+to remove.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div sty=
+le=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-wei=
+ght:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:=
+14px">6:01</span></div><div style=3D"color:#475569;font-size:16px;line-heig=
+ht:1.6">Remove that for now you can go back and add.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit<=
+/span><span style=3D"color:#64748b;font-size:14px">6:09</span></div><div st=
+yle=3D"color:#475569;font-size:16px;line-height:1.6">So all the finance one=
+s are. So for brv there&#39;s all the finance ones.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</s=
+pan><span style=3D"color:#64748b;font-size:14px">6:23</span></div><div styl=
+e=3D"color:#475569;font-size:16px;line-height:1.6">Move them to the right c=
+olumn. Now we need to make sure that there isn&#39;t a duplicate.</div></di=
+v><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bo=
+rder-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;m=
+argin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right=
+:8px">Arpit</span><span style=3D"color:#64748b;font-size:14px">6:38</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">S face is =
+duplicated.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div st=
+yle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-we=
+ight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size=
+:14px">6:41</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">So the first four probably are.</div></div><div style=3D"margin-bo=
+ttom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-le=
+ft:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span s=
+tyle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><span s=
+tyle=3D"color:#64748b;font-size:14px">6:50</span></div><div style=3D"color:=
+#475569;font-size:16px;line-height:1.6">Black line is on there. Is on there=
+. Workiva is on there. Hyperion HFM is on there.</div></div><div style=3D"m=
+argin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;b=
+order-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"=
+><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><=
+span style=3D"color:#64748b;font-size:14px">7:02</span></div><div style=3D"=
+color:#475569;font-size:16px;line-height:1.6">Okay, so remove those other s=
+tuff like SAP is on there. 26, row 26 tax. Where eddycom. Da da da da da. C=
+redit card payment. Eddie com is a duplicate. Remove that row 29.</div></di=
+v><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bo=
+rder-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;m=
+argin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right=
+:8px">Arpit</span><span style=3D"color:#64748b;font-size:14px">7:29</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.</div=
+></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fa=
+fc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:f=
+lex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-=
+right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">7:34</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, l=
+et&#39;s see. Credit card payments. Obviously we&#39;ll need to get the rig=
+ht app names when we say tax, wear and these other leasing, whatever the ap=
+p names are, but call these all BRV adjacent. And then let&#39;s mark all o=
+f these as finance on the left. And actually you can clean the names out in=
+ column A. You know, Arpit and I have updated. So just clean that out. What=
+ do you mean the names RH up column A. Yeah, yeah. Okay, so these names Obv=
+iously some of these names we will have to look at like SAP FI testing. I d=
+o not know if there&#39;s an app for that.</div></div><div style=3D"margin-=
+bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-=
+left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span=
+ style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><span=
+ style=3D"color:#64748b;font-size:14px">8:37</span></div><div style=3D"colo=
+r:#475569;font-size:16px;line-height:1.6">I don&#39;t think there is. They =
+said there was cross functional setup required for that.</div></div><div st=
+yle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radi=
+us:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bot=
+tom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac=
+</span><span style=3D"color:#64748b;font-size:14px">8:42</span></div><div s=
+tyle=3D"color:#475569;font-size:16px;line-height:1.6">Right, right. So mayb=
+e there isn&#39;t an app. So let&#39;s keep it here, but we&#39;ll track th=
+rough now. Let&#39;s go through the columns and see what we need here.</div=
+></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fa=
+fc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:f=
+lex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-=
+right:8px">Arpit</span><span style=3D"color:#64748b;font-size:14px">8:53</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">I&#39=
+;ve got the planned UAT start and ends for these.</div></div><div style=3D"=
+margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;=
+border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px=
+"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span>=
+<span style=3D"color:#64748b;font-size:14px">8:57</span></div><div style=3D=
+"color:#475569;font-size:16px;line-height:1.6">So move left. Move left. Mov=
+e your mouse left. Okay, so. So here you are going to need work stream lead=
+s and I think that&#39;s hairy for all of them.</div></div><div style=3D"ma=
+rgin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bo=
+rder-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span>=
+<span style=3D"color:#64748b;font-size:14px">9:10</span></div><div style=3D=
+"color:#475569;font-size:16px;line-height:1.6">Yeah, we had two names. Let =
+me. I&#39;m just gonna share my full screen.</div></div><div style=3D"margi=
+n-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;borde=
+r-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><sp=
+an style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span=
+ style=3D"color:#64748b;font-size:14px">9:15</span></div><div style=3D"colo=
+r:#475569;font-size:16px;line-height:1.6">Yeah, the sir, you had names and =
+service owners.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><di=
+v style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fon=
+t-weight:600;margin-right:8px">Arpit</span><span style=3D"color:#64748b;fon=
+t-size:14px">9:18</span></div><div style=3D"color:#475569;font-size:16px;li=
+ne-height:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6=
+"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f=
+6;font-weight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;=
+font-size:14px">9:20</span></div><div style=3D"color:#475569;font-size:16px=
+;line-height:1.6">So Harry should be workstream lead and any other name sho=
+uld be your service owner name. No, yeah, I know she wanted full names. Tha=
+t&#39;s fine.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-=
+weight:600;margin-right:8px">Arpit</span><span style=3D"color:#64748b;font-=
+size:14px">9:33</span></div><div style=3D"color:#475569;font-size:16px;line=
+-height:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6">=
+<div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;=
+font-weight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;fo=
+nt-size:14px">9:34</span></div><div style=3D"color:#475569;font-size:16px;l=
+ine-height:1.6">So.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"=
+><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6=
+;font-weight:600;margin-right:8px">Arpit</span><span style=3D"color:#64748b=
+;font-size:14px">9:40</span></div><div style=3D"color:#475569;font-size:16p=
+x;line-height:1.6">This is gonna take a while. Like you can go.</div></div>=
+<div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bord=
+er-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;mar=
+gin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8=
+px">Mac</span><span style=3D"color:#64748b;font-size:14px">9:42</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">I can go back =
+and update the others. That&#39;s fine.</div></div><div style=3D"margin-bot=
+tom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-lef=
+t:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span st=
+yle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><span st=
+yle=3D"color:#64748b;font-size:14px">9:55</span></div><div style=3D"color:#=
+475569;font-size:16px;line-height:1.6">And yeah, I can go add the others fr=
+om.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-col=
+or:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"d=
+isplay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">9=
+:58</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6"=
+>So these are the service owners. And then we have from here Athens IT lead=
+. Put Harry Tong for all of these.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><span style=
+=3D"color:#64748b;font-size:14px">10:06</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">Yeah, he said he was both sides.</div>=
+</div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8faf=
+c;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fl=
+ex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-r=
+ight:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">10:09</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yep.</d=
+iv></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display=
+:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margi=
+n-right:8px">Arpit</span><span style=3D"color:#64748b;font-size:14px">10:11=
+</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Pl=
+anned, Sit, start and end. Should we look this up?</div></div><div style=3D=
+"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px=
+;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8p=
+x"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span=
+><span style=3D"color:#64748b;font-size:14px">10:18</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">Sit, start and end. We sh=
+ould get it from. Well, again, this is the same date 6:23-72.</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border=
+-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margi=
+n-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px=
+">Arpit</span><span style=3D"color:#64748b;font-size:14px">10:28</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">But they gave=
+ us specific dates for some of these.</div></div><div style=3D"margin-botto=
+m:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:=
+4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span styl=
+e=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span style=
+=3D"color:#64748b;font-size:14px">10:30</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">Those are uat, not sit.</div></div><di=
+v style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-=
+radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin=
+-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px"=
+>Arpit</span><span style=3D"color:#64748b;font-size:14px">10:32</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, this is si=
+t.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-colo=
+r:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"di=
+splay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">10=
+:33</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6"=
+>Okay, so sit. Because these are all part of the platform. 6:23 to 72. The =
+same as the dates above.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b=
+82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3=
+b82f6;font-weight:600;margin-right:8px">Arpit</span><span style=3D"color:#6=
+4748b;font-size:14px">10:53</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">Maybe it&#39;s going to take an hour.</div></div><=
+div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;borde=
+r-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;marg=
+in-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8p=
+x">Mac</span><span style=3D"color:#64748b;font-size:14px">10:54</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">23 to 72. Okay=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"dis=
+play:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;m=
+argin-right:8px">Arpit</span><span style=3D"color:#64748b;font-size:14px">1=
+1:01</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">Power.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14=
+px">11:03</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">Technically speaking. You know what? We should not have SID on these=
+. I would just say make them na. Make them na. Because these are adjacent. =
+They&#39;re not changing. Yeah, yeah. Just make them NA for now. And actual=
+ly, you know what? Even the three black ones above, just make them na. It&#=
+39;s good on a visual, but on this freaking thing we need a cell field for =
+each. So even those three make them na. Do you track to what I&#39;m saying=
+?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"dis=
+play:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;m=
+argin-right:8px">Arpit</span><span style=3D"color:#64748b;font-size:14px">1=
+1:48</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">Yeah. Because these are the adjacents.</div></div><div style=3D"margin-bo=
+ttom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-le=
+ft:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span s=
+tyle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span sty=
+le=3D"color:#64748b;font-size:14px">11:53</span></div><div style=3D"color:#=
+475569;font-size:16px;line-height:1.6">Do you follow why I put them as na?<=
+/div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#=
+f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displ=
+ay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Arpit</span><span style=3D"color:#64748b;font-size:14px">11:=
+55</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">=
+Sorry. Yeah. Because these are the adjacents. Right. Like nothing is changi=
+ng.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-col=
+or:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"d=
+isplay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">1=
+2:02</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">Correct. So there&#39;s. They&#39;re not going through. If they are going=
+ through testing, that&#39;s a day one testing. They&#39;ll go through. Not=
+ for this reporting.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6=
+"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f=
+6;font-weight:600;margin-right:8px">Arpit</span><span style=3D"color:#64748=
+b;font-size:14px">12:09</span></div><div style=3D"color:#475569;font-size:1=
+6px;line-height:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #=
+3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:=
+#3b82f6;font-weight:600;margin-right:8px">Mac</span><span style=3D"color:#6=
+4748b;font-size:14px">12:11</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">Okay. Then you&#39;ve got the function lead from t=
+hese guys that you may have to do individual lookups given it&#39;s in a di=
+fferent sequence.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><=
+div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;f=
+ont-weight:600;margin-right:8px">Arpit</span><span style=3D"color:#64748b;f=
+ont-size:14px">12:25</span></div><div style=3D"color:#475569;font-size:16px=
+;line-height:1.6">Is that going to be the business?</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</s=
+pan><span style=3D"color:#64748b;font-size:14px">12:28</span></div><div sty=
+le=3D"color:#475569;font-size:16px;line-height:1.6">Yes, those UAT business=
+. UAT lead.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div st=
+yle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-we=
+ight:600;margin-right:8px">Arpit</span><span style=3D"color:#64748b;font-si=
+ze:14px">12:31</span></div><div style=3D"color:#475569;font-size:16px;line-=
+height:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><=
+div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;f=
+ont-weight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;fon=
+t-size:14px">12:36</span></div><div style=3D"color:#475569;font-size:16px;l=
+ine-height:1.6">You could put one, you know put one name there.</div></div>=
+<div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bord=
+er-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;mar=
+gin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8=
+px">Arpit</span><span style=3D"color:#64748b;font-size:14px">12:41</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.</div>=
+</div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8faf=
+c;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fl=
+ex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-r=
+ight:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">12:42</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Carlos,=
+ I think the other. Yeah. Cesar or something.</div></div><div style=3D"marg=
+in-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bord=
+er-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><s=
+pan style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><s=
+pan style=3D"color:#64748b;font-size:14px">12:46</span></div><div style=3D"=
+color:#475569;font-size:16px;line-height:1.6">Hyperion planning is.</div></=
+div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex=
+;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-rig=
+ht:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">12:50</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, Matt =
+T. Matt Trabusky. I think it&#39;s T R Y some. I think you could. We could =
+look up his name. But yeah. B U S K I We&#39;ll certainly populate these. I=
+ think Jerry Sanderson, Veronica something. We&#39;ll. We&#39;ll need to ge=
+t full names.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-=
+weight:600;margin-right:8px">Arpit</span><span style=3D"color:#64748b;font-=
+size:14px">13:15</span></div><div style=3D"color:#475569;font-size:16px;lin=
+e-height:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"=
+><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6=
+;font-weight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;f=
+ont-size:14px">13:16</span></div><div style=3D"color:#475569;font-size:16px=
+;line-height:1.6">Chad Montgomery, Eric whatever. Yeah. Okay. So you will p=
+opulate those names. The UAT is the same as the 772 unless they say somethi=
+ng different. On the.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f=
+6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82=
+f6;font-weight:600;margin-right:8px">Arpit</span><span style=3D"color:#6474=
+8b;font-size:14px">13:36</span></div><div style=3D"color:#475569;font-size:=
+16px;line-height:1.6">On the sheet there was just that one.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-=
+bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">=
+Mac</span><span style=3D"color:#64748b;font-size:14px">13:41</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">So there was some=
+thing else. So just go through these two columns.</div></div><div style=3D"=
+margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;=
+border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px=
+"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</spa=
+n><span style=3D"color:#64748b;font-size:14px">13:44</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">There was going to the To=
+m, is.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14=
+px">13:46</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">That here or in supply chain?</div></div><div style=3D"margin-bottom=
+:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4=
+px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><span style=
+=3D"color:#64748b;font-size:14px">13:49</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">It was this one because they wanted to=
+ do full UAT testing.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f=
+6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82=
+f6;font-weight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b=
+;font-size:14px">13:56</span></div><div style=3D"color:#475569;font-size:16=
+px;line-height:1.6">Okay.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3=
+b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#=
+3b82f6;font-weight:600;margin-right:8px">Arpit</span><span style=3D"color:#=
+64748b;font-size:14px">13:57</span></div><div style=3D"color:#475569;font-s=
+ize:16px;line-height:1.6">On the output file. So this was the Hyperion HFI.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"disp=
+lay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;ma=
+rgin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">14:0=
+0</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">O=
+kay. Okay. So outside that everything else is 77 to 7 11.</div></div><div s=
+tyle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-rad=
+ius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bo=
+ttom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Ar=
+pit</span><span style=3D"color:#64748b;font-size:14px">14:04</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.</div></div>=
+<div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bord=
+er-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;mar=
+gin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8=
+px">Mac</span><span style=3D"color:#64748b;font-size:14px">14:04</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">Hyperion HFM =
+above I think is already mentioned above.</div></div><div style=3D"margin-b=
+ottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-l=
+eft:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><span =
+style=3D"color:#64748b;font-size:14px">14:08</span></div><div style=3D"colo=
+r:#475569;font-size:16px;line-height:1.6">Yeah, it is and it&#39;s already =
+7 7.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"=
+display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:60=
+0;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">=
+14:10</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Well yeah. Yeah. So everything else is 7 the same as above. Okay. Now fo=
+r the purposes of this we should still say UAT schedule aligned. Actually c=
+an you do me a favor? The 610 that you see there, the. The row 37, can you =
+make that blue? Because that&#39;s in the past and that&#39;s aligned now f=
+or these we should put the same 618 testers identified. We should put this =
+as 619. Now this is going to be pressure tested. We need the testers identi=
+fy. Now I think we need to start double clicking. This dashboard has to be =
+double clicking more. So we may need. This is all about uat but again this =
+is not executive dashboard anymore. Let&#39;s go back and look at the colum=
+ns and non BRV and start populating. Right. Those are the columns we&#39;re=
+ going to need here. These columns are needed. But let&#39;s before column.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"disp=
+lay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;ma=
+rgin-right:8px">Arpit</span><span style=3D"color:#64748b;font-size:14px">15=
+:30</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6"=
+>So this is then the call to action is to provide these days.</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border=
+-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margi=
+n-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px=
+">Mac</span><span style=3D"color:#64748b;font-size:14px">15:38</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">A bit more we m=
+ay need to add settled on the environment. Right. TSA exit planning. Okay. =
+Yeah. So this last update and notes we may need to move to the end. Yeah. C=
+an you on that last cell can you make it access to UAT environment provisio=
+n and then the row below it we need to delete or clean. And then you can mo=
+ve the comments, the date update and the notes all the way to the end. So l=
+ast column SNT.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><di=
+v style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fon=
+t-weight:600;margin-right:8px">Arpit</span><span style=3D"color:#64748b;fon=
+t-size:14px">17:12</span></div><div style=3D"color:#475569;font-size:16px;l=
+ine-height:1.6">It. Okay.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3=
+b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#=
+3b82f6;font-weight:600;margin-right:8px">Mac</span><span style=3D"color:#64=
+748b;font-size:14px">17:48</span></div><div style=3D"color:#475569;font-siz=
+e:16px;line-height:1.6">All right, let&#39;s go back and see what else they=
+ may need to. So let&#39;s look at this slide. This sheet on the left. Let&=
+#39;s actually go all the way here. So we need to replicate the same top le=
+vel data the the columns in the other side. So we&#39;ve got Athens IT lead=
+. We&#39;ve got planned SIT and UAT dates. We&#39;ve got sit completion sta=
+tus. Now, a couple of things I think we were in the past, you had it in the=
+ 85 rows, but we killed it on this was sit test leads. Right. We need a nam=
+e against those. So we need to add a column here in sit instead of sit comp=
+letion, go to the left. So instead of sit completion, stat, maybe sit compl=
+etion status is there, but before that we need to add no. Okay, so you shou=
+ld say UAT test leads. But you already have UAT function leads, right? So t=
+hat&#39;s fine. I&#39;m not talking. So, so again, in the sit column, in th=
+e sit.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Arpit</span><span style=3D"color:#64748b;font-size:=
+14px">19:07</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">Oh, oh, I see, I see.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px sol=
+id #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"co=
+lor:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span style=3D"colo=
+r:#64748b;font-size:14px">19:11</span></div><div style=3D"color:#475569;fon=
+t-size:16px;line-height:1.6">So after, after sit completion as a planned si=
+t, between column K and L, add a row that is test leads, sit test situation=
+. And then that&#39;s just names. Okay. And then we should have sit, maybe =
+call it sit test lead, primary and secondary. Or maybe just as a test lead.=
+ And then for uat, we say UAT function lead. So column N, UAD function lead=
+, uat. After that, let&#39;s add UAT test, UAT tester. So function lead cou=
+ld be, you know, Michael S maybe testing this or he may have somebody. But =
+let&#39;s just say UAT test, UAT test secondary, UAT tester secondary. So t=
+he idea would be this is a free form text. When you put it in smartsheets, =
+that people can go in and say Michael Sheets comma somebody else, comma som=
+ebody else. Like for example, in your ISE and finance, we&#39;ve got a bunc=
+h of names saying somebody for collection, somebody for dunning, somebody f=
+or this, Veronica for this, and Cesar for this in the same column. So we sh=
+ould give them the opportunity to do that here.</div></div><div style=3D"ma=
+rgin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bo=
+rder-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span>=
+<span style=3D"color:#64748b;font-size:14px">21:28</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.</div></div><div sty=
+le=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radiu=
+s:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bott=
+om:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac<=
+/span><span style=3D"color:#64748b;font-size:14px">21:29</span></div><div s=
+tyle=3D"color:#475569;font-size:16px;line-height:1.6">And now this may all =
+get moved into. I don&#39;t know if we put it in an Excel. This is probably=
+ going to be in whatever tracker this woman is creating, whatever dashboard=
+ or sites. So let&#39;s, let&#39;s see there. Okay, so UAT now sit, UAT sta=
+rt and end. And then can we move to the right UAT completion status we shou=
+ld have? I&#39;m sure because they talk about scenarios, we should talk abo=
+ut UAT at some point, I&#39;m afraid we will be asked.</div></div><div styl=
+e=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius=
+:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-botto=
+m:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit=
+</span><span style=3D"color:#64748b;font-size:14px">22:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Number of test scrip=
+ts we have test scripts developed. Can we just change it to number of test =
+scripts developed?</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6">=
+<div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;=
+font-weight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;fo=
+nt-size:14px">22:23</span></div><div style=3D"color:#475569;font-size:16px;=
+line-height:1.6">Yeah, so for, for. For this. So I think this was readiness=
+, that is execution. So on the left hand side was execution. So here is. So=
+ we should say UAT schedule aligned. I don&#39;t know if testers identified=
+. I mean, I suppose if there&#39;s some blank in the UAT function lead or U=
+AT testers. So maybe we put. So let&#39;s just do this. Go back to column L=
+ and we will call that UAT testers primary slash secondary. Similarly, sid =
+test lead. You can put, you know, in parentheses, P S. So here. Yeah, sit. =
+Test lead, P S. So people can go in and say, this is my primary, this is se=
+condary. And then similarly, uat, we&#39;ll call it UAT function lead. But =
+UAT test lead, the next column O. So UAT test lead, P S, UAT test. Fine. Ag=
+ain, if it&#39;s lead or secondary, then it kind of defeats the purpose. Bu=
+t yeah, just say uac. Yeah, that&#39;s fine. UAT test lead prime. So now th=
+en, let&#39;s go back to the right. And they can put multiple names here. T=
+hey can put, you know, Mac primary or cache secondary. So go in here to the=
+ right. UAT schedule aligned. So move the column U to after Q. So you, you.=
+ This is where.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><di=
+v style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fon=
+t-weight:600;margin-right:8px">Arpit</span><span style=3D"color:#64748b;fon=
+t-size:14px">24:37</span></div><div style=3D"color:#475569;font-size:16px;l=
+ine-height:1.6">You. This one after U.</div></div><div style=3D"margin-bott=
+om:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left=
+:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span sty=
+le=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span style=
+=3D"color:#64748b;font-size:14px">24:40</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">No, no, no. So QR after Q. So yeah, so=
+ move column U to after Q. So once they define the dates, they go in and. O=
+kay, testers identified. Now if they don&#39;t have names, we know it&#39;s=
+ not identified. So it removed the color. There&#39;s probably more color a=
+t the bottom as well, but. And some of them may be na. So if. So we will go=
+ in and populate. So testers identified as, you know, remove that column. O=
+kay, test scripts. UAT test scripts. So this is again, I think we need to. =
+Let&#39;s move column T and U to the end. Go. Lives are all at the end. So =
+just move those to the end. And we&#39;ll work with before notes or before =
+updated dates or whatever. Yeah, just before column Z or just before last u=
+pdate. Yep. Okay, so UAT completion. So test scripts developed. I think. Le=
+t&#39;s see how we can rephrase that.</div></div><div style=3D"margin-botto=
+m:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:=
+4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span styl=
+e=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><span styl=
+e=3D"color:#64748b;font-size:14px">27:14</span></div><div style=3D"color:#4=
+75569;font-size:16px;line-height:1.6">Do you want to ask about the number o=
+r the status? We need the number.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D=
+"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span style=3D"c=
+olor:#64748b;font-size:14px">27:20</span></div><div style=3D"color:#475569;=
+font-size:16px;line-height:1.6">We need number. So maybe the number informs=
+ the status. Yeah, so let&#39;s say number of test scripts. Number of UAT t=
+est scripts. Okay. And if they populate that, then it kind of is a proxy to=
+ say. Yeah, but it doesn&#39;t tell you if it&#39;s complete or not. They c=
+ould fill up. They need 10, but they filled up. They&#39;ve developed six. =
+So. But yeah, this may the column order. We may need to reorder, but let&#3=
+9;s see. And then the next one is what&#39;s the next column system ready t=
+o test? I think so this is a yes, no, but it should probably have to do wit=
+h. We wanted to to do. Let&#39;s put another column here, environment for u=
+at. Let&#39;s add another column environment vuat and we&#39;ll reorder bec=
+ause I want people to indicate whether it&#39;s a, you know, they may say Q=
+A environment or you know, something else and then we should say. So the id=
+ea here is that that environment is ready by the time they say UAT start da=
+te. So we should add that in here. So column four, we may need to reorder a=
+fter R or before R or something. But let&#39;s leave it for now. I just wan=
+t to make sure that the logic flows that I have an environment for uat. The=
+y go in and say this is qa, this is dev. Some may not have the nice little =
+stack of devqa prod. They may say, oh, this is testing in prod. And then if=
+ they say there&#39;s a system ready to test, then by that time they will k=
+now yes, no. Or they put a date. Maybe we say date, system ready to test an=
+d we should add it after. You know, we&#39;ll certainly move it after the U=
+AT dates. Right. So I think move U and V both those columns actually hold o=
+ff. Hold off yet. Hold off. Access to UAT environment provided. Yep. Okay, =
+so move column U, V and W all three columns to the left of uat. Schedule al=
+igned UAT after party. Okay. We said, oh, we also need to move the access t=
+o environment UV and W. So. Well, W at least. Yeah.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit<=
+/span><span style=3D"color:#64748b;font-size:14px">31:18</span></div><div s=
+tyle=3D"color:#475569;font-size:16px;line-height:1.6">So I&#39;ve scheduled=
+ a line number of scripts, environment date that the system is ready to tes=
+t, access to the environment and then the overall status.</div></div><div s=
+tyle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-rad=
+ius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bo=
+ttom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Ma=
+c</span><span style=3D"color:#64748b;font-size:14px">31:30</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">So for all of these=
+ 82, some of them may be na, like, you know, Microsoft 365 in this DCN or d=
+ex shit, you don&#39;t have a UA. You know, there may be nothing like a scr=
+ipt there or something that&#39;s not relevant that a business utility know=
+ they&#39;re doing this business pilot. Maybe they test it in, I don&#39;t =
+know, in a dev instance or something, I don&#39;t know for Microsoft. So it=
+ may not be neatly fitting in. If so they can go in and say NA or you know,=
+ something that says this is not applicable for this or it&#39;s done, but =
+at least it gives us a view into the 80 plus systems. And how many do we ha=
+ve here? 84 I think. Right. We need to validate the rows here. How many row=
+s are there currently?</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82=
+f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b8=
+2f6;font-weight:600;margin-right:8px">Arpit</span><span style=3D"color:#647=
+48b;font-size:14px">32:23</span></div><div style=3D"color:#475569;font-size=
+:16px;line-height:1.6">82.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #=
+3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:=
+#3b82f6;font-weight:600;margin-right:8px">Mac</span><span style=3D"color:#6=
+4748b;font-size:14px">32:24</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">82. It may be 80. 81 rows. So the count on the rig=
+ht bottom is 81. So I think we said it&#39;s 84, so we may need to look at =
+a few more and see truly if it&#39;s 84 or whatever that number is. So we d=
+o need to validate that number. But I think now you have a tracker that we =
+should give to the teams to go fill out. Now the key here is I think we nee=
+d to fill this out for the BRV portion. Like this as well.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-b=
+ottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">A=
+rpit</span><span style=3D"color:#64748b;font-size:14px">32:56</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.</div></div=
+><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bor=
+der-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;ma=
+rgin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:=
+8px">Mac</span><span style=3D"color:#64748b;font-size:14px">32:57</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Based on the=
+ two ISC and finance information they&#39;ve given, we need to go fill that=
+ out.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D=
+"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:6=
+00;margin-right:8px">Arpit</span><span style=3D"color:#64748b;font-size:14p=
+x">33:05</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">Yep.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div sty=
+le=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-wei=
+ght:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:=
+14px">33:11</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">So all these columns we added, we need to now keep the data here, =
+UAT schedule. Da da da da da. These are all mostly valid, but I think at le=
+ast for these. But then for the other ones we need to go validate. So for e=
+xample, the system ready to test for one of These row number 24 may not be =
+the same date as the one above.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px so=
+lid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"c=
+olor:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><span style=3D"c=
+olor:#64748b;font-size:14px">33:40</span></div><div style=3D"color:#475569;=
+font-size:16px;line-height:1.6">Yeah.</div></div><div style=3D"margin-botto=
+m:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:=
+4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span styl=
+e=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span style=
+=3D"color:#64748b;font-size:14px">33:43</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">So we need to populate this. So the qu=
+estion then is what are we giving in the all IT connect? Because we need to=
+ make sure that people are going and populating. So let&#39;s go back. So s=
+tep here is we need to make the BRV validation tab. You need to add the sup=
+ply chain and the finance apps and make the columns all look the same as th=
+e non brv. All the columns we added need to go in here. Again those dates a=
+re blank. We don&#39;t know those dates. So that&#39;s where they need to f=
+ill. Are you tracking?</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82=
+f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b8=
+2f6;font-weight:600;margin-right:8px">Arpit</span><span style=3D"color:#647=
+48b;font-size:14px">34:22</span></div><div style=3D"color:#475569;font-size=
+:16px;line-height:1.6">Yeah, I&#39;m just highlighting.</div></div><div sty=
+le=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radiu=
+s:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bott=
+om:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac<=
+/span><span style=3D"color:#64748b;font-size:14px">34:25</span></div><div s=
+tyle=3D"color:#475569;font-size:16px;line-height:1.6">Sure. And maybe, you =
+know, so do this for now remove the colors, like remove all the green, blue=
+ stuff, everything orange. So, so we can go back in and fill the colors and=
+ any updates and validation. But here people would need. It may or may not =
+be the same like these apps. They may or may not. But again the columns on =
+top need to be reflective of this. So people need to go in and fill out and=
+ we need our instruction page to have what do they need to fill out here fo=
+r prv? I think today we should tell, you know, focus on BRV for the two peo=
+ple whether you know, the, the ERP team and then we should, we should also =
+say next week we focus on the non brv.</div></div><div style=3D"margin-bott=
+om:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left=
+:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span sty=
+le=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><span sty=
+le=3D"color:#64748b;font-size:14px">35:22</span></div><div style=3D"color:#=
+475569;font-size:16px;line-height:1.6">So add in really quickly.</div></div=
+><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bor=
+der-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;ma=
+rgin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:=
+8px">Mac</span><span style=3D"color:#64748b;font-size:14px">35:28</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">I think actu=
+ally we should do two things we should say for the ERP and Finance team, th=
+ey go fill out the eight. 1 Tracker the teams and then for the others they =
+go fill out the other tracker. I&#39;ll be right back. Give me a couple of =
+seconds.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Arpit</span><span style=3D"color:#64748b;font-size:=
+14px">35:50</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font=
+-weight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-s=
+ize:14px">35:52</span></div><div style=3D"color:#475569;font-size:16px;line=
+-height:1.6">But yeah, move this information over to that sheet. But in the=
+ eight minutes we have left, I also want to make sure that we have a slide =
+for Sakina because we need to send her stuff for the all it. So why don&#39=
+;t we do this? Let me come back and then we&#39;ll talk about the slide.</d=
+iv></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display=
+:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margi=
+n-right:8px">Arpit</span><span style=3D"color:#64748b;font-size:14px">36:12=
+</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Ok=
+ay.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-col=
+or:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"d=
+isplay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">3=
+6:13</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">What do we need to include? And then we can work on the sheet after that.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"disp=
+lay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;ma=
+rgin-right:8px">Arpit</span><span style=3D"color:#64748b;font-size:14px">36=
+:15</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6"=
+>Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14=
+px">36:16</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">Ah, she&#39;s got a doctor&#39;s appointment so let me. Let me just =
+ping her on this other one.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color=
+:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><span style=3D"color=
+:#64748b;font-size:14px">36:27</span></div><div style=3D"color:#475569;font=
+-size:16px;line-height:1.6">Who does Sakina?</div></div><div style=3D"margi=
+n-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;borde=
+r-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><sp=
+an style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span=
+ style=3D"color:#64748b;font-size:14px">36:30</span></div><div style=3D"col=
+or:#475569;font-size:16px;line-height:1.6">Yeah, let me finger on the DT co=
+nnect. And where is the DT connect? Can you ping that? I think we had a tou=
+ch Itsmo daily, right?</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82=
+f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b8=
+2f6;font-weight:600;margin-right:8px">Arpit</span><span style=3D"color:#647=
+48b;font-size:14px">36:42</span></div><div style=3D"color:#475569;font-size=
+:16px;line-height:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"colo=
+r:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span style=3D"color:=
+#64748b;font-size:14px">36:43</span></div><div style=3D"color:#475569;font-=
+size:16px;line-height:1.6">Okay.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px s=
+olid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"=
+color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><span style=3D"=
+color:#64748b;font-size:14px">36:54</span></div><div style=3D"color:#475569=
+;font-size:16px;line-height:1.6">It.</div></div><div style=3D"margin-bottom=
+:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4=
+px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span style=
+=3D"color:#64748b;font-size:14px">37:21</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">I&#39;ll be right back while you fill =
+that out.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div styl=
+e=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weig=
+ht:600;margin-right:8px">Arpit</span><span style=3D"color:#64748b;font-size=
+:14px">37:23</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><di=
+v style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fon=
+t-weight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-=
+size:14px">37:23</span></div><div style=3D"color:#475569;font-size:16px;lin=
+e-height:1.6">And we&#39;ll talk through the slides.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit<=
+/span><span style=3D"color:#64748b;font-size:14px">37:25</span></div><div s=
+tyle=3D"color:#475569;font-size:16px;line-height:1.6">Okay.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-=
+bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">=
+Mac</span><span style=3D"color:#64748b;font-size:14px">37:45</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Fuck. All right, =
+Mac, I&#39;m back. But I&#39;m just going to respond to a couple of pings h=
+ere in the background.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82=
+f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b8=
+2f6;font-weight:600;margin-right:8px">Arpit</span><span style=3D"color:#647=
+48b;font-size:14px">43:45</span></div><div style=3D"color:#475569;font-size=
+:16px;line-height:1.6">Okay. For the ISC ones, adding these to the tracker,=
+ there were a couple that we mentioned during the conversation that we had =
+with them is like full brv, right? And then some.</div></div><div style=3D"=
+margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;=
+border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px=
+"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span>=
+<span style=3D"color:#64748b;font-size:14px">43:58</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">No, full. Full UAT or sor=
+ry, full.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div styl=
+e=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weig=
+ht:600;margin-right:8px">Arpit</span><span style=3D"color:#64748b;font-size=
+:14px">44:00</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">Yeah, sorry, full UAT and some that like we noted as like no test=
+ing at all. Like they&#39;re not even going to be testing it. Should we eve=
+n include those?</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><d=
+iv style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fo=
+nt-weight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font=
+-size:14px">44:12</span></div><div style=3D"color:#475569;font-size:16px;li=
+ne-height:1.6">So keep in mind I don&#39;t want you to add. This is the oth=
+er thing I said don&#39;t add the bottoms. Those are all Gokul&#39;s list. =
+I told you don&#39;t add anything from there. It&#39;s only the one from th=
+e top. So let me. Let me share my screen.</div></div><div style=3D"margin-b=
+ottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-l=
+eft:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><span =
+style=3D"color:#64748b;font-size:14px">44:27</span></div><div style=3D"colo=
+r:#475569;font-size:16px;line-height:1.6">Yeah.</div></div><div style=3D"ma=
+rgin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bo=
+rder-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><s=
+pan style=3D"color:#64748b;font-size:14px">44:29</span></div><div style=3D"=
+color:#475569;font-size:16px;line-height:1.6">So going back to this supply =
+chain stuff, that was excellent. Again, going back to their key systems, it=
+&#39;s only this stuff on top. We need to add this stuff here like labview =
+this. I told you don&#39;t add this. This is day one. It&#39;s only this st=
+uff here that is brv.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f=
+6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82=
+f6;font-weight:600;margin-right:8px">Arpit</span><span style=3D"color:#6474=
+8b;font-size:14px">44:52</span></div><div style=3D"color:#475569;font-size:=
+16px;line-height:1.6">Okay, let me add those really quick.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-b=
+ottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">M=
+ac</span><span style=3D"color:#64748b;font-size:14px">44:55</span></div><di=
+v style=3D"color:#475569;font-size:16px;line-height:1.6">Again use his orig=
+inal list. Obviously I know you have this other list with is finance and. R=
+ight. So whichever one you&#39;ve moved into. Right, yeah.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-b=
+ottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">A=
+rpit</span><span style=3D"color:#64748b;font-size:14px">45:03</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">This one.</div><=
+/div><div style=3D"margin-bottom:0;padding:16px;background-color:#f8fafc;bo=
+rder-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;m=
+argin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right=
+:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">45:04</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yep.</div><=
+/div></div><div style=3D"margin-top:36px;text-align:center;color:#64748b;fo=
+nt-size:14px;padding:20px;border-top:1px solid #e2e8f0"><p style=3D"margin:=
+0;margin-bottom:8px">Captured with Wave AI Note Taker</p><p style=3D"margin=
+:0;font-size:12px">Your AI-powered companion</p></div></div></div></div></d=
+iv></div>
+
+--00000000000076af1a0637b7b09d--

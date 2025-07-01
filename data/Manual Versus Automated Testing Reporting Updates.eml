@@ -1,0 +1,2958 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a05:6000:26d2:b0:3a5:23aa:6f43 with SMTP id 18csp905580wrm;
+        Fri, 20 Jun 2025 13:03:56 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEUVZQsaujrJuFkOjpvD7FnfALHqBHQByq74mP/A5rU6eB7m/45rjyj+D7PCRNYzXUqCi40
+X-Received: by 2002:a05:622a:652:b0:4a4:419f:41c9 with SMTP id d75a77b69052e-4a77a1fd034mr60072881cf.6.1750449836484;
+        Fri, 20 Jun 2025 13:03:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750449836; cv=none;
+        d=google.com; s=arc-20240605;
+        b=bLE1zobHXQVxaZshjm/7AMaTSn7CjXrV34c9mLiDG7Fd63mRJLvCqjbJDIsMlQ0ONU
+         4qg6gbY4Th6pOB4a9l16BpYVLWzhoFs9n8H0s6CnghzrIKKz/1883/Qw+q0qLVKK5fxj
+         cFmlRPnOPCkLomx5CWbko9BElkVnpAc8uTA3LxpufFhDse6MgXKk6nsVAxSbZtIo8Qgg
+         pi9TQQBHtAdvPMlifkY63ieXK6eJrHQeQr2yqwc0KKCaSJ2mfELQzqiQXdxO7XGGdjFd
+         Byaaqmm/q5HQv9YtCrY9jnba5YOpI4l+zp9FGZjhdpsm4v1EW6lxPzcEJ9JEcNDYeql7
+         6v2Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=6h1T6wsozZgw2J1t+ADl0C73ro4b7S64eoqQPd0Snlc=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=Vu4Jpl1xlcV6tIuRBr8FwmZo8ICPQnTbW5/3tEwD2BV9wR2Sil2tj0tpPLTWEY6OSR
+         uHs+rID6S9r+nNt8pfHFHzrgMCjKpbet+loLggwNig4WcSnAIe46vtKu3tIX1J6qrMeK
+         F2DsZ/YPnJ3o2NXmhh01Tc4YVcb2s95XKU2W6zG/yaSogd9sLXBuVbY5nXM7t2JXPZd6
+         b0bedEPCA9GHpBpMavRhCtCRsNtKWxnybeL5dZoVpAZ5TCjAP+6TjQuo6zPLjFLjA7yl
+         t72djMv0Ba5hx87CEIxUczI2zJgK2UnELXitLVGGBYxMmch3Xjzmzh/OdggGK3P1WAQM
+         ZiHA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=gIMRc9Bo;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=L4XLBOE7;
+       spf=pass (google.com: domain of 010001978ef0cefd-c959ba29-36a7-436f-9b94-f7d987e7ba64-000000@send.email.wave.co designates 54.240.9.31 as permitted sender) smtp.mailfrom=010001978ef0cefd-c959ba29-36a7-436f-9b94-f7d987e7ba64-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <010001978ef0cefd-c959ba29-36a7-436f-9b94-f7d987e7ba64-000000@send.email.wave.co>
+Received: from a9-31.smtp-out.amazonses.com (a9-31.smtp-out.amazonses.com. [54.240.9.31])
+        by mx.google.com with ESMTPS id d75a77b69052e-4a77a0ec047si23958641cf.655.2025.06.20.13.03.56
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 20 Jun 2025 13:03:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 010001978ef0cefd-c959ba29-36a7-436f-9b94-f7d987e7ba64-000000@send.email.wave.co designates 54.240.9.31 as permitted sender) client-ip=54.240.9.31;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=gIMRc9Bo;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=L4XLBOE7;
+       spf=pass (google.com: domain of 010001978ef0cefd-c959ba29-36a7-436f-9b94-f7d987e7ba64-000000@send.email.wave.co designates 54.240.9.31 as permitted sender) smtp.mailfrom=010001978ef0cefd-c959ba29-36a7-436f-9b94-f7d987e7ba64-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1750449836;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=W/7EGpWotkUEgDntP9JyGJoPLn8z5/sjrdzkqdfluF0=;
+	b=gIMRc9BobBPat7/rmjfwcFfn/fLBZfKAK9IH6X9nKE66q8lABDnaygNKFGZrOUl0
+	An66XEnJCDVvpOLB68qYCpcdGIVk00OUGYbyfi6PsgSDKoeu4+n3UasSTFOCSD/CuK9
+	/Z/fpwXU8k+DGVS5jIHk5F6VTC9euOL+SQSDZhvQ=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1750449836;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=W/7EGpWotkUEgDntP9JyGJoPLn8z5/sjrdzkqdfluF0=;
+	b=L4XLBOE7al9tQfl6hCIR8Dw8mJ6Fg6v/G4qky7awpoJwRW+8D/3dohtxqrEjnMu3
+	b/39IzZTtDDduUNdoGVJd16AX61r4td61M7qotsk79vLB/gzliSQdwkqGeBExGpY6wC
+	NHkq0itC3mIU+iLAyVNnfn3Lf3wjYJOgmBJVy8U8=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Manual Versus Automated Testing Reporting Updates
+Message-ID: <010001978ef0cefd-c959ba29-36a7-436f-9b94-f7d987e7ba64-000000@email.amazonses.com>
+Date: Fri, 20 Jun 2025 20:03:55 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-f8ef90da467beb53-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.06.20-54.240.9.31
+
+----_NmP-f8ef90da467beb53-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Manual Versus Automated Testing Reporting Updates
+
+# Meeting Summary =
+=E2=80=93 June 20, 2025
+
+## Attendees
+- Bill
+- Trini Vas (Srinivas)
+- Jeff (referenced)
+- Rakesh
+- Mac
+- Audrey (referenced)
+- Jessica
+- Paul (referenced)
+- Rohit (referenced)
+
+---
+
+## Main Topics Discussed
+
+### 1. **Manual vs. Automated Reporting and Testing**
+- **Background/Context:** =20
+    - Feedback from Jeff requested clarity in=
+ reporting on what test scenarios are manual, automated, or semi-automated.
+    - There is a need for better documentation of the execution flow, =
+specifically distinguishing who is doing manual work versus those relying =
+on automation.
+    - The goal is to improve tracking and reporting =
+granularity, particularly for defect tracking and test progress.
+- **Bill=E2=80=99s Area:** =20
+    - Bill clarified that new reporting will=
+ clearly indicate whether each run was manual or automated.
+    - A JIRA instance was created earlier that day for tracking TOSCA runs =
+and manual test runs.
+    - Both manual and automated runs will be uploaded=
+ to JIRA for easy identification.
+    - The JIRA environment is not fully =
+set up=E2=80=94Bill is awaiting admin rights, and scripts/results are still=
+ being loaded.
+    - Until JIRA is ready (expected mid-week), daily manual =
+reports will continue, using a mini dashboard for visualization.
+    - Audrey is to assist in combining TOSCA outputs into the UAT readiness=
+ and tracking sheets.
+- **Reporting Cadence:** =20
+    - Commitment to =
+provide Jeff with an end-of-day Monday report; however, fully integrated =
+automated reporting may only be possible by mid-week (e.g., Wednesday or =
+Thursday).
+    - Interim approach: Continue to generate and share manual =
+progress reports.
+
+---
+
+### 2. **Data Ownership, Access, and Format**
+- **Document Management:** =20
+    - Work-in-progress Excel files are being=
+ shared and updated.
+    - Concern about providing editing access to all =
+team members; preference for restricted (e.g., read-only) access to prevent=
+ unintentional overwrites.
+    - Srinivas committed to sharing updated =
+files and granting selective access to Mac and others for reporting.
+- **Reporting Structure:** =20
+    - Agreement to standardize the reporting=
+ formats (focus on scenarios and percent complete, rather than deeply =
+granular steps, per previous guidance).
+    - Both ERP and Finance test =
+trackers will follow similar templates but may exist as separate tabs =
+within the same workbook for time and efficiency.
+
+---
+
+### 3. **Test Coverage and Execution Detail**
+- **Granularity of =
+Hybrid/Semi-Automated Work:** =20
+    - Clarified that in some cases, =
+certain functional areas contain both automated and manual scripts.
+    - Some business processes (e.g., external communications or purchasing =
+through third-party portals like iValue) remain manual due to technical =
+limitations.
+    - JIRA will eventually track scenario counts by type =
+(automated/manual) with pass/fail and output data.
+- **Sample Metrics =
+Mapping:** =20
+    - Walk-through demonstrated where and how manual versus =
+automated scenarios/scripts are logged and counted.
+    - Explicit mapping of automated (e.g., TOSCA) and manual test cases, =
+with color-coded tracking in Excel.
+    - Commitment to continue updating =
+and refining these reports as systems and integrations come online.
+
+---
+
+### 4. **External and Adjacent Testing Coordination**
+- **Tollers and 3PLs Involvement:**
+    - Email threads raised ambiguity =
+about external testing responsibilities (specifically for tollers and =
+third-party logistics providers).
+    - Need for clarification on =
+requirements, as some team members were unsure of expectations or technical=
+ details.
+    - Discussion around involving additional entities (e.g., =
+commercial, legal) for any external-facing testing.
+    - Plan to schedule a call (tentatively for Monday) with all =
+stakeholders named in the email chain, possibly including Paul and Gokul =
+for SIT, Sriram for UAT=E2=80=94to clarify external test scope and =
+coordination needs.
+
+---
+
+### 5. **Weekly/Daily Reporting and Procedures**
+- **Tab and Sheet Organization:** =20
+    - Discussion around merging or =
+keeping separate tabs for Finance (non-ERP) and ERP within summary =
+workbooks.
+    - Agreed that for efficiency and clarity, each area can =
+maintain a tab in the same file, even if formatting is not 100% consistent.
+    - Tabs will be renamed and color coded for quick identification (e.g., =
+Bill=E2=80=99s section in pink, Srinivas=E2=80=99s in blue).
+    - Plan to share both SIT and UAT schedules (with appropriate time zones=
+ clearly labeled: IST and EST).
+- **Operational Rhythm:** =20
+    - End-of-day scrum/readout calls scheduled around 4:30 or 5:00 PM =
+Eastern, with expectation that test results be finalized and available to =
+report by then.
+    - Reporting flows from manual Excel sheets into more =
+formal systems as they come online (e.g., JIRA).
+
+---
+
+### 6. **Preparation for Transition and Handoffs**
+- **Upcoming Changes:**
+    - Jessica is on vacation; plan is for Pierce to handle the project =
+kickoff meeting on Tuesday after a sync-up meeting Monday morning.
+    - If Pierce is not comfortable, Jessica will step in as backup.
+- **Near-term Next Steps:**
+    - Additional discussion Monday to finalize =
+reporting structure on manual vs. automated scenarios.
+    - Suggestion for a simple, high-level summary (total number =
+automated/manual, percentage complete) to start, and refine as needs evolve=
+.
+
+---
+
+## Action Items
+
+1. **Finalize JIRA Setup:** =20
+    - Bill to obtain admin rights and ensure TOSCA scripts/results are =
+loaded. =20
+    - Rohit to finish loading results into JIRA.
+    - Expected complete setup by Wednesday or Thursday next week.
+2. **Daily/Interim Reporting:** =20
+    - Continue daily manual reports =
+(mini dashboards) until JIRA automated reports are available.
+    - Mac and Audrey to collaborate on updating and merging manual and =
+automated outputs into tracking sheets.
+    - Srinivas to share and =
+maintain updated trackers for Finance domain, providing Mac and specified =
+team members with appropriate access.
+    - Color coding and tab renaming =
+in Excel files for clarity and alignment.
+3. **External Testing =
+Coordination:** =20
+    - Jessica/Paul to schedule and facilitate an =
+external testing coordination call with all relevant stakeholders (aim for =
+Monday, June 23).
+    - Assess need to involve commercial/legal or other =
+entities for external test visibility or data sharing.
+    - Identify if additional adjacent applications require a tailored test =
+schedule.
+4. **Schedule Management:** =20
+    - Ensure all time zones are =
+explicitly called out in shared reports/tabs (e.g., IST and EST).
+    - Quickly update and publish SIT and UAT schedules with clear =
+delineation between Finance and ERP/non-ERP areas.
+5. **High-Level =
+Reporting:** =20
+    - Prepare high-level summary counts (e.g., =
+=E2=80=9C160 total scenarios: 60 automated, 100 manual=E2=80=9D) for =
+management.
+    - Further breakdowns by functional area to be included as =
+data matures.
+6. **Meeting Prep:** =20
+    - Prep for Monday and Tuesday =
+meetings, especially the Pierce kickoff and the manual/automated reporting =
+check-in.
+    - Continue coordination with Audrey to streamline reporting =
+flow.
+
+---
+
+## Follow-up Points / Upcoming Meetings
+
+- **Monday, June 23:** =20
+    - Finalize structure for manual vs. =
+automated reporting.
+    - Stakeholder call to clarify external/toller/3PL =
+testing responsibilities and scope.
+    - Meeting with Pierce to bring him =
+up to speed for kickoff duties.
+- **Ongoing:** =20
+    - Daily end-of-day =
+scrum/readout calls (target: 4:30-5:00 PM EST).
+    - Mid-week switch to =
+JIRA-driven reporting (planned by Wednesday or Thursday, June 25-26).
+    - Keep team informed of admin access and tool status.
+    - Continue to monitor and adjust reporting cadence and format as needed=
+.
+
+---
+
+## Additional Notes
+
+- **Teamwork & Acknowledgment:** =20
+    - Appreciation expressed for Bill, Srinivas, and the broader =
+team=E2=80=99s efforts to meet aggressive timelines and evolving =
+requirements.
+    - Ongoing openness to process refinement and iterative =
+improvements in reporting methodology.
+- **Personal Asides:** =20
+    - Some disruptions due to personal/family obligations acknowledged; =
+team supports flexibility and maintains good humor.
+- **Documentation:** =20
+    - Password-protected files shared between Mac =
+and Paul; upcoming pivot views/tables to be created post-call.
+
+---
+
+End of summary.
+
+Transcript:
+0:00
+And he's having a little bit of a =
+meltdown and I don't want you guys to hear him screaming. But for Bill and =
+Trini Vas, we're trying to take the feedback we got from Jeff about adding =
+in some level of understanding what's manual versus what's automated into =
+the reporting. So we want to start having some conversations now and then =
+Rakesh and Mac are going to walk away over the weekend and then on Monday =
+we're going to finish that conversation. But we had some questions around =
+some of the functions. If you guys want to bring that Rakasha back. Bring =
+that up.
+
+0:31
+Yeah.
+
+0:31
+Mac, do you mind bringing that? Both the ERP as =
+well as the finance test. The same folder for finance and erp.
+
+0:42
+Yep. Give me one second. I'm getting those most recent Excels open. But I =
+think that just to set the context a little bit, like Jeff's real question =
+was like do we know any exactly in what order? And the people who are doing=
+ the hands on keyboard work, have we gotten that coordination down? He =
+wants to know the execution flow and it's about the technology, but it's =
+about the execution flow too. So we're just trying to come up and =
+brainstorm the best way to answer that question. Just give me a second and =
+I'll get those two files pulled up.
+
+1:17
+Yeah, I'm sorry, quite. I didn't =
+understand.
+
+1:21
+Yeah, so I think so part of this Srinivasa is we want to =
+understand for those manual and automatic, semi automatic, we want to do a =
+double click into understanding what part of this is automatic, what part =
+of this is manual. And Bill, particularly in your area, I think you =
+identified some as fully automatic, semi automatic, partial, etc. So I =
+think we want to get a better understanding of that because where we want =
+to see if it makes a difference in the reporting cadence and the tracking =
+and reporting. So if you recall, Jeff mentioned this morning that he would =
+like us to delineate how the testing was from an automatic perspective and =
+a non automatic perspective and provide reporting along that as well as =
+defect tracking along that. We're trying to see if that makes sense or if =
+there's a better way to delineate it and report out on it. So to do that I =
+think we just need to understand better of what part of these things are =
+manual. It will go back into your defect tracker as well in that what part =
+of this is manual, what part of this is semi manual, semi automatic and =
+what can be and whether at the end of the day, once we get a view into that=
+, whether it Makes sense to still keep that, keep that line of thinking. =
+Yes, Bill.
+
+2:50
+I never got to use the raise hand button. Of course, I =
+thought I might. You know, the good news is you don't have to worry about =
+it because the reports that are going to come out are going to say whether =
+it was a manual run or an automatic.
+
+3:01
+Okay. In within TOSCA or within =
+anywhere else.
+
+3:06
+So I've created a JIRA instance so that the TOSCA runs=
+ can be uploaded into JIRA and it'll say these were, you know, automatic =
+runs and you know, the others will be manual runs.
+
+3:24
+Ah, okay.
+
+3:27
+So.
+
+3:30
+Let'S dive deeper into that. Okay.
+
+3:32
+So will the manual runs =
+be shown in Jira 2? Well, the jurors are the combined manual and Tosca.
+
+3:41
+It can, and I haven't got that set up yet. I mean, literally, the =
+juror was created this morning. They haven't even made me an administrator =
+yet. Guys, we gotta pump the brakes a little bit and let things get done. =
+Technology takes a minute to get set up, scripts get finished, loaded up in=
+ there, practice runs. I know what Jeff wants, but Jeff's gotta understand =
+that the world doesn't move at that speed.
+
+4:02
+I know. So. But when I was=
+ on the call.
+
+4:04
+Today, he didn't sound like he had a tremendous amount =
+of energy around it. Like, you better tell me on Monday. He didn't say =
+anything like that. I told him 26 of the 50 scenarios were automated. He's =
+like, okay, cool. I mean, I think you guys are overreacting to a man's =
+single question.
+
+4:21
+So it's not just that behind the scenes he's been =
+pinging. Right? So it's not what he says versus, versus how he acts later =
+on is part of the challenge. So I'm with you. Things need not be frank with=
+ him.
+
+4:35
+Marcus. Say, listen, you know, the tools and the solutions are =
+getting provisioned in real time and you know, it's the weekend and people =
+are going to work on it, you know, Sunday night in India, Monday morning =
+our time, you know, when we get in. You know, hopefully by then I'll be the=
+ administrator on that. Rohit will have loaded his results and stuff into =
+jira. So it's not going to happen today.
+
+5:03
+So I'm not asking for it =
+today. I'm just trying to understand the reporting so that he's expecting =
+an end of day Monday report as we committed him. So I want to make sure the=
+ structure is in place as we go through Monday, Tuesday, Wednesday to say =
+things have started, things are getting automated, things are getting =
+reported. Here's how the report is going to take shape. Granted, it's walk =
+before we run. So I don't expect this to be sorted out Monday. It's =
+probably well into Wednesday, Thursday when all of this stuff will be =
+flowing nicely. But I want at least have the structure so that when data =
+starts flowing in, it's a matter of putting things in there and not =
+spending too much time to try and report out to him.
+
+5:50
+Yep. So you know, once the, once Rohit gets everything lined up in there, =
+you know, we'll generate a report and see what it looks like currently. =
+Right now I'm getting reports every day on progress that are shareable but =
+they won't be coming out of jira, you know, for in probably midweek or =
+something like that. So in the meantime we'll share the manual reports in =
+the fashion of the little mini dashboard that I created. And then I got, I =
+get. Is Audrey on this call?
+
+6:30
+Probably not.
+
+6:31
+Okay, but I need to work with her so that we're combining the output from =
+Tosca now into our sheet that has all of our UAT readiness and tracking =
+tabs so that you know, it can be updated daily.
+
+6:48
+Okay. And the intent would be, and like I said, because we have an end of =
+day readout or an end of day scrum call say 4:30 or 5 Eastern. The idea =
+would be that a bit ahead of that, that you're, you're all able to say, =
+Bill, that The tests for ERP scope gets completed say at 3:30 or something =
+and then you have time to actually drop things in there. So that at 4:30 =
+when you have the end of day call, it's just a readout, not too much work. =
+Right. So. So that's what we're asking. I think that's the intent. I think =
+we're all, you know, I think marching towards the same thing. I think the =
+urgency is, is a bit different for Jeff versus us.
+
+7:30
+I think he'll understand what you're telling the truth. Being provisioned =
+in real time. Ping, ping, ping, hit enter. You know, we fully anticipate =
+that everyone will be set up, scripts will be set up in it JIRA and should =
+be able to start generating a report that will delineate for you which runs=
+ are manual, which runs were automatic. In the interim, we're going to =
+produce a daily report, you know, manually that will show the same thing. =
+You know, this was a manual run, this was a, an automated run. And here's =
+how much we completed against what we thought we could.
+
+8:02
+Okay, so then Mac, you and I need to plug into that sheet that's there. And=
+ rebuild or arrange this report this slide to indicate as such. Now on the =
+flip side, on the finance side, Srinivas, I presume everything of yours is =
+manual. And so your tracker, which will follow the same template as Bill's,=
+ will also have that same level of detail. Yeah.
+
+8:38
+Let me quickly share my screen. I'll show you something. The same format =
+that I considered what Bill was sharing yesterday. Something like this. You=
+ guys could hear my screen.
+
+8:56
+I can. We can.
+
+8:59
+We eliminated the steps because the guidance given to us was that that was =
+too, too granular. Just keep scenarios and percent complete.
+
+9:07
+Okay, Yeah. I mean I can delete that.
+
+9:10
+That's fine.
+
+9:11
+Keep it if you want. Keep it there. We'll. Our reporting will only take the=
+ left hand side five. Okay, sure.
+
+9:17
+Now, is this in the live file? =
+Sorry, is this in the live file? In teams.
+
+9:24
+I've just shared the =
+updated one with Jessica. In teams. I'm little concerned to give access to =
+everyone. Oh yeah, that's okay because I know most of them logs in and then=
+ if they alter them, I know no one would do intentionally. But I don't want=
+ to end up in a place where this becomes a.
+
+9:46
+Understood. Can you get =
+access to Mac or myself for the reporting post?
+
+9:51
+I can do that. I can do that.
+
+9:52
+Okay, we promise, you know, pinky =
+promise not to touch it. Read only. Access is once too.
+
+9:59
+No, that's fine. I'll give you the access. These two sheets are in work in =
+still progress. UAT remote and outside. And then your testing site is kind =
+of almost updated. And then the sheet also, I think a lot of information. =
+You can go through it. Yeah, I'll get you the copy of this to you. Okay.
+
+10:19
+This is actually day by day. Okay, perfect. Now Bill, let me ask you =
+one more question on your. And you will show that in that are there. When =
+you say hybrid and semi automated are there in those steps. Some steps that=
+ are automatic, some steps that are. No, no, no, no. Manual.
+
+10:37
+It's just that it's in that functional area there are automatic scenarios, =
+mini scripts, I mean manual mini scripts and automatic end to end scripts.
+
+10:48
+Okay, okay.
+
+10:49
+Or a combo of both. Because we are. We have some =
+mini scripts on the order management and sourcing side that are going to =
+run, you know, through TOSCA to produce the outputs for validation.
+
+11:04
+Okay.
+
+11:04
+But then they also, you know, those cat, those guys in =
+sourcing them using source and as an example, because we've got them pegged=
+ as a hybrid. Right. They have things that they're going to be doing, you =
+know, with external Tools like.
+
+11:20
+Oh yeah, they'll have to give to =
+other vendors or third party.
+
+11:24
+Yeah, they're going to be buying =
+something, you know, through I value, you know, and that's not. TOSCA is =
+not going to automate external communications.
+
+11:34
+Okay. Okay, so that may be one step or it's an entire script that's just a =
+manual.
+
+11:44
+Yep. Four or five T codes or something like that, you know, =
+to produce the purchase, order out to the vendor and then vendor pays us =
+and we book the revenue.
+
+11:56
+Okay. Okay. All right, so I think we'll =
+have that granularity in JIRA that, that says, okay, this script, you've =
+got 26 scenarios in order management. You know, 15 of them were automated. =
+Nine of, you know, the other 11 were, to your point, manual scripts. And =
+then these paths fail. These, these were run output was what was expected, =
+etc.
+
+12:23
+Yep.
+
+12:24
+Okay. All right, so Mac, then we can take that to =
+understand. So I think then we. Yeah, so then how do we. And then if I =
+understood you right, you will take those outputs from JIRA and, and work =
+with Audrey to put it in your sheet. And so we should use your sheet as a =
+source to get that data for us.
+
+12:49
+If it's only three days. If JIRA is =
+gonna be stood up in three days, we can take a screenshot of it and =
+summarize and replace it with the JIRA table wise output similar to =
+Srinivas's after Wednesday.
+
+13:07
+Right.
+
+13:10
+Well, Paul, Bill has the =
+same thing with Srinivas, the Excel that he was sharing.
+
+13:16
+Oh, down to the pivot view.
+
+13:19
+Yeah, that's okay.
+
+13:21
+Well then, yeah, sure. Yeah, then we'll ingest both. You're right, Rakesh.
+
+13:25
+And then that's probably easier for you guys to ingest than logging =
+into JIRA and trying to extract the results.
+
+13:31
+Definitely.
+
+13:33
+It's a lot harder. I don't want to spend time waste time training you guys =
+on it if you're not already.
+
+13:39
+Right, right, right.
+
+13:41
+So that's what we'll do.
+
+13:41
+Okay, so then, yeah, we just have to set up=
+ that cadence with you and Audrey on getting this info and working through =
+that.
+
+13:50
+Oh, we'll get it though. She's so much better at these things =
+than I am.
+
+13:59
+Sounds good. Okay, so I think we have a plan. I know =
+Jessica's focus. I have to step away. You're back.
+
+14:10
+No, no, no, I'm here. I just have to unmute because we had a meltdown.
+
+14:17
+My grandkids were here last week and boy, I was right in the middle =
+of a presentation. One of the little girls hit the Other one in the head =
+with a shoe. And the screaming was the nine year old hit the seven year old=
+ and it was on like sorry, people, but you could. You know what I'm talking=
+ about though, Jessica, right?
+
+14:34
+Yeah.
+
+14:35
+That.
+
+14:35
+That is my life these days. I right now have a crying 3 year old in my lap.=
+ Although he's calmed down. Yeah. So two quick questions and then we can =
+jump. First one is this is for you, Srinivas, that email exchange about the=
+ tollers. Do we need to get on a call with them? Because they're looking to=
+ like do some external testing and I don't know if that was ever inspecting=
+.
+
+14:56
+Yeah.
+
+14:59
+I think Bill can comment.
+
+15:04
+I don't really understand everything they're talking about, to be honest =
+with you. It's the last sort of communication from Go was like they're =
+going to testing on both colors and 3pls.
+
+15:18
+Yeah.
+
+15:20
+I'm not sure how they do that. So that's my next question. And then this, =
+you know, how can we assist you with this testing? What do we need to do? =
+You know, they're speaking Greek to me. I mean, I really don't know what =
+that means. I just got back from the doctor.
+
+15:35
+Let's maybe. Maybe we do need to have a connect.
+
+15:39
+Yeah. All right. I think it wouldn't hurt to have a connect because when I =
+was reading it, what it sounded like was there wasn't. My figure could do =
+their own level of testing, but they actually needed the three pl and the.
+
+15:56
+External.
+
+15:59
+Tempting, which I did. When the email chain got =
+kicked off, I sent a team message over to Paul, but I'm probably going to =
+include him in the meeting was like, hey, if we're doing anything external,=
+ do we. Is there any other entity like commercial legal that we should be =
+getting involved? You know, internal. It's a very different situation than =
+when you're presenting something externally and it's like 150 people. So =
+I'll set up a poll so we can all get on the same page. Because if we need =
+to do any level of external testing, I think that we. There may be other =
+entities that we need to get involved in this just to make sure we're on =
+the same page. So I'll get that call set up.
+
+16:44
+And when they said it, you know, again, I'm not 100% sure they meant me.
+
+16:50
+Maybe it's a. It's vocal.
+
+16:52
+Just because some of these guys are =
+like embedded it, you know, inside of the plants.
+
+16:57
+Yeah.
+
+16:57
+Brian Davis and the.
+
+16:59
+Yep.
+
+17:00
+Okay.
+
+17:01
+Precisely.
+
+17:02
+Yeah. So I'm just getting all of them on The. Well, we'll see how that goes=
+. I'm gonna set something up for probably Monday. The second thing is. This=
+ is more a question for you, Rakesh, but Srinivas created his own version =
+of the weekly tab in his file. And I'm thinking instead of me integrating =
+it into one that I created, maybe just call out that there's separate tabs =
+for the finance non ERP and the ERP and just have it that way. I don't know=
+ if it's worth me spending a couple hours to format it. If we have them in =
+the roughly the same format, just slightly different. As long as we have =
+that all out there.
+
+17:43
+So what then I'm just wondering what will get =
+published today or sent out. Is it just a couple of links we say here, here=
+ or we just put it in two tabs I think. But put it in two tabs.
+
+17:57
+That's what I'm thinking. Put in second tab. But the schedule going out =
+today is really just going to be this weekly one.
+
+18:06
+Is it?
+
+18:06
+I thought we were looking at the hourly.
+
+18:10
+We can send out the ones =
+for sit.
+
+18:13
+Yes, yes, yes for sit. Yeah.
+
+18:15
+Okay, so send that out.
+
+18:20
+So even situation. I guess you have it in a separate tab there. =
+Srinivas, I think you have. You have an Sid 1 and 2 and then UAT you're =
+working on. Yeah.
+
+18:32
+The unit testing SID schedule is the same UAT SIP =
+that you can use the.
+
+18:38
+Yes.
+
+18:39
+UAT remote and UA downside and =
+what you are.
+
+18:42
+Okay, see I can just make sure the name is consistent.=
+ But I'm thinking that we. I just pull them in. Maybe the first few tabs =
+are bills, the second set of tabs are screening boxes. I don't know that we=
+ need to pull them into the same setup. Like the same.
+
+19:01
+Particularly if they're not the same users.
+
+19:04
+Yeah. Because I'm =
+thinking what we could do during the scrum is kick it off and let's say =
+focus like piece of the agenda. One is really. And then each one we just =
+look at the separate tab all in the same file. So I'm just going to copy =
+paste what we put together in my file. Note on there which one's still the =
+work in progress. But I'm thinking just it's a little bit of a time =
+efficiency but putting it in there because he's copied in a lot of the same=
+ formatting. So it's very, very similar. The only thing I would do also =
+note in here he has ist, which I understand. I'm just going to also put an =
+EST wrong.
+
+19:42
+Okay. Okay, now you Brought up the Tola portal and =
+external. I think those schedules we should also include. Start including =
+them because that's outside of ISE erp. I mean, it's ise, but it's outside =
+of ERP Finance. So we probably need to then get with Gokul to understand it=
+ may be one of those 34 adjacent apps, but they may have a different test =
+schedule within that same seventh to the 18th.
+
+20:11
+Yeah. Which is why I think we need to have another conversation. Just have =
+this conversation with the. The team on that email.
+
+20:17
+Yeah, yeah, yeah. I think Gokul is the right person to do that for sit and =
+Sriram for uat. But yeah, I think we need. We need to have one with both.
+
+20:29
+Okay, I'm gonna. Two separate calls.
+
+20:33
+You're thinking no, one =
+call is good.
+
+20:36
+Got it.
+
+20:37
+All right, I'll set up the call Monday.
+
+20:39
+Yeah. With everybody on that email chain. If there's anybody that =
+you think needs to also be on that conversation that wasn't on the email =
+chain, just let me know.
+
+20:47
+Okay.
+
+20:49
+Okay. So, yeah, you know, I'm =
+gonna just pull in Trini Boss's tabs. It'll also make it easier because if =
+he needs to make a change to his, he can do it and then we can pull it in =
+versus just trying to manipulate.
+
+21:02
+Manipulate it. Yeah, yeah, yeah.
+
+21:05
+And I don't think anyone's going to have a call out to that. Even if =
+they do, I can always combine it later. But I think it's just more. They =
+wanted to know that we actually had something like this.
+
+21:12
+Yeah, we'll just. Yeah, we'll just rename the tabs accordingly. SIT Finance=
+. Sit erp.
+
+21:18
+Exactly.
+
+21:19
+And then sit outside that supply chain, =
+whatever it turns out.
+
+21:24
+Yeah. And I'll color code them. I like that =
+his are blue. I'll give a bill a color. Maybe bill, I'll make yours pink.
+
+21:31
+I appreciate that.
+
+21:33
+Bubble gum.
+
+21:36
+Right? Okay, so I think =
+we're good. I have my running orders for what I need to finish for the rest=
+ of the afternoon. And just an FYI for everyone, we have a connect in the =
+morning with people, Pierce, to get him up to speed. Our plan is to have =
+Pierce do the kickoff meeting on Tuesday. If he does not feel comfortable, =
+then I will jump in. But because I'm on vacation, I think it makes more =
+sense for it to be him. So we're going to get him up to speed on Monday and=
+ then we'll have another discussion Monday morning. Just to kind of =
+finalize some of the discussions around the manual versus automated. And it=
+ maybe it's Rakesh, I know we were talking about maybe separating those. I =
+wonder if it's maybe to like Bill's point, just some kind of quick high =
+level summary in total like 160 of these 60 in total are automated. 100 or =
+manual. And this is how many we've gotten through some visibility into that=
+ data I think is what he's looking for. So maybe we just start with the =
+simple end of it and if he wants even more we can.
+
+22:47
+So I think Bill had that Bill said in your JIRA instance, you will do that.=
+ In the meantime I'll work with you, Bill and you and Audrey. So on these, =
+if you have you know, in your sheet, you've certainly got like 14 for =
+sourcing and 20 something for this. Is there a breakdown you can provide =
+further on those 25 or 26 that are the are manual? Like which one's a =
+manual? Which like give me just a count.
+
+23:17
+It's in the sheet there.
+
+23:19
+No. So okay, Mac, show that sheet. So I want to make sure that we =
+talk through your existing smack. If you don't mind pulling that ERP sheet =
+Or I can pull it here on the tracker ERP test script Tracker. Okay, sorry.
+
+23:39
+Can you see my screen?
+
+23:41
+No.
+
+23:51
+Okay, let me share my. Let =
+me share my screen and I think you all can see it. So there's is that this =
+metrics.
+
+24:01
+That's they'll go to the first one.
+
+24:03
+You had unit testing.
+
+24:06
+Yeah, that's all the automated scripts right =
+there.
+
+24:09
+Ah within these. Okay. Okay so 27. So what I can do then is =
+UAT test cases summary. I think I have it open. Oh this is om. Okay. The =
+view A read only copy. Okay so I updated this based on your numbers. So =
+what I was looking for is you've said tosca fully automated Auto management=
+ five Manual. Manual. So I would just correlate it with this where you've =
+got so sales order process. So where would I take that in here you don't =
+necessarily call out sales order.
+
+24:58
+Sales order. Yeah, look at the =
+very first line.
+
+25:01
+Okay.
+
+25:02
+Column D. Okay.
+
+25:03
+Okay. So these are the automated ones. Okay. All right, all right, all =
+right. So what you have is you automated. So I'm just going to say what you=
+ have in that sheet is this. What you have here is fully automated. Now =
+what do you mean fully automated and manual. This is the one you said =
+sourcing that they'll have to go to a third party or, or go outside after =
+the result is there they'll have to give it to somebody. Right.
+
+25:23
+Like the PO Creation creation in Ariba. We can't automate that because =
+that's a, you know, it's a sidecar application. And Tosco is only =
+automating SAP processes. Okay, so everything you see above, so asset PO =
+and SAP all the way to Ariba, those are manual.
+
+25:46
+Asset PO in SAP. Okay, so everything above this is manual. Yeah, got it. =
+Okay, so I'm gonna, I'm gonna call it in a different color. Okay.
+
+25:59
+And then, and then contract creation, company code X, Y and Z down there. =
+We're doing all that with Tosca.
+
+26:06
+So even asset po.
+
+26:07
+No, asset PO goes with the other color.
+
+26:09
+Okay, so that, and then this=
+ I'm going to call out as, I don't know, neon green. So it's good color. =
+Yeah. Okay, so that's automated. Okay, so that's the split partial.
+
+26:25
+Your yellow is manual and your green is fully automated.
+
+26:29
+No, no, no, no. I think I'm just going to make them. I'm just going to make=
+ them like that. So here, they're all the same. Okay, so these are all. And=
+ then obviously these are all manual. So I'm just gonna do this for them. =
+Okay, no, never mind, never mind. Oh, man, I've got my colors mixed up. =
+Okay, these are all manual. These are all automated.
+
+26:59
+Correct?
+
+27:01
+And then here. Manual, manual, manual, manual. Okay, so all of these are =
+manual, which will end up with this color.
+
+27:15
+In the green one. Will =
+you scroll up real quick in that green one, Those numbers separated by =
+commas, is that like. Can we count test scripts by doing like here commas.
+
+27:28
+You've got them here.
+
+27:30
+Okay, so. Yeah, so.
+
+27:32
+Yes, so I guess so. So sales, auto, process, create po.
+
+27:38
+Okay, yeah, there's numbers.
+
+27:39
+Then map. Create PO output. Create a =
+contract. We should just go back in here and say sales order, process, =
+contract creation and then create po.
+
+27:53
+You can put it in the bottom =
+under the TOSCA section here. Create PO output.
+
+28:01
+Okay.
+
+28:02
+Across all, rename reuse companies.
+
+28:04
+Okay. And those are like nine of=
+ them or 27 of them.
+
+28:08
+Nine. It'll give me 27.
+
+28:11
+Okay. Okay, so that, that is the other automated. Right, so, okay, so =
+you've got nine of them there, some men, some here, and five of these. And =
+together they all form the 21 that you have here.
+
+28:33
+27.
+
+28:33
+20, 27. Did I get my numbers wrong? 27. Okay. All right.
+
+28:39
+Nice.
+
+28:41
+That is kosher. Okay, so, but again, I think the point, Jessica, we =
+mentioned is that the first few days we'll take that in the tracker and =
+then say what's manual, what's not and report on it. And then once a jira =
+instance picks up. I guess regardless of if it picks up, you will still use=
+ the tracker you've created. We'll just lift information from there. So.
+
+29:07
+Yeah. All right, this is so I need a drop.
+
+29:11
+Yeah.
+
+29:12
+And Bill and Srinivas just want to say thank you so much for your hard work=
+ on this. I know that it's been fast paced and a lot of work and we really =
+appreciate it because that view right there is really great. That's exactly=
+ what we needed. So thank you.
+
+29:24
+Oh, you're welcome. It's kind of you =
+to say.
+
+29:26
+No, thank you. Yeah.
+
+29:27
+Appreciate the feed.
+
+29:28
+Echo, echo you Bo. You know, Mac, more. Thank you again for all of us.
+
+29:33
+Thanks guys. Have a great weekend.
+
+29:35
+Yeah, you too. Unless I =
+ping you on a Sunday night.
+
+29:38
+So I won't respond.
+
+29:39
+I'll ping you on Saturday morning.
+
+29:42
+Answering me, you know, that's a =
+different question. You know, I'm free to ping, so.
+
+29:46
+Okay.
+
+29:47
+See you guys.
+
+29:47
+All right, take care.
+
+29:48
+I'm not expecting any.
+
+29:49
+I am just.
+
+29:50
+Okay.
+
+29:51
+No, no, I won't, I won't.
+
+29:53
+No, no, no. Yeah, you can reach out. Thank you.
+
+29:56
+Bye.
+
+29:57
+Thank you.
+
+29:57
+Hey, Mac.
+
+29:58
+Yeah.
+
+29:59
+I sent you the. The two =
+files from Paul. One with a password and the other one with a password =
+protected.
+
+30:05
+Got it.
+
+30:06
+So if you can run the pivot.
+
+30:10
+Yep. For now. Do you want to create a. We could create a view from that =
+test data like a new page rather than add it to your dashboard. Let me just=
+ share.
+
+30:23
+Yeah, let's do that. I have to get on this other call of =
+three.
+
+30:29
+Okay.
+
+30:29
+Oh no, we have our end of stuff. We have our end=
+ of day. Let's can connect after that.
+
+30:33
+Okay.
+
+30:34
+Okay.
+
+30:35
+Okay. Thank you, Rakesh.
+
+30:36
+Thanks. Talk in a bit.
+----_NmP-f8ef90da467beb53-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Manual =
+Versus Automated Testing Reporting Updates</h1></td></tr></table></div><div=
+ style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/52A909B7-7EBD-4B19-9890-BBDD2892C582?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h1 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2.5rem">Meeting Summary =E2=80=93 June 20, 2025</h1><h2 =
+style=3D"font-weight:500;padding-top:20px;font-size:2rem">Attendees</h2><ul=
+>
+<li>Bill</li>
+<li>Trini Vas (Srinivas)</li>
+<li>Jeff (referenced)</li>
+<li>Rakesh</li>
+<li>Mac</li>
+<li>Audrey (referenced)</li>
+<li>Jessica</li>
+<li>Paul (referenced)</li>
+<li>Rohit (referenced)</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Main Topics =
+Discussed</h2><h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">1. <strong style=3D"font-weight:bold">Manual vs. Automated Reporting=
+ and Testing</strong></h3><ul>
+<li><strong style=3D"font-weight:bold">Backg=
+round/Context:</strong>  <ul>
+<li>Feedback from Jeff requested clarity in =
+reporting on what test scenarios are manual, automated, or semi-automated.=
+</li>
+<li>There is a need for better documentation of the execution flow, =
+specifically distinguishing who is doing manual work versus those relying =
+on automation.</li>
+<li>The goal is to improve tracking and reporting =
+granularity, particularly for defect tracking and test progress.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Bill=E2=80=99s Area:</strong> =
+ <ul>
+<li>Bill clarified that new reporting will clearly indicate whether =
+each run was manual or automated.</li>
+<li>A JIRA instance was created =
+earlier that day for tracking TOSCA runs and manual test runs.</li>
+<li>Both manual and automated runs will be uploaded to JIRA for easy =
+identification.</li>
+<li>The JIRA environment is not fully set =
+up=E2=80=94Bill is awaiting admin rights, and scripts/results are still =
+being loaded.</li>
+<li>Until JIRA is ready (expected mid-week), daily =
+manual reports will continue, using a mini dashboard for visualization.=
+</li>
+<li>Audrey is to assist in combining TOSCA outputs into the UAT =
+readiness and tracking sheets.</li>
+</ul>
+</li>
+<li><strong =
+style=3D"font-weight:bold">Reporting Cadence:</strong>  <ul>
+<li>Commitment to provide Jeff with an end-of-day Monday report; however, =
+fully integrated automated reporting may only be possible by mid-week (e.g.=
+, Wednesday or Thursday).</li>
+<li>Interim approach: Continue to generate =
+and share manual progress reports.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">2. <strong=
+ style=3D"font-weight:bold">Data Ownership, Access, and =
+Format</strong></h3><ul>
+<li><strong style=3D"font-weight:bold">Document =
+Management:</strong>  <ul>
+<li>Work-in-progress Excel files are being =
+shared and updated.</li>
+<li>Concern about providing editing access to all =
+team members; preference for restricted (e.g., read-only) access to prevent=
+ unintentional overwrites.</li>
+<li>Srinivas committed to sharing updated =
+files and granting selective access to Mac and others for reporting.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Reporting =
+Structure:</strong>  <ul>
+<li>Agreement to standardize the reporting =
+formats (focus on scenarios and percent complete, rather than deeply =
+granular steps, per previous guidance).</li>
+<li>Both ERP and Finance test =
+trackers will follow similar templates but may exist as separate tabs =
+within the same workbook for time and efficiency.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">3. =
+<strong style=3D"font-weight:bold">Test Coverage and Execution =
+Detail</strong></h3><ul>
+<li><strong style=3D"font-weight:bold">Granularity=
+ of Hybrid/Semi-Automated Work:</strong>  <ul>
+<li>Clarified that in some =
+cases, certain functional areas contain both automated and manual scripts.=
+</li>
+<li>Some business processes (e.g., external communications or =
+purchasing through third-party portals like iValue) remain manual due to =
+technical limitations.</li>
+<li>JIRA will eventually track scenario counts =
+by type (automated/manual) with pass/fail and output data.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Sample Metrics Mapping:</strong>  =
+<ul>
+<li>Walk-through demonstrated where and how manual versus automated =
+scenarios/scripts are logged and counted.</li>
+<li>Explicit mapping of =
+automated (e.g., TOSCA) and manual test cases, with color-coded tracking in=
+ Excel.</li>
+<li>Commitment to continue updating and refining these reports=
+ as systems and integrations come online.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">4. <strong=
+ style=3D"font-weight:bold">External and Adjacent Testing =
+Coordination</strong></h3><ul>
+<li><strong style=3D"font-weight:bold">Tolle=
+rs and 3PLs Involvement:</strong><ul>
+<li>Email threads raised ambiguity =
+about external testing responsibilities (specifically for tollers and =
+third-party logistics providers).</li>
+<li>Need for clarification on =
+requirements, as some team members were unsure of expectations or technical=
+ details.</li>
+<li>Discussion around involving additional entities (e.g., =
+commercial, legal) for any external-facing testing.</li>
+<li>Plan to schedule a call (tentatively for Monday) with all stakeholders =
+named in the email chain, possibly including Paul and Gokul for SIT, Sriram=
+ for UAT=E2=80=94to clarify external test scope and coordination needs.=
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20p=
+x;font-size:1.75rem">5. <strong style=3D"font-weight:bold">Weekly/Daily =
+Reporting and Procedures</strong></h3><ul>
+<li><strong =
+style=3D"font-weight:bold">Tab and Sheet Organization:</strong>  <ul>
+<li>Discussion around merging or keeping separate tabs for Finance =
+(non-ERP) and ERP within summary workbooks.</li>
+<li>Agreed that for =
+efficiency and clarity, each area can maintain a tab in the same file, even=
+ if formatting is not 100% consistent.</li>
+<li>Tabs will be renamed and =
+color coded for quick identification (e.g., Bill=E2=80=99s section in pink,=
+ Srinivas=E2=80=99s in blue).</li>
+<li>Plan to share both SIT and UAT =
+schedules (with appropriate time zones clearly labeled: IST and EST).</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Operational =
+Rhythm:</strong>  <ul>
+<li>End-of-day scrum/readout calls scheduled around =
+4:30 or 5:00 PM Eastern, with expectation that test results be finalized =
+and available to report by then.</li>
+<li>Reporting flows from manual Excel=
+ sheets into more formal systems as they come online (e.g., JIRA).</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px;font=
+-size:1.75rem">6. <strong style=3D"font-weight:bold">Preparation for =
+Transition and Handoffs</strong></h3><ul>
+<li><strong =
+style=3D"font-weight:bold">Upcoming Changes:</strong><ul>
+<li>Jessica is on vacation; plan is for Pierce to handle the project =
+kickoff meeting on Tuesday after a sync-up meeting Monday morning.</li>
+<li>If Pierce is not comfortable, Jessica will step in as backup.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Near-term Next =
+Steps:</strong><ul>
+<li>Additional discussion Monday to finalize reporting =
+structure on manual vs. automated scenarios.</li>
+<li>Suggestion for a =
+simple, high-level summary (total number automated/manual, percentage =
+complete) to start, and refine as needs evolve.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Action=
+ Items</h2><ol>
+<li><strong style=3D"font-weight:bold">Finalize JIRA =
+Setup:</strong>  <ul>
+<li>Bill to obtain admin rights and ensure TOSCA =
+scripts/results are loaded.  </li>
+<li>Rohit to finish loading results into=
+ JIRA.</li>
+<li>Expected complete setup by Wednesday or Thursday next week.=
+</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Daily/Interim =
+Reporting:</strong>  <ul>
+<li>Continue daily manual reports (mini =
+dashboards) until JIRA automated reports are available.</li>
+<li>Mac and Audrey to collaborate on updating and merging manual and =
+automated outputs into tracking sheets.</li>
+<li>Srinivas to share and =
+maintain updated trackers for Finance domain, providing Mac and specified =
+team members with appropriate access.</li>
+<li>Color coding and tab =
+renaming in Excel files for clarity and alignment.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">External Testing =
+Coordination:</strong>  <ul>
+<li>Jessica/Paul to schedule and facilitate an=
+ external testing coordination call with all relevant stakeholders (aim for=
+ Monday, June 23).</li>
+<li>Assess need to involve commercial/legal or =
+other entities for external test visibility or data sharing.</li>
+<li>Identify if additional adjacent applications require a tailored test =
+schedule.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Schedule =
+Management:</strong>  <ul>
+<li>Ensure all time zones are explicitly called =
+out in shared reports/tabs (e.g., IST and EST).</li>
+<li>Quickly update and publish SIT and UAT schedules with clear delineation=
+ between Finance and ERP/non-ERP areas.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">High-Level Reporting:</strong>  <ul>
+<li>Prepare high-level summary counts (e.g., =E2=80=9C160 total scenarios: =
+60 automated, 100 manual=E2=80=9D) for management.</li>
+<li>Further breakdowns by functional area to be included as data matures.=
+</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Meeting =
+Prep:</strong>  <ul>
+<li>Prep for Monday and Tuesday meetings, especially =
+the Pierce kickoff and the manual/automated reporting check-in.</li>
+<li>Continue coordination with Audrey to streamline reporting flow.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font=
+-size:2rem">Follow-up Points / Upcoming Meetings</h2><ul>
+<li><strong style=3D"font-weight:bold">Monday, June 23:</strong>  <ul>
+<li>Finalize structure for manual vs. automated reporting.</li>
+<li>Stakeholder call to clarify external/toller/3PL testing =
+responsibilities and scope.</li>
+<li>Meeting with Pierce to bring him up to=
+ speed for kickoff duties.</li>
+</ul>
+</li>
+<li><strong =
+style=3D"font-weight:bold">Ongoing:</strong>  <ul>
+<li>Daily end-of-day =
+scrum/readout calls (target: 4:30-5:00 PM EST).</li>
+<li>Mid-week switch to JIRA-driven reporting (planned by Wednesday or =
+Thursday, June 25-26).</li>
+<li>Keep team informed of admin access and tool=
+ status.</li>
+<li>Continue to monitor and adjust reporting cadence and =
+format as needed.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 =
+style=3D"font-weight:500;padding-top:20px;font-size:2rem">Additional =
+Notes</h2><ul>
+<li><strong style=3D"font-weight:bold">Teamwork &amp; =
+Acknowledgment:</strong>  <ul>
+<li>Appreciation expressed for Bill, =
+Srinivas, and the broader team=E2=80=99s efforts to meet aggressive =
+timelines and evolving requirements.</li>
+<li>Ongoing openness to process =
+refinement and iterative improvements in reporting methodology.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Personal Asides:</strong>  =
+<ul>
+<li>Some disruptions due to personal/family obligations acknowledged; =
+team supports flexibility and maintains good humor.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Documentation:</strong>  <ul>
+<li>Password-protected files shared between Mac and Paul; upcoming pivot =
+views/tables to be created post-call.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>End of summary.</p>
+</div></div></div><div style=3D"background-color:#ff=
+ffff;padding:28px;border-radius:12px;border:1px solid #e2e8f0;box-shadow:0 =
+1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription</h3><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14p=
+x">0:00</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">And he&#x27;s having a little bit of a meltdown and I don&#x27;t want =
+you guys to hear him screaming. But for Bill and Trini Vas, we&#x27;re =
+trying to take the feedback we got from Jeff about adding in some level of =
+understanding what&#x27;s manual versus what&#x27;s automated into the =
+reporting. So we want to start having some conversations now and then =
+Rakesh and Mac are going to walk away over the weekend and then on Monday =
+we&#x27;re going to finish that conversation. But we had some questions =
+around some of the functions. If you guys want to bring that Rakasha back. =
+Bring that up.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">0:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">0:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Mac, do you mind =
+bringing that? Both the ERP as well as the finance test. The same folder =
+for finance and erp.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">0:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep. Give me one =
+second. I&#x27;m getting those most recent Excels open. But I think that =
+just to set the context a little bit, like Jeff&#x27;s real question was =
+like do we know any exactly in what order? And the people who are doing the=
+ hands on keyboard work, have we gotten that coordination down? He wants to=
+ know the execution flow and it&#x27;s about the technology, but it&#x27;s =
+about the execution flow too. So we&#x27;re just trying to come up and =
+brainstorm the best way to answer that question. Just give me a second and =
+I&#x27;ll get those two files pulled up.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Srinivas</span><span style=3D"color:#64748b;font-size:14p=
+x">1:17</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah, I&#x27;m sorry, quite. I didn&#x27;t understand.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px=
+">1:21</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah, so I think so part of this Srinivasa is we want to understand for=
+ those manual and automatic, semi automatic, we want to do a double click =
+into understanding what part of this is automatic, what part of this is =
+manual. And Bill, particularly in your area, I think you identified some as=
+ fully automatic, semi automatic, partial, etc. So I think we want to get a=
+ better understanding of that because where we want to see if it makes a =
+difference in the reporting cadence and the tracking and reporting. So if =
+you recall, Jeff mentioned this morning that he would like us to delineate =
+how the testing was from an automatic perspective and a non automatic =
+perspective and provide reporting along that as well as defect tracking =
+along that. We&#x27;re trying to see if that makes sense or if there&#x27;s=
+ a better way to delineate it and report out on it. So to do that I think =
+we just need to understand better of what part of these things are manual. =
+It will go back into your defect tracker as well in that what part of this =
+is manual, what part of this is semi manual, semi automatic and what can be=
+ and whether at the end of the day, once we get a view into that, whether =
+it Makes sense to still keep that, keep that line of thinking. Yes, Bill.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">2:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I never got to use =
+the raise hand button. Of course, I thought I might. You know, the good =
+news is you don&#x27;t have to worry about it because the reports that are =
+going to come out are going to say whether it was a manual run or an =
+automatic.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">3:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. In within =
+TOSCA or within anywhere else.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</s=
+pan><span style=3D"color:#64748b;font-size:14px">3:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So I&#x27;ve created=
+ a JIRA instance so that the TOSCA runs can be uploaded into JIRA and =
+it&#x27;ll say these were, you know, automatic runs and you know, the =
+others will be manual runs.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">3:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Ah, okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">3:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>3:30</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Let&#x27;S dive deeper into that. Okay.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">3:=
+32</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So will the manual runs be shown in Jira 2? Well, the jurors are the =
+combined manual and Tosca.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><s=
+pan style=3D"color:#64748b;font-size:14px">3:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It can, and I =
+haven&#x27;t got that set up yet. I mean, literally, the juror was created =
+this morning. They haven&#x27;t even made me an administrator yet. Guys, we=
+ gotta pump the brakes a little bit and let things get done. Technology =
+takes a minute to get set up, scripts get finished, loaded up in there, =
+practice runs. I know what Jeff wants, but Jeff&#x27;s gotta understand =
+that the world doesn&#x27;t move at that speed.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>4:02</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I know. So. But when I was on the call.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">4=
+:04</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Today, he didn&#x27;t sound like he had a tremendous amount of energy =
+around it. Like, you better tell me on Monday. He didn&#x27;t say anything =
+like that. I told him 26 of the 50 scenarios were automated. He&#x27;s like=
+, okay, cool. I mean, I think you guys are overreacting to a man&#x27;s =
+single question.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">4:21</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So it&#x27;s not =
+just that behind the scenes he&#x27;s been pinging. Right? So it&#x27;s not=
+ what he says versus, versus how he acts later on is part of the challenge.=
+ So I&#x27;m with you. Things need not be frank with him.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">4=
+:35</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Marcus. Say, listen, you know, the tools and the solutions are getting =
+provisioned in real time and you know, it&#x27;s the weekend and people are=
+ going to work on it, you know, Sunday night in India, Monday morning our =
+time, you know, when we get in. You know, hopefully by then I&#x27;ll be =
+the administrator on that. Rohit will have loaded his results and stuff =
+into jira. So it&#x27;s not going to happen today.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>5:03</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So I&#x27;m not asking for it today. I&#x27;m just trying to understand =
+the reporting so that he&#x27;s expecting an end of day Monday report as we=
+ committed him. So I want to make sure the structure is in place as we go =
+through Monday, Tuesday, Wednesday to say things have started, things are =
+getting automated, things are getting reported. Here&#x27;s how the report =
+is going to take shape. Granted, it&#x27;s walk before we run. So I =
+don&#x27;t expect this to be sorted out Monday. It&#x27;s probably well =
+into Wednesday, Thursday when all of this stuff will be flowing nicely. But=
+ I want at least have the structure so that when data starts flowing in, =
+it&#x27;s a matter of putting things in there and not spending too much =
+time to try and report out to him.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</=
+span><span style=3D"color:#64748b;font-size:14px">5:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep. So you know, =
+once the, once Rohit gets everything lined up in there, you know, =
+we&#x27;ll generate a report and see what it looks like currently. Right =
+now I&#x27;m getting reports every day on progress that are shareable but =
+they won&#x27;t be coming out of jira, you know, for in probably midweek or=
+ something like that. So in the meantime we&#x27;ll share the manual =
+reports in the fashion of the little mini dashboard that I created. And =
+then I got, I get. Is Audrey on this call?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>6:30</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Probably not.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><s=
+pan style=3D"color:#64748b;font-size:14px">6:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, but I need to =
+work with her so that we&#x27;re combining the output from Tosca now into =
+our sheet that has all of our UAT readiness and tracking tabs so that you =
+know, it can be updated daily.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh<=
+/span><span style=3D"color:#64748b;font-size:14px">6:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. And the intent=
+ would be, and like I said, because we have an end of day readout or an end=
+ of day scrum call say 4:30 or 5 Eastern. The idea would be that a bit =
+ahead of that, that you&#x27;re, you&#x27;re all able to say, Bill, that =
+The tests for ERP scope gets completed say at 3:30 or something and then =
+you have time to actually drop things in there. So that at 4:30 when you =
+have the end of day call, it&#x27;s just a readout, not too much work. =
+Right. So. So that&#x27;s what we&#x27;re asking. I think that&#x27;s the =
+intent. I think we&#x27;re all, you know, I think marching towards the same=
+ thing. I think the urgency is, is a bit different for Jeff versus us.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">7:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think he&#x27;ll =
+understand what you&#x27;re telling the truth. Being provisioned in real =
+time. Ping, ping, ping, hit enter. You know, we fully anticipate that =
+everyone will be set up, scripts will be set up in it JIRA and should be =
+able to start generating a report that will delineate for you which runs =
+are manual, which runs were automatic. In the interim, we&#x27;re going to =
+produce a daily report, you know, manually that will show the same thing. =
+You know, this was a manual run, this was a, an automated run. And =
+here&#x27;s how much we completed against what we thought we could.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">8:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so then Mac, =
+you and I need to plug into that sheet that&#x27;s there. And rebuild or =
+arrange this report this slide to indicate as such. Now on the flip side, =
+on the finance side, Srinivas, I presume everything of yours is manual. And=
+ so your tracker, which will follow the same template as Bill&#x27;s, will =
+also have that same level of detail. Yeah.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Srinivas</span><span style=3D"color:#64748b;font-size:14p=
+x">8:38</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Let me quickly share my screen. I&#x27;ll show you something. The same=
+ format that I considered what Bill was sharing yesterday. Something like =
+this. You guys could hear my screen.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>8:56</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I can. We can.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><s=
+pan style=3D"color:#64748b;font-size:14px">8:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We eliminated the =
+steps because the guidance given to us was that that was too, too granular.=
+ Just keep scenarios and percent complete.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Srinivas</span><span style=3D"color:#64748b;font-size:14p=
+x">9:07</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Okay, Yeah. I mean I can delete that.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">9:10</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">That&#x27;s fine.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">9:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Keep it if you want.=
+ Keep it there. We&#x27;ll. Our reporting will only take the left hand side=
+ five. Okay, sure.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">9:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Now, is this in the =
+live file? Sorry, is this in the live file? In teams.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Srinivas</span><span style=3D"color:#64748b;font-size:14p=
+x">9:24</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">I&#x27;ve just shared the updated one with Jessica. In teams. I&#x27;m=
+ little concerned to give access to everyone. Oh yeah, that&#x27;s okay =
+because I know most of them logs in and then if they alter them, I know no =
+one would do intentionally. But I don&#x27;t want to end up in a place =
+where this becomes a.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">9:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Understood. Can you =
+get access to Mac or myself for the reporting post?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Srinivas</span><span style=3D"color:#64748b;font-size:14p=
+x">9:51</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">I can do that. I can do that.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh=
+</span><span style=3D"color:#64748b;font-size:14px">9:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, we promise, =
+you know, pinky promise not to touch it. Read only. Access is once too.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><sp=
+an style=3D"color:#64748b;font-size:14px">9:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, that&#x27;s fine=
+. I&#x27;ll give you the access. These two sheets are in work in still =
+progress. UAT remote and outside. And then your testing site is kind of =
+almost updated. And then the sheet also, I think a lot of information. You =
+can go through it. Yeah, I&#x27;ll get you the copy of this to you. Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">10:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">This is actually day=
+ by day. Okay, perfect. Now Bill, let me ask you one more question on your.=
+ And you will show that in that are there. When you say hybrid and semi =
+automated are there in those steps. Some steps that are automatic, some =
+steps that are. No, no, no, no. Manual.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">1=
+0:37</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">It&#x27;s just that it&#x27;s in that functional area there are =
+automatic scenarios, mini scripts, I mean manual mini scripts and automatic=
+ end to end scripts.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">10:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">10:49</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Or a combo of both. =
+Because we are. We have some mini scripts on the order management and =
+sourcing side that are going to run, you know, through TOSCA to produce the=
+ outputs for validation.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">11:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">11:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">But then they also, =
+you know, those cat, those guys in sourcing them using source and as an =
+example, because we&#x27;ve got them pegged as a hybrid. Right. They have =
+things that they&#x27;re going to be doing, you know, with external Tools =
+like.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">11:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh yeah, =
+they&#x27;ll have to give to other vendors or third party.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">1=
+1:24</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, they&#x27;re going to be buying something, you know, through I =
+value, you know, and that&#x27;s not. TOSCA is not going to automate =
+external communications.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">11:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. Okay, so that =
+may be one step or it&#x27;s an entire script that&#x27;s just a manual.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">11:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep. Four or five T =
+codes or something like that, you know, to produce the purchase, order out =
+to the vendor and then vendor pays us and we book the revenue.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">11:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. Okay. All =
+right, so I think we&#x27;ll have that granularity in JIRA that, that says,=
+ okay, this script, you&#x27;ve got 26 scenarios in order management. You =
+know, 15 of them were automated. Nine of, you know, the other 11 were, to =
+your point, manual scripts. And then these paths fail. These, these were =
+run output was what was expected, etc.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">1=
+2:23</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yep.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">12:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. All right, so =
+Mac, then we can take that to understand. So I think then we. Yeah, so then=
+ how do we. And then if I understood you right, you will take those outputs=
+ from JIRA and, and work with Audrey to put it in your sheet. And so we =
+should use your sheet as a source to get that data for us.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">12=
+:49</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">If it&#x27;s only three days. If JIRA is gonna be stood up in three days=
+, we can take a screenshot of it and summarize and replace it with the JIRA=
+ table wise output similar to Srinivas&#x27;s after Wednesday.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">13:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">13:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Well, Paul, Bill has=
+ the same thing with Srinivas, the Excel that he was sharing.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">13:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, down to the =
+pivot view.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">13:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, that&#x27;s =
+okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">13:21</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Well then, yeah, =
+sure. Yeah, then we&#x27;ll ingest both. You&#x27;re right, Rakesh.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">13:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then that&#x27;s=
+ probably easier for you guys to ingest than logging into JIRA and trying =
+to extract the results.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">13:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Definitely.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">13:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;s a lot =
+harder. I don&#x27;t want to spend time waste time training you guys on it =
+if you&#x27;re not already.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">13:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right, right, right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">13:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So that&#x27;s what =
+we&#x27;ll do.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">13:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so then, yeah,=
+ we just have to set up that cadence with you and Audrey on getting this =
+info and working through that.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</s=
+pan><span style=3D"color:#64748b;font-size:14px">13:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, we&#x27;ll get =
+it though. She&#x27;s so much better at these things than I am.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">13:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sounds good. Okay, =
+so I think we have a plan. I know Jessica&#x27;s focus. I have to step away=
+. You&#x27;re back.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">14:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, no, no, I&#x27;m=
+ here. I just have to unmute because we had a meltdown.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">1=
+4:17</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">My grandkids were here last week and boy, I was right in the middle of a=
+ presentation. One of the little girls hit the Other one in the head with a=
+ shoe. And the screaming was the nine year old hit the seven year old and =
+it was on like sorry, people, but you could. You know what I&#x27;m talking=
+ about though, Jessica, right?</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica=
+</span><span style=3D"color:#64748b;font-size:14px">14:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">14:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">14:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That is my life =
+these days. I right now have a crying 3 year old in my lap. Although =
+he&#x27;s calmed down. Yeah. So two quick questions and then we can jump. =
+First one is this is for you, Srinivas, that email exchange about the =
+tollers. Do we need to get on a call with them? Because they&#x27;re =
+looking to like do some external testing and I don&#x27;t know if that was =
+ever inspecting.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><s=
+pan style=3D"color:#64748b;font-size:14px">14:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><sp=
+an style=3D"color:#64748b;font-size:14px">14:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think Bill can =
+comment.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">15:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I don&#x27;t really =
+understand everything they&#x27;re talking about, to be honest with you. =
+It&#x27;s the last sort of communication from Go was like they&#x27;re =
+going to testing on both colors and 3pls.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">15:18</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">15:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m not sure =
+how they do that. So that&#x27;s my next question. And then this, you know,=
+ how can we assist you with this testing? What do we need to do? You know, =
+they&#x27;re speaking Greek to me. I mean, I really don&#x27;t know what =
+that means. I just got back from the doctor.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>15:35</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Let&#x27;s maybe. Maybe we do need to have a connect.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">15:39</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah. All right. I think it wouldn&#x27;t hurt to have a connect =
+because when I was reading it, what it sounded like was there wasn&#x27;t. =
+My figure could do their own level of testing, but they actually needed the=
+ three pl and the.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><s=
+pan style=3D"color:#64748b;font-size:14px">15:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">External.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">15:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Tempting, which I =
+did. When the email chain got kicked off, I sent a team message over to =
+Paul, but I&#x27;m probably going to include him in the meeting was like, =
+hey, if we&#x27;re doing anything external, do we. Is there any other =
+entity like commercial legal that we should be getting involved? You know, =
+internal. It&#x27;s a very different situation than when you&#x27;re =
+presenting something externally and it&#x27;s like 150 people. So I&#x27;ll=
+ set up a poll so we can all get on the same page. Because if we need to do=
+ any level of external testing, I think that we. There may be other =
+entities that we need to get involved in this just to make sure we&#x27;re =
+on the same page. So I&#x27;ll get that call set up.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">1=
+6:44</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">And when they said it, you know, again, I&#x27;m not 100% sure they =
+meant me.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">16:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Maybe it&#x27;s a. =
+It&#x27;s vocal.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><s=
+pan style=3D"color:#64748b;font-size:14px">16:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Just because some of=
+ these guys are like embedded it, you know, inside of the plants.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><sp=
+an style=3D"color:#64748b;font-size:14px">16:57</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">16:57</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Brian Davis and the.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">16:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px=
+">17:00</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">17:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Precisely.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">17:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So I&#x27;m =
+just getting all of them on The. Well, we&#x27;ll see how that goes. =
+I&#x27;m gonna set something up for probably Monday. The second thing is. =
+This is more a question for you, Rakesh, but Srinivas created his own =
+version of the weekly tab in his file. And I&#x27;m thinking instead of me =
+integrating it into one that I created, maybe just call out that =
+there&#x27;s separate tabs for the finance non ERP and the ERP and just =
+have it that way. I don&#x27;t know if it&#x27;s worth me spending a couple=
+ hours to format it. If we have them in the roughly the same format, just =
+slightly different. As long as we have that all out there.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>17:43</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">So what then I&#x27;m just wondering what will get published today or =
+sent out. Is it just a couple of links we say here, here or we just put it =
+in two tabs I think. But put it in two tabs.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">17:57</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">That&#x27;s what I&#x27;m thinking. Put in second tab. But the =
+schedule going out today is really just going to be this weekly one.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">18:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Is it?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">18:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I thought we were =
+looking at the hourly.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">18:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We can send out the =
+ones for sit.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">18:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes, yes, yes for =
+sit. Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">18:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so send that =
+out.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">18:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So even situation. I=
+ guess you have it in a separate tab there. Srinivas, I think you have. You=
+ have an Sid 1 and 2 and then UAT you&#x27;re working on. Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><sp=
+an style=3D"color:#64748b;font-size:14px">18:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The unit testing SID=
+ schedule is the same UAT SIP that you can use the.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">1=
+8:38</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yes.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><sp=
+an style=3D"color:#64748b;font-size:14px">18:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">UAT remote and UA =
+downside and what you are.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">18:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, see I can just=
+ make sure the name is consistent. But I&#x27;m thinking that we. I just =
+pull them in. Maybe the first few tabs are bills, the second set of tabs =
+are screening boxes. I don&#x27;t know that we need to pull them into the =
+same setup. Like the same.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">19:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Particularly if =
+they&#x27;re not the same users.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica=
+</span><span style=3D"color:#64748b;font-size:14px">19:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Because =
+I&#x27;m thinking what we could do during the scrum is kick it off and =
+let&#x27;s say focus like piece of the agenda. One is really. And then each=
+ one we just look at the separate tab all in the same file. So I&#x27;m =
+just going to copy paste what we put together in my file. Note on there =
+which one&#x27;s still the work in progress. But I&#x27;m thinking just =
+it&#x27;s a little bit of a time efficiency but putting it in there because=
+ he&#x27;s copied in a lot of the same formatting. So it&#x27;s very, very =
+similar. The only thing I would do also note in here he has ist, which I =
+understand. I&#x27;m just going to also put an EST wrong.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>19:42</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Okay. Okay, now you Brought up the Tola portal and external. I think =
+those schedules we should also include. Start including them because =
+that&#x27;s outside of ISE erp. I mean, it&#x27;s ise, but it&#x27;s =
+outside of ERP Finance. So we probably need to then get with Gokul to =
+understand it may be one of those 34 adjacent apps, but they may have a =
+different test schedule within that same seventh to the 18th.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">20:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Which is why I=
+ think we need to have another conversation. Just have this conversation =
+with the. The team on that email.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh<=
+/span><span style=3D"color:#64748b;font-size:14px">20:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, yeah. I =
+think Gokul is the right person to do that for sit and Sriram for uat. But =
+yeah, I think we need. We need to have one with both.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">20:29</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Okay, I&#x27;m gonna. Two separate calls.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>20:33</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">You&#x27;re thinking no, one call is good.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">20:36</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Got it.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">20:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right, I&#x27;ll=
+ set up the call Monday.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">20:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. With everybody=
+ on that email chain. If there&#x27;s anybody that you think needs to also =
+be on that conversation that wasn&#x27;t on the email chain, just let me =
+know.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">20:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">20:49</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. So, yeah, you =
+know, I&#x27;m gonna just pull in Trini Boss&#x27;s tabs. It&#x27;ll also =
+make it easier because if he needs to make a change to his, he can do it =
+and then we can pull it in versus just trying to manipulate.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">21:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Manipulate it. Yeah,=
+ yeah, yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">21:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And I don&#x27;t =
+think anyone&#x27;s going to have a call out to that. Even if they do, I =
+can always combine it later. But I think it&#x27;s just more. They wanted =
+to know that we actually had something like this.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>21:12</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah, we&#x27;ll just. Yeah, we&#x27;ll just rename the tabs =
+accordingly. SIT Finance. Sit erp.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessic=
+a</span><span style=3D"color:#64748b;font-size:14px">21:18</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Exactly.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">21:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then sit outside=
+ that supply chain, whatever it turns out.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">21:24</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah. And I&#x27;ll color code them. I like that his are blue. =
+I&#x27;ll give a bill a color. Maybe bill, I&#x27;ll make yours pink.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">21:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I appreciate that.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">21:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Bubble gum.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">21:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right? Okay, so I =
+think we&#x27;re good. I have my running orders for what I need to finish =
+for the rest of the afternoon. And just an FYI for everyone, we have a =
+connect in the morning with people, Pierce, to get him up to speed. Our =
+plan is to have Pierce do the kickoff meeting on Tuesday. If he does not =
+feel comfortable, then I will jump in. But because I&#x27;m on vacation, I =
+think it makes more sense for it to be him. So we&#x27;re going to get him =
+up to speed on Monday and then we&#x27;ll have another discussion Monday =
+morning. Just to kind of finalize some of the discussions around the manual=
+ versus automated. And it maybe it&#x27;s Rakesh, I know we were talking =
+about maybe separating those. I wonder if it&#x27;s maybe to like =
+Bill&#x27;s point, just some kind of quick high level summary in total like=
+ 160 of these 60 in total are automated. 100 or manual. And this is how =
+many we&#x27;ve gotten through some visibility into that data I think is =
+what he&#x27;s looking for. So maybe we just start with the simple end of =
+it and if he wants even more we can.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>22:47</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">So I think Bill had that Bill said in your JIRA instance, you will do =
+that. In the meantime I&#x27;ll work with you, Bill and you and Audrey. So =
+on these, if you have you know, in your sheet, you&#x27;ve certainly got =
+like 14 for sourcing and 20 something for this. Is there a breakdown you =
+can provide further on those 25 or 26 that are the are manual? Like which =
+one&#x27;s a manual? Which like give me just a count.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">2=
+3:17</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">It&#x27;s in the sheet there.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh<=
+/span><span style=3D"color:#64748b;font-size:14px">23:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No. So okay, Mac, =
+show that sheet. So I want to make sure that we talk through your existing =
+smack. If you don&#x27;t mind pulling that ERP sheet Or I can pull it here =
+on the tracker ERP test script Tracker. Okay, sorry.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">23=
+:39</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Can you see my screen?</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">23:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>23:51</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Okay, let me share my. Let me share my screen and I think you all can =
+see it. So there&#x27;s is that this metrics.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">2=
+4:01</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">That&#x27;s they&#x27;ll go to the first one.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>24:03</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">You had unit testing.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><s=
+pan style=3D"color:#64748b;font-size:14px">24:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, that&#x27;s =
+all the automated scripts right there.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>24:09</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Ah within these. Okay. Okay so 27. So what I can do then is UAT test =
+cases summary. I think I have it open. Oh this is om. Okay. The view A read=
+ only copy. Okay so I updated this based on your numbers. So what I was =
+looking for is you&#x27;ve said tosca fully automated Auto management five =
+Manual. Manual. So I would just correlate it with this where you&#x27;ve =
+got so sales order process. So where would I take that in here you =
+don&#x27;t necessarily call out sales order.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">2=
+4:58</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Sales order. Yeah, look at the very first line.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>25:01</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">25:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Column D. Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">25:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. So these are =
+the automated ones. Okay. All right, all right, all right. So what you have=
+ is you automated. So I&#x27;m just going to say what you have in that =
+sheet is this. What you have here is fully automated. Now what do you mean =
+fully automated and manual. This is the one you said sourcing that =
+they&#x27;ll have to go to a third party or, or go outside after the result=
+ is there they&#x27;ll have to give it to somebody. Right.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">2=
+5:23</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Like the PO Creation creation in Ariba. We can&#x27;t automate that =
+because that&#x27;s a, you know, it&#x27;s a sidecar application. And Tosco=
+ is only automating SAP processes. Okay, so everything you see above, so =
+asset PO and SAP all the way to Ariba, those are manual.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>25:46</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Asset PO in SAP. Okay, so everything above this is manual. Yeah, got it=
+. Okay, so I&#x27;m gonna, I&#x27;m gonna call it in a different color. =
+Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">25:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then, and then =
+contract creation, company code X, Y and Z down there. We&#x27;re doing all=
+ that with Tosca.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">26:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So even asset po.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">26:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, asset PO goes =
+with the other color.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">26:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so that, and =
+then this I&#x27;m going to call out as, I don&#x27;t know, neon green. So =
+it&#x27;s good color. Yeah. Okay, so that&#x27;s automated. Okay, so =
+that&#x27;s the split partial.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</sp=
+an><span style=3D"color:#64748b;font-size:14px">26:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Your yellow is =
+manual and your green is fully automated.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>26:29</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">No, no, no, no. I think I&#x27;m just going to make them. I&#x27;m just=
+ going to make them like that. So here, they&#x27;re all the same. Okay, so=
+ these are all. And then obviously these are all manual. So I&#x27;m just =
+gonna do this for them. Okay, no, never mind, never mind. Oh, man, =
+I&#x27;ve got my colors mixed up. Okay, these are all manual. These are all=
+ automated.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">26:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Correct?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">27:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then here. =
+Manual, manual, manual, manual. Okay, so all of these are manual, which =
+will end up with this color.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><s=
+pan style=3D"color:#64748b;font-size:14px">27:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">In the green one. =
+Will you scroll up real quick in that green one, Those numbers separated by=
+ commas, is that like. Can we count test scripts by doing like here commas.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">27:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You&#x27;ve got them=
+ here.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">27:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so. Yeah, so.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">27:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes, so I guess so. =
+So sales, auto, process, create po.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">27=
+:38</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay, yeah, there&#x27;s numbers.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>27:39</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Then map. Create PO output. Create a contract. We should just go back =
+in here and say sales order, process, contract creation and then create po.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">27:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You can put it in =
+the bottom under the TOSCA section here. Create PO output.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>28:01</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">28:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Across all, rename =
+reuse companies.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">28:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. And those are =
+like nine of them or 27 of them.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</s=
+pan><span style=3D"color:#64748b;font-size:14px">28:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Nine. It&#x27;ll =
+give me 27.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">28:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. Okay, so that,=
+ that is the other automated. Right, so, okay, so you&#x27;ve got nine of =
+them there, some men, some here, and five of these. And together they all =
+form the 21 that you have here.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</s=
+pan><span style=3D"color:#64748b;font-size:14px">28:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">27.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>28:33</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">20, 27. Did I get my numbers wrong? 27. Okay. All right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">28:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Nice.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">28:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That is kosher. Okay=
+, so, but again, I think the point, Jessica, we mentioned is that the first=
+ few days we&#x27;ll take that in the tracker and then say what&#x27;s =
+manual, what&#x27;s not and report on it. And then once a jira instance =
+picks up. I guess regardless of if it picks up, you will still use the =
+tracker you&#x27;ve created. We&#x27;ll just lift information from there. =
+So.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-col=
+or:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">29:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. All right, =
+this is so I need a drop.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">29:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">29:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And Bill and =
+Srinivas just want to say thank you so much for your hard work on this. I =
+know that it&#x27;s been fast paced and a lot of work and we really =
+appreciate it because that view right there is really great. That&#x27;s =
+exactly what we needed. So thank you.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">2=
+9:24</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Oh, you&#x27;re welcome. It&#x27;s kind of you to say.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>29:26</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">No, thank you. Yeah.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><s=
+pan style=3D"color:#64748b;font-size:14px">29:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Appreciate the feed.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">29:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Echo, echo you Bo. =
+You know, Mac, more. Thank you again for all of us.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">2=
+9:33</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Thanks guys. Have a great weekend.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>29:35</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah, you too. Unless I ping you on a Sunday night.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">2=
+9:38</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So I won&#x27;t respond.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">29:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;ll ping you =
+on Saturday morning.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">29:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Answering me, you =
+know, that&#x27;s a different question. You know, I&#x27;m free to ping, so=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">29:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">29:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">See you guys.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">29:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right, take care=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><sp=
+an style=3D"color:#64748b;font-size:14px">29:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m not =
+expecting any.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">29:49</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I am just.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><sp=
+an style=3D"color:#64748b;font-size:14px">29:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">29:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, no, I won&#x27;t=
+, I won&#x27;t.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</spa=
+n><span style=3D"color:#64748b;font-size:14px">29:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, no, no. Yeah, =
+you can reach out. Thank you.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh<=
+/span><span style=3D"color:#64748b;font-size:14px">29:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Bye.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">2=
+9:57</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Thank you.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">29:57</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Hey, Mac.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">29:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">29:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I sent you the. The =
+two files from Paul. One with a password and the other one with a password =
+protected.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">30:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Got it.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">30:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So if you can run =
+the pivot.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">30:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep. For now. Do you=
+ want to create a. We could create a view from that test data like a new =
+page rather than add it to your dashboard. Let me just share.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">30:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, let&#x27;s do =
+that. I have to get on this other call of three.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">30:29</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">30:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh no, we have our =
+end of stuff. We have our end of day. Let&#x27;s can connect after that.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">30:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">30:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">30:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. Thank you, =
+Rakesh.</div></div><div style=3D"margin-bottom:0;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">30:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Thanks. Talk in a =
+bit.</div></div></div><div style=3D"margin-top:36px;text-align:center;color=
+:#64748b;font-size:14px;padding:20px;border-top:1px solid #e2e8f0"><p =
+style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note Taker</p><p=
+ style=3D"margin:0;font-size:12px">Your AI-powered companion</p></div></div=
+></div></div></html>
+----_NmP-f8ef90da467beb53-Part_1--

@@ -1,0 +1,1489 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a05:6000:1106:b0:3a4:dc5b:9678 with SMTP id z6csp963234wrw;
+        Tue, 27 May 2025 13:39:25 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEEUmMlB4XTEs27IoVfNesSDqbpBpyO0ZSJl08AYugwL9srwkW2AJWsW6pntuayWlNmHjrE
+X-Received: by 2002:a05:620a:4482:b0:7ca:f09d:1473 with SMTP id af79cd13be357-7ceecb95b11mr1871959085a.28.1748378365155;
+        Tue, 27 May 2025 13:39:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748378365; cv=none;
+        d=google.com; s=arc-20240605;
+        b=fKmHaLAycX1QJSijZ/kkYiWdkdUqqgs9q4yeVZdzybJTm/aHHh0JXNBIyyi4jscOGu
+         amlP1Ob/x6KuBQCk5q7HbARwRjOidF9wOzlVNpG4VUX7LHywRjTTgG6HJgRxvPPrSdS/
+         NSOqqJdbLiCGBQLD3J0wjdZ9mnJBXs8+93PMsBSkAgY4C7Bt5tGlcJuSNWAwje44e+YI
+         6pmAJK9QCrkKEPPlQdlkrQ8GSiD2L7UTd+rgU1HGNkSAm3d9lCU+6wnXWzbo1ieHo8lG
+         /3LTOTgcpE4u/RE71hllGecY2wOgeBJGx9pZlR2p9X0A3QHCHCPyqxXr9xObbNXSlRU1
+         V5hA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=AEKKN3EVNfjer9DTYqH3KnU2MHOe33K/r5FOYsog15s=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=Ve11v3qCI8CZCZO5+UlkyFzXFZdQpGOxRra+nUJkJbYGZDFI0LjLfwCfUFrjjGEHJz
+         xZ8v8PfgjbW3GJ6cJ05rDIHMyd50X8odN6RF7lzNCalhf/EBHLSPo0BrY8xcWnIkJp3d
+         8GcWijUdVI/PAyCAytoPHGevZOKH1AZ+U/xiTXCdnJUpykFeVmJl6XWpOfh1DtjAK0aN
+         V98HXXeLDnkCh8c8ifp2iSko5Mwp5Xbxb34HoYTVsxNcCHnTXXeUsFWTMPXePA23j8I7
+         MEMCbyHaVs7iXXjDyEmqJ4aArxCvTeAQzNpttvWdwDve3i3EA3S6f5DG5t6D2HRT/rD8
+         GIHw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=FkC0H5qA;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=iz2IQf4J;
+       spf=pass (google.com: domain of 010001971378aa5d-7acd397e-1322-43f3-9d08-b4aea1de1aff-000000@send.email.wave.co designates 54.240.9.33 as permitted sender) smtp.mailfrom=010001971378aa5d-7acd397e-1322-43f3-9d08-b4aea1de1aff-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <010001971378aa5d-7acd397e-1322-43f3-9d08-b4aea1de1aff-000000@send.email.wave.co>
+Received: from a9-33.smtp-out.amazonses.com (a9-33.smtp-out.amazonses.com. [54.240.9.33])
+        by mx.google.com with ESMTPS id d75a77b69052e-4a2f93b0303si1530851cf.532.2025.05.27.13.39.24
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 27 May 2025 13:39:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 010001971378aa5d-7acd397e-1322-43f3-9d08-b4aea1de1aff-000000@send.email.wave.co designates 54.240.9.33 as permitted sender) client-ip=54.240.9.33;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=FkC0H5qA;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=iz2IQf4J;
+       spf=pass (google.com: domain of 010001971378aa5d-7acd397e-1322-43f3-9d08-b4aea1de1aff-000000@send.email.wave.co designates 54.240.9.33 as permitted sender) smtp.mailfrom=010001971378aa5d-7acd397e-1322-43f3-9d08-b4aea1de1aff-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1748378364;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=BKZpXwu/X/svCVMsmzbVOMK5OyuVOLPpA5UT3PIAQvA=;
+	b=FkC0H5qAwvbW/tMQ45Zjw3LEbGeArN1ZkvJ/Qz5H8e4/UBmDV3yGIz5d9tzHx2oB
+	paXXN9Zg9kd7LdVNVJUj2qeLh7fRFt98tZHIyl9yD3F+DeqB7NaRSWV1g0P+6wNimSA
+	yvijggte13xtpBy3/Qw6EdiC7b7TuT+5E1JBGiWU=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1748378364;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=BKZpXwu/X/svCVMsmzbVOMK5OyuVOLPpA5UT3PIAQvA=;
+	b=iz2IQf4Jb1n8rN6qYhFYHhdZ6LH1LPioIc/u/qcDzDbX/HbQYuF9/HYt3AGiBgwC
+	o5zXyaQtQnCFhQjUtofm6umXalRYVkBkCY0JAVgxO3HU+wWZbWoZ4aRwWsAWHMI5wYS
+	o9fdzD2wOXNnXlYwwzH/XuYiu+jWBWYurusi9X2Y=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Comprehensive UAT Planning and Readiness Coordination
+Message-ID: <010001971378aa5d-7acd397e-1322-43f3-9d08-b4aea1de1aff-000000@email.amazonses.com>
+Date: Tue, 27 May 2025 20:39:24 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-18f20ee1d2fea05e-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.05.27-54.240.9.33
+
+----_NmP-18f20ee1d2fea05e-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Comprehensive UAT Planning and Readiness Coordination
+
+Main Topics Discussed
+
+1. **UAT Planning and Coordination**
+    - The discussion centers on the structure and process for organizing =
+User Acceptance Testing (UAT) across multiple functions and systems.
+    - Emphasis is placed on:
+        - Identifying UAT coordinators and =
+leads for each function (e.g., finance, supply chain, IT, commercial).
+        - Differentiating between function leads and future test leads, =
+clarifying that for now, the focus is on identifying leads responsible for =
+scoping, not the testers.
+        - Sub-functions within finance include =
+controllership, treasury, payroll, and benefits=E2=80=94each requiring a =
+lead.
+    - Explains the importance of cross-functional coordination, =
+particularly for processes spanning multiple systems or functions (e.g., =
+ERP modules intersecting with supply chain or commercial processes).
+    - Tracking readiness involves creating a matrix similar to an overall =
+program roles and responsibilities chart, ensuring all focal points are =
+identified per workstream, tower, or function.
+
+2. **Readiness and Scope =
+Alignment**
+    - The process includes identifying all relevant leads, =
+setting up meetings, and aligning on:
+        - Systems and processes in =
+the testing scope.
+        - Scenarios to be tested, including scenario and=
+ script breakdowns (e.g., 1,000 processes reduced to 200 changes across =
+systems, resulting in 100 scenarios and corresponding test scripts).
+        - Status tracking: scripts defined, scripts to be modified, new =
+scripts to develop.
+    - Readiness is monitored through a tracker that =
+confirms steps have been completed: person identified, alignment achieved, =
+test assets (scripts/scenarios) ready, and timeline set.
+        - UAT estimated window: generally from June 20 to July 15, with =
+ERP-specific UAT from July 1 to July 15.
+    - Planning includes ensuring =
+environment and data readiness=E2=80=94e.g., having historical data =
+available in QA environments by June 15.
+
+3. **Gaps and Ownership**
+    - Recognizes a gap in mapping processes to system =
+gaps=E2=80=94sometimes a process touches more systems than IT or the =
+function initially realizes.
+    - Stresses the need for confirming =
+comprehensive scope and close alignment between IT and functional teams to =
+avoid overlooked areas.
+
+4. **Management Operating Structure (MOS) and =
+Cadence**
+    - MOS refers to the management cadence=E2=80=94regular =
+meetings and decision-making routines.
+    - Each function or focal should =
+set up regular meetings (cadence), with notes on incorporating these into =
+the readiness structure.
+    - Ensures alignment meetings are scheduled, =
+with regular check-ins for ongoing tracking.
+
+5. **Open Items/Action =
+Items**
+    - Schedule alignment meetings with all pillars; Mahim confirmed=
+, others pending due to scheduling conflicts with town halls, etc.
+    - Update on HANA change request: waiting on information from Rajesh =
+(data and intelligence team), with action to respond in email thread to =
+Pierce. Others possibly involved include Paul, Prashant, or Sakina.
+    - Capital Edge report: updated metrics showing one item at risk and =
+four delayed, down from nine earlier in the day and an improvement of two =
+from the previous week.
+    - Waterfall slide (Young=E2=80=99s): Intended =
+to provide balance and insight for the SOW and resource planning for the =
+=E2=80=9Cmove as-is=E2=80=9D effort; periodic update planned for Friday to =
+present on Monday. Effort for in-depth analysis or resource allocation =
+discussion on hold, pending further conversation later in the week.
+
+6. **Follow-Up and Next Steps**
+    - Provide structural template for UAT =
+tracker so that ownership and status can be filled in.
+    - Add dummy/demo data for context.
+    - Await updates from Rajesh and =
+team regarding the HANA request; respond to Pierce as soon as information =
+is available.
+    - Periodic update of Young=E2=80=99s waterfall slide by =
+Friday.
+    - Possible further alignment conversations between Sean and =
+Rakesh later in the week.
+    - Schedule and confirm pillar meetings as =
+soon as availability is known.
+    - End-of-day call coordination; =
+additional short meeting planned after day=E2=80=99s end for progress =
+review.
+
+Relevant Dates and Figures
+
+- UAT window: June 20 (6/20) to July =
+15 (7/15) overall; ERP-specific UAT from July 1 (7/1) to July 15 (7/15).
+- Data readiness (historical data for QA): Targeted by June 15 (6/15).
+- Capital Edge report: 1 at-risk, 4 delayed issues as of today, down from 9=
+ in the morning and 2 fewer than last week.
+- Waterfall slide periodic =
+update: Scheduled for Friday (for review on Monday).
+
+Key Concepts
+
+- Distinction between function leads (scoping and alignment) and test leads=
+ (scenario execution).
+- Process mapping needs to ensure all impacted =
+systems are accounted for, even those initially considered out of scope.
+- The readiness tracker should capture all necessary steps to ensure UAT is=
+ set up for success: ownership, scope alignment, scenario/script readiness,=
+ environment/data preparedness, cadence, and timelines.
+
+Action Items
+
+- Structure the tracker for functional and test readiness.
+- Embed meeting cadences (Management Operating Structure) and ensure they =
+are set per function/workstream.
+- Confirm all focal leads, schedule =
+meetings, and ensure all teams are aligned.
+- Periodic updates and =
+responses on HANA and Capital Edge to stakeholders.
+- Continue with waterfall slide updates; further resource planning =
+discussions pending follow-up meetings.
+
+Outstanding Issues
+
+- Awaiting response from Rajesh on HANA.
+- Further resource and planning =
+insights for =E2=80=9Cmove as-is=E2=80=9D initiative to be addressed later.
+
+This summary provides an organized view of UAT planning, readiness =
+tracking, open issues, and key next steps, capturing all key dates, metrics=
+, and important process clarifications discussed in the transcript.
+
+Transcript:
+0:00
+Whatever that other slide is on here, it might be a good =
+starting point.
+
+0:10
+Yep.
+
+0:12
+So basically this could be like a starting=
+ point. Obviously we'll modify it.
+
+0:16
+No, no, no, no, no. This comes all=
+ down the lane. This is all like 10 weeks later. I'm talking now. So =
+testers are comes later. Right now it's you are UAT coordinator, she is =
+supply chain co, he is commercial coordinator. So it's identifying the =
+leads, not the testers. It's peers is a UAT IT coordinator for function. So=
+ for finance I got, you know, controllership, Treasury. What are the other =
+ones in finance?
+
+0:53
+Payroll, whatever.
+
+0:54
+Yeah, right, okay. Payroll,=
+ benefits, whatever. Right. So these are sub functions within the function =
+of workstream. I need a lead, we need a lead for each of these. It's not =
+UAT test leads. Test leads would be. I'm going to be working on this =
+particular test scenario X and for this function I'm going to be testing it=
+. Right. So this is really more for the leads, the function leads for ID =
+and function. This is so once you identify and this is the oak example. So =
+but this. So once you've got them, you've got to start tracking about, =
+thinking about having conversations, the leads having conversations to =
+understand the scope of what's there. So peers for it. In fact, this should=
+ also be tower tower leads, if you will, or tower coordinators even within =
+it. I'd like us to track functions can track their thing, but we need a =
+matrix really matrix develop here. So similar to how we did for the overall=
+ program roles and responsibilities. You got a point of contact for each =
+work stream, a tower lead, IT, focal, whatever it is. So we need a focal =
+identified for each of this in fact may not be leads.
+
+2:25
+But wasn't that what the PMO was doing? Oh, I thought we had that already.
+
+2:30
+No, PMO may have a portion of it, but we need to track it though. =
+Right. So focal identify. We need. Once these guys are identified, they =
+need to talk through and understand what are the systems in scope and what =
+are the processes in scope. So they need to have that alignment on scope =
+and they need to be able to identify. This is at high level. We may want to=
+ break it down further into one or two steps here. Right, but alignment on =
+scope and then alignment on scenarios. Again, scenarios will come from =
+business, but alignment on test scenario test cases and then alignment. So =
+once they've had that. So the case in point bill a schw. This is where the =
+cross functional thing happens because erp, he's only looking at ERP module=
+ but a commercial or supply Chain guy or an end to end guy will say, okay, =
+some things are outside erp, some things end with erp. So for the cases in =
+erp, I need to go talk to Bill. But for the cases outside erp, that guy may=
+ need to. Or girl may need to go talk to somebody else. So it's really =
+coordinating what is from an end to end person coordinating with each of =
+the IT functions. So there's a bit of thought involved here, but the point =
+is still that I have a thousand cases, a thousand cases, thousand processes=
+. And I'm only filtering out 200 that change. And they're across, let's say=
+ supply chain, ERP, HR, whatever, finance. Okay. And out of these, this =
+essentially says, okay, I'm aligning here, I got, you know, 20 processes =
+across seven systems that I need to test here. And I've got test cases for =
+these. These 20 processes correspond to say 100 scenarios and in scope for =
+testing. And there may be, you know, scenarios that come in here as well. =
+But the hundred scenarios that need to be tested, I've got 23 scripts =
+defined, or you know, let's say 53 scripts in place. I've got 17 scripts to=
+ be modified and I've got to have, you know, 60, 40 new scripts to develop.=
+ Okay, so that's what we're trying to track through these metrics to say, =
+okay, have I identified the person? Have they talked to each other between =
+IT and the functions to say this down. Selection for supply chain is =
+happened and I've identified the 20 and 7. Am I aligned on what is in scope=
+ here? Have I aligned on a timeline to develop, you know, to develop the =
+scripts and tools to use? Right. So that's the readiness tracker that he =
+can go chase and say, have you done this? Have you met, have you defined =
+this? Have you done this? Execution of it is per this slide here that says,=
+ what is my entry criteria and exit criteria? Six weeks down the lane for =
+defining, you know, you could also have a secondary layer of tracking in =
+here and say, okay, when you're ready. This is, I would call this UAT =
+planning or readiness. Right. The other piece of this is execution =
+readiness is have I, you know, if I want to add on things to the right, =
+have I defined exit entry.
+
+6:21
+And exit criteria, UAT planning readiness.
+
+6:26
+So he as peers needs at a high level, needs to be able to track =
+across the functions and say, you guys are behind. You're starting your UAT=
+ on middle of June. Have you even identified focals you could even to your =
+point, you said of test leads, if you Want to add that in here and say =
+there's a subsection of here, let's say the focal. Let's say controllership=
+. I won't know these unless I finish the scenarios.
+
+6:55
+Then you won't know who the test is.
+
+6:56
+I won't know who the test lead =
+is. Right, so there's a test lead somewhere in here.
+
+6:59
+Yeah, got it.
+
+7:00
+And maybe there's a timeline aligned. Right. But the point being at a =
+high level. So this is kind of what I'm thinking and the way we've had the =
+conversation to say, have you done these 10 steps to know that you're now =
+ready to conduct your testing?
+
+7:16
+Okay.
+
+7:20
+With me so far. Yeah.
+
+7:23
+Does he need, like, what. How filled out does it need to be? Like, =
+does he want.
+
+7:29
+We need the structure for him to go fill it out?
+
+7:32
+Yeah. So.
+
+7:33
+Right. So we don't know.
+
+7:34
+Yeah, no, no. I, I was. I =
+think we're on the same page there, but yeah, we just need the structure of=
+ saying these are the steps of what you actually need to do.
+
+7:41
+Yeah. Okay.
+
+7:43
+I don't know what the dates are. The dates I would assume=
+ are gonna be nuanced based off of each different application itself.
+
+7:48
+Or you could. Yeah, if this is per function.
+
+7:51
+Yeah, you could back out=
+.
+
+7:52
+You can back out and say, okay, I need the timeline alignment. I =
+need. We know generally UAT is somewhere like 620 to 715. In some cases, =
+like ERP, it's 7.1 to 715. The idea here is we're trying to understand how =
+ready are they with, from a process perspective to ready to test from a =
+systems perspective. We're also trying to understand how ready are you with=
+ the environment and data. So that's the other piece of this is alignment =
+on scenarios, maybe alignment on timing or readiness. Right. So timing, =
+timing of readiness, timing of, let's say environment data. Because you =
+could say, okay, I need historical data to test this scenario. It. I've =
+defined a scenario. You're telling me the QA environment is going to be =
+ready. Can you get that data, historical data, and put it in there by 615?
+
+9:00
+We mentioned from my notes, I had process mapping to system gaps. =
+Which piece is that? Alignment with scope.
+
+9:07
+So what they're doing is =
+this part and saying, I have 200 processes, but the 200 processes are going=
+ to touch across six or seven systems. It may not know that those systems =
+are being touched. It may think only two systems. From an IT centric =
+perspective, they're going to say, I only have three systems in supply =
+chain that are changing. That's okay. But for a process change, it may pass=
+ through a system that's not changing. So it will still need to be aware =
+and finalize what the scope of that thing is. So if a process is changing =
+and it touches a system that is not in their list, you still need to test =
+it out. But they may think, oh, the systems that are truly changing are for=
+ others. So that's the alignment piece where they do the mapping and they =
+say I've got 200 processes, but they touch eight systems. You guys have =
+only five systems in scope. Add these other three. So that's the Srinivas =
+and somebody else. And another piece Srinivas from ERP and somebody else. =
+But that's the alignment and scope between it plus.
+
+10:11
+Yeah. Function.
+
+10:12
+Function.
+
+10:13
+And that's where he said that there was a gap.
+
+10:15
+Nobody huge gap because they're not confirmed it up or.
+
+10:19
+Yeah.
+
+10:19
+Who leads this? Right. Or have this may be broken up a bit more into.=
+ Have you set it up? Have you completed.
+
+10:25
+Right.
+
+10:26
+So meeting setup, alignment complete. Yeah. So meeting setup, alignment =
+complete.
+
+10:33
+I mean are those one offs or is that. Can you do that as =
+part of like a cadence? Can you set up like a cadence with these four or =
+five?
+
+10:40
+Part of this is mo. Maybe that's another one here you hear the=
+ term movie.
+
+10:44
+Yeah. What is mos?
+
+10:45
+MOS is called Management =
+operating structure. It's essentially a cadence.
+
+10:49
+Okay.
+
+10:49
+It's a meeting cadence and how they operate.
+
+10:55
+Hey, it's like a Honeywell.
+
+10:58
+I wrote Management operating System. So =
+no, no structures.
+
+11:02
+Yeah, but basically just like how do they =
+actually have meetings execute?
+
+11:07
+How do you make decisions? How do =
+you. It's a project, it's a. Yeah, okay, but that could be part of the =
+cadence setup, right? Somewhere in here on have a cadence set up, have a =
+structure in place. How often do you communicate?
+
+11:21
+Right.
+
+11:21
+So maybe as part of this meeting they decide we're gonna talk to you every =
+week. Okay. That may be part of this is the alignment is also we say =
+alignment, you know, meeting setup or meeting completed MOS setup or scope.
+
+11:36
+And this is per focal like the rose per function.
+
+11:40
+So in each the rows are.
+
+11:43
+By the way, shouldn't we drink?
+
+11:44
+Join the end of day call?
+
+11:45
+Yeah.
+
+11:48
+Let'S. After the day, let's. =
+Let's talk for like 10 minutes.
+
+11:50
+Yeah, we should join the call.
+
+11:52
+I gotta focus on something really quick for the next 10 minutes. But =
+yeah, maybe grab a room and.
+
+11:57
+I want to make sure we give him =
+something in the morning that is good enough for him to go chase.
+
+12:02
+Oh, we will.
+
+12:02
+It's okay that it's empty but we have some views that =
+we do.
+
+12:07
+We should have like a, a dummy data or like some kind of like=
+ dummy definitely. Yeah but we can, we can work through like the different =
+steps and see what we need to add in.
+
+12:18
+Do you want to pass me if =
+you're going somewhere?
+
+12:20
+Oh yeah.
+
+12:23
+Where's the or you already =
+plugged in under sk.
+
+12:26
+You can have it ask you want plug in.
+
+12:42
+Has anyone else's teams or laptop in general been complete lately? Yeah, =
+yeah this co pilot. Co pilot are in my teams and I don't know what's. Well,=
+ everything else.
+
+13:09
+Okay, sounds perfect. And then have you got the. =
+The meeting scheduled with all the pillar as well at least on their =
+calendars?
+
+13:20
+No.
+
+13:21
+So Mahim.
+
+13:22
+Yes for others. I'm just =
+checking with them on their availability. It seems there are a lot of town =
+halls and everything.
+
+13:45
+Around available funds planning to this =
+morning? No, we have not had a chance to connect yet. Okay so those are the=
+ two open items for today we had on the left side. And then Justin, I know =
+that you were kind of. You were doing two things. One was tracking down =
+where the HANA change request is at in the process. And you're gonna go can=
+ respond back to Pierce. Did you ever figure out what was going on with =
+that? No. So.
+
+14:19
+We think it's coming from the data and intelligence =
+team. So Rajesh, unfortunately he doesn't usually reply to his pings. We're=
+ not. I don't think anyone right now that's in office is cc'd in any emails=
+ regarding Hana. So I'm waiting for Rajesh, but I think it has to be in =
+either Paul Prashant or Sakina's inbox.
+
+14:50
+Okay, then we'll have to =
+check out. We'll have to roll back on this one in the morning to respond in=
+ that email thread with that message to Pierce so that we tie that off with=
+ him today because we did say we would go back to him. So I just wanted to =
+make sure he has an update and knows that we've been kind of working that =
+throughout the day.
+
+15:10
+Yeah, yeah. And along with that, I'm about to =
+send them the updated Capital Edge report.
+
+15:18
+And how many did we land =
+on? How many issues that are delayed or at risk that we land on? I know we =
+had nine this morning, but that number had been coming down throughout the =
+day.
+
+15:33
+Yeah, yeah, we're. We're gonna be at one at risk and four =
+delays.
+
+15:37
+Okay, very. So from last week as well?
+
+15:40
+Yeah, two down from last week.
+
+15:42
+Okay, that sounds perfect. And Then =
+Rakesh, there was one item for you today. I know that you were working to =
+take Young's waterfall slide and start to build back some of the insights =
+because we know the Honeywell team is not appropriately staffed for build =
+back and move as his efforts. Where are we at on that?
+
+16:04
+They can hear you.
+
+16:08
+I think that was after a conversation with Sean. =
+I don't think we're anywhere. No progress on it. The waterfall was simply =
+not to build back or re engineer it. It was really to understand what was =
+the balance that we can then use as information when we develop the sow. So=
+ we're talking. Sean and I are having a conversation later today and we'll.=
+ It may be later in the week before we get a view in it. But the context of=
+ this was that the waterfall slide is there but that that needs a periodic =
+update for Sukai. So we spoke about that being updated Friday so we can =
+present over Monday.
+
+16:53
+Yeah, no, those are. Those are two separate. =
+That was one. Number one on the left side and number four on the left side.=
+ And number one. Yes, we're aligned on that. That's going to be updated =
+periodically. Number four was related to the. The piece for shot. Okay, so =
+that's where I have the question because we said that we would have that =
+kind of at some place today but it sounds like it's going to be something =
+later in the leak so we'll push that out.
+
+17:17
+Yeah, yeah. It's not a =
+timeline based. It's the fact that. So I don't want to conflate two things =
+that the use of the waterfall was just to discover that there are funds =
+available. The move as is application and the effort is a resource or quest=
+ that we need to add into it.
+----_NmP-18f20ee1d2fea05e-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Comprehensi=
+ve UAT Planning and Readiness Coordination</h1></td></tr></table></div><div=
+ style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/3CF03EDA-A118-4828-8380-209A55B65C14?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><p>Main Topics Discussed</p>
+<ol>
+<li><p><strong style=3D"font-weight:bold">UAT Planning and =
+Coordination</strong></p>
+<ul>
+<li>The discussion centers on the structure =
+and process for organizing User Acceptance Testing (UAT) across multiple =
+functions and systems.</li>
+<li>Emphasis is placed on:<ul>
+<li>Identifying UAT coordinators and leads for each function (e.g., finance=
+, supply chain, IT, commercial).</li>
+<li>Differentiating between function =
+leads and future test leads, clarifying that for now, the focus is on =
+identifying leads responsible for scoping, not the testers.</li>
+<li>Sub-functions within finance include controllership, treasury, payroll,=
+ and benefits=E2=80=94each requiring a lead.</li>
+</ul>
+</li>
+<li>Explains the importance of cross-functional coordination, particularly =
+for processes spanning multiple systems or functions (e.g., ERP modules =
+intersecting with supply chain or commercial processes).</li>
+<li>Tracking readiness involves creating a matrix similar to an overall =
+program roles and responsibilities chart, ensuring all focal points are =
+identified per workstream, tower, or function.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Readiness and Scope =
+Alignment</strong></p>
+<ul>
+<li>The process includes identifying all =
+relevant leads, setting up meetings, and aligning on:<ul>
+<li>Systems and processes in the testing scope.</li>
+<li>Scenarios to be tested, including scenario and script breakdowns (e.g.,=
+ 1,000 processes reduced to 200 changes across systems, resulting in 100 =
+scenarios and corresponding test scripts).</li>
+<li>Status tracking: =
+scripts defined, scripts to be modified, new scripts to develop.</li>
+</ul>
+</li>
+<li>Readiness is monitored through a tracker that confirms steps have=
+ been completed: person identified, alignment achieved, test assets =
+(scripts/scenarios) ready, and timeline set.<ul>
+<li>UAT estimated window: =
+generally from June 20 to July 15, with ERP-specific UAT from July 1 to =
+July 15.</li>
+</ul>
+</li>
+<li>Planning includes ensuring environment and =
+data readiness=E2=80=94e.g., having historical data available in QA =
+environments by June 15.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Gaps and Ownership</strong></p>
+<ul>
+<li>Recognizes a gap in mapping processes to system gaps=E2=80=94sometimes =
+a process touches more systems than IT or the function initially realizes.=
+</li>
+<li>Stresses the need for confirming comprehensive scope and close =
+alignment between IT and functional teams to avoid overlooked areas.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Management Operating =
+Structure (MOS) and Cadence</strong></p>
+<ul>
+<li>MOS refers to the =
+management cadence=E2=80=94regular meetings and decision-making routines.=
+</li>
+<li>Each function or focal should set up regular meetings (cadence), =
+with notes on incorporating these into the readiness structure.</li>
+<li>Ensures alignment meetings are scheduled, with regular check-ins for =
+ongoing tracking.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold=
+">Open Items/Action Items</strong></p>
+<ul>
+<li>Schedule alignment meetings=
+ with all pillars; Mahim confirmed, others pending due to scheduling =
+conflicts with town halls, etc.</li>
+<li>Update on HANA change request: =
+waiting on information from Rajesh (data and intelligence team), with =
+action to respond in email thread to Pierce. Others possibly involved =
+include Paul, Prashant, or Sakina.</li>
+<li>Capital Edge report: updated =
+metrics showing one item at risk and four delayed, down from nine earlier =
+in the day and an improvement of two from the previous week.</li>
+<li>Waterfall slide (Young=E2=80=99s): Intended to provide balance and =
+insight for the SOW and resource planning for the =E2=80=9Cmove =
+as-is=E2=80=9D effort; periodic update planned for Friday to present on =
+Monday. Effort for in-depth analysis or resource allocation discussion on =
+hold, pending further conversation later in the week.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Follow-Up and Next =
+Steps</strong></p>
+<ul>
+<li>Provide structural template for UAT tracker so =
+that ownership and status can be filled in.</li>
+<li>Add dummy/demo data =
+for context.</li>
+<li>Await updates from Rajesh and team regarding the HANA=
+ request; respond to Pierce as soon as information is available.</li>
+<li>Periodic update of Young=E2=80=99s waterfall slide by Friday.</li>
+<li>Possible further alignment conversations between Sean and Rakesh later =
+in the week.</li>
+<li>Schedule and confirm pillar meetings as soon as =
+availability is known.</li>
+<li>End-of-day call coordination; additional =
+short meeting planned after day=E2=80=99s end for progress review.</li>
+</ul>
+</li>
+</ol>
+<p>Relevant Dates and Figures</p>
+<ul>
+<li>UAT window: June 20 (6/20) to July 15 (7/15) overall; ERP-specific UAT =
+from July 1 (7/1) to July 15 (7/15).</li>
+<li>Data readiness (historical =
+data for QA): Targeted by June 15 (6/15).</li>
+<li>Capital Edge report: 1 =
+at-risk, 4 delayed issues as of today, down from 9 in the morning and 2 =
+fewer than last week.</li>
+<li>Waterfall slide periodic update: Scheduled =
+for Friday (for review on Monday).</li>
+</ul>
+<p>Key Concepts</p>
+<ul>
+<li>Distinction between function leads (scoping and alignment) and test =
+leads (scenario execution).</li>
+<li>Process mapping needs to ensure all =
+impacted systems are accounted for, even those initially considered out of =
+scope.</li>
+<li>The readiness tracker should capture all necessary steps to=
+ ensure UAT is set up for success: ownership, scope alignment, =
+scenario/script readiness, environment/data preparedness, cadence, and =
+timelines.</li>
+</ul>
+<p>Action Items</p>
+<ul>
+<li>Structure the tracker =
+for functional and test readiness.</li>
+<li>Embed meeting cadences =
+(Management Operating Structure) and ensure they are set per =
+function/workstream.</li>
+<li>Confirm all focal leads, schedule meetings, =
+and ensure all teams are aligned.</li>
+<li>Periodic updates and responses =
+on HANA and Capital Edge to stakeholders.</li>
+<li>Continue with waterfall =
+slide updates; further resource planning discussions pending follow-up =
+meetings.</li>
+</ul>
+<p>Outstanding Issues</p>
+<ul>
+<li>Awaiting response from Rajesh on HANA.</li>
+<li>Further resource and =
+planning insights for =E2=80=9Cmove as-is=E2=80=9D initiative to be =
+addressed later.</li>
+</ul>
+<p>This summary provides an organized view of =
+UAT planning, readiness tracking, open issues, and key next steps, =
+capturing all key dates, metrics, and important process clarifications =
+discussed in the transcript.</p>
+</div></div></div><div =
+style=3D"background-color:#ffffff;padding:28px;border-radius:12px;border:1p=
+x solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 =
+rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-size:20px;font-weight:=
+600;margin-top:0;margin-bottom:20px;display:flex;align-items:center;gap:8px=
+"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription<=
+/h3><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">0:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Whatever that other =
+slide is on here, it might be a good starting point.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Justin</span><span style=3D"color:#64748b;font-size:14px"=
+>0:10</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yep.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">0:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So basically this =
+could be like a starting point. Obviously we&#x27;ll modify it.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</span><span =
+style=3D"color:#64748b;font-size:14px">0:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, no, no, no, no. =
+This comes all down the lane. This is all like 10 weeks later. I&#x27;m =
+talking now. So testers are comes later. Right now it&#x27;s you are UAT =
+coordinator, she is supply chain co, he is commercial coordinator. So =
+it&#x27;s identifying the leads, not the testers. It&#x27;s peers is a UAT =
+IT coordinator for function. So for finance I got, you know, controllership=
+, Treasury. What are the other ones in finance?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Pierce</span><span style=3D"color:#64748b;font-size:14px"=
+>0:53</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Payroll, whatever.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</span><s=
+pan style=3D"color:#64748b;font-size:14px">0:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, right, okay. =
+Payroll, benefits, whatever. Right. So these are sub functions within the =
+function of workstream. I need a lead, we need a lead for each of these. =
+It&#x27;s not UAT test leads. Test leads would be. I&#x27;m going to be =
+working on this particular test scenario X and for this function I&#x27;m =
+going to be testing it. Right. So this is really more for the leads, the =
+function leads for ID and function. This is so once you identify and this =
+is the oak example. So but this. So once you&#x27;ve got them, you&#x27;ve =
+got to start tracking about, thinking about having conversations, the leads=
+ having conversations to understand the scope of what&#x27;s there. So =
+peers for it. In fact, this should also be tower tower leads, if you will, =
+or tower coordinators even within it. I&#x27;d like us to track functions =
+can track their thing, but we need a matrix really matrix develop here. So =
+similar to how we did for the overall program roles and responsibilities. =
+You got a point of contact for each work stream, a tower lead, IT, focal, =
+whatever it is. So we need a focal identified for each of this in fact may =
+not be leads.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">2:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">But wasn&#x27;t that=
+ what the PMO was doing? Oh, I thought we had that already.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Sean</span><span style=3D"color:#64748b;font-size:14px">=
+2:30</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">No, PMO may have a portion of it, but we need to track it though. Right.=
+ So focal identify. We need. Once these guys are identified, they need to =
+talk through and understand what are the systems in scope and what are the =
+processes in scope. So they need to have that alignment on scope and they =
+need to be able to identify. This is at high level. We may want to break it=
+ down further into one or two steps here. Right, but alignment on scope and=
+ then alignment on scenarios. Again, scenarios will come from business, but=
+ alignment on test scenario test cases and then alignment. So once =
+they&#x27;ve had that. So the case in point bill a schw. This is where the =
+cross functional thing happens because erp, he&#x27;s only looking at ERP =
+module but a commercial or supply Chain guy or an end to end guy will say, =
+okay, some things are outside erp, some things end with erp. So for the =
+cases in erp, I need to go talk to Bill. But for the cases outside erp, =
+that guy may need to. Or girl may need to go talk to somebody else. So =
+it&#x27;s really coordinating what is from an end to end person =
+coordinating with each of the IT functions. So there&#x27;s a bit of =
+thought involved here, but the point is still that I have a thousand cases,=
+ a thousand cases, thousand processes. And I&#x27;m only filtering out 200 =
+that change. And they&#x27;re across, let&#x27;s say supply chain, ERP, HR,=
+ whatever, finance. Okay. And out of these, this essentially says, okay, =
+I&#x27;m aligning here, I got, you know, 20 processes across seven systems =
+that I need to test here. And I&#x27;ve got test cases for these. These 20 =
+processes correspond to say 100 scenarios and in scope for testing. And =
+there may be, you know, scenarios that come in here as well. But the =
+hundred scenarios that need to be tested, I&#x27;ve got 23 scripts defined,=
+ or you know, let&#x27;s say 53 scripts in place. I&#x27;ve got 17 scripts =
+to be modified and I&#x27;ve got to have, you know, 60, 40 new scripts to =
+develop. Okay, so that&#x27;s what we&#x27;re trying to track through these=
+ metrics to say, okay, have I identified the person? Have they talked to =
+each other between IT and the functions to say this down. Selection for =
+supply chain is happened and I&#x27;ve identified the 20 and 7. Am I =
+aligned on what is in scope here? Have I aligned on a timeline to develop, =
+you know, to develop the scripts and tools to use? Right. So that&#x27;s =
+the readiness tracker that he can go chase and say, have you done this? =
+Have you met, have you defined this? Have you done this? Execution of it is=
+ per this slide here that says, what is my entry criteria and exit criteria=
+? Six weeks down the lane for defining, you know, you could also have a =
+secondary layer of tracking in here and say, okay, when you&#x27;re ready. =
+This is, I would call this UAT planning or readiness. Right. The other =
+piece of this is execution readiness is have I, you know, if I want to add =
+on things to the right, have I defined exit entry.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Pierce</span><span style=3D"color:#64748b;font-size:14px"=
+>6:21</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">And exit criteria, UAT planning readiness.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sean</span><span style=3D"color:#64748b;font-size:14px">6=
+:26</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So he as peers needs at a high level, needs to be able to track across =
+the functions and say, you guys are behind. You&#x27;re starting your UAT =
+on middle of June. Have you even identified focals you could even to your =
+point, you said of test leads, if you Want to add that in here and say =
+there&#x27;s a subsection of here, let&#x27;s say the focal. Let&#x27;s say=
+ controllership. I won&#x27;t know these unless I finish the scenarios.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">6:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Then you won&#x27;t =
+know who the test is.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</span><s=
+pan style=3D"color:#64748b;font-size:14px">6:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I won&#x27;t know =
+who the test lead is. Right, so there&#x27;s a test lead somewhere in here.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">6:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, got it.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</span><span =
+style=3D"color:#64748b;font-size:14px">7:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And maybe =
+there&#x27;s a timeline aligned. Right. But the point being at a high level=
+. So this is kind of what I&#x27;m thinking and the way we&#x27;ve had the =
+conversation to say, have you done these 10 steps to know that you&#x27;re =
+now ready to conduct your testing?</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce=
+</span><span style=3D"color:#64748b;font-size:14px">7:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</span><span =
+style=3D"color:#64748b;font-size:14px">7:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">With me so far. Yeah=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">7:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Does he need, like, =
+what. How filled out does it need to be? Like, does he want.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</span><span =
+style=3D"color:#64748b;font-size:14px">7:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We need the =
+structure for him to go fill it out?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Pierce</span><span style=3D"color:#64748b;font-size:14px"=
+>7:32</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. So.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</span><span =
+style=3D"color:#64748b;font-size:14px">7:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right. So we =
+don&#x27;t know.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span>=
+<span style=3D"color:#64748b;font-size:14px">7:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, no, no. I, I =
+was. I think we&#x27;re on the same page there, but yeah, we just need the =
+structure of saying these are the steps of what you actually need to do.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">7:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">7:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I don&#x27;t know =
+what the dates are. The dates I would assume are gonna be nuanced based off=
+ of each different application itself.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sean</span><span style=3D"color:#64748b;font-size:14px">7=
+:48</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Or you could. Yeah, if this is per function.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Justin</span><span style=3D"color:#64748b;font-size:14px"=
+>7:51</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, you could back out.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</span><=
+span style=3D"color:#64748b;font-size:14px">7:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You can back out and=
+ say, okay, I need the timeline alignment. I need. We know generally UAT is=
+ somewhere like 620 to 715. In some cases, like ERP, it&#x27;s 7.1 to 715. =
+The idea here is we&#x27;re trying to understand how ready are they with, =
+from a process perspective to ready to test from a systems perspective. =
+We&#x27;re also trying to understand how ready are you with the environment=
+ and data. So that&#x27;s the other piece of this is alignment on scenarios=
+, maybe alignment on timing or readiness. Right. So timing, timing of =
+readiness, timing of, let&#x27;s say environment data. Because you could =
+say, okay, I need historical data to test this scenario. It. I&#x27;ve =
+defined a scenario. You&#x27;re telling me the QA environment is going to =
+be ready. Can you get that data, historical data, and put it in there by =
+615?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">9:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We mentioned from my=
+ notes, I had process mapping to system gaps. Which piece is that? =
+Alignment with scope.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</span><s=
+pan style=3D"color:#64748b;font-size:14px">9:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So what they&#x27;re=
+ doing is this part and saying, I have 200 processes, but the 200 processes=
+ are going to touch across six or seven systems. It may not know that those=
+ systems are being touched. It may think only two systems. From an IT =
+centric perspective, they&#x27;re going to say, I only have three systems =
+in supply chain that are changing. That&#x27;s okay. But for a process =
+change, it may pass through a system that&#x27;s not changing. So it will =
+still need to be aware and finalize what the scope of that thing is. So if =
+a process is changing and it touches a system that is not in their list, =
+you still need to test it out. But they may think, oh, the systems that are=
+ truly changing are for others. So that&#x27;s the alignment piece where =
+they do the mapping and they say I&#x27;ve got 200 processes, but they =
+touch eight systems. You guys have only five systems in scope. Add these =
+other three. So that&#x27;s the Srinivas and somebody else. And another =
+piece Srinivas from ERP and somebody else. But that&#x27;s the alignment =
+and scope between it plus.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span>=
+<span style=3D"color:#64748b;font-size:14px">10:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Function.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</span><span =
+style=3D"color:#64748b;font-size:14px">10:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Function.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">10:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And that&#x27;s =
+where he said that there was a gap.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sean</span><span style=3D"color:#64748b;font-size:14px">1=
+0:15</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Nobody huge gap because they&#x27;re not confirmed it up or.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">10:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</span><span =
+style=3D"color:#64748b;font-size:14px">10:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Who leads this? =
+Right. Or have this may be broken up a bit more into. Have you set it up? =
+Have you completed.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span>=
+<span style=3D"color:#64748b;font-size:14px">10:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</span><span =
+style=3D"color:#64748b;font-size:14px">10:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So meeting setup, =
+alignment complete. Yeah. So meeting setup, alignment complete.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">10:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I mean are those one=
+ offs or is that. Can you do that as part of like a cadence? Can you set up=
+ like a cadence with these four or five?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sean</span><span style=3D"color:#64748b;font-size:14px">1=
+0:40</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Part of this is mo. Maybe that&#x27;s another one here you hear the term=
+ movie.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">10:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. What is mos?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</span><span =
+style=3D"color:#64748b;font-size:14px">10:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">MOS is called =
+Management operating structure. It&#x27;s essentially a cadence.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">10:49</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</span><span =
+style=3D"color:#64748b;font-size:14px">10:49</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;s a meeting =
+cadence and how they operate.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce<=
+/span><span style=3D"color:#64748b;font-size:14px">10:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Hey, it&#x27;s like =
+a Honeywell.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">10:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I wrote Management =
+operating System. So no, no structures.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Pierce</span><span style=3D"color:#64748b;font-size:14px"=
+>11:02</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah, but basically just like how do they actually have meetings =
+execute?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</span><span =
+style=3D"color:#64748b;font-size:14px">11:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">How do you make =
+decisions? How do you. It&#x27;s a project, it&#x27;s a. Yeah, okay, but =
+that could be part of the cadence setup, right? Somewhere in here on have a=
+ cadence set up, have a structure in place. How often do you communicate?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">11:21</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</span><span =
+style=3D"color:#64748b;font-size:14px">11:21</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So maybe as part of =
+this meeting they decide we&#x27;re gonna talk to you every week. Okay. =
+That may be part of this is the alignment is also we say alignment, you =
+know, meeting setup or meeting completed MOS setup or scope.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">11:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And this is per =
+focal like the rose per function.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</s=
+pan><span style=3D"color:#64748b;font-size:14px">11:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So in each the rows =
+are.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rajesh</span><span=
+ style=3D"color:#64748b;font-size:14px">11:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">By the way, =
+shouldn&#x27;t we drink?</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">11:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Join the end of day =
+call?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">11:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">11:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Let&#x27;S. After =
+the day, let&#x27;s. Let&#x27;s talk for like 10 minutes.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sean</span><span style=3D"color:#64748b;font-size:14px">1=
+1:50</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, we should join the call.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce<=
+/span><span style=3D"color:#64748b;font-size:14px">11:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I gotta focus on =
+something really quick for the next 10 minutes. But yeah, maybe grab a room=
+ and.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</span><span =
+style=3D"color:#64748b;font-size:14px">11:57</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I want to make sure =
+we give him something in the morning that is good enough for him to go =
+chase.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">12:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, we will.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</span><span =
+style=3D"color:#64748b;font-size:14px">12:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;s okay that =
+it&#x27;s empty but we have some views that we do.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Pierce</span><span style=3D"color:#64748b;font-size:14px"=
+>12:07</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">We should have like a, a dummy data or like some kind of like dummy =
+definitely. Yeah but we can, we can work through like the different steps =
+and see what we need to add in.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</s=
+pan><span style=3D"color:#64748b;font-size:14px">12:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Do you want to pass =
+me if you&#x27;re going somewhere?</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh=
+</span><span style=3D"color:#64748b;font-size:14px">12:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">12:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Where&#x27;s the or =
+you already plugged in under sk.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</s=
+pan><span style=3D"color:#64748b;font-size:14px">12:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You can have it ask =
+you want plug in.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span>=
+<span style=3D"color:#64748b;font-size:14px">12:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Has anyone =
+else&#x27;s teams or laptop in general been complete lately? Yeah, yeah =
+this co pilot. Co pilot are in my teams and I don&#x27;t know what&#x27;s. =
+Well, everything else.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">13:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, sounds perfect=
+. And then have you got the. The meeting scheduled with all the pillar as =
+well at least on their calendars?</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</s=
+pan><span style=3D"color:#64748b;font-size:14px">13:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rajesh</span><span style=3D"color:#64748b;font-size:14px"=
+>13:21</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">So Mahim.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</span><span =
+style=3D"color:#64748b;font-size:14px">13:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes for others. =
+I&#x27;m just checking with them on their availability. It seems there are =
+a lot of town halls and everything.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>13:45</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Around available funds planning to this morning? No, we have not had a =
+chance to connect yet. Okay so those are the two open items for today we =
+had on the left side. And then Justin, I know that you were kind of. You =
+were doing two things. One was tracking down where the HANA change request =
+is at in the process. And you&#x27;re gonna go can respond back to Pierce. =
+Did you ever figure out what was going on with that? No. So.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rajesh</span><span=
+ style=3D"color:#64748b;font-size:14px">14:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We think it&#x27;s =
+coming from the data and intelligence team. So Rajesh, unfortunately he =
+doesn&#x27;t usually reply to his pings. We&#x27;re not. I don&#x27;t think=
+ anyone right now that&#x27;s in office is cc&#x27;d in any emails =
+regarding Hana. So I&#x27;m waiting for Rajesh, but I think it has to be in=
+ either Paul Prashant or Sakina&#x27;s inbox.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>14:50</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Okay, then we&#x27;ll have to check out. We&#x27;ll have to roll back =
+on this one in the morning to respond in that email thread with that =
+message to Pierce so that we tie that off with him today because we did say=
+ we would go back to him. So I just wanted to make sure he has an update =
+and knows that we&#x27;ve been kind of working that throughout the day.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rajesh</span><span=
+ style=3D"color:#64748b;font-size:14px">15:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah. And =
+along with that, I&#x27;m about to send them the updated Capital Edge =
+report.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">15:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And how many did we =
+land on? How many issues that are delayed or at risk that we land on? I =
+know we had nine this morning, but that number had been coming down =
+throughout the day.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rajesh</span>=
+<span style=3D"color:#64748b;font-size:14px">15:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, =
+we&#x27;re. We&#x27;re gonna be at one at risk and four delays.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">15:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, very. So from =
+last week as well?</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rajesh</span>=
+<span style=3D"color:#64748b;font-size:14px">15:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, two down from =
+last week.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">15:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, that sounds =
+perfect. And Then Rakesh, there was one item for you today. I know that you=
+ were working to take Young&#x27;s waterfall slide and start to build back =
+some of the insights because we know the Honeywell team is not =
+appropriately staffed for build back and move as his efforts. Where are we =
+at on that?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">16:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">They can hear you.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</span><span =
+style=3D"color:#64748b;font-size:14px">16:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think that was =
+after a conversation with Sean. I don&#x27;t think we&#x27;re anywhere. No =
+progress on it. The waterfall was simply not to build back or re engineer =
+it. It was really to understand what was the balance that we can then use =
+as information when we develop the sow. So we&#x27;re talking. Sean and I =
+are having a conversation later today and we&#x27;ll. It may be later in =
+the week before we get a view in it. But the context of this was that the =
+waterfall slide is there but that that needs a periodic update for Sukai. =
+So we spoke about that being updated Friday so we can present over Monday.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">16:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, no, those are.=
+ Those are two separate. That was one. Number one on the left side and =
+number four on the left side. And number one. Yes, we&#x27;re aligned on =
+that. That&#x27;s going to be updated periodically. Number four was related=
+ to the. The piece for shot. Okay, so that&#x27;s where I have the question=
+ because we said that we would have that kind of at some place today but it=
+ sounds like it&#x27;s going to be something later in the leak so =
+we&#x27;ll push that out.</div></div><div style=3D"margin-bottom:0;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sean</span><s=
+pan style=3D"color:#64748b;font-size:14px">17:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah. =
+It&#x27;s not a timeline based. It&#x27;s the fact that. So I don&#x27;t =
+want to conflate two things that the use of the waterfall was just to =
+discover that there are funds available. The move as is application and the=
+ effort is a resource or quest that we need to add into it.=
+</div></div></div><div style=3D"margin-top:36px;text-align:center;color:#64=
+748b;font-size:14px;padding:20px;border-top:1px solid #e2e8f0"><p =
+style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note Taker</p><p=
+ style=3D"margin:0;font-size:12px">Your AI-powered companion</p></div></div=
+></div></div></html>
+----_NmP-18f20ee1d2fea05e-Part_1--

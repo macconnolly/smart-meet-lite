@@ -1,0 +1,2372 @@
+MIME-Version: 1.0
+Date: Thu, 5 Jun 2025 19:37:02 -0400
+References: <0100019740e06b0b-db7413e0-4043-4873-a8c8-4be3ea0eb227-000000@email.amazonses.com>
+In-Reply-To: <0100019740e06b0b-db7413e0-4043-4873-a8c8-4be3ea0eb227-000000@email.amazonses.com>
+Message-ID: <CAOat4ZBddv0OYKf=TUMA3omgGEb1uWynV_u5hON_fJ-Q6+4kKg@mail.gmail.com>
+Subject: Fwd: Integrating Smartsheets And Capital Edge Tracking
+From: Mac Connolly <mac@macconnolly.com>
+To: save@mem.ai
+Content-Type: multipart/alternative; boundary="000000000000438bfc0636db97ed"
+
+--000000000000438bfc0636db97ed
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+---------- Forwarded message ---------
+From: Wave AI Note Taker <summary@email.wave.co>
+Date: Thu, Jun 5, 2025 at 12:15=E2=80=AFPM
+Subject: Integrating Smartsheets And Capital Edge Tracking
+To: <mac@macconnolly.com>
+
+
+[image: Wave AI Logo]Integrating Smartsheets And Capital Edge Tracking
+=E2=9C=A8 View Your Session on the Web
+<https://app.wave.co/sessions/DCECD41A-BF89-4F8F-BC2D-2E5D877E31FB?lastLogi=
+nParam=3Dgoogle>
+=F0=9F=93=9DSummary
+Meeting Summary
+
+*Date:* June 5, 2025
+*Participants:* Jen, Pierce, Rakesh, Mac, Brie, and others
+*Context:* Discussion regarding the integration and tracking of SIT (System
+Integration Testing) and UAT (User Acceptance Testing) activities using
+Smartsheets and Capital Edge systems for an IT and business function
+transformation project. The aim is to improve the process of monitoring,
+updating, and reporting on application testing and readiness for go-live.
+------------------------------
+Main Topics Discussed1. Integration & Data Flow Between Smartsheets and
+Capital Edge
+
+   - *Background:*
+   Capital Edge maintains a system inventory with data imported from
+   Smartsheets. There is a sync mechanism, but the current structure and da=
+ta
+   mappings are under review to maximize efficiency.
+   - *Discussion Points:*
+      - Smartsheets organizes work plans by project, not application, which
+      complicates one-to-one mapping with Capital Edge=E2=80=99s applicatio=
+n inventory.
+      - There is a partial mapping via project IDs, but real alignment for
+      tracking requires matching at the application level (Athens App
+IDs, etc.).
+      - Capital Edge tracker needs to include more columns from
+      Smartsheets, especially for SIT and UAT dates, testers, and other
+      attributes to facilitate accurate status reporting.
+      - There is a desire to avoid double entry of data by syncing as much
+      as possible between Smartsheets and Capital Edge.
+
+2. UAT Coordination and Status Tracking
+
+   - *UAT Calendar and Roles:*
+      - A consolidated SIT and UAT calendar exists, spanning key IT work
+      streams: ERP, HR, Finance, Commercial, ISC, etc.
+      - Lists of UAT coordinators, their roles, and IT counterparts are
+      available, though gaps remain (specifically for test leads).
+      - UAT coordinators are responsible for identifying testers, defining
+      test scenarios, and securing sign-off from functional leads and spons=
+ors.
+   - *Dashboard Expectations:*
+      - Dashboards should track:
+         - Testers identified (status: complete/on-track/at-risk)
+         - Scenarios defined and signed-off
+         - Testing completion statuses by application and function.
+      - Additional fields discussed:
+         - Test scripts developed and uploaded to tools (like ALM/Jira)
+         - Exit and entry criteria for milestones
+
+3. Dashboard Design and Reporting
+
+   - *Current State:*
+      - Existing dashboards in Capital Edge (BRB dashboard) partially
+      reflect SIT/UAT progress but lack certain automation and synchronizat=
+ion.
+      - Dashboards to be enhanced to display:
+         - Number of apps/systems with completed SIT/UAT, delayed starts,
+         at-risk statuses, and overall completion trajectory.
+         - Time series view for planned vs. actual SIT/UAT and go-live
+         events.
+      - *Automation/Synchronization:*
+      - Where applicable, data from Smartsheets should auto-populate
+      Capital Edge dashboards to avoid duplication.
+      - Some data (especially functional/BRB-driven) may require direct
+      entry in Capital Edge.
+      - Plan to build custom dashboards in Power BI using SQL queries
+      connecting to Capital Edge, leveraging existing access and back-end
+      capabilities.
+
+4. Structure and Ownership of Data Updates
+
+   - *Column Additions:*
+      - Agreed to add columns for SIT start/end, UAT start/end, service
+      owners, and other related fields into the Capital Edge system invento=
+ry.
+      - Mac will send a list of required columns.
+   - *Responsibility for Updates:*
+      - IT teams will update SIT/UAT milestones for the applications and
+      projects they own.
+      - Functions are expected to update BRB dashboard/statuses for UAT
+      readiness.
+      - Some effort is required to keep both Smartsheets and Capital Edge
+      in sync until a robust mapping is established.
+      - Data for ~294 applications in the inventory must be current;
+      applies particularly to ~82 apps in SIT/UAT/go-live scope.
+   - *Application/Function Alignment:*
+      - Some apps may be touched by multiple functions (e.g., ERP by both
+      Supply Chain and Finance), so multiple rows/views or flags may be nee=
+ded.
+      - The aim is to maintain a clean master inventory but allow
+      functional splits for reporting.
+
+5. Reporting and Visualization (Power BI & Capital Edge)
+
+   - *Immediate Needs:*
+      - Urgent requirement to deliver prototype/working dashboards for the
+      meeting with Jeff on June 6, 2025.
+      - Mockups or initial Power BI dashboards will be used for immediate
+      management review, followed by more permanent dashboards in Capital E=
+dge.
+   - *Longer-Term Approach:*
+      - Plan to engage the Capital Edge team to build robust, client-facing
+      dashboards.
+      - Data model to be established so Power BI dashboards can be
+      developed via direct SQL connections for flexibility and rapid iterat=
+ion.
+
+6. Data Sync Mechanisms and Technical Notes
+
+   - *Import/Export Approach:*
+      - One-time data loads with all necessary columns followed by ongoing
+      synchronization to keep Smartsheets and Capital Edge aligned.
+      - WBS IDs, App IDs, and other unique keys are critical for mapping
+      datasets for syncing statuses and milestones.
+   - *Technical Ownership:*
+      - Mac and IT team will handle initial build in Power BI.
+      - Brie will coordinate with the Capital Edge team (specifically
+      Brian) for backend sync and dashboard development.
+      - The process includes matching and updating based on unique
+      IDs=E2=80=94status fields especially.
+      - Reporting needs (initial dashboard mockups, burn down/go-live
+      views, etc.) will be shared with the Capital Edge technical team for
+      implementation.
+
+------------------------------
+Action Items
+
+   1. *Column Additions*
+      - Mac to send the list of additional columns required in the Capital
+      Edge inventory tracker.
+      - IT/functional teams to specify any extra fields needed for their
+      specific reporting.
+   2. *Data Synchronization*
+      - Prepare and execute a one-time upload of the full app inventory
+      with all attributes and dates from Smartsheets/Capital Edge.
+      - Verify mapping of App IDs, Project IDs, and WBS IDs across systems.
+      - Explore/implement ongoing sync from Smartsheets to Capital Edge for
+      SIT/UAT milestones and status.
+   3. *Dashboard Preparation*
+      - Prepare mockup or working dashboard in Power BI for the June 6
+      meeting with Jeff, covering SIT/UAT progress and at-risk/delayed item=
+s.
+      - Verify underlying numbers in the dashboard before sharing with Jeff=
+.
+      - Begin work on more durable dashboards in Capital Edge, in parallel
+      with temporary Power BI solutions.
+   4. *Technical Coordination*
+      - Brie to set up a call with Brian from Capital Edge to discuss data
+      sync requirements and dashboard/report development.
+      - Plan for Power BI SQL connectivity and dashboard creation, as
+      needed.
+   5. *Reporting Alignment*
+      - Ensure that the reporting approach (Power BI, Capital Edge) meets
+      client needs and supports both IT and functional status tracking.
+      - Evaluate the feasibility of full automation for data flows and
+      reporting to reduce manual updates.
+   6. *Communication and Meetings*
+      - Schedule and conduct the call with Pierce regarding UAT rollout and
+      progress.
+      - Prepare for the meeting with Jeff on June 6 with updated dashboards
+      and reporting narratives.
+
+------------------------------
+Follow-up Points
+
+   -
+
+   *Confirm Mapping:*
+   Need to verify if all required fields (App Name, IDs, status attributes)
+   are present and mapped in both Smartsheets and Capital Edge before bulk
+   data import.
+   -
+
+   *Dashboard Feedback:*
+   After the June 6 meeting with Jeff, gather feedback on dashboard
+   features/metrics and iterate accordingly.
+   -
+
+   *Future Syncs:*
+   Confirm with Brian (Capital Edge) how additional fields/rows will be
+   handled in subsequent syncs and whether automation can be enhanced.
+   -
+
+   *Clarify Role Assignments:*
+   Finalize appointment of UAT test leads and ensure gaps in
+   coordinator/tester assignments are closed.
+   -
+
+   *Reporting Model:*
+   Decide whether reporting (especially function splits per app) will be
+   done per row duplication in tracker or via flag/filter approaches.
+   -
+
+   *Handover to Capital Edge:*
+   Evaluate readiness for full transition of dashboards from Power BI to
+   native Capital Edge reporting once underlying data structure stabilizes.
+
+------------------------------
+Key Dates & Figures
+
+   - *June 6, 2025:*
+   Meeting with Jeff to present updated dashboards and project status.
+   - *~294 Applications:*
+   Total in the system inventory; current SIT/UAT focus on ~82 of these.
+   - *Columns/Attributes to Add:*
+   SIT Start/End, UAT Start/End, Service Owners, Testers Identified,
+   Scenarios Defined, Testing Complete, Test Scripts Developed, Entry/Exit
+   Criteria, etc.
+
+------------------------------
+Summary
+
+This meeting was focused on aligning the IT and business functions on how
+best to leverage Smartsheets and Capital Edge for unified tracking,
+updating, and reporting of SIT/UAT readiness and go-live activities. Key
+challenges remain in mapping data sources, reducing duplication, and
+ensuring that the right stakeholders provide timely updates. There is
+agreement to move quickly on dashboard prototypes for management oversight,
+while investing in more robust, maintainable solutions in the client=E2=80=
+=99s
+primary systems moving forward.
+=F0=9F=8E=99=EF=B8=8FTranscription
+Mac0:10
+Between Capital Edge and. Sorry, sorry. In smartsheets. And there's a sync
+up between smartsheets and Capital Edge. I know there's a system inventory
+in Capital Edge that is maintained with data imported from smartsheets. So
+I'm wondering if there's an opportunity for us to just build back on.
+Jen0:37
+Or can you. I just wanted to hear.
+Mac0:41
+Ah, okay.
+Jen0:42
+So it doesn't echo.
+Mac0:42
+Yeah, yeah, Sorry to build back on. Give me a second. I'm just going to
+change my headset here. Can you hear us?
+Jen1:06
+Very good.
+Brie1:07
+We're talking about setting up a call, Jen, with Pierce on kind of like the
+rollout of UAT and things like that. And so part of it is like for the
+coordinators, which we have a view on. And then what Rakesh was pulling up
+is like illustrative dashboards to sort of monitor.
+Pre1:23
+Yeah.
+Brie1:24
+UAT progress.
+Mac1:26
+So a couple of things, Jen. On the call for Jeff tomorrow, we wanted to
+share a few things. One, we've got a fairly consolidated view of the UAT
+calendar SIT and UAT calendar across the key IT work streams.
+Pre1:48
+Okay.
+Mac1:49
+Erp, hr, finance, commercial, and I think one other isc. So we'll provide a
+consolidated view of that that will be sort of memorialized and that's
+what's published rather secondarily. We have a list of all of the names and
+the roles. So who are the UAT coordinators? Who are the points of contact
+that the functions gave us? Similarly, we have an IT list of IT names and
+roles. What we do not, and there are some gaps, what we do not have is, you
+know, from an IT perspective or from a business perspective, test leads. We
+don't necessarily have test leads against, you know, we've got
+coordinators, point of contacts for sub processes. We don't necessarily
+have test lead names. And maybe that's something that the UAT coordinators
+can define. Yeah. The third part is the dashboard he was asking for.
+Jen2:48
+Well, the test cases too, I think, like the number of test cases defined,
+run, etc.
+Mac2:57
+Okay, right. But that's part of the scenario planning we should do. So
+that's going to come up in the dashboard.
+Jen3:02
+Yeah.
+Mac3:06
+Agree.
+Pre3:06
+Yeah. I think the intent is for the UAT coordinators to be the one to be
+responsible for identifying the, like the leaders for uat.
+Brie3:18
+We. So I should say we have it as a status. Right. So the UAE coordinator
+will go in and say, like testers identified, like complete, on track, at
+risk. Right, Right. Where do we have scenarios defined and signed off.
+Pre3:32
+Yeah.
+Brie3:32
+And then testing complete.
+Mac3:34
+Where do we have that?
+Brie3:36
+So that's in that BRB dashboard that we were talking about.
+Pre3:40
+Yeah. Because Jeff's keen on having the uat. He's got his head around the
+fact that UAT may not. The scope of UAT testing may be very light in
+certain cases. His view was he just wants. This is why we have it in the
+tracker. So the UAT coordinator should be responsible for aligning and
+driving what is, you know, what is the scope of UAT for that function. If
+there is scope, you know, based on that, who are the testers? And then
+getting the sign off from the functional lead and the, you know, the
+functional sponsor on those scenarios and scope. Right.
+Mac4:17
+So, okay, so action item for us. We will go look at the BRB tracker that is
+there in Capital Edge to get that, because that would be driven by UAT
+coordinators. And do we have any dashboarding on that? Do we have any power
+BI or anything that's being run on that.
+Pre4:38
+And stuff like that.
+Mac4:40
+So on this one.
+Brie4:43
+Sorry, I want to be clear, right? We need to first put into the BRB
+dashboard the scope of systems and who is testing which functions are
+testing those systems.
+Pre4:59
+Yeah.
+Mac5:01
+Yes, yes, yes. So go ahead.
+Brie5:05
+Separate from that. Right? What we were talking about here, what we were
+talking about before Rakesh, around, what's in the capitalist work plan?
+Right? Like someone went, so this is what's in the work plan. I think it's
+a copy of what's in smartsheets.
+Mac5:25
+Which one is this?
+Brie5:27
+This is in the work plan.
+Mac5:29
+Okay.
+Brie5:31
+So I think this is a copy of what's in smartsheets and I think it's like,
+based on like the project, not specifically applications. This is in the
+work plan.
+Pre5:41
+Okay.
+Brie5:42
+And so each of these like, does have milestones around. This one doesn't.
+Each of these has milestones around testing. This one's more onboarding, so
+probably doesn't. So there is like a way to kind of tap. We can run it, run
+a process to tag milestones in this plan and then build the dashboard that
+you were like sharing can. Like, that's impossible.
+Mac6:12
+It is. Now this is at a work plan level. So if you go to the BRV module.
+Brie6:18
+Yeah.
+Mac6:19
+And look at the in. Yeah. So in it you should have a view of, if you click
+it, is it the systems? So you have a view of the 290+ apps here.
+Pre6:34
+Here.
+Brie6:35
+Yeah.
+Mac6:36
+Now we may need to add, we may need to add a few more columns here, but we
+can get the service owners, for example, added in here. The UAT POCs are
+there but we can add in dates here for sit dates that we've got from the
+functions or the work streams, the UAT dates and you know, our dashboard.
+Can we add those rows in here to say, you know, SIT start, UAD start, you
+know, delayed.
+Pre7:03
+Okay, I think that would be good.
+Brie7:05
+That's fine. Yeah, that's totally fine. So our intention is for the
+functions to come in and like so for Blackline Finance would come in and
+they would set, they would say whether the testers have been identified,
+the scenarios have been defined and signed off and then whether the testing
+is complete and what the team, the Capital Edge team is working on right
+now. Let me see if I can open this. We don't, we still, most of the apps
+are still pointing to it by the way. So we do need that like function
+mapping to like identify which functions are like responsible for testing
+which applications. But once we have that built out, it gets pulled into
+this report and what Capital Edge has on their bucket for this week is on
+the systems row where it says cutover. We're going to split it into three
+rows similar to how process is split between hiring and knowledge transfer.
+Systems will be split between like the three things that we talked about.
+Testers identified, scenarios defined and signed off and testing complete.
+Mac8:30
+Okay. Testers identify scenarios defined and signed off, testing complete.
+Now, now for may be a little bit more that we need. For example, test
+scripts have been developed. There's more tactical stuff around. Okay. The
+scenarios have been sorted out. Have the test scripts been generated? Have
+they been loaded in ALM or jira? All that other details and then the
+milestone, the end my exit entry criteria defined, all the other IT related
+stuff that is going to result in that milestone that says testing completed
+and you're only doing uat correct?
+Pre9:14
+Yes.
+Mac9:14
+Okay.
+Pre9:15
+Yes, yes. So what was before you go off of this though on that one? I guess
+what we would. What we're rolling into for the functions and crazy me
+honest here the IT will, they will, it'll. It will be the UAT test
+scenarios, the UAT testing complete cut over and that's what the, the
+business or the functional or UAT coordinators would need to update those
+statuses, those columns or whatever status is in the tracker.
+Mac9:42
+Okay.
+Pre9:43
+I think that now if you go to the tracker, sorry the systems piece in the
+tracker now I think if there are adding additional columns here Rakesh, I
+think it's fine. And then it would be the it, whoever the appropriate IT
+owner is to update those.
+Mac10:01
+Correct.
+Pre10:01
+And then you can run Whatever kind of. We can do. Whatever kind of what?
+Whatever you need for the dashboard, then you can do that. Right.
+Jen10:09
+Are they still expected to update the smartsheets with their work plans and
+the dates and then. So they're expected to update some columns in the
+smartsheet with their work plans and then some of the columns directly in
+this tracker.
+Pre10:25
+So here's a question for you. So if they are what they're updating and
+smart, and this probably may have been more pre. You were going in the
+beginning. Was that. So what's coming. What our understanding is the work
+plan tab is getting updated based on what the input is in smartsheets. So
+if that data is coming through that way and it's just a matter of
+combining, we don't need to duplicate it. Right.
+Brie10:51
+I think the problem is that the way smartsheets is organized right now is
+not by application.
+Mac10:55
+Correct, correct. That's the problem.
+Brie11:00
+They're going to have to update some things no matter what.
+Pre11:02
+Yeah. Unless you've got a mapping. They are. Yeah.
+Mac11:06
+So I think.
+Pre11:08
+But you might actually have a mapping though, because see how you've got.
+You might want to check this. Right. Because see what we have in the work
+plan coming from smartsheets. I think the project ID is coming in and so.
+And I also think you have the project Project ID and the app inventory were
+cached. So if that mapping is right, then you could still do it, right?
+Mac11:33
+Yes. I just don't know if it's me, though. So, you know, like in ERP hr.
+Yeah, fair enough. Like er. So like erp, there's an ERP project id and
+that's on the logical le. Operationalization of the erp. But you're gonna
+have IT touch supply chain finance at the minimum, and so you won't
+necessarily have. If I'm following your logic, supply chain is going to
+have to react to that project ID or that app and then finance will also
+react to the same project ID and app.
+Pre12:15
+That's right. That's right. So I'm talking purely for the it. So whoever
+just said so, we're going to make it go in and update both smartsheets and
+then do the same thing in the capital Edge from an if the IT update. Right.
+Is that they're doing in smartsheets. Right. If it's the same update.
+Right. If the data. If it. You know, if it's mapping, then. Then you can do
+an automate. We don't have to ask that person to do it twice. Right.
+Mac12:44
+Understood.
+Pre12:44
+We have to.
+Mac12:45
+Unfortunately I don't.
+Pre12:48
+We do have to have the function still go into the system tracker, right?
+Brie12:52
+Yes. But the functions are familiar with the BRB dashboard.
+Pre12:57
+That's right.
+Brie12:58
+Like we have, you know, we need to get them kind of focused in on uat. But
+yeah, I don't think that like they're kind of, you know, having these
+offline discussions with. In any case, they understand that they have a
+role to play. This is sort of kind of getting them, you know, to provide
+status on it, which is fine.
+Mac13:22
+So what I, what I'm going to need. So what I'm going to need then is. So
+what I'm going to need them pre is on this tracker. So I'm, I'm the.
+Unfortunately, we don't have all 294 apps in the projects in here. There
+are a lot of live withouts. Everything else, so build back live without
+tsa. So anything that is truly. Here's my. The complexity, obviously the
+critical for le, go Live, brv, that needs to be updated. We will go in and
+update it. For every 290 app here, 294, what we will need to add is a
+couple of columns around, you know, sit, start, end delayed and all those.
+So, you know, because what I would like to do is yes, at some point it
+either the test leads or at least for sit, you know, the web stream leads
+or the UAT coordinator will come in here from an IT perspective. Peers or
+his designate will come in here and update. Okay, SIT has started. SIT is
+delayed. SIT is, you know, at risk and we can run those dashboards off of
+that to what Jeff wants to say. Okay, here's the progress. Here's sort of,
+you know, there's. There's 40 apps that have gone through sit. There are
+seven apps that have started UAT. Yeah, I think that view is what I, you
+know. So going back to the dashboard that Mac was sharing a bit earlier, I
+think it would be helpful if we build it on top of this. Wherever we can
+automate and feed in from smartsheets, we will. But we probably need a
+couple more columns here. A few more columns on sit. Start end, UAT start
+end.
+Brie15:16
+Yeah, we have UAT start end. We can. Adding columns takes prime literally
+three seconds.
+Pre15:21
+Okay.
+Mac15:21
+Yeah.
+Pre15:21
+Okay, yeah, yeah.
+Mac15:23
+So then how are doing that?
+Pre15:25
+Can you add a couple of those other like informative like those columns
+from the app inventory pre that are a little bit more like that. What is
+the app name? Those ones that I kind of pulled in into that spreadsheet.
+Brie15:35
+We did ask them to do it.
+Mac15:36
+So we can, we can give you the list of the other columns. We need it added.
+Brie15:43
+Yeah.
+Mac15:43
+And okay, if it's just two seconds we can send you those and then you can
+help us. Adam?
+Brie15:48
+Yeah, I think the question.
+Mac15:50
+Okay. And then the question is how quickly can we run. So for tomorrow's
+conversation, our talk track is going to be that we're going to maintain
+the system inventory here or at least the tracker for UAT readiness sit UAT
+here. We'll run dashboards out of this and the mock up of the dashboard
+that will be a representation of this will be what Mac has. But I do get
+your point in that there will be two points, for example, in the work
+plans. They're going to update their sit dates, but they're going to
+probably come here and update. Somebody will have to update the sit dates
+as well. Maybe that's a one time effort.
+Pre16:36
+Yeah, I mean if Pierce's line of sight into. Yeah, I mean if you forgot if
+the dates are already like they're set those columns and then upload,
+adding, you know, doing a bulk like upload, I think that we can do to once
+the columns are there.
+Jen16:48
+Okay, I could get them that and.
+Pre16:50
+Then if it's sort of centralized to peers as far as updating the status.
+Mac16:53
+Okay. Okay. So I think that we can approach, I'll mention the approach
+tomorrow on the dashboards and we'll say we'll leverage this. We're going
+to update this inventory with some columns for sid, UAT service owners and
+other fields and then we'll be able to run reporting on this to reflect
+that sort of a dashboard. Matt, if you can pull that dashboard, is there
+anything you see missing here or you want to add in? Jen? So if you go back
+to he's sharing the dashboard, there are a couple of dashboards that I want
+to show him tomorrow. The first one being more of an execution dashboard.
+How many SIT UAT completed, how many delayed starts, what is at risk, what
+is on track, meaning there's some sort of a percentage or a calculation on
+against the end date and then things that are not started. And what you see
+at the bottom is a stack of sitcount and UAT count. We can flip that. We
+should flip it. Meaning I will have across the timeline a time series view
+of this and saying, okay, in this particular date I'm expecting to have 50
+sits completed and 10 UADs completed. Or in fact we could say if there's,
+if it's in progress, we could say, you know, either Progress planned or
+completed? We can choose in here and say okay, you know, here's the. If we
+say planned, we say okay, on July 1st, we've got, you know, 23 sits or 33
+sits planned and 23 UATs planned. Does this resonate with you?
+Pre18:56
+Yeah, I mean so when we say UAT completed, that's going to be. Because
+what. In the dashboard, it'll be. It's going to be like by, you know, app
+or by. I guess we'll end up adding rows for each function.
+Mac19:08
+Right. And those numbers, those numbers won't be the same. The, the second
+row is not going to be the same as the first row. We have to get some
+realistic numbers.
+Jen19:17
+Those are the real numbers.
+Mac19:19
+Huh?
+Jen19:20
+Those are the real numbers based on their smartsheet plans right now.
+Pre19:25
+So sick completed though. But is that. So if we just. If we complete 64. Is
+64 the number of apps or.
+Jen19:35
+The number of like the number of systems that have Systems?
+Mac19:39
+Okay, so 82 is. This is all system. So this is from the inventory view.
+We'll. We'll say there's 82 systems that are BRV and non BRV starting in
+June, going all the way to October 1st.
+Pre19:54
+And then, then you would have the data then in the, in the, in the
+dashboard it looks like. Because that's just status for each. Right. So if
+you add this columns.
+Mac20:02
+Correct. Can you go back.
+Jen20:03
+Yeah, sorry. Yep, exactly.
+Mac20:09
+Can you.
+Jen20:10
+Yeah.
+Mac20:11
+So yeah, the intent is we want to build this and automated on top of the
+Capital Edge if we can.
+Pre20:19
+Yeah. So there's two ways. I mean there's, I think the columns. Adding the
+columns of the data. There is a pretty quick one. So the pre. Was
+mentioning talking to Brian developing the custom reports through Capital
+Edge. There's a quick. And then depending can be kind of quick way. So you
+can do custom sort of. We have custom analytics in there. So custom
+dashboards in Power Bi and exposing them into. Through the custom analytics
+app is doable. And then you just connect and it's just a SQL query to pull
+the data. Okay. How provisionary. How good are you with Power bi?
+Jen21:00
+I built them on top of smart sheets before. I've built them on top of smart
+streets before.
+Mac21:09
+And then.
+Brie21:09
+Cool.
+Pre21:10
+Okay, so then you're fine. I mean I wouldn't call myself proficient, but
+I've managed to do a couple.
+Jen21:13
+But exactly.
+Pre21:14
+Because then where I'm going is that I've got access to the back end and so
+I would just write the C SQL query to connect to Power bi. Then you can do
+what you want from there.
+Jen21:23
+That would be great if you could write the SQL query to connect to Power
+bi. I can build on top of it.
+Pre21:31
+Awesome. Okay, so then.
+Mac21:32
+Yeah, and then the second one is. The second one was more of a cutover burn
+down, go live for systems as well. I don't like this. I want the histogram.
+Yeah, but this is a view of. Yeah, go live. Go live planned. Go live
+actual. So this would be more of a burn down. Actually this is. Yes. So
+more like this pre. This is our JJ example but you know, of. Of actual
+versus planned.
+Brie22:06
+This is a task count or like apps that are cut over apps.
+Mac22:16
+So from a systems perspective, we've got the 20/BRB apps and then you've
+got the other move as is and build back apps that are 50 or 60. So those
+add up to the 82. So if he's wanting a view of UAT and cutover views or go
+lives, this is from an inventory systems inventory perspective. Progress on
+SIT UAT and then progress on go lives.
+Jen22:46
+What's the level of detail? That example that you shared with the report, I
+really liked that because it had the related, like process items and it
+looked like it was a count of or a sum of 10 tasks. Is that correct? It
+looked like there was a KT for F, like a number of tasks for KT for Finance
+or. Yeah, and I think that that's where it would be helpful to leverage.
+How are those like classified? Like, are they tagged manually as kt, for
+example.
+Pre23:25
+That'S the process tracker Capital Edge.
+Jen23:29
+Got it.
+Mac23:30
+So they're not system tracker.
+Brie23:32
+Yeah, it's not tech, it's system, I would say.
+Pre23:34
+Right.
+Mac23:34
+Yeah, it's. It's process for. Have I hired, has finance hired the right
+five people?
+Jen23:40
+Yeah.
+Mac23:41
+Have I done KT for those five people?
+Jen23:43
+Yeah, but they're not, they're not linked to the.
+Mac23:46
+It won't be the first system because it's a. Can I, can I file? Can I. HR
+will do the same.
+Jen23:52
+Yeah.
+Mac23:52
+Can I hire five people and that can manage a payroll? Yeah, it's not. I'm
+going to Oracle to manage this. Okay. So.
+Pre24:00
+Yeah, so but to your point though, right, so like in the process tracker,
+right, we have, you know, they've done all this mapping, right. So and then
+this is why the functions are already doing this. But they are, they're
+updating sort of the knowledge transfer. They're not really doing these
+ones in an overall process. And then we pull in hiring status and they,
+they did, we did have functions the mapping to roles. Right. But in the
+systems tracker right we. We have a swag of like you wouldn't do. You
+wouldn't tie systems to a process. That would be silly. You would. We can
+do like Bina, you know function and you can get pretty close to sub
+function. Not necessarily from this, with this part. This is map of sub
+function here just from a column. But like there's other. I think there's
+like cm some service sort of category. There's additional fields in the app
+inventory that would get right closer. But for that what the report out
+that Pre was showing that that's being pulled the systems piece, it's going
+to be pulled in by the function. I think what we have to do is like some of
+these like for ERP like instead of just having it to it. There's many.
+There will be. We'll need to split this into the. Yeah. Into seven
+different rows.
+Mac25:15
+Are you going to do that in the system. Are you going to do that in the
+system inventory tracker, Jen, or is that elsewhere? Because I'd like to
+keep it to 294 the systems. If I'm tracking here I'd like to keep it the
+same. The one that you and Pre were mentioning about say finances, finance,
+sub processes touching erp. I don't know, let's say in July the supply
+chain logistics team is touching ERP in end of June. So that conversation I
+would, I would.
+Pre25:48
+Figure out how we do it then because like. Yeah, yeah, because for this one
+like for. It's gonna be one person that's identifying that's doing the kind
+of like sit when you have those columns in. But for uatp, you know it. It's
+more than one.
+Mac26:05
+Yeah.
+Pre26:08
+And so I think probably to make it work we probably still do need to split
+it. But then for the IT view, like as long as we have a row that has
+function it.
+Mac26:18
+Okay then we might.
+Pre26:20
+We should be able to kind of filter it out for reporting first. I don't
+know.
+Mac26:24
+Yeah.
+Brie26:25
+So I guess will it update all 200 and something like for the dates and like
+the completion and what have you.
+Mac26:35
+Yeah. So this is the other piece. Right. So the 300 is the universe of
+apps. 100 of them are live without and technically speaking we may have to
+remove them from here. There's about 100 that are in TSA and so we'll have
+to see if there's you know, logical separation work or you know, access
+control that's being done by day one. So there'll maybe there's no SIT uat.
+There's just that and then there's the move as is and the build backs which
+are about 80, actually about 60 plus the 25 or so 22 BRB apps, legal entity
+related changes. So those all will be in here. So our ask or at least from
+an IT perspective the sit and the UAT will be just on those 82 apps.
+Pre27:27
+Yeah.
+Mac27:29
+So the challenge then for you I see is. And this is what we're discovering
+like we did pre with the supply chain team or gen is you know, Sriram has,
+you know, from an IT perspective he's saying okay, IT supply chain is. Is
+having let's say 10 build back and five move as is. Okay. That's. That will
+be listed here as 15 apps that it supply chain promote and that team will
+go in and update or, or pierce with. But Sriram has only a subset of those
+and potentially some new ones that he's going to touch as part of the
+supply chain process. So yeah, how do we track those?
+Brie28:14
+We can use the function column to just manage it. So like all of your
+dashboards that we've been talking about will be driven off of like it
+because it will have the full 2, 200 whatever applications.
+Mac28:27
+Okay.
+Brie28:27
+And then the functions that are test are testing UAT for BRB will those
+will be tagged to their function and we'll just have to like filter those
+out.
+Mac28:40
+Okay, so what you're saying is here, if I interpret this, Sriram is
+touching that Mentor Graphics, which is a build back app in engineering
+that he's going to be touching that as part of his UAT process.
+Pre29:00
+Yeah. So the ones that are clearly like this, right. So that clearly have a
+function alignment. This is you know how it is in the, even in the app
+inventory. Right. For him to go in and to provide, you know, as a UAT
+coordinator he will update the status on UAT scenarios, testers, you know
+the. And whoever from it. When you add in the SIT ones will do those.
+Right. Where it becomes different as we know, right. Is when you look at
+the BRB and I think this is what I heard you say bro. Like being before if
+you look at erp, right? Where is it here? If we split this and so it only
+we split this into separate rows. 11 this one that says keep the IT here
+and then also have one for finance, one for isc.
+Mac29:48
+Isc yeah, one for yeah, hr.
+Pre29:51
+Then then they do it. Then they can update those. Right. We can carry over
+any of the IT specific. So I think that updating multiple and then Whatever
+dashboards you have. We would use the function filter.
+Mac30:03
+Okay. Okay.
+Pre30:04
+We could just add some sort of flag so that we don't end up. You know what
+I mean?
+Mac30:09
+That makes sense then. Okay, so not 296. You could end up with 1000 rows
+but we'll only filter for the 296 its.
+Pre30:19
+Probably want to do. So we keep an actual app count Is that. I actually
+think it'd be. You can do it either we probably. You can add a flag if you
+want but you can dedupe it when you pull it from SQL on like system name or
+something.
+Brie30:33
+Hey I guess like the maintenance is like. So I guess like in Smartsheets or
+wherever is there. Are we intending for this tracker to also track when SIT
+is complete?
+Mac30:54
+Yes, because at an app level who will provide that? That would be. So
+that's the other piece is because Smartsheets doesn't have it at an app
+level. They have periods for some of the apps. Yes but we don't necessarily
+have like supply chain is not tracking it as you know. I have 37 apps.
+Maybe they are. We have to go back and look. If they are updating it in
+Smartsheets in their work plans then it would be easy for pull to
+automatically update it against this ID name. Our ID and name. So all that
+82 applications in scope for sit UAT those 8080 plus 82 whatever it lands.
+It would be preferable if we can do an update or a sync from smartsheet
+work plans directly in here for sit. UAT dates for those.
+Pre31:54
+Can we just look at what data?
+Jen31:56
+Yeah, let me show you.
+Mac31:57
+Yeah. So let's take a look at smartsheets.
+Pre32:00
+And.
+Jen32:04
+So this is the heat map in smartsheet and then I can show you the
+underlying data as well.
+Mac32:09
+Okay, so why don't we go. What's on the right is. So you've got. So this is
+definitely.
+Jen32:20
+Yeah, so we have everything.
+Mac32:22
+So again I think this needs to be kept up to date in the work plan.
+Jen32:26
+This is from the work plans.
+Mac32:28
+Okay.
+Jen32:29
+So the underlying work plans.
+Pre32:30
+So in theory this is also being fed into the capital edge work plan.
+Mac32:34
+Correct. Correct. Only the milestones though which I think are situat
+milestone because there's other piece of this where it says build test and
+we have to go back to the work plan and see if we have specifically SIT
+testing. UAT testing.
+Pre32:55
+You do for some. I don't think we do for.
+Mac32:56
+Not for all. But if we do pull this in, given that there's a Sync, we can
+pull this sit start, sit end from the work plans, from this sync page and
+move it into. Into that tracker up there.
+Pre33:13
+Yeah. I mean, it can be either. Right. Like if you've got the data in
+smartsheets and you want, you know, in for whatever's cleaner. Right. So
+like if the. From an IT perspective, the IT team is up. Is keeping
+smartsheets up to date and therefore. And then we sync that. We sync with
+smartsheets into Capital Edge, be it the work plan, IT work plan sync or in
+the tracker. Right. It doesn't really matter. Right. And then for the
+functional BRB updates where you kind of become creating separate rows and
+do all that, we don't need to sync it in two places. You can only sync it
+in one and you can do the same thing.
+Mac33:54
+Right.
+
+--000000000000438bfc0636db97ed
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div><br></div><div><br><div class=3D"gmail_quote gmail_quote_container"><d=
+iv dir=3D"ltr" class=3D"gmail_attr">---------- Forwarded message ---------<=
+br>From: <strong class=3D"gmail_sendername" dir=3D"auto">Wave AI Note Taker=
+</strong> <span dir=3D"auto">&lt;<a href=3D"mailto:summary@email.wave.co">s=
+ummary@email.wave.co</a>&gt;</span><br>Date: Thu, Jun 5, 2025 at 12:15=E2=
+=80=AFPM<br>Subject: Integrating Smartsheets And Capital Edge Tracking<br>T=
+o:  &lt;<a href=3D"mailto:mac@macconnolly.com">mac@macconnolly.com</a>&gt;<=
+br></div><br><br><div style=3D"font-family:-apple-system,BlinkMacSystemFont=
+,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;margin:0;padding:0;=
+background-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0=
+ auto;background-color:#ffffff"><div style=3D"background-image:url(https://=
+upcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgrou=
+nd-position:center;width:604px;height:297px;margin:0 auto"><table cellpaddi=
+ng=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%" height=3D"100%"><tbo=
+dy><tr><td valign=3D"center" align=3D"center" style=3D"padding:0"><img src=
+=3D"https://upcdn.io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo"=
+ style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"><h1 sty=
+le=3D"color:white;font-size:32px;margin:0;padding:0 0 10px;text-align:cente=
+r">Integrating Smartsheets And Capital Edge Tracking</h1></td></tr></tbody>=
+</table></div><div style=3D"max-width:600px;margin:0 auto;padding:32px 20px=
+"><div style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://ap=
+p.wave.co/sessions/DCECD41A-BF89-4F8F-BC2D-2E5D877E31FB?lastLoginParam=3Dgo=
+ogle" style=3D"background-color:#e6f0ff;color:#0066cc;padding:12px 24px;bor=
+der-radius:8px;text-decoration:none;font-weight:500;font-size:16px;display:=
+inline-block;margin-top:8px;margin-bottom:8px" target=3D"_blank">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;margin-bottom:28px"><h3 style=3D"=
+color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-bottom:20p=
+x;display:flex"><span style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</=
+h3><div style=3D"color:#475569;font-size:16px;line-height:1.6"><div><h1 sty=
+le=3D"font-weight:500;padding-top:20px;font-size:2.5rem">Meeting Summary</h=
+1><p><strong style=3D"font-weight:bold">Date:</strong> June 5, 2025<br><str=
+ong style=3D"font-weight:bold">Participants:</strong> Jen, Pierce, Rakesh, =
+Mac, Brie, and others<br><strong style=3D"font-weight:bold">Context:</stron=
+g> Discussion regarding the integration and tracking of SIT (System Integra=
+tion Testing) and UAT (User Acceptance Testing) activities using Smartsheet=
+s and Capital Edge systems for an IT and business function transformation p=
+roject. The aim is to improve the process of monitoring, updating, and repo=
+rting on application testing and readiness for go-live.</p>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Main Topics D=
+iscussed</h2><h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75re=
+m">1. Integration &amp; Data Flow Between Smartsheets and Capital Edge</h3>=
+<ul>
+<li><strong style=3D"font-weight:bold">Background:</strong><br>Capital Edge=
+ maintains a system inventory with data imported from Smartsheets. There is=
+ a sync mechanism, but the current structure and data mappings are under re=
+view to maximize efficiency.</li>
+<li><strong style=3D"font-weight:bold">Discussion Points:</strong><ul>
+<li>Smartsheets organizes work plans by project, not application, which com=
+plicates one-to-one mapping with Capital Edge=E2=80=99s application invento=
+ry.</li>
+<li>There is a partial mapping via project IDs, but real alignment for trac=
+king requires matching at the application level (Athens App IDs, etc.).</li=
+>
+<li>Capital Edge tracker needs to include more columns from Smartsheets, es=
+pecially for SIT and UAT dates, testers, and other attributes to facilitate=
+ accurate status reporting.</li>
+<li>There is a desire to avoid double entry of data by syncing as much as p=
+ossible between Smartsheets and Capital Edge.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">2. UAT Coo=
+rdination and Status Tracking</h3><ul>
+<li><strong style=3D"font-weight:bold">UAT Calendar and Roles:</strong><ul>
+<li>A consolidated SIT and UAT calendar exists, spanning key IT work stream=
+s: ERP, HR, Finance, Commercial, ISC, etc.</li>
+<li>Lists of UAT coordinators, their roles, and IT counterparts are availab=
+le, though gaps remain (specifically for test leads).</li>
+<li>UAT coordinators are responsible for identifying testers, defining test=
+ scenarios, and securing sign-off from functional leads and sponsors.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Dashboard Expectations:</strong><ul>
+<li>Dashboards should track:<ul>
+<li>Testers identified (status: complete/on-track/at-risk)</li>
+<li>Scenarios defined and signed-off</li>
+<li>Testing completion statuses by application and function.</li>
+</ul>
+</li>
+<li>Additional fields discussed:<ul>
+<li>Test scripts developed and uploaded to tools (like ALM/Jira)</li>
+<li>Exit and entry criteria for milestones</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">3. Dashboa=
+rd Design and Reporting</h3><ul>
+<li><strong style=3D"font-weight:bold">Current State:</strong><ul>
+<li>Existing dashboards in Capital Edge (BRB dashboard) partially reflect S=
+IT/UAT progress but lack certain automation and synchronization.</li>
+<li>Dashboards to be enhanced to display:<ul>
+<li>Number of apps/systems with completed SIT/UAT, delayed starts, at-risk =
+statuses, and overall completion trajectory.</li>
+<li>Time series view for planned vs. actual SIT/UAT and go-live events.</li=
+>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Automation/Synchronization:</strong>=
+<ul>
+<li>Where applicable, data from Smartsheets should auto-populate Capital Ed=
+ge dashboards to avoid duplication.</li>
+<li>Some data (especially functional/BRB-driven) may require direct entry i=
+n Capital Edge.</li>
+<li>Plan to build custom dashboards in Power BI using SQL queries connectin=
+g to Capital Edge, leveraging existing access and back-end capabilities.</l=
+i>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">4. Structu=
+re and Ownership of Data Updates</h3><ul>
+<li><strong style=3D"font-weight:bold">Column Additions:</strong><ul>
+<li>Agreed to add columns for SIT start/end, UAT start/end, service owners,=
+ and other related fields into the Capital Edge system inventory.</li>
+<li>Mac will send a list of required columns.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Responsibility for Updates:</strong>=
+<ul>
+<li>IT teams will update SIT/UAT milestones for the applications and projec=
+ts they own.</li>
+<li>Functions are expected to update BRB dashboard/statuses for UAT readine=
+ss.</li>
+<li>Some effort is required to keep both Smartsheets and Capital Edge in sy=
+nc until a robust mapping is established.</li>
+<li>Data for ~294 applications in the inventory must be current; applies pa=
+rticularly to ~82 apps in SIT/UAT/go-live scope.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Application/Function Alignment:</str=
+ong><ul>
+<li>Some apps may be touched by multiple functions (e.g., ERP by both Suppl=
+y Chain and Finance), so multiple rows/views or flags may be needed.</li>
+<li>The aim is to maintain a clean master inventory but allow functional sp=
+lits for reporting.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">5. Reporti=
+ng and Visualization (Power BI &amp; Capital Edge)</h3><ul>
+<li><strong style=3D"font-weight:bold">Immediate Needs:</strong><ul>
+<li>Urgent requirement to deliver prototype/working dashboards for the meet=
+ing with Jeff on June 6, 2025.</li>
+<li>Mockups or initial Power BI dashboards will be used for immediate manag=
+ement review, followed by more permanent dashboards in Capital Edge.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Longer-Term Approach:</strong><ul>
+<li>Plan to engage the Capital Edge team to build robust, client-facing das=
+hboards.</li>
+<li>Data model to be established so Power BI dashboards can be developed vi=
+a direct SQL connections for flexibility and rapid iteration.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">6. Data Sy=
+nc Mechanisms and Technical Notes</h3><ul>
+<li><strong style=3D"font-weight:bold">Import/Export Approach:</strong><ul>
+<li>One-time data loads with all necessary columns followed by ongoing sync=
+hronization to keep Smartsheets and Capital Edge aligned.</li>
+<li>WBS IDs, App IDs, and other unique keys are critical for mapping datase=
+ts for syncing statuses and milestones.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Technical Ownership:</strong><ul>
+<li>Mac and IT team will handle initial build in Power BI.</li>
+<li>Brie will coordinate with the Capital Edge team (specifically Brian) fo=
+r backend sync and dashboard development.</li>
+<li>The process includes matching and updating based on unique IDs=E2=80=94=
+status fields especially.</li>
+<li>Reporting needs (initial dashboard mockups, burn down/go-live views, et=
+c.) will be shared with the Capital Edge technical team for implementation.=
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Action Items<=
+/h2><ol>
+<li><strong style=3D"font-weight:bold">Column Additions</strong><ul>
+<li>Mac to send the list of additional columns required in the Capital Edge=
+ inventory tracker.</li>
+<li>IT/functional teams to specify any extra fields needed for their specif=
+ic reporting.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Data Synchronization</strong><ul>
+<li>Prepare and execute a one-time upload of the full app inventory with al=
+l attributes and dates from Smartsheets/Capital Edge.</li>
+<li>Verify mapping of App IDs, Project IDs, and WBS IDs across systems.</li=
+>
+<li>Explore/implement ongoing sync from Smartsheets to Capital Edge for SIT=
+/UAT milestones and status.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Dashboard Preparation</strong><ul>
+<li>Prepare mockup or working dashboard in Power BI for the June 6 meeting =
+with Jeff, covering SIT/UAT progress and at-risk/delayed items.</li>
+<li>Verify underlying numbers in the dashboard before sharing with Jeff.</l=
+i>
+<li>Begin work on more durable dashboards in Capital Edge, in parallel with=
+ temporary Power BI solutions.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Technical Coordination</strong><ul>
+<li>Brie to set up a call with Brian from Capital Edge to discuss data sync=
+ requirements and dashboard/report development.</li>
+<li>Plan for Power BI SQL connectivity and dashboard creation, as needed.</=
+li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Reporting Alignment</strong><ul>
+<li>Ensure that the reporting approach (Power BI, Capital Edge) meets clien=
+t needs and supports both IT and functional status tracking.</li>
+<li>Evaluate the feasibility of full automation for data flows and reportin=
+g to reduce manual updates.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Communication and Meetings</strong><=
+ul>
+<li>Schedule and conduct the call with Pierce regarding UAT rollout and pro=
+gress.</li>
+<li>Prepare for the meeting with Jeff on June 6 with updated dashboards and=
+ reporting narratives.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Follow-up Poi=
+nts</h2><ul>
+<li><p><strong style=3D"font-weight:bold">Confirm Mapping:</strong><br>Need=
+ to verify if all required fields (App Name, IDs, status attributes) are pr=
+esent and mapped in both Smartsheets and Capital Edge before bulk data impo=
+rt.</p>
+</li>
+<li><p><strong style=3D"font-weight:bold">Dashboard Feedback:</strong><br>A=
+fter the June 6 meeting with Jeff, gather feedback on dashboard features/me=
+trics and iterate accordingly.</p>
+</li>
+<li><p><strong style=3D"font-weight:bold">Future Syncs:</strong><br>Confirm=
+ with Brian (Capital Edge) how additional fields/rows will be handled in su=
+bsequent syncs and whether automation can be enhanced.</p>
+</li>
+<li><p><strong style=3D"font-weight:bold">Clarify Role Assignments:</strong=
+><br>Finalize appointment of UAT test leads and ensure gaps in coordinator/=
+tester assignments are closed.</p>
+</li>
+<li><p><strong style=3D"font-weight:bold">Reporting Model:</strong><br>Deci=
+de whether reporting (especially function splits per app) will be done per =
+row duplication in tracker or via flag/filter approaches.</p>
+</li>
+<li><p><strong style=3D"font-weight:bold">Handover to Capital Edge:</strong=
+><br>Evaluate readiness for full transition of dashboards from Power BI to =
+native Capital Edge reporting once underlying data structure stabilizes.</p=
+>
+</li>
+</ul>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Key Dates &am=
+p; Figures</h2><ul>
+<li><strong style=3D"font-weight:bold">June 6, 2025:</strong><br>Meeting wi=
+th Jeff to present updated dashboards and project status.</li>
+<li><strong style=3D"font-weight:bold">~294 Applications:</strong><br>Total=
+ in the system inventory; current SIT/UAT focus on ~82 of these.</li>
+<li><strong style=3D"font-weight:bold">Columns/Attributes to Add:</strong><=
+br>SIT Start/End, UAT Start/End, Service Owners, Testers Identified, Scenar=
+ios Defined, Testing Complete, Test Scripts Developed, Entry/Exit Criteria,=
+ etc.</li>
+</ul>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Summary</h2><=
+p>This meeting was focused on aligning the IT and business functions on how=
+ best to leverage Smartsheets and Capital Edge for unified tracking, updati=
+ng, and reporting of SIT/UAT readiness and go-live activities. Key challeng=
+es remain in mapping data sources, reducing duplication, and ensuring that =
+the right stakeholders provide timely updates. There is agreement to move q=
+uickly on dashboard prototypes for management oversight, while investing in=
+ more robust, maintainable solutions in the client=E2=80=99s primary system=
+s moving forward.</p>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex"><span =
+style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription</h3><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-=
+bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">=
+Mac</span><span style=3D"color:#64748b;font-size:14px">0:10</span></div><di=
+v style=3D"color:#475569;font-size:16px;line-height:1.6">Between Capital Ed=
+ge and. Sorry, sorry. In smartsheets. And there&#39;s a sync up between sma=
+rtsheets and Capital Edge. I know there&#39;s a system inventory in Capital=
+ Edge that is maintained with data imported from smartsheets. So I&#39;m wo=
+ndering if there&#39;s an opportunity for us to just build back on.</div></=
+div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex=
+;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-rig=
+ht:8px">Jen</span><span style=3D"color:#64748b;font-size:14px">0:37</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Or can you=
+. I just wanted to hear.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b=
+82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3=
+b82f6;font-weight:600;margin-right:8px">Mac</span><span style=3D"color:#647=
+48b;font-size:14px">0:41</span></div><div style=3D"color:#475569;font-size:=
+16px;line-height:1.6">Ah, okay.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px so=
+lid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"c=
+olor:#3b82f6;font-weight:600;margin-right:8px">Jen</span><span style=3D"col=
+or:#64748b;font-size:14px">0:42</span></div><div style=3D"color:#475569;fon=
+t-size:16px;line-height:1.6">So it doesn&#39;t echo.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</s=
+pan><span style=3D"color:#64748b;font-size:14px">0:42</span></div><div styl=
+e=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, Sorry to bui=
+ld back on. Give me a second. I&#39;m just going to change my headset here.=
+ Can you hear us?</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><=
+div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;f=
+ont-weight:600;margin-right:8px">Jen</span><span style=3D"color:#64748b;fon=
+t-size:14px">1:06</span></div><div style=3D"color:#475569;font-size:16px;li=
+ne-height:1.6">Very good.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3=
+b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#=
+3b82f6;font-weight:600;margin-right:8px">Brie</span><span style=3D"color:#6=
+4748b;font-size:14px">1:07</span></div><div style=3D"color:#475569;font-siz=
+e:16px;line-height:1.6">We&#39;re talking about setting up a call, Jen, wit=
+h Pierce on kind of like the rollout of UAT and things like that. And so pa=
+rt of it is like for the coordinators, which we have a view on. And then wh=
+at Rakesh was pulling up is like illustrative dashboards to sort of monitor=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"dis=
+play:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;m=
+argin-right:8px">Pre</span><span style=3D"color:#64748b;font-size:14px">1:2=
+3</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Y=
+eah.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"=
+display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:60=
+0;margin-right:8px">Brie</span><span style=3D"color:#64748b;font-size:14px"=
+>1:24</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">UAT progress.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><d=
+iv style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fo=
+nt-weight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font=
+-size:14px">1:26</span></div><div style=3D"color:#475569;font-size:16px;lin=
+e-height:1.6">So a couple of things, Jen. On the call for Jeff tomorrow, we=
+ wanted to share a few things. One, we&#39;ve got a fairly consolidated vie=
+w of the UAT calendar SIT and UAT calendar across the key IT work streams.<=
+/div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#=
+f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displ=
+ay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Pre</span><span style=3D"color:#64748b;font-size:14px">1:48<=
+/span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Oka=
+y.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-colo=
+r:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"di=
+splay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">1:=
+49</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">=
+Erp, hr, finance, commercial, and I think one other isc. So we&#39;ll provi=
+de a consolidated view of that that will be sort of memorialized and that&#=
+39;s what&#39;s published rather secondarily. We have a list of all of the =
+names and the roles. So who are the UAT coordinators? Who are the points of=
+ contact that the functions gave us? Similarly, we have an IT list of IT na=
+mes and roles. What we do not, and there are some gaps, what we do not have=
+ is, you know, from an IT perspective or from a business perspective, test =
+leads. We don&#39;t necessarily have test leads against, you know, we&#39;v=
+e got coordinators, point of contacts for sub processes. We don&#39;t neces=
+sarily have test lead names. And maybe that&#39;s something that the UAT co=
+ordinators can define. Yeah. The third part is the dashboard he was asking =
+for.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"=
+display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:60=
+0;margin-right:8px">Jen</span><span style=3D"color:#64748b;font-size:14px">=
+2:48</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">Well, the test cases too, I think, like the number of test cases defined,=
+ run, etc.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div sty=
+le=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-wei=
+ght:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:=
+14px">2:57</span></div><div style=3D"color:#475569;font-size:16px;line-heig=
+ht:1.6">Okay, right. But that&#39;s part of the scenario planning we should=
+ do. So that&#39;s going to come up in the dashboard.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jen</s=
+pan><span style=3D"color:#64748b;font-size:14px">3:02</span></div><div styl=
+e=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.</div></div><div st=
+yle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radi=
+us:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bot=
+tom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac=
+</span><span style=3D"color:#64748b;font-size:14px">3:06</span></div><div s=
+tyle=3D"color:#475569;font-size:16px;line-height:1.6">Agree.</div></div><di=
+v style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-=
+radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin=
+-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px"=
+>Pre</span><span style=3D"color:#64748b;font-size:14px">3:06</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. I think the=
+ intent is for the UAT coordinators to be the one to be responsible for ide=
+ntifying the, like the leaders for uat.</div></div><div style=3D"margin-bot=
+tom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-lef=
+t:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span st=
+yle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brie</span><span sty=
+le=3D"color:#64748b;font-size:14px">3:18</span></div><div style=3D"color:#4=
+75569;font-size:16px;line-height:1.6">We. So I should say we have it as a s=
+tatus. Right. So the UAE coordinator will go in and say, like testers ident=
+ified, like complete, on track, at risk. Right, Right. Where do we have sce=
+narios defined and signed off.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px sol=
+id #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"co=
+lor:#3b82f6;font-weight:600;margin-right:8px">Pre</span><span style=3D"colo=
+r:#64748b;font-size:14px">3:32</span></div><div style=3D"color:#475569;font=
+-size:16px;line-height:1.6">Yeah.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D=
+"color:#3b82f6;font-weight:600;margin-right:8px">Brie</span><span style=3D"=
+color:#64748b;font-size:14px">3:32</span></div><div style=3D"color:#475569;=
+font-size:16px;line-height:1.6">And then testing complete.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-b=
+ottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">M=
+ac</span><span style=3D"color:#64748b;font-size:14px">3:34</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Where do we have th=
+at?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-col=
+or:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"d=
+isplay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Brie</span><span style=3D"color:#64748b;font-size:14px">=
+3:36</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">So that&#39;s in that BRB dashboard that we were talking about.</div></di=
+v><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bo=
+rder-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;m=
+argin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right=
+:8px">Pre</span><span style=3D"color:#64748b;font-size:14px">3:40</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Becaus=
+e Jeff&#39;s keen on having the uat. He&#39;s got his head around the fact =
+that UAT may not. The scope of UAT testing may be very light in certain cas=
+es. His view was he just wants. This is why we have it in the tracker. So t=
+he UAT coordinator should be responsible for aligning and driving what is, =
+you know, what is the scope of UAT for that function. If there is scope, yo=
+u know, based on that, who are the testers? And then getting the sign off f=
+rom the functional lead and the, you know, the functional sponsor on those =
+scenarios and scope. Right.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color=
+:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span style=3D"color:#=
+64748b;font-size:14px">4:17</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">So, okay, so action item for us. We will go look a=
+t the BRB tracker that is there in Capital Edge to get that, because that w=
+ould be driven by UAT coordinators. And do we have any dashboarding on that=
+? Do we have any power BI or anything that&#39;s being run on that.</div></=
+div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex=
+;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-rig=
+ht:8px">Pre</span><span style=3D"color:#64748b;font-size:14px">4:38</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">And stuff =
+like that.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div sty=
+le=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-wei=
+ght:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:=
+14px">4:40</span></div><div style=3D"color:#475569;font-size:16px;line-heig=
+ht:1.6">So on this one.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b8=
+2f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b=
+82f6;font-weight:600;margin-right:8px">Brie</span><span style=3D"color:#647=
+48b;font-size:14px">4:43</span></div><div style=3D"color:#475569;font-size:=
+16px;line-height:1.6">Sorry, I want to be clear, right? We need to first pu=
+t into the BRB dashboard the scope of systems and who is testing which func=
+tions are testing those systems.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px s=
+olid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"=
+color:#3b82f6;font-weight:600;margin-right:8px">Pre</span><span style=3D"co=
+lor:#64748b;font-size:14px">4:59</span></div><div style=3D"color:#475569;fo=
+nt-size:16px;line-height:1.6">Yeah.</div></div><div style=3D"margin-bottom:=
+16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4p=
+x solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span style=
+=3D"color:#64748b;font-size:14px">5:01</span></div><div style=3D"color:#475=
+569;font-size:16px;line-height:1.6">Yes, yes, yes. So go ahead.</div></div>=
+<div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bord=
+er-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;mar=
+gin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8=
+px">Brie</span><span style=3D"color:#64748b;font-size:14px">5:05</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">Separate from=
+ that. Right? What we were talking about here, what we were talking about b=
+efore Rakesh, around, what&#39;s in the capitalist work plan? Right? Like s=
+omeone went, so this is what&#39;s in the work plan. I think it&#39;s a cop=
+y of what&#39;s in smartsheets.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px so=
+lid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"c=
+olor:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span style=3D"col=
+or:#64748b;font-size:14px">5:25</span></div><div style=3D"color:#475569;fon=
+t-size:16px;line-height:1.6">Which one is this?</div></div><div style=3D"ma=
+rgin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bo=
+rder-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brie</span><=
+span style=3D"color:#64748b;font-size:14px">5:27</span></div><div style=3D"=
+color:#475569;font-size:16px;line-height:1.6">This is in the work plan.</di=
+v></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8f=
+afc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:=
+flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin=
+-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">5:29</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.<=
+/div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#=
+f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displ=
+ay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Brie</span><span style=3D"color:#64748b;font-size:14px">5:31=
+</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So=
+ I think this is a copy of what&#39;s in smartsheets and I think it&#39;s l=
+ike, based on like the project, not specifically applications. This is in t=
+he work plan.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-=
+weight:600;margin-right:8px">Pre</span><span style=3D"color:#64748b;font-si=
+ze:14px">5:41</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><d=
+iv style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fo=
+nt-weight:600;margin-right:8px">Brie</span><span style=3D"color:#64748b;fon=
+t-size:14px">5:42</span></div><div style=3D"color:#475569;font-size:16px;li=
+ne-height:1.6">And so each of these like, does have milestones around. This=
+ one doesn&#39;t. Each of these has milestones around testing. This one&#39=
+;s more onboarding, so probably doesn&#39;t. So there is like a way to kind=
+ of tap. We can run it, run a process to tag milestones in this plan and th=
+en build the dashboard that you were like sharing can. Like, that&#39;s imp=
+ossible.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14=
+px">6:12</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">It is. Now this is at a work plan level. So if you go to the BRV modu=
+le.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-col=
+or:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"d=
+isplay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Brie</span><span style=3D"color:#64748b;font-size:14px">=
+6:18</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14=
+px">6:19</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">And look at the in. Yeah. So in it you should have a view of, if you =
+click it, is it the systems? So you have a view of the 290+ apps here.</div=
+></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fa=
+fc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:f=
+lex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-=
+right:8px">Pre</span><span style=3D"color:#64748b;font-size:14px">6:34</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Here.</=
+div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f=
+8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displa=
+y:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;marg=
+in-right:8px">Brie</span><span style=3D"color:#64748b;font-size:14px">6:35<=
+/span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yea=
+h.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-colo=
+r:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"di=
+splay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">6:=
+36</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">=
+Now we may need to add, we may need to add a few more columns here, but we =
+can get the service owners, for example, added in here. The UAT POCs are th=
+ere but we can add in dates here for sit dates that we&#39;ve got from the =
+functions or the work streams, the UAT dates and you know, our dashboard. C=
+an we add those rows in here to say, you know, SIT start, UAD start, you kn=
+ow, delayed.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div s=
+tyle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-w=
+eight:600;margin-right:8px">Pre</span><span style=3D"color:#64748b;font-siz=
+e:14px">7:03</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">Okay, I think that would be good.</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border=
+-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><spa=
+n style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brie</span><span=
+ style=3D"color:#64748b;font-size:14px">7:05</span></div><div style=3D"colo=
+r:#475569;font-size:16px;line-height:1.6">That&#39;s fine. Yeah, that&#39;s=
+ totally fine. So our intention is for the functions to come in and like so=
+ for Blackline Finance would come in and they would set, they would say whe=
+ther the testers have been identified, the scenarios have been defined and =
+signed off and then whether the testing is complete and what the team, the =
+Capital Edge team is working on right now. Let me see if I can open this. W=
+e don&#39;t, we still, most of the apps are still pointing to it by the way=
+. So we do need that like function mapping to like identify which functions=
+ are like responsible for testing which applications. But once we have that=
+ built out, it gets pulled into this report and what Capital Edge has on th=
+eir bucket for this week is on the systems row where it says cutover. We&#3=
+9;re going to split it into three rows similar to how process is split betw=
+een hiring and knowledge transfer. Systems will be split between like the t=
+hree things that we talked about. Testers identified, scenarios defined and=
+ signed off and testing complete.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D=
+"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span style=3D"c=
+olor:#64748b;font-size:14px">8:30</span></div><div style=3D"color:#475569;f=
+ont-size:16px;line-height:1.6">Okay. Testers identify scenarios defined and=
+ signed off, testing complete. Now, now for may be a little bit more that w=
+e need. For example, test scripts have been developed. There&#39;s more tac=
+tical stuff around. Okay. The scenarios have been sorted out. Have the test=
+ scripts been generated? Have they been loaded in ALM or jira? All that oth=
+er details and then the milestone, the end my exit entry criteria defined, =
+all the other IT related stuff that is going to result in that milestone th=
+at says testing completed and you&#39;re only doing uat correct?</div></div=
+><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bor=
+der-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;ma=
+rgin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:=
+8px">Pre</span><span style=3D"color:#64748b;font-size:14px">9:14</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yes.</div></d=
+iv><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;b=
+order-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;=
+margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-righ=
+t:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">9:14</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.</div>=
+</div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8faf=
+c;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fl=
+ex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-r=
+ight:8px">Pre</span><span style=3D"color:#64748b;font-size:14px">9:15</span=
+></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yes, yes=
+. So what was before you go off of this though on that one? I guess what we=
+ would. What we&#39;re rolling into for the functions and crazy me honest h=
+ere the IT will, they will, it&#39;ll. It will be the UAT test scenarios, t=
+he UAT testing complete cut over and that&#39;s what the, the business or t=
+he functional or UAT coordinators would need to update those statuses, thos=
+e columns or whatever status is in the tracker.</div></div><div style=3D"ma=
+rgin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bo=
+rder-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><s=
+pan style=3D"color:#64748b;font-size:14px">9:42</span></div><div style=3D"c=
+olor:#475569;font-size:16px;line-height:1.6">Okay.</div></div><div style=3D=
+"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px=
+;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8p=
+x"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pre</span=
+><span style=3D"color:#64748b;font-size:14px">9:43</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">I think that now if you g=
+o to the tracker, sorry the systems piece in the tracker now I think if the=
+re are adding additional columns here Rakesh, I think it&#39;s fine. And th=
+en it would be the it, whoever the appropriate IT owner is to update those.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"disp=
+lay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;ma=
+rgin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">10:0=
+1</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">C=
+orrect.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Pre</span><span style=3D"color:#64748b;font-size:14=
+px">10:01</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">And then you can run Whatever kind of. We can do. Whatever kind of w=
+hat? Whatever you need for the dashboard, then you can do that. Right.</div=
+></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fa=
+fc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:f=
+lex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-=
+right:8px">Jen</span><span style=3D"color:#64748b;font-size:14px">10:09</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Are th=
+ey still expected to update the smartsheets with their work plans and the d=
+ates and then. So they&#39;re expected to update some columns in the smarts=
+heet with their work plans and then some of the columns directly in this tr=
+acker.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Pre</span><span style=3D"color:#64748b;font-size:14=
+px">10:25</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">So here&#39;s a question for you. So if they are what they&#39;re up=
+dating and smart, and this probably may have been more pre. You were going =
+in the beginning. Was that. So what&#39;s coming. What our understanding is=
+ the work plan tab is getting updated based on what the input is in smartsh=
+eets. So if that data is coming through that way and it&#39;s just a matter=
+ of combining, we don&#39;t need to duplicate it. Right.</div></div><div st=
+yle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radi=
+us:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bot=
+tom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bri=
+e</span><span style=3D"color:#64748b;font-size:14px">10:51</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">I think the problem=
+ is that the way smartsheets is organized right now is not by application.<=
+/div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#=
+f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displ=
+ay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">10:55=
+</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Co=
+rrect, correct. That&#39;s the problem.</div></div><div style=3D"margin-bot=
+tom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-lef=
+t:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span st=
+yle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brie</span><span sty=
+le=3D"color:#64748b;font-size:14px">11:00</span></div><div style=3D"color:#=
+475569;font-size:16px;line-height:1.6">They&#39;re going to have to update =
+some things no matter what.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color=
+:#3b82f6;font-weight:600;margin-right:8px">Pre</span><span style=3D"color:#=
+64748b;font-size:14px">11:02</span></div><div style=3D"color:#475569;font-s=
+ize:16px;line-height:1.6">Yeah. Unless you&#39;ve got a mapping. They are. =
+Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D=
+"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:6=
+00;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px"=
+>11:06</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">So I think.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><di=
+v style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fon=
+t-weight:600;margin-right:8px">Pre</span><span style=3D"color:#64748b;font-=
+size:14px">11:08</span></div><div style=3D"color:#475569;font-size:16px;lin=
+e-height:1.6">But you might actually have a mapping though, because see how=
+ you&#39;ve got. You might want to check this. Right. Because see what we h=
+ave in the work plan coming from smartsheets. I think the project ID is com=
+ing in and so. And I also think you have the project Project ID and the app=
+ inventory were cached. So if that mapping is right, then you could still d=
+o it, right?</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div s=
+tyle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-w=
+eight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-siz=
+e:14px">11:33</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Yes. I just don&#39;t know if it&#39;s me, though. So, you know,=
+ like in ERP hr. Yeah, fair enough. Like er. So like erp, there&#39;s an ER=
+P project id and that&#39;s on the logical le. Operationalization of the er=
+p. But you&#39;re gonna have IT touch supply chain finance at the minimum, =
+and so you won&#39;t necessarily have. If I&#39;m following your logic, sup=
+ply chain is going to have to react to that project ID or that app and then=
+ finance will also react to the same project ID and app.</div></div><div st=
+yle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radi=
+us:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bot=
+tom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pre=
+</span><span style=3D"color:#64748b;font-size:14px">12:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#39;s right. Th=
+at&#39;s right. So I&#39;m talking purely for the it. So whoever just said =
+so, we&#39;re going to make it go in and update both smartsheets and then d=
+o the same thing in the capital Edge from an if the IT update. Right. Is th=
+at they&#39;re doing in smartsheets. Right. If it&#39;s the same update. Ri=
+ght. If the data. If it. You know, if it&#39;s mapping, then. Then you can =
+do an automate. We don&#39;t have to ask that person to do it twice. Right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"disp=
+lay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;ma=
+rgin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">12:4=
+4</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">U=
+nderstood.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div sty=
+le=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-wei=
+ght:600;margin-right:8px">Pre</span><span style=3D"color:#64748b;font-size:=
+14px">12:44</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">We have to.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6=
+"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f=
+6;font-weight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;=
+font-size:14px">12:45</span></div><div style=3D"color:#475569;font-size:16p=
+x;line-height:1.6">Unfortunately I don&#39;t.</div></div><div style=3D"marg=
+in-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bord=
+er-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><s=
+pan style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pre</span><spa=
+n style=3D"color:#64748b;font-size:14px">12:48</span></div><div style=3D"co=
+lor:#475569;font-size:16px;line-height:1.6">We do have to have the function=
+ still go into the system tracker, right?</div></div><div style=3D"margin-b=
+ottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-l=
+eft:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brie</span><span s=
+tyle=3D"color:#64748b;font-size:14px">12:52</span></div><div style=3D"color=
+:#475569;font-size:16px;line-height:1.6">Yes. But the functions are familia=
+r with the BRB dashboard.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3=
+b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#=
+3b82f6;font-weight:600;margin-right:8px">Pre</span><span style=3D"color:#64=
+748b;font-size:14px">12:57</span></div><div style=3D"color:#475569;font-siz=
+e:16px;line-height:1.6">That&#39;s right.</div></div><div style=3D"margin-b=
+ottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-l=
+eft:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brie</span><span s=
+tyle=3D"color:#64748b;font-size:14px">12:58</span></div><div style=3D"color=
+:#475569;font-size:16px;line-height:1.6">Like we have, you know, we need to=
+ get them kind of focused in on uat. But yeah, I don&#39;t think that like =
+they&#39;re kind of, you know, having these offline discussions with. In an=
+y case, they understand that they have a role to play. This is sort of kind=
+ of getting them, you know, to provide status on it, which is fine.</div></=
+div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex=
+;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-rig=
+ht:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">13:22</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So what I=
+, what I&#39;m going to need. So what I&#39;m going to need then is. So wha=
+t I&#39;m going to need them pre is on this tracker. So I&#39;m, I&#39;m th=
+e. Unfortunately, we don&#39;t have all 294 apps in the projects in here. T=
+here are a lot of live withouts. Everything else, so build back live withou=
+t tsa. So anything that is truly. Here&#39;s my. The complexity, obviously =
+the critical for le, go Live, brv, that needs to be updated. We will go in =
+and update it. For every 290 app here, 294, what we will need to add is a c=
+ouple of columns around, you know, sit, start, end delayed and all those. S=
+o, you know, because what I would like to do is yes, at some point it eithe=
+r the test leads or at least for sit, you know, the web stream leads or the=
+ UAT coordinator will come in here from an IT perspective. Peers or his des=
+ignate will come in here and update. Okay, SIT has started. SIT is delayed.=
+ SIT is, you know, at risk and we can run those dashboards off of that to w=
+hat Jeff wants to say. Okay, here&#39;s the progress. Here&#39;s sort of, y=
+ou know, there&#39;s. There&#39;s 40 apps that have gone through sit. There=
+ are seven apps that have started UAT. Yeah, I think that view is what I, y=
+ou know. So going back to the dashboard that Mac was sharing a bit earlier,=
+ I think it would be helpful if we build it on top of this. Wherever we can=
+ automate and feed in from smartsheets, we will. But we probably need a cou=
+ple more columns here. A few more columns on sit. Start end, UAT start end.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"disp=
+lay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;ma=
+rgin-right:8px">Brie</span><span style=3D"color:#64748b;font-size:14px">15:=
+16</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">=
+Yeah, we have UAT start end. We can. Adding columns takes prime literally t=
+hree seconds.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-=
+weight:600;margin-right:8px">Pre</span><span style=3D"color:#64748b;font-si=
+ze:14px">15:21</span></div><div style=3D"color:#475569;font-size:16px;line-=
+height:1.6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><=
+div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;f=
+ont-weight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;fon=
+t-size:14px">15:21</span></div><div style=3D"color:#475569;font-size:16px;l=
+ine-height:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f=
+6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82=
+f6;font-weight:600;margin-right:8px">Pre</span><span style=3D"color:#64748b=
+;font-size:14px">15:21</span></div><div style=3D"color:#475569;font-size:16=
+px;line-height:1.6">Okay, yeah, yeah.</div></div><div style=3D"margin-botto=
+m:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:=
+4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span styl=
+e=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span style=
+=3D"color:#64748b;font-size:14px">15:23</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">So then how are doing that?</div></div=
+><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bor=
+der-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;ma=
+rgin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:=
+8px">Pre</span><span style=3D"color:#64748b;font-size:14px">15:25</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Can you add =
+a couple of those other like informative like those columns from the app in=
+ventory pre that are a little bit more like that. What is the app name? Tho=
+se ones that I kind of pulled in into that spreadsheet.</div></div><div sty=
+le=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radiu=
+s:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bott=
+om:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brie=
+</span><span style=3D"color:#64748b;font-size:14px">15:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We did ask them to d=
+o it.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D=
+"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:6=
+00;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px"=
+>15:36</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">So we can, we can give you the list of the other columns. We need it ad=
+ded.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"=
+display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:60=
+0;margin-right:8px">Brie</span><span style=3D"color:#64748b;font-size:14px"=
+>15:43</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div styl=
+e=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weig=
+ht:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:1=
+4px">15:43</span></div><div style=3D"color:#475569;font-size:16px;line-heig=
+ht:1.6">And okay, if it&#39;s just two seconds we can send you those and th=
+en you can help us. Adam?</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3=
+b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#=
+3b82f6;font-weight:600;margin-right:8px">Brie</span><span style=3D"color:#6=
+4748b;font-size:14px">15:48</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">Yeah, I think the question.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</s=
+pan><span style=3D"color:#64748b;font-size:14px">15:50</span></div><div sty=
+le=3D"color:#475569;font-size:16px;line-height:1.6">Okay. And then the ques=
+tion is how quickly can we run. So for tomorrow&#39;s conversation, our tal=
+k track is going to be that we&#39;re going to maintain the system inventor=
+y here or at least the tracker for UAT readiness sit UAT here. We&#39;ll ru=
+n dashboards out of this and the mock up of the dashboard that will be a re=
+presentation of this will be what Mac has. But I do get your point in that =
+there will be two points, for example, in the work plans. They&#39;re going=
+ to update their sit dates, but they&#39;re going to probably come here and=
+ update. Somebody will have to update the sit dates as well. Maybe that&#39=
+;s a one time effort.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f=
+6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82=
+f6;font-weight:600;margin-right:8px">Pre</span><span style=3D"color:#64748b=
+;font-size:14px">16:36</span></div><div style=3D"color:#475569;font-size:16=
+px;line-height:1.6">Yeah, I mean if Pierce&#39;s line of sight into. Yeah, =
+I mean if you forgot if the dates are already like they&#39;re set those co=
+lumns and then upload, adding, you know, doing a bulk like upload, I think =
+that we can do to once the columns are there.</div></div><div style=3D"marg=
+in-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bord=
+er-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><s=
+pan style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jen</span><spa=
+n style=3D"color:#64748b;font-size:14px">16:48</span></div><div style=3D"co=
+lor:#475569;font-size:16px;line-height:1.6">Okay, I could get them that and=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"dis=
+play:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;m=
+argin-right:8px">Pre</span><span style=3D"color:#64748b;font-size:14px">16:=
+50</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">=
+Then if it&#39;s sort of centralized to peers as far as updating the status=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"dis=
+play:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;m=
+argin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">16:=
+53</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">=
+Okay. Okay. So I think that we can approach, I&#39;ll mention the approach =
+tomorrow on the dashboards and we&#39;ll say we&#39;ll leverage this. We&#3=
+9;re going to update this inventory with some columns for sid, UAT service =
+owners and other fields and then we&#39;ll be able to run reporting on this=
+ to reflect that sort of a dashboard. Matt, if you can pull that dashboard,=
+ is there anything you see missing here or you want to add in? Jen? So if y=
+ou go back to he&#39;s sharing the dashboard, there are a couple of dashboa=
+rds that I want to show him tomorrow. The first one being more of an execut=
+ion dashboard. How many SIT UAT completed, how many delayed starts, what is=
+ at risk, what is on track, meaning there&#39;s some sort of a percentage o=
+r a calculation on against the end date and then things that are not starte=
+d. And what you see at the bottom is a stack of sitcount and UAT count. We =
+can flip that. We should flip it. Meaning I will have across the timeline a=
+ time series view of this and saying, okay, in this particular date I&#39;m=
+ expecting to have 50 sits completed and 10 UADs completed. Or in fact we c=
+ould say if there&#39;s, if it&#39;s in progress, we could say, you know, e=
+ither Progress planned or completed? We can choose in here and say okay, yo=
+u know, here&#39;s the. If we say planned, we say okay, on July 1st, we&#39=
+;ve got, you know, 23 sits or 33 sits planned and 23 UATs planned. Does thi=
+s resonate with you?</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6=
+"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f=
+6;font-weight:600;margin-right:8px">Pre</span><span style=3D"color:#64748b;=
+font-size:14px">18:56</span></div><div style=3D"color:#475569;font-size:16p=
+x;line-height:1.6">Yeah, I mean so when we say UAT completed, that&#39;s go=
+ing to be. Because what. In the dashboard, it&#39;ll be. It&#39;s going to =
+be like by, you know, app or by. I guess we&#39;ll end up adding rows for e=
+ach function.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-=
+weight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-si=
+ze:14px">19:08</span></div><div style=3D"color:#475569;font-size:16px;line-=
+height:1.6">Right. And those numbers, those numbers won&#39;t be the same. =
+The, the second row is not going to be the same as the first row. We have t=
+o get some realistic numbers.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px soli=
+d #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"col=
+or:#3b82f6;font-weight:600;margin-right:8px">Jen</span><span style=3D"color=
+:#64748b;font-size:14px">19:17</span></div><div style=3D"color:#475569;font=
+-size:16px;line-height:1.6">Those are the real numbers.</div></div><div sty=
+le=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radiu=
+s:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bott=
+om:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac<=
+/span><span style=3D"color:#64748b;font-size:14px">19:19</span></div><div s=
+tyle=3D"color:#475569;font-size:16px;line-height:1.6">Huh?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-b=
+ottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">J=
+en</span><span style=3D"color:#64748b;font-size:14px">19:20</span></div><di=
+v style=3D"color:#475569;font-size:16px;line-height:1.6">Those are the real=
+ numbers based on their smartsheet plans right now.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pre</s=
+pan><span style=3D"color:#64748b;font-size:14px">19:25</span></div><div sty=
+le=3D"color:#475569;font-size:16px;line-height:1.6">So sick completed thoug=
+h. But is that. So if we just. If we complete 64. Is 64 the number of apps =
+or.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-col=
+or:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"d=
+isplay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Jen</span><span style=3D"color:#64748b;font-size:14px">1=
+9:35</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">The number of like the number of systems that have Systems?</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border=
+-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margi=
+n-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px=
+">Mac</span><span style=3D"color:#64748b;font-size:14px">19:39</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so 82 is.=
+ This is all system. So this is from the inventory view. We&#39;ll. We&#39;=
+ll say there&#39;s 82 systems that are BRV and non BRV starting in June, go=
+ing all the way to October 1st.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px so=
+lid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"c=
+olor:#3b82f6;font-weight:600;margin-right:8px">Pre</span><span style=3D"col=
+or:#64748b;font-size:14px">19:54</span></div><div style=3D"color:#475569;fo=
+nt-size:16px;line-height:1.6">And then, then you would have the data then i=
+n the, in the, in the dashboard it looks like. Because that&#39;s just stat=
+us for each. Right. So if you add this columns.</div></div><div style=3D"ma=
+rgin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bo=
+rder-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><s=
+pan style=3D"color:#64748b;font-size:14px">20:02</span></div><div style=3D"=
+color:#475569;font-size:16px;line-height:1.6">Correct. Can you go back.</di=
+v></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8f=
+afc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:=
+flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin=
+-right:8px">Jen</span><span style=3D"color:#64748b;font-size:14px">20:03</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah,=
+ sorry. Yep, exactly.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f=
+6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82=
+f6;font-weight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b=
+;font-size:14px">20:09</span></div><div style=3D"color:#475569;font-size:16=
+px;line-height:1.6">Can you.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"colo=
+r:#3b82f6;font-weight:600;margin-right:8px">Jen</span><span style=3D"color:=
+#64748b;font-size:14px">20:10</span></div><div style=3D"color:#475569;font-=
+size:16px;line-height:1.6">Yeah.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px s=
+olid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"=
+color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span style=3D"co=
+lor:#64748b;font-size:14px">20:11</span></div><div style=3D"color:#475569;f=
+ont-size:16px;line-height:1.6">So yeah, the intent is we want to build this=
+ and automated on top of the Capital Edge if we can.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pre</s=
+pan><span style=3D"color:#64748b;font-size:14px">20:19</span></div><div sty=
+le=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So there&#39;s tw=
+o ways. I mean there&#39;s, I think the columns. Adding the columns of the =
+data. There is a pretty quick one. So the pre. Was mentioning talking to Br=
+ian developing the custom reports through Capital Edge. There&#39;s a quick=
+. And then depending can be kind of quick way. So you can do custom sort of=
+. We have custom analytics in there. So custom dashboards in Power Bi and e=
+xposing them into. Through the custom analytics app is doable. And then you=
+ just connect and it&#39;s just a SQL query to pull the data. Okay. How pro=
+visionary. How good are you with Power bi?</div></div><div style=3D"margin-=
+bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-=
+left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span=
+ style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jen</span><span s=
+tyle=3D"color:#64748b;font-size:14px">21:00</span></div><div style=3D"color=
+:#475569;font-size:16px;line-height:1.6">I built them on top of smart sheet=
+s before. I&#39;ve built them on top of smart streets before.</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border=
+-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margi=
+n-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px=
+">Mac</span><span style=3D"color:#64748b;font-size:14px">21:09</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">And then.</div>=
+</div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8faf=
+c;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fl=
+ex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-r=
+ight:8px">Brie</span><span style=3D"color:#64748b;font-size:14px">21:09</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Cool.<=
+/div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#=
+f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displ=
+ay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Pre</span><span style=3D"color:#64748b;font-size:14px">21:10=
+</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Ok=
+ay, so then you&#39;re fine. I mean I wouldn&#39;t call myself proficient, =
+but I&#39;ve managed to do a couple.</div></div><div style=3D"margin-bottom=
+:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4=
+px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jen</span><span style=
+=3D"color:#64748b;font-size:14px">21:13</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">But exactly.</div></div><div style=3D"=
+margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;=
+border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px=
+"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pre</span>=
+<span style=3D"color:#64748b;font-size:14px">21:14</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">Because then where I&#39;=
+m going is that I&#39;ve got access to the back end and so I would just wri=
+te the C SQL query to connect to Power bi. Then you can do what you want fr=
+om there.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div styl=
+e=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weig=
+ht:600;margin-right:8px">Jen</span><span style=3D"color:#64748b;font-size:1=
+4px">21:23</span></div><div style=3D"color:#475569;font-size:16px;line-heig=
+ht:1.6">That would be great if you could write the SQL query to connect to =
+Power bi. I can build on top of it.</div></div><div style=3D"margin-bottom:=
+16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4p=
+x solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pre</span><span style=
+=3D"color:#64748b;font-size:14px">21:31</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">Awesome. Okay, so then.</div></div><di=
+v style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-=
+radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin=
+-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px"=
+>Mac</span><span style=3D"color:#64748b;font-size:14px">21:32</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, and then t=
+he second one is. The second one was more of a cutover burn down, go live f=
+or systems as well. I don&#39;t like this. I want the histogram. Yeah, but =
+this is a view of. Yeah, go live. Go live planned. Go live actual. So this =
+would be more of a burn down. Actually this is. Yes. So more like this pre.=
+ This is our JJ example but you know, of. Of actual versus planned.</div></=
+div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex=
+;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-rig=
+ht:8px">Brie</span><span style=3D"color:#64748b;font-size:14px">22:06</span=
+></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">This is =
+a task count or like apps that are cut over apps.</div></div><div style=3D"=
+margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;=
+border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px=
+"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span>=
+<span style=3D"color:#64748b;font-size:14px">22:16</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">So from a systems perspec=
+tive, we&#39;ve got the 20/BRB apps and then you&#39;ve got the other move =
+as is and build back apps that are 50 or 60. So those add up to the 82. So =
+if he&#39;s wanting a view of UAT and cutover views or go lives, this is fr=
+om an inventory systems inventory perspective. Progress on SIT UAT and then=
+ progress on go lives.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82=
+f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b8=
+2f6;font-weight:600;margin-right:8px">Jen</span><span style=3D"color:#64748=
+b;font-size:14px">22:46</span></div><div style=3D"color:#475569;font-size:1=
+6px;line-height:1.6">What&#39;s the level of detail? That example that you =
+shared with the report, I really liked that because it had the related, lik=
+e process items and it looked like it was a count of or a sum of 10 tasks. =
+Is that correct? It looked like there was a KT for F, like a number of task=
+s for KT for Finance or. Yeah, and I think that that&#39;s where it would b=
+e helpful to leverage. How are those like classified? Like, are they tagged=
+ manually as kt, for example.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px soli=
+d #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"col=
+or:#3b82f6;font-weight:600;margin-right:8px">Pre</span><span style=3D"color=
+:#64748b;font-size:14px">23:25</span></div><div style=3D"color:#475569;font=
+-size:16px;line-height:1.6">That&#39;S the process tracker Capital Edge.</d=
+iv></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display=
+:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margi=
+n-right:8px">Jen</span><span style=3D"color:#64748b;font-size:14px">23:29</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Got =
+it.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-col=
+or:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"d=
+isplay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">2=
+3:30</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">So they&#39;re not system tracker.</div></div><div style=3D"margin-bottom=
+:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4=
+px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brie</span><span style=
+=3D"color:#64748b;font-size:14px">23:32</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">Yeah, it&#39;s not tech, it&#39;s syst=
+em, I would say.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><d=
+iv style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fo=
+nt-weight:600;margin-right:8px">Pre</span><span style=3D"color:#64748b;font=
+-size:14px">23:34</span></div><div style=3D"color:#475569;font-size:16px;li=
+ne-height:1.6">Right.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f=
+6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82=
+f6;font-weight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b=
+;font-size:14px">23:34</span></div><div style=3D"color:#475569;font-size:16=
+px;line-height:1.6">Yeah, it&#39;s. It&#39;s process for. Have I hired, has=
+ finance hired the right five people?</div></div><div style=3D"margin-botto=
+m:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:=
+4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span styl=
+e=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jen</span><span style=
+=3D"color:#64748b;font-size:14px">23:40</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">Yeah.</div></div><div style=3D"margin-=
+bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-=
+left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span=
+ style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span s=
+tyle=3D"color:#64748b;font-size:14px">23:41</span></div><div style=3D"color=
+:#475569;font-size:16px;line-height:1.6">Have I done KT for those five peop=
+le?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-col=
+or:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"d=
+isplay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Jen</span><span style=3D"color:#64748b;font-size:14px">2=
+3:43</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">Yeah, but they&#39;re not, they&#39;re not linked to the.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-=
+bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">=
+Mac</span><span style=3D"color:#64748b;font-size:14px">23:46</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">It won&#39;t be t=
+he first system because it&#39;s a. Can I, can I file? Can I. HR will do th=
+e same.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Jen</span><span style=3D"color:#64748b;font-size:14=
+px">23:52</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div s=
+tyle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-w=
+eight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-siz=
+e:14px">23:52</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Can I hire five people and that can manage a payroll? Yeah, it&#=
+39;s not. I&#39;m going to Oracle to manage this. Okay. So.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-=
+bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">=
+Pre</span><span style=3D"color:#64748b;font-size:14px">24:00</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, so but to y=
+our point though, right, so like in the process tracker, right, we have, yo=
+u know, they&#39;ve done all this mapping, right. So and then this is why t=
+he functions are already doing this. But they are, they&#39;re updating sor=
+t of the knowledge transfer. They&#39;re not really doing these ones in an =
+overall process. And then we pull in hiring status and they, they did, we d=
+id have functions the mapping to roles. Right. But in the systems tracker r=
+ight we. We have a swag of like you wouldn&#39;t do. You wouldn&#39;t tie s=
+ystems to a process. That would be silly. You would. We can do like Bina, y=
+ou know function and you can get pretty close to sub function. Not necessar=
+ily from this, with this part. This is map of sub function here just from a=
+ column. But like there&#39;s other. I think there&#39;s like cm some servi=
+ce sort of category. There&#39;s additional fields in the app inventory tha=
+t would get right closer. But for that what the report out that Pre was sho=
+wing that that&#39;s being pulled the systems piece, it&#39;s going to be p=
+ulled in by the function. I think what we have to do is like some of these =
+like for ERP like instead of just having it to it. There&#39;s many. There =
+will be. We&#39;ll need to split this into the. Yeah. Into seven different =
+rows.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D=
+"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:6=
+00;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px"=
+>25:15</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Are you going to do that in the system. Are you going to do that in the=
+ system inventory tracker, Jen, or is that elsewhere? Because I&#39;d like =
+to keep it to 294 the systems. If I&#39;m tracking here I&#39;d like to kee=
+p it the same. The one that you and Pre were mentioning about say finances,=
+ finance, sub processes touching erp. I don&#39;t know, let&#39;s say in Ju=
+ly the supply chain logistics team is touching ERP in end of June. So that =
+conversation I would, I would.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px sol=
+id #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"co=
+lor:#3b82f6;font-weight:600;margin-right:8px">Pre</span><span style=3D"colo=
+r:#64748b;font-size:14px">25:48</span></div><div style=3D"color:#475569;fon=
+t-size:16px;line-height:1.6">Figure out how we do it then because like. Yea=
+h, yeah, because for this one like for. It&#39;s gonna be one person that&#=
+39;s identifying that&#39;s doing the kind of like sit when you have those =
+columns in. But for uatp, you know it. It&#39;s more than one.</div></div><=
+div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;borde=
+r-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;marg=
+in-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8p=
+x">Mac</span><span style=3D"color:#64748b;font-size:14px">26:05</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.</div></d=
+iv><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;b=
+order-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;=
+margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-righ=
+t:8px">Pre</span><span style=3D"color:#64748b;font-size:14px">26:08</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">And so I t=
+hink probably to make it work we probably still do need to split it. But th=
+en for the IT view, like as long as we have a row that has function it.</di=
+v></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8f=
+afc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:=
+flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin=
+-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">26:18</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay =
+then we might.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font=
+-weight:600;margin-right:8px">Pre</span><span style=3D"color:#64748b;font-s=
+ize:14px">26:20</span></div><div style=3D"color:#475569;font-size:16px;line=
+-height:1.6">We should be able to kind of filter it out for reporting first=
+. I don&#39;t know.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"=
+><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6=
+;font-weight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;f=
+ont-size:14px">26:24</span></div><div style=3D"color:#475569;font-size:16px=
+;line-height:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b8=
+2f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b=
+82f6;font-weight:600;margin-right:8px">Brie</span><span style=3D"color:#647=
+48b;font-size:14px">26:25</span></div><div style=3D"color:#475569;font-size=
+:16px;line-height:1.6">So I guess will it update all 200 and something like=
+ for the dates and like the completion and what have you.</div></div><div s=
+tyle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-rad=
+ius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bo=
+ttom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Ma=
+c</span><span style=3D"color:#64748b;font-size:14px">26:35</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So this is th=
+e other piece. Right. So the 300 is the universe of apps. 100 of them are l=
+ive without and technically speaking we may have to remove them from here. =
+There&#39;s about 100 that are in TSA and so we&#39;ll have to see if there=
+&#39;s you know, logical separation work or you know, access control that&#=
+39;s being done by day one. So there&#39;ll maybe there&#39;s no SIT uat. T=
+here&#39;s just that and then there&#39;s the move as is and the build back=
+s which are about 80, actually about 60 plus the 25 or so 22 BRB apps, lega=
+l entity related changes. So those all will be in here. So our ask or at le=
+ast from an IT perspective the sit and the UAT will be just on those 82 app=
+s.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-colo=
+r:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"di=
+splay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Pre</span><span style=3D"color:#64748b;font-size:14px">27=
+:27</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6"=
+>Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14=
+px">27:29</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">So the challenge then for you I see is. And this is what we&#39;re d=
+iscovering like we did pre with the supply chain team or gen is you know, S=
+riram has, you know, from an IT perspective he&#39;s saying okay, IT supply=
+ chain is. Is having let&#39;s say 10 build back and five move as is. Okay.=
+ That&#39;s. That will be listed here as 15 apps that it supply chain promo=
+te and that team will go in and update or, or pierce with. But Sriram has o=
+nly a subset of those and potentially some new ones that he&#39;s going to =
+touch as part of the supply chain process. So yeah, how do we track those?<=
+/div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#=
+f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displ=
+ay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Brie</span><span style=3D"color:#64748b;font-size:14px">28:1=
+4</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">W=
+e can use the function column to just manage it. So like all of your dashbo=
+ards that we&#39;ve been talking about will be driven off of like it becaus=
+e it will have the full 2, 200 whatever applications.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</s=
+pan><span style=3D"color:#64748b;font-size:14px">28:27</span></div><div sty=
+le=3D"color:#475569;font-size:16px;line-height:1.6">Okay.</div></div><div s=
+tyle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-rad=
+ius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bo=
+ttom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Br=
+ie</span><span style=3D"color:#64748b;font-size:14px">28:27</span></div><di=
+v style=3D"color:#475569;font-size:16px;line-height:1.6">And then the funct=
+ions that are test are testing UAT for BRB will those will be tagged to the=
+ir function and we&#39;ll just have to like filter those out.</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border=
+-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margi=
+n-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px=
+">Mac</span><span style=3D"color:#64748b;font-size:14px">28:40</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so what y=
+ou&#39;re saying is here, if I interpret this, Sriram is touching that Ment=
+or Graphics, which is a build back app in engineering that he&#39;s going t=
+o be touching that as part of his UAT process.</div></div><div style=3D"mar=
+gin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bor=
+der-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pre</span><sp=
+an style=3D"color:#64748b;font-size:14px">29:00</span></div><div style=3D"c=
+olor:#475569;font-size:16px;line-height:1.6">Yeah. So the ones that are cle=
+arly like this, right. So that clearly have a function alignment. This is y=
+ou know how it is in the, even in the app inventory. Right. For him to go i=
+n and to provide, you know, as a UAT coordinator he will update the status =
+on UAT scenarios, testers, you know the. And whoever from it. When you add =
+in the SIT ones will do those. Right. Where it becomes different as we know=
+, right. Is when you look at the BRB and I think this is what I heard you s=
+ay bro. Like being before if you look at erp, right? Where is it here? If w=
+e split this and so it only we split this into separate rows. 11 this one t=
+hat says keep the IT here and then also have one for finance, one for isc.<=
+/div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#=
+f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displ=
+ay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">29:48=
+</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Is=
+c yeah, one for yeah, hr.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3=
+b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#=
+3b82f6;font-weight:600;margin-right:8px">Pre</span><span style=3D"color:#64=
+748b;font-size:14px">29:51</span></div><div style=3D"color:#475569;font-siz=
+e:16px;line-height:1.6">Then then they do it. Then they can update those. R=
+ight. We can carry over any of the IT specific. So I think that updating mu=
+ltiple and then Whatever dashboards you have. We would use the function fil=
+ter.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"=
+display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:60=
+0;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">=
+30:03</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay. Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font=
+-weight:600;margin-right:8px">Pre</span><span style=3D"color:#64748b;font-s=
+ize:14px">30:04</span></div><div style=3D"color:#475569;font-size:16px;line=
+-height:1.6">We could just add some sort of flag so that we don&#39;t end u=
+p. You know what I mean?</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b=
+82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3=
+b82f6;font-weight:600;margin-right:8px">Mac</span><span style=3D"color:#647=
+48b;font-size:14px">30:09</span></div><div style=3D"color:#475569;font-size=
+:16px;line-height:1.6">That makes sense then. Okay, so not 296. You could e=
+nd up with 1000 rows but we&#39;ll only filter for the 296 its.</div></div>=
+<div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bord=
+er-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;mar=
+gin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8=
+px">Pre</span><span style=3D"color:#64748b;font-size:14px">30:19</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">Probably want=
+ to do. So we keep an actual app count Is that. I actually think it&#39;d b=
+e. You can do it either we probably. You can add a flag if you want but you=
+ can dedupe it when you pull it from SQL on like system name or something.<=
+/div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#=
+f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displ=
+ay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Brie</span><span style=3D"color:#64748b;font-size:14px">30:3=
+3</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">H=
+ey I guess like the maintenance is like. So I guess like in Smartsheets or =
+wherever is there. Are we intending for this tracker to also track when SIT=
+ is complete?</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-=
+weight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-si=
+ze:14px">30:54</span></div><div style=3D"color:#475569;font-size:16px;line-=
+height:1.6">Yes, because at an app level who will provide that? That would =
+be. So that&#39;s the other piece is because Smartsheets doesn&#39;t have i=
+t at an app level. They have periods for some of the apps. Yes but we don&#=
+39;t necessarily have like supply chain is not tracking it as you know. I h=
+ave 37 apps. Maybe they are. We have to go back and look. If they are updat=
+ing it in Smartsheets in their work plans then it would be easy for pull to=
+ automatically update it against this ID name. Our ID and name. So all that=
+ 82 applications in scope for sit UAT those 8080 plus 82 whatever it lands.=
+ It would be preferable if we can do an update or a sync from smartsheet wo=
+rk plans directly in here for sit. UAT dates for those.</div></div><div sty=
+le=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radiu=
+s:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bott=
+om:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pre<=
+/span><span style=3D"color:#64748b;font-size:14px">31:54</span></div><div s=
+tyle=3D"color:#475569;font-size:16px;line-height:1.6">Can we just look at w=
+hat data?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div styl=
+e=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weig=
+ht:600;margin-right:8px">Jen</span><span style=3D"color:#64748b;font-size:1=
+4px">31:56</span></div><div style=3D"color:#475569;font-size:16px;line-heig=
+ht:1.6">Yeah, let me show you.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px sol=
+id #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"co=
+lor:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span style=3D"colo=
+r:#64748b;font-size:14px">31:57</span></div><div style=3D"color:#475569;fon=
+t-size:16px;line-height:1.6">Yeah. So let&#39;s take a look at smartsheets.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"disp=
+lay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;ma=
+rgin-right:8px">Pre</span><span style=3D"color:#64748b;font-size:14px">32:0=
+0</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">A=
+nd.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-col=
+or:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"d=
+isplay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Jen</span><span style=3D"color:#64748b;font-size:14px">3=
+2:04</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">So this is the heat map in smartsheet and then I can show you the underly=
+ing data as well.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><=
+div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;f=
+ont-weight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;fon=
+t-size:14px">32:09</span></div><div style=3D"color:#475569;font-size:16px;l=
+ine-height:1.6">Okay, so why don&#39;t we go. What&#39;s on the right is. S=
+o you&#39;ve got. So this is definitely.</div></div><div style=3D"margin-bo=
+ttom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-le=
+ft:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span s=
+tyle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jen</span><span sty=
+le=3D"color:#64748b;font-size:14px">32:20</span></div><div style=3D"color:#=
+475569;font-size:16px;line-height:1.6">Yeah, so we have everything.</div></=
+div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex=
+;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-rig=
+ht:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">32:22</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So again =
+I think this needs to be kept up to date in the work plan.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-b=
+ottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">J=
+en</span><span style=3D"color:#64748b;font-size:14px">32:26</span></div><di=
+v style=3D"color:#475569;font-size:16px;line-height:1.6">This is from the w=
+ork plans.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div sty=
+le=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-wei=
+ght:600;margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:=
+14px">32:28</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font=
+-weight:600;margin-right:8px">Jen</span><span style=3D"color:#64748b;font-s=
+ize:14px">32:29</span></div><div style=3D"color:#475569;font-size:16px;line=
+-height:1.6">So the underlying work plans.</div></div><div style=3D"margin-=
+bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-=
+left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span=
+ style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pre</span><span s=
+tyle=3D"color:#64748b;font-size:14px">32:30</span></div><div style=3D"color=
+:#475569;font-size:16px;line-height:1.6">So in theory this is also being fe=
+d into the capital edge work plan.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span style=
+=3D"color:#64748b;font-size:14px">32:34</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">Correct. Correct. Only the milestones =
+though which I think are situat milestone because there&#39;s other piece o=
+f this where it says build test and we have to go back to the work plan and=
+ see if we have specifically SIT testing. UAT testing.</div></div><div styl=
+e=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius=
+:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-botto=
+m:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pre</=
+span><span style=3D"color:#64748b;font-size:14px">32:55</span></div><div st=
+yle=3D"color:#475569;font-size:16px;line-height:1.6">You do for some. I don=
+&#39;t think we do for.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b8=
+2f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b=
+82f6;font-weight:600;margin-right:8px">Mac</span><span style=3D"color:#6474=
+8b;font-size:14px">32:56</span></div><div style=3D"color:#475569;font-size:=
+16px;line-height:1.6">Not for all. But if we do pull this in, given that th=
+ere&#39;s a Sync, we can pull this sit start, sit end from the work plans, =
+from this sync page and move it into. Into that tracker up there.</div></di=
+v><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bo=
+rder-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;m=
+argin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right=
+:8px">Pre</span><span style=3D"color:#64748b;font-size:14px">33:13</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. I mea=
+n, it can be either. Right. Like if you&#39;ve got the data in smartsheets =
+and you want, you know, in for whatever&#39;s cleaner. Right. So like if th=
+e. From an IT perspective, the IT team is up. Is keeping smartsheets up to =
+date and therefore. And then we sync that. We sync with smartsheets into Ca=
+pital Edge, be it the work plan, IT work plan sync or in the tracker. Right=
+. It doesn&#39;t really matter. Right. And then for the functional BRB upda=
+tes where you kind of become creating separate rows and do all that, we don=
+&#39;t need to sync it in two places. You can only sync it in one and you c=
+an do the same thing.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f=
+6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82=
+f6;font-weight:600;margin-right:8px">Mac</span><span style=3D"color:#64748b=
+;font-size:14px">33:54</span></div><div style=3D"color:#475569;font-size:16=
+px;line-height:1.6">Right.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #=
+3b82f6"><div style=3D"display:flex;margin-bottom:8px"></div></div></div></d=
+iv></div></div></div></div>
+
+--000000000000438bfc0636db97ed--

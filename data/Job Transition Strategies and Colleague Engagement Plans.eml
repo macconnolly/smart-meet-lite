@@ -1,0 +1,1490 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a5d:4c51:0:b0:391:3c18:836e with SMTP id n17csp2132335wrt;
+        Mon, 5 May 2025 21:27:29 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGMd+UiHFU675VFxx8aYK/4ReEdZrIz6nvXFAleySEJ5wMBARfVlzWMU3d2KhCc7+KW1ZL3
+X-Received: by 2002:a05:620a:c53:b0:7c5:5fa0:45f8 with SMTP id af79cd13be357-7cae3a99212mr1123614085a.17.1746505649634;
+        Mon, 05 May 2025 21:27:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746505649; cv=none;
+        d=google.com; s=arc-20240605;
+        b=WIhOnEsdmBnXQYeGod4L+aIlZsQ2+ECLrwebccl8yAaKf19fP9BzDky2KQNXUZAqMR
+         ++sETxtrLZwWyZ19LCfdmMGFv0ePm1t9isFgS+byF1+J5CHR9B+XGEz21f/m+b4g5vmE
+         xbQKvES7GXWjo0dKhZoj+4Cbu3ttoFAkkta8F6eVYKYZDjnhTMoH2MPngVdqFQqfDrxN
+         faZNdK8sCl11HN0FRoqH6RCUMyVkqhJoh3KPu5SFUBi0Lui9GtLclWZAn5fJGcbaA/Vc
+         eqh9xTqBaa3A3gLfEb73UfxQWNHQNfWlRg4XYUg2juQD0BmhgPBK9qQhor3vhqYTIVds
+         JBHQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=c9gWxizsMz8zHkVCqSQ1kEDU2f6tqY+kHwqQWSaYZlE=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=Ng9DXK+jpEdD0ADHcLDunBBi2m+VF7vXeU8BnSWlbjSIY1EHefeRWUeHHDzEHdZ01V
+         J4Sz0FAkZ4KYJ143W1EYV3X8DmyBSsTU0S+mReHtEX3sjhVxTPzDPaLFrsyiFQY8yF1N
+         +V0/BGzT9nKYVKEhTmbvMKHHwM9C5VUM3oOXo08G2yUjegsoHVAqr+APEKI2KOkOPbwY
+         KEqldHFuSu+7Ozbfag3ncZFxkzMLQgTbGqpQOrG/cjobyjH+nKTRijFS7jMSEH+AMVa7
+         I3eD/rIxc0rE3MpoCmJXh4yMOb3Jf5V5wK6aFCHrNNxgZ6BePyi/7wrlyRJmJSq/ko7y
+         bJAA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=jwJEcWZ2;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=fu4z1z31;
+       spf=pass (google.com: domain of 01000196a3d94b0b-cc2d25e7-9fcc-45b0-ae04-1860441ac3ff-000000@send.email.wave.co designates 54.240.9.37 as permitted sender) smtp.mailfrom=01000196a3d94b0b-cc2d25e7-9fcc-45b0-ae04-1860441ac3ff-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <01000196a3d94b0b-cc2d25e7-9fcc-45b0-ae04-1860441ac3ff-000000@send.email.wave.co>
+Received: from a9-37.smtp-out.amazonses.com (a9-37.smtp-out.amazonses.com. [54.240.9.37])
+        by mx.google.com with ESMTPS id af79cd13be357-7cad2456f75si996564785a.640.2025.05.05.21.27.29
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 05 May 2025 21:27:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 01000196a3d94b0b-cc2d25e7-9fcc-45b0-ae04-1860441ac3ff-000000@send.email.wave.co designates 54.240.9.37 as permitted sender) client-ip=54.240.9.37;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=jwJEcWZ2;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=fu4z1z31;
+       spf=pass (google.com: domain of 01000196a3d94b0b-cc2d25e7-9fcc-45b0-ae04-1860441ac3ff-000000@send.email.wave.co designates 54.240.9.37 as permitted sender) smtp.mailfrom=01000196a3d94b0b-cc2d25e7-9fcc-45b0-ae04-1860441ac3ff-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1746505649;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=c9gWxizsMz8zHkVCqSQ1kEDU2f6tqY+kHwqQWSaYZlE=;
+	b=jwJEcWZ2M6K2NWTZkMWcqcMRx/hrPx1QK7Az9XA5lvR3Pr27713kFJws0yXvhDLd
+	3HGjGfAXFtrHBLL7dLogag1bzjEEDU2UmShiZchyy/LI9mAOhfUm8K4QvyOHczsr/B2
+	fi3HF15mrRLkaiNKWWtsTwC8+Qbf/FPNg/xqPQFo=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1746505649;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=c9gWxizsMz8zHkVCqSQ1kEDU2f6tqY+kHwqQWSaYZlE=;
+	b=fu4z1z318OFKTgobcSIi2t+jHxN28we/QXvZFbQ8tbkZBfel1NCpVWUAX0wlH4GM
+	MfPd8SXoCGPLzDhlz2xD1e8WKN4aoTFmMus3x9yZUC2Qple1OBMh/NI8gQRvoHLihEV
+	LksgbaGum0uC1OkEYEpGLLxepts8dACGaiQdNaw0=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Job Transition Strategies and Colleague Engagement Plans
+Message-ID: <01000196a3d94b0b-cc2d25e7-9fcc-45b0-ae04-1860441ac3ff-000000@email.amazonses.com>
+Date: Tue, 6 May 2025 04:27:28 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-eb3a71f793cc3858-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.05.06-54.240.9.37
+
+----_NmP-eb3a71f793cc3858-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Job Transition Strategies and Colleague Engagement Plans
+
+### Participants
+- Will
+- Max
+
+### Main Topics Discussed
+
+#### Job Transition Plans
+- **Will's Move to Dual Practice**: Will is transitioning to a dual =
+practice similar to Kieran's move, potentially joining the same practice =
+with the ability to break teams as needed.
+- **Conversation Strategy**: The=
+ approach involves discussing current roles and compensation with =
+colleagues to encourage them to join Will.
+
+#### Colleagues Considering =
+Joining
+- **Andrew**: Max has been trying to reach Andrew, who seems =
+interested but is currently busy in New York.
+- **Anish**: Confirmed to be =
+joining.
+- **Jamie Walker**: Also expected to join.
+- **Kelly**: Discussed as a strong candidate who could transition smoothly =
+if approached correctly.
+
+#### Recommendations and Support
+- **Lane's Potential Move**: Mention of potentially bringing Lane into the =
+new practice due to his technical expertise and positive relationship.
+- **Blake's Endorsement**: Will has started working with Blake, who highly =
+praises Will's collaborative skills and technical knowledge, recommending =
+him as a key asset for the team.
+
+#### Timing of Moves
+- **Post-Bonus Transition**: Agreed that resigning should occur after =
+receiving bonuses to ensure financial stability.
+- **August =
+Consideration**: Discussed whether to move before or after August, =
+concluding that moving after securing bonuses is preferable.
+
+#### Experiences and Sentiments
+- **Emotional Attachment**: Both express a =
+strong attachment to their current team, particularly valuing their working=
+ relationship and the positive impact of colleagues like Kieran and Kelly.
+- **Cultural Fit**: Discussed the importance of cultural fit for potential =
+moves, with specific concerns about Kelly's experience and fit within the =
+new practice.
+
+### Action Items
+- **Talk to Andrew**: Max to continue =
+attempting to connect with Andrew to discuss the move.
+- **Engage Kelly**: Approach Kelly with the opportunity, emphasizing =
+stability and work-life balance to address her concerns about anxiety and =
+fear in consulting roles.
+- **Vacation Planning**: Recommendation to take a=
+ week of vacation to process the transition and decisions.
+
+### Relevant Figures and Timing
+- **Transition Timing**: Plans to =
+transition after receiving bonuses, likely post-August.
+- **Current Projects**: Mention of working on a Willcoy project and =
+potential PMO work for Honeywell under Will=E2=80=99s leadership.
+
+### Additional Notes
+- **Technical Expertise**: Emphasis on the importance =
+of technical skills within the team, highlighting individuals like Blake =
+for their modeling, costing, and due diligence capabilities.
+- **Support Network**: Acknowledgement of the strong support network within=
+ the team, contributing to the decision to stay or move.
+
+Transcript:
+0:04
+You are now connected. You can merge your calls when ready. Hey, Will.
+
+0:44
+Hey, Max. How's it going, man?
+
+0:46
+Hey. How are you? Hey.
+
+0:48
+Pretty good. Pretty good. Just landed home.
+
+0:50
+Good. Did you. Where did =
+you fly out of?
+
+0:53
+New Jersey. So I'm very glad I got out today.
+
+0:56
+Yeah. I'm impressed that you got out. It was a mess last Monday and =
+Thursday when I was trying to go back.
+
+1:07
+Yeah.
+
+1:08
+I'm glad you got back. So tell me. I'm really curious. Tell me all about it=
+.
+
+1:15
+This is something I've been working on for a while, and I was =
+saying it's basically going to their dual practice, right? The same thing, =
+basically. Do you remember Rom?
+
+1:26
+Yeah.
+
+1:27
+Yeah. There's, like, =
+Kieran. That's where those guys went.
+
+1:31
+Yeah, I know. Kieran went.
+
+1:34
+Okay. So same practice. I think I've kind of joined them. And then I =
+have the ability to consider breaking folks with. With me.
+
+1:45
+Yeah.
+
+1:46
+Basically, it's like a. Some think about it as kind of like a, you =
+know, it's for a, you know, every voucher. Right. So it's just a matter of =
+have a conversation, you know, ask you for. For, you know, what your =
+current is. Right. And. Or what you're told to make and all that kind of =
+stuff. Right. They'll definitely make sure to give you a, you know, a =
+decent bump. Right. Versus what you have today.
+
+2:17
+Yeah.
+
+2:17
+And that's it. Who else?
+
+2:20
+Who else are you bringing? Andrew.
+
+2:25
+Andrew. I've been trying to talk to him. I haven't had a conversation with =
+him. I'm pretty sure he's interested. I've talked about it before. Fairly =
+new. Anish is definitely coming. I don't know if you know Anish.
+
+2:40
+Anish, yes.
+
+2:43
+Yeah, he's definitely coming. Let's say there's a couple =
+others. Like, Jamie's gonna come, actually. Jamie Walker. Do you remember =
+him?
+
+2:53
+Yeah, I was gonna. So that was on my list of questions I was =
+gonna ask because I thought that he was going. You know what I'm talking =
+about? Yeah, I was. I was gonna ask about Jamie, if he was gonna go. I mean=
+, I. I like. I really like Kieran, and I was very happy that Kieran went.
+
+3:25
+Yeah.
+
+3:26
+And so it makes me happy that you're going because it's a =
+move that I've thought about, like, I think, like, putting all of our cards=
+ on the table. I've had an open line back to kpmg, where I came from, with =
+Lane for a while.
+
+3:49
+Yeah. Oh, my God. Do you think I love Lane? Do you =
+think he will come?
+
+3:55
+Yeah, Lane is great. I Mean, Lane's. The reason =
+that I'm at UIP is because Lane went. And then I saw that he went. And we =
+were in the same group at kpmg. We came up under the same people at kpmg. =
+So we came up under the. Under the same DD people. They were all Lane. And =
+the rest of our crew was from West Monroe. And we came up doing diligences =
+to together. And so Wayne and I have been talking this week about going and=
+ working on PMO for Honeywell or something. I think under you. I know, I =
+know.
+
+4:31
+Yeah.
+
+4:32
+Yeah.
+
+4:32
+And I was just talking to him about it.
+
+4:34
+Yeah. Lane would go. I think, like, if you made the case for him. =
+Lane would go. Because he's. Wayne is so good. Technically, he's so good.
+
+4:45
+Oh, my God, he's.
+
+4:46
+Yeah.
+
+4:46
+I'm like, so impressed with them.
+
+4:48
+So there were so many KPMG people like that that I came up with.
+
+4:52
+Are you serious? Oh, my gosh. I will take all of them.
+
+4:56
+Yeah. And that's why I liked Lane because he had the, like, the technical =
+backing to. To go with it. And they were all like, West Monroe people. It =
+was Lane. There's a guy in the Denver office named Rami, but anyone you can=
+ find from West Monroe has that, like, technical background. But I mean, =
+I'm sort of going on a tangent. I think I would go for sure.
+
+5:26
+Okay.
+
+5:27
+Because eyes great and I am. I mean, it wouldn't be the same without =
+you. Like, you're one of the big reasons that I've stuck around here. Like,=
+ because I have. I've loved what we do. And I think working on a Willcoy =
+project is sort of an acquired taste. And once you get a taste for it, you =
+either love it or you hate it. And I really loved it.
+
+5:58
+Oh, thanks.
+
+6:01
+And like, you're one of the big reasons, I think, that I stuck around.=
+ And it would be really sad to me to be here if you weren't around, because=
+ it's like you're one of the people that, like, kept me, like, going.
+
+6:19
+Yeah. I appreciate it.
+
+6:21
+Yeah. And so if. If you went to PwC.
+
+6:28
+Yeah.
+
+6:29
+I mean, it's like, if there was the ability to have a =
+conversation with the BWC folks and be like, they will reach out.
+
+6:37
+Yeah. Kieran will call you.
+
+6:39
+Perfect.
+
+6:40
+Yeah. So the question =
+right now is, like, more timing. Like, they're willing to, like, bring =
+folks in. It's going to take me probably a little while to get there. Yeah,=
+ I think so. I would say, like, so funny. I would say just talk to them if =
+you can.
+
+7:01
+Yeah.
+
+7:01
+Okay. And the trip. Go from there. Okay.
+
+7:04
+Do you think it's worth going before or after August?
+
+7:08
+Why?
+
+7:10
+Bonus.
+
+7:12
+Definitely after you get your bonus. Right? I mean, like, =
+whatever the bonus date is. I would say resign right after the bonus date.
+
+7:18
+Yeah. Okay. Yeah, yeah. That was my only question and is like.
+
+7:25
+Yeah, yeah.
+
+7:25
+Before. After that day.
+
+7:30
+No, that. That makes =
+perfect sense.
+
+7:32
+Yeah. You should talk to Andrew. I would love.
+
+7:37
+I am talking to him. Yeah.
+
+7:39
+I talk to Kelly.
+
+7:41
+Really?
+
+7:43
+Kelly.
+
+7:43
+Okay. I love Kelly. I love Kelly.
+
+7:45
+Kelly is so good.
+
+7:46
+I would love to get Kelly. I would love.
+
+7:48
+Tell Kelly. Tell Kelly you can make the. For her. I was in an Uber with her=
+ for two hours on Thursday, and she told me the same thing that I had =
+experienced always. And that it's not a cultural fit, but she will make a =
+really good consultant. And she was asking me what should I do with my life=
+. And my appeal to her was, Kelly, you are so good at this. Like, don't. =
+Don't throw it away because you've had, like, one bad manager or one bad =
+project or one bad culture. Like, you're Anthony, really.
+
+8:30
+Okay.
+
+8:30
+She said that she leaves her with fear and anxiety. Okay. And so if you =
+appeal to the Will give you stability. We'll give you.
+
+8:42
+Yeah.
+
+8:43
+Normal life. And you can, like. She wants a life outside of consulting, =
+which is understandable for someone who is not good at making that for =
+themselves. And if you appeal to that side, you could get Kelly because =
+she's so good.
+
+9:00
+I know.
+
+9:01
+She's so smart. She's killer.
+
+9:05
+Yeah. Okay.
+
+9:06
+She's perfect. She's so good. Talk to her.
+
+9:11
+So talk to Andrew. Yeah, that's. Andrew's on my list to talk to him tonight=
+, but I can't get him tonight. I think he's out partying in New York.
+
+9:21
+Is he back in New York?
+
+9:23
+He's in New York this week for some reason. =
+That's all I know. Because he was trying to, like, come. Come out and come =
+out of dinner. I was like, I'm just like, I'm trying to figure this out.
+
+9:35
+Yeah.
+
+9:36
+So there's some.
+
+9:37
+When did you find out?
+
+9:38
+What's that?
+
+9:39
+When did you find out?
+
+9:42
+There's some interesting =
+situations happening right now. So I'll just say that, like, you know. You =
+know, I'm gonna step aside. I would say don't tell PWC this either.
+
+9:57
+What should I do for the next three weeks?
+
+10:02
+I wouldn't. I would say =
+just chill and don't worry about it because there's a guy.
+
+10:08
+That wants me to do commercial due diligence. With ssg.
+
+10:15
+Okay. My recommendation is, I think I will put you on top of the list, and =
+Kieran will talk to you really soon. Take a week of vacation and figure =
+this out.
+
+10:27
+Yeah.
+
+10:29
+They're literally trying to, like, you know, =
+they're basically pushing. I was trying to, like, delay until I finish all =
+my, like, discussions and stuff. They're basically like, look, like, you =
+know, like, there's a timing factor I think they're struggling with. Like, =
+look, we have time. We have ability to bring a team in. They're still =
+working through my stuff. And so I was like, makes me.
+
+11:00
+This makes me so happy in the process.
+
+11:02
+Okay. I'm. I'm glad. I feel =
+better as well, because I felt really like that was my toughest part about =
+leaving, like, seeing this parent leave. I was like, yeah, I just feel like=
+ there's other people. Right. It's like, be. It's tough to. To leave all =
+the good people.
+
+11:19
+I saw Kieran leave, and it made me start thinking =
+about it.
+
+11:22
+I know. Yeah. I actually started these conversations =
+before Karen left. So I was. And yeah, when he left, I was like, kind of =
+like, wink. I actually told him to talk to the head of the practice in PwC.=
+ Right. Because he was asking me, what should he do, you know, because he =
+wasn't going to make that lead this year.
+
+11:41
+Yeah.
+
+11:42
+And then I was like, look, you know, we know the same people. I was like, =
+why don't you just call. Call Ron, call jj, have a conversation. I'm pretty=
+ sure they'll bring you in. Right. That's what he did. And then when he =
+left us, like, I didn't tell him. I was like, it's a small world. Maybe =
+I'll see you around.
+
+11:58
+Kieran is so good, too. Like, I was so happy. I=
+ was so happy when I saw that.
+
+12:06
+Yeah. So I will talk to. I mean, like=
+, you know, if you can, like, it's. You know, I would say, look, I just =
+started working with Blake. Like, I think he's, like, the best in the world=
+. Right. Do you think. Do you think you'd be interested? Like, I can get =
+into the. I know he's in the path to the next level. I can get him to the =
+next level for sure. You think he's. You think he'd be interested?
+
+12:30
+Definitely.
+
+12:30
+I just don't know him.
+
+12:31
+That's why he's obviously.
+
+12:33
+Okay. Okay.
+
+12:35
+That's why you. And he loves you, because I was =
+talking to him about you because he said, I've only worked on a Will =
+project for, like, a week or two. And I was, I was grilling him about you. =
+I was like, what do you think? Like, how's your, like, how's your Will, =
+whatever? And he spoke so highly of you. He was like, will and I, we really=
+ balance each other out because I'm so logical and so like planned, =
+methodical thinking. And Will kind of goes in and he questions, have you =
+thought about this? Have you thought about that? Have you thought about the=
+ other thing? And I'm like, yeah, that's, that's what he does. And he spoke=
+ so highly of you. And it made me really confident going to work for him =
+and then you. So I haven't talked to him extensively about where he's at, =
+like culturally, but I know that he has the same lines back to KTMG that I =
+do and I know that it's been open in the same way that mine has. And so I'm=
+ sure that with the right conversation, getting someone technical like that=
+, like he knows modeling and costing and TSAs and everything pre day one. =
+Like if you want someone who can do DD or do anything technical, that's =
+your guy for sure. Or PMO or any of the bullshit, like nitty gritty day to =
+day operations of things. Oh, the person that you call.
+
+14:09
+Yep.
+
+14:09
+Like pre day one planning. Yeah, exactly.
+
+14:14
+I think he's awesome. I'm =
+looking forward to getting him.
+
+14:17
+Yeah.
+
+14:18
+And then I'll, I'll talk, I'll talk to Kelly if you know, I will not say =
+anything about what you told me. I'll just. And see if she's interested.
+
+14:26
+Yeah. Just be like, hey, how, how's it going? Well, I mean, she has =
+like an existential conversation with me the other day out of nowhere about=
+ what should I do.
+----_NmP-eb3a71f793cc3858-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Job =
+Transition Strategies and Colleague Engagement Plans</h1></td></tr></table>=
+</div><div style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/CAbbcb5d859dc71f26c9c26bd6bf2aee69?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h3 style=3D"font-weight:500;padding-top:2=
+0px;font-size:1.75rem">Participants</h3><ul>
+<li>Will</li>
+<li>Max</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">Main=
+ Topics Discussed</h3><h4 style=3D"font-weight:500;padding-top:20px;font-si=
+ze:1.5rem">Job Transition Plans</h4><ul>
+<li><strong =
+style=3D"font-weight:bold">Will&#39;s Move to Dual Practice</strong>: Will =
+is transitioning to a dual practice similar to Kieran&#39;s move, =
+potentially joining the same practice with the ability to break teams as =
+needed.</li>
+<li><strong style=3D"font-weight:bold">Conversation =
+Strategy</strong>: The approach involves discussing current roles and =
+compensation with colleagues to encourage them to join Will.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem">Colleagues =
+Considering Joining</h4><ul>
+<li><strong style=3D"font-weight:bold">Andrew<=
+/strong>: Max has been trying to reach Andrew, who seems interested but is =
+currently busy in New York.</li>
+<li><strong style=3D"font-weight:bold">Ani=
+sh</strong>: Confirmed to be joining.</li>
+<li><strong =
+style=3D"font-weight:bold">Jamie Walker</strong>: Also expected to join.=
+</li>
+<li><strong style=3D"font-weight:bold">Kelly</strong>: Discussed as a=
+ strong candidate who could transition smoothly if approached correctly.=
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+5rem">Recommendations and Support</h4><ul>
+<li><strong =
+style=3D"font-weight:bold">Lane&#39;s Potential Move</strong>: Mention of =
+potentially bringing Lane into the new practice due to his technical =
+expertise and positive relationship.</li>
+<li><strong =
+style=3D"font-weight:bold">Blake&#39;s Endorsement</strong>: Will has =
+started working with Blake, who highly praises Will&#39;s collaborative =
+skills and technical knowledge, recommending him as a key asset for the =
+team.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+5rem">Timing of Moves</h4><ul>
+<li><strong style=3D"font-weight:bold">Post-=
+Bonus Transition</strong>: Agreed that resigning should occur after =
+receiving bonuses to ensure financial stability.</li>
+<li><strong style=3D"font-weight:bold">August Consideration</strong>: =
+Discussed whether to move before or after August, concluding that moving =
+after securing bonuses is preferable.</li>
+</ul>
+<h4 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.5rem">Experiences and=
+ Sentiments</h4><ul>
+<li><strong style=3D"font-weight:bold">Emotional =
+Attachment</strong>: Both express a strong attachment to their current team=
+, particularly valuing their working relationship and the positive impact =
+of colleagues like Kieran and Kelly.</li>
+<li><strong =
+style=3D"font-weight:bold">Cultural Fit</strong>: Discussed the importance =
+of cultural fit for potential moves, with specific concerns about =
+Kelly&#39;s experience and fit within the new practice.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">Action =
+Items</h3><ul>
+<li><strong style=3D"font-weight:bold">Talk to =
+Andrew</strong>: Max to continue attempting to connect with Andrew to =
+discuss the move.</li>
+<li><strong style=3D"font-weight:bold">Engage =
+Kelly</strong>: Approach Kelly with the opportunity, emphasizing stability =
+and work-life balance to address her concerns about anxiety and fear in =
+consulting roles.</li>
+<li><strong style=3D"font-weight:bold">Vacation =
+Planning</strong>: Recommendation to take a week of vacation to process the=
+ transition and decisions.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-=
+top:20px;font-size:1.75rem">Relevant Figures and Timing</h3><ul>
+<li><strong style=3D"font-weight:bold">Transition Timing</strong>: Plans to=
+ transition after receiving bonuses, likely post-August.</li>
+<li><strong style=3D"font-weight:bold">Current Projects</strong>: Mention =
+of working on a Willcoy project and potential PMO work for Honeywell under =
+Will=E2=80=99s leadership.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-=
+top:20px;font-size:1.75rem">Additional Notes</h3><ul>
+<li><strong style=3D"font-weight:bold">Technical Expertise</strong>: =
+Emphasis on the importance of technical skills within the team, =
+highlighting individuals like Blake for their modeling, costing, and due =
+diligence capabilities.</li>
+<li><strong style=3D"font-weight:bold">Support=
+ Network</strong>: Acknowledgement of the strong support network within the=
+ team, contributing to the decision to stay or move.</li>
+</ul>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0,=
+ 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex;align-i=
+tems:center;gap:8px"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</=
+span>Transcription</h3><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">0:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You are now =
+connected. You can merge your calls when ready. Hey, Will.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Will</span><span style=3D"color:#64748b;font-size:14px">0=
+:44</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Hey, Max. How&#x27;s it going, man?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Max</span><span style=3D"color:#64748b;font-size:14px">0:=
+46</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Hey. How are you? Hey.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><s=
+pan style=3D"color:#64748b;font-size:14px">0:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Pretty good. Pretty =
+good. Just landed home.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><sp=
+an style=3D"color:#64748b;font-size:14px">0:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Good. Did you. Where=
+ did you fly out of?</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><s=
+pan style=3D"color:#64748b;font-size:14px">0:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">New Jersey. So =
+I&#x27;m very glad I got out today.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Max</span><span style=3D"color:#64748b;font-size:14px">0:=
+56</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. I&#x27;m impressed that you got out. It was a mess last Monday and=
+ Thursday when I was trying to go back.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Will</span><span style=3D"color:#64748b;font-size:14px">1=
+:07</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">1:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m glad you =
+got back. So tell me. I&#x27;m really curious. Tell me all about it.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">1:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">This is something =
+I&#x27;ve been working on for a while, and I was saying it&#x27;s basically=
+ going to their dual practice, right? The same thing, basically. Do you =
+remember Rom?</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">1:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">1:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. There&#x27;s, =
+like, Kieran. That&#x27;s where those guys went.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Max</span><span style=3D"color:#64748b;font-size:14px">1:=
+31</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, I know. Kieran went.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</s=
+pan><span style=3D"color:#64748b;font-size:14px">1:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. So same =
+practice. I think I&#x27;ve kind of joined them. And then I have the =
+ability to consider breaking folks with. With me.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Max</span><span style=3D"color:#64748b;font-size:14px">1:=
+45</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">1:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Basically, it&#x27;s=
+ like a. Some think about it as kind of like a, you know, it&#x27;s for a, =
+you know, every voucher. Right. So it&#x27;s just a matter of have a =
+conversation, you know, ask you for. For, you know, what your current is. =
+Right. And. Or what you&#x27;re told to make and all that kind of stuff. =
+Right. They&#x27;ll definitely make sure to give you a, you know, a decent =
+bump. Right. Versus what you have today.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Max</span><span style=3D"color:#64748b;font-size:14px">2:=
+17</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">2:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And that&#x27;s it. =
+Who else?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">2:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Who else are you =
+bringing? Andrew.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><s=
+pan style=3D"color:#64748b;font-size:14px">2:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Andrew. I&#x27;ve =
+been trying to talk to him. I haven&#x27;t had a conversation with him. =
+I&#x27;m pretty sure he&#x27;s interested. I&#x27;ve talked about it before=
+. Fairly new. Anish is definitely coming. I don&#x27;t know if you know =
+Anish.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">2:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Anish, yes.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">2:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, he&#x27;s =
+definitely coming. Let&#x27;s say there&#x27;s a couple others. Like, =
+Jamie&#x27;s gonna come, actually. Jamie Walker. Do you remember him?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">2:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I was gonna. =
+So that was on my list of questions I was gonna ask because I thought that =
+he was going. You know what I&#x27;m talking about? Yeah, I was. I was =
+gonna ask about Jamie, if he was gonna go. I mean, I. I like. I really like=
+ Kieran, and I was very happy that Kieran went.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Will</span><span style=3D"color:#64748b;font-size:14px">3=
+:25</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">3:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And so it makes me =
+happy that you&#x27;re going because it&#x27;s a move that I&#x27;ve =
+thought about, like, I think, like, putting all of our cards on the table. =
+I&#x27;ve had an open line back to kpmg, where I came from, with Lane for a=
+ while.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">3:49</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Oh, my God. Do=
+ you think I love Lane? Do you think he will come?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Max</span><span style=3D"color:#64748b;font-size:14px">3:=
+55</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, Lane is great. I Mean, Lane&#x27;s. The reason that I&#x27;m at =
+UIP is because Lane went. And then I saw that he went. And we were in the =
+same group at kpmg. We came up under the same people at kpmg. So we came up=
+ under the. Under the same DD people. They were all Lane. And the rest of =
+our crew was from West Monroe. And we came up doing diligences to together.=
+ And so Wayne and I have been talking this week about going and working on =
+PMO for Honeywell or something. I think under you. I know, I know.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">4:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">4:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">4:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And I was just =
+talking to him about it.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><sp=
+an style=3D"color:#64748b;font-size:14px">4:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Lane would go.=
+ I think, like, if you made the case for him. Lane would go. Because =
+he&#x27;s. Wayne is so good. Technically, he&#x27;s so good.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">4:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, my God, =
+he&#x27;s.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">4:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">4:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m like, so =
+impressed with them.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><sp=
+an style=3D"color:#64748b;font-size:14px">4:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So there were so =
+many KPMG people like that that I came up with.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Will</span><span style=3D"color:#64748b;font-size:14px">4=
+:52</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Are you serious? Oh, my gosh. I will take all of them.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Max</span><span style=3D"color:#64748b;font-size:14px">4:=
+56</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. And that&#x27;s why I liked Lane because he had the, like, the =
+technical backing to. To go with it. And they were all like, West Monroe =
+people. It was Lane. There&#x27;s a guy in the Denver office named Rami, =
+but anyone you can find from West Monroe has that, like, technical =
+background. But I mean, I&#x27;m sort of going on a tangent. I think I =
+would go for sure.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><s=
+pan style=3D"color:#64748b;font-size:14px">5:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">5:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Because eyes great =
+and I am. I mean, it wouldn&#x27;t be the same without you. Like, =
+you&#x27;re one of the big reasons that I&#x27;ve stuck around here. Like, =
+because I have. I&#x27;ve loved what we do. And I think working on a =
+Willcoy project is sort of an acquired taste. And once you get a taste for =
+it, you either love it or you hate it. And I really loved it.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">5:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, thanks.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">6:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And like, =
+you&#x27;re one of the big reasons, I think, that I stuck around. And it =
+would be really sad to me to be here if you weren&#x27;t around, because =
+it&#x27;s like you&#x27;re one of the people that, like, kept me, like, =
+going.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">6:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. I appreciate =
+it.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-col=
+or:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">6:21</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. And so if. If =
+you went to PwC.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><s=
+pan style=3D"color:#64748b;font-size:14px">6:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">6:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I mean, it&#x27;s =
+like, if there was the ability to have a conversation with the BWC folks =
+and be like, they will reach out.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</s=
+pan><span style=3D"color:#64748b;font-size:14px">6:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Kieran will =
+call you.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">6:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Perfect.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">6:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So the =
+question right now is, like, more timing. Like, they&#x27;re willing to, =
+like, bring folks in. It&#x27;s going to take me probably a little while to=
+ get there. Yeah, I think so. I would say, like, so funny. I would say just=
+ talk to them if you can.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><sp=
+an style=3D"color:#64748b;font-size:14px">7:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">7:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. And the trip. =
+Go from there. Okay.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><sp=
+an style=3D"color:#64748b;font-size:14px">7:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Do you think =
+it&#x27;s worth going before or after August?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Will</span><span style=3D"color:#64748b;font-size:14px">7=
+:08</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Why?</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">7:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Bonus.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">7:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Definitely after you=
+ get your bonus. Right? I mean, like, whatever the bonus date is. I would =
+say resign right after the bonus date.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Max</span><span style=3D"color:#64748b;font-size:14px">7:=
+18</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. Okay. Yeah, yeah. That was my only question and is like.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">7:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">7:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Before. After that =
+day.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">7:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, that. That makes=
+ perfect sense.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><sp=
+an style=3D"color:#64748b;font-size:14px">7:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. You should =
+talk to Andrew. I would love.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</s=
+pan><span style=3D"color:#64748b;font-size:14px">7:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I am talking to him.=
+ Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">7:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I talk to Kelly.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">7:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Really?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">7:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Kelly.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">7:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. I love Kelly. =
+I love Kelly.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">7:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Kelly is so good.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">7:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I would love to get =
+Kelly. I would love.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><sp=
+an style=3D"color:#64748b;font-size:14px">7:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Tell Kelly. Tell =
+Kelly you can make the. For her. I was in an Uber with her for two hours on=
+ Thursday, and she told me the same thing that I had experienced always. =
+And that it&#x27;s not a cultural fit, but she will make a really good =
+consultant. And she was asking me what should I do with my life. And my =
+appeal to her was, Kelly, you are so good at this. Like, don&#x27;t. =
+Don&#x27;t throw it away because you&#x27;ve had, like, one bad manager or =
+one bad project or one bad culture. Like, you&#x27;re Anthony, really.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">8:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">8:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">She said that she =
+leaves her with fear and anxiety. Okay. And so if you appeal to the Will =
+give you stability. We&#x27;ll give you.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Will</span><span style=3D"color:#64748b;font-size:14px">8=
+:42</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">8:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Normal life. And you=
+ can, like. She wants a life outside of consulting, which is understandable=
+ for someone who is not good at making that for themselves. And if you =
+appeal to that side, you could get Kelly because she&#x27;s so good.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">9:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I know.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">9:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">She&#x27;s so smart.=
+ She&#x27;s killer.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><s=
+pan style=3D"color:#64748b;font-size:14px">9:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">9:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">She&#x27;s perfect. =
+She&#x27;s so good. Talk to her.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</s=
+pan><span style=3D"color:#64748b;font-size:14px">9:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So talk to Andrew. =
+Yeah, that&#x27;s. Andrew&#x27;s on my list to talk to him tonight, but I =
+can&#x27;t get him tonight. I think he&#x27;s out partying in New York.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">9:21</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Is he back in New =
+York?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">9:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">He&#x27;s in New =
+York this week for some reason. That&#x27;s all I know. Because he was =
+trying to, like, come. Come out and come out of dinner. I was like, =
+I&#x27;m just like, I&#x27;m trying to figure this out.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Max</span><span style=3D"color:#64748b;font-size:14px">9:=
+35</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">9:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So there&#x27;s some=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">9:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">When did you find =
+out?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">9:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">What&#x27;s that?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">9:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">When did you find =
+out?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">9:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">There&#x27;s some =
+interesting situations happening right now. So I&#x27;ll just say that, =
+like, you know. You know, I&#x27;m gonna step aside. I would say don&#x27;t=
+ tell PWC this either.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><sp=
+an style=3D"color:#64748b;font-size:14px">9:57</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">What should I do for=
+ the next three weeks?</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><s=
+pan style=3D"color:#64748b;font-size:14px">10:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I wouldn&#x27;t. I =
+would say just chill and don&#x27;t worry about it because there&#x27;s a =
+guy.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">10:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That wants me to do =
+commercial due diligence. With ssg.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Will</span><span style=3D"color:#64748b;font-size:14px">1=
+0:15</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay. My recommendation is, I think I will put you on top of the list, =
+and Kieran will talk to you really soon. Take a week of vacation and figure=
+ this out.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">10:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">10:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">They&#x27;re =
+literally trying to, like, you know, they&#x27;re basically pushing. I was =
+trying to, like, delay until I finish all my, like, discussions and stuff. =
+They&#x27;re basically like, look, like, you know, like, there&#x27;s a =
+timing factor I think they&#x27;re struggling with. Like, look, we have =
+time. We have ability to bring a team in. They&#x27;re still working =
+through my stuff. And so I was like, makes me.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Max</span><span style=3D"color:#64748b;font-size:14px">11=
+:00</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">This makes me so happy in the process.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Will</span><span style=3D"color:#64748b;font-size:14px">1=
+1:02</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay. I&#x27;m. I&#x27;m glad. I feel better as well, because I felt =
+really like that was my toughest part about leaving, like, seeing this =
+parent leave. I was like, yeah, I just feel like there&#x27;s other people.=
+ Right. It&#x27;s like, be. It&#x27;s tough to. To leave all the good =
+people.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">11:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I saw Kieran leave, =
+and it made me start thinking about it.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Will</span><span style=3D"color:#64748b;font-size:14px">1=
+1:22</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I know. Yeah. I actually started these conversations before Karen left. =
+So I was. And yeah, when he left, I was like, kind of like, wink. I =
+actually told him to talk to the head of the practice in PwC. Right. =
+Because he was asking me, what should he do, you know, because he =
+wasn&#x27;t going to make that lead this year.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Max</span><span style=3D"color:#64748b;font-size:14px">11=
+:41</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">11:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then I was like,=
+ look, you know, we know the same people. I was like, why don&#x27;t you =
+just call. Call Ron, call jj, have a conversation. I&#x27;m pretty sure =
+they&#x27;ll bring you in. Right. That&#x27;s what he did. And then when he=
+ left us, like, I didn&#x27;t tell him. I was like, it&#x27;s a small world=
+. Maybe I&#x27;ll see you around.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</sp=
+an><span style=3D"color:#64748b;font-size:14px">11:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Kieran is so good, =
+too. Like, I was so happy. I was so happy when I saw that.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Will</span><span style=3D"color:#64748b;font-size:14px">1=
+2:06</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. So I will talk to. I mean, like, you know, if you can, like, =
+it&#x27;s. You know, I would say, look, I just started working with Blake. =
+Like, I think he&#x27;s, like, the best in the world. Right. Do you think. =
+Do you think you&#x27;d be interested? Like, I can get into the. I know =
+he&#x27;s in the path to the next level. I can get him to the next level =
+for sure. You think he&#x27;s. You think he&#x27;d be interested?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">12:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Definitely.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">12:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I just don&#x27;t =
+know him.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">12:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;s why =
+he&#x27;s obviously.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><s=
+pan style=3D"color:#64748b;font-size:14px">12:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">12:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;s why you.=
+ And he loves you, because I was talking to him about you because he said, =
+I&#x27;ve only worked on a Will project for, like, a week or two. And I was=
+, I was grilling him about you. I was like, what do you think? Like, =
+how&#x27;s your, like, how&#x27;s your Will, whatever? And he spoke so =
+highly of you. He was like, will and I, we really balance each other out =
+because I&#x27;m so logical and so like planned, methodical thinking. And =
+Will kind of goes in and he questions, have you thought about this? Have =
+you thought about that? Have you thought about the other thing? And =
+I&#x27;m like, yeah, that&#x27;s, that&#x27;s what he does. And he spoke so=
+ highly of you. And it made me really confident going to work for him and =
+then you. So I haven&#x27;t talked to him extensively about where he&#x27;s=
+ at, like culturally, but I know that he has the same lines back to KTMG =
+that I do and I know that it&#x27;s been open in the same way that mine has=
+. And so I&#x27;m sure that with the right conversation, getting someone =
+technical like that, like he knows modeling and costing and TSAs and =
+everything pre day one. Like if you want someone who can do DD or do =
+anything technical, that&#x27;s your guy for sure. Or PMO or any of the =
+bullshit, like nitty gritty day to day operations of things. Oh, the person=
+ that you call.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><s=
+pan style=3D"color:#64748b;font-size:14px">14:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Max</span><span style=3D"color:#64748b;font-size:14px">1=
+4:09</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Like pre day one planning. Yeah, exactly.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Will</span><span style=3D"color:#64748b;font-size:14px">1=
+4:14</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I think he&#x27;s awesome. I&#x27;m looking forward to getting him.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">14:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Will</span><span =
+style=3D"color:#64748b;font-size:14px">14:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then I&#x27;ll, =
+I&#x27;ll talk, I&#x27;ll talk to Kelly if you know, I will not say =
+anything about what you told me. I&#x27;ll just. And see if she&#x27;s =
+interested.</div></div><div style=3D"margin-bottom:0;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Max</span><span =
+style=3D"color:#64748b;font-size:14px">14:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Just be like, =
+hey, how, how&#x27;s it going? Well, I mean, she has like an existential =
+conversation with me the other day out of nowhere about what should I do.=
+</div></div></div><div style=3D"margin-top:36px;text-align:center;color:#64=
+748b;font-size:14px;padding:20px;border-top:1px solid #e2e8f0"><p =
+style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note Taker</p><p=
+ style=3D"margin:0;font-size:12px">Your AI-powered companion</p></div></div=
+></div></div></html>
+----_NmP-eb3a71f793cc3858-Part_1--

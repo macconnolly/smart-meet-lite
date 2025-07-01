@@ -1,0 +1,1919 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:adf:ecc9:0:b0:3a0:b206:c10d with SMTP id s9csp2571610wro;
+        Wed, 14 May 2025 06:31:31 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEW2cw+WcLyFNAARValgYj2ud6/8tVwXBeBIFl1a5Zh7MC+R3FTmj8axwUuJEIpXCnGmHvF
+X-Received: by 2002:a05:622a:258c:b0:47a:ea2b:4a51 with SMTP id d75a77b69052e-49495ce04cdmr58962751cf.43.1747229408778;
+        Wed, 14 May 2025 06:30:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747229408; cv=none;
+        d=google.com; s=arc-20240605;
+        b=FIbz19IKUjxeZ2Frho9foxCSPAleU2u0Lmi/UCzNfwjihmZfdeNs9YnohpqHZ+xgXR
+         cfmLrxaOW6rpdl7WQ9WLX4CJgVG22xkma6udAVoQs4kRdh1YXAtJehtI96k75JfPgqCj
+         VLbnsr1DYmoNsMcP682FDeBXVHeJirJ/sVPSjzrQCEFOQUZqAoNrjoJCGOUeC4BQfJQd
+         I/3P69KSHWiGh6tKJIGnIwhMtx+Yxm325tG4hL3APoKiKop2lN3NtgHd1T6pb6io1L9Y
+         yT2FRzLMzcFzDlE9Ij/eGmBGKBaZKfq3EhUVGP7nRcrVqrOOlW2BWJ3fFX3X4HLvyL49
+         R6/A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=Xf3EbIPXv5+sQT4vJ6XPwY4nfko272IOW1lV/t9d1Rc=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=IFrg2PcSWVaMf14BBrAi6Jj5/ikr40Cp9XVYLbrW7PktEgk8wP2U0NnPt3T0WD5Y5s
+         ky1urUc/WBjuHWt/82gFx3dDncck5HFCoZbRrdmFNSDSifQQhnL7xte4L7XREKf3HFMt
+         pwuoU1tlik7HdKG2u7EyVImm9VF20NjfTag9FLdioIMW5LokiXlL2Qo27GLujNLWNpQX
+         4mSS3Aq+ZVgtOBLmvqtYe0pLIBtSInZ8oXLtJZL21ykr5MZEICLcOzmHhmGg72QBjTzF
+         OW4SZO2Irz/iOYDfSHh1zOX8tTNc72YFQuee1VxbWdYzzx8irt9eTDAz0Sa25mffeNMh
+         gyjg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=D2yt28iR;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=JKETk9Wk;
+       spf=pass (google.com: domain of 01000196cefcfb95-799270f4-e9e1-40a3-96da-e328de81af0d-000000@send.email.wave.co designates 54.240.9.46 as permitted sender) smtp.mailfrom=01000196cefcfb95-799270f4-e9e1-40a3-96da-e328de81af0d-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <01000196cefcfb95-799270f4-e9e1-40a3-96da-e328de81af0d-000000@send.email.wave.co>
+Received: from a9-46.smtp-out.amazonses.com (a9-46.smtp-out.amazonses.com. [54.240.9.46])
+        by mx.google.com with ESMTPS id d75a77b69052e-49452479da0si136504231cf.195.2025.05.14.06.30.08
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 14 May 2025 06:30:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 01000196cefcfb95-799270f4-e9e1-40a3-96da-e328de81af0d-000000@send.email.wave.co designates 54.240.9.46 as permitted sender) client-ip=54.240.9.46;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=D2yt28iR;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=JKETk9Wk;
+       spf=pass (google.com: domain of 01000196cefcfb95-799270f4-e9e1-40a3-96da-e328de81af0d-000000@send.email.wave.co designates 54.240.9.46 as permitted sender) smtp.mailfrom=01000196cefcfb95-799270f4-e9e1-40a3-96da-e328de81af0d-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1747229408;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=uBXuvXEAnK1OjApqayfWvM/E7iLq2x2LfzoXTReZv4s=;
+	b=D2yt28iR7X2rawRoGNDgBiCk1LfSMF/pX2Ng0Xujyro5tcjhQ6UnSa5hGNDLgE7e
+	hy00G3BJyZm4j+3k2M2iwKJHyq1eNyX1D4o3Mgb+my7K0T5pj06xd/LeeEF7cCvpdkv
+	QSnqU4RiricDiUSEmjv2+khuyc8NNFmEaUjCPObo=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1747229408;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=uBXuvXEAnK1OjApqayfWvM/E7iLq2x2LfzoXTReZv4s=;
+	b=JKETk9WkwCidduhL5ANXMxcOr+gNf2Eb4mVv9bDKbrfMILKW0zGU6ASLbJ96WUi2
+	xnXFV+2+8y6WEGahTldgoG8kqsoE4e/Q1aYMzlU3UUjHuKwk5M3tx93NYYA7bdX8hLf
+	xLi+hjoW5OmZ9GoHAxIrqxNYJxXNW4N7cBK1CElM=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Change Requests Dashboard Migration User Coordination
+Message-ID: <01000196cefcfb95-799270f4-e9e1-40a3-96da-e328de81af0d-000000@email.amazonses.com>
+Date: Wed, 14 May 2025 13:30:08 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-aadf187db3042af2-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.05.14-54.240.9.46
+
+----_NmP-aadf187db3042af2-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Change Requests Dashboard Migration User Coordination
+
+# Meeting Summary
+
+## Date: Not specified (references to "today", "yesterday", and =
+"Friday"=E2=80=94contextual estimate: week of June 17-23, 2024)
+## Duration: Not specified (structured as a multi-topic working meeting)
+## Participants Mentioned:
+- Steve Bellat
+- Justin
+- Paul
+- Prashant
+- Corey
+- DJO
+- Pierce
+- Gaurav
+- Sakina
+- Rakesh
+- Jen, Andrea (HR)
+- Rashid
+- Dex
+- Kathleen / Catherine
+- Ashra
+- Anish
+- Brandi
+- Sukhai
+- Stephen Brown
+- SRI
+- OP models/teams
+- PMO
+
+---
+
+## 1. Main Topics Discussed
+
+### A. Change Request and Workstream Support
+
+- **Steve Bellat** was assigned to raise a change request for additional =
+workstream support.
+    - Justin and Steve met last week, documented =
+current needs, ran meetings with engineering and ISC teams.
+    - Steve intended to write and escalate the change request with Paul but=
+ no progress has been communicated; follow-ups have been conducted without =
+response.
+    - Formal process emphasized as the correct avenue to =
+highlight and manage resourcing gaps.
+    - Action on tracking and =
+surfacing change requests was reiterated for ITLT dashboards.
+
+### B. ITLT Dashboard Requirements and Review
+
+- **Dashboard Elements to =
+Include:**
+    - **Budget vs Actuals:**=20
+        - Emphasis on =
+color-coded, clear monthly visuals.
+        - Data sources discussed as now=
+ available; need to finalize visualization leveraging PBI/reporting =
+capabilities.
+        - Highlight of those over/under budget ("naughty =
+list").
+    - **Application Burn Down:**
+        - Visualization showing =
+which applications are moving into testing, which are behind on design, by =
+month.
+        - Now entering "six months to Day One" phase: critical =
+period; all designs should be finished, everyone to be in execution.
+        - Data is available; need to create reveal-focused dashboards.
+    - **Change Request Tracker:**=20
+        - A robust tracker to be shown=
+ at ITLT Forum, with totals of approved change requests (one-time and run =
+costs).
+        - Direct adjustment to loan/model as changes are tracked.
+    - Supporting summaries such as program summaries to be owned by Paul =
+and Sukhai.
+
+- **Internal and External Meetings:**
+    - Review session =
+with "Pierce" on Friday (suggested).
+    - **Internal prep session to be =
+held Thursday**=E2=80=94confirmed.
+    - Collaboration suggested between =
+Corey, Justin, Gaurav, and Sakina for dashboard development.
+
+### C. Communications & HR Review Processes
+
+- Updates on the "Ethan's =
+hair" item: Conversation with Jeff completed, HR and legal engagements =
+scheduled for later today for follow-up actions.
+- HR wants to review all =
+draft communications to employees before sending (flagged by Jen and =
+Andrea).
+- Dex now coordinating communication review with program comms/HR;=
+ process to ensure HR oversight is confirmed.
+- Coordination required =
+between communications teams and HR to maintain messaging accuracy and =
+compliance.
+- Items consolidated for tracking and covered in main topics.
+
+### D. CMDB Disposition Updates
+
+- **Request from Catherine for UI Team =
+Access:**
+    - UI team currently lacks access to CMDB, expected to receive=
+ (potentially read-only).
+    - Discussion on risks of losing control over =
+flag dispositions if CMDB becomes the system of record (historical =
+challenge: lack of updates, clunkiness).
+    - Catherine=E2=80=99s =
+direction is to migrate to a CMDB "single source of truth," Excel is no =
+longer tenable.
+    - Read-only access to enable validation and visibility =
+for the UI team advocated.
+    - One-time load of inventory and disposition=
+ into CMDB for Day One separation.
+    - Clarity expected on how =
+disposition data will be reported and sliced, as CMDB details may vary (ASN=
+ vs higher-level reporting).
+    - Need for continued close coordination =
+between Justin, Catherine, and broader reporting stakeholders.
+
+### E. Budget vs Actual Updates
+
+- Action for Corey and Gaurav to sync and =
+align on dashboarding, with Gaurav offering cross-functional support =
+(including Sakina and others).
+- Note that PMO document updates have been =
+completed as of last week.
+- Further dashboard refinement and alignment =
+ongoing.
+
+### F. LE (Legal Entity) Workshop
+
+- Anish reported material =
+preparation for the workshop; draft to be shared with LDS team next week.
+- Internal materials review on track.
+
+### G. User Migration Planning
+
+- Meeting to be held today with HR and legal on this topic.
+- Peer update: DCN team will define and execute site separation and PC =
+migration by site (not by function).
+    - Migration schedule not yet =
+ready; details expected in about two weeks.
+    - Sites and user migrations=
+ are accelerated but not necessarily dependent (site wraps expected by =
+early October).
+    - Approach clarified: migrations by site preferred over=
+ by function.
+
+### H. Data Governance Board / Branding
+
+- No material updates since yesterday's meeting.
+- Brandi: A "graph deck" =
+is being reviewed, with a POV to be established by week=E2=80=99s end; =
+pending further feedback from Jen.
+- Branding: Paul has sent out guidance =
+regarding the official use of "Solstice" and "Solstice AM/Advanced =
+Materials"
+    - Branding decision: Solstice used everywhere except where =
+legal entity names are required.
+    - Emails and domain references to be =
+updated to solstice.com.
+    - ERP/legal documentation requirements to be =
+handled at the entity/country level by SRI.
+    - Awaiting further =
+clarification on terms and conditions for portals.
+    - All relevant teams=
+ (commercial, ERP, PMO) notified.
+
+### I. Deliverables & TSA (Transition =
+Service Agreement) Bottoms-Up Build
+
+- No formal submission for Gate Four =
+at this time.
+- Continuing to follow up with tower leads for data inputs; =
+aiming for an internal review by Friday and bulk of data input into model =
+by then.
+- OP models are finalized; need to update slide decks to reflect =
+any Day One disposition changes (primarily for internal consumption).
+- Standalone costs and TSA bottoms-up costs to be further refined as =
+allocation numbers are updated.
+- Schedules/exhibits for TSA, legal =
+language updates, and documentation are upcoming deliverables.
+- PMO requires visibility into scheduling and cost models for discussions =
+with the deal team.
+- **TSA Exit "Spotlight":**
+    - Submission by June 23=
+ (Friday) targeted.
+    - Need preliminary cost and scope view ready.
+
+---
+
+## 2. Action Items
+
+1. **Change Request Progress**
+    - Follow up with =
+Steve Bellat regarding outstanding change request and workstream needs.
+    - Elevate and track change requests in dashboard/forum.
+
+2. **Dashboard Development**
+    - Corey: Lead on Budget vs Actual =
+visualization=E2=80=94sync with Gaurav.
+    - Justin: Share app burn-down =
+data; coordinate with Corey and Gaurav.
+    - Sakina: Connect for dashboard=
+ support on all trackers.
+    - Gaurav: Join calls, coordinate dashboard =
+development.
+
+3. **ITLT Review Sessions**
+    - Prashant: Internal review =
+set for Thursday; external review with Pierce on Friday.
+    - Prepare and lock dashboard visualizations/formats.
+
+4. **CMDB Access/Alignment**
+    - Rakesh/Team: Sync with Catherine for UI =
+team read-only access.
+    - Justin: Coordinate with Catherine to ensure =
+data/reporting structure alignment.
+    - Track timing, process, and =
+reporting impacts of CMDB data migration.
+
+5. **Communications**
+    - Dex/Comms: Coordinate with HR before releasing draft communications.
+    - Rakesh: Engage HR for content approval process.
+
+6. **User Migration/Separation**
+    - DCN/Infrastructure teams: Develop =
+and deliver site and PC migration plans; expected within two weeks.
+    - Continue aligning with HR/legal/comms as information becomes =
+available.
+
+7. **LE Workshop**
+    - Anish: Finalize and circulate draft to=
+ LDS team next week.
+    - Rakesh: Support review process.
+
+8. **TSA Build/Deliverables**
+    - Corey: Internal review of TSA =
+model/data inputs by Friday.
+    - Update slide decks and models with =
+disposition changes.
+    - Finalize schedules/exhibits for PMO review.
+    - Prepare TSA Exit Spotlight for June 23.
+
+9. **Branding**
+    - Paul/PMO: Follow up with branding teams regarding terms/conditions =
+and confirm required legal packet for portals.
+    - All teams: Update =
+references/emails to Solstice per new branding guidelines.
+
+---
+
+## 3. Follow-up Items and Meetings
+
+- **Today:** Meeting with HR/legal =
+regarding communications and user migration.
+- **Thursday:** Internal =
+review of dashboards and ITLT materials.
+- **Friday:** External review =
+session with Pierce; aim to complete internal review of TSA model/data and =
+deliverables.
+- **By next week:** Anish to deliver LE workshop materials =
+draft to LDS team; DCN team to provide preliminary user migration/site =
+separation plan details (approx. two weeks out).
+- **Ongoing:** Regular =
+follow-ups on branding, CMDB access, and allocation updates to run cost =
+models.
+- **By June 23:** Submit TSA Exit Spotlight with cost/scope view.
+
+---
+
+## 4. Notable Points/Risks
+
+- Concern about retaining visibility and =
+reporting accuracy in the migration from Excel to CMDB, especially =
+regarding disposition data and leadership reporting granularity.
+- Dependence on timely delivery by DCN and other infrastructure teams for =
+migration planning.
+- Emphasis on data visualization clarity and real-time =
+tracking in dashboards for leadership awareness and decision-making.
+- Need to ensure HR and Comms are fully aligned before any sensitive =
+communications are released.
+- Pending final legal and branding =
+clarifications impacting deliverables and portal configurations.
+
+---
+
+# End of Summary
+
+Transcript:
+0:00
+You are now connected. You can merge =
+your calls when ready. Understanding, you know what was needed for the next=
+ phase and what the funding is available. But yes, start with the =
+documenting.
+
+0:16
+You've been muted to unmute yourself, press star six. =
+Who got it?
+
+0:26
+Yeah, and I'll say that this, this one was also an action=
+ on on what's the name? Steve Bellat was supposed to raise a change request=
+. So Justin, I met him last week. We helped him document at least. We ran a=
+ number of meetings with the ISC teams and engineering teams that had =
+majority of the move as a scope. Based on that, Steve said he'll go and =
+write a change request and discuss with Paul that he needs some work stream=
+ support that has not come through. I do not know why and I followed up =
+with him a couple of times but like that was one way of kind of pressing or=
+ you know, raising the issue which is through the formal change request =
+process that he needs support of, of some advisory and like hands on board =
+people as well. Anyway, let's move to the next one.
+
+1:26
+Okay. For itlt once again awaiting invite from peers and communications =
+from him. But the deck is underway. And Prashant, we have a review session =
+with peers on Friday. Do you suggest we move that out or should I set up an=
+ internal review for Thursday?
+
+1:43
+No, let's do it and let's look at =
+these formats. I think we need to lock down how we want to show burn downs.=
+ So I'll just say there are three things that needs two to three things =
+that I think definitely need to be on the itlt. Very good dashboarding of =
+budget versus actual. So Corey, this is one that we need to really lock =
+down. I don't know what's required further. I know we've had some good =
+conversations with DJO and Pierce about getting the data. We should utilize=
+ our PBI capabilities or reporting capabilities and just come up with a =
+month on month like budget versus actuals and who's on the naughty list, =
+who's over budget, who's under budget. Like really just color coding this =
+out and like no, like with the data sources locked, I think we have =
+everything. We just need a good visualization of it. So let's get that in. =
+That's super important. Yeah. The other thing that is that we need to start=
+ doing now is start showing which apps are going into testing, which apps =
+were supposed to complete design but haven't completed design. So like a =
+burn down of that by application by month. Right now we're getting into the=
+ six months to day one time zone. All the design is Completed. Everyone's =
+in execution. And again, Justin, we have all of this data. Right. So it's =
+about getting good dashboards and visualizations out there for people to =
+see and kind of draw insights. So these are. Yeah, these are the two that I=
+ have. Anything else needs to come into it?
+
+3:17
+No, we should.
+
+3:19
+Oh, sorry. I had a third one change request. So we need to have a very =
+strong change request tracker that we show at least highlights in the ITLD =
+forum saying this month we have approved change requests totaling X amount =
+in one time and the run cost has been an X, Y amount in run cost. And we've=
+ got a tracker and that's kind of been adjusted with us and loan model. So =
+these are the three main things that definitely need to go in. Along with =
+that there's like program summary and other things that. That Paul and =
+Sukhai can do.
+
+3:54
+Got it. Prashant. And then Corey, if we can connect on=
+ the budget versus actual. And then Justin, if you can share the app burn =
+down with me and I'll set up our internal review for all of us on Thursday.
+
+4:08
+Yeah. And Gaurav, I don't know if Gaurav, you're on call, but =
+especially for this dashboarding support, if you can kind of get together =
+with Corey, Justin and Sakina. Right. Like, we should have some really good=
+ dashboards coming out for these. These trackers. Definitely. So what I'll =
+do, I'll also be a part of this call so that we do have a good capability. =
+So I'll connect with Sakina and me.
+
+4:41
+And Korabul and Corey and we'll =
+take it up.
+
+4:44
+Awesome. Thank you.
+
+4:46
+Exactly. Moving on to why =
+Ethan's hair needed early and the call that was supposed to be had with =
+Jeff. Rakesh, any updates on how that comment.
+
+4:59
+It's tied to the one on the right, so we'll get to it. I think. Yeah, the =
+call went okay. We've given him. We have some content to share with him. I =
+think some approvals have been coming through. We'll address it. So we'll =
+continue the conversation. We'll just need. We have a follow on =
+conversation today with a with the HR and legal team and we'll see what the=
+ outcomes are.
+
+5:22
+So on the same topic, do we have Ashra in the call? I =
+think not, but yeah. So Rakesh, Jen and Andrea from HR have pinged us that =
+what they're saying is like whenever the draft communications is out, HR =
+wants to review it.
+
+5:43
+Communications off.
+
+5:46
+Like our request is it will wants to send out communications to Wingpence =
+Employees, they want to see what's the content of that particular =
+communication going in. I checked with Rashid separately on chat. So Rashid=
+ is saying now Dex is coordinating with overall program communications team=
+ which he feels is reporting to HR or as part of HR to get those =
+communications out. So whenever the draft is ready, HR wants to review it =
+before it is sent out.
+
+6:26
+I have some thoughts on that, but. Okay, let's=
+.
+
+6:29
+Let's connect. Yeah. And just sort it out. And Sakina, I think we =
+can just take off point number five from left and cover it in point number =
+one on the right.
+
+6:39
+Got it. Will do. For Kathleen's request on the cmdb=
+, this disposition updates. The next action is to sync with Kathleen to =
+enable access for ui. Rakesh, do you have any conversations planned for =
+this?
+
+6:59
+Fine. Not yet happening.
+
+7:01
+Oh, sorry. What is this? I =
+missed it. Yeah, Catherine sent an email basically requesting updates to =
+the cmdb but the UI team doesn't have access. So that's kind of what =
+attaches. And I don't think we'll get access to like we'll probably just =
+get read only access. Right. At the most.
+
+7:18
+What's the ask on us to get=
+ read only access?
+
+7:22
+To do what?
+
+7:24
+Be able to view what the =
+validation is and what the. What's happening in cmdb.
+
+7:30
+Yeah, maybe we can connect more on this. I want to push back a little bit =
+on this because while Catherine is driving like this whole move to CNDV =
+single source of truth, we will lose complete control of flag dispositions =
+if. If we move to CMDB because no one updates CMD property. That's like the=
+ whole. It's very clunky.
+
+7:55
+We're getting to a point where they're =
+going to clone CMDB and take it all as one. So we can't be operating in =
+Excel worksheets.
+
+8:01
+That's what she's doing.
+
+8:03
+She's doing this right. It's the right way to do it as a database and go =
+down front end for cmdb. We just need to get plugged in and get re going =
+the access to be able to understand that because change right now teams are=
+ supposed to make changes in CMDB officially if there's any change requests=
+ we'll pass the Excel Master inventory. So we really have to stick to the I=
+ Conceptually that's the right thing to do. I think it's us having =
+visibility to that and getting access and seeing what we need to do because=
+ we can't be maintaining it on Excel sheet.
+
+8:39
+I. I don't know how it =
+was like in J and J. I don't know same thing but GE and the healthcare =
+arrow like this whole moving to CMDB was just because of so many like the =
+cmdb. If it's a separate instance that we get at some point that's fine. =
+It's not happened yet. We don't know when the CMDB is going to get cloned =
+for Athens specifically. Right.
+
+9:03
+August, we don't need.
+
+9:06
+What are we getting into like so.
+
+9:07
+Do you want to see? I have the form=
+ which Katherine is asking every service owner to fill in. I can share but =
+yeah it's like it's got the spin dispositions as well.
+
+9:19
+No, no, you get it but the point is we would. We still need to maintain =
+some control visibility and have some control over it so that we can help =
+manage some of it. So that's what we're trying to get. So we'll just have =
+to engage Catherine and understand what that limitation is.
+
+9:39
+Not getting a wrong feeling on this as well. I'll put it out. I. I think =
+like getting folks to update dispositions has been a pain already. Like now=
+ if we ask them to do the same thing through a form in cmdb.
+
+9:55
+No, it's a one time.
+
+9:57
+Yeah mentioned nobody's updating things. They've=
+ taken our Excel sheet, put it in cmdb. We just have to go and validate =
+that spot check.
+
+10:07
+I see. Okay, sorry. That's it. And then. Okay so =
+what we have is gonna get one time loaded in loaded and.
+
+10:15
+It is about day one distinction.
+
+10:17
+Nothing else.
+
+10:20
+You probably want to do because the whole track of this is you're going to =
+clone the CMDB and take it away with them. So as they do new build backs =
+and move as is app CIS will change. They'll have to create new app CIS in =
+CMDB to maintain those and then when they clone it and take it with them =
+they'll have a copy of you know those atoms scope. So we do need visibility=
+ into that and understand how that's you know that's being planned so but =
+yes, let's, let's talk a little bit more about that so we understand what =
+that process is when the timing is etc. But not there's no app disposition =
+changes. It's importing the master inventory into it and maintaining it in =
+cmd.
+
+11:04
+Okay, got it. And Justin, are you tied out with Catherine on =
+this?
+
+11:10
+This is a conversation we need to have.
+
+11:13
+No, I thought Justin was already in touch with her when. When like this was=
+ being thought to just not. Hey Justin, are you there? All right, we'll =
+come back to this.
+
+11:42
+Yeah we need to talk about this because like the =
+dispositions are very limited available in cmdb. It's not, it's not =
+everything. We have a few for spin but it doesn't die out exactly as =
+perspective of dispositions because we are doing leadership.
+
+12:00
+Reporting at the 291 level now in CMDB it's going to go at the ASN level =
+and we like, I don't know who will filter in what way, how it will be =
+sliced and diced. So we need to make sure that just like you know, Justin, =
+Katherine and us, like we're on the same page of how this reporting happens=
+. That should not change because people lose trust in what we've shown.
+
+12:26
+Right.
+
+12:27
+Next item.
+
+12:29
+Moving on, we're going to talk about =
+the budget versus actual again. Corey, if you can get with. If you can set =
+up some time with Gaurav to align on like the dashboard. I know you are =
+currently analyzing the new latest abstract from Vanilla, but yeah. Any =
+other updates?
+
+12:48
+No, I think the note on there about updating the PMO =
+documents that's been done, that was done last week. So you can. That can =
+be more completed. But yeah, we'll sync up with Gorav.
+
+12:58
+And.
+
+13:00
+Get the dashboard lined up.
+
+13:05
+Yep.
+
+13:11
+Anish, I know you brought up=
+ the LE workshop yesterday and are working on the materials today and then =
+you will be reviewing them I guess later with Rakesh and then any other =
+updates?
+
+13:26
+We're on track for that. We just need to get a draft.
+
+13:28
+To the LDS team next week so.
+
+13:30
+No, no, she's there right now.
+
+13:33
+Got it.
+
+13:39
+Sean, I just refer Keshe about this.
+
+13:43
+Like 30 seconds ago. All right.
+
+13:49
+Sounds good. And then for user =
+migration planning and the meeting with Jeff, Rakesh, anything else you =
+want to share about that?
+
+13:59
+No, I think we spoke about it. We're =
+having a meeting with Jeff later on today. I think we're getting more and =
+more information. Sorry, not Jeff. We're having a meeting with HR and the =
+legal team and what comes of it. We'll be able to share.
+
+14:17
+For the BRB planning and UAT kickoff for tomorrow.
+
+14:23
+Any problems that still needs a bit of work. So we're looking to meet with =
+peers today to align on what we have from the work, you know, the slides =
+and have them walk through that and set up a conversation with the =
+workstream lead so that they're ready to talk to it tomorrow and walk =
+through what we will need to facilitate, etc. So the content is still being=
+ developed. We should have it finalized later this afternoon for the =
+kickoff deck. Yes. Somebody had a question?
+
+14:58
+Yeah, Rakesh, I just =
+want to give a brief update on user migrations as well. Just on point =
+number one.
+
+15:03
+Okay.
+
+15:04
+I did speak with the DCN team yesterday to =
+align on when they're going to share their site separation and PC migration=
+ schedules. We'll likely be defining waves by site, not by function and so =
+they've agreed to own the development and execution of both these plans. =
+They don't have the details yet to share at this time, but expect it within=
+ two weeks. Okay. Just want to give that update.
+
+15:27
+Okay. It was always by site, was it not?
+
+15:36
+People were throwing around=
+ the idea of by function.
+
+15:38
+That was your testing. But no, the =
+function doesn't make sense.
+
+15:43
+Agreed, Agreed. So we're doing it by =
+site. I just, there was, there was a few folks within the infrastructure =
+team talking about doing it by function, but we're doing it by site so. And=
+ we'll accelerate so the site will could possibly be still be on the =
+Honeywell network and you have sites and users cut over so those two are =
+not dependent on each other. So it'll be accelerated for the users and =
+sites will likely be wrapping up early October.
+
+16:12
+Okay.
+
+16:16
+Sounds good. And then Rakesh, anything on that data governance board and =
+Brandi?
+
+16:20
+No, nothing. No, nothing from different from yesterday.
+
+16:23
+Got it.
+
+16:25
+For still action for us to do. We'll still have to. =
+And who has a graph deck which we'll review today and we'll take it back to=
+ Jen and we'll. We'll get a point of view by end of the week.
+
+16:42
+Got it. And for branding, has the email been sent out by Paul?
+
+16:47
+Yeah, Paul sent out an email. So what's happened is he's got connected with=
+ him earlier this morning, this as well. So we've got the official sources =
+name. So that's what he has sent out to be used everywhere. Where we're =
+legally bound to use a legal entity name, we will use that perhaps on =
+certain labels or certain forms or certain communication but everywhere =
+else I think the alignment is that from Solstice leadership is that they'll=
+ use Solstice. So emails will have to get changed to first name.=
+lastnameolsis.com other, you know, domains, web pages, everything will all =
+be sources. Now they own Solstice, Solstice AM and Solstice Advanced =
+Materials. So I think where it needs to get changed they will change it to =
+Solstice where they've kept it as Solstice AM or other things internally. =
+For example they may keep it that and you know, link it back to Solstice.=
+com but that's the guidance that Paul has given the team and so that's what=
+ the teams are marching towards. So Stephen Brown, the commercial team, ERP=
+ team all been notified of that. On the ERP side, you know there are =
+certain spots where they have to use the actual legal entity name. So SRI =
+and srijab have taken that. SRI particularly is running with that to =
+identify what legal entities to be used in what country, etc. So he's got =
+that. But for us I think at a high level we understand that the color of =
+the font, the logo, all that will come later. But officially they're using =
+the Solstice name and so things that need to get changed like I said, like =
+email and other websites and others will will get the Solstice.com There =
+are a few follow ups that I have with the PMO and branding team on terms =
+and conditions to be used in portals and things of that nature. So we're =
+waiting for an answer on that following up, but that's where we are with =
+the for the branding decision as of now.
+
+19:00
+Got it. Thanks Rakesh. =
+Anything for the deliverables. I know we are not submitting anything for =
+gate four but anything on TSA bottoms up field.
+
+19:11
+Yeah Corey, you want to talk about that? We'll get into the exit =
+Deliverable.
+
+19:15
+Yeah, I think it's the same as we talked about =
+yesterday afternoon. We're continuing to follow up with with the tower =
+leads to get the data that we need and building the model, updating the =
+model with that data. So we're working to by Friday have our internal =
+review done and hopefully have all most of that data input into the model. =
+So we'll continue to work through that today we have a call right after =
+this to align and keep working on that.
+
+19:47
+So point on that the OP =
+models have been fairly finalized. We should and this is where for our own =
+benefit we should create a new model slide deccs with any day one =
+disposition changes there have been one or two like value has dropped off. =
+So if it's on the tile charts we should update that just to complete that. =
+Nothing formal but for us to keep obviously they're all reflected in the =
+inventory and in the cmdb. From a standalone cost perspective that goes =
+very much in hand with the TSA bottoms up build. So as we get the bottoms =
+up build numbers we also remove all of the allocations that are there and =
+we pretty much get a receipt of what the parallel run and the standup cost =
+would be. So as we get an understanding of what the build back license is =
+and build back infrastructure, hosting etcetera so all those allocation =
+numbers will go away and reflect truer numbers that the Solstice team has. =
+So that's the part that Corey is also working on because standalone run =
+will reflect that day. One standalone run will reflect that. Plus the TSA =
+costs which are getting updated. So I know based on the conversations at =
+TSA exit, we're pressure testing the durations. So we'll get the bottoms of=
+ cost numbers. Those will go into the durate, you know, those will be tied =
+up with the durations as well. And then the third part on that is the =
+scheduling, the document itself. So exhibits and language around the TSA =
+schedule, that's something we'll also be working on to refine. PMO is =
+looking for a view on that shortly. So even though it's not a deliverable, =
+they'll be taking that and discussing it with the deal team. So we do need =
+to get that, you know, they want to review that language. So. So that's =
+coming up now. The other part on this is the TSA exit spotlight. So what we=
+ do need is by the 23rd, we need to submit that. So which means by Friday, =
+through everything we spoke, we need a view of the TSA exit scope is and =
+potentially a preliminary view into what the costing would be.
+----_NmP-aadf187db3042af2-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Change =
+Requests Dashboard Migration User Coordination</h1></td></tr></table></div>=
+<div style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/CAa33b97a73435b10216074f5da2548f6c?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h1 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2.5rem">Meeting Summary</h1><h2 style=3D"font-weight:500;padd=
+ing-top:20px;font-size:2rem">Date: Not specified (references to =
+&quot;today&quot;, &quot;yesterday&quot;, and &quot;Friday&quot;=E2=80=94co=
+ntextual estimate: week of June 17-23, 2024)</h2><h2 =
+style=3D"font-weight:500;padding-top:20px;font-size:2rem">Duration: Not =
+specified (structured as a multi-topic working meeting)</h2><h2 =
+style=3D"font-weight:500;padding-top:20px;font-size:2rem">Participants =
+Mentioned:</h2><ul>
+<li>Steve Bellat</li>
+<li>Justin</li>
+<li>Paul</li>
+<li>Prashant</li>
+<li>Corey</li>
+<li>DJO</li>
+<li>Pierce</li>
+<li>Gaurav</li>
+<li>Sakina</li>
+<li>Rakesh</li>
+<li>Jen, Andrea (HR)</li>
+<li>Rashid</li>
+<li>Dex</li>
+<li>Kathleen / Catherine</li>
+<li>Ashra</li>
+<li>Anish</li>
+<li>Brandi</li>
+<li>Sukhai</li>
+<li>Stephen Brown</li>
+<li>SRI</li>
+<li>OP models/teams</li>
+<li>PMO</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">1. Main =
+Topics Discussed</h2><h3 style=3D"font-weight:500;padding-top:20px;font-siz=
+e:1.75rem">A. Change Request and Workstream Support</h3><ul>
+<li><strong style=3D"font-weight:bold">Steve Bellat</strong> was assigned =
+to raise a change request for additional workstream support.<ul>
+<li>Justin and Steve met last week, documented current needs, ran meetings =
+with engineering and ISC teams.</li>
+<li>Steve intended to write and =
+escalate the change request with Paul but no progress has been =
+communicated; follow-ups have been conducted without response.</li>
+<li>Formal process emphasized as the correct avenue to highlight and manage=
+ resourcing gaps.</li>
+<li>Action on tracking and surfacing change requests=
+ was reiterated for ITLT dashboards.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">B. ITLT =
+Dashboard Requirements and Review</h3><ul>
+<li><p><strong =
+style=3D"font-weight:bold">Dashboard Elements to Include:</strong></p>
+<ul>
+<li><strong style=3D"font-weight:bold">Budget vs Actuals:</strong> <ul>
+<li>Emphasis on color-coded, clear monthly visuals.</li>
+<li>Data sources discussed as now available; need to finalize visualization=
+ leveraging PBI/reporting capabilities.</li>
+<li>Highlight of those =
+over/under budget (&quot;naughty list&quot;).</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Application Burn Down:</strong><ul>
+<li>Visualization showing which applications are moving into testing, which=
+ are behind on design, by month.</li>
+<li>Now entering &quot;six months to =
+Day One&quot; phase: critical period; all designs should be finished, =
+everyone to be in execution.</li>
+<li>Data is available; need to create =
+reveal-focused dashboards.</li>
+</ul>
+</li>
+<li><strong =
+style=3D"font-weight:bold">Change Request Tracker:</strong> <ul>
+<li>A robust tracker to be shown at ITLT Forum, with totals of approved =
+change requests (one-time and run costs).</li>
+<li>Direct adjustment to =
+loan/model as changes are tracked.</li>
+</ul>
+</li>
+<li>Supporting summaries such as program summaries to be owned by Paul and =
+Sukhai.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Internal=
+ and External Meetings:</strong></p>
+<ul>
+<li>Review session with =
+&quot;Pierce&quot; on Friday (suggested).</li>
+<li><strong =
+style=3D"font-weight:bold">Internal prep session to be held =
+Thursday</strong>=E2=80=94confirmed.</li>
+<li>Collaboration suggested =
+between Corey, Justin, Gaurav, and Sakina for dashboard development.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1=
+.75rem">C. Communications &amp; HR Review Processes</h3><ul>
+<li>Updates on the &quot;Ethan&#39;s hair&quot; item: Conversation with =
+Jeff completed, HR and legal engagements scheduled for later today for =
+follow-up actions.</li>
+<li>HR wants to review all draft communications to =
+employees before sending (flagged by Jen and Andrea).</li>
+<li>Dex now coordinating communication review with program comms/HR; =
+process to ensure HR oversight is confirmed.</li>
+<li>Coordination required=
+ between communications teams and HR to maintain messaging accuracy and =
+compliance.</li>
+<li>Items consolidated for tracking and covered in main =
+topics.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:=
+1.75rem">D. CMDB Disposition Updates</h3><ul>
+<li><strong =
+style=3D"font-weight:bold">Request from Catherine for UI Team =
+Access:</strong><ul>
+<li>UI team currently lacks access to CMDB, expected =
+to receive (potentially read-only).</li>
+<li>Discussion on risks of losing =
+control over flag dispositions if CMDB becomes the system of record =
+(historical challenge: lack of updates, clunkiness).</li>
+<li>Catherine=E2=80=99s direction is to migrate to a CMDB &quot;single =
+source of truth,&quot; Excel is no longer tenable.</li>
+<li>Read-only access to enable validation and visibility for the UI team =
+advocated.</li>
+<li>One-time load of inventory and disposition into CMDB =
+for Day One separation.</li>
+<li>Clarity expected on how disposition data =
+will be reported and sliced, as CMDB details may vary (ASN vs higher-level =
+reporting).</li>
+<li>Need for continued close coordination between Justin, =
+Catherine, and broader reporting stakeholders.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">E. Budget =
+vs Actual Updates</h3><ul>
+<li>Action for Corey and Gaurav to sync and =
+align on dashboarding, with Gaurav offering cross-functional support =
+(including Sakina and others).</li>
+<li>Note that PMO document updates have=
+ been completed as of last week.</li>
+<li>Further dashboard refinement and =
+alignment ongoing.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px=
+;font-size:1.75rem">F. LE (Legal Entity) Workshop</h3><ul>
+<li>Anish reported material preparation for the workshop; draft to be =
+shared with LDS team next week.</li>
+<li>Internal materials review on track=
+.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">G. User Migration Planning</h3><ul>
+<li>Meeting to be held today =
+with HR and legal on this topic.</li>
+<li>Peer update: DCN team will define=
+ and execute site separation and PC migration by site (not by function).=
+<ul>
+<li>Migration schedule not yet ready; details expected in about two =
+weeks.</li>
+<li>Sites and user migrations are accelerated but not =
+necessarily dependent (site wraps expected by early October).</li>
+<li>Approach clarified: migrations by site preferred over by function.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1=
+.75rem">H. Data Governance Board / Branding</h3><ul>
+<li>No material updates since yesterday&#39;s meeting.</li>
+<li>Brandi: A &quot;graph deck&quot; is being reviewed, with a POV to be =
+established by week=E2=80=99s end; pending further feedback from Jen.</li>
+<li>Branding: Paul has sent out guidance regarding the official use of =
+&quot;Solstice&quot; and &quot;Solstice AM/Advanced Materials&quot;<ul>
+<li>Branding decision: Solstice used everywhere except where legal entity =
+names are required.</li>
+<li>Emails and domain references to be updated to =
+solstice.com.</li>
+<li>ERP/legal documentation requirements to be handled =
+at the entity/country level by SRI.</li>
+<li>Awaiting further clarification=
+ on terms and conditions for portals.</li>
+<li>All relevant teams =
+(commercial, ERP, PMO) notified.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">I. =
+Deliverables &amp; TSA (Transition Service Agreement) Bottoms-Up =
+Build</h3><ul>
+<li>No formal submission for Gate Four at this time.</li>
+<li>Continuing to follow up with tower leads for data inputs; aiming for an=
+ internal review by Friday and bulk of data input into model by then.</li>
+<li>OP models are finalized; need to update slide decks to reflect any Day =
+One disposition changes (primarily for internal consumption).</li>
+<li>Standalone costs and TSA bottoms-up costs to be further refined as =
+allocation numbers are updated.</li>
+<li>Schedules/exhibits for TSA, legal =
+language updates, and documentation are upcoming deliverables.</li>
+<li>PMO requires visibility into scheduling and cost models for discussions=
+ with the deal team.</li>
+<li><strong style=3D"font-weight:bold">TSA Exit =
+&quot;Spotlight&quot;:</strong><ul>
+<li>Submission by June 23 (Friday) =
+targeted.</li>
+<li>Need preliminary cost and scope view ready.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:=
+2rem">2. Action Items</h2><ol>
+<li><p><strong style=3D"font-weight:bold">Ch=
+ange Request Progress</strong></p>
+<ul>
+<li>Follow up with Steve Bellat =
+regarding outstanding change request and workstream needs.</li>
+<li>Elevate and track change requests in dashboard/forum.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Dashboard =
+Development</strong></p>
+<ul>
+<li>Corey: Lead on Budget vs Actual =
+visualization=E2=80=94sync with Gaurav.</li>
+<li>Justin: Share app =
+burn-down data; coordinate with Corey and Gaurav.</li>
+<li>Sakina: Connect for dashboard support on all trackers.</li>
+<li>Gaurav: Join calls, coordinate dashboard development.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">ITLT Review Sessions</strong></p>
+<ul>
+<li>Prashant: Internal review set for Thursday; external review with =
+Pierce on Friday.</li>
+<li>Prepare and lock dashboard =
+visualizations/formats.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">CMDB Access/Alignment</strong></p>
+<ul>
+<li>Rakesh/Team: Sync with Catherine for UI team read-only access.</li>
+<li>Justin: Coordinate with Catherine to ensure data/reporting structure =
+alignment.</li>
+<li>Track timing, process, and reporting impacts of CMDB =
+data migration.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">=
+Communications</strong></p>
+<ul>
+<li>Dex/Comms: Coordinate with HR before =
+releasing draft communications.</li>
+<li>Rakesh: Engage HR for content =
+approval process.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold=
+">User Migration/Separation</strong></p>
+<ul>
+<li>DCN/Infrastructure teams:=
+ Develop and deliver site and PC migration plans; expected within two weeks=
+.</li>
+<li>Continue aligning with HR/legal/comms as information becomes =
+available.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">LE =
+Workshop</strong></p>
+<ul>
+<li>Anish: Finalize and circulate draft to LDS =
+team next week.</li>
+<li>Rakesh: Support review process.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">TSA Build/Deliverables</strong></=
+p>
+<ul>
+<li>Corey: Internal review of TSA model/data inputs by Friday.</li>
+<li>Update slide decks and models with disposition changes.</li>
+<li>Finalize schedules/exhibits for PMO review.</li>
+<li>Prepare TSA Exit Spotlight for June 23.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Branding</strong></p>
+<ul>
+<li>Paul/PMO: Follow up with branding teams regarding terms/conditions and =
+confirm required legal packet for portals.</li>
+<li>All teams: Update =
+references/emails to Solstice per new branding guidelines.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">=
+3. Follow-up Items and Meetings</h2><ul>
+<li><strong =
+style=3D"font-weight:bold">Today:</strong> Meeting with HR/legal regarding =
+communications and user migration.</li>
+<li><strong =
+style=3D"font-weight:bold">Thursday:</strong> Internal review of dashboards=
+ and ITLT materials.</li>
+<li><strong style=3D"font-weight:bold">Friday:</s=
+trong> External review session with Pierce; aim to complete internal review=
+ of TSA model/data and deliverables.</li>
+<li><strong =
+style=3D"font-weight:bold">By next week:</strong> Anish to deliver LE =
+workshop materials draft to LDS team; DCN team to provide preliminary user =
+migration/site separation plan details (approx. two weeks out).</li>
+<li><strong style=3D"font-weight:bold">Ongoing:</strong> Regular follow-ups=
+ on branding, CMDB access, and allocation updates to run cost models.</li>
+<li><strong style=3D"font-weight:bold">By June 23:</strong> Submit TSA Exit=
+ Spotlight with cost/scope view.</li>
+</ul>
+<hr />
+<h2 =
+style=3D"font-weight:500;padding-top:20px;font-size:2rem">4. Notable =
+Points/Risks</h2><ul>
+<li>Concern about retaining visibility and reporting =
+accuracy in the migration from Excel to CMDB, especially regarding =
+disposition data and leadership reporting granularity.</li>
+<li>Dependence on timely delivery by DCN and other infrastructure teams for=
+ migration planning.</li>
+<li>Emphasis on data visualization clarity and =
+real-time tracking in dashboards for leadership awareness and =
+decision-making.</li>
+<li>Need to ensure HR and Comms are fully aligned =
+before any sensitive communications are released.</li>
+<li>Pending final legal and branding clarifications impacting deliverables =
+and portal configurations.</li>
+</ul>
+<hr />
+<h1 style=3D"font-weight:500;p=
+adding-top:20px;font-size:2.5rem">End of Summary</h1></div></div></div><div=
+ style=3D"background-color:#ffffff;padding:28px;border-radius:12px;border:1=
+px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 =
+rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-size:20px;font-weight:=
+600;margin-top:0;margin-bottom:20px;display:flex;align-items:center;gap:8px=
+"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription<=
+/h3><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">0:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You are now =
+connected. You can merge your calls when ready. Understanding, you know =
+what was needed for the next phase and what the funding is available. But =
+yes, start with the documenting.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashan=
+t</span><span style=3D"color:#64748b;font-size:14px">0:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You&#x27;ve been =
+muted to unmute yourself, press star six. Who got it?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Justin</span><span style=3D"color:#64748b;font-size:14px"=
+>0:26</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, and I&#x27;ll say that this, this one was also an action on on =
+what&#x27;s the name? Steve Bellat was supposed to raise a change request. =
+So Justin, I met him last week. We helped him document at least. We ran a =
+number of meetings with the ISC teams and engineering teams that had =
+majority of the move as a scope. Based on that, Steve said he&#x27;ll go =
+and write a change request and discuss with Paul that he needs some work =
+stream support that has not come through. I do not know why and I followed =
+up with him a couple of times but like that was one way of kind of pressing=
+ or you know, raising the issue which is through the formal change request =
+process that he needs support of, of some advisory and like hands on board =
+people as well. Anyway, let&#x27;s move to the next one.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prashant</span><span style=3D"color:#64748b;font-size:14p=
+x">1:26</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Okay. For itlt once again awaiting invite from peers and =
+communications from him. But the deck is underway. And Prashant, we have a =
+review session with peers on Friday. Do you suggest we move that out or =
+should I set up an internal review for Thursday?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Justin</span><span style=3D"color:#64748b;font-size:14px"=
+>1:43</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">No, let&#x27;s do it and let&#x27;s look at these formats. I think we =
+need to lock down how we want to show burn downs. So I&#x27;ll just say =
+there are three things that needs two to three things that I think =
+definitely need to be on the itlt. Very good dashboarding of budget versus =
+actual. So Corey, this is one that we need to really lock down. I =
+don&#x27;t know what&#x27;s required further. I know we&#x27;ve had some =
+good conversations with DJO and Pierce about getting the data. We should =
+utilize our PBI capabilities or reporting capabilities and just come up =
+with a month on month like budget versus actuals and who&#x27;s on the =
+naughty list, who&#x27;s over budget, who&#x27;s under budget. Like really =
+just color coding this out and like no, like with the data sources locked, =
+I think we have everything. We just need a good visualization of it. So =
+let&#x27;s get that in. That&#x27;s super important. Yeah. The other thing =
+that is that we need to start doing now is start showing which apps are =
+going into testing, which apps were supposed to complete design but =
+haven&#x27;t completed design. So like a burn down of that by application =
+by month. Right now we&#x27;re getting into the six months to day one time =
+zone. All the design is Completed. Everyone&#x27;s in execution. And again,=
+ Justin, we have all of this data. Right. So it&#x27;s about getting good =
+dashboards and visualizations out there for people to see and kind of draw =
+insights. So these are. Yeah, these are the two that I have. Anything else =
+needs to come into it?</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">3:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, we should.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">3:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, sorry. I had a =
+third one change request. So we need to have a very strong change request =
+tracker that we show at least highlights in the ITLD forum saying this =
+month we have approved change requests totaling X amount in one time and =
+the run cost has been an X, Y amount in run cost. And we&#x27;ve got a =
+tracker and that&#x27;s kind of been adjusted with us and loan model. So =
+these are the three main things that definitely need to go in. Along with =
+that there&#x27;s like program summary and other things that. That Paul and=
+ Sukhai can do.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</spa=
+n><span style=3D"color:#64748b;font-size:14px">3:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Got it. Prashant. =
+And then Corey, if we can connect on the budget versus actual. And then =
+Justin, if you can share the app burn down with me and I&#x27;ll set up our=
+ internal review for all of us on Thursday.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Justin</span><span style=3D"color:#64748b;font-size:14px"=
+>4:08</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. And Gaurav, I don&#x27;t know if Gaurav, you&#x27;re on call, but =
+especially for this dashboarding support, if you can kind of get together =
+with Corey, Justin and Sakina. Right. Like, we should have some really good=
+ dashboards coming out for these. These trackers. Definitely. So what =
+I&#x27;ll do, I&#x27;ll also be a part of this call so that we do have a =
+good capability. So I&#x27;ll connect with Sakina and me.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>4:41</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">And Korabul and Corey and we&#x27;ll take it up.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Justin</span><span style=3D"color:#64748b;font-size:14px"=
+>4:44</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Awesome. Thank you.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</spa=
+n><span style=3D"color:#64748b;font-size:14px">4:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Exactly. Moving on =
+to why Ethan&#x27;s hair needed early and the call that was supposed to be =
+had with Jeff. Rakesh, any updates on how that comment.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>4:59</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">It&#x27;s tied to the one on the right, so we&#x27;ll get to it. I think=
+. Yeah, the call went okay. We&#x27;ve given him. We have some content to =
+share with him. I think some approvals have been coming through. We&#x27;ll=
+ address it. So we&#x27;ll continue the conversation. We&#x27;ll just need.=
+ We have a follow on conversation today with a with the HR and legal team =
+and we&#x27;ll see what the outcomes are.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sakina</span><span style=3D"color:#64748b;font-size:14px"=
+>5:22</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So on the same topic, do we have Ashra in the call? I think not, but =
+yeah. So Rakesh, Jen and Andrea from HR have pinged us that what =
+they&#x27;re saying is like whenever the draft communications is out, HR =
+wants to review it.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">5:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Communications off.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina</span><span=
+ style=3D"color:#64748b;font-size:14px">5:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Like our request is =
+it will wants to send out communications to Wingpence Employees, they want =
+to see what&#x27;s the content of that particular communication going in. I=
+ checked with Rashid separately on chat. So Rashid is saying now Dex is =
+coordinating with overall program communications team which he feels is =
+reporting to HR or as part of HR to get those communications out. So =
+whenever the draft is ready, HR wants to review it before it is sent out.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">6:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I have some thoughts=
+ on that, but. Okay, let&#x27;s.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina<=
+/span><span style=3D"color:#64748b;font-size:14px">6:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Let&#x27;s connect. =
+Yeah. And just sort it out. And Sakina, I think we can just take off point =
+number five from left and cover it in point number one on the right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</span><sp=
+an style=3D"color:#64748b;font-size:14px">6:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Got it. Will do. For=
+ Kathleen&#x27;s request on the cmdb, this disposition updates. The next =
+action is to sync with Kathleen to enable access for ui. Rakesh, do you =
+have any conversations planned for this?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>6:59</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Fine. Not yet happening.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span>=
+<span style=3D"color:#64748b;font-size:14px">7:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, sorry. What is =
+this? I missed it. Yeah, Catherine sent an email basically requesting =
+updates to the cmdb but the UI team doesn&#x27;t have access. So =
+that&#x27;s kind of what attaches. And I don&#x27;t think we&#x27;ll get =
+access to like we&#x27;ll probably just get read only access. Right. At the=
+ most.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">7:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">What&#x27;s the ask =
+on us to get read only access?</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin<=
+/span><span style=3D"color:#64748b;font-size:14px">7:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">To do what?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">7:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Be able to view what=
+ the validation is and what the. What&#x27;s happening in cmdb.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">7:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, maybe we can =
+connect more on this. I want to push back a little bit on this because =
+while Catherine is driving like this whole move to CNDV single source of =
+truth, we will lose complete control of flag dispositions if. If we move to=
+ CMDB because no one updates CMD property. That&#x27;s like the whole. =
+It&#x27;s very clunky.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">7:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We&#x27;re getting =
+to a point where they&#x27;re going to clone CMDB and take it all as one. =
+So we can&#x27;t be operating in Excel worksheets.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Justin</span><span style=3D"color:#64748b;font-size:14px"=
+>8:01</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">That&#x27;s what she&#x27;s doing.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>8:03</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">She&#x27;s doing this right. It&#x27;s the right way to do it as a =
+database and go down front end for cmdb. We just need to get plugged in and=
+ get re going the access to be able to understand that because change right=
+ now teams are supposed to make changes in CMDB officially if there&#x27;s =
+any change requests we&#x27;ll pass the Excel Master inventory. So we =
+really have to stick to the I Conceptually that&#x27;s the right thing to =
+do. I think it&#x27;s us having visibility to that and getting access and =
+seeing what we need to do because we can&#x27;t be maintaining it on Excel =
+sheet.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">8:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I. I don&#x27;t know=
+ how it was like in J and J. I don&#x27;t know same thing but GE and the =
+healthcare arrow like this whole moving to CMDB was just because of so many=
+ like the cmdb. If it&#x27;s a separate instance that we get at some point =
+that&#x27;s fine. It&#x27;s not happened yet. We don&#x27;t know when the =
+CMDB is going to get cloned for Athens specifically. Right.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px=
+">9:03</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">August, we don&#x27;t need.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin<=
+/span><span style=3D"color:#64748b;font-size:14px">9:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">What are we getting =
+into like so.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina</span><span=
+ style=3D"color:#64748b;font-size:14px">9:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Do you want to see? =
+I have the form which Katherine is asking every service owner to fill in. I=
+ can share but yeah it&#x27;s like it&#x27;s got the spin dispositions as =
+well.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">9:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, no, you get it =
+but the point is we would. We still need to maintain some control =
+visibility and have some control over it so that we can help manage some of=
+ it. So that&#x27;s what we&#x27;re trying to get. So we&#x27;ll just have =
+to engage Catherine and understand what that limitation is.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Justin</span><span style=3D"color:#64748b;font-size:14px=
+">9:39</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Not getting a wrong feeling on this as well. I&#x27;ll put it out. I. I=
+ think like getting folks to update dispositions has been a pain already. =
+Like now if we ask them to do the same thing through a form in cmdb.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina</span><span=
+ style=3D"color:#64748b;font-size:14px">9:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, it&#x27;s a one =
+time.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">9:57</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah mentioned =
+nobody&#x27;s updating things. They&#x27;ve taken our Excel sheet, put it =
+in cmdb. We just have to go and validate that spot check.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Justin</span><span style=3D"color:#64748b;font-size:14px"=
+>10:07</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">I see. Okay, sorry. That&#x27;s it. And then. Okay so what we have is =
+gonna get one time loaded in loaded and.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sakina</span><span style=3D"color:#64748b;font-size:14px"=
+>10:15</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">It is about day one distinction.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Justin</span><span style=3D"color:#64748b;font-size:14px"=
+>10:17</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Nothing else.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">10:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You probably want to=
+ do because the whole track of this is you&#x27;re going to clone the CMDB =
+and take it away with them. So as they do new build backs and move as is =
+app CIS will change. They&#x27;ll have to create new app CIS in CMDB to =
+maintain those and then when they clone it and take it with them =
+they&#x27;ll have a copy of you know those atoms scope. So we do need =
+visibility into that and understand how that&#x27;s you know that&#x27;s =
+being planned so but yes, let&#x27;s, let&#x27;s talk a little bit more =
+about that so we understand what that process is when the timing is etc. =
+But not there&#x27;s no app disposition changes. It&#x27;s importing the =
+master inventory into it and maintaining it in cmd.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Justin</span><span style=3D"color:#64748b;font-size:14px"=
+>11:04</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Okay, got it. And Justin, are you tied out with Catherine on this?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">11:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">This is a =
+conversation we need to have.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin<=
+/span><span style=3D"color:#64748b;font-size:14px">11:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, I thought Justin=
+ was already in touch with her when. When like this was being thought to =
+just not. Hey Justin, are you there? All right, we&#x27;ll come back to =
+this.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina</span><span=
+ style=3D"color:#64748b;font-size:14px">11:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah we need to talk=
+ about this because like the dispositions are very limited available in =
+cmdb. It&#x27;s not, it&#x27;s not everything. We have a few for spin but =
+it doesn&#x27;t die out exactly as perspective of dispositions because we =
+are doing leadership.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span>=
+<span style=3D"color:#64748b;font-size:14px">12:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Reporting at the 291=
+ level now in CMDB it&#x27;s going to go at the ASN level and we like, I =
+don&#x27;t know who will filter in what way, how it will be sliced and =
+diced. So we need to make sure that just like you know, Justin, Katherine =
+and us, like we&#x27;re on the same page of how this reporting happens. =
+That should not change because people lose trust in what we&#x27;ve shown.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">12:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina</span><span=
+ style=3D"color:#64748b;font-size:14px">12:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Next item.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</span><sp=
+an style=3D"color:#64748b;font-size:14px">12:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Moving on, =
+we&#x27;re going to talk about the budget versus actual again. Corey, if =
+you can get with. If you can set up some time with Gaurav to align on like =
+the dashboard. I know you are currently analyzing the new latest abstract =
+from Vanilla, but yeah. Any other updates?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Corey</span><span style=3D"color:#64748b;font-size:14px">=
+12:48</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">No, I think the note on there about updating the PMO documents =
+that&#x27;s been done, that was done last week. So you can. That can be =
+more completed. But yeah, we&#x27;ll sync up with Gorav.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>12:58</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">And.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Corey</span><span =
+style=3D"color:#64748b;font-size:14px">13:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Get the dashboard =
+lined up.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">13:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Prashant</span><span style=3D"color:#64748b;font-size:14=
+px">13:11</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">Anish, I know you brought up the LE workshop yesterday and are =
+working on the materials today and then you will be reviewing them I guess =
+later with Rakesh and then any other updates?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>13:26</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">We&#x27;re on track for that. We just need to get a draft.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span><span=
+ style=3D"color:#64748b;font-size:14px">13:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">To the LDS team next=
+ week so.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">13:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, no, she&#x27;s =
+there right now.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</spa=
+n><span style=3D"color:#64748b;font-size:14px">13:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Got it.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">13:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sean, I just refer =
+Keshe about this.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Justin</span>=
+<span style=3D"color:#64748b;font-size:14px">13:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Like 30 seconds ago.=
+ All right.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</span><sp=
+an style=3D"color:#64748b;font-size:14px">13:49</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sounds good. And =
+then for user migration planning and the meeting with Jeff, Rakesh, =
+anything else you want to share about that?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>13:59</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">No, I think we spoke about it. We&#x27;re having a meeting with Jeff =
+later on today. I think we&#x27;re getting more and more information. Sorry=
+, not Jeff. We&#x27;re having a meeting with HR and the legal team and what=
+ comes of it. We&#x27;ll be able to share.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prashant</span><span style=3D"color:#64748b;font-size:14p=
+x">14:17</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">For the BRB planning and UAT kickoff for tomorrow.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>14:23</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Any problems that still needs a bit of work. So we&#x27;re looking to =
+meet with peers today to align on what we have from the work, you know, the=
+ slides and have them walk through that and set up a conversation with the =
+workstream lead so that they&#x27;re ready to talk to it tomorrow and walk =
+through what we will need to facilitate, etc. So the content is still being=
+ developed. We should have it finalized later this afternoon for the =
+kickoff deck. Yes. Somebody had a question?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Brandi</span><span style=3D"color:#64748b;font-size:14px"=
+>14:58</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah, Rakesh, I just want to give a brief update on user migrations as =
+well. Just on point number one.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh<=
+/span><span style=3D"color:#64748b;font-size:14px">15:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brandi</span><span=
+ style=3D"color:#64748b;font-size:14px">15:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I did speak with the=
+ DCN team yesterday to align on when they&#x27;re going to share their site=
+ separation and PC migration schedules. We&#x27;ll likely be defining waves=
+ by site, not by function and so they&#x27;ve agreed to own the development=
+ and execution of both these plans. They don&#x27;t have the details yet to=
+ share at this time, but expect it within two weeks. Okay. Just want to =
+give that update.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">15:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. It was always =
+by site, was it not?</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brandi</span>=
+<span style=3D"color:#64748b;font-size:14px">15:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">People were throwing=
+ around the idea of by function.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh<=
+/span><span style=3D"color:#64748b;font-size:14px">15:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That was your =
+testing. But no, the function doesn&#x27;t make sense.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Brandi</span><span style=3D"color:#64748b;font-size:14px"=
+>15:43</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Agreed, Agreed. So we&#x27;re doing it by site. I just, there was, =
+there was a few folks within the infrastructure team talking about doing it=
+ by function, but we&#x27;re doing it by site so. And we&#x27;ll accelerate=
+ so the site will could possibly be still be on the Honeywell network and =
+you have sites and users cut over so those two are not dependent on each =
+other. So it&#x27;ll be accelerated for the users and sites will likely be =
+wrapping up early October.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">16:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</span><sp=
+an style=3D"color:#64748b;font-size:14px">16:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sounds good. And =
+then Rakesh, anything on that data governance board and Brandi?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">16:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, nothing. No, =
+nothing from different from yesterday.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prashant</span><span style=3D"color:#64748b;font-size:14p=
+x">16:23</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">Got it.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">16:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">For still action for=
+ us to do. We&#x27;ll still have to. And who has a graph deck which =
+we&#x27;ll review today and we&#x27;ll take it back to Jen and we&#x27;ll. =
+We&#x27;ll get a point of view by end of the week.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prashant</span><span style=3D"color:#64748b;font-size:14p=
+x">16:42</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">Got it. And for branding, has the email been sent out by Paul?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">16:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, Paul sent out =
+an email. So what&#x27;s happened is he&#x27;s got connected with him =
+earlier this morning, this as well. So we&#x27;ve got the official sources =
+name. So that&#x27;s what he has sent out to be used everywhere. Where =
+we&#x27;re legally bound to use a legal entity name, we will use that =
+perhaps on certain labels or certain forms or certain communication but =
+everywhere else I think the alignment is that from Solstice leadership is =
+that they&#x27;ll use Solstice. So emails will have to get changed to first=
+ name.lastnameolsis.com other, you know, domains, web pages, everything =
+will all be sources. Now they own Solstice, Solstice AM and Solstice =
+Advanced Materials. So I think where it needs to get changed they will =
+change it to Solstice where they&#x27;ve kept it as Solstice AM or other =
+things internally. For example they may keep it that and you know, link it =
+back to Solstice.com but that&#x27;s the guidance that Paul has given the =
+team and so that&#x27;s what the teams are marching towards. So Stephen =
+Brown, the commercial team, ERP team all been notified of that. On the ERP =
+side, you know there are certain spots where they have to use the actual =
+legal entity name. So SRI and srijab have taken that. SRI particularly is =
+running with that to identify what legal entities to be used in what =
+country, etc. So he&#x27;s got that. But for us I think at a high level we =
+understand that the color of the font, the logo, all that will come later. =
+But officially they&#x27;re using the Solstice name and so things that need=
+ to get changed like I said, like email and other websites and others will =
+will get the Solstice.com There are a few follow ups that I have with the =
+PMO and branding team on terms and conditions to be used in portals and =
+things of that nature. So we&#x27;re waiting for an answer on that =
+following up, but that&#x27;s where we are with the for the branding =
+decision as of now.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</spa=
+n><span style=3D"color:#64748b;font-size:14px">19:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Got it. Thanks =
+Rakesh. Anything for the deliverables. I know we are not submitting =
+anything for gate four but anything on TSA bottoms up field.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">19:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah Corey, you want=
+ to talk about that? We&#x27;ll get into the exit Deliverable.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Corey</span><span =
+style=3D"color:#64748b;font-size:14px">19:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I think =
+it&#x27;s the same as we talked about yesterday afternoon. We&#x27;re =
+continuing to follow up with with the tower leads to get the data that we =
+need and building the model, updating the model with that data. So =
+we&#x27;re working to by Friday have our internal review done and hopefully=
+ have all most of that data input into the model. So we&#x27;ll continue to=
+ work through that today we have a call right after this to align and keep =
+working on that.</div></div><div style=3D"margin-bottom:0;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">19:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So point on that the=
+ OP models have been fairly finalized. We should and this is where for our =
+own benefit we should create a new model slide deccs with any day one =
+disposition changes there have been one or two like value has dropped off. =
+So if it&#x27;s on the tile charts we should update that just to complete =
+that. Nothing formal but for us to keep obviously they&#x27;re all =
+reflected in the inventory and in the cmdb. From a standalone cost =
+perspective that goes very much in hand with the TSA bottoms up build. So =
+as we get the bottoms up build numbers we also remove all of the =
+allocations that are there and we pretty much get a receipt of what the =
+parallel run and the standup cost would be. So as we get an understanding =
+of what the build back license is and build back infrastructure, hosting =
+etcetera so all those allocation numbers will go away and reflect truer =
+numbers that the Solstice team has. So that&#x27;s the part that Corey is =
+also working on because standalone run will reflect that day. One =
+standalone run will reflect that. Plus the TSA costs which are getting =
+updated. So I know based on the conversations at TSA exit, we&#x27;re =
+pressure testing the durations. So we&#x27;ll get the bottoms of cost =
+numbers. Those will go into the durate, you know, those will be tied up =
+with the durations as well. And then the third part on that is the =
+scheduling, the document itself. So exhibits and language around the TSA =
+schedule, that&#x27;s something we&#x27;ll also be working on to refine. =
+PMO is looking for a view on that shortly. So even though it&#x27;s not a =
+deliverable, they&#x27;ll be taking that and discussing it with the deal =
+team. So we do need to get that, you know, they want to review that =
+language. So. So that&#x27;s coming up now. The other part on this is the =
+TSA exit spotlight. So what we do need is by the 23rd, we need to submit =
+that. So which means by Friday, through everything we spoke, we need a view=
+ of the TSA exit scope is and potentially a preliminary view into what the =
+costing would be.</div></div></div><div style=3D"margin-top:36px;text-align=
+:center;color:#64748b;font-size:14px;padding:20px;border-top:1px solid =
+#e2e8f0"><p style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note=
+ Taker</p><p style=3D"margin:0;font-size:12px">Your AI-powered =
+companion</p></div></div></div></div></html>
+----_NmP-aadf187db3042af2-Part_1--

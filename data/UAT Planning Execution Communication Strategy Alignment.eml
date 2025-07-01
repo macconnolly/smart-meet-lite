@@ -1,0 +1,2240 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a05:6000:26d2:b0:3a5:23aa:6f43 with SMTP id 18csp671387wrm;
+        Fri, 20 Jun 2025 04:48:20 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGZ6qQKxncTSlP2Zby+GXjvQtIlvtf4Jyyud0Ldagu+ZcHDzp2Dw/AO05MXFU+v3o8IyqOM
+X-Received: by 2002:a05:6214:4b13:b0:6f5:40d5:e51 with SMTP id 6a1803df08f44-6fd0a4a092cmr40020656d6.11.1750420100190;
+        Fri, 20 Jun 2025 04:48:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750420100; cv=none;
+        d=google.com; s=arc-20240605;
+        b=SNKHORlDh5AzuFL8HQstMYcgElZOYnjLM5jhKVNbLlu0x79SKMww/5sb5tFOPij/rQ
+         se3x3a9pz2/XX/CqeotYtbs+Oo9Ner6genrnG2asbLH4R3yap/hWStk4eU20OCCpJYmP
+         MpMVcIzDQvC8RLHohtmpmvvHiBhHcx8jIrMLpZyeWudj9bdOBfa6An7N8xZ0zZ7Awc8E
+         66S81d2HE7MVef2DTISsboseYQEgTHjI9exvcT6qvui+msqZS5IE9dljq7nu/l/ajdSD
+         C/dyePyw59Nzodig/7vM/+fQ4Ff9Px8uTrV48gUCnOJurYsOhfDZ3ci/B3QoiTXrVECK
+         28Lg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=yjss2u/C4aYrevFqpQdTK84lMWD4DRuRyFbBUEwLTuY=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=UmOBURN5Gw6kz9YzFAAH2K5IXdzvja1W6nBKScySom1fFWyWrogux1qqvThh9YaGOG
+         n0pfWti7gtUT+49BsR1VtmBzB5ef8du8hCIFTwsDOPlaNCPNjCIiS9etirJ6J9imGf0z
+         E7bh8K0PendyhSuKkT6v2uDuT/dIvI2mK86LwLzIG+6umHnFDJLPMbosTBOFaiZ/vk50
+         sTiS3iq2+5OQTTuo7OdSOzUisC/XhGObv3T8tXGUisdXcrr5XULv+V1FWXETjrj1aqyE
+         T/T4emZNHLrZjYWd252WgQ0fRxZyYCSUSf6dBwrmHTccSMFSSaZH0ZOHMZ2XqnV56ihE
+         FuTw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=pp8CkBzA;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b="gg/eNfCv";
+       spf=pass (google.com: domain of 010001978d2b1217-c8333240-7aea-4e50-90f0-dc3dd5d6b396-000000@send.email.wave.co designates 54.240.9.35 as permitted sender) smtp.mailfrom=010001978d2b1217-c8333240-7aea-4e50-90f0-dc3dd5d6b396-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <010001978d2b1217-c8333240-7aea-4e50-90f0-dc3dd5d6b396-000000@send.email.wave.co>
+Received: from a9-35.smtp-out.amazonses.com (a9-35.smtp-out.amazonses.com. [54.240.9.35])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd095e9e33si18624736d6.510.2025.06.20.04.48.19
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 20 Jun 2025 04:48:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 010001978d2b1217-c8333240-7aea-4e50-90f0-dc3dd5d6b396-000000@send.email.wave.co designates 54.240.9.35 as permitted sender) client-ip=54.240.9.35;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=pp8CkBzA;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b="gg/eNfCv";
+       spf=pass (google.com: domain of 010001978d2b1217-c8333240-7aea-4e50-90f0-dc3dd5d6b396-000000@send.email.wave.co designates 54.240.9.35 as permitted sender) smtp.mailfrom=010001978d2b1217-c8333240-7aea-4e50-90f0-dc3dd5d6b396-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1750420099;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=mfMFwCHHb5RhyZPiMvFIEsiWJKrXb3XBbcHFo1Afbl4=;
+	b=pp8CkBzAJJ1Mp4R8s2Yj8o67kLtgxBUPfhhTEgJw54BLaYdcmdlAvYikP9/i971r
+	rPV6Y1eD0cHZkodZ2h1cxuXmpCrPD4nYYm2E+e3iNKqDqxvYJVoVktCULRbsQ893iaq
+	QD5eetuNRFS8yeixXqQgRY+Ln3m7QlLBCsuU75w4=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1750420099;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=mfMFwCHHb5RhyZPiMvFIEsiWJKrXb3XBbcHFo1Afbl4=;
+	b=gg/eNfCv/ksQewpYKl4sYwzeBQoZM+kmxiTCOaHcbKfrOOwK6/zOoBI9Ad7iMK2T
+	yS+4cAkmS7+SSafUuanbZzwrBLfvyYDgJTJw0EzOie4hnd1d1pzZJLIjoR8e9nYSxfu
+	+3hlSvY3sBbCcSWN0jNNaye6LKeZUQm//NoAjZ5w=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: UAT Planning Execution Communication Strategy Alignment
+Message-ID: <010001978d2b1217-c8333240-7aea-4e50-90f0-dc3dd5d6b396-000000@email.amazonses.com>
+Date: Fri, 20 Jun 2025 11:48:19 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-2f8880564b3b48e9-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.06.20-54.240.9.35
+
+----_NmP-2f8880564b3b48e9-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+UAT Planning Execution Communication Strategy Alignment
+
+# Meeting Summary =20
+**Date:** June 20, 2025 =20
+**Participants:** Rakesh,=
+ Sukai, Jessica, Paul, Vicki, Srinivas, and others =20
+**Duration:** Not specified, but reference to a follow-up in a "couple =
+hours."
+
+---
+
+## Main Topics Discussed
+
+### 1. UAT (User Acceptance =
+Testing) Planning & Execution =20
+
+#### Regional & Remote Testing =20
+- There was an extended discussion regarding the structure of regional =
+testing, especially APAC remote execution.
+  - **Remote Testing:** =20
+    - Clarified that remote testing is taking place in APAC, particularly =
+on 7/2, starting at 6:30 AM Pacific Time.
+    - Purpose is to enable teams =
+in APAC to undertake end-to-end tests instead of limited individual tests.
+  - **Slide Updates:** =20
+    - Discussion about how to visualize APAC's =
+role in the schedule=E2=80=94debated adding a distinct column vs. an =
+asterisk/note. =20
+    - Decided on an asterisk/narrative to avoid =
+suggesting that APAC can test all areas, especially if defects exist (e.g.,=
+ logistics), with the note that APAC will begin testing on 7/2 with what is=
+ available.
+  - **UAT1 Column:** =20
+    - Clarified the meaning behind the=
+ UAT 1 column for 7/7=E2=80=937/11, indicating it includes all items the =
+team deems ready (not just three specific items).
+    - The green items =
+indicate ongoing end-to-end and defect-fixing work, not limited only to =
+those three items.
+    - Buffer available for late-order management =
+scripting.
+
+#### Dependencies on Predecessor Tasks =20
+- Certain professional modules (notably Hyperion) can only be tested in the=
+ second week due to dependencies=E2=80=94outputs from previous tests are =
+required to complete this phase.
+
+#### Adjacents and Access =20
+- Outside the 14 core systems, adjacent systems will also be used in =
+end-to-end and parallel run (PRV) testing, although no changes are being =
+made in BRV.
+- Emphasis on ensuring testers are provisioned and all =
+schedules aligned, with 6/25 selected as the target date for aligning the =
+hour-by-hour schedule.
+
+#### Tester Identification =20
+- There is an active effort to identify UAT testers in regions, especially =
+for critical systems (notably tax systems).
+  - Ben Goldstein is =
+collaborating on this.
+  - Deadline for identifying testers: **6/22**.
+  - A risk exists because some regional finance or tax teams may not yet be=
+ hired (e.g., Solstice finance/tax team); alternatives (Mexico, Romania) =
+are being considered.
+  - Will Johnson is on heightened alert in case =
+escalation is required.
+
+### 2. Execution Dashboard & Reporting
+
+#### Script Management =20
+- Script finalization for UAT is ongoing for =
+three sub-functional areas, to be fully ready by weekend/Monday.
+- Daily script execution will be tracked:
+  - Number of scripts =
+planned/completed.
+  - Scripts stopped due to defects/issues.
+  - Scripts at risk or delayed.
+- Reminder to ensure data on dashboards =
+makes logical sense (avoiding inconsistencies like more =E2=80=9Cnot =
+started=E2=80=9D than total scripts).
+
+#### Defect Tracking =20
+- A revised defect management dashboard is under development:
+  - Number and severity/categorization of defects will be tracked and =
+reported.
+  - Dashboards to be updated at least daily, possibly =
+near-real-time.
+  - Leadership (especially "he"=E2=80=94likely referring to=
+ senior management or Jeff) will see summarized updates, not technical =
+process details.
+
+#### HR/ADP Testing =20
+- HR ADP testing is managed and =
+tracked independently by the ADP team:
+  - Sandra and Kelly Rosen are the =
+business contacts.
+  - Not included in the main dashboard but readiness for=
+ questions is advised.
+
+#### War Room & Communication Cadence =20
+- War room and meeting operating system (MOS) are finalized in a separate =
+planner but not yet included on slides.
+- Plan to establish and document =
+the cadence, including bridge line and scrum call setup.
+  - Meetings to be scheduled by this afternoon.
+- Reporting will occur =
+**twice daily:** =20
+  - Morning: Planned activities.
+  - Afternoon: Actuals and outcomes.
+- A distribution list for these =
+communications will be created and circulated for review.
+
+### 3. Communication Strategy
+
+#### Email Sender/Recipient Strategy =20
+- Aim to provide all major communications from a recognizable source =
+(=E2=80=9CPaul=E2=80=9D) to ensure high open/read rates and establish =
+authority.
+- Vicki may send more targeted, secondary communications; all =
+responses regarding detailed questions can be directed to Vicki (her role =
+and name will be introduced in broader emails to foster recognition).
+- Discussion about including other possible senders (Pierce) due to =
+bandwidth but agreed the primary sender should be highly recognized to the =
+audience.
+- Over-communication is preferred over risk of insufficient =
+updates.
+
+#### Stakeholder Inclusion =20
+- Jeff (senior exec) and other =
+tower leads for both Solstice and EIT to be routinely copied.
+- Testing team members and other stakeholders as identified will also be =
+included.
+
+---
+
+## Key Decisions and Agreements
+
+- **Visualization of =
+APAC=E2=80=99s Participation:** Use an asterisk/narrative instead of a new =
+column for remote APAC testing commencing 7/2, reflecting testing will =
+depend on defect resolution.
+- **Hyperion Testing:** Hyperion module =
+testing deferred to the second week due to dependency on previous test =
+outputs.
+- **Tester Identification:** Immediate follow-up with Ben =
+Goldstein and possible escalation to Will Johnson if testers are not =
+secured by 6/22.
+- **Communication:**=20
+  - Major comms from Paul; Vicki =
+as backup and detailed responder.
+  - Comprehensive stakeholder inclusion =
+on communications.
+  - Distribution list to be verified by Paul and Sukai.
+- **Dashboard Enhancements:**=20
+  - Ensure logical data presentation.
+  - Finalize defect tracking approach for leadership visibility.
+- **War Room/MOS:**=20
+  - Set up and communication cadence to be =
+formalized and included in documentation.
+
+---
+
+## Action Items
+
+1. **Update Slides:**
+   - Add asterisk/narrative indicating APAC remote =
+testing start and dependency on defect resolution.
+   - Ensure schedule =
+visual matches reality for UAT1 and regional columns.
+   - Move hour-by-hour schedule alignment for adjacents to 6/25.
+
+2. **Tester Identification:**
+   - Ben Goldstein to finalize list of =
+regional testers (by 6/22).
+   - Srinuas to provide update post-meeting =
+today and finalize alternate names as needed.
+   - If unresolved, escalate =
+to Will Johnson and inform Sukai.
+
+3. **Dashboard Preparation:**
+   - Clean up execution and defect tracking dashboards for accuracy and =
+clarity.
+   - Add information about HR/ADP testing management note.
+   - Ensure defect categorization and daily status reporting features are =
+ready.
+
+4. **MOS/War Room & Meeting Setup:**
+   - Document cadence and =
+meeting operations (scrum/bridge lines).
+   - Schedule kickoffs and =
+recurring calls, aiming to set up this afternoon.
+
+5. **Communications:**
+   - Create and circulate distribution list for twice-daily reports.
+   - Confirm key recipients (add tower leads, Jeff, etc.).
+   - Finalize sender structure: primary (Paul), secondary/responder (Vicki)=
+, with chain of escalation/coordination clear.
+
+6. **Other:**
+   - Review communication and escalation plan with Pierce to check =
+bandwidth.
+   - Ensure all templates, plans, and reporting materials (slide=
+ 12) are documented and ready for kickoff.
+   - Prepare brief, targeted =
+agenda for senior leadership touchpoints.
+
+---
+
+## Follow-Up Points
+
+- **Tester Identification Outcome:** Monitor post-meeting with Ben (June =
+20) and escalate to Will Johnson if not resolved.
+- **Distribution List =
+Review:** Once prepared, circulation to Paul and Sukai for final review.
+- **Pierce Bandwidth Check:** Confirm Pierce=E2=80=99s role/agreement =
+before finalizing communication escalation plan.
+- **Documentation:** Add =
+MOS/war room cadence documentation into pack for future reference.
+- **Final Meeting Schedule:** Confirm kickoff and cadence once meetings are=
+ set this afternoon.
+
+---
+
+## Closing Notes =20
+
+- Consensus was that the =
+plan is detailed and on-track, with all reporting and communication =
+infrastructure nearly in place.
+- Team will meet again in a =E2=80=9Ccouple=
+ hours=E2=80=9D to close the loop on remaining open items and finalize the =
+immediate action items.
+
+---
+
+**End of Summary**
+
+Transcript:
+0:00
+Correct.
+
+0:02
+I think we need to.
+
+0:04
+It'll have to.
+
+0:11
+And I would say Rakesh, you're talking to these. So again there's a lot on =
+this slide. Just focus on the key pieces and. And then we can that way jump=
+. One thing that's key goes back to publish the hourly the regional testing=
+.
+
+0:24
+So just a few pieces that'll be.
+
+0:26
+Good for him to know and =
+he'll stop you if he has questions.
+
+0:30
+Sure.
+
+0:30
+Okay, so the next slide is. We're going through the daily. My only question=
+ is the remote testing is that what we're saying is happening in APAC. So =
+remote testing fit 6:30 Pacific 4. Is that remote testing greens in that =
+column?
+
+0:54
+What's happening at AAPAC on the 7:2? It would be the remote =
+testing in APAC.
+
+1:00
+Okay. I just wanted to make sure. And then that =
+remote testing is allowing them to do end to end. It's allowing them to get=
+ in and test something that matters. Correct versus just.
+
+1:13
+Okay, do you want us to put.
+
+1:16
+So I mean to do good. I just go ahead.
+
+1:20
+No, no, I. I understand where you're getting with this. It's going to =
+give them the ability to start texting end to end. The question I had on =
+this, I apologize, I'm losing my voice is do we want to have that call out =
+on here? We didn't want to update the. If you call it the hard schedule =
+date since this is more of a call to soft launch of U18. Do you want us to =
+at least note this on here? Because we actually don't have it on this slide=
+ right now.
+
+1:48
+The regional.
+
+1:50
+Yeah.
+
+1:50
+Yes. So where is. Yeah. =
+So is the regional those three rings or is regional even more than the two =
+rings?
+
+1:56
+It would be.
+
+1:57
+See where it says UAT 1 column for 777 11. =
+It would be anything in there that the team deems is ready for testing.
+
+2:10
+It will not impact development and that's key.
+
+2:15
+Okay, so that means it's. They can test a good bit. Yeah, I think there's =
+some way we. Because otherwise it seems like UAT one. It seems like we =
+tested those three and sound to me I thought the regional team was only =
+going to be testing those three. But you're saying no.
+
+2:30
+Oh no, no, no. These three are continuation of these end to end and defect =
+fixing into very much into this week. I think everything else is, you know,=
+ it's a three, five two day duration kind of testing. So the expectation is=
+ that it will really be. Most of testing would be done here and defect =
+fixing will really happen here. But order management example, there's A lot=
+ of end to end scripting there that will go into this week. So it'll. It's =
+essentially giving us the buffer to finish it there. So this second column =
+is not for.
+
+3:08
+Yeah, okay.
+
+3:09
+Okay.
+
+3:10
+I thought it was a =
+combination of both of them. Okay. I thought it was the sist. And then the =
+ones that were green was S. It's still happening, but APAC is doing remote =
+testing. That's not what this is saying. So where's the APAC piece in here?=
+ Or is it not.
+
+3:24
+It's just.
+
+3:25
+It's not right now.
+
+3:26
+Yeah. It would have to be before that UAT1 column. Right. Because that's. =
+So we could either adjust that and say that that includes the APAC piece or=
+ we would want another column.
+
+3:39
+So the only reason I hadn't.
+
+3:41
+And it says I don't have a conversation now, I hadn't originally put =
+anything in is we're not confident at this point in time what exactly =
+they'd be able to test. Perfect world, no defects. They can test everything=
+. So we can. That's why I'm wondering if it's just more of a note that in =
+our plan, we will hand off to APAC on 7.2. Whatever's available to test. Or=
+ if you do, I can put a column in. But I just don't want it to be =
+misleading and say, hey, they can test everything if we think there's =
+significant defects, let's say in logistics, and we don't hand that off to =
+them.
+
+4:12
+So I think if we can put sort of like that. What is it? That =
+line. I don't know if I'm making sense when I put that line. But hold on, =
+let me just.
+
+4:23
+Something visual that says, hey, APAC will be inserted =
+here.
+
+4:28
+Correct.
+
+4:28
+Something like.
+
+4:31
+Hold on. Yeah, like at the=
+ beginning of that UAT1 column.
+
+4:35
+Yeah, something like.
+
+4:36
+Yeah, this will be depending the defect resolution. Yeah.
+
+4:41
+Okay.
+
+4:44
+And then.
+
+4:44
+And then.
+
+4:44
+And then have like a little thingy majiggy =
+like that. And then just say uat and then just with an asterisk narrative.
+
+4:52
+That's what you'd be like.
+
+4:53
+Hey, we don't know which ones, but =
+they should start somewhere in the middle. Again, this is a very ugly =
+version of this, of what I'm saying. But that way we're not putting in a =
+column. We're just kind of putting a. Kind of a stake in the ground. Does =
+that make sense for Keshe?
+
+5:06
+Yes.
+
+5:06
+Yes, it does.
+
+5:07
+I'm aligned too. So we'll look at that offline and get that added.
+
+5:11
+Okay, perfect.
+
+5:12
+All right, back to you.
+
+5:15
+The other call out to =
+you just for your awareness. We talked through. There's a couple of these =
+that we had shown just in person testing. So talk to the team. They're =
+going to push that to whatever can be tested remote. A lot of them are more=
+ user based and they're not long. But we still said, you know, whatever you=
+ can test in the first week. There's only one of them in professional mind.=
+ I can't remember what the name was, but there's only one of them. You can =
+see at the bottom where we're testing the second week. That one very =
+specifically is because there's dependencies from. I think it's items one =
+through nine because it's a more of a reporting function. So they don't =
+have Hyperion, so they don't have the ability to test the week before =
+because they need all the outputs from the other tests. So that's the only =
+one that if for whatever reason we were ready we could start to test during=
+ week one. They would. But just talking through that with the team because =
+of all the other testing going on, there is a very low likelihood to be =
+able to test anything for Hyperion just based on its predecessors.
+
+6:14
+Okay, okay. All right.
+
+6:19
+You need to, you need the transactions.
+
+6:23
+You're right.
+
+6:23
+Okay.
+
+6:25
+All right, so slide number six is.
+
+6:32
+The call out here is that for these 2414 critical systems everything is =
+already the orange here is the escalation or rather the heightened need =
+around the regional tax testing teams. And I think there have been several =
+conversations with that tax team and Ben Goldstein to identify the regional=
+, the testers in region. And there's active conversations happening and I =
+think the expectation is that it will happen again. This is UAT that the =
+testers would be identified by this. Well 622. So Srinuas is that realistic=
+? The reason, the reason we put it as a risk is because of the =
+organizational readiness and having a solstice finance team or tax team in =
+region I think is not hired yet. So we're looking, we're looking for =
+alternate names.
+
+7:38
+Right.
+
+7:39
+So we have a call with Ben and some =
+output from Mexico, Romania to finalize who the testers are participating =
+in our uat. So post today's call, I think we'll be in a better position to =
+get this cleaned up in line up what.
+
+7:55
+We thought will be. And I think =
+this is a good one just to let him know this and then just say, hey, if I =
+don't get what I need, this is one thing I might escalate to you. This is =
+fine. Okay. All right.
+
+8:07
+One other thing too, just for your awareness, =
+we had a very good conversation yesterday with Will Johnson. So he also has=
+ a heightened awareness of all of this. If we do not have a good outcome =
+from the meeting with Ben, we will be having another.
+
+8:22
+Excuse me.
+
+8:22
+Conversation with Will. So he's on alert for this as well.
+
+8:27
+I changed notes with him, so keep me close in that one. Okay. All right, =
+this is good. So I think with this one we don't spend so much time because =
+it's just a backup what we said on slide five. But it's the same to him. We=
+ need his help for that one item. Okay. Slide number seven.
+
+8:44
+So these are all the adjacents. So critically, these 14 are where changes =
+are happening. And so that's. So this is sort of the heady slide. Now, =
+similarly, outside these 14 core systems, there are all these adjacents =
+that are being used where there's no changes in brv, but they're being =
+consumed as part of the end to end testing and the prv. And so this is =
+really more a status on do we have testers in this areas as well? Have we =
+provisioned access and have we aligned on all the schedules? So again, for =
+UAT schedule, I think we said 625, so the hour by hour schedule would also =
+be aligned. So actually I'll move that to 625 here to match everything else=
+.
+
+9:31
+Okay. All right.
+
+9:32
+So these two slides are the same and then =
+taxware is the same as the Edicom. It's another tax software testing. And =
+it's the same story of regional testers Insul says being identified.
+
+9:48
+That's correct.
+
+9:50
+Okay.
+
+9:50
+Yeah. So it doesn't seem like we'll have =
+to spend a lot of time here with Jack. It's just to say, look, we're =
+including that visibility in case we have to dig into it if there's a =
+defect or anything else. Yep.
+
+10:01
+Right. We'll just highlight that. Yep.
+
+10:05
+We don't really need to dwell on it that long.
+
+10:07
+Yep. Great.
+
+10:08
+So a couple of takeaways here. This is the execution dashboard we've =
+developed. I'll talk through this and then perhaps highlight here. So all =
+this is saying is again, there are script finalization ongoing in these two=
+ for UAT happening for these three, and they should be done by this weekend=
+ and Monday for the tax app Srinivas. These are the dates we discussed =
+yesterday. So that's one point in that. This tracks the number of scripts =
+for each of these sub functional areas. This essentially tracks execution =
+status as to how many this is again will be Provided at the end of day, =
+every day on how many were planned, how many were actually completed, how =
+many had got stopped due to defects or any other issues, how many are at =
+risk of getting completed, and then what becomes what is delayed? The =
+particular call outs here would be these three items which would get closed=
+ for UAT by Monday. And then the second call out here is that to the point =
+that Jessica mentioned, the HR ADP testing is being managed by adp. They =
+have a rigorous process. ADP is managing the execution and reporting of it =
+that Sandra and Kelly Rosen and others are plugged into. It's not being =
+tracked here. And so if that question comes up, we may want to understand =
+if the expectation is everything to be tracked here.
+
+11:56
+Okay, no, I think we can answer that question. All right.
+
+12:02
+All right. So this would be the daily dashboard.
+
+12:05
+Let's make the ones that are. Make them equal. Make them make sense. So if =
+you look at number of scripts 5 and then not start at 9 when I first looked=
+ at the data.
+
+12:15
+Sorry, sorry, sorry, sorry.
+
+12:16
+That is what we're saying.
+
+12:17
+Yeah, yeah, yeah, yeah, yeah.
+
+12:18
+So if you can just clean up every day.
+
+12:20
+Yep, yep, yep. Apologize for =
+that one. Yes. Okay.
+
+12:24
+All right. And then this is the daily one that =
+any.
+
+12:31
+Not even daily.
+
+12:32
+You can look at it. We can look at it at=
+ any time as it relates to scripts and where they are.
+
+12:36
+And so this will be correct.
+
+12:39
+The next slide. Sorry.
+
+12:41
+Oh, yeah. So this one, the defect management. There's a bit of a change I'm=
+ editing here because this will address this question on what. Yes. What =
+has been run? How many defects are there? What is the severity and =
+categorization of those defects? So I think there's a portion of this that =
+will change to indicate that, and we're working on that now. But this would=
+ be also a defect tracker, however it is. So parts of these will be. I =
+think you mentioned rightly that he doesn't care about the sausage making. =
+This would be provided perhaps near real time or. Or perhaps by end of day,=
+ every day, a dashboard that he's able to see and the leadership is able to=
+ see.
+
+13:24
+Okay. And do we have the war room and our MOS and how we're =
+going to communicate and all of that stuff? Do we have that finalized?
+
+13:35
+We do. We have a detailed planner on the mos. I don't think it's =
+anywhere here, Jessica, we can talk about.
+
+13:43
+And I just want you guys =
+to.
+
+13:44
+Both be able to see it on.
+
+13:45
+Top of your head.
+
+13:45
+And then we need to make sure eventually we have it documented. That's One =
+of the things you ask.
+
+13:51
+For, for the cadence.
+
+13:53
+Correct the cadence. Yes. We can add the mos at the bottom. Yep. Sorry, go =
+ahead.
+
+13:58
+Yeah, add that bottom. We do. We just haven't set up any =
+meetings yet. The plan was this afternoon. Get those done. I want to make =
+sure we got all these details in here, but we're going to set up a bridge =
+line, we're going to set up the scrum calls. All of that has been outlined,=
+ but we can make a note on here and even the timing of this. So, Sukhai, I =
+do have one question related to this is we're going to send this out twice =
+a day. Once in the morning for what our plan is and then once in the =
+afternoon with what actually happened throughout the day. Who do you want =
+that audience to be outside of? We have our testing team. I'm assuming we =
+always copy you. But for example, would you want to copy Jeff? I kind of =
+want to have an idea.
+
+14:41
+Yeah, I think you copy Jeff. He likes to get. =
+He wants to just know everything is fine. I don't think he's going to want =
+to go all in such a thinking, but he's going to want to know things are =
+good. So I think this team, of course, any other stakeholders, but =
+definitely Jeff and I, as we, as we move forward. Okay.
+
+14:59
+We will create a sort of a distribution list today that we can send over to=
+ you and Paul just to take a look at to make sure that we're not missing =
+anybody from the actual testing team. I have a confidence in who we need to=
+ copy on this. It's more at the leadership level of I'll include everybody =
+in this call, include Jeff, and if there's anybody else you think is =
+missing, just let us know.
+
+15:18
+Got it. Okay.
+
+15:21
+I would actually extend it to the tower leads both for Solstice and eit, =
+but we can.
+
+15:29
+No, no, no.
+
+15:29
+I'm good with that. To me, it's one =
+of those things that the more people that need to know that are in the know=
+, we.
+
+15:35
+Don'T have to follow up, the better.
+
+15:37
+So I like that. I like that idea.
+
+15:39
+Yeah.
+
+15:39
+One of them.
+
+15:40
+Yeah.
+
+15:41
+Right.
+
+15:41
+Agree, agree. Okay. Vicki, if we're lucky, we'll=
+ have five minutes. We luckily have two or three. So it's going to be key =
+just to hit on the key pieces that you want him to come to know. Yep.
+
+15:56
+Right.
+
+15:57
+I'm aligned. Okay. So. So my thought here is we have a =
+plan. It's very detailed. We know the messaging, have our timeline, that's =
+reporting material. If you go to slide number 12 this is what we're going =
+to do. We're going to kick off. We'll send this to you have any questions, =
+let me know. But we have all the details, the templates, the plans, all =
+documented. And then that way. Okay.
+
+16:21
+Okay. I have one quick question=
+ for you and I know this is super, super quick. A lot of it's going to be =
+email. Who are we going to send it from? From Sukai or from Jeff or from =
+someone else?
+
+16:35
+We are thinking from Vicki, because I'd like to have =
+one concise person who can send them out. But also my concern is I want to =
+make sure that it's somebody that if we receive a response because somebody=
+ has a question on something that, you know, I don't expect Vicki to be =
+able to answer all the questions, but she'll know who to reach out to. So =
+that was our thought. Unless anybody has a different one.
+
+16:56
+I think it should go to Paul. And the reason why I think it should go to =
+Paul. Paul's like, oh, cry. I was right is because everybody knows Paul. =
+The thing is, a lot of people don't know Vicki yet. And then don't get =
+confused like who is this person and why is she sending it? She would =
+respond to her. She would not respond to her. Whereas I think it's going to=
+ be.
+
+17:17
+Good for it to go to Paul.
+
+17:18
+Because everybody knows Paul.=
+ And so that would be my thought. But Vicki would work very closely with =
+Paul. I know Paul. I would love to get your thoughts on that. If you think =
+it should be somewhere.
+
+17:31
+I'll write it and send it to you so you can =
+just copy and paste.
+
+17:35
+All right.
+
+17:35
+Yeah.
+
+17:38
+Okay. I mean, the only other option is Pierce, really. Pierce will be back =
+and would have the bandwidth. Mike. Mike concerns only the bandwidth. =
+That's all. I'll be in Charlotte next week and.
+
+17:50
+Then I would say let go to Vicki. I mean, I just. I think right now I need =
+to make sure. I want to connect with peers. Just to make sure. I just need =
+to connect with peers first before I make that decision. Go ahead.
+
+18:08
+So, Vicki, maybe it's a combination.
+
+18:10
+Let's.
+
+18:10
+Let's meet offline and figure out if I can support. I will.
+
+18:14
+I don't know.
+
+18:15
+There's quite a few communications here, right?
+
+18:17
+Oh, there's going to be. They're going to be. There's going to be so much =
+communication. They're going to ask us to please stop. I mean, okay, I want=
+ to over communicate. I want to over communicate rather than under =
+communicate. Because if we under communicate, it leaves more risk and we're=
+ too much at the crunch time to have risk. So I'd rather people say I =
+already know that or I'm aware of that than to say I had no idea.
+
+18:43
+So.
+
+18:46
+Paul, send out some of the major comms, but identify Vicki as a =
+person. So once we get Vicki's name out there and to your point, to kind of=
+ they'll start to realize who she is, then we can send some of the maybe =
+smaller tailored emails from Vicki. So yeah, we can work that into our plan=
+ of what is more of a global calm going to Maybe let's say 50 plus more =
+people and then we can have that come from Paul. But even within those =
+emails because, hey, if you have questions, please do that to Vicki as =
+she's supporting the effort. So.
+
+19:18
+Got it.
+
+19:18
+We can tackle that. Which I think would be a good.
+
+19:21
+Combination because you want to make sure people are going to read them. =
+That's, that's the other part. Right.
+
+19:25
+People don't read them when =
+they see, when they see call, they know read the reason why. I want to =
+establish some sense of authority. And then Vicky, again, it was sad, but I=
+ like that idea. Very good questions, very good discussions. Let's see how =
+it goes. Very good progress. Thank you guys so much. Talk to you in a =
+couple hours.
+
+19:44
+Thank you. Great progress.
+----_NmP-2f8880564b3b48e9-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">UAT =
+Planning Execution Communication Strategy Alignment</h1></td></tr></table><=
+/div><div style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/23c0c84b-ae6d-412e-90a8-95e0f66426c4?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h1 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2.5rem">Meeting Summary</h1><p><strong =
+style=3D"font-weight:bold">Date:</strong> June 20, 2025<br /><strong =
+style=3D"font-weight:bold">Participants:</strong> Rakesh, Sukai, Jessica, =
+Paul, Vicki, Srinivas, and others<br /><strong style=3D"font-weight:bold">D=
+uration:</strong> Not specified, but reference to a follow-up in a =
+&quot;couple hours.&quot;</p>
+<hr />
+<h2 style=3D"font-weight:500;padding-t=
+op:20px;font-size:2rem">Main Topics Discussed</h2><h3 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">1. UAT (User =
+Acceptance Testing) Planning &amp; Execution</h3><h4 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.5rem">Regional &amp; =
+Remote Testing</h4><ul>
+<li>There was an extended discussion regarding the =
+structure of regional testing, especially APAC remote execution.<ul>
+<li><strong style=3D"font-weight:bold">Remote Testing:</strong>  <ul>
+<li>Clarified that remote testing is taking place in APAC, particularly on =
+7/2, starting at 6:30 AM Pacific Time.</li>
+<li>Purpose is to enable teams =
+in APAC to undertake end-to-end tests instead of limited individual tests.=
+</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Slide =
+Updates:</strong>  <ul>
+<li>Discussion about how to visualize APAC&#39;s =
+role in the schedule=E2=80=94debated adding a distinct column vs. an =
+asterisk/note.  </li>
+<li>Decided on an asterisk/narrative to avoid =
+suggesting that APAC can test all areas, especially if defects exist (e.g.,=
+ logistics), with the note that APAC will begin testing on 7/2 with what is=
+ available.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">UAT1 =
+Column:</strong>  <ul>
+<li>Clarified the meaning behind the UAT 1 column =
+for 7/7=E2=80=937/11, indicating it includes all items the team deems ready=
+ (not just three specific items).</li>
+<li>The green items indicate ongoing=
+ end-to-end and defect-fixing work, not limited only to those three items.=
+</li>
+<li>Buffer available for late-order management scripting.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-=
+size:1.5rem">Dependencies on Predecessor Tasks</h4><ul>
+<li>Certain professional modules (notably Hyperion) can only be tested in =
+the second week due to dependencies=E2=80=94outputs from previous tests are=
+ required to complete this phase.</li>
+</ul>
+<h4 style=3D"font-weight:500;p=
+adding-top:20px;font-size:1.5rem">Adjacents and Access</h4><ul>
+<li>Outside the 14 core systems, adjacent systems will also be used in =
+end-to-end and parallel run (PRV) testing, although no changes are being =
+made in BRV.</li>
+<li>Emphasis on ensuring testers are provisioned and all =
+schedules aligned, with 6/25 selected as the target date for aligning the =
+hour-by-hour schedule.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:=
+20px;font-size:1.5rem">Tester Identification</h4><ul>
+<li>There is an active effort to identify UAT testers in regions, =
+especially for critical systems (notably tax systems).<ul>
+<li>Ben Goldstein is collaborating on this.</li>
+<li>Deadline for =
+identifying testers: <strong style=3D"font-weight:bold">6/22</strong>.</li>
+<li>A risk exists because some regional finance or tax teams may not yet be=
+ hired (e.g., Solstice finance/tax team); alternatives (Mexico, Romania) =
+are being considered.</li>
+<li>Will Johnson is on heightened alert in case =
+escalation is required.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500=
+;padding-top:20px;font-size:1.75rem">2. Execution Dashboard &amp; =
+Reporting</h3><h4 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+5rem">Script Management</h4><ul>
+<li>Script finalization for UAT is ongoing=
+ for three sub-functional areas, to be fully ready by weekend/Monday.</li>
+<li>Daily script execution will be tracked:<ul>
+<li>Number of scripts =
+planned/completed.</li>
+<li>Scripts stopped due to defects/issues.</li>
+<li>Scripts at risk or delayed.</li>
+</ul>
+</li>
+<li>Reminder to ensure =
+data on dashboards makes logical sense (avoiding inconsistencies like more =
+=E2=80=9Cnot started=E2=80=9D than total scripts).</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem">Defect =
+Tracking</h4><ul>
+<li>A revised defect management dashboard is under =
+development:<ul>
+<li>Number and severity/categorization of defects will be =
+tracked and reported.</li>
+<li>Dashboards to be updated at least daily, =
+possibly near-real-time.</li>
+<li>Leadership (especially =
+&quot;he&quot;=E2=80=94likely referring to senior management or Jeff) will =
+see summarized updates, not technical process details.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+5rem">HR/ADP Testing</h4><ul>
+<li>HR ADP testing is managed and tracked =
+independently by the ADP team:<ul>
+<li>Sandra and Kelly Rosen are the =
+business contacts.</li>
+<li>Not included in the main dashboard but =
+readiness for questions is advised.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem">War Room =
+&amp; Communication Cadence</h4><ul>
+<li>War room and meeting operating =
+system (MOS) are finalized in a separate planner but not yet included on =
+slides.</li>
+<li>Plan to establish and document the cadence, including =
+bridge line and scrum call setup.<ul>
+<li>Meetings to be scheduled by this =
+afternoon.</li>
+</ul>
+</li>
+<li>Reporting will occur <strong =
+style=3D"font-weight:bold">twice daily:</strong>  <ul>
+<li>Morning: Planned activities.</li>
+<li>Afternoon: Actuals and outcomes.=
+</li>
+</ul>
+</li>
+<li>A distribution list for these communications will be =
+created and circulated for review.</li>
+</ul>
+<h3 style=3D"font-weight:500;=
+padding-top:20px;font-size:1.75rem">3. Communication Strategy</h3><h4 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.5rem">Email =
+Sender/Recipient Strategy</h4><ul>
+<li>Aim to provide all major =
+communications from a recognizable source (=E2=80=9CPaul=E2=80=9D) to =
+ensure high open/read rates and establish authority.</li>
+<li>Vicki may send more targeted, secondary communications; all responses =
+regarding detailed questions can be directed to Vicki (her role and name =
+will be introduced in broader emails to foster recognition).</li>
+<li>Discussion about including other possible senders (Pierce) due to =
+bandwidth but agreed the primary sender should be highly recognized to the =
+audience.</li>
+<li>Over-communication is preferred over risk of =
+insufficient updates.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:2=
+0px;font-size:1.5rem">Stakeholder Inclusion</h4><ul>
+<li>Jeff (senior exec) and other tower leads for both Solstice and EIT to =
+be routinely copied.</li>
+<li>Testing team members and other stakeholders =
+as identified will also be included.</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Key Decisions=
+ and Agreements</h2><ul>
+<li><strong style=3D"font-weight:bold">Visualizati=
+on of APAC=E2=80=99s Participation:</strong> Use an asterisk/narrative =
+instead of a new column for remote APAC testing commencing 7/2, reflecting =
+testing will depend on defect resolution.</li>
+<li><strong =
+style=3D"font-weight:bold">Hyperion Testing:</strong> Hyperion module =
+testing deferred to the second week due to dependency on previous test =
+outputs.</li>
+<li><strong style=3D"font-weight:bold">Tester =
+Identification:</strong> Immediate follow-up with Ben Goldstein and =
+possible escalation to Will Johnson if testers are not secured by 6/22.=
+</li>
+<li><strong style=3D"font-weight:bold">Communication:</strong> <ul>
+<li>Major comms from Paul; Vicki as backup and detailed responder.</li>
+<li>Comprehensive stakeholder inclusion on communications.</li>
+<li>Distribution list to be verified by Paul and Sukai.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Dashboard Enhancements:</strong> =
+<ul>
+<li>Ensure logical data presentation.</li>
+<li>Finalize defect =
+tracking approach for leadership visibility.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">War Room/MOS:</strong> <ul>
+<li>Set up and communication cadence to be formalized and included in =
+documentation.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;p=
+adding-top:20px;font-size:2rem">Action Items</h2><ol>
+<li><p><strong style=3D"font-weight:bold">Update Slides:</strong></p>
+<ul>
+<li>Add asterisk/narrative indicating APAC remote testing start and =
+dependency on defect resolution.</li>
+<li>Ensure schedule visual matches =
+reality for UAT1 and regional columns.</li>
+<li>Move hour-by-hour schedule =
+alignment for adjacents to 6/25.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Tester Identification:</strong></p>
+<ul>
+<li>Ben Goldstein to finalize list of regional testers (by 6/22).</li>
+<li>Srinuas to provide update post-meeting today and finalize alternate =
+names as needed.</li>
+<li>If unresolved, escalate to Will Johnson and =
+inform Sukai.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Da=
+shboard Preparation:</strong></p>
+<ul>
+<li>Clean up execution and defect =
+tracking dashboards for accuracy and clarity.</li>
+<li>Add information =
+about HR/ADP testing management note.</li>
+<li>Ensure defect categorization=
+ and daily status reporting features are ready.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">MOS/War Room &amp; Meeting =
+Setup:</strong></p>
+<ul>
+<li>Document cadence and meeting operations =
+(scrum/bridge lines).</li>
+<li>Schedule kickoffs and recurring calls, =
+aiming to set up this afternoon.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Communications:</strong></p>
+<ul>
+<li>Create and circulate distribution list for twice-daily reports.</li>
+<li>Confirm key recipients (add tower leads, Jeff, etc.).</li>
+<li>Finalize sender structure: primary (Paul), secondary/responder (Vicki),=
+ with chain of escalation/coordination clear.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Other:</strong></p>
+<ul>
+<li>Review communication and escalation plan with Pierce to check bandwidth=
+.</li>
+<li>Ensure all templates, plans, and reporting materials (slide 12) =
+are documented and ready for kickoff.</li>
+<li>Prepare brief, targeted =
+agenda for senior leadership touchpoints.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Follow-Up =
+Points</h2><ul>
+<li><strong style=3D"font-weight:bold">Tester =
+Identification Outcome:</strong> Monitor post-meeting with Ben (June 20) =
+and escalate to Will Johnson if not resolved.</li>
+<li><strong =
+style=3D"font-weight:bold">Distribution List Review:</strong> Once prepared=
+, circulation to Paul and Sukai for final review.</li>
+<li><strong style=3D"font-weight:bold">Pierce Bandwidth Check:</strong> =
+Confirm Pierce=E2=80=99s role/agreement before finalizing communication =
+escalation plan.</li>
+<li><strong style=3D"font-weight:bold">Documentation:=
+</strong> Add MOS/war room cadence documentation into pack for future =
+reference.</li>
+<li><strong style=3D"font-weight:bold">Final Meeting =
+Schedule:</strong> Confirm kickoff and cadence once meetings are set this =
+afternoon.</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;=
+font-size:2rem">Closing Notes</h2><ul>
+<li>Consensus was that the plan is =
+detailed and on-track, with all reporting and communication infrastructure =
+nearly in place.</li>
+<li>Team will meet again in a =E2=80=9Ccouple =
+hours=E2=80=9D to close the loop on remaining open items and finalize the =
+immediate action items.</li>
+</ul>
+<hr />
+<p><strong =
+style=3D"font-weight:bold">End of Summary</strong></p>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0,=
+ 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex;align-i=
+tems:center;gap:8px"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</=
+span>Transcription</h3><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">0:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Correct.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">0:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think we need to.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">0:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;ll have to.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">0:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And I would say =
+Rakesh, you&#x27;re talking to these. So again there&#x27;s a lot on this =
+slide. Just focus on the key pieces and. And then we can that way jump. One=
+ thing that&#x27;s key goes back to publish the hourly the regional testing=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">0:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So just a few pieces=
+ that&#x27;ll be.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><=
+span style=3D"color:#64748b;font-size:14px">0:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Good for him to know=
+ and he&#x27;ll stop you if he has questions.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Srinivas</span><span style=3D"color:#64748b;font-size:14p=
+x">0:30</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Sure.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">0:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so the next =
+slide is. We&#x27;re going through the daily. My only question is the =
+remote testing is that what we&#x27;re saying is happening in APAC. So =
+remote testing fit 6:30 Pacific 4. Is that remote testing greens in that =
+column?</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">0:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">What&#x27;s =
+happening at AAPAC on the 7:2? It would be the remote testing in APAC.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">1:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. I just wanted =
+to make sure. And then that remote testing is allowing them to do end to =
+end. It&#x27;s allowing them to get in and test something that matters. =
+Correct versus just.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><=
+span style=3D"color:#64748b;font-size:14px">1:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, do you want us=
+ to put.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">1:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So I mean to do good=
+. I just go ahead.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><=
+span style=3D"color:#64748b;font-size:14px">1:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, no, I. I =
+understand where you&#x27;re getting with this. It&#x27;s going to give =
+them the ability to start texting end to end. The question I had on this, I=
+ apologize, I&#x27;m losing my voice is do we want to have that call out on=
+ here? We didn&#x27;t want to update the. If you call it the hard schedule =
+date since this is more of a call to soft launch of U18. Do you want us to =
+at least note this on here? Because we actually don&#x27;t have it on this =
+slide right now.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><=
+span style=3D"color:#64748b;font-size:14px">1:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The regional.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">1:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">1:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes. So where is. =
+Yeah. So is the regional those three rings or is regional even more than =
+the two rings?</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">1:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It would be.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">1:57</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">See where it says =
+UAT 1 column for 777 11. It would be anything in there that the team deems =
+is ready for testing.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">2:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It will not impact =
+development and that&#x27;s key.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</=
+span><span style=3D"color:#64748b;font-size:14px">2:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so that means =
+it&#x27;s. They can test a good bit. Yeah, I think there&#x27;s some way we=
+. Because otherwise it seems like UAT one. It seems like we tested those =
+three and sound to me I thought the regional team was only going to be =
+testing those three. But you&#x27;re saying no.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Srinivas</span><span style=3D"color:#64748b;font-size:14p=
+x">2:30</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Oh no, no, no. These three are continuation of these end to end and =
+defect fixing into very much into this week. I think everything else is, =
+you know, it&#x27;s a three, five two day duration kind of testing. So the =
+expectation is that it will really be. Most of testing would be done here =
+and defect fixing will really happen here. But order management example, =
+there&#x27;s A lot of end to end scripting there that will go into this =
+week. So it&#x27;ll. It&#x27;s essentially giving us the buffer to finish =
+it there. So this second column is not for.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sukhi</span><span style=3D"color:#64748b;font-size:14px">=
+3:08</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">3:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">3:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I thought it was a =
+combination of both of them. Okay. I thought it was the sist. And then the =
+ones that were green was S. It&#x27;s still happening, but APAC is doing =
+remote testing. That&#x27;s not what this is saying. So where&#x27;s the =
+APAC piece in here? Or is it not.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</s=
+pan><span style=3D"color:#64748b;font-size:14px">3:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;s just.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">3:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;s not right =
+now.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">3:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. It would have =
+to be before that UAT1 column. Right. Because that&#x27;s. So we could =
+either adjust that and say that that includes the APAC piece or we would =
+want another column.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><=
+span style=3D"color:#64748b;font-size:14px">3:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So the only reason I=
+ hadn&#x27;t.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">3:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And it says I =
+don&#x27;t have a conversation now, I hadn&#x27;t originally put anything =
+in is we&#x27;re not confident at this point in time what exactly =
+they&#x27;d be able to test. Perfect world, no defects. They can test =
+everything. So we can. That&#x27;s why I&#x27;m wondering if it&#x27;s just=
+ more of a note that in our plan, we will hand off to APAC on 7.2. =
+Whatever&#x27;s available to test. Or if you do, I can put a column in. But=
+ I just don&#x27;t want it to be misleading and say, hey, they can test =
+everything if we think there&#x27;s significant defects, let&#x27;s say in =
+logistics, and we don&#x27;t hand that off to them.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sukhi</span><span style=3D"color:#64748b;font-size:14px">=
+4:12</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So I think if we can put sort of like that. What is it? That line. I =
+don&#x27;t know if I&#x27;m making sense when I put that line. But hold on,=
+ let me just.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">4:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Something visual =
+that says, hey, APAC will be inserted here.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Srinivas</span><span style=3D"color:#64748b;font-size:14p=
+x">4:28</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Correct.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">4:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Something like.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">4:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Hold on. Yeah, like =
+at the beginning of that UAT1 column.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sukhi</span><span style=3D"color:#64748b;font-size:14px">=
+4:35</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, something like.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><s=
+pan style=3D"color:#64748b;font-size:14px">4:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, this will be =
+depending the defect resolution. Yeah.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Vicki</span><span style=3D"color:#64748b;font-size:14px">=
+4:41</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">4:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">4:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">4:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then have like a=
+ little thingy majiggy like that. And then just say uat and then just with =
+an asterisk narrative.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><=
+span style=3D"color:#64748b;font-size:14px">4:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;s what =
+you&#x27;d be like.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><=
+span style=3D"color:#64748b;font-size:14px">4:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Hey, we don&#x27;t =
+know which ones, but they should start somewhere in the middle. Again, this=
+ is a very ugly version of this, of what I&#x27;m saying. But that way =
+we&#x27;re not putting in a column. We&#x27;re just kind of putting a. Kind=
+ of a stake in the ground. Does that make sense for Keshe?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Srinivas</span><span style=3D"color:#64748b;font-size:14p=
+x">5:06</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yes.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">5:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes, it does.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">5:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m aligned too=
+. So we&#x27;ll look at that offline and get that added.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Paul</span><span style=3D"color:#64748b;font-size:14px">5=
+:11</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay, perfect.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><=
+span style=3D"color:#64748b;font-size:14px">5:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right, back to =
+you.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">5:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The other call out =
+to you just for your awareness. We talked through. There&#x27;s a couple of=
+ these that we had shown just in person testing. So talk to the team. =
+They&#x27;re going to push that to whatever can be tested remote. A lot of =
+them are more user based and they&#x27;re not long. But we still said, you =
+know, whatever you can test in the first week. There&#x27;s only one of =
+them in professional mind. I can&#x27;t remember what the name was, but =
+there&#x27;s only one of them. You can see at the bottom where we&#x27;re =
+testing the second week. That one very specifically is because there&#x27;s=
+ dependencies from. I think it&#x27;s items one through nine because =
+it&#x27;s a more of a reporting function. So they don&#x27;t have Hyperion,=
+ so they don&#x27;t have the ability to test the week before because they =
+need all the outputs from the other tests. So that&#x27;s the only one that=
+ if for whatever reason we were ready we could start to test during week =
+one. They would. But just talking through that with the team because of all=
+ the other testing going on, there is a very low likelihood to be able to =
+test anything for Hyperion just based on its predecessors.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sukhi</span><span style=3D"color:#64748b;font-size:14px">=
+6:14</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay, okay. All right.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><s=
+pan style=3D"color:#64748b;font-size:14px">6:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You need to, you =
+need the transactions.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">6:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You&#x27;re right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">6:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">6:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right, so slide =
+number six is.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><sp=
+an style=3D"color:#64748b;font-size:14px">6:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The call out here is=
+ that for these 2414 critical systems everything is already the orange here=
+ is the escalation or rather the heightened need around the regional tax =
+testing teams. And I think there have been several conversations with that =
+tax team and Ben Goldstein to identify the regional, the testers in region.=
+ And there&#x27;s active conversations happening and I think the =
+expectation is that it will happen again. This is UAT that the testers =
+would be identified by this. Well 622. So Srinuas is that realistic? The =
+reason, the reason we put it as a risk is because of the organizational =
+readiness and having a solstice finance team or tax team in region I think =
+is not hired yet. So we&#x27;re looking, we&#x27;re looking for alternate =
+names.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">7:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">7:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So we have a call =
+with Ben and some output from Mexico, Romania to finalize who the testers =
+are participating in our uat. So post today&#x27;s call, I think we&#x27;ll=
+ be in a better position to get this cleaned up in line up what.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">7:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We thought will be. =
+And I think this is a good one just to let him know this and then just say,=
+ hey, if I don&#x27;t get what I need, this is one thing I might escalate =
+to you. This is fine. Okay. All right.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Vicki</span><span style=3D"color:#64748b;font-size:14px">=
+8:07</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">One other thing too, just for your awareness, we had a very good =
+conversation yesterday with Will Johnson. So he also has a heightened =
+awareness of all of this. If we do not have a good outcome from the meeting=
+ with Ben, we will be having another.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Paul</span><span style=3D"color:#64748b;font-size:14px">8=
+:22</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Excuse me.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">8:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Conversation with =
+Will. So he&#x27;s on alert for this as well.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sukhi</span><span style=3D"color:#64748b;font-size:14px">=
+8:27</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I changed notes with him, so keep me close in that one. Okay. All right,=
+ this is good. So I think with this one we don&#x27;t spend so much time =
+because it&#x27;s just a backup what we said on slide five. But it&#x27;s =
+the same to him. We need his help for that one item. Okay. Slide number =
+seven.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><sp=
+an style=3D"color:#64748b;font-size:14px">8:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So these are all the=
+ adjacents. So critically, these 14 are where changes are happening. And so=
+ that&#x27;s. So this is sort of the heady slide. Now, similarly, outside =
+these 14 core systems, there are all these adjacents that are being used =
+where there&#x27;s no changes in brv, but they&#x27;re being consumed as =
+part of the end to end testing and the prv. And so this is really more a =
+status on do we have testers in this areas as well? Have we provisioned =
+access and have we aligned on all the schedules? So again, for UAT schedule=
+, I think we said 625, so the hour by hour schedule would also be aligned. =
+So actually I&#x27;ll move that to 625 here to match everything else.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">9:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. All right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><sp=
+an style=3D"color:#64748b;font-size:14px">9:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So these two slides =
+are the same and then taxware is the same as the Edicom. It&#x27;s another =
+tax software testing. And it&#x27;s the same story of regional testers =
+Insul says being identified.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><=
+span style=3D"color:#64748b;font-size:14px">9:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;s correct.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">9:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">9:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So it =
+doesn&#x27;t seem like we&#x27;ll have to spend a lot of time here with =
+Jack. It&#x27;s just to say, look, we&#x27;re including that visibility in =
+case we have to dig into it if there&#x27;s a defect or anything else. Yep.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><sp=
+an style=3D"color:#64748b;font-size:14px">10:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right. We&#x27;ll =
+just highlight that. Yep.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><s=
+pan style=3D"color:#64748b;font-size:14px">10:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We don&#x27;t really=
+ need to dwell on it that long.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</=
+span><span style=3D"color:#64748b;font-size:14px">10:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep. Great.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><sp=
+an style=3D"color:#64748b;font-size:14px">10:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So a couple of =
+takeaways here. This is the execution dashboard we&#x27;ve developed. =
+I&#x27;ll talk through this and then perhaps highlight here. So all this is=
+ saying is again, there are script finalization ongoing in these two for =
+UAT happening for these three, and they should be done by this weekend and =
+Monday for the tax app Srinivas. These are the dates we discussed yesterday=
+. So that&#x27;s one point in that. This tracks the number of scripts for =
+each of these sub functional areas. This essentially tracks execution =
+status as to how many this is again will be Provided at the end of day, =
+every day on how many were planned, how many were actually completed, how =
+many had got stopped due to defects or any other issues, how many are at =
+risk of getting completed, and then what becomes what is delayed? The =
+particular call outs here would be these three items which would get closed=
+ for UAT by Monday. And then the second call out here is that to the point =
+that Jessica mentioned, the HR ADP testing is being managed by adp. They =
+have a rigorous process. ADP is managing the execution and reporting of it =
+that Sandra and Kelly Rosen and others are plugged into. It&#x27;s not =
+being tracked here. And so if that question comes up, we may want to =
+understand if the expectation is everything to be tracked here.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">11:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, no, I think we=
+ can answer that question. All right.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Srinivas</span><span style=3D"color:#64748b;font-size:14p=
+x">12:02</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">All right. So this would be the daily dashboard.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sukhi</span><span style=3D"color:#64748b;font-size:14px">=
+12:05</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Let&#x27;s make the ones that are. Make them equal. Make them make sense=
+. So if you look at number of scripts 5 and then not start at 9 when I =
+first looked at the data.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><s=
+pan style=3D"color:#64748b;font-size:14px">12:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sorry, sorry, sorry,=
+ sorry.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">12:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That is what =
+we&#x27;re saying.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><s=
+pan style=3D"color:#64748b;font-size:14px">12:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, yeah, =
+yeah, yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">12:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So if you can just =
+clean up every day.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</spa=
+n><span style=3D"color:#64748b;font-size:14px">12:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep, yep, yep. =
+Apologize for that one. Yes. Okay.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi<=
+/span><span style=3D"color:#64748b;font-size:14px">12:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right. And then =
+this is the daily one that any.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</s=
+pan><span style=3D"color:#64748b;font-size:14px">12:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Not even daily.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">12:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You can look at it. =
+We can look at it at any time as it relates to scripts and where they are.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><sp=
+an style=3D"color:#64748b;font-size:14px">12:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And so this will be =
+correct.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">12:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The next slide. =
+Sorry.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><sp=
+an style=3D"color:#64748b;font-size:14px">12:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, yeah. So this =
+one, the defect management. There&#x27;s a bit of a change I&#x27;m editing=
+ here because this will address this question on what. Yes. What has been =
+run? How many defects are there? What is the severity and categorization of=
+ those defects? So I think there&#x27;s a portion of this that will change =
+to indicate that, and we&#x27;re working on that now. But this would be =
+also a defect tracker, however it is. So parts of these will be. I think =
+you mentioned rightly that he doesn&#x27;t care about the sausage making. =
+This would be provided perhaps near real time or. Or perhaps by end of day,=
+ every day, a dashboard that he&#x27;s able to see and the leadership is =
+able to see.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">13:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. And do we have=
+ the war room and our MOS and how we&#x27;re going to communicate and all =
+of that stuff? Do we have that finalized?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Srinivas</span><span style=3D"color:#64748b;font-size:14p=
+x">13:35</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">We do. We have a detailed planner on the mos. I don&#x27;t think =
+it&#x27;s anywhere here, Jessica, we can talk about.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sukhi</span><span style=3D"color:#64748b;font-size:14px">=
+13:43</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">And I just want you guys to.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sriniva=
+s</span><span style=3D"color:#64748b;font-size:14px">13:44</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Both be able to see=
+ it on.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">13:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Top of your head.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">13:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then we need to =
+make sure eventually we have it documented. That&#x27;s One of the things =
+you ask.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">13:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">For, for the cadence=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</span><sp=
+an style=3D"color:#64748b;font-size:14px">13:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Correct the cadence.=
+ Yes. We can add the mos at the bottom. Yep. Sorry, go ahead.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">13:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, add that =
+bottom. We do. We just haven&#x27;t set up any meetings yet. The plan was =
+this afternoon. Get those done. I want to make sure we got all these =
+details in here, but we&#x27;re going to set up a bridge line, we&#x27;re =
+going to set up the scrum calls. All of that has been outlined, but we can =
+make a note on here and even the timing of this. So, Sukhai, I do have one =
+question related to this is we&#x27;re going to send this out twice a day. =
+Once in the morning for what our plan is and then once in the afternoon =
+with what actually happened throughout the day. Who do you want that =
+audience to be outside of? We have our testing team. I&#x27;m assuming we =
+always copy you. But for example, would you want to copy Jeff? I kind of =
+want to have an idea.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><=
+span style=3D"color:#64748b;font-size:14px">14:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I think you =
+copy Jeff. He likes to get. He wants to just know everything is fine. I =
+don&#x27;t think he&#x27;s going to want to go all in such a thinking, but =
+he&#x27;s going to want to know things are good. So I think this team, of =
+course, any other stakeholders, but definitely Jeff and I, as we, as we =
+move forward. Okay.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><=
+span style=3D"color:#64748b;font-size:14px">14:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We will create a =
+sort of a distribution list today that we can send over to you and Paul =
+just to take a look at to make sure that we&#x27;re not missing anybody =
+from the actual testing team. I have a confidence in who we need to copy on=
+ this. It&#x27;s more at the leadership level of I&#x27;ll include =
+everybody in this call, include Jeff, and if there&#x27;s anybody else you =
+think is missing, just let us know.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sukhi</span><span style=3D"color:#64748b;font-size:14px">=
+15:18</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Got it. Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><s=
+pan style=3D"color:#64748b;font-size:14px">15:21</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I would actually =
+extend it to the tower leads both for Solstice and eit, but we can.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">15:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, no, no.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">15:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m good with =
+that. To me, it&#x27;s one of those things that the more people that need =
+to know that are in the know, we.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</s=
+pan><span style=3D"color:#64748b;font-size:14px">15:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Don&#x27;T have to =
+follow up, the better.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><=
+span style=3D"color:#64748b;font-size:14px">15:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So I like that. I =
+like that idea.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</spa=
+n><span style=3D"color:#64748b;font-size:14px">15:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">15:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">One of them.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">15:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">15:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">15:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Agree, agree. Okay. =
+Vicki, if we&#x27;re lucky, we&#x27;ll have five minutes. We luckily have =
+two or three. So it&#x27;s going to be key just to hit on the key pieces =
+that you want him to come to know. Yep.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Vicki</span><span style=3D"color:#64748b;font-size:14px">=
+15:56</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Right.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">15:57</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m aligned. =
+Okay. So. So my thought here is we have a plan. It&#x27;s very detailed. We=
+ know the messaging, have our timeline, that&#x27;s reporting material. If =
+you go to slide number 12 this is what we&#x27;re going to do. We&#x27;re =
+going to kick off. We&#x27;ll send this to you have any questions, let me =
+know. But we have all the details, the templates, the plans, all documented=
+. And then that way. Okay.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><s=
+pan style=3D"color:#64748b;font-size:14px">16:21</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. I have one =
+quick question for you and I know this is super, super quick. A lot of =
+it&#x27;s going to be email. Who are we going to send it from? From Sukai =
+or from Jeff or from someone else?</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki<=
+/span><span style=3D"color:#64748b;font-size:14px">16:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We are thinking from=
+ Vicki, because I&#x27;d like to have one concise person who can send them =
+out. But also my concern is I want to make sure that it&#x27;s somebody =
+that if we receive a response because somebody has a question on something =
+that, you know, I don&#x27;t expect Vicki to be able to answer all the =
+questions, but she&#x27;ll know who to reach out to. So that was our =
+thought. Unless anybody has a different one.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sukhi</span><span style=3D"color:#64748b;font-size:14px">=
+16:56</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I think it should go to Paul. And the reason why I think it should go to=
+ Paul. Paul&#x27;s like, oh, cry. I was right is because everybody knows =
+Paul. The thing is, a lot of people don&#x27;t know Vicki yet. And then =
+don&#x27;t get confused like who is this person and why is she sending it? =
+She would respond to her. She would not respond to her. Whereas I think =
+it&#x27;s going to be.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><=
+span style=3D"color:#64748b;font-size:14px">17:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Good for it to go to=
+ Paul.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">17:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Because everybody =
+knows Paul. And so that would be my thought. But Vicki would work very =
+closely with Paul. I know Paul. I would love to get your thoughts on that. =
+If you think it should be somewhere.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">17:31</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">I&#x27;ll write it and send it to you so you can just copy and paste.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">17:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">17:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">17:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. I mean, the =
+only other option is Pierce, really. Pierce will be back and would have the=
+ bandwidth. Mike. Mike concerns only the bandwidth. That&#x27;s all. =
+I&#x27;ll be in Charlotte next week and.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sukhi</span><span style=3D"color:#64748b;font-size:14px">=
+17:50</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Then I would say let go to Vicki. I mean, I just. I think right now I =
+need to make sure. I want to connect with peers. Just to make sure. I just =
+need to connect with peers first before I make that decision. Go ahead.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">18:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So, Vicki, maybe =
+it&#x27;s a combination.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</spa=
+n><span style=3D"color:#64748b;font-size:14px">18:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Let&#x27;s.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">18:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Let&#x27;s meet =
+offline and figure out if I can support. I will.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Vicki</span><span style=3D"color:#64748b;font-size:14px">=
+18:14</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I don&#x27;t know.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><s=
+pan style=3D"color:#64748b;font-size:14px">18:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">There&#x27;s quite a=
+ few communications here, right?</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica=
+</span><span style=3D"color:#64748b;font-size:14px">18:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, there&#x27;s =
+going to be. They&#x27;re going to be. There&#x27;s going to be so much =
+communication. They&#x27;re going to ask us to please stop. I mean, okay, I=
+ want to over communicate. I want to over communicate rather than under =
+communicate. Because if we under communicate, it leaves more risk and =
+we&#x27;re too much at the crunch time to have risk. So I&#x27;d rather =
+people say I already know that or I&#x27;m aware of that than to say I had =
+no idea.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi</span><span =
+style=3D"color:#64748b;font-size:14px">18:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Vicki</span><span style=3D"color:#64748b;font-size:14px">=
+18:46</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Paul, send out some of the major comms, but identify Vicki as a person. =
+So once we get Vicki&#x27;s name out there and to your point, to kind of =
+they&#x27;ll start to realize who she is, then we can send some of the =
+maybe smaller tailored emails from Vicki. So yeah, we can work that into =
+our plan of what is more of a global calm going to Maybe let&#x27;s say 50 =
+plus more people and then we can have that come from Paul. But even within =
+those emails because, hey, if you have questions, please do that to Vicki =
+as she&#x27;s supporting the effort. So.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sukhi</span><span style=3D"color:#64748b;font-size:14px">=
+19:18</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Got it.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">19:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We can tackle that. =
+Which I think would be a good.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</s=
+pan><span style=3D"color:#64748b;font-size:14px">19:21</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Combination because =
+you want to make sure people are going to read them. That&#x27;s, =
+that&#x27;s the other part. Right.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sukhi<=
+/span><span style=3D"color:#64748b;font-size:14px">19:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">People don&#x27;t =
+read them when they see, when they see call, they know read the reason why.=
+ I want to establish some sense of authority. And then Vicky, again, it was=
+ sad, but I like that idea. Very good questions, very good discussions. =
+Let&#x27;s see how it goes. Very good progress. Thank you guys so much. =
+Talk to you in a couple hours.</div></div><div style=3D"margin-bottom:0;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><s=
+pan style=3D"color:#64748b;font-size:14px">19:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Thank you. Great =
+progress.</div></div></div><div style=3D"margin-top:36px;text-align:center;=
+color:#64748b;font-size:14px;padding:20px;border-top:1px solid #e2e8f0"><p =
+style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note Taker</p><p=
+ style=3D"margin:0;font-size:12px">Your AI-powered companion</p></div></div=
+></div></div></html>
+----_NmP-2f8880564b3b48e9-Part_1--

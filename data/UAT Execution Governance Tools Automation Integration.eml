@@ -1,0 +1,982 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a05:6000:1106:b0:3a4:dc5b:9678 with SMTP id z6csp1454583wrw;
+        Wed, 28 May 2025 12:32:38 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IENPNHdTX58R/sBxyynMjPWZ3nr1PrHVC/z+uI9fjLGZ+5BfYLRNYaMPMF2K6t5+nd4TBhn
+X-Received: by 2002:a05:620a:372b:b0:7c5:65ab:5002 with SMTP id af79cd13be357-7ceecc8f297mr3098582685a.49.1748460757812;
+        Wed, 28 May 2025 12:32:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748460757; cv=none;
+        d=google.com; s=arc-20240605;
+        b=ftkKM469+J3VXvmGXplDUTn2MXWZk6woIsIW8LzqSqm+tENJ8rwbtKE947XA2P6goN
+         ahPf4eNdwafFFgtVspxNCuj8oB5GVU8xBfZpozGzlCI328sn70/S6HKWvcLaFMCZv0+0
+         2S6geklUDffCT7dkbVEyBRzDhVNBCmuMsrIP3mJTFWKEpLGEhu4BWb+xryIGK8hzWRis
+         0MSYUBC2oIuxQCAH50cITov9ZnxPDHE9X1EWqosjD8Lch+S2Mc2KxoZwKALQQJwY5q1u
+         gpevMEUO1WbC9lUAp31a6PbimcKg5ENBlMhIXnsRd4DNwCE1uve1YyjFn++2gAYfYG8I
+         I80g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=CJSjPTkreHH7niADHPQgBO/mlm0UkV2f508t4akPpvw=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=ILIK+cksIPHWib+yLSwvc4sCSha4W6wftKftsPdIJacSQMm2sT/BQ2Q7bXUNyFOWcn
+         Nu6i269FndOUTlJO1+bQvlRrTVPQUptTmqS6xFwae3Fgzn1dx87BgV7PjnDricvXU1hN
+         ZF743FaqGaKVAp+c8UypspxoQrRjvZvnRdBCdHcNQo/Mu/bG1p4QGp0nRCOSu08uMeyq
+         qvXPpwm/BGq5kXJXGaRbCD7GP5r3KHeb7j3P5wvrDQtstVnOtfeDYi73zANng6JiPjQj
+         J1/g7ukUyv+FpmozJCzd4tlBj1efbTCbAJGT1TzNZMeAATYD3naSFRjJXayNHDrwmapC
+         t3BQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=qjGkKjbn;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=oZQ6fkWU;
+       spf=pass (google.com: domain of 010001971861e034-fdb48113-f5f3-4120-a767-1640ee463715-000000@send.email.wave.co designates 54.240.9.112 as permitted sender) smtp.mailfrom=010001971861e034-fdb48113-f5f3-4120-a767-1640ee463715-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <010001971861e034-fdb48113-f5f3-4120-a767-1640ee463715-000000@send.email.wave.co>
+Received: from a9-112.smtp-out.amazonses.com (a9-112.smtp-out.amazonses.com. [54.240.9.112])
+        by mx.google.com with ESMTPS id af79cd13be357-7d096f046adsi103825785a.296.2025.05.28.12.32.37
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 28 May 2025 12:32:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 010001971861e034-fdb48113-f5f3-4120-a767-1640ee463715-000000@send.email.wave.co designates 54.240.9.112 as permitted sender) client-ip=54.240.9.112;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=qjGkKjbn;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=oZQ6fkWU;
+       spf=pass (google.com: domain of 010001971861e034-fdb48113-f5f3-4120-a767-1640ee463715-000000@send.email.wave.co designates 54.240.9.112 as permitted sender) smtp.mailfrom=010001971861e034-fdb48113-f5f3-4120-a767-1640ee463715-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1748460757;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=acPvxKiHXgh/twl/Vn+k09ltNEWEEUKf2QM5uMKE+Ok=;
+	b=qjGkKjbnT1uEuub7Mbiadauk7ZBPB+JQLwMyyiS3XqcboC4EzrvfOUZ5IT2cCRlv
+	5Ggsc9xgLKLfz404XPo+3pOxb986I2BRarPJ6juUp/vVlwGkReKuFF+59CYNr3refdH
+	NbOcmMfVVqc8ZpUaqFYJYo9uR+iL1jWwDVauGIk8=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1748460757;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=acPvxKiHXgh/twl/Vn+k09ltNEWEEUKf2QM5uMKE+Ok=;
+	b=oZQ6fkWUiaenO0NbKRM/GTDO1SVHzUpFnP2wxPRr4QrQlvs8I8fnHf43ZTCZ42nA
+	Mg9xSM+25/nePas35A7DUO1lKhXicanRs2zSMU4o2ezuA1Yv0hUkgI/5C0wALdf5aja
+	uXHRvDzmFlvTYFsAY0J2hF2ndGh9MAyNBUxQDoKU=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: UAT Execution Governance Tools Automation Integration
+Message-ID: <010001971861e034-fdb48113-f5f3-4120-a767-1640ee463715-000000@email.amazonses.com>
+Date: Wed, 28 May 2025 19:32:37 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-c2367072fce015d1-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.05.28-54.240.9.112
+
+----_NmP-c2367072fce015d1-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+UAT Execution Governance Tools Automation Integration
+
+## Main Topics Discussed
+
+### 1. UAT (User Acceptance Testing) Execution =
+Approach
+- **Stakeholder Request:** Sukai requested a detailed explanation =
+of how UAT is run and executed, especially from an IT-centric perspective.
+- **Objective:** Provide examples from previous engagements and outline the=
+ structure, roles, and responsibilities regarding UAT.
+- **Depth Required:** A need to zoom in on governance, roles, decision =
+rights, escalation processes, and execution specifics.
+- **Framework Proposal:**
+  - **Overview/Approach**
+  - **Roles and Responsibilities:** Details on decision rights (e.g., who =
+is accountable, responsible, consulted, informed).
+  - **Governance =
+Structure:** Escalation levels, decision-making, and oversight.
+  - **Meeting Cadence:** Structure and timing for coordination.
+  - **Execution:** Test planning, actual UAT execution, hypercare, and =
+post-UAT support.
+  - **Tracking and Reporting:** How scenario progress, =
+test scripts, execution status, and defects are monitored and reported.
+  - **Defect Remediation:** Severity definitions, tracking resolutions, and=
+ timelines.
+
+### 2. Tools and Automation
+- **Current Tools:** JIRA is =
+mentioned as the main tracking tool; potential integration with Oryx for =
+workflow and test script management.
+- **Automation Initiatives:**=20
+  - Discussion about automating testing processes using AI and tools like =
+Copilot, which can generate test scripts and manage workflows.
+  - Different team members have varying opinions about the level and =
+implementation of automation, and there is an intention to align these =
+views.
+- **Reporting Needs:** High-level dashboard metrics: number of =
+scenarios, status (written, executed, completed), points of contact, and =
+on-time progress.
+
+### 3. Organizational Alignment and Knowledge Sharing
+- **Leveraging Internal Experts:** Intent to collaborate with staff =
+experienced in UAT, ensuring the process aligns with existing =
+organizational standards.
+- **Customization:** The approach will be modeled=
+ on established internal practices rather than a one-size-fits-all outside =
+template.
+- **Key Personnel:** Piers is identified as the IT UAT =
+coordinator needing clear process definitions and governance to be =
+effective.
+
+### 4. Follow-ups and Action Items
+- **Structure Required:** =
+Suggestion to combine framework elements (overview, roles, governance, =
+cadence) into a clear, possibly single, document or presentation.
+- **Immediate Needs:**=20
+  - Provide Piers with a structured plan to =
+coordinate UAT across functions.
+  - Prepare for a detailed conversation on=
+ Friday with Jeff, focusing on automation and AI-assisted scenarios.
+  - Connect with internal experts on UAT for organizational insights.
+  - Show a high-level execution tracker and reporting dashboard.
+- **SAP License Issue:**
+  - Side conversation about an SAP license =
+end-of-life concern (ends in 2027, not sooner).
+  - Possible negotiation =
+and technical solution (search pack upgrade), coordination with SB Friday =
+resource named Mo.
+
+---
+
+## Key Dates and Persons
+
+- **Thursday (last):** =
+Sukai requested UAT execution details.
+- **Friday (upcoming):** Planned =
+discussion with Jeff (automation/AI perspective) and involvement of Mo (SAP=
+ resource).
+- **2027:** Stated as the end-of-life date for the current SAP =
+license version.
+
+---
+
+## Additional Notes
+
+- The process aims to balance =
+new (AI/automation) and existing organizational standards.
+- Explicit need to clarify both tactical execution and governance/goals.
+- Importance of tracking, reporting, and timely escalation of UAT issues.
+- Side topic on SAP license highlights the need for accurate information =
+and resourceful negotiations.
+
+Transcript:
+0:00
+Problem that we're solving =
+like this, they.
+
+0:02
+Want a point of view. So Sukai wants a view into how=
+ we run and execute uat.
+
+0:09
+V I T V I T well.
+
+0:11
+It, but more so ey. So she asked last Thursday of tell us, you know, give =
+us a few examples. She wants to double click and triple click into how UAT =
+is executed and how that connective tissue works. And it's more from an IT =
+centric view. So she said tell us how you've done it on other engagements =
+and how the structure would work and how you'd run it so that we can learn =
+from it.
+
+0:39
+Because if that's the case, then I think one of the things, =
+maybe this is in your overview, but I think roles, responsibilities matter =
+a lot here. And I know you, I saw a page, you had like a pretty detailed =
+one but at a high. And I think we already did a page on like the high level=
+ roles. But what I'm thinking is like even basic stuff like is UAT it LED =
+functionally supported or like you remember you have that page where like =
+the different phases, that basic stuff and then what are those key roles? =
+What role do they play in that? Laying that out is a big part of how we're =
+going to manage this.
+
+1:12
+Where does UAT fit and roles and =
+responsibilities?
+
+1:15
+Yeah, it's basically zooming in on one of those =
+chevrons that you did.
+
+1:22
+So where does approach uat? Where does it fit =
+roles and responsibilities in the Org. That's more of framework. So this =
+one just talks of, this is for UAT planning, but it's really more here =
+governance. How do you. This is. I guess.
+
+2:03
+Yeah. So if, if you, if you=
+ define the roles and responsibilities in my mind that's literally what are=
+ the roles and then who has decision rights AR or something like that? =
+Right. Then the next thing down should be probably something around the =
+governance structure. Right. Like what are the levels, who you know, how do=
+ we escalate stuff like that? Like something really Honestly, a structure =
+that's some of your bullet points here. Probably you can probably combine =
+one page on a lot of this stuff.
+
+2:33
+Yeah. So probably it's you know, =
+overview approach and then roles and responsibilities and then governance =
+structure.
+
+2:40
+Yeah. And then, and then the next thing in there is, you =
+know, meeting structure and cadence or something. Right?
+
+2:46
+Yeah.
+
+2:47
+Like I'm just saying like super generic stuff. Like you do fit all this =
+together.
+
+2:56
+Somewhere in here there's a. Well, there's execution. =
+There's somewhere in here there's a hyper care.
+
+3:02
+Yeah. And then I think one other page that we have on here is tracking and =
+reporting structure. Right. Like literally how are we going to what tool =
+are we tracking the details in? How are we doing high level reporting?
+
+3:16
+You know, what's the workflow in that tool? I think that that's really=
+ like where Pierce needs to get to.
+
+3:24
+Right.
+
+3:25
+Is the super like tactical for him? How do I actually set this up and run =
+it?
+
+3:32
+Just making it up. Let's say that they work in jira.
+
+3:35
+Yeah.
+
+3:35
+All the details will live in jira.
+
+3:36
+Exactly.
+
+3:37
+All you need to know in your roll up is how many scenarios or what are the =
+scenarios. How many scenarios, like who's on point for them? Are they done?=
+ Yes or no? Yeah, stuff like that. Dashboard of how many are done out of =
+how many total? Are you ready? I'll agree. And stuff like that.
+
+3:53
+Exactly.
+
+3:54
+Right, yeah.
+
+3:54
+How many scenarios exist, how many are =
+written, how many test scripts correspond to those, how many new, existing =
+or not needed? And then how many of those test scripts have been executed?
+
+4:08
+Yeah, yeah, right.
+
+4:09
+Which is pretty much that tracker that we put=
+ together for him. Like the roll up view.
+
+4:15
+Yeah. And that's, that's =
+going to be like time bound. Right? Like yeah, we expect these will be done=
+ by this point. You can track as to whether or not they're on time and then=
+ there'll be something on the back end of that. Defect remediation.
+
+4:26
+Exactly.
+
+4:27
+How to track defect remediation? There's mismane defects. We=
+ probably need to have sep1, sub2, some like level of severity.
+
+4:35
+Yeah.
+
+4:35
+So we need to define that.
+
+4:40
+I mean show him this at a high level=
+.
+
+4:44
+Yeah, this is execution down here. There's also the. Well there's a=
+ planning portion and execution here and then down there later there's a =
+defect resolution and hypercam management.
+
+4:54
+This one. Yeah.
+
+4:57
+Yeah, but. Oh good, there's a scenario right there.
+
+5:00
+So we could leverage a lot of.
+
+5:02
+This and they should use like one of =
+the assumptions in this. You guys feel free to push back on this. But my =
+starting point for this is we should start with their existing standards on=
+ this like they do uat.
+
+5:14
+We were talking about this yesterday, Aneesh.=
+ And this is where I want to get in a room with those guys that you =
+mentioned that are super helpful and have been doing UAT for 20 years. And =
+I want them to say how does this work in your org right now?
+
+5:33
+Because what they're actually trying to do.
+
+5:35
+Yeah, how can we model =
+this after what you're doing? Because.
+
+5:38
+And what they're trying to do =
+right now as well. I don't know how Applicable this is for everything else =
+is they want to automate all the testing and again, I don't know the =
+feasibility of that. They're going through those discussions right now.
+
+5:54
+That's the, I guess the entirety of it. These guys want to use AI, =
+these guys want to do everything. Automation is part of the game. Yeah, I =
+think very tactically speaking that comes in here of how do you execute it,=
+ how do you do all that? That's the how. We need to understand the what and=
+ the why first and lay it out for these guys and say, here's why you need =
+what you need to solve for and why you need to solve for it. And here's the=
+ way you go about doing it. The piece you're mentioning is down the lane. =
+Later on I'm going to be. Here's the same thing, jira and there's a twin in=
+ jira, Oryx that does flow management. They leverage that. You create test =
+scripts, it automates the generation of test scripts and it uploads it into=
+ JIRA and it's got workflow management, all that other stuff. This guy on =
+the other hand, what's his name? Jeff. Jeff was of the opinion. Let's use =
+Copilot. Let's describe the scenario. Copilot and AI will change those =
+scenarios to requirements and test script for us. And you can use your =
+automated tool to upload it into JIRA and execute it automatically. Voila. =
+And you know, RuPaul's my uncle, so that's the way he's thinking. So we =
+need to temper him down a bit on that. But he's also going to be on this =
+Friday conversation. But we need to. He will cut double click and triple =
+click into it. But I think it's a sliver of everything else because Piers =
+is kind of totally lost. He's relying on us to give him everything and =
+spoon feed. He's got two needs. One, he needs to chase down people on a =
+high level to get ready and two, he wants to know how to run this because =
+he is the UAT coordinator for IT and he's got to be the connective tissue =
+across functions. So in that MOS or in that governance structure somewhere =
+in there that we laid out, you know, he's somewhere in here, right. So =
+whatever that's in, that's him and he's got to be driving some of that =
+stuff. So, okay, so governance structure, typically mos. We also have, =
+before this gets into how we run things, how we do hypercare and defect =
+remediation, there's also how to recall. Oh with Sam.
+
+8:19
+By the way, who was that asked for the SAP resource about the licensing =
+issue? Was that you or is that Andrew?
+
+8:24
+That might be Andrew.
+
+8:25
+Okay, I have a call for that right now.
+
+8:27
+Sab.
+
+8:28
+Oh yeah, they have the end of life issue with their SAP license and I'm =
+calling bullshit on it because that doesn't end life until 2027.
+
+8:37
+This version I need to do the.
+
+8:40
+Search pack upgrade, right?
+
+8:41
+So yeah, that's why we wanted to do it. Dinesh said, no, we're not doing =
+that, and he would negotiate and find a way to extend the life.
+
+8:49
+So that's why I'm trying to get you help with we have a person in our SB =
+Friday, his name Mo, who used to do.
+----_NmP-c2367072fce015d1-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">UAT =
+Execution Governance Tools Automation Integration</h1></td></tr></table></d=
+iv><div style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/010B5F9C-2C29-4E70-BDB0-809DDB4CC45B?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h2 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2rem">Main Topics Discussed</h2><h3 style=3D"font-weight:500;=
+padding-top:20px;font-size:1.75rem">1. UAT (User Acceptance Testing) =
+Execution Approach</h3><ul>
+<li><strong style=3D"font-weight:bold">Stakehol=
+der Request:</strong> Sukai requested a detailed explanation of how UAT is =
+run and executed, especially from an IT-centric perspective.</li>
+<li><strong style=3D"font-weight:bold">Objective:</strong> Provide examples=
+ from previous engagements and outline the structure, roles, and =
+responsibilities regarding UAT.</li>
+<li><strong style=3D"font-weight:bold"=
+>Depth Required:</strong> A need to zoom in on governance, roles, decision =
+rights, escalation processes, and execution specifics.</li>
+<li><strong style=3D"font-weight:bold">Framework Proposal:</strong><ul>
+<li><strong style=3D"font-weight:bold">Overview/Approach</strong></li>
+<li><strong style=3D"font-weight:bold">Roles and Responsibilities:</strong>=
+ Details on decision rights (e.g., who is accountable, responsible, =
+consulted, informed).</li>
+<li><strong style=3D"font-weight:bold">Governanc=
+e Structure:</strong> Escalation levels, decision-making, and oversight.=
+</li>
+<li><strong style=3D"font-weight:bold">Meeting Cadence:</strong> =
+Structure and timing for coordination.</li>
+<li><strong =
+style=3D"font-weight:bold">Execution:</strong> Test planning, actual UAT =
+execution, hypercare, and post-UAT support.</li>
+<li><strong =
+style=3D"font-weight:bold">Tracking and Reporting:</strong> How scenario =
+progress, test scripts, execution status, and defects are monitored and =
+reported.</li>
+<li><strong style=3D"font-weight:bold">Defect =
+Remediation:</strong> Severity definitions, tracking resolutions, and =
+timelines.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:=
+20px;font-size:1.75rem">2. Tools and Automation</h3><ul>
+<li><strong style=3D"font-weight:bold">Current Tools:</strong> JIRA is =
+mentioned as the main tracking tool; potential integration with Oryx for =
+workflow and test script management.</li>
+<li><strong =
+style=3D"font-weight:bold">Automation Initiatives:</strong> <ul>
+<li>Discussion about automating testing processes using AI and tools like =
+Copilot, which can generate test scripts and manage workflows.</li>
+<li>Different team members have varying opinions about the level and =
+implementation of automation, and there is an intention to align these =
+views.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Reporting =
+Needs:</strong> High-level dashboard metrics: number of scenarios, status =
+(written, executed, completed), points of contact, and on-time progress.=
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">3. Organizational Alignment and Knowledge Sharing</h3><ul>
+<li><strong style=3D"font-weight:bold">Leveraging Internal =
+Experts:</strong> Intent to collaborate with staff experienced in UAT, =
+ensuring the process aligns with existing organizational standards.</li>
+<li><strong style=3D"font-weight:bold">Customization:</strong> The approach=
+ will be modeled on established internal practices rather than a =
+one-size-fits-all outside template.</li>
+<li><strong =
+style=3D"font-weight:bold">Key Personnel:</strong> Piers is identified as =
+the IT UAT coordinator needing clear process definitions and governance to =
+be effective.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font=
+-size:1.75rem">4. Follow-ups and Action Items</h3><ul>
+<li><strong style=3D"font-weight:bold">Structure Required:</strong> =
+Suggestion to combine framework elements (overview, roles, governance, =
+cadence) into a clear, possibly single, document or presentation.</li>
+<li><strong style=3D"font-weight:bold">Immediate Needs:</strong> <ul>
+<li>Provide Piers with a structured plan to coordinate UAT across functions=
+.</li>
+<li>Prepare for a detailed conversation on Friday with Jeff, =
+focusing on automation and AI-assisted scenarios.</li>
+<li>Connect with internal experts on UAT for organizational insights.</li>
+<li>Show a high-level execution tracker and reporting dashboard.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">SAP License =
+Issue:</strong><ul>
+<li>Side conversation about an SAP license end-of-life =
+concern (ends in 2027, not sooner).</li>
+<li>Possible negotiation and =
+technical solution (search pack upgrade), coordination with SB Friday =
+resource named Mo.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 =
+style=3D"font-weight:500;padding-top:20px;font-size:2rem">Key Dates and =
+Persons</h2><ul>
+<li><strong style=3D"font-weight:bold">Thursday =
+(last):</strong> Sukai requested UAT execution details.</li>
+<li><strong style=3D"font-weight:bold">Friday (upcoming):</strong> Planned =
+discussion with Jeff (automation/AI perspective) and involvement of Mo (SAP=
+ resource).</li>
+<li><strong style=3D"font-weight:bold">2027:</strong> =
+Stated as the end-of-life date for the current SAP license version.</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">=
+Additional Notes</h2><ul>
+<li>The process aims to balance new =
+(AI/automation) and existing organizational standards.</li>
+<li>Explicit need to clarify both tactical execution and governance/goals.=
+</li>
+<li>Importance of tracking, reporting, and timely escalation of UAT =
+issues.</li>
+<li>Side topic on SAP license highlights the need for accurate=
+ information and resourceful negotiations.</li>
+</ul>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0,=
+ 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex;align-i=
+tems:center;gap:8px"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</=
+span>Transcription</h3><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Aneesh</span><span=
+ style=3D"color:#64748b;font-size:14px">0:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Problem that =
+we&#x27;re solving like this, they.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sab</span><span style=3D"color:#64748b;font-size:14px">0:=
+02</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Want a point of view. So Sukai wants a view into how we run and execute =
+uat.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Aneesh</span><span=
+ style=3D"color:#64748b;font-size:14px">0:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">V I T V I T well.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sab</span><span =
+style=3D"color:#64748b;font-size:14px">0:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It, but more so ey. =
+So she asked last Thursday of tell us, you know, give us a few examples. =
+She wants to double click and triple click into how UAT is executed and how=
+ that connective tissue works. And it&#x27;s more from an IT centric view. =
+So she said tell us how you&#x27;ve done it on other engagements and how =
+the structure would work and how you&#x27;d run it so that we can learn =
+from it.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Aneesh</span><span=
+ style=3D"color:#64748b;font-size:14px">0:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Because if =
+that&#x27;s the case, then I think one of the things, maybe this is in your=
+ overview, but I think roles, responsibilities matter a lot here. And I =
+know you, I saw a page, you had like a pretty detailed one but at a high. =
+And I think we already did a page on like the high level roles. But what =
+I&#x27;m thinking is like even basic stuff like is UAT it LED functionally =
+supported or like you remember you have that page where like the different =
+phases, that basic stuff and then what are those key roles? What role do =
+they play in that? Laying that out is a big part of how we&#x27;re going to=
+ manage this.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sab</span><span =
+style=3D"color:#64748b;font-size:14px">1:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Where does UAT fit =
+and roles and responsibilities?</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Aneesh<=
+/span><span style=3D"color:#64748b;font-size:14px">1:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, it&#x27;s =
+basically zooming in on one of those chevrons that you did.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Sab</span><span style=3D"color:#64748b;font-size:14px">1=
+:22</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So where does approach uat? Where does it fit roles and responsibilities=
+ in the Org. That&#x27;s more of framework. So this one just talks of, this=
+ is for UAT planning, but it&#x27;s really more here governance. How do you=
+. This is. I guess.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Aneesh</span>=
+<span style=3D"color:#64748b;font-size:14px">2:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So if, if you,=
+ if you define the roles and responsibilities in my mind that&#x27;s =
+literally what are the roles and then who has decision rights AR or =
+something like that? Right. Then the next thing down should be probably =
+something around the governance structure. Right. Like what are the levels,=
+ who you know, how do we escalate stuff like that? Like something really =
+Honestly, a structure that&#x27;s some of your bullet points here. Probably=
+ you can probably combine one page on a lot of this stuff.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sab</span><span style=3D"color:#64748b;font-size:14px">2:=
+33</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. So probably it&#x27;s you know, overview approach and then roles =
+and responsibilities and then governance structure.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Aneesh</span><span style=3D"color:#64748b;font-size:14px"=
+>2:40</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. And then, and then the next thing in there is, you know, meeting =
+structure and cadence or something. Right?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sab</span><span style=3D"color:#64748b;font-size:14px">2:=
+46</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Aneesh</span><span=
+ style=3D"color:#64748b;font-size:14px">2:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Like I&#x27;m just =
+saying like super generic stuff. Like you do fit all this together.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sab</span><span =
+style=3D"color:#64748b;font-size:14px">2:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Somewhere in here =
+there&#x27;s a. Well, there&#x27;s execution. There&#x27;s somewhere in =
+here there&#x27;s a hyper care.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Aneesh<=
+/span><span style=3D"color:#64748b;font-size:14px">3:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. And then I =
+think one other page that we have on here is tracking and reporting =
+structure. Right. Like literally how are we going to what tool are we =
+tracking the details in? How are we doing high level reporting?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">3:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You know, =
+what&#x27;s the workflow in that tool? I think that that&#x27;s really like=
+ where Pierce needs to get to.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Aneesh<=
+/span><span style=3D"color:#64748b;font-size:14px">3:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">3:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Is the super like =
+tactical for him? How do I actually set this up and run it?</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Aneesh</span><span style=3D"color:#64748b;font-size:14px=
+">3:32</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Just making it up. Let&#x27;s say that they work in jira.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">3:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Aneesh</span><span=
+ style=3D"color:#64748b;font-size:14px">3:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All the details will=
+ live in jira.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">3:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Exactly.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Aneesh</span><span=
+ style=3D"color:#64748b;font-size:14px">3:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All you need to know=
+ in your roll up is how many scenarios or what are the scenarios. How many =
+scenarios, like who&#x27;s on point for them? Are they done? Yes or no? =
+Yeah, stuff like that. Dashboard of how many are done out of how many total=
+? Are you ready? I&#x27;ll agree. And stuff like that.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Pierce</span><span style=3D"color:#64748b;font-size:14px"=
+>3:53</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Exactly.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Aneesh</span><span=
+ style=3D"color:#64748b;font-size:14px">3:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right, yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">3:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">How many scenarios =
+exist, how many are written, how many test scripts correspond to those, how=
+ many new, existing or not needed? And then how many of those test scripts =
+have been executed?</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Aneesh</span>=
+<span style=3D"color:#64748b;font-size:14px">4:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">4:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Which is pretty much=
+ that tracker that we put together for him. Like the roll up view.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Aneesh</span><span=
+ style=3D"color:#64748b;font-size:14px">4:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. And =
+that&#x27;s, that&#x27;s going to be like time bound. Right? Like yeah, we =
+expect these will be done by this point. You can track as to whether or not=
+ they&#x27;re on time and then there&#x27;ll be something on the back end =
+of that. Defect remediation.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span=
+><span style=3D"color:#64748b;font-size:14px">4:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Exactly.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Aneesh</span><span=
+ style=3D"color:#64748b;font-size:14px">4:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">How to track defect =
+remediation? There&#x27;s mismane defects. We probably need to have sep1, =
+sub2, some like level of severity.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce=
+</span><span style=3D"color:#64748b;font-size:14px">4:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Aneesh</span><span=
+ style=3D"color:#64748b;font-size:14px">4:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So we need to define=
+ that.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">4:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I mean show him this=
+ at a high level.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sab</span><sp=
+an style=3D"color:#64748b;font-size:14px">4:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, this is =
+execution down here. There&#x27;s also the. Well there&#x27;s a planning =
+portion and execution here and then down there later there&#x27;s a defect =
+resolution and hypercam management.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Pierce</span><span style=3D"color:#64748b;font-size:14px"=
+>4:54</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">This one. Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Aneesh</span>=
+<span style=3D"color:#64748b;font-size:14px">4:57</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, but. Oh good, =
+there&#x27;s a scenario right there.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sab</span><span style=3D"color:#64748b;font-size:14px">5:=
+00</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So we could leverage a lot of.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Aneesh<=
+/span><span style=3D"color:#64748b;font-size:14px">5:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">This and they should=
+ use like one of the assumptions in this. You guys feel free to push back =
+on this. But my starting point for this is we should start with their =
+existing standards on this like they do uat.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Pierce</span><span style=3D"color:#64748b;font-size:14px"=
+>5:14</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">We were talking about this yesterday, Aneesh. And this is where I want =
+to get in a room with those guys that you mentioned that are super helpful =
+and have been doing UAT for 20 years. And I want them to say how does this =
+work in your org right now?</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sab</span><sp=
+an style=3D"color:#64748b;font-size:14px">5:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Because what =
+they&#x27;re actually trying to do.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Pierce</span><span style=3D"color:#64748b;font-size:14px"=
+>5:35</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, how can we model this after what you&#x27;re doing? Because.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Andrew</span><span=
+ style=3D"color:#64748b;font-size:14px">5:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And what =
+they&#x27;re trying to do right now as well. I don&#x27;t know how =
+Applicable this is for everything else is they want to automate all the =
+testing and again, I don&#x27;t know the feasibility of that. They&#x27;re =
+going through those discussions right now.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sab</span><span style=3D"color:#64748b;font-size:14px">5:=
+54</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">That&#x27;s the, I guess the entirety of it. These guys want to use AI, =
+these guys want to do everything. Automation is part of the game. Yeah, I =
+think very tactically speaking that comes in here of how do you execute it,=
+ how do you do all that? That&#x27;s the how. We need to understand the =
+what and the why first and lay it out for these guys and say, here&#x27;s =
+why you need what you need to solve for and why you need to solve for it. =
+And here&#x27;s the way you go about doing it. The piece you&#x27;re =
+mentioning is down the lane. Later on I&#x27;m going to be. Here&#x27;s the=
+ same thing, jira and there&#x27;s a twin in jira, Oryx that does flow =
+management. They leverage that. You create test scripts, it automates the =
+generation of test scripts and it uploads it into JIRA and it&#x27;s got =
+workflow management, all that other stuff. This guy on the other hand, =
+what&#x27;s his name? Jeff. Jeff was of the opinion. Let&#x27;s use Copilot=
+. Let&#x27;s describe the scenario. Copilot and AI will change those =
+scenarios to requirements and test script for us. And you can use your =
+automated tool to upload it into JIRA and execute it automatically. Voila. =
+And you know, RuPaul&#x27;s my uncle, so that&#x27;s the way he&#x27;s =
+thinking. So we need to temper him down a bit on that. But he&#x27;s also =
+going to be on this Friday conversation. But we need to. He will cut double=
+ click and triple click into it. But I think it&#x27;s a sliver of =
+everything else because Piers is kind of totally lost. He&#x27;s relying on=
+ us to give him everything and spoon feed. He&#x27;s got two needs. One, he=
+ needs to chase down people on a high level to get ready and two, he wants =
+to know how to run this because he is the UAT coordinator for IT and =
+he&#x27;s got to be the connective tissue across functions. So in that MOS =
+or in that governance structure somewhere in there that we laid out, you =
+know, he&#x27;s somewhere in here, right. So whatever that&#x27;s in, =
+that&#x27;s him and he&#x27;s got to be driving some of that stuff. So, =
+okay, so governance structure, typically mos. We also have, before this =
+gets into how we run things, how we do hypercare and defect remediation, =
+there&#x27;s also how to recall. Oh with Sam.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Aneesh</span><span style=3D"color:#64748b;font-size:14px"=
+>8:19</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">By the way, who was that asked for the SAP resource about the licensing =
+issue? Was that you or is that Andrew?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Andrew</span><span style=3D"color:#64748b;font-size:14px"=
+>8:24</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">That might be Andrew.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Aneesh</span>=
+<span style=3D"color:#64748b;font-size:14px">8:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, I have a call =
+for that right now.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sab</span><sp=
+an style=3D"color:#64748b;font-size:14px">8:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sab.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Aneesh</span><span style=3D"color:#64748b;font-size:14px=
+">8:28</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Oh yeah, they have the end of life issue with their SAP license and =
+I&#x27;m calling bullshit on it because that doesn&#x27;t end life until =
+2027.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sab</span><span =
+style=3D"color:#64748b;font-size:14px">8:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">This version I need =
+to do the.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Aneesh</span><span=
+ style=3D"color:#64748b;font-size:14px">8:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Search pack upgrade,=
+ right?</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Andrew</span><span=
+ style=3D"color:#64748b;font-size:14px">8:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So yeah, that&#x27;s=
+ why we wanted to do it. Dinesh said, no, we&#x27;re not doing that, and he=
+ would negotiate and find a way to extend the life.</div></div><div =
+style=3D"margin-bottom:0;padding:16px;background-color:#f8fafc;border-radiu=
+s:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-items=
+:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Aneesh</span><span style=3D"color:#64748b;font-size:14px">8:=
+49</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So that&#x27;s why I&#x27;m trying to get you help with we have a person=
+ in our SB Friday, his name Mo, who used to do.</div></div></div><div =
+style=3D"margin-top:36px;text-align:center;color:#64748b;font-size:14px;pad=
+ding:20px;border-top:1px solid #e2e8f0"><p style=3D"margin:0;margin-bottom:=
+8px">Captured with Wave AI Note Taker</p><p style=3D"margin:0;font-size:12p=
+x">Your AI-powered companion</p></div></div></div></div></html>
+----_NmP-c2367072fce015d1-Part_1--

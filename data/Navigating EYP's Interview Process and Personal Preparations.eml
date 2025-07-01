@@ -1,0 +1,684 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a5d:440e:0:b0:3a0:b206:c10d with SMTP id z14csp721237wrq;
+        Wed, 7 May 2025 07:32:30 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHtmQHYzWGezGdBTvqqKdOmwdQdjksBrMcdkfNbmDZVy51wTsLpbd9OxsVvBne5fRCJAYmI
+X-Received: by 2002:a05:6214:27e5:b0:6e8:eabf:fd55 with SMTP id 6a1803df08f44-6f542ae79c7mr39887866d6.39.1746628350055;
+        Wed, 07 May 2025 07:32:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746628350; cv=none;
+        d=google.com; s=arc-20240605;
+        b=TapDg29G0pOpBMPfG05I1tHhpx93nz+7EcX3OhFcIEQJZDzJW780Eh05hIU9WVSVQ+
+         oMV5xjhDCudMJgwe3GMP3iKt70l0BFaJ0X6QAI7Ky+Z1kFpazrFRi2K3ckHCpn6aUFT8
+         dRawgknQlADcAEUDid4DZKPyoX2o9HdhEoIpGvxGRG58HRf1HqmwqIl6vIdHVFc/B+vG
+         veya0aNHxp35Pr2GIXRQHsxZPVHPrpc7oismkgD8KkJ+A/PTwM8yjKcZXcWISE+BUHEj
+         2pDJHs4kYlFQhuW6o5+umLr2rmj1C6Bj0s51Zh6DIA1hBJN/uEDXezCUSAV6gO26Dc+D
+         FuWg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=R9cjgo9yhBizmd/Ikv36eBko8BHPWDKBYK0uEObGwCM=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=cDhNQLNOL8WC+qM8JpV5m8Nyu+/4BV7PplYACN4Dx2vuEck8jU4wtQvXvxJGG8zElv
+         ESz93eQrqGqZm50uknNwgdS62NTT9B4lgVV+LV2uYnW34LIddFQCVUPC9Aq3ocexP0Vu
+         PH3XrFkMap4h85dyhMstnh/x9T+E5hBO2u2QfyFyAD4U9fHC6bnwFklxJmJqRM3bVXmY
+         R/qhHPYfRupPELcl1wZt7QptCGBeMH/NBPwdkm7ChS1E/jh9SglhXaWVM5mViW1yQzHX
+         bcAdTCHX7KIdyh7oL1bPPK1MN/LTqOwv8XTTViJBkFUzOibfJHspjWaqt+RVZOti6eq9
+         vtcw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=UGxY2Dw5;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=LGC1jccv;
+       spf=pass (google.com: domain of 01000196ab298dc8-3ae23941-4434-4479-b54d-c57d043408f3-000000@send.email.wave.co designates 54.240.9.46 as permitted sender) smtp.mailfrom=01000196ab298dc8-3ae23941-4434-4479-b54d-c57d043408f3-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <01000196ab298dc8-3ae23941-4434-4479-b54d-c57d043408f3-000000@send.email.wave.co>
+Received: from a9-46.smtp-out.amazonses.com (a9-46.smtp-out.amazonses.com. [54.240.9.46])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f542627b6bsi21344656d6.25.2025.05.07.07.32.29
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 07 May 2025 07:32:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 01000196ab298dc8-3ae23941-4434-4479-b54d-c57d043408f3-000000@send.email.wave.co designates 54.240.9.46 as permitted sender) client-ip=54.240.9.46;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=UGxY2Dw5;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=LGC1jccv;
+       spf=pass (google.com: domain of 01000196ab298dc8-3ae23941-4434-4479-b54d-c57d043408f3-000000@send.email.wave.co designates 54.240.9.46 as permitted sender) smtp.mailfrom=01000196ab298dc8-3ae23941-4434-4479-b54d-c57d043408f3-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1746628349;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=CIzV2PvGqYc5eKHw1X79IikEkkb91TmsB7PKwgkYIS0=;
+	b=UGxY2Dw53LmdJ3yHxz8dt8onjbp7W4DA7viPy9sZzPm8Y7YgMO1dZ6KcdndrAZUC
+	h7cMYXmu3nXr0M67bI6GAJlm8nZ3EQDprgDvtstVHO8+5jRwUSfj0Yhe5w81gysnOC/
+	J9hzaYBgf9rzn6M4kdx7Tg0at5AMwAX6ZyN6SinY=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1746628349;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=CIzV2PvGqYc5eKHw1X79IikEkkb91TmsB7PKwgkYIS0=;
+	b=LGC1jccvY9kXfuVYt106fF33HRVH9chsFZJrYgu1ghcNdZ0MrHK2OZVDRa/MmzgG
+	+d8T9weBwyeV3t/ztIK/aldj2z4Sm32dJ7IKsXA6AGgGbRdnUpADkIF0nBJTYcoN2Mm
+	8O5jq/A90fmcaN2eFbz8p4gQN7XJIyUjlytLbssQ=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Navigating EYP's Interview Process and Personal Preparations
+Message-ID: <01000196ab298dc8-3ae23941-4434-4479-b54d-c57d043408f3-000000@email.amazonses.com>
+Date: Wed, 7 May 2025 14:32:29 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-7d18a5b3aa3f8f04-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.05.07-54.240.9.46
+
+----_NmP-7d18a5b3aa3f8f04-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Navigating EYP's Interview Process and Personal Preparations
+
+### Main Topics Discussed
+
+#### Interview Process at EYP
+- **Structure:** Three interviews, each lasting approximately one hour.
+- **Types of Questions:** A mix of behavioral questions and background =
+inquiries, such as discussing specific items on the resume.
+- **Focus Areas:**=20
+  - Understanding the candidate's past projects.
+  - Assessing knowledge about transactions.
+  - Evaluating alignment with =
+EYP=E2=80=99s focus areas like pre-sign, post-sign, transactions, and exit =
+work.
+
+#### Key Projects and Experiences at GE
+- **GE Exit Process:**
+  - Managed the entire exit process with a team initially consisting of =
+three members.
+  - Collaborated with Karen and William on site.
+- **Network Separation:**
+  - Focused on separation interests and TSA exit =
+readiness preparation.
+- **Additional Projects:**
+  - GE Healthcare Columns=
+.
+  - RTX application migration.
+  - Digital applications carve-out.
+  - Preparation for logical separation and day one readiness for digital =
+applications.
+
+#### Anecdote About Program Leadership
+- **Decision-Making:** Described a scenario where they guided the direction=
+ of a program by identifying where value could be added to clients.
+- **Outcome:** Successfully identified material risks and gaps, leading to =
+the program=E2=80=99s long-term success and sustained client relationships.
+- **Purpose:** Demonstrates strategic thinking and value-driven approach.
+
+#### Personal Preferences and Final Logistics
+- **Interviewer=E2=80=99s =
+Background:** Positive impression of the interviewer from California and a =
+preference for west coast individuals.
+- **Personal Situation:**=20
+  - Not yet relocated to California; currently at home.
+  - Children are still in school with approximately five weeks remaining.
+
+### Recommendations
+
+- **Interview Preparation:**
+  - Clearly articulate =
+past project experiences, especially those related to transactions and exit=
+ processes.
+  - Prepare a detailed list of projects and contributions, such=
+ as the GE exit process, network separation, and digital application =
+migrations.
+  - Develop talking points that highlight strategic thinking =
+and value addition to clients.
+
+- **Anecdotes:**
+  - Use the provided =
+anecdote to illustrate problem-solving and leadership skills during the =
+interview.
+
+- **Logistics:**
+  - Clarify relocation plans and timelines, =
+addressing any questions about current living arrangements and family =
+considerations.
+
+### Action Items
+
+- **Candidate:**
+  - Compile and organize detailed talking points on all relevant projects.
+  - Prepare to discuss the strategic anecdote effectively.
+  - Finalize relocation timeline to address during the interview.
+
+- **Interviewer:**
+  - Provide clarity on EYP=E2=80=99s specific focus =
+areas to tailor the interview discussion accordingly.
+
+Transcript:
+0:00
+You are now connected.
+
+0:01
+You can merge your calls when ready. Okay. =
+Sorry. Yeah. So I guess for the interview process, I'm not sure if you have=
+ any insight into how it looks, but overall my experience with EYP was I =
+think I had three. They were like one hour. A mix of behavioral and then =
+just background. Tell me about this XYZ thing on your resume or whatever. =
+Do you have any insight into, I guess, what they're looking for? Yeah, I =
+mean, obviously just explain what I've done here and the behavioral stuff I=
+ think I have down. It's like the behavioral ones are easy.
+
+0:49
+Yeah. There's no real like behavioral stuff. I think this would be more =
+like a combined interview. Right. It's just very much around to get to know=
+ you.
+
+0:56
+Yeah.
+
+0:57
+I've already kind of vouched for you guys in terms =
+of like your capabilities. I think their split wants to know like, okay, =
+like what project have you done? You know, what do you know about =
+transactions? Right. That kind of thing. Right.
+
+1:18
+And so where are they?
+
+1:22
+Huh?
+
+1:23
+Where are they focused?
+
+1:24
+Like exactly what we do.
+
+1:26
+Okay.
+
+1:27
+It is exactly what we do. So. So=
+ they work on, you know, pre sign, post sign, ts, exit work. I, you know, =
+so I would say like, hey, like focus on it. Like, hey, you know you spent =
+what like two years at ge, right?
+
+1:41
+Yeah, yeah.
+
+1:43
+Okay. I worked on, you know, the whole GE exit process. Started as, you =
+know, with a three person team or something. Right. And then eventually =
+like, you know, worked out with Karen, right?
+
+1:56
+Yeah.
+
+1:58
+You did work with Karen, right? I think you did.
+
+2:00
+Yeah, I did. I did as part of the. When I was working with William on site,=
+ we were working with Kieran.
+
+2:10
+Okay. Yeah. So it's like, hey, the site=
+ separation work with the. You did network. Right?
+
+2:15
+Separation, interest and then TSA exit readiness preparation.
+
+2:24
+I would just like give them a list, rundown list of things you have done.
+
+2:27
+Yeah. Okay.
+
+2:29
+That's it.
+
+2:30
+Yeah. And then GE healthcare =
+columns, RTX application migration.
+
+2:36
+Yeah. Then just say like, hey, =
+look, I just got, you know, also did, you know RTX started with Carve out. =
+Right. Working on like digital applications, giving them preparation for =
+day one. Right. To do logical separation. Right?
+
+2:52
+Yeah. Yeah. Okay. I can give them a run now. That's fairly easy. I just =
+need to put it on paper some talking points. But okay. Yeah, that's fairly =
+easy. He seems like a nice guy from California. What? I like west coast =
+people automatically. Okay.
+
+3:16
+Yeah. And I think, you know, I like, I =
+always like what you told me about how you approach the things.
+
+3:24
+Yeah. I was going to give that anecdote yeah. About, like, wake up. And I =
+think it was sort of my. I was in a position where it was my decision to =
+guide the direction of my program. And I think I had to wake up and ask =
+myself, like, where can we bring value to our clients today? Like, what are=
+ the material risks or the gaps that they don't see or that we have the =
+capability to assist with? And I think that ultimately that's what led that=
+ program to be so successful and stay with them for so long. Is that =
+process.
+
+3:58
+Yeah, I think that. I think talking through that will be =
+super valuable.
+
+4:02
+Okay. Yeah. Yeah. I. I think that that's a good =
+anecdote for how I think and will hopefully convey to them, like, who I am.=
+ It's gonna be good. Okay.
+
+4:21
+Yeah. Yeah. It'll be fine. I think this =
+would be a. It'll be a good place.
+
+4:26
+Yeah. Are you in California yet?
+
+4:28
+No, I'm at home. My kids are still in school for another five weeks.
+
+4:31
+Okay. Four weeks. That's late. Is that normal for Florida?
+----_NmP-7d18a5b3aa3f8f04-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Navigating =
+EYP&#x27;s Interview Process and Personal Preparations</h1></td></tr></tabl=
+e></div><div style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div=
+ style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave=
+.co/sessions/CA733b79a144ab2b4b30b5760df4390007?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h3 style=3D"font-weight:500;padding-top:2=
+0px;font-size:1.75rem">Main Topics Discussed</h3><h4 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.5rem">Interview =
+Process at EYP</h4><ul>
+<li><strong style=3D"font-weight:bold">Structure:</=
+strong> Three interviews, each lasting approximately one hour.</li>
+<li><strong style=3D"font-weight:bold">Types of Questions:</strong> A mix =
+of behavioral questions and background inquiries, such as discussing =
+specific items on the resume.</li>
+<li><strong style=3D"font-weight:bold">F=
+ocus Areas:</strong> <ul>
+<li>Understanding the candidate&#39;s past =
+projects.</li>
+<li>Assessing knowledge about transactions.</li>
+<li>Evaluating alignment with EYP=E2=80=99s focus areas like pre-sign, =
+post-sign, transactions, and exit work.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem">Key =
+Projects and Experiences at GE</h4><ul>
+<li><strong =
+style=3D"font-weight:bold">GE Exit Process:</strong><ul>
+<li>Managed the entire exit process with a team initially consisting of =
+three members.</li>
+<li>Collaborated with Karen and William on site.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Network =
+Separation:</strong><ul>
+<li>Focused on separation interests and TSA exit =
+readiness preparation.</li>
+</ul>
+</li>
+<li><strong =
+style=3D"font-weight:bold">Additional Projects:</strong><ul>
+<li>GE Healthcare Columns.</li>
+<li>RTX application migration.</li>
+<li>Digital applications carve-out.</li>
+<li>Preparation for logical =
+separation and day one readiness for digital applications.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+5rem">Anecdote About Program Leadership</h4><ul>
+<li><strong =
+style=3D"font-weight:bold">Decision-Making:</strong> Described a scenario =
+where they guided the direction of a program by identifying where value =
+could be added to clients.</li>
+<li><strong style=3D"font-weight:bold">Outc=
+ome:</strong> Successfully identified material risks and gaps, leading to =
+the program=E2=80=99s long-term success and sustained client relationships.=
+</li>
+<li><strong style=3D"font-weight:bold">Purpose:</strong> Demonstrates=
+ strategic thinking and value-driven approach.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem">Personal =
+Preferences and Final Logistics</h4><ul>
+<li><strong =
+style=3D"font-weight:bold">Interviewer=E2=80=99s Background:</strong> =
+Positive impression of the interviewer from California and a preference for=
+ west coast individuals.</li>
+<li><strong style=3D"font-weight:bold">Person=
+al Situation:</strong> <ul>
+<li>Not yet relocated to California; currently =
+at home.</li>
+<li>Children are still in school with approximately five =
+weeks remaining.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;paddin=
+g-top:20px;font-size:1.75rem">Recommendations</h3><ul>
+<li><p><strong style=3D"font-weight:bold">Interview =
+Preparation:</strong></p>
+<ul>
+<li>Clearly articulate past project =
+experiences, especially those related to transactions and exit processes.=
+</li>
+<li>Prepare a detailed list of projects and contributions, such as =
+the GE exit process, network separation, and digital application migrations=
+.</li>
+<li>Develop talking points that highlight strategic thinking and =
+value addition to clients.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Anecdotes:</strong></p>
+<ul>
+<li>Use the provided anecdote to illustrate problem-solving and leadership =
+skills during the interview.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Logistics:</strong></p>
+<ul>
+<li>Clarify relocation plans and timelines, addressing any questions about =
+current living arrangements and family considerations.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">Action Items</h3><ul>
+<li><p><strong style=3D"font-weight:bold">Cand=
+idate:</strong></p>
+<ul>
+<li>Compile and organize detailed talking points =
+on all relevant projects.</li>
+<li>Prepare to discuss the strategic =
+anecdote effectively.</li>
+<li>Finalize relocation timeline to address =
+during the interview.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Interviewer:</strong></p>
+<ul>
+<li>Provide clarity on EYP=E2=80=99s specific focus areas to tailor the =
+interview discussion accordingly.</li>
+</ul>
+</li>
+</ul>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0,=
+ 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex;align-i=
+tems:center;gap:8px"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</=
+span>Transcription</h3><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">0:00</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">You are now =
+connected.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Candidate</span><s=
+pan style=3D"color:#64748b;font-size:14px">0:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You can merge your =
+calls when ready. Okay. Sorry. Yeah. So I guess for the interview process, =
+I&#x27;m not sure if you have any insight into how it looks, but overall my=
+ experience with EYP was I think I had three. They were like one hour. A =
+mix of behavioral and then just background. Tell me about this XYZ thing on=
+ your resume or whatever. Do you have any insight into, I guess, what =
+they&#x27;re looking for? Yeah, I mean, obviously just explain what =
+I&#x27;ve done here and the behavioral stuff I think I have down. It&#x27;s=
+ like the behavioral ones are easy.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Meeting Host</span><span style=3D"color:#64748b;font-size=
+:14px">0:49</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">Yeah. There&#x27;s no real like behavioral stuff. I think this =
+would be more like a combined interview. Right. It&#x27;s just very much =
+around to get to know you.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Candidate</sp=
+an><span style=3D"color:#64748b;font-size:14px">0:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">0:57</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;ve already=
+ kind of vouched for you guys in terms of like your capabilities. I think =
+their split wants to know like, okay, like what project have you done? You =
+know, what do you know about transactions? Right. That kind of thing. Right=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Candidate</span><s=
+pan style=3D"color:#64748b;font-size:14px">1:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And so where are =
+they?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">1:22</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Huh?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Candidate</span><s=
+pan style=3D"color:#64748b;font-size:14px">1:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Where are they =
+focused?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">1:24</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Like exactly what=
+ we do.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Candidate</span><s=
+pan style=3D"color:#64748b;font-size:14px">1:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">1:27</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">It is exactly =
+what we do. So. So they work on, you know, pre sign, post sign, ts, exit =
+work. I, you know, so I would say like, hey, like focus on it. Like, hey, =
+you know you spent what like two years at ge, right?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Candidate</span><span style=3D"color:#64748b;font-size:14=
+px">1:41</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">Yeah, yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">1:43</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. I worked on=
+, you know, the whole GE exit process. Started as, you know, with a three =
+person team or something. Right. And then eventually like, you know, worked=
+ out with Karen, right?</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Candidate</sp=
+an><span style=3D"color:#64748b;font-size:14px">1:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">1:58</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">You did work with=
+ Karen, right? I think you did.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Candida=
+te</span><span style=3D"color:#64748b;font-size:14px">2:00</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I did. I did =
+as part of the. When I was working with William on site, we were working =
+with Kieran.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">2:10</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. Yeah. So =
+it&#x27;s like, hey, the site separation work with the. You did network. =
+Right?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Candidate</span><s=
+pan style=3D"color:#64748b;font-size:14px">2:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Separation, interest=
+ and then TSA exit readiness preparation.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Meeting Host</span><span style=3D"color:#64748b;font-size=
+:14px">2:24</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">I would just like give them a list, rundown list of things you =
+have done.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Candidate</span><s=
+pan style=3D"color:#64748b;font-size:14px">2:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">2:29</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;s it.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Candidate</span><s=
+pan style=3D"color:#64748b;font-size:14px">2:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. And then GE =
+healthcare columns, RTX application migration.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Meeting Host</span><span style=3D"color:#64748b;font-size=
+:14px">2:36</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">Yeah. Then just say like, hey, look, I just got, you know, also =
+did, you know RTX started with Carve out. Right. Working on like digital =
+applications, giving them preparation for day one. Right. To do logical =
+separation. Right?</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Candidate</sp=
+an><span style=3D"color:#64748b;font-size:14px">2:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Yeah. Okay. I =
+can give them a run now. That&#x27;s fairly easy. I just need to put it on =
+paper some talking points. But okay. Yeah, that&#x27;s fairly easy. He =
+seems like a nice guy from California. What? I like west coast people =
+automatically. Okay.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">3:16</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. And I think=
+, you know, I like, I always like what you told me about how you approach =
+the things.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Candidate</span><s=
+pan style=3D"color:#64748b;font-size:14px">3:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. I was going to=
+ give that anecdote yeah. About, like, wake up. And I think it was sort of =
+my. I was in a position where it was my decision to guide the direction of =
+my program. And I think I had to wake up and ask myself, like, where can we=
+ bring value to our clients today? Like, what are the material risks or the=
+ gaps that they don&#x27;t see or that we have the capability to assist =
+with? And I think that ultimately that&#x27;s what led that program to be =
+so successful and stay with them for so long. Is that process.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">3:58</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I think =
+that. I think talking through that will be super valuable.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Candidate</span><span style=3D"color:#64748b;font-size:14=
+px">4:02</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">Okay. Yeah. Yeah. I. I think that that&#x27;s a good anecdote for how=
+ I think and will hopefully convey to them, like, who I am. It&#x27;s gonna=
+ be good. Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">4:21</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Yeah. =
+It&#x27;ll be fine. I think this would be a. It&#x27;ll be a good place.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Candidate</span><s=
+pan style=3D"color:#64748b;font-size:14px">4:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Are you in =
+California yet?</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Meeting =
+Host</span><span style=3D"color:#64748b;font-size:14px">4:28</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">No, I&#x27;m at =
+home. My kids are still in school for another five weeks.</div></div><div =
+style=3D"margin-bottom:0;padding:16px;background-color:#f8fafc;border-radiu=
+s:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-items=
+:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Candidate</span><span style=3D"color:#64748b;font-size:14px"=
+>4:31</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay. Four weeks. That&#x27;s late. Is that normal for Florida?=
+</div></div></div><div style=3D"margin-top:36px;text-align:center;color:#64=
+748b;font-size:14px;padding:20px;border-top:1px solid #e2e8f0"><p =
+style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note Taker</p><p=
+ style=3D"margin:0;font-size:12px">Your AI-powered companion</p></div></div=
+></div></div></html>
+----_NmP-7d18a5b3aa3f8f04-Part_1--

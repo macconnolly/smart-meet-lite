@@ -1,0 +1,1421 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a05:6000:1106:b0:3a4:dc5b:9678 with SMTP id z6csp1406565wrw;
+        Wed, 28 May 2025 10:40:16 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IETw72UaT9WLVf5pRLyYoig48ha9aoVXdyIhW3VemwmAKVSRcCH9vgSQwx8GTkH2qA+nbrq
+X-Received: by 2002:a05:620a:444b:b0:7ca:dac1:a2b9 with SMTP id af79cd13be357-7ceecc42600mr2707452385a.50.1748454016148;
+        Wed, 28 May 2025 10:40:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748454016; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Q4Q8s/XRAtsCeVvM/yjn2OqfOoR1PyDGgnMwSXYjEjo3N0Rqn27rohm+4lR3U40FeS
+         PGMBAE8cTqZMm/pq7dtYKlplOudfcV0ZNZe/JzM+ZEtNbwZSMmLSGqf52MCOcXtdvy6Y
+         qrpGZYcStGk2BlYcuNKMFPkRAqUSlgO6heBmtiy5avRSERP4meQqL/a/FVPX4a8bJ8d0
+         tXWMKWDY753ojt14fkVC3faZZ5lPCYUOD82gsZcvDjMDGneNp2II1cxVtZB9c4o1TuEI
+         dOxqQEu167ppm4ltluApVaz1qOKonDkNbKQEH0sPZMXUGZdR4mSwpMK+f01POcdyx9Ly
+         TlJA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=K5fF5/yz8C+5Sqb93oGkLw/mPnAu9GRcgQjPwNsLgYo=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=HHjHmsOsuJOefeuaFeG90FungcBjh+6ReDOQowk9sd7zu56IPbZw1zUeAx4rdyIPh9
+         FzQcL/A7xPB+a+b4zX6mVQ50bUb58Cq/z4lOspAYPm91Bg1DiiTbBRITIyxuKgIYJDvk
+         RpFnU07xT/WtGcqeBKzmbfprM7FwG7kmJBGI5vUdKf1PnpDgTuRlG10LM430edONs8TL
+         FjSdwqA4ChLv6lU5DuriboprhptcU6GMO00V3EPyxTm6OvlqACAphfBgIXYQajKUW21M
+         rN0BBVlDRbELKOpDK7bcEDANM6OokRq5AGnf/lDVT8JBxaHMS3E9FKvIaC5+9/zj9u8s
+         99qg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b="I/W/cHrp";
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b="ZKpVO/GS";
+       spf=pass (google.com: domain of 0100019717fb0275-3cc5c5e1-a9ce-4df9-848f-86677e6ee325-000000@send.email.wave.co designates 54.240.9.35 as permitted sender) smtp.mailfrom=0100019717fb0275-3cc5c5e1-a9ce-4df9-848f-86677e6ee325-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <0100019717fb0275-3cc5c5e1-a9ce-4df9-848f-86677e6ee325-000000@send.email.wave.co>
+Received: from a9-35.smtp-out.amazonses.com (a9-35.smtp-out.amazonses.com. [54.240.9.35])
+        by mx.google.com with ESMTPS id af79cd13be357-7d098fa0070si1550585a.326.2025.05.28.10.40.15
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 28 May 2025 10:40:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 0100019717fb0275-3cc5c5e1-a9ce-4df9-848f-86677e6ee325-000000@send.email.wave.co designates 54.240.9.35 as permitted sender) client-ip=54.240.9.35;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b="I/W/cHrp";
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b="ZKpVO/GS";
+       spf=pass (google.com: domain of 0100019717fb0275-3cc5c5e1-a9ce-4df9-848f-86677e6ee325-000000@send.email.wave.co designates 54.240.9.35 as permitted sender) smtp.mailfrom=0100019717fb0275-3cc5c5e1-a9ce-4df9-848f-86677e6ee325-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1748454015;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=hdnl8/l6G+WfGsLFrGtIEWP5ovHAX7LrpZd0dVXL87I=;
+	b=I/W/cHrpV4CdZDuEckfcTwXEw2nfg975mj3zEXCjjxhWMWcSKp0LiLcj7kssgBk4
+	DmJ1W5/nvaPOyC00S5NnQNf1j3oWkLfWcLUbSPwO0ac87OkLFugu+1P0zAzS71D42av
+	zWrSyAlm0dX1/HQMckgKwvrbaQiAehPkexeNnhO8=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1748454015;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=hdnl8/l6G+WfGsLFrGtIEWP5ovHAX7LrpZd0dVXL87I=;
+	b=ZKpVO/GSU3tfIo+K0F4iVFFLMTGY4qWkSZvKP+caZSF/ZDK+SmaRoW1U1Z6/rBu8
+	4EVJ0d6CetYRZjk6Fxqx+9ida6mcztgRvVNp410VP0VghiBP69qbSqneXjTW42BOZIz
+	pFtKUghAKhPRt3tSCJxOVvQScJzJZ3sZmiqLN/rg=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Project Roadmap Accountability Financials And Coordination
+Message-ID: <0100019717fb0275-3cc5c5e1-a9ce-4df9-848f-86677e6ee325-000000@email.amazonses.com>
+Date: Wed, 28 May 2025 17:40:15 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-57b192ff6b590016-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.05.28-54.240.9.35
+
+----_NmP-57b192ff6b590016-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Project Roadmap Accountability Financials And Coordination
+
+Main Topics Discussed
+
+1. Project Roadmap and Accountability
+
+   - The team is working on identifying scenarios, scripts, and timelines =
+for the project=E2=80=99s functions, including corporate and =
+athlete-related aspects.
+   - Emphasis on holding teams accountable for UAT=
+ (User Acceptance Testing), defect resolution, and ensuring outputs such as=
+ KT (Knowledge Transfer) completion and having the required people in place=
+ (=E2=80=9Cbutts in seats=E2=80=9D).
+   - Discussion on establishing a =
+clear flow and process diagram for operational tasks, potentially =
+leveraging existing diagrams from previous projects (e.g., Oak).
+   - Issue resolution is identified as a major concern, especially due to =
+poor cross-functional communication within Honeywell.
+
+2. Statements of Work (SOWs), Change Orders, and Economic Considerations
+
+   - The need for an up-to-date list of all SOWs and change orders was =
+raised, with an expectation that a new signed change order for Andrew's =
+work will be received this week.
+   - Timeline confirmation: the change =
+order signing is happening as planned, within the June=E2=80=93September =
+period, and is considered early for FY26 revenue.
+   - Lane is responsible =
+for SOW definitions; recommendations were made to keep the format simple =
+(workstream, client scope, deliverables, resources).
+
+3. Team Composition and Coordination
+
+   - Introduction of Bill Miller, a =
+new partner (energy sector leader, Teal Techno), based in Houston but =
+spending time in Denver (noted for clients like BP, Ball Corporation, =
+Chevron, Exxon). He is requested to be in Charlotte next week.
+   - Discussion on Bill Miller=E2=80=99s background and integration into =
+the team.
+   - Travel and workshop planning: After the Charlotte meeting, =
+one team member will be traveling for two weeks for workshops in Hong Kong =
+and Dublin.
+
+4. Financials: ETCs, Write-ups, and Revenue Management
+
+   - Primary focus on ETCs (Estimate to Complete) for three codes (managed =
+by different partners): importance of completing ETCs for hours, expenses, =
+and fees for accuracy before offering client resources at cost.
+   - Identification of ~$300k in write-ups; desire to use $100k (around a =
+month=E2=80=99s NSR) to offer the client a resource in June.
+   - Confirmation that thorough ETCs are needed before proceeding with =
+resource offerings.
+   - Agreement to prepopulate hours and financials data=
+ for a more effective review in subsequent meetings.
+
+5. Client Billing and Revenue Allocation
+
+   - Current run rate is close to=
+ $1 million/month; approximately $1.5 million left to invoice.
+   - Emphasis on maximizing billed revenue for Charles, who is short for =
+the year (target of ~$2 million), including potential for reclassifying =
+hours or shifting revenue where possible.
+   - Confirmation of client PO =
+approval for $1.4 million (as of yesterday), with invoicing underway.
+
+Action Items and Follow-Ups
+
+- Complete a full ETC for all three codes =
+(hours, expenses, fees) before offering extra client resources.
+- Prepopulate hours and data before the next meeting for an efficient =
+financial review.
+- Continue work on the SOW and change order list; expect =
+new change order signed within the week (FY26 revenue).
+- Bill Miller to be scheduled for Charlotte visit next week to meet the =
+team.
+- Begin client invoicing of $1.4 million PO.
+- Assess scenarios for =
+reallocating or shifting revenue to maximize Charles's year-end results.
+- Workshops in Hong Kong and Dublin scheduled following next week=E2=80=99s=
+ meetings; one team member will be unavailable during this period.
+
+Key Dates and Figures
+
+- Change order signing for Andrew=E2=80=99s work =
+expected within this week (June 2024).
+- New SOW and change order to cover =
+through September 2024.
+- First FY26 revenue from upcoming change order.
+- $1.4 million PO approved and to be invoiced this week.
+- Team member traveling for two weeks for global workshops after Charlotte =
+visit.
+- Run rate: ~$1 million/month; $1.5 million left to invoice; =
+Charles=E2=80=99s revenue target: ~$2 million.
+
+Transcript:
+0:00
+Right there.
+
+0:01
+Corporate function, athletes function, whatever. And =
+then the roadmap on it is we've just gotta. We've gotta identify the =
+scenarios, gotta identify the scripts, we've gotta identify the time. We've=
+ already started doing all that stuff. That's when you started with the =
+kickoff.
+
+0:14
+Yeah.
+
+0:15
+And we've gotta get to a place where we can hold=
+ them accountable for. Have the butts and seats landed? Has KT started? Has=
+ Katie stopped UAT defect? Do we have a pipeline? Like what's the tool =
+we're going to use pipeline for resolution? Is it getting done? Like all. =
+It's just left to right kind of stuff in my mind. But I mean I think part =
+of the problem is going to be like who's going to do the issue resolution? =
+Obviously the systems of power have to do that stuff. Right. There's no one=
+ else.
+
+0:45
+I think what Pierce, from our conversation with him yesterday,=
+ what he was reaching for was less of the high level. Here's how it's going=
+ to flow left to right. But how do I start to operationalize this? He asked=
+ for specific examples of how we've run UAT in the past.
+
+1:03
+So like names and boxes and the cadence and trackers and I think one level =
+above that.
+
+1:11
+Like in between those two. I don't think necessarily we =
+need the names on boxes right now, but we need the. Here is how it's going =
+to flow. Like a process diagram which we have from Oak or others.
+
+1:23
+So we should be able to leverage that and from. But no, you're right. =
+They're hung up. Jeff and he are hung up on defect resolution because =
+that's their biggest pain.
+
+1:32
+No, I get it. I mean, because that's the =
+work that it's going to have to do.
+
+1:37
+And his biggest concern is that =
+doesn't work well in Honeywell because they don't talk to each other.
+
+1:45
+Yeah. So the cross functional.
+
+1:50
+What the hell happened? No, my screen =
+went basic blue on me.
+
+2:08
+Do we have a list somewhere? All of our sows =
+and change orders. Because we're going to have to. Andrew told me we're =
+going to get. I'm thinking from an economic perspective too. Andrew told me=
+ that we're going to get the sign change order this week for his stuff. =
+Which. That's way ahead, right? Is it way ahead? It's. Is it June? Oh, so =
+we're right on time.
+
+2:32
+We're going through September.
+
+2:34
+So we'll get that signed this week. That'll be great. I think that's our =
+first signed FY26 revenue.
+
+2:43
+FY26 and then we got to think about the. =
+Well, what happens with Winter. But I've got Lane driving the sow =
+definition, so you should reach out to the managers.
+
+3:00
+And I think that we keep that really simple. Right. Work stream, client =
+scope, deliverables, resources. Just table.
+
+3:10
+Yeah, we have an existing=
+ format.
+
+3:11
+Yeah. Mac, do you know Bill Miller? You haven't met him. You=
+ don't like him?
+
+3:23
+No, no, I haven't met him yet.
+
+3:24
+He's gonna be the other partner on this. He. We just need to tell him when =
+to come. Bill's been awesome so far. He's just like, whatever we tell him =
+to do, he does. He's just like, show up here. He's like, okay, I'm here. He=
+ needs to meet the rest of the team. But he's really, really great. We did =
+a big group of us did UTC together. Okay. And Bill was a senior partner on =
+that, so. But he's like the energy sector leader for Teal Techno.
+
+3:53
+Where's he based, I wonder.
+
+3:54
+Houston, I think. You spent a lot of time=
+ on Denver, though. Is it excellent?
+
+4:05
+Oh, no, out of Denver.
+
+4:09
+BP's in Denver. We have a huge office. There's also, like, Ball Corporation=
+. I know we did at one point.
+
+4:17
+Like the ball jars.
+
+4:18
+Yeah.
+
+4:19
+Okay.
+
+4:25
+I don't know what else.
+
+4:27
+Energy.
+
+4:28
+Energy.
+
+4:29
+He's working on Chevron, Exxon.
+
+4:31
+Chevron. That's. I thought Chevron's =
+Houston.
+
+4:33
+Yeah, yeah, there's.
+
+4:34
+There's something.
+
+4:35
+I don't know. JC's organizing.
+
+4:37
+Anyways, there's.
+
+4:38
+I think he's out there. Paramount right now.
+
+4:40
+Liberty. Like the =
+fracking people. They're in Denver.
+
+4:45
+Maybe they oil field services =
+people.
+
+4:48
+Yeah, exactly.
+
+4:53
+Well, we. We will have to tell him we =
+want him in Charlotte next week.
+
+4:57
+Okay.
+
+4:59
+Be good for him to come.=
+ And then after that, I'm gone for two weeks. The trip around the world. We=
+ have workshops in Hong Kong and Dublin, so Anisha and I are literally =
+flying around the world. It's gonna be awesome.
+
+5:15
+That'll be fun.
+
+5:17
+Yeah. As much as I wanted to join the. I got too much going on here to hold=
+ the fort and.
+
+5:23
+Good stuff.
+
+5:24
+It's just uat, all these workshops =
+planned in this way.
+
+5:30
+Yeah. Bill needs to.
+
+5:35
+Caution. Reached out to them earlier today. He's. Oh, Renata Castle.
+
+5:41
+Who?
+
+5:42
+Castle Shaw. He's the other account lead. He works with Nav.
+
+5:50
+The sourcing guy?
+
+5:52
+No, he's a deal deal management guy. Excuse =
+you. Thank.
+
+6:04
+You.
+
+6:16
+Hello? Hey, can you mute unmute, please?
+
+6:24
+Oh, it's unmuted.
+
+6:26
+It is. Hey, Renata, can you hear us?
+
+6:31
+She's talking but we can't hear her. Check your.
+
+6:36
+Yeah, get unmuted. Hey, Renata, can you hear us.
+
+6:47
+Now? We can. There we go.
+
+6:52
+Sorry. All right, so I've got here with =
+Sean in the room. So I know we set up way.
+
+7:00
+At the end of a long table=
+.
+
+7:03
+Sorry, scruffing down on lunch. I know we set up this call to take =
+a look at do the ETCs and understand what the gaps are. I know we've seen =
+write ups across all the three codes. So are we in a position to do ETCs at=
+ this time, particularly on Will's code and then the others as well.
+
+7:26
+And Renata, I'll tell you, I mean I think the. Well, I think we need to do =
+ECCs from a hygiene perspective. But the other, the thing that I, I want to=
+ make sure I'm good on is I see about 300k in write up sitting between my =
+code and Will's code. And I know a lot. Some of that's buffer. Some of =
+that's like goodwill that we've built up in terms of margin and stuff like =
+that for people taking vacations. I want to offer the client a month of a =
+resource to go solve a problem for like the month of June. And I figure =
+that'll take probably about 100k worth NSR and so about 100k worth that =
+write up. I just want to confirm that we're in a good position to do that. =
+That's probably the biggest two things right now. And then later, like =
+probably next week, the week after, will be in a position to do an ETC =
+based off of a change order that we're going to sign. And I think that's =
+probably it until we do phase four. Right.
+
+8:26
+Until end of June. Yeah.
+
+8:31
+So I think before we start offering anybody for free, by the way, it's=
+ a really cool conference room. It's so nice. Before we start, you know, we=
+ need to do a full blown ETC on all three codes, meaning the hours to go, =
+the expenses, the fees, and really validate everything. Then to add the =
+extra resource and see if we can afford them.
+
+8:54
+Yep.
+
+8:56
+Okay.
+
+8:58
+Do you have those details?
+
+9:02
+I think we have the details for the three =
+codes.
+
+9:09
+Okay, where do you want to start?
+
+9:12
+So we know the ter, right. And then we can estimate the hours.
+
+9:19
+Yeah, we. Yeah, from last time. Yes.
+
+9:25
+You have them. So do you want us=
+, do you want to do this today or do you want to like talk about the hours?=
+ Then we reconvene and of course you can send me the, the hours and maybe I=
+ can pre populate and we can just talk about the results. What do you want =
+to do?
+
+9:40
+I think the latter might be helpful in terms of pre populating=
+ and doing it, but we can certainly get started on it in terms of talking =
+through the hours left.
+
+9:51
+Which code?
+
+9:53
+Let's start with Will.
+
+9:55
+Oh, by the way. Oh, no, no, I'm sorry and I apologize. I missed a =
+massive thing that I need to ask for your output. The third thing that we =
+need to do as part of this is I want to give. So what's our run rate right =
+now? Over everything? Is it about a million and a half a month?
+
+10:18
+Yeah, about a million. Just close to a million.
+
+10:24
+So we have about a million left?
+
+10:25
+No. Okay, we're invoiced about =
+three. Yeah, we probably got about one point. Minus expenses, we've got =
+about a million and a half to invoice.
+
+10:37
+No, but just what's our. Like=
+, what are we burning about? About?
+
+10:42
+Yeah, close to 9,950k a million =
+a month.
+
+10:48
+So I, I want to give Charles as much revenue. So I'm, I'm =
+over my number now. Will is no longer here, so we don't have to worry about=
+ him. Charles is short for the year and I want to give him as much as we =
+can for the remainder of the year. So I want to figure out what we can do, =
+like what we need to do both in terms of what's available to shift to him =
+and then what we can do, what we can offer for the rest of the year. Or =
+like, is there a scenario where we get people to reclass their hours and =
+shift some revenue that way? Or, you know, like what's just, what's =
+reasonable?
+
+11:29
+Would we need to see how much revenue you want to give =
+to Charles?
+
+11:32
+Ideally about 2 million.
+
+11:35
+You know what? Hold on. =
+Hold everything. There is an engagement. Which one was the one? I think the=
+ one where Prashant was the manager. Was that Will's originally?
+
+11:58
+I think that's mine.
+
+11:59
+It's Sean's.
+
+12:03
+No, no, I know, but Rakesh,=
+ you manage the Charles and the Will codes, right?
+
+12:09
+Yeah, no, actually I got Charles and Sean, so he's on Wills.
+
+12:15
+Let me share my screen. Let me share my screen. It'll make things a little =
+bit easier.
+
+12:19
+Oh, no, no, no, Charles, I'm EP on both code. So it's =
+Will's code that you're on. It's my old code that Prashant's on.
+
+12:27
+Right, so what we can do, we can do at this point, Charles, is, is the ep. =
+Can you guys see my screen?
+
+12:39
+First of all, yes, we can.
+
+12:42
+Let me hide all of this because it's just. It this way, I can make the =
+screen a bit bigger. Okay, so this is Charles's code, Right? And So far, =
+through May 23rd, Charles has incurred approximately $2.2 million of. I'm =
+sorry, $1.7 million of. Of TER engagements. ATR. None of this is foreign =
+invoices, so this 1.7 is GTR as well. Nothing needs to be excluded included=
+. Okay.
+
+13:19
+Okay, Renata, just so you know, their PO for 1.4 million was=
+ approved yesterday, and so it's in Ariba. And now I think Max and others =
+are going to be. We're going to be invoicing the 1.4 million shortly this =
+week.
+
+13:37
+That's. That's wonderful. That's. That's incredible, because =
+that was another question, but I was gonna. I was gonna save that for later=
+, but. Okay, where are we? Right, because you guys have, like, 1.4 net on =
+bill, so you need to Bill as much as possible. Okay. Anyway, so I'm =
+thinking. I don't know how this is going to impact Prashant, but if we just.
+----_NmP-57b192ff6b590016-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Project =
+Roadmap Accountability Financials And Coordination</h1></td></tr></table></=
+div><div style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/F2B4F68C-19AE-43E7-9830-2DDAC633DD7A?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><p>Main Topics Discussed</p>
+<ol>
+<li><p>Project Roadmap and Accountability</p>
+<ul>
+<li>The team is working =
+on identifying scenarios, scripts, and timelines for the project=E2=80=99s =
+functions, including corporate and athlete-related aspects.</li>
+<li>Emphasis on holding teams accountable for UAT (User Acceptance Testing)=
+, defect resolution, and ensuring outputs such as KT (Knowledge Transfer) =
+completion and having the required people in place (=E2=80=9Cbutts in =
+seats=E2=80=9D).</li>
+<li>Discussion on establishing a clear flow and =
+process diagram for operational tasks, potentially leveraging existing =
+diagrams from previous projects (e.g., Oak).</li>
+<li>Issue resolution is =
+identified as a major concern, especially due to poor cross-functional =
+communication within Honeywell.</li>
+</ul>
+</li>
+<li><p>Statements of Work =
+(SOWs), Change Orders, and Economic Considerations</p>
+<ul>
+<li>The need for an up-to-date list of all SOWs and change orders was =
+raised, with an expectation that a new signed change order for Andrew&#39;s=
+ work will be received this week.</li>
+<li>Timeline confirmation: the =
+change order signing is happening as planned, within the =
+June=E2=80=93September period, and is considered early for FY26 revenue.=
+</li>
+<li>Lane is responsible for SOW definitions; recommendations were =
+made to keep the format simple (workstream, client scope, deliverables, =
+resources).</li>
+</ul>
+</li>
+<li><p>Team Composition and Coordination</p>
+<ul>
+<li>Introduction of Bill Miller, a new partner (energy sector leader, =
+Teal Techno), based in Houston but spending time in Denver (noted for =
+clients like BP, Ball Corporation, Chevron, Exxon). He is requested to be =
+in Charlotte next week.</li>
+<li>Discussion on Bill Miller=E2=80=99s =
+background and integration into the team.</li>
+<li>Travel and workshop =
+planning: After the Charlotte meeting, one team member will be traveling =
+for two weeks for workshops in Hong Kong and Dublin.</li>
+</ul>
+</li>
+<li><p>Financials: ETCs, Write-ups, and Revenue Management</p>
+<ul>
+<li>Primary focus on ETCs (Estimate to Complete) for three codes (managed =
+by different partners): importance of completing ETCs for hours, expenses, =
+and fees for accuracy before offering client resources at cost.</li>
+<li>Identification of ~$300k in write-ups; desire to use $100k (around a =
+month=E2=80=99s NSR) to offer the client a resource in June.</li>
+<li>Confirmation that thorough ETCs are needed before proceeding with =
+resource offerings.</li>
+<li>Agreement to prepopulate hours and financials =
+data for a more effective review in subsequent meetings.</li>
+</ul>
+</li>
+<li><p>Client Billing and Revenue Allocation</p>
+<ul>
+<li>Current run rate is close to $1 million/month; approximately $1.5 =
+million left to invoice.</li>
+<li>Emphasis on maximizing billed revenue for=
+ Charles, who is short for the year (target of ~$2 million), including =
+potential for reclassifying hours or shifting revenue where possible.</li>
+<li>Confirmation of client PO approval for $1.4 million (as of yesterday), =
+with invoicing underway.</li>
+</ul>
+</li>
+</ol>
+<p>Action Items and =
+Follow-Ups</p>
+<ul>
+<li>Complete a full ETC for all three codes (hours, =
+expenses, fees) before offering extra client resources.</li>
+<li>Prepopulate hours and data before the next meeting for an efficient =
+financial review.</li>
+<li>Continue work on the SOW and change order list; =
+expect new change order signed within the week (FY26 revenue).</li>
+<li>Bill Miller to be scheduled for Charlotte visit next week to meet the =
+team.</li>
+<li>Begin client invoicing of $1.4 million PO.</li>
+<li>Assess scenarios for reallocating or shifting revenue to maximize =
+Charles&#39;s year-end results.</li>
+<li>Workshops in Hong Kong and Dublin =
+scheduled following next week=E2=80=99s meetings; one team member will be =
+unavailable during this period.</li>
+</ul>
+<p>Key Dates and Figures</p>
+<ul>
+<li>Change order signing for Andrew=E2=80=99s work expected within =
+this week (June 2024).</li>
+<li>New SOW and change order to cover through =
+September 2024.</li>
+<li>First FY26 revenue from upcoming change order.=
+</li>
+<li>$1.4 million PO approved and to be invoiced this week.</li>
+<li>Team member traveling for two weeks for global workshops after =
+Charlotte visit.</li>
+<li>Run rate: ~$1 million/month; $1.5 million left to=
+ invoice; Charles=E2=80=99s revenue target: ~$2 million.</li>
+</ul>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0,=
+ 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex;align-i=
+tems:center;gap:8px"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</=
+span>Transcription</h3><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">0:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right there.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">0:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Corporate function, =
+athletes function, whatever. And then the roadmap on it is we&#x27;ve just =
+gotta. We&#x27;ve gotta identify the scenarios, gotta identify the scripts,=
+ we&#x27;ve gotta identify the time. We&#x27;ve already started doing all =
+that stuff. That&#x27;s when you started with the kickoff.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Renata</span><span style=3D"color:#64748b;font-size:14px"=
+>0:14</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">0:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And we&#x27;ve gotta=
+ get to a place where we can hold them accountable for. Have the butts and =
+seats landed? Has KT started? Has Katie stopped UAT defect? Do we have a =
+pipeline? Like what&#x27;s the tool we&#x27;re going to use pipeline for =
+resolution? Is it getting done? Like all. It&#x27;s just left to right kind=
+ of stuff in my mind. But I mean I think part of the problem is going to be=
+ like who&#x27;s going to do the issue resolution? Obviously the systems of=
+ power have to do that stuff. Right. There&#x27;s no one else.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">0:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think what Pierce,=
+ from our conversation with him yesterday, what he was reaching for was =
+less of the high level. Here&#x27;s how it&#x27;s going to flow left to =
+right. But how do I start to operationalize this? He asked for specific =
+examples of how we&#x27;ve run UAT in the past.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">1:=
+03</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So like names and boxes and the cadence and trackers and I think one =
+level above that.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span>=
+<span style=3D"color:#64748b;font-size:14px">1:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Like in between =
+those two. I don&#x27;t think necessarily we need the names on boxes right =
+now, but we need the. Here is how it&#x27;s going to flow. Like a process =
+diagram which we have from Oak or others.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Renata</span><span style=3D"color:#64748b;font-size:14px"=
+>1:23</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So we should be able to leverage that and from. But no, you&#x27;re =
+right. They&#x27;re hung up. Jeff and he are hung up on defect resolution =
+because that&#x27;s their biggest pain.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">1:=
+32</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">No, I get it. I mean, because that&#x27;s the work that it&#x27;s going =
+to have to do.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Renata</span><span=
+ style=3D"color:#64748b;font-size:14px">1:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And his biggest =
+concern is that doesn&#x27;t work well in Honeywell because they don&#x27;t=
+ talk to each other.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span>=
+<span style=3D"color:#64748b;font-size:14px">1:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So the cross =
+functional.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Renata</span><span=
+ style=3D"color:#64748b;font-size:14px">1:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">What the hell =
+happened? No, my screen went basic blue on me.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">2:=
+08</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Do we have a list somewhere? All of our sows and change orders. Because =
+we&#x27;re going to have to. Andrew told me we&#x27;re going to get. =
+I&#x27;m thinking from an economic perspective too. Andrew told me that =
+we&#x27;re going to get the sign change order this week for his stuff. =
+Which. That&#x27;s way ahead, right? Is it way ahead? It&#x27;s. Is it June=
+? Oh, so we&#x27;re right on time.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Renata=
+</span><span style=3D"color:#64748b;font-size:14px">2:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We&#x27;re going =
+through September.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">2:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So we&#x27;ll get =
+that signed this week. That&#x27;ll be great. I think that&#x27;s our first=
+ signed FY26 revenue.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Renata</span>=
+<span style=3D"color:#64748b;font-size:14px">2:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">FY26 and then we got=
+ to think about the. Well, what happens with Winter. But I&#x27;ve got Lane=
+ driving the sow definition, so you should reach out to the managers.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">3:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And I think that we =
+keep that really simple. Right. Work stream, client scope, deliverables, =
+resources. Just table.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Renata</span>=
+<span style=3D"color:#64748b;font-size:14px">3:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, we have an =
+existing format.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">3:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Mac, do you =
+know Bill Miller? You haven&#x27;t met him. You don&#x27;t like him?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">3:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, no, I =
+haven&#x27;t met him yet.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">3:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">He&#x27;s gonna be =
+the other partner on this. He. We just need to tell him when to come. =
+Bill&#x27;s been awesome so far. He&#x27;s just like, whatever we tell him =
+to do, he does. He&#x27;s just like, show up here. He&#x27;s like, okay, =
+I&#x27;m here. He needs to meet the rest of the team. But he&#x27;s really,=
+ really great. We did a big group of us did UTC together. Okay. And Bill =
+was a senior partner on that, so. But he&#x27;s like the energy sector =
+leader for Teal Techno.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span>=
+<span style=3D"color:#64748b;font-size:14px">3:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Where&#x27;s he =
+based, I wonder.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">3:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Houston, I think. =
+You spent a lot of time on Denver, though. Is it excellent?</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Renata</span><span style=3D"color:#64748b;font-size:14px=
+">4:05</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Oh, no, out of Denver.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span>=
+<span style=3D"color:#64748b;font-size:14px">4:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">BP&#x27;s in Denver.=
+ We have a huge office. There&#x27;s also, like, Ball Corporation. I know =
+we did at one point.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">4:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Like the ball jars.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">4:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">4:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">4:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I don&#x27;t know =
+what else.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">4:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Energy.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">4:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Energy.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">4:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">He&#x27;s working on=
+ Chevron, Exxon.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Renata</span>=
+<span style=3D"color:#64748b;font-size:14px">4:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Chevron. That&#x27;s=
+. I thought Chevron&#x27;s Houston.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">4:=
+33</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, yeah, there&#x27;s.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Renata</span=
+><span style=3D"color:#64748b;font-size:14px">4:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">There&#x27;s =
+something.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">4:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I don&#x27;t know. =
+JC&#x27;s organizing.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span>=
+<span style=3D"color:#64748b;font-size:14px">4:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Anyways, =
+there&#x27;s.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">4:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think he&#x27;s =
+out there. Paramount right now.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce<=
+/span><span style=3D"color:#64748b;font-size:14px">4:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Liberty. Like the =
+fracking people. They&#x27;re in Denver.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Renata</span><span style=3D"color:#64748b;font-size:14px"=
+>4:45</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Maybe they oil field services people.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Pierce</span><span style=3D"color:#64748b;font-size:14px"=
+>4:48</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, exactly.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">4:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Well, we. We will =
+have to tell him we want him in Charlotte next week.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Renata</span><span style=3D"color:#64748b;font-size:14px"=
+>4:57</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">4:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Be good for him to =
+come. And then after that, I&#x27;m gone for two weeks. The trip around the=
+ world. We have workshops in Hong Kong and Dublin, so Anisha and I are =
+literally flying around the world. It&#x27;s gonna be awesome.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span><span=
+ style=3D"color:#64748b;font-size:14px">5:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;ll be fun.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Renata</span><span=
+ style=3D"color:#64748b;font-size:14px">5:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. As much as I =
+wanted to join the. I got too much going on here to hold the fort and.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">5:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Good stuff.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Renata</span><span=
+ style=3D"color:#64748b;font-size:14px">5:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;s just uat, =
+all these workshops planned in this way.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">5:=
+30</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. Bill needs to.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Renata</span>=
+<span style=3D"color:#64748b;font-size:14px">5:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Caution. Reached out=
+ to them earlier today. He&#x27;s. Oh, Renata Castle.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">5:=
+41</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Who?</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Renata</span><span=
+ style=3D"color:#64748b;font-size:14px">5:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Castle Shaw. =
+He&#x27;s the other account lead. He works with Nav.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">5:=
+50</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">The sourcing guy?</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Renata</span>=
+<span style=3D"color:#64748b;font-size:14px">5:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, he&#x27;s a deal=
+ deal management guy. Excuse you. Thank.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">6:=
+04</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">You.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Renata</span><span=
+ style=3D"color:#64748b;font-size:14px">6:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Hello? Hey, can you =
+mute unmute, please?</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pierce</span>=
+<span style=3D"color:#64748b;font-size:14px">6:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, it&#x27;s =
+unmuted.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Renata</span><span=
+ style=3D"color:#64748b;font-size:14px">6:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It is. Hey, Renata, =
+can you hear us?</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">6:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">She&#x27;s talking =
+but we can&#x27;t hear her. Check your.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Renata</span><span style=3D"color:#64748b;font-size:14px"=
+>6:36</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, get unmuted. Hey, Renata, can you hear us.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">6:=
+47</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Now? We can. There we go.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Renata</span=
+><span style=3D"color:#64748b;font-size:14px">6:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sorry. All right, so=
+ I&#x27;ve got here with Sean in the room. So I know we set up way.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">7:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">At the end of a long=
+ table.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Renata</span><span=
+ style=3D"color:#64748b;font-size:14px">7:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sorry, scruffing =
+down on lunch. I know we set up this call to take a look at do the ETCs and=
+ understand what the gaps are. I know we&#x27;ve seen write ups across all =
+the three codes. So are we in a position to do ETCs at this time, =
+particularly on Will&#x27;s code and then the others as well.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">7:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And Renata, =
+I&#x27;ll tell you, I mean I think the. Well, I think we need to do ECCs =
+from a hygiene perspective. But the other, the thing that I, I want to make=
+ sure I&#x27;m good on is I see about 300k in write up sitting between my =
+code and Will&#x27;s code. And I know a lot. Some of that&#x27;s buffer. =
+Some of that&#x27;s like goodwill that we&#x27;ve built up in terms of =
+margin and stuff like that for people taking vacations. I want to offer the=
+ client a month of a resource to go solve a problem for like the month of =
+June. And I figure that&#x27;ll take probably about 100k worth NSR and so =
+about 100k worth that write up. I just want to confirm that we&#x27;re in a=
+ good position to do that. That&#x27;s probably the biggest two things =
+right now. And then later, like probably next week, the week after, will be=
+ in a position to do an ETC based off of a change order that we&#x27;re =
+going to sign. And I think that&#x27;s probably it until we do phase four. =
+Right.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Renata</span><span=
+ style=3D"color:#64748b;font-size:14px">8:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Until end of June. =
+Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Charles</span><spa=
+n style=3D"color:#64748b;font-size:14px">8:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So I think before we=
+ start offering anybody for free, by the way, it&#x27;s a really cool =
+conference room. It&#x27;s so nice. Before we start, you know, we need to =
+do a full blown ETC on all three codes, meaning the hours to go, the =
+expenses, the fees, and really validate everything. Then to add the extra =
+resource and see if we can afford them.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">8:=
+54</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yep.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Renata</span><span=
+ style=3D"color:#64748b;font-size:14px">8:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Charles</span><spa=
+n style=3D"color:#64748b;font-size:14px">8:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Do you have those =
+details?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Renata</span><span=
+ style=3D"color:#64748b;font-size:14px">9:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think we have the =
+details for the three codes.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Charles</spa=
+n><span style=3D"color:#64748b;font-size:14px">9:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, where do you =
+want to start?</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">9:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So we know the ter, =
+right. And then we can estimate the hours.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Renata</span><span style=3D"color:#64748b;font-size:14px"=
+>9:19</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, we. Yeah, from last time. Yes.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Charles</span><span style=3D"color:#64748b;font-size:14px=
+">9:25</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">You have them. So do you want us, do you want to do this today or do =
+you want to like talk about the hours? Then we reconvene and of course you =
+can send me the, the hours and maybe I can pre populate and we can just =
+talk about the results. What do you want to do?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Renata</span><span style=3D"color:#64748b;font-size:14px"=
+>9:40</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I think the latter might be helpful in terms of pre populating and doing=
+ it, but we can certainly get started on it in terms of talking through the=
+ hours left.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Charles</span><spa=
+n style=3D"color:#64748b;font-size:14px">9:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Which code?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Renata</span><span=
+ style=3D"color:#64748b;font-size:14px">9:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Let&#x27;s start =
+with Will.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">9:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, by the way. Oh, =
+no, no, I&#x27;m sorry and I apologize. I missed a massive thing that I =
+need to ask for your output. The third thing that we need to do as part of =
+this is I want to give. So what&#x27;s our run rate right now? Over =
+everything? Is it about a million and a half a month?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Renata</span><span style=3D"color:#64748b;font-size:14px"=
+>10:18</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah, about a million. Just close to a million.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">10=
+:24</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So we have about a million left?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Renata</span><span style=3D"color:#64748b;font-size:14px"=
+>10:25</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">No. Okay, we&#x27;re invoiced about three. Yeah, we probably got about =
+one point. Minus expenses, we&#x27;ve got about a million and a half to =
+invoice.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">10:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, but just =
+what&#x27;s our. Like, what are we burning about? About?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Renata</span><span style=3D"color:#64748b;font-size:14px"=
+>10:42</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah, close to 9,950k a million a month.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">10=
+:48</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So I, I want to give Charles as much revenue. So I&#x27;m, I&#x27;m over=
+ my number now. Will is no longer here, so we don&#x27;t have to worry =
+about him. Charles is short for the year and I want to give him as much as =
+we can for the remainder of the year. So I want to figure out what we can =
+do, like what we need to do both in terms of what&#x27;s available to shift=
+ to him and then what we can do, what we can offer for the rest of the year=
+. Or like, is there a scenario where we get people to reclass their hours =
+and shift some revenue that way? Or, you know, like what&#x27;s just, =
+what&#x27;s reasonable?</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Charles</span=
+><span style=3D"color:#64748b;font-size:14px">11:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Would we need to see=
+ how much revenue you want to give to Charles?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">11=
+:32</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Ideally about 2 million.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Charles</span=
+><span style=3D"color:#64748b;font-size:14px">11:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You know what? Hold =
+on. Hold everything. There is an engagement. Which one was the one? I think=
+ the one where Prashant was the manager. Was that Will&#x27;s originally?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">11:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think that&#x27;s =
+mine.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Renata</span><span=
+ style=3D"color:#64748b;font-size:14px">11:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;s =
+Sean&#x27;s.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Charles</span><spa=
+n style=3D"color:#64748b;font-size:14px">12:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, no, I know, but =
+Rakesh, you manage the Charles and the Will codes, right?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Renata</span><span style=3D"color:#64748b;font-size:14px"=
+>12:09</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah, no, actually I got Charles and Sean, so he&#x27;s on Wills.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Charles</span><spa=
+n style=3D"color:#64748b;font-size:14px">12:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Let me share my =
+screen. Let me share my screen. It&#x27;ll make things a little bit easier.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">12:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, no, no, no, =
+Charles, I&#x27;m EP on both code. So it&#x27;s Will&#x27;s code that =
+you&#x27;re on. It&#x27;s my old code that Prashant&#x27;s on.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Charles</span><spa=
+n style=3D"color:#64748b;font-size:14px">12:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right, so what we =
+can do, we can do at this point, Charles, is, is the ep. Can you guys see =
+my screen?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Renata</span><span=
+ style=3D"color:#64748b;font-size:14px">12:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">First of all, yes, =
+we can.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Charles</span><spa=
+n style=3D"color:#64748b;font-size:14px">12:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Let me hide all of =
+this because it&#x27;s just. It this way, I can make the screen a bit =
+bigger. Okay, so this is Charles&#x27;s code, Right? And So far, through =
+May 23rd, Charles has incurred approximately $2.2 million of. I&#x27;m =
+sorry, $1.7 million of. Of TER engagements. ATR. None of this is foreign =
+invoices, so this 1.7 is GTR as well. Nothing needs to be excluded included=
+. Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Renata</span><span=
+ style=3D"color:#64748b;font-size:14px">13:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, Renata, just =
+so you know, their PO for 1.4 million was approved yesterday, and so =
+it&#x27;s in Ariba. And now I think Max and others are going to be. =
+We&#x27;re going to be invoicing the 1.4 million shortly this week.=
+</div></div><div style=3D"margin-bottom:0;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Charles</span><spa=
+n style=3D"color:#64748b;font-size:14px">13:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;s. =
+That&#x27;s wonderful. That&#x27;s. That&#x27;s incredible, because that =
+was another question, but I was gonna. I was gonna save that for later, but=
+. Okay, where are we? Right, because you guys have, like, 1.4 net on bill, =
+so you need to Bill as much as possible. Okay. Anyway, so I&#x27;m thinking=
+. I don&#x27;t know how this is going to impact Prashant, but if we just.=
+</div></div></div><div style=3D"margin-top:36px;text-align:center;color:#64=
+748b;font-size:14px;padding:20px;border-top:1px solid #e2e8f0"><p =
+style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note Taker</p><p=
+ style=3D"margin:0;font-size:12px">Your AI-powered companion</p></div></div=
+></div></div></html>
+----_NmP-57b192ff6b590016-Part_1--

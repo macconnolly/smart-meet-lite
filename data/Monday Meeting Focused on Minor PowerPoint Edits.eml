@@ -1,0 +1,163 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a05:6000:26d2:b0:3a5:23aa:6f43 with SMTP id 18csp791546wrm;
+        Fri, 20 Jun 2025 08:37:26 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGugsB9RsT6abMOmoXC6XGlZ2jKCsNKaQYwr6zSfgzJ//rg4r61bt9ZYHHuG/t6dKT0zdp2
+X-Received: by 2002:a05:6214:390c:b0:6ea:d033:2846 with SMTP id 6a1803df08f44-6fd0a51b48bmr62593116d6.25.1750433846301;
+        Fri, 20 Jun 2025 08:37:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750433846; cv=none;
+        d=google.com; s=arc-20240605;
+        b=SAD7CnL1/IfjRo/JYRzoOK5L+hzCaciXwvHAfp5kUHy45bsyMN9eImWEWzKBlm9x6B
+         3kvAgn0hG3asAgrpkAVV9S6L90SRrUtnNWvX6lIW0SeohWLwfuP/fFmlYbtlywj4DLnQ
+         sblilSYUnMKIDA8ue2WngdBSnlPMfmR68I+IJS52SqOajwTrHthlKi8W8w7FhJswT2+y
+         jhR+maebOlzMBA/XEsOPRJJ6cXqQr+P70ZejqIh3g7qo0vLBT5e457NhGhlwrsgfyJba
+         OjRw7A6btKc0VBGJWrj0rUflr7A6b0Crcswj8bA2RMU1cJx/MSlzoMrv5tQUgZ2YqA+D
+         gVmQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=wU8AI4knbSHmxksMkiHfhGVU6/MOHa7UAYyTvMGXs8w=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=T0juw+17Zxc1B4MU/jIZE9/gTksT6SqzGg6ft84p065qPHXCDlIfIHA3U1iE2t6tdS
+         sX6O8OO/Et1FadmmmV5COkFV2NX2fPyFBOVTMY13CEKFPrO9qydO/vYZWJEFwLh0OWGR
+         NcJDZM1ag6sdwKIqaERhg1pBHXMaqbeCeRZJVdeVV8H+QUW3q1yU6TL9UYAS0Fs16F8F
+         RBqrI18D3BxzKbZXoQL22CxqJkUIQMLSbclZf1QCE+CfMfK5WkYBPoE360LJLo43oktG
+         5vBaBxkFbksxFq/hcNt6YLN4AZskfx3mZ245Yyiy3gcPUqBc8qGz6EzCsWeb+DLsvZe1
+         QZtw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=gFaKqzQT;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=Tdnyhltl;
+       spf=pass (google.com: domain of 010001978dfcd1a7-f933ffdb-23f9-4d97-9368-d81f5a0fd7b2-000000@send.email.wave.co designates 54.240.9.33 as permitted sender) smtp.mailfrom=010001978dfcd1a7-f933ffdb-23f9-4d97-9368-d81f5a0fd7b2-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <010001978dfcd1a7-f933ffdb-23f9-4d97-9368-d81f5a0fd7b2-000000@send.email.wave.co>
+Received: from a9-33.smtp-out.amazonses.com (a9-33.smtp-out.amazonses.com. [54.240.9.33])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd09530af3si24512546d6.203.2025.06.20.08.37.26
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 20 Jun 2025 08:37:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 010001978dfcd1a7-f933ffdb-23f9-4d97-9368-d81f5a0fd7b2-000000@send.email.wave.co designates 54.240.9.33 as permitted sender) client-ip=54.240.9.33;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=gFaKqzQT;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=Tdnyhltl;
+       spf=pass (google.com: domain of 010001978dfcd1a7-f933ffdb-23f9-4d97-9368-d81f5a0fd7b2-000000@send.email.wave.co designates 54.240.9.33 as permitted sender) smtp.mailfrom=010001978dfcd1a7-f933ffdb-23f9-4d97-9368-d81f5a0fd7b2-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1750433845;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=wU8AI4knbSHmxksMkiHfhGVU6/MOHa7UAYyTvMGXs8w=;
+	b=gFaKqzQTS28WmFOZqQ7fXkKC//YNp2G0nlh+Fn73ZxEX+Csk7ywITje9UY5rYVvA
+	4lHSmaPM2DJyIMfqOkyoDDx4vdKiwZW14En4vqggzd3PF2TMl9/x5q8qW8PVDUUvFk/
+	lhAsryJ/H4CTDBOQmOS4Yo8pbKWopsDd0BpU0maU=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1750433845;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=wU8AI4knbSHmxksMkiHfhGVU6/MOHa7UAYyTvMGXs8w=;
+	b=Tdnyhltlx94PWMeXvULtoHDLEtGudocaQpLr72wgRlSjMnV04IcuhpGDnvAjcgxc
+	6hEC+Niwp2PbTSwjNQ3b8MCwoR72sm6NvgYAzDtldN9Geyb9YS5RBrqNqqN14Vuy26I
+	OUAyz2KRXpYRGWd1l5x6c8P3HlvH16bl+y5WDvn8=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Monday Meeting Focused on Minor PowerPoint Edits
+Message-ID: <010001978dfcd1a7-f933ffdb-23f9-4d97-9368-d81f5a0fd7b2-000000@email.amazonses.com>
+Date: Fri, 20 Jun 2025 15:37:25 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-3385aeea5c4d0fce-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.06.20-54.240.9.33
+
+----_NmP-3385aeea5c4d0fce-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Monday Meeting Focused on Minor PowerPoint Edits
+
+A meeting is scheduled =
+for 9:30 AM on Monday. The main task will involve minor wording changes to =
+a document in PowerPoint, not major edits. One participant will send the =
+meeting link directly, and both agree the edits are straightforward. The =
+conversation ends with confirmations and well-wishes for the week.
+
+Transcript:
+0:02
+Actually, why don't I do this? I'll reserve. Can we do =
+9:30 Monday morning? Sure. And I don't anticipate huge changes. I think =
+it's. I'm literally going to be changing wording. Yeah, exactly. I think =
+it's verbiage. Yeah. So I don't think this is a big deal. 9:30 will work =
+for me. Okay. Let's do it. All right. Okay. And just give me the link again=
+. Yeah, just. I'll send it to you directly. That's easier. I always lose =
+them in. Well, you know what I do? I'm opening it right now and I'll edit =
+it in PowerPoint. So what I do is I just open PowerPoint and look at my =
+recent. Yeah, yeah, exactly. So that's my method. So. Yep, I can get to it.=
+ We're all good. All right. Okay. Thank you, Paul. Thanks, Mac. Thank you. =
+9:30? Sounds good. I'll talk to you. Have a good week. Yeah, you as well. =
+Thanks.
+----_NmP-3385aeea5c4d0fce-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Monday =
+Meeting Focused on Minor PowerPoint Edits</h1></td></tr></table></div><div =
+style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/B00C44AF-2100-4562-80A2-8E5C6A0C81E3?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><p>A meeting is scheduled for 9:30 AM on =
+Monday. The main task will involve minor wording changes to a document in =
+PowerPoint, not major edits. One participant will send the meeting link =
+directly, and both agree the edits are straightforward. The conversation =
+ends with confirmations and well-wishes for the week.</p>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0,=
+ 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex;align-i=
+tems:center;gap:8px"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</=
+span>Transcription</h3><div style=3D"margin-bottom:0;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">0:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Actually, why =
+don&#x27;t I do this? I&#x27;ll reserve. Can we do 9:30 Monday morning? =
+Sure. And I don&#x27;t anticipate huge changes. I think it&#x27;s. I&#x27;m=
+ literally going to be changing wording. Yeah, exactly. I think it&#x27;s =
+verbiage. Yeah. So I don&#x27;t think this is a big deal. 9:30 will work =
+for me. Okay. Let&#x27;s do it. All right. Okay. And just give me the link =
+again. Yeah, just. I&#x27;ll send it to you directly. That&#x27;s easier. I=
+ always lose them in. Well, you know what I do? I&#x27;m opening it right =
+now and I&#x27;ll edit it in PowerPoint. So what I do is I just open =
+PowerPoint and look at my recent. Yeah, yeah, exactly. So that&#x27;s my =
+method. So. Yep, I can get to it. We&#x27;re all good. All right. Okay. =
+Thank you, Paul. Thanks, Mac. Thank you. 9:30? Sounds good. I&#x27;ll talk =
+to you. Have a good week. Yeah, you as well. Thanks.</div></div></div><div =
+style=3D"margin-top:36px;text-align:center;color:#64748b;font-size:14px;pad=
+ding:20px;border-top:1px solid #e2e8f0"><p style=3D"margin:0;margin-bottom:=
+8px">Captured with Wave AI Note Taker</p><p style=3D"margin:0;font-size:12p=
+x">Your AI-powered companion</p></div></div></div></div></html>
+----_NmP-3385aeea5c4d0fce-Part_1--

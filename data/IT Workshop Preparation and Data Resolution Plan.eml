@@ -1,0 +1,1264 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a05:6000:26d2:b0:3a5:23aa:6f43 with SMTP id 18csp912125wrm;
+        Fri, 20 Jun 2025 13:23:42 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGu5DP5CtAkdqdDWlmrKuEOd7WORheiAXbKcyOFt6k1mDmF15iVMd2LhjUbdW5lt8hwR5sD
+X-Received: by 2002:a05:6214:4989:b0:6fa:bcf5:6223 with SMTP id 6a1803df08f44-6fd0a5790cdmr82608476d6.36.1750451021999;
+        Fri, 20 Jun 2025 13:23:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750451021; cv=none;
+        d=google.com; s=arc-20240605;
+        b=QDRXbIDdiLGUCFqO9T0BFt7ot0yDxUSuBq4/Csoc0Z3ej84bUID86VZnyQIOKjyx0c
+         ZxtGyEjCoo53+z+BgH5NnbVOTE5i+mHl9fLwFWZu9rRESlk8hHAHOm06om2imPyospa0
+         jAmKNCw8r7l6VUat7IT9Wh78y5HY+tmTnE890pxiNEg1klWmCq/gFVbW5ezElwCF0bIr
+         ZQz0rpS0JN+cPAg0h9lcWNXX4ubhzptGCIM3p1SKe09qoNC0ZnnclnsU1bJyKzNtvjBf
+         csSUCSXLxF0WMT6rDVdDd6D4GHpvZWESmPqTq3X/EePWiNrpOZCI3r+UJa4yh7Zbqtm6
+         d82A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=vXIMOM9Kdq3SJs0pApnSWqF48GR5ZbDZUzIBDwOMXSo=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=R+Tv6fDlG9lkj5HM5F6M+ywAMmGDuLnFfJaTw3Zo81Dwqd729UhxGwYWK5xRJ7o+2H
+         1mjLFT8k1AprofXTchg/nQi9uR/t6XOnBpl9Azy7UP+NHvSJlu2+DGAZ///QiM93XW99
+         xh5j39drtCf9rUddXp1MMtrUyxNhq68BPL7iDmrppxln/o/N3KJJqTqIfhqBAuTAk5Ls
+         9jPTzJP7zMakS62I4QBQu+ALJpGNaDdY9/1/M8ozqGAlxcoIKl7Iav4ipLYmv4NKILg3
+         YexzktPTNu2DMtOOupAcYBnMzFzxENJxnQzyLWskbaE6/vGzI6IWvm4X/YvmKQrFLC+n
+         QUJA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=NgU7ihWz;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=DqVIvWxs;
+       spf=pass (google.com: domain of 010001978f02e64d-0292c875-7b58-4ae0-8020-10a0a08bc2dc-000000@send.email.wave.co designates 54.240.9.33 as permitted sender) smtp.mailfrom=010001978f02e64d-0292c875-7b58-4ae0-8020-10a0a08bc2dc-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <010001978f02e64d-0292c875-7b58-4ae0-8020-10a0a08bc2dc-000000@send.email.wave.co>
+Received: from a9-33.smtp-out.amazonses.com (a9-33.smtp-out.amazonses.com. [54.240.9.33])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd093deecbsi29900426d6.89.2025.06.20.13.23.41
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 20 Jun 2025 13:23:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 010001978f02e64d-0292c875-7b58-4ae0-8020-10a0a08bc2dc-000000@send.email.wave.co designates 54.240.9.33 as permitted sender) client-ip=54.240.9.33;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=NgU7ihWz;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=DqVIvWxs;
+       spf=pass (google.com: domain of 010001978f02e64d-0292c875-7b58-4ae0-8020-10a0a08bc2dc-000000@send.email.wave.co designates 54.240.9.33 as permitted sender) smtp.mailfrom=010001978f02e64d-0292c875-7b58-4ae0-8020-10a0a08bc2dc-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1750451021;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=vXIMOM9Kdq3SJs0pApnSWqF48GR5ZbDZUzIBDwOMXSo=;
+	b=NgU7ihWzJ/HCFxT35w90mqE/BSNBwzwZr+I74iP7sM3MAk5sqWvhcWKh9enKMUTY
+	3VUV2p30BQYz2wgWcXa9aZCSB5yy9W08hFe9yd280OG1p/wVIwS3hRzpv5pnAb7yS2x
+	LHH483l6JjVTqEWI4nJH87jjG3kdJHn6qB+FiyMU=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1750451021;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=vXIMOM9Kdq3SJs0pApnSWqF48GR5ZbDZUzIBDwOMXSo=;
+	b=DqVIvWxsW+S5ZdK1g0HZ3p1TaPEtYvnRDmRJJpvm9XnoDS3jfcF6zPUQiL9uUOvD
+	lxAL9NVD23UaRkloPtvlRlf6IKgyJ5M8m0OkaodLlj24TsgUxi5SispNAuvyVdSyNGX
+	ebRp7fuwj3ZxgO6WwAtFZR/Ifty9hIXDaw4uMQSg=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: IT Workshop Preparation and Data Resolution Plan
+Message-ID: <010001978f02e64d-0292c875-7b58-4ae0-8020-10a0a08bc2dc-000000@email.amazonses.com>
+Date: Fri, 20 Jun 2025 20:23:41 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-4a786eb238a27e00-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.06.20-54.240.9.33
+
+----_NmP-4a786eb238a27e00-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+IT Workshop Preparation and Data Resolution Plan
+
+---
+## Main Topics Discussed
+
+### 1. Updates on Mirror Changes and Deck =
+Preparation
+- Discussion about changes to the "mirror" (likely a document =
+or shared workspace) and its distribution process.
+- Mac owes an updated =
+page, which will be sent to Paul and possibly replace a current deck.
+- Request for adding links into the deck.
+- Mac will update content =
+slightly and reshare the link.
+- Coordination between team members (Mac, =
+Paul, Sakina) on who needs to send what and when.
+
+### 2. Hyper Care =
+Session Planning
+- Prashant provides a brief update: work is needed with =
+Doug Carter, Rachel, Rashid, and Paul to gather input for the overall =
+Hypercam model.
+- Rashid will be left out for now; focus is on working with=
+ Paul and Doug Carter.
+
+### 3. IT Connect and Agenda Finalization
+- Sakina is awaiting content from UMAC and will reach out to Corey offline.
+- Prashant and Lane asked to review the agenda.
+- Goal: Send agenda to the =
+chat group (including Paul) by end of day June 20, 2025.
+- Specific follow-up for Prashant on outstanding items.
+
+### 4. EIT Support Rollout & TSA Exit Workshop
+- Discussion about EIT =
+involvement in the TSA Exit Workshop; their input is needed for budget and =
+resource planning.
+- Concerns over scheduling conflicts with UAT (User =
+Acceptance Testing), aiming to minimize unnecessary participation.
+- Plan to coordinate with Paul regarding which specific people are needed =
+from commercial teams.
+- Decision for Sakina to clarify with Paul and =
+update the agenda as needed.
+
+### 5. Escalation: IT Org Headcount Data =
+Discrepancy
+- An issue with headcount data: numbers from HCN don't match =
+org reality as per Paul's team's records.
+- Escalated to Darcy (VP of HR) =
+and Madison (EY counterpart), with a meeting scheduled for Monday morning.
+- Goal: Resolve by Tuesday, June 24, 2025, so the HCN data aligns for the =
+upcoming BRB UAT workshop and OPSEP call.
+- Data source issues are =
+longstanding=E2=80=94HR believes errors are at the system level, not in the=
+ source files.
+- The approved org model was initially 91 people, now 88 =
+including all reductions.
+- Deadline: HCN must be updated by Tuesday, June =
+24, 2025.
+
+### 6. Template Creation for Requisition Adjustments
+- Lane requests help creating a quick template for adjusting outstanding =
+job requisitions (related to rec ID changes and job descriptions).
+- The template will be sent to Darcy for approval, who has previously =
+rejected retitling requests.
+- Prashant volunteers to create the template =
+and circulate it within 10=E2=80=9315 minutes.
+
+### 7. Meeting and Workshop=
+ Logistics
+- Upcoming team presence in Charlotte, with arrivals starting =
+Sunday, June 22, 2025, through Tuesday, June 24, 2025, for the Decks DCN =
+workshop.
+- AGS team arrives Sunday night; others by Monday or Tuesday.
+- BRV Workshop at "wave space" on Wednesday, June 25, 2025.
+- Some team members have other engagements (e.g., CIO development program =
+at Honeywell) on Wednesday afternoon.
+- Plan for the team to regroup =
+Thursday, June 26, 2025, to review critical activities and develop a =
+T-minus plan for major deliverables.
+
+---
+
+## Action Items & Follow-Ups
+
+- **Mac:** Update the mirror/deck and share the latest content and links =
+with Paul.
+- **Prashant:** Coordinate with Doug Carter and Paul to gather =
+inputs for Hypercam model; assist Lane with requisition template.
+- **Sakina:** Await and consolidate content for IT connect; clarify =
+workshop involvement with Paul, and finalize agenda by EOD June 20, 2025.
+- **Prashant/Lane:** Review and approve agenda.
+- **Escalation:** Ensure =
+Darcy and Madison resolve IT Org headcount data by June 24, 2025, so that =
+HCN reflects accurate numbers before BRB UAT workshop.
+- **Team:** Prepare for Charlotte workshops and ensure alignment on =
+critical activities; regroup on June 26, 2025, for a strategic planning =
+session.
+- **Prashant:** Draft and send requisition adjustment template to =
+Lane for review and submission to Darcy.
+
+---
+
+## Key Dates & Figures
+
+- **Monday, June 23, 2025:** Darcy and Madison meeting to resolve HCN data =
+issue.
+- **Tuesday, June 24, 2025:** Deadline to update HCN data before the=
+ BRB UAT workshop.
+- **Sunday, June 22 =E2=80=93 Tuesday, June 24, 2025:** =
+Team arrivals in Charlotte for workshops.
+- **Wednesday, June 25, 2025:** =
+BRB Workshop at wave space; CIO development program event at Honeywell =
+(2:00=E2=80=944:30 PM).
+- **Thursday, June 26, 2025:** Team strategic =
+planning session post-workshop.
+
+---
+
+## Additional Notes
+
+- Coordination required between IT, HR, and commercial teams for upcoming =
+workshops.
+- Persistent discrepancies in org data require escalation and =
+system-level correction.
+- A proactive approach on agenda setting, resource=
+ alignment, and risk mitigation is evident throughout the discussion.
+- Multiple off-line actions and communication streams are ongoing to =
+address content, attendance, and logistical details for next week=E2=80=99s=
+ critical sessions.
+
+Transcript:
+0:01
+And then any changes to the mirror =
+and when we send it and how we prepare for it.
+
+0:08
+Yeah, Mac, I still owe you that updated page that we can send out, Paul, or=
+ just replace the deck. I'm sending it to you now.
+
+0:20
+Yeah, yeah.
+
+0:21
+Can you add links in here, if you don't mind? I think you sent it to me, =
+right? I have it, so just send me. Yeah, I think I know where it is.
+
+0:29
+Yeah, but I have an offline copy, so I'll just update the content a little =
+bit and then re share the link.
+
+0:35
+Yep. Sorry, Mac, I was speaking over =
+you.
+
+0:37
+No, you're fine. I'll ping you on it. Doesn't need to be here. I=
+ need a link for you.
+
+0:41
+Okay, okay.
+
+0:47
+But thanks, patron. I'll get =
+that sent out whenever I get it back from you to pull.
+
+0:55
+Yeah, thank you both. Moving on to the Hyper Care session. I know Rashid is=
+ not on. Prashant, you want to give a brief summary on that?
+
+1:08
+Yeah, that's. That's another problem to solve. We are. We need to work. So =
+two names, Doug Carter and Rachel Rashid. Myself, we need to. I'll keep =
+Rashid out of it. So I'll say I need to work right now with Paul and these =
+two to get inputs for the overall hypercam model.
+
+1:42
+Yeah.
+
+1:48
+Thanks, Prashant. So on all IT connect, I'm still awaiting content from =
+UMAC and then Corey, who I see is not on, so I will connect with him =
+offline. Prashant, Lane, I've sent you both the agenda, if you can review =
+that. I want to send it to the chat with Paul and them by the end of the =
+day today.
+
+2:14
+Yeah, absolutely. Sakina. So there's just one follow up =
+I've got with Prashant on there. I've sent a few messages, so when you have=
+ a chance, let me know what your thoughts are and then we can update =
+appropriately but.
+
+2:29
+Specific content for EIT support rollout. I don't =
+know what that means, Lane. I'm sorry.
+
+2:37
+Yeah, so what Paul means by =
+that is during the TSA Exit workshop, there are specific sessions where he =
+will want the EIT team to be involved because they will have a say in what =
+the budget looks like, for example, and the number of resources that will =
+be required to support some of the TSA Exit projects. So he's flagging to =
+them and saying, hey, we need you to be involved in the workshop at these =
+specific times. But we did. The reason that's important is because there's =
+also UAT going on at the same time and he doesn't want to pull people in =
+unnecessarily to the workshop. And he also wants it to be solstice led so =
+to push his leadership team to make decisions as well. So that's kind of =
+the thought.
+
+3:32
+So I guess if we. Then maybe we need to check with Paul,=
+ who specifically he's thinking about. I know there's two people from =
+commercial that we're anyway trying to bring because people are away.
+
+3:48
+Okay, I'll be. I'll ping Paul on the side how he wants to handle it, if he =
+wants to voice it over, if he wants to show the slides and just the. The =
+two agenda days and just highlight where he wants those folks to be =
+involved. And we'll, we'll update that way. So I, I'll. I'll take that =
+offline. I know you got a lot going on.
+
+4:15
+Thanks, Lane.
+
+4:16
+I do have one other escalation too, Sahina. It's related to the IT Org and =
+that's important because it's going to roll up into the BRB UAT workshop as=
+ well as the OPSEP call. So the issue is, is that the numbers that are =
+being pulled from the HCN do not match the reality on the ground or the IT =
+Org that Paul and team have developed. So this has been escalated to Darcy,=
+ who's the VP of hr. She's meeting with our EY counterpart who's an =
+individual named Madison. They're going to chat Monday morning and then =
+we'll get Paul pulled into that to hash it out and see why there's an issue=
+ with the HCM pool into the it, which we're talking.
+
+5:09
+Okay, sounds good. And so are we, you and I, Lane still connecting with =
+Madison.
+
+5:16
+I. I chat. I got a hold of Madison and she escalated to =
+Darcy.
+
+5:21
+Okay.
+
+5:23
+So no need to have that conversation that shortly.
+
+5:29
+Yeah, sounds good.
+
+5:33
+Can we, can we not do just like a PowerPoint=
+ like override if we're not able to get resolve this by the time we reach =
+the BRB workshop?
+
+5:44
+So they're not, they're not allowing it right now?
+
+5:48
+Yeah, we asked that up, Prashant. They would not allow. They said they=
+ will only pull from the hdm and that was coming from their leadership. =
+That was what Sakina and I. Yeah.
+
+6:01
+That'S why I had to include you in =
+that, Lane. But yes, yes.
+
+6:05
+Okay, great question. And we've kind of =
+thought ahead of that too. That's why we escalated it and said, hey, this =
+meeting has to happen at the latest by Tuesday and you have to be able to =
+update the HCN by Tuesday. And they said, yes, we can do that. So that's, =
+that's, that's the path.
+
+6:23
+And then I guess, Prashant, another thing to=
+ mention here is the holdup is really they want to see the source for what =
+we are saying. We cannot show the source. Our source is what Paul showed us=
+ at Mars Plains last week in his slide and his org chart. We cannot share =
+that. That's confidential. And they said they need to see our source of =
+truth.
+
+6:43
+Yeah, yeah, yeah. So Sakina, just to give you some end lane =
+historical context, so working with Sherry and our HR talent team who've =
+been helping with this, Paul has shared all of the source files to them. =
+Essentially, the source is HR started with 91 people and that's what our =
+org model talked about. And we've gone through gate three, four, well two =
+three four five, where we put it all together for them. They've =
+consistently made some errors in how they represent it and it's not a new =
+thing. Again, you're talking to Madison. You probably need to talk to Jen =
+as well. Saloover. But they are the right people. They have the source data=
+. They're just showing wrong numbers. So I think it's in their system that =
+it needs to change. The numbers Paul has and the chart he has is all based =
+on the 91 approved minus 1, minus 2. So it's now 89 minus the E band. The =
+executive is 88. So we should be showing that and they have the source data=
+. It's just that they're pulling things wrong and wrongly displaying things=
+.
+
+7:59
+Yeah, and we can point that out all we want, but I think ultimately=
+ what we have to do is we have to put the two clients together and make =
+them solve it on the call. So. And that, that's Darcy and Paul with us in =
+there as well. Okay. Because we, we can point them to the source data, but =
+ultimately if, if we don't get on the call and force the issue with both =
+clients, I don't think anything's going to happen and we'll keep running =
+into the same issue.
+
+8:31
+Yeah. And by the way, just more context. Darcy =
+used to report into Sukai earlier, so if Paul is not able to like level =
+with her, we can have Sukai talk to her.
+
+8:44
+Okay. If there's, if there's=
+ an issue coming out of that call, I will absolutely escalate.
+
+8:53
+Thank you everyone. Anything else to escalate or bring up here as a risk?
+
+9:00
+If someone has bandwidth for 30 minutes and can help me with creating =
+a quick template, I would really appreciate it.
+
+9:07
+If this is related to the hiring one. Let me take a pass at it in =
+background because I've got all the stuff and I can tackle that right now.
+
+9:16
+It was to do with the rec. Yeah, exactly. It was that rec ID change or=
+ whatever. Needs a template again. It's to go back to Darcy, who's been =
+like, shooting people down when they're requesting for retitling of.
+
+9:33
+Correct. I would. What I will do is I will create the template for any =
+adjustments to outstanding requisitions of or. I don't know how. How they =
+say it, but basically their JDs, their job descriptions. And I'll get that =
+over to you in like 10 to 15 minutes. So it'll be a kind of, you know, it. =
+Yeah, I'll send it to you and you let me know if there's any changes you =
+want.
+
+10:00
+Thank you. I have a photo of what we kind of discussed with =
+Paul. I don't know if you have it. I'll just forward that to you on teams.
+
+10:07
+Yeah, I've got it pulled up on my phone right now.
+
+10:14
+Thank you, sir. I appreciate it.
+
+10:19
+I wrote it down on a piece of grain=
+, so I can send that to you as well.
+
+10:28
+Thank you, everyone. Have a =
+great rest of your weekend.
+
+10:32
+Hold on, hold on, hold on, hold on. I =
+know not to keep anything from contracts. Erica, I know you're the. We'll =
+put you on the spot. Yug's not here. Andrew is busy sailing somewhere. So.
+
+10:44
+Yeah, no updates on our end, but we'll see you guys in Charlotte next=
+ week.
+
+10:50
+That was quick. Okay, Gee. Okay.
+
+10:57
+What day does everyone arrive?
+
+11:01
+Good point. I get the Tuesday night. =
+Others are coming in Monday night or so.
+
+11:11
+I think the HGS team will =
+get.
+
+11:13
+There on Sunday evening for the Decks DCN workshop. Okay.
+
+11:17
+I might have to also come in now on Sunday night because of.
+
+11:23
+Some.
+
+11:23
+Of the AGS team will get there on Sunday night. You know, I'm =
+not sure about every single member of the AGS team.
+
+11:32
+Okay, we do. Yeah, between Sunday, Monday and Tuesday, we will be there. =
+But yeah, I think after the wave space, I think. I don't know when people =
+are leaving, but we should talk as a team Thursday about, you know, the =
+stuff we talked about this morning. Just as a. Just think through it as we.=
+ As we look at all these things that you displayed there, Sakina. That's =
+very tactical for next week. I think as we do a T minus plan for all of the=
+ big ticket items. You know, Paul had a good view of his critical =
+activities. I think we need to create something similar from the pages we =
+have and come up with a game plan for each of the big ticket items. So =
+we'll spend some time as a team Thursday just talking through that and =
+laying it out.
+
+12:15
+Sorry, missed a big piece of this. We're going to the=
+ wave space next week as well.
+
+12:20
+Wave space is where? The BRV workshop=
+.
+
+12:22
+Oh, Wednesday. Okay. All right. Kind of good to know. So I have a =
+CIO development program thingy at Honeywell that afternoon. Yeah, yeah, =
+yeah. So maybe I come in the morning and then leave or. We'll figure it out=
+, but. Good to know. Yeah, yeah.
+
+12:38
+Is that also on Wednesday?
+
+12:39
+Yeah, it's on Wednesday. Wednesday the 20. Is that the 25th? Yeah, yeah, =
+it's on Wednesday.
+
+12:43
+2.
+
+12:43
+2 to 4:30. Okay. Right. Yeah, that's. =
+That's also in the wave space.
+
+12:50
+No, no, that one.
+
+12:51
+Oh, is that in the. Ey. Is that in the Honeywell office?
+
+12:55
+That's the thing. That is Monday through Wednesday. PwC is also presenting.
+
+12:59
+Right, right, right. Okay. Yeah. Okay.
+
+13:03
+All right. All right, team, have a good week.
+
+13:06
+Thank you all. Have a great weekend.
+
+13:10
+All right, folks. Thanks.
+
+13:11
+Bye. It's.
+----_NmP-4a786eb238a27e00-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">IT Workshop=
+ Preparation and Data Resolution Plan</h1></td></tr></table></div><div =
+style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/C51128CA-B260-4483-81D5-C70419E62853?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><hr />
+<h2 style=3D"font-weight:500;paddin=
+g-top:20px;font-size:2rem">Main Topics Discussed</h2><h3 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">1. Updates on =
+Mirror Changes and Deck Preparation</h3><ul>
+<li>Discussion about changes =
+to the &quot;mirror&quot; (likely a document or shared workspace) and its =
+distribution process.</li>
+<li>Mac owes an updated page, which will be sent=
+ to Paul and possibly replace a current deck.</li>
+<li>Request for adding =
+links into the deck.</li>
+<li>Mac will update content slightly and reshare =
+the link.</li>
+<li>Coordination between team members (Mac, Paul, Sakina) on=
+ who needs to send what and when.</li>
+</ul>
+<h3 style=3D"font-weight:500;p=
+adding-top:20px;font-size:1.75rem">2. Hyper Care Session Planning</h3><ul>
+<li>Prashant provides a brief update: work is needed with Doug Carter, =
+Rachel, Rashid, and Paul to gather input for the overall Hypercam model.=
+</li>
+<li>Rashid will be left out for now; focus is on working with Paul =
+and Doug Carter.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;f=
+ont-size:1.75rem">3. IT Connect and Agenda Finalization</h3><ul>
+<li>Sakina is awaiting content from UMAC and will reach out to Corey =
+offline.</li>
+<li>Prashant and Lane asked to review the agenda.</li>
+<li>Goal: Send agenda to the chat group (including Paul) by end of day June=
+ 20, 2025.</li>
+<li>Specific follow-up for Prashant on outstanding items.=
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">4. EIT Support Rollout &amp; TSA Exit Workshop</h3><ul>
+<li>Discussion about EIT involvement in the TSA Exit Workshop; their input =
+is needed for budget and resource planning.</li>
+<li>Concerns over =
+scheduling conflicts with UAT (User Acceptance Testing), aiming to minimize=
+ unnecessary participation.</li>
+<li>Plan to coordinate with Paul regarding=
+ which specific people are needed from commercial teams.</li>
+<li>Decision for Sakina to clarify with Paul and update the agenda as =
+needed.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:=
+1.75rem">5. Escalation: IT Org Headcount Data Discrepancy</h3><ul>
+<li>An issue with headcount data: numbers from HCN don&#39;t match org =
+reality as per Paul&#39;s team&#39;s records.</li>
+<li>Escalated to Darcy =
+(VP of HR) and Madison (EY counterpart), with a meeting scheduled for =
+Monday morning.</li>
+<li>Goal: Resolve by Tuesday, June 24, 2025, so the =
+HCN data aligns for the upcoming BRB UAT workshop and OPSEP call.</li>
+<li>Data source issues are longstanding=E2=80=94HR believes errors are at =
+the system level, not in the source files.</li>
+<li>The approved org model =
+was initially 91 people, now 88 including all reductions.</li>
+<li>Deadline: HCN must be updated by Tuesday, June 24, 2025.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">6. =
+Template Creation for Requisition Adjustments</h3><ul>
+<li>Lane requests help creating a quick template for adjusting outstanding =
+job requisitions (related to rec ID changes and job descriptions).</li>
+<li>The template will be sent to Darcy for approval, who has previously =
+rejected retitling requests.</li>
+<li>Prashant volunteers to create the =
+template and circulate it within 10=E2=80=9315 minutes.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">7. Meeting=
+ and Workshop Logistics</h3><ul>
+<li>Upcoming team presence in Charlotte, =
+with arrivals starting Sunday, June 22, 2025, through Tuesday, June 24, =
+2025, for the Decks DCN workshop.</li>
+<li>AGS team arrives Sunday night; =
+others by Monday or Tuesday.</li>
+<li>BRV Workshop at &quot;wave =
+space&quot; on Wednesday, June 25, 2025.</li>
+<li>Some team members have =
+other engagements (e.g., CIO development program at Honeywell) on Wednesday=
+ afternoon.</li>
+<li>Plan for the team to regroup Thursday, June 26, 2025, =
+to review critical activities and develop a T-minus plan for major =
+deliverables.</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20=
+px;font-size:2rem">Action Items &amp; Follow-Ups</h2><ul>
+<li><strong style=3D"font-weight:bold">Mac:</strong> Update the mirror/deck=
+ and share the latest content and links with Paul.</li>
+<li><strong style=3D"font-weight:bold">Prashant:</strong> Coordinate with =
+Doug Carter and Paul to gather inputs for Hypercam model; assist Lane with =
+requisition template.</li>
+<li><strong style=3D"font-weight:bold">Sakina:</=
+strong> Await and consolidate content for IT connect; clarify workshop =
+involvement with Paul, and finalize agenda by EOD June 20, 2025.</li>
+<li><strong style=3D"font-weight:bold">Prashant/Lane:</strong> Review and =
+approve agenda.</li>
+<li><strong style=3D"font-weight:bold">Escalation:</st=
+rong> Ensure Darcy and Madison resolve IT Org headcount data by June 24, =
+2025, so that HCN reflects accurate numbers before BRB UAT workshop.</li>
+<li><strong style=3D"font-weight:bold">Team:</strong> Prepare for Charlotte=
+ workshops and ensure alignment on critical activities; regroup on June 26,=
+ 2025, for a strategic planning session.</li>
+<li><strong =
+style=3D"font-weight:bold">Prashant:</strong> Draft and send requisition =
+adjustment template to Lane for review and submission to Darcy.</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Key =
+Dates &amp; Figures</h2><ul>
+<li><strong style=3D"font-weight:bold">Monday,=
+ June 23, 2025:</strong> Darcy and Madison meeting to resolve HCN data =
+issue.</li>
+<li><strong style=3D"font-weight:bold">Tuesday, June 24, =
+2025:</strong> Deadline to update HCN data before the BRB UAT workshop.=
+</li>
+<li><strong style=3D"font-weight:bold">Sunday, June 22 =E2=80=93 =
+Tuesday, June 24, 2025:</strong> Team arrivals in Charlotte for workshops.=
+</li>
+<li><strong style=3D"font-weight:bold">Wednesday, June 25, =
+2025:</strong> BRB Workshop at wave space; CIO development program event at=
+ Honeywell (2:00=E2=80=944:30 PM).</li>
+<li><strong =
+style=3D"font-weight:bold">Thursday, June 26, 2025:</strong> Team strategic=
+ planning session post-workshop.</li>
+</ul>
+<hr />
+<h2 =
+style=3D"font-weight:500;padding-top:20px;font-size:2rem">Additional =
+Notes</h2><ul>
+<li>Coordination required between IT, HR, and commercial =
+teams for upcoming workshops.</li>
+<li>Persistent discrepancies in org data=
+ require escalation and system-level correction.</li>
+<li>A proactive approach on agenda setting, resource alignment, and risk =
+mitigation is evident throughout the discussion.</li>
+<li>Multiple off-line actions and communication streams are ongoing to =
+address content, attendance, and logistical details for next week=E2=80=99s=
+ critical sessions.</li>
+</ul>
+</div></div></div><div =
+style=3D"background-color:#ffffff;padding:28px;border-radius:12px;border:1p=
+x solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 =
+rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-size:20px;font-weight:=
+600;margin-top:0;margin-bottom:20px;display:flex;align-items:center;gap:8px=
+"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription<=
+/h3><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">0:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then any changes=
+ to the mirror and when we send it and how we prepare for it.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</span><sp=
+an style=3D"color:#64748b;font-size:14px">0:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, Mac, I still =
+owe you that updated page that we can send out, Paul, or just replace the =
+deck. I&#x27;m sending it to you now.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">0:=
+20</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">0:21</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Can you add links in=
+ here, if you don&#x27;t mind? I think you sent it to me, right? I have it,=
+ so just send me. Yeah, I think I know where it is.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prashant</span><span style=3D"color:#64748b;font-size:14p=
+x">0:29</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah, but I have an offline copy, so I&#x27;ll just update the content=
+ a little bit and then re share the link.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Paul</span><span style=3D"color:#64748b;font-size:14px">0=
+:35</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yep. Sorry, Mac, I was speaking over you.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">0:=
+37</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">No, you&#x27;re fine. I&#x27;ll ping you on it. Doesn&#x27;t need to be =
+here. I need a link for you.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><=
+span style=3D"color:#64748b;font-size:14px">0:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">0:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">But thanks, patron. =
+I&#x27;ll get that sent out whenever I get it back from you to pull.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina</span><span=
+ style=3D"color:#64748b;font-size:14px">0:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, thank you both=
+. Moving on to the Hyper Care session. I know Rashid is not on. Prashant, =
+you want to give a brief summary on that?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prashant</span><span style=3D"color:#64748b;font-size:14p=
+x">1:08</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah, that&#x27;s. That&#x27;s another problem to solve. We are. We =
+need to work. So two names, Doug Carter and Rachel Rashid. Myself, we need =
+to. I&#x27;ll keep Rashid out of it. So I&#x27;ll say I need to work right =
+now with Paul and these two to get inputs for the overall hypercam model.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">1:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina</span><span=
+ style=3D"color:#64748b;font-size:14px">1:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Thanks, Prashant. So=
+ on all IT connect, I&#x27;m still awaiting content from UMAC and then =
+Corey, who I see is not on, so I will connect with him offline. Prashant, =
+Lane, I&#x27;ve sent you both the agenda, if you can review that. I want to=
+ send it to the chat with Paul and them by the end of the day today.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">2:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, absolutely. =
+Sakina. So there&#x27;s just one follow up I&#x27;ve got with Prashant on =
+there. I&#x27;ve sent a few messages, so when you have a chance, let me =
+know what your thoughts are and then we can update appropriately but.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</span><sp=
+an style=3D"color:#64748b;font-size:14px">2:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Specific content for=
+ EIT support rollout. I don&#x27;t know what that means, Lane. I&#x27;m =
+sorry.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">2:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, so what Paul =
+means by that is during the TSA Exit workshop, there are specific sessions =
+where he will want the EIT team to be involved because they will have a say=
+ in what the budget looks like, for example, and the number of resources =
+that will be required to support some of the TSA Exit projects. So =
+he&#x27;s flagging to them and saying, hey, we need you to be involved in =
+the workshop at these specific times. But we did. The reason that&#x27;s =
+important is because there&#x27;s also UAT going on at the same time and he=
+ doesn&#x27;t want to pull people in unnecessarily to the workshop. And he =
+also wants it to be solstice led so to push his leadership team to make =
+decisions as well. So that&#x27;s kind of the thought.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prashant</span><span style=3D"color:#64748b;font-size:14p=
+x">3:32</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">So I guess if we. Then maybe we need to check with Paul, who =
+specifically he&#x27;s thinking about. I know there&#x27;s two people from =
+commercial that we&#x27;re anyway trying to bring because people are away.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">3:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, I&#x27;ll be. =
+I&#x27;ll ping Paul on the side how he wants to handle it, if he wants to =
+voice it over, if he wants to show the slides and just the. The two agenda =
+days and just highlight where he wants those folks to be involved. And =
+we&#x27;ll, we&#x27;ll update that way. So I, I&#x27;ll. I&#x27;ll take =
+that offline. I know you got a lot going on.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sakina</span><span style=3D"color:#64748b;font-size:14px"=
+>4:15</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Thanks, Lane.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><s=
+pan style=3D"color:#64748b;font-size:14px">4:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I do have one other =
+escalation too, Sahina. It&#x27;s related to the IT Org and that&#x27;s =
+important because it&#x27;s going to roll up into the BRB UAT workshop as =
+well as the OPSEP call. So the issue is, is that the numbers that are being=
+ pulled from the HCN do not match the reality on the ground or the IT Org =
+that Paul and team have developed. So this has been escalated to Darcy, =
+who&#x27;s the VP of hr. She&#x27;s meeting with our EY counterpart =
+who&#x27;s an individual named Madison. They&#x27;re going to chat Monday =
+morning and then we&#x27;ll get Paul pulled into that to hash it out and =
+see why there&#x27;s an issue with the HCM pool into the it, which =
+we&#x27;re talking.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina</span>=
+<span style=3D"color:#64748b;font-size:14px">5:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, sounds good. =
+And so are we, you and I, Lane still connecting with Madison.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">5:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I. I chat. I got a =
+hold of Madison and she escalated to Darcy.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sakina</span><span style=3D"color:#64748b;font-size:14px"=
+>5:21</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">5:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So no need to have =
+that conversation that shortly.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina<=
+/span><span style=3D"color:#64748b;font-size:14px">5:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, sounds good.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</span><sp=
+an style=3D"color:#64748b;font-size:14px">5:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Can we, can we not =
+do just like a PowerPoint like override if we&#x27;re not able to get =
+resolve this by the time we reach the BRB workshop?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sakina</span><span style=3D"color:#64748b;font-size:14px"=
+>5:44</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So they&#x27;re not, they&#x27;re not allowing it right now?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">5:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, we asked that =
+up, Prashant. They would not allow. They said they will only pull from the =
+hdm and that was coming from their leadership. That was what Sakina and I. =
+Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina</span><span=
+ style=3D"color:#64748b;font-size:14px">6:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;S why I =
+had to include you in that, Lane. But yes, yes.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Lane</span><span style=3D"color:#64748b;font-size:14px">6=
+:05</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay, great question. And we&#x27;ve kind of thought ahead of that too. =
+That&#x27;s why we escalated it and said, hey, this meeting has to happen =
+at the latest by Tuesday and you have to be able to update the HCN by =
+Tuesday. And they said, yes, we can do that. So that&#x27;s, that&#x27;s, =
+that&#x27;s the path.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina</span>=
+<span style=3D"color:#64748b;font-size:14px">6:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then I guess, =
+Prashant, another thing to mention here is the holdup is really they want =
+to see the source for what we are saying. We cannot show the source. Our =
+source is what Paul showed us at Mars Plains last week in his slide and his=
+ org chart. We cannot share that. That&#x27;s confidential. And they said =
+they need to see our source of truth.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Paul</span><span style=3D"color:#64748b;font-size:14px">6=
+:43</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, yeah, yeah. So Sakina, just to give you some end lane historical =
+context, so working with Sherry and our HR talent team who&#x27;ve been =
+helping with this, Paul has shared all of the source files to them. =
+Essentially, the source is HR started with 91 people and that&#x27;s what =
+our org model talked about. And we&#x27;ve gone through gate three, four, =
+well two three four five, where we put it all together for them. =
+They&#x27;ve consistently made some errors in how they represent it and =
+it&#x27;s not a new thing. Again, you&#x27;re talking to Madison. You =
+probably need to talk to Jen as well. Saloover. But they are the right =
+people. They have the source data. They&#x27;re just showing wrong numbers.=
+ So I think it&#x27;s in their system that it needs to change. The numbers =
+Paul has and the chart he has is all based on the 91 approved minus 1, =
+minus 2. So it&#x27;s now 89 minus the E band. The executive is 88. So we =
+should be showing that and they have the source data. It&#x27;s just that =
+they&#x27;re pulling things wrong and wrongly displaying things.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">7:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, and we can =
+point that out all we want, but I think ultimately what we have to do is we=
+ have to put the two clients together and make them solve it on the call. =
+So. And that, that&#x27;s Darcy and Paul with us in there as well. Okay. =
+Because we, we can point them to the source data, but ultimately if, if we =
+don&#x27;t get on the call and force the issue with both clients, I =
+don&#x27;t think anything&#x27;s going to happen and we&#x27;ll keep =
+running into the same issue.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</sp=
+an><span style=3D"color:#64748b;font-size:14px">8:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. And by the way=
+, just more context. Darcy used to report into Sukai earlier, so if Paul is=
+ not able to like level with her, we can have Sukai talk to her.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">8:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. If =
+there&#x27;s, if there&#x27;s an issue coming out of that call, I will =
+absolutely escalate.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina</span>=
+<span style=3D"color:#64748b;font-size:14px">8:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Thank you everyone. =
+Anything else to escalate or bring up here as a risk?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prashant</span><span style=3D"color:#64748b;font-size:14p=
+x">9:00</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">If someone has bandwidth for 30 minutes and can help me with creating =
+a quick template, I would really appreciate it.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Lane</span><span style=3D"color:#64748b;font-size:14px">9=
+:07</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">If this is related to the hiring one. Let me take a pass at it in =
+background because I&#x27;ve got all the stuff and I can tackle that right =
+now.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</span><sp=
+an style=3D"color:#64748b;font-size:14px">9:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It was to do with =
+the rec. Yeah, exactly. It was that rec ID change or whatever. Needs a =
+template again. It&#x27;s to go back to Darcy, who&#x27;s been like, =
+shooting people down when they&#x27;re requesting for retitling of.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">9:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Correct. I would. =
+What I will do is I will create the template for any adjustments to =
+outstanding requisitions of or. I don&#x27;t know how. How they say it, but=
+ basically their JDs, their job descriptions. And I&#x27;ll get that over =
+to you in like 10 to 15 minutes. So it&#x27;ll be a kind of, you know, it. =
+Yeah, I&#x27;ll send it to you and you let me know if there&#x27;s any =
+changes you want.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</spa=
+n><span style=3D"color:#64748b;font-size:14px">10:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Thank you. I have a =
+photo of what we kind of discussed with Paul. I don&#x27;t know if you have=
+ it. I&#x27;ll just forward that to you on teams.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Lane</span><span style=3D"color:#64748b;font-size:14px">1=
+0:07</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, I&#x27;ve got it pulled up on my phone right now.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prashant</span><span style=3D"color:#64748b;font-size:14p=
+x">10:14</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">Thank you, sir. I appreciate it.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Paul</span><span style=3D"color:#64748b;font-size:14px">1=
+0:19</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I wrote it down on a piece of grain, so I can send that to you as well.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina</span><span=
+ style=3D"color:#64748b;font-size:14px">10:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Thank you, everyone.=
+ Have a great rest of your weekend.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Paul</span><span style=3D"color:#64748b;font-size:14px">1=
+0:32</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Hold on, hold on, hold on, hold on. I know not to keep anything from =
+contracts. Erica, I know you&#x27;re the. We&#x27;ll put you on the spot. =
+Yug&#x27;s not here. Andrew is busy sailing somewhere. So.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sakina</span><span style=3D"color:#64748b;font-size:14px"=
+>10:44</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah, no updates on our end, but we&#x27;ll see you guys in Charlotte =
+next week.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">10:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That was quick. Okay=
+, Gee. Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">10:57</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">What day does =
+everyone arrive?</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><s=
+pan style=3D"color:#64748b;font-size:14px">11:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Good point. I get =
+the Tuesday night. Others are coming in Monday night or so.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Sakina</span><span style=3D"color:#64748b;font-size:14px=
+">11:11</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">I think the HGS team will get.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Paul</span><span style=3D"color:#64748b;font-size:14px">1=
+1:13</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">There on Sunday evening for the Decks DCN workshop. Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</span><sp=
+an style=3D"color:#64748b;font-size:14px">11:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I might have to also=
+ come in now on Sunday night because of.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sakina</span><span style=3D"color:#64748b;font-size:14px"=
+>11:23</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Some.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Erica</span><span =
+style=3D"color:#64748b;font-size:14px">11:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Of the AGS team will=
+ get there on Sunday night. You know, I&#x27;m not sure about every single =
+member of the AGS team.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><s=
+pan style=3D"color:#64748b;font-size:14px">11:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, we do. Yeah, =
+between Sunday, Monday and Tuesday, we will be there. But yeah, I think =
+after the wave space, I think. I don&#x27;t know when people are leaving, =
+but we should talk as a team Thursday about, you know, the stuff we talked =
+about this morning. Just as a. Just think through it as we. As we look at =
+all these things that you displayed there, Sakina. That&#x27;s very =
+tactical for next week. I think as we do a T minus plan for all of the big =
+ticket items. You know, Paul had a good view of his critical activities. I =
+think we need to create something similar from the pages we have and come =
+up with a game plan for each of the big ticket items. So we&#x27;ll spend =
+some time as a team Thursday just talking through that and laying it out.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Erica</span><span =
+style=3D"color:#64748b;font-size:14px">12:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sorry, missed a big =
+piece of this. We&#x27;re going to the wave space next week as well.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">12:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Wave space is where?=
+ The BRV workshop.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Erica</span><=
+span style=3D"color:#64748b;font-size:14px">12:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, Wednesday. Okay.=
+ All right. Kind of good to know. So I have a CIO development program =
+thingy at Honeywell that afternoon. Yeah, yeah, yeah. So maybe I come in =
+the morning and then leave or. We&#x27;ll figure it out, but. Good to know.=
+ Yeah, yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">12:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Is that also on =
+Wednesday?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Erica</span><span =
+style=3D"color:#64748b;font-size:14px">12:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, it&#x27;s on =
+Wednesday. Wednesday the 20. Is that the 25th? Yeah, yeah, it&#x27;s on =
+Wednesday.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">12:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">2.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Paul</span><span style=3D"color:#64748b;font-size:14px">1=
+2:43</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">2 to 4:30. Okay. Right. Yeah, that&#x27;s. That&#x27;s also in the wave =
+space.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Erica</span><span =
+style=3D"color:#64748b;font-size:14px">12:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, no, that one.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">12:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, is that in the. =
+Ey. Is that in the Honeywell office?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Erica</span><span style=3D"color:#64748b;font-size:14px">=
+12:55</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">That&#x27;s the thing. That is Monday through Wednesday. PwC is also =
+presenting.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><span =
+style=3D"color:#64748b;font-size:14px">12:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right, right, right.=
+ Okay. Yeah. Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Erica</span><=
+span style=3D"color:#64748b;font-size:14px">13:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right. All right=
+, team, have a good week.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Paul</span><s=
+pan style=3D"color:#64748b;font-size:14px">13:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Thank you all. Have =
+a great weekend.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</spa=
+n><span style=3D"color:#64748b;font-size:14px">13:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right, folks. =
+Thanks.</div></div><div style=3D"margin-bottom:0;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">13:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Bye. It&#x27;s.=
+</div></div></div><div style=3D"margin-top:36px;text-align:center;color:#64=
+748b;font-size:14px;padding:20px;border-top:1px solid #e2e8f0"><p =
+style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note Taker</p><p=
+ style=3D"margin:0;font-size:12px">Your AI-powered companion</p></div></div=
+></div></div></html>
+----_NmP-4a786eb238a27e00-Part_1--

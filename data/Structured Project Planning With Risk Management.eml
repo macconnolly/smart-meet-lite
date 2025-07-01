@@ -1,0 +1,2388 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a05:6000:26d2:b0:3a5:23aa:6f43 with SMTP id 18csp726484wrm;
+        Fri, 20 Jun 2025 06:38:29 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFDT+PKp2vAGHvSWtHKkctZgk0VQeS6Lk60EYxtYuz8Z3rtFTa7cpoN1gx+rBVZ88ilsMdD
+X-Received: by 2002:a05:620a:4246:b0:7d3:dbed:869b with SMTP id af79cd13be357-7d3f994985fmr395026785a.42.1750426708712;
+        Fri, 20 Jun 2025 06:38:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750426708; cv=none;
+        d=google.com; s=arc-20240605;
+        b=lbovDhj/4JP24dZgV92djWiLbux7F/A95/jUuR/57VO6+wxc0ckHyILxdz5G2IFSNv
+         Yt733RnFxSJ07dk2i3CNru3aNHxk/O4/Dhme80oJ/jOfEO+O8bR09JpbOYu1UvgfrPSf
+         ZpAxnLeW/2+huPzDk+9j7kPKjmp+0qeAnRAuL4ZqWAPeF/2EyyeQ9S9N9HtWDHoFxo1A
+         FyHWGXlj3tOPmcyaI67VnMM5OA6fj+EaJqHXcQAfDLusC9oC5OjI3G9H3JU+gwSvYNcy
+         nNxMcTHmnrH6b3zWIvm10agHEU7uugS+8iFUcPIKJHdU9dqbbOtkyzUHiLg4ZXDDd0wx
+         cbnQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=13G1zN+IYtQ8EaUw0NzBXxe2f4YHI2Md47Qqx3sUWNU=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=YliTjVX3GnZrBPEPzNqj+zJSmUxoGIA7jymJPs85P1oTNfS+5D+I7La+nJJ6Xk40QN
+         CmlYLfGcbo3ABKb0CIShN3O5rtHKinR8FeJOooC5zMeM1sJlQln3HHYPixmwIeZL2bXS
+         pZNGXgONeo9fZiRqNhxosOacBJdU4jKZpbVqIoxILwKtKCiJPpiBIi3xQFkDnFj4U8/n
+         0ZAi+db3Q6xkJ7koJDj/FKdIozImfvcrj9lrmX8RVLjQiIuwj7dLXJX2RZkpdhRhqaDv
+         pWt64OlTEmFJ/I3AhCQQpeo/Tz0sIL4zCoIihxL2loU50sT22oKQG/yNfHoEAIxmWHu/
+         vO4A==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=C+59JPbZ;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=FmdCQBR4;
+       spf=pass (google.com: domain of 010001978d8fe831-0b200adc-2251-4321-9204-e73ff685adda-000000@send.email.wave.co designates 54.240.9.54 as permitted sender) smtp.mailfrom=010001978d8fe831-0b200adc-2251-4321-9204-e73ff685adda-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <010001978d8fe831-0b200adc-2251-4321-9204-e73ff685adda-000000@send.email.wave.co>
+Received: from a9-54.smtp-out.amazonses.com (a9-54.smtp-out.amazonses.com. [54.240.9.54])
+        by mx.google.com with ESMTPS id af79cd13be357-7d3f9a0d4d0si165295485a.453.2025.06.20.06.38.28
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 20 Jun 2025 06:38:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 010001978d8fe831-0b200adc-2251-4321-9204-e73ff685adda-000000@send.email.wave.co designates 54.240.9.54 as permitted sender) client-ip=54.240.9.54;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=C+59JPbZ;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=FmdCQBR4;
+       spf=pass (google.com: domain of 010001978d8fe831-0b200adc-2251-4321-9204-e73ff685adda-000000@send.email.wave.co designates 54.240.9.54 as permitted sender) smtp.mailfrom=010001978d8fe831-0b200adc-2251-4321-9204-e73ff685adda-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1750426708;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=TnBQsE37XnA4x7Y/Wtqb1ssvN0/nFhK4eh/TLdQAo9o=;
+	b=C+59JPbZN5GNctxiKGdKo8K3Ju+m18r+Z1fv3onNaPNyvKsWyxQkK4vszQONiXbQ
+	M/5S1KWb1z+LWlkyP8/MUooghZyghVJTDyCep6GhOSwyT+GC+Ss5TceGkwRcSf2ZRCT
+	b+FGKyib6pkwleBU8TlIol3lPm4DRNAQz5s1bBbQ=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1750426708;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=TnBQsE37XnA4x7Y/Wtqb1ssvN0/nFhK4eh/TLdQAo9o=;
+	b=FmdCQBR4TBrchUiR3IRBxprtnS+a7ktcAnNWPG2VjOlWmDlwd5fPOtpp3wlSOFzM
+	000Ns455W3EJmXwX072KqUxZ6kIhmaMS1Vya6fHXeoHabC7JDLpd0uVxUtbUtleKYX4
+	7HbJ7u5VjrU0ZDhV0zj68FNn+BlSPOeMBf4zNLlk=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Structured Project Planning With Risk Management
+Message-ID: <010001978d8fe831-0b200adc-2251-4321-9204-e73ff685adda-000000@email.amazonses.com>
+Date: Fri, 20 Jun 2025 13:38:28 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-d69c3b3d2c8edc36-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.06.20-54.240.9.54
+
+----_NmP-d69c3b3d2c8edc36-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Structured Project Planning With Risk Management
+
+# Meeting Summary =
+=E2=80=93 June 20, 2025
+
+## Attendees
+- Rakesh
+- Prashant
+- Sakina
+- Charles
+- Lane
+- Paul
+- Rashid
+- Bill
+- Corey
+- Mac
+- Others as referenced: Sukai, Tom Moker, Mahesh, James, Mahim, Jeff, =
+Angela, Sean, Skip Shoal
+
+---
+
+## Main Topics Discussed
+
+### 1. **Project Planning & Structured Deliverables**
+- **Need for Structured Timetable:** There is consensus on reviving a =
+detailed, step-by-step project timetable, reminiscent of efforts two to =
+three months ago. The focus is on providing a clear look-ahead, tactical =
+T-minus planning, and early identification of activities and deliverables =
+between now and October.
+- **Advance Preparation:** Sukai requested not to =
+receive last-minute notices and prefers all significant deliverables to be =
+shared well ahead of time=E2=80=94especially those requiring review or =
+communication to the broader program.
+- **Review Cycles:** There will be =
+built-in review cycles with both Paul and Sukai for all key deliverables. =
+Recent lapses (e.g., the BRV readiness workshop) underscored the need for =
+timely alignment.
+- **Game-planning & Rigorous Tracking:** Each "big rock" =
+or major deliverable will be mapped out in detail, with owners coming =
+prepared to report status, delays, risks, and escalation needs.
+- **Tactical Planning:** Next week, a session will be held to define =
+granular plans for each high-impact deliverable.
+
+#### Key Points:
+- All tower leads and functional owners to draft their tactical plans, =
+which will be iteratively refined as a team.
+- Weekly structured reviews =
+and escalations are to replace ad hoc reporting.
+
+---
+
+### 2. **Staffing and Resource Onboarding**
+- **App Factory Staffing:** =
+Discussions continue on staffing for the App Factory work stream. Charles =
+to discuss with Prashant about onboarding cross-functional resources.
+- **Resource Onboarding:** Director Tom Moker is being considered for =
+onboarding, with Sakina tasked to coordinate and complete initial =
+independence checks.
+
+#### Key Points:
+- Proposal and staffing approach for=
+ App Factory is with all tower leads; reactions are awaited.
+- Expectation to begin onboarding people next week, pending conversations =
+with Paul.
+- Multiple work streams, including app factory, unstructured =
+data, and end-user migration, will require increased resources.
+
+---
+
+### 3. **Server & Site Migrations**
+- **Edge Server Migration:** Rashid is =
+to provide a server migration schedule identifying what apps are moving, =
+especially aligned with site cutover plans.
+- **Site Cutover Pilots:** =
+Active pilot migrations are ongoing at two Pennsylvania sites; details (lid=
+ codes and dates) will be provided.
+- **Visibility & Communication:** =
+Emphasized importance of informing app owners of their migration =
+responsibilities and giving Sukai advance notice regarding these pilots and=
+ changes.
+
+#### Key Points:
+- Server migrations are specifically for edge =
+servers located at physical sites, not data centers.
+- Communication plans involving IT Comms and Mahesh are necessary.
+- Broader visibility for Sukai on pilots and potential risks are required.
+
+---
+
+### 4. **CSA Exit Workshop & TSA Exit Planning**
+- **Workshop Preparation:** Lane updated that a detailed, hour-by-hour =
+agenda for the upcoming two-day workshop was presented to Paul and team, =
+and is aligned with expectations.
+- **Contract Team Presentation:** The =
+contracts team will prepare a 30-minute presentation on securing RTUs for =
+day one to address access concerns.
+- **EIT and Interdependency Input:** =
+Paul will coordinate with various teams (EIT, DEPs, DCM) on budget and =
+interdependency sessions; Lane will add to the All IT Connect agenda for =
+Monday.
+- **Material & Pre-read Preparation:** Rashid confirmed a pre-read =
+for the Dex DCN workshop is ready, pending review with Bill and senior =
+managers.
+
+#### Key Points:
+- Workshop readiness is high with over a week =
+for final preparations.
+- Several requests for support and data from =
+internal functions in the coming week.
+- Paul and Lane to coordinate on =
+team inputs and presentations for upcoming sessions.
+
+---
+
+### 5. **Vendor & IT Strategy / Resource Funding**
+- **Vendor Scope =
+Alignment:** Discussion on aligning vendor IT strategy across all work =
+streams before TSA exit. Certain managed service scopes were missed and =
+will need to be handled via a new vendor or change request.
+- **Resource Gap for DCN:** James (now out of office for two weeks) =
+highlighted the absence of EY support for DCN and the need for advisory =
+resources, especially for M&A-specific activities (e.g., Active Directory, =
+device transitions).
+- **Funding Constraints:** Expansion requests for =
+resources from James and Mahim require alignment and funding approval. The =
+SOW for Phase 4 is already under budget pressure, (i.e., additional =
+headcount may require change requests and client negotiation).
+- **Resource Commitments:** The team will avoid making firm commitments =
+before funding and scope are clarified.
+
+#### Key Points:
+- Next step: Draft a holistic resourcing and funding plan for new requests;=
+ to be discussed with Paul, Sukai, and upcoming CIO.
+- All resource discussions to be scoped and documented for potential future=
+ change requests.
+
+---
+
+### 6. **Program & Cost Tracking**
+- **Budget Tracking:** Corey to provide an updated view of budget vs. =
+actuals for presentation.
+- **Workshop Status Updates:** Status heatmaps =
+and pending actions (specifically for ERP and cloud deliverables) to be =
+shared at All IT Connect.
+- **UAT Progress:** SIT (System Integration =
+Testing) is starting. Calendar, trackers, and dashboards for readiness and =
+defect tracking will be developed and socialized, with daily morning and =
+afternoon reporting from next week.
+
+#### Key Points:
+- UAT status updates and associated reporting mechanisms (defect tracker, =
+execution dashboards) will be included in All NT Connect materials.
+- ERP and cloud dependency information is pending (awaiting SAP negotiation=
+ results).
+
+---
+
+### 7. **PC Rollout & Infrastructure Migration**
+- **PC Rollout Schedule:** Rashid has received the schedule; now focusing =
+on mapping risks and aligning sequences of user migrations.
+- **Holistic Infrastructure Migration:** Emphasis on tracking risk across =
+all infrastructure components (sites, servers, network, PCs, unstructured =
+data), not in isolation.
+- **Risk Reporting:** Any risks or sequencing =
+issues to be flagged for Sukai and senior stakeholders.
+
+#### Key Points:
+- Risks specific to PC deployment and broader infrastructure migrations =
+need to be monitored and communicated.
+
+---
+
+### 8. **Ownership and Risk =
+Gaps: PowerApps & Power BI**
+- **Responsibility Misalignment:** There is =
+confusion regarding ownership of PowerApps and Power BI migration. Data & =
+Analytics vs. other teams (Maheen/Paul) have conflicting understandings.
+- **Action:** Rashid to review project emails and clarify past resolutions;=
+ both areas will need to align with the M365 migration schedule and be =
+clearly assigned.
+
+#### Key Points:
+- Ensuring clear assignment of owners =
+for these tools is critical, due to the scale of work and impact.
+
+---
+
+### 9. **Internal & Cross-Team Communication**
+- **Unscheduled/Undocumented=
+ Meetings:** An internal daily sync exists with Paul and Solstice team =
+leads (not on broader team calendars, nor including EY).
+- **Awareness:** Bill and Lane participated in the review of the TSA exit =
+workshop agenda; teams to be made aware if their attendance is specially =
+required.
+
+---
+
+### 10. **Hypercare and Command Center Strategy**
+- **Upcoming Meeting:** A Hypercare meeting is scheduled for 2:30 Eastern; =
+slides to be sent by Rajiv for pre-review.
+- **Ownership Misalignment =
+within DCN:** Aaron Hicks claims scope ownership for Hypercare, while =
+others disagree. Need for consensus on roles before proceeding.
+
+---
+
+## Action Items
+
+1. **Project Structuring**
+   - All tower/function leads =
+to draft and circulate initial tactical workstream plans before next =
+week=E2=80=99s session.
+   - Rakesh/Prashant to coordinate and schedule the=
+ session to refine these plans.
+
+2. **Staffing**
+   - Sakina to onboard Tom=
+ Moker and complete all independence checks.
+   - Charles and Prashant to =
+finalize discussion on cross-functional staffing for App Factory.
+
+3. **Server & Site Migration**
+   - Rashid to send the server migration =
+schedule (with lid codes and dates) today.
+   - Team to review and =
+coordinate communications with app owners and Mahesh/IT Comms.
+
+4. **CSA Exit Workshop**
+   - Contracts team to prepare a 30-min RTU access=
+ presentation.
+   - Lane to include EIT and other function=E2=80=99s input =
+sessions in Monday=E2=80=99s All IT Connect agenda.
+   - Rashid to complete and circulate Dex DCN pre-read, finalize details =
+with Bill.
+   - Bill/Lane to coordinate internal workshop alignment =
+meetings as needed.
+
+5. **Vendor & Resource Requests**
+   - Document all new advisory/resource requests (James, Mahim) and draft =
+change request justification.
+   - Prepare funding/approval plan for review=
+ with Paul, Sukai, and new CIO.
+
+6. **UAT & Reporting**
+   - Mac to finalize UAT calendar, trackers, and dashboards by Monday for =
+All NT Connect.
+   - Status slides (including defect management) to be =
+prepared for review.
+
+7. **PC Rollout Risk Tracking**
+   - Rashid to track and report on PC rollout risks; socialize with =
+affected teams.
+
+8. **PowerApps/Power BI Ownership**
+   - Rashid to clarify ownership and ensure all parties are aligned; =
+communicate results.
+
+9. **Hypercare**
+   - Rajiv to send slides in advance=
+ of the 2:30 Hypercare meeting.
+   - Team to clarify DCN ownership roles =
+for Hypercare Command Center and ensure alignment.
+
+10. **Workshop & Alignment Meetings**
+    - Plan time with Sukai next =
+Monday for BRV walkthrough.
+    - Lane to update All IT Connect agenda with=
+ status of CSA and TSA topics.
+
+---
+
+## Follow-Up Items & Meetings
+
+- **Next Week:** Tactical planning and alignment meeting for all major =
+deliverables (date TBD).
+- **Monday (June 23, 2025):** All IT Connect =
+session with updated workshop topics, budget, UAT, and status tracking.
+- **Today:** Dex DCN pre-read review with senior managers.
+- **Later Today:** Meeting with Sukai for BRV agenda walkthrough.
+- **2:30 PM ET (Today):** Hypercare strategy alignment meeting.
+
+---
+
+## Risks & Escalations
+
+- Misalignment on deliverable ownership (notably =
+PowerApps/Power BI, Hypercare in DCN).
+- Resource/funding requests =
+exceeding current SOW and client budget constraints.
+- Visibility and timely communication to key stakeholders (especially Sukai=
+ and Paul) to avoid last-minute escalations.
+- Sequencing and integration =
+risks across multiple parallel migrations and deployments.
+
+---
+
+## Summary Statement
+
+The team is shifting from ad hoc to rigorously =
+planned and documented cycles for major deliverables, with an emphasis on =
+proactive communication, risk tracking, and resource management. Multiple =
+action items and follow-ups are scheduled to ensure clarity, alignment, and=
+ timely execution, particularly as several critical workshops and =
+migrations approach in the coming weeks.
+
+Transcript:
+0:00
+Through just step by step, not just this, but when we come in, it's not =
+just, you know, what happened today. What it is, I think we would like to =
+have a structured timetable of steps so somewhat similar to what we were =
+doing a couple of months ago, two, three months ago. But we want to bring =
+it back to the point where it's, we have a look ahead that you know, if =
+we're working towards the BRV ready us, you know that there are a few =
+workshops coming, there are things kicking off. So we do a T minus plan and=
+ we understand what the activities are. And one of the primary reasons has =
+been as well that Sukai pinged us and told us that she doesn't much =
+appreciate last minute notices. So particularly where it comes to providing=
+ her and Paul with any deliverables or anything that they need to be read =
+into and read out to the broader program. They would like time ahead to =
+prepare that with us. So the only, probably the most likely way we can do =
+that is if we game plan each of the key mile deliverables that's coming out=
+. So all of the big rocks activities that are going to be coming up between=
+ now and October, we should lay that out including all the deliverables and=
+ have a tactical plan to do what we will day on day or week on week so that=
+ we understand and also bake in time for review with Paul and her before. =
+So again a couple of recent examples, you know, the BRB readiness workshop =
+has been, you know, just a fire drill mode. We submitted it but you know, =
+Paul has been aware and he read into it somewhat and we're having the =
+review with him. We've not had that review with Sukai and I think she'd =
+made the point that you know, on two things. One, if there are urgencies =
+and if there are risks, she would like to know ahead of time that we bring =
+it up to her. But two and two that we read in, read her in into these, any =
+deliverables or anything's coming up from.
+
+2:06
+Or.
+
+2:07
+Any other deliverable ahead of time. So we take that in, you know, into =
+consideration. So the point I'm trying to make here is that next week we'll=
+ spend some time just talking through as we lay out for each of these key =
+key big ticket items how we want to game plan that and a very tactical game=
+ plan. Okay, there's gig five deliverable. This is again it's not new. It's=
+ what we've done. We just need to do it with a bit more rigor. So we'll, =
+we'll discuss that then. What that means for this call then is it won't be =
+as much ad hoc. We'll have a structure, a bit more structure in place as to=
+. We'll go through, you know, every step of it so that the right owner here=
+ can come and provide a view into, you know, x has happened, Y has not =
+happened. This is a delay. This is where I see the risk and this is what =
+needs to be escalated. So let me stop there, see if Prashant, if you want =
+to add anything and then get a reaction or a thoughts and comments from the=
+ team, I.
+
+3:14
+Think you covered it. While we have a good, while we have a=
+ structure of what we're doing, it's kind of become a little bit tactical. =
+So just aligning it to what we are on the hook for and making sure that we =
+have some review cycles, plan. That's the intent.
+
+3:32
+And keep in mind this list is as we go through this next phase, all of you =
+saw the proposal. So if we get all of that work, including all this core =
+stuff we're doing, there's going to be work on app factory, unstructured =
+data, end user migration. So it's, it's different. Several more work =
+streams that will be spun up and several more tactics, you know, somewhat =
+independent deliverables and somewhat related. So we do need to get a good =
+handle on that. So again, we'll talk through that more next week. But as =
+you are working on your work streams here, think about, you know, =
+tactically, my ask of our ask of all of you is, you know, where it is =
+within your remit, you know, put together the initial view of the plan and =
+we will also work with you to refine that. So the goal next week, end of an=
+ activity or key item or body of work and talk through, you know, what is =
+it we're going to be hitting in every day, every week so that we're =
+marching to it with a bit more rigor. So having said that, let's get into =
+it for this week certainly and into early next week. So I'll turn it over =
+to you, Sakina.
+
+4:48
+Thank you Rakesh for starting us off. Yeah, so just =
+starting with the move as is coordination by dcn. Charles, I know you were =
+planning on chatting with Prashant. Any update on this area? Just generally=
+ on staffing.
+
+5:13
+Sorry I was not on the one yesterday but I do see =
+Charles to chat with Prashant GS staffing topics resources is that linked =
+to move as his effort?
+
+5:24
+I don't think to do with like staffing. So we =
+were discussing at Factory staffing and he said that he was wondering =
+whether we could onboard resources that could help across he's and it.
+
+5:37
+Okay, so let's take that off of there Sakina in that case and put that=
+ as a separate topic that we can discuss with her with Charles.
+
+5:47
+You said yes.
+
+5:49
+Okay. So yeah, I know. I'm aware of this and I need to =
+get a conversation going with Charles.
+
+5:55
+We'll.
+
+5:55
+We'll do that move as is Good. We've got a potential resource.
+
+6:02
+For to.
+
+6:03
+Staff up App Factory. The proposal or our approach is out and=
+ it's been shared with all of the tower leads. No one has reacted. I'm =
+going to have a conversation with Paul and assume that we'll start getting =
+people on the ground next week. Internally we've identified a director =
+Sakina. I will reach out to you to onboard Tom Moker on the project. We've =
+got confidence.
+
+6:29
+So.
+
+6:32
+Yeah, yeah, that is actually pretty nice. =
+So I, I'll need to. I'll work with you Sagina to set up some time and, and =
+do an onboarding and then of course we need to do all of the independent =
+initial independence checks and whatnot. Right. So we'll just get those =
+done.
+
+6:50
+Got it.
+
+6:51
+Yeah.
+
+6:52
+Yep, sounds good. Thank you for that.
+
+6:58
+Can you put us to keep an action item for me on this line item that I=
+ owe Rakesh and Prashan the server migration schedule. This will show them =
+what apps are moving, at least the line in the sand from dcn. So I need to =
+get that over to them today.
+
+7:19
+Thanks, Rashid.
+
+7:20
+Rashid, I know you talked about this, but when you say server migration =
+schedule, it is. So apps are moving and they have some plans already. Right=
+, so what servers are these?
+
+7:36
+Yeah, this is specific to the edge =
+server. So these are applications that are hosted at the site. So we're =
+following.
+
+7:45
+I think.
+
+7:45
+Yeah, we're cutting over the network and so=
+ the app owners need to be aware of all the work they need to be doing per =
+the schedule.
+
+7:53
+So does this link to the site migration schedule then? =
+Or are these servers sitting on data centers or are these sitting on site?
+
+8:01
+No, they're sitting on site.
+
+8:03
+So they're sitting on site, then =
+they're part. So basically what you're saying is that there is a site =
+cutover schedule that has been published and then the server migration of =
+these edge systems will be aligned to align to that site move, Right?
+
+8:18
+That's right. That's a better way to say it.
+
+8:22
+Okay, so which site is =
+moving immediately? Like. Like right now I know the.
+
+8:30
+There's two sites that are being piloted in Pennsylvania. That but let me =
+not speak offhand, let me get to the actual lid codes and the dates on when=
+ they're moving. And it also includes the applications that are being =
+hosted on that site at that site.
+
+8:47
+So that would be good because. So =
+for various reasons, Rashid, I think us as a team, we all need to know but =
+I think if there's any communication that needs to go out as it relates to =
+this and the pilot, it's something that we need to talk to Mahesh about, =
+including the IT comms, etc. I don't doubt that that's probably already in =
+their minds and that team's communicating but it'd be good visibility for =
+us that we bring in. So these are things like that as a good example team =
+and Rashid that we would want Sukai to know that there is a pilot happening=
+ here and that this is things that she needs to know in terms of look out =
+for this or watch out for this or heads up that these are things coming. So=
+ yeah, just to publicize that with us, send it to the team so that we can =
+review and if there's any actioning that we need to do as a team, let's =
+talk through that so that we can make sure Paul and Sukai are up to date on=
+ that.
+
+9:50
+Sure, let's do that. I think most important is making the app =
+owners aware of what work they need to do by when. I think that's the big =
+piece of it. So we can, when I share it with you, I say we have that =
+conversation at least something today.
+
+10:05
+Let's do that. We should, we =
+should. And I think you have something later in the day so you have the =
+content review but perhaps after that.
+
+10:12
+Sure, we'll do okay.
+
+10:15
+All right, thank you both. Lane, anything on the teasing? Is the workshop =
+after a meeting earlier?
+
+10:23
+Yeah, so I'll update this meeting. So Bill =
+and I met with Paul and the leads this morning. We walked them through our =
+outcomes and agenda for the two day workshop. Kind of very detailed I would=
+ say hour by hour, what we're doing, no updates. I they're aligned with =
+what we want to accomplish accomplish in the way that we're going about =
+doing that. I will say that there will be a few asks of the team coming =
+through today and into next week. So specifically for the contracts team, =
+we will be asking for you guys to put together probably a 30 minute =
+presentation of how your going about getting RTUs prior to day one. And =
+it's really just going to meant to alleviate any concerns on access and =
+right to Use those during the interim period for some other work streams. =
+We'll have some masks coming out over the next few days, but I would say in=
+ general for the workshop we're in very good shape and we have have, you =
+know, over a week to get ready for it, which is puts us in a very good spot=
+.
+
+11:47
+Thank you, Lane. And I know Paul mentioned an all IT connect =
+agenda item on the CSA exit workshop.
+
+11:55
+So Paul and I are going to =
+meet a little bit later today and that's really just to get awareness to =
+his teams on where he needs some folks to plug in briefly during this. So =
+you can think about that as pulling in the EIT team when we'll go through =
+our budgets because there's obviously going to be some resource needs and =
+EIT input that are needed for that session as well as DEPs and DCM for some=
+ of the interdependency sessions because their input will be needed.
+
+12:33
+Sounds good. And I'll add that to the all IT connect agenda for Monday. =
+Rashid for the Dex DC and he's workshop we on track to share the pre read.
+
+12:47
+And I've got a meeting scheduled with the senior managers partners =
+later this afternoon to go over it in detail. Just a few missing pieces =
+from slideware that I'm tracking so I think we're in good shape here.
+
+13:01
+And has it been reviewed with Bill?
+
+13:06
+Yeah, I gave him a preview=
+ yesterday night so he's seen some of the slides and then we've got a =
+detailed page flip this afternoon.
+
+13:19
+Okay.
+
+13:22
+Would like to chat about the third bullet on the updates though about the =
+James request. He's going out of office I think for like two weeks. We've =
+got some time here but would like to maybe next week. Rakesh and Prashant, =
+while I'm in in Lane, while we're in Charlotte, we chat about this box on =
+how we move forward.
+
+13:42
+Okay. And Charles and that team would also be =
+there. Right. Cyber. So I'm hoping we can have that conversation with =
+Charles as well.
+
+13:51
+Yeah, we would need Charles, Sean and probably Bill=
+ for that discussion.
+
+13:58
+I think we talked already. Sorry, go ahead.
+
+14:01
+Sorry. This is part of the vendor ID strategy. Right. So one, there =
+was a partial scope for managed services that has already been de auctioned=
+. James has come back. Lena saw the mail that Rashid you forwarded that =
+there are pieces that are missed out that need to now be, you know, sent =
+out and packaged and sent out for another vendor to be onboarded. Right. =
+And that is that ideally it needs to get also mixed with the app vendor =
+strategy that they need to push forward. So I know James doesn't ask, but I=
+ think we need to get Paul and others to look at this for holistically and =
+like come up with a plan. We did have a session on vendor IT strategy =
+already with, with that, with that group. So like it would be difficult for=
+ us to kind of pick this up and do like an entire pre auction that scope of=
+ work for what, what James needs. Right. But this is probably a quick =
+change request or something that needs to come up.
+
+15:05
+So. So yeah, there's two points here. So one is the vendor and IT strategy =
+really needs to be aligned across all work streams going into the TSA exit =
+workshop because that is going to impact budgets as well as timelines and =
+who they're planning on supporting their TSAXA projects. The second piece =
+of this is James kind of what James highlighted in his ask is that DCN =
+really doesn't have some EY support at all and he needs an advisor to come =
+in and support him across some of the paper ops that he didn't even mention=
+ because he doesn't likely doesn't even know that they're going to hit =
+because they're not BAU things, they're M and A specific things. So you can=
+ think about that like Active Directory and domain separation. Some of the =
+EUC and device transition that are going to be very different than what he =
+would typically see in his day to day job, especially just given his =
+background. So I think what will likely happen is they'll probably want the=
+ position and advisors come in, start helping him through that and then =
+hope and then try to turn that into additional work for our team. So I =
+think Skip Shoal was the name that I've heard.
+
+16:32
+Yeah, yeah, I hear you and all of this is good. We should discuss this =
+further and scope it out. The one point is that who's going to fund it =
+right now, right. There's already a, you know, an SOW that we are =
+submitting overall. So for phase four, which already has a scope extension =
+across certain areas that include end user migration, additional day one =
+support for erp, this whole app factory piece. So we know that the client =
+is under pressure to reduce consultant requirements. So while we capture =
+all of it and create a view for James, it needs like we need to work with =
+him to kind of get this to Paul, to Sukai, to the new CIO who comes in and =
+then kind of agree on where the funds will come from for this. And he's not=
+ the only one. Mahim has separately reached out for and asked for two to =
+three resources that We've again not put into the sow, so I understand that=
+ we need to scope it well but I don't want us to go and make any =
+commitments saying oh we'll get you people because.
+
+17:46
+No, absolutely, yeah. To me this seems like something that would be a =
+change request and additional opportunity.
+
+17:53
+Yeah, absolutely. And not=
+ an immediate one in my understanding. I don't know Rakesh on the ground =
+but like we're going to have to also depend our current scope that we're =
+proposing pretty you know, significantly to like the tower leaders, Angela =
+M and A teams and so on in the next couple of weeks.
+
+18:19
+Yeah, so yeah, so yeah, just action items there for us. But yes, I'm with =
+you.
+
+18:27
+Sounds good. Also just something to flag is that James is =
+already on vacation as of this morning. He was not on our solstice lead =
+call in case the team was trying to set up any time with him. Moving on to =
+all IT connect topics on this subject. Currently we have our topic for Paul=
+ to address the EIT support for the TSA exit workshop. Lane, is there =
+anything additional that needs to be presented for the TSA exit workshop?
+
+18:57
+No, nothing. At least three for sure.
+
+19:00
+Perfect. And then Corey,=
+ is there any costing data that you would like to socialize?
+
+19:11
+I think we, we decided on showing.
+
+19:13
+A view of the.
+
+19:14
+The budget. Budget versus actual unique. So we'll get, we'll get an updated=
+ view of that.
+
+19:20
+Okay.
+
+19:23
+And Rakesh, I don't know what you =
+thought, what you think about, you know, I don't know if there's anything =
+to show in the OIT connect or remind some folks on. But we can, it might =
+not, we may not need to have like a slot for the gate deliverables or just,=
+ we can just mention that those are due or you know, getting submitted. I =
+think we have most of the inputs and I mean I need to address that broadly =
+with the whole team.
+
+19:52
+Okay.
+
+19:53
+Yeah, it may be just enough. Do we=
+ need. Are we requesting any information from that?
+
+20:03
+You know, I think the requests are out there. I think for ERP it's just =
+getting.
+
+20:07
+Getting back information based on SAP negotiations which, =
+which I think we don't have yet.
+
+20:14
+And, and then for cloud.
+
+20:18
+Information on those applications.
+
+20:20
+So let's include a slide on =
+status update that essentially has your heat map but essentially I would =
+expect everything else to be closed out and just these two for standalone =
+costs, the particular sections.
+
+20:40
+And then Corey, I'll just await the =
+data from you. Thank you. And then Matt, is there something to share for =
+UAT on Monday? Is there anything we want to socialize Mac, Rakesh.
+
+20:59
+For UAT Sit is starting so I think it's. We'd want to socialize the =
+calendar that's been put together that will develop by end of the day. So =
+that will. Yeah. So there'll be a couple of things that will socialize a =
+calendar, we'll socialize the trackers and we'll also socialize the =
+dashboard that we're starting to maintain. So there will be a morning and =
+an afternoon reporting that goes out and a cadence set up. So a daily scrum=
+ call, etc. Being set up from Monday. So it'll be more of a morning evening=
+ update. So we can. We should add a slide there for what the dashboard =
+reporting and tracking would look like as well as potentially a defect =
+tracker. So add that as well. So status execution status tracking readiness=
+ and execution status and then defect management.
+
+22:00
+Okay, so the defect management Rick has just like your set one, set two set=
+ three defects.
+
+22:10
+Yes.
+
+22:13
+Mac, let's align on this content so we =
+have it in by Monday in the slides for the all NT connect. Moving on to =
+staffing. Prashant, I know you are planning to discuss this with Charles, =
+so I'm just going to park for now until we have an update and then. Rashid,=
+ were you able to get the PC rollout schedule?
+
+22:38
+I received it about 1:00 clock yesterday.
+
+22:42
+Okay. And so for this item=
+, what are we tracking currently?
+
+22:49
+To me I'd close this out. We've =
+got the schedule and now it's just designing and aligning on user migration=
+ schedules which we were tracking I think on the right. No, we're not =
+actually. We took that one off.
+
+23:02
+So track it here, socialize that. =
+Help us understand what could be potential risk, what may need to be =
+sequenced, etc. But let's track it here again this goes back to the. My =
+first thing statement refer for.
+
+23:23
+Yeah, for Sukai.
+
+23:24
+Yeah.
+
+23:24
+To me it's a broader. Like how is infrastructure migrating everything=
+ including you know, just sites, servers, network PCs, unstructured data. =
+Like it's all one thing. But agreed, we'll. We'll outline those risks =
+specific to PCs.
+
+23:42
+All right, thanks Rashid. Moving on to BRV =
+readiness, I've got.
+
+23:48
+One risk that I want to raise here on the left =
+side of the PMO and catcher word. So Rashid, I know that you have said that=
+ Power Apps and Power BI are covered by the data and analytics team. I was =
+just on a call with Paul and the leads and Maheen specifically said believe=
+ that Power Apps and Power BI are covered by. So there is a misalignment =
+and A gap there where that no one is picking this up.
+
+24:27
+Let me, let me do some digging on my end because PowerApp came up early in =
+the project and I know it got resolved somehow. So let me just go through =
+those emails. I'm sure it's somewhere in there in.
+
+24:39
+Power BI is probably the bigger piece but those will both need to follow =
+the M365 migration schedule. It's specific being specifically called out in=
+ scope for aui. So we just need to understand who owns that because it is a=
+ large piece of work for shiny. Edgar.
+
+25:08
+Hey, I've heard a couple of =
+times today about some meeting with Paul and the Solstice team leads. I. =
+I'm not sure is this a recurring thing? I've not seen anything on the cat.
+
+25:18
+Yeah, I've not. I haven't seen anything on my calendar.
+
+25:21
+I just want to be sure.
+
+25:24
+Specifically pulled into that for us to =
+present for 30 minutes. They have an hour long meeting every day that's =
+internal to them that they asked us to join to take them through the TSA =
+exit workshop agenda.
+
+25:39
+Just keep us informed of that.
+
+25:41
+Interesting. So who's setting this up? Paul has set up a meeting. But EY is=
+ not on that meeting, right?
+
+25:50
+No, ENY is not on that call. It's their=
+ internal daily sync and he asked Bill and I to be on it last night so that=
+ we could take him through the agenda we joined this morning and walk them =
+through the TSAX workshop.
+
+26:06
+Okay. All right, that is good to know. I =
+did not know that this meeting existed. All right.
+
+26:14
+Rashid, do you have your hand out?
+
+26:16
+Yeah, just quickly because I've =
+got a drop. Prashant, Raquette, do you feel comfortable with the hypercare =
+meeting? You guys are able to join. No more talking points. Do you want to =
+see slides in advance?
+
+26:25
+I will be on Rajiv, if you can send me the =
+slides in advance because I also need to then work with. I mean between you=
+, me and Paul will need to work with the deal PMO team to to kind of align =
+on. On the overall Hypercare command center strategy. Right. So that's =
+going to be run centrally and IT command center will kind of be a big =
+participant of that. Right. So we need to kind of tie out with that.
+
+26:53
+That works just 30 seconds. D.C. there's misalignment within DCN. You know =
+Aaron Hicks thinks absolutely. This is in my scope. I own this. Okay. And =
+Haritha, you saw their emails. They said absolutely not. It's not in our =
+scope. And this is on Rachel. So that's the kind of the first let's make =
+sure everyone's on the same page on who's doing what and then yeah, we can =
+go through the content.
+
+27:14
+Okay. This is the one at 2:30 Eastern.
+
+27:18
+I believe so.
+
+27:20
+Okay.
+
+27:25
+If you want to prioritize UAT and =
+other areas, I, I will commit to joining that one.
+
+27:30
+Okay. It's related to. Yeah, fair enough.
+
+27:35
+Moving on to BRV actually =
+before we close out, I know we're overtime but. General update on this Mac.
+
+27:47
+Yeah. For the workshop tomorrow. We met with Paul. We've shared the =
+data with him. He's walked through it. He's largely aligned to the, to what=
+ we're putting in. He wants to go through the double clicks in more detail =
+and he wants to follow up with a couple of people to update the content. So=
+ between the Monday morning sync is we'll have to just plan on having this =
+as a topic that we, we walk her through it. I know she has some planned =
+time off or whatever or she's traveling somewhere else next Monday. So I, I=
+ do need to work with you to get that 15 minutes with her. Walk her through=
+ the BRB agenda.
+
+28:30
+Okay. So we, we have a, we have a connect later =
+today on it. So let's talk during that time.
+
+28:36
+Yeah, thank you.
+
+28:43
+And sorry on the other one the. Thank you. Arpit Prashant for and the rest =
+of the team, Sakina, everyone else for the content. Sukai is on board with =
+the content. She had some nets this morning and we have some talking points=
+. We're meeting with Jeff and a few and then we'll let you know how things =
+go. But I think. Yeah, we're. We're providing an update on UAT to Jeff in a=
+ little while.
+
+29:13
+I'm not on that meeting. Rakesh, I don't want.
+
+29:16
+Yeah, no, no, you're good.
+
+29:20
+Let me.
+
+29:22
+Sure. All right.
+
+29:28
+Anything that we need to discuss Now I know we are over time and we have =
+conflicting meetings after but we can pick back up at eod.
+
+29:39
+Sounds good. It.
+----_NmP-d69c3b3d2c8edc36-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Structured =
+Project Planning With Risk Management</h1></td></tr></table></div><div =
+style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/B7B0EEC8-E89F-4CCD-B145-DB4091F8A29D?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h1 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2.5rem">Meeting Summary =E2=80=93 June 20, 2025</h1><h2 =
+style=3D"font-weight:500;padding-top:20px;font-size:2rem">Attendees</h2><ul=
+>
+<li>Rakesh</li>
+<li>Prashant</li>
+<li>Sakina</li>
+<li>Charles</li>
+<li>Lane</li>
+<li>Paul</li>
+<li>Rashid</li>
+<li>Bill</li>
+<li>Corey</li>
+<li>Mac</li>
+<li>Others as referenced: Sukai, Tom Moker, Mahesh, James, =
+Mahim, Jeff, Angela, Sean, Skip Shoal</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Main Topics =
+Discussed</h2><h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">1. <strong style=3D"font-weight:bold">Project Planning &amp; =
+Structured Deliverables</strong></h3><ul>
+<li><strong =
+style=3D"font-weight:bold">Need for Structured Timetable:</strong> There is=
+ consensus on reviving a detailed, step-by-step project timetable, =
+reminiscent of efforts two to three months ago. The focus is on providing a=
+ clear look-ahead, tactical T-minus planning, and early identification of =
+activities and deliverables between now and October.</li>
+<li><strong style=3D"font-weight:bold">Advance Preparation:</strong> Sukai =
+requested not to receive last-minute notices and prefers all significant =
+deliverables to be shared well ahead of time=E2=80=94especially those =
+requiring review or communication to the broader program.</li>
+<li><strong style=3D"font-weight:bold">Review Cycles:</strong> There will =
+be built-in review cycles with both Paul and Sukai for all key deliverables=
+. Recent lapses (e.g., the BRV readiness workshop) underscored the need for=
+ timely alignment.</li>
+<li><strong style=3D"font-weight:bold">Game-plannin=
+g &amp; Rigorous Tracking:</strong> Each &quot;big rock&quot; or major =
+deliverable will be mapped out in detail, with owners coming prepared to =
+report status, delays, risks, and escalation needs.</li>
+<li><strong style=3D"font-weight:bold">Tactical Planning:</strong> Next =
+week, a session will be held to define granular plans for each high-impact =
+deliverable.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-=
+size:1.5rem">Key Points:</h4><ul>
+<li>All tower leads and functional owners=
+ to draft their tactical plans, which will be iteratively refined as a team=
+.</li>
+<li>Weekly structured reviews and escalations are to replace ad hoc =
+reporting.</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px;=
+font-size:1.75rem">2. <strong style=3D"font-weight:bold">Staffing and =
+Resource Onboarding</strong></h3><ul>
+<li><strong style=3D"font-weight:bold=
+">App Factory Staffing:</strong> Discussions continue on staffing for the =
+App Factory work stream. Charles to discuss with Prashant about onboarding =
+cross-functional resources.</li>
+<li><strong style=3D"font-weight:bold">Res=
+ource Onboarding:</strong> Director Tom Moker is being considered for =
+onboarding, with Sakina tasked to coordinate and complete initial =
+independence checks.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20=
+px;font-size:1.5rem">Key Points:</h4><ul>
+<li>Proposal and staffing =
+approach for App Factory is with all tower leads; reactions are awaited.=
+</li>
+<li>Expectation to begin onboarding people next week, pending =
+conversations with Paul.</li>
+<li>Multiple work streams, including app =
+factory, unstructured data, and end-user migration, will require increased =
+resources.</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px;=
+font-size:1.75rem">3. <strong style=3D"font-weight:bold">Server &amp; Site =
+Migrations</strong></h3><ul>
+<li><strong style=3D"font-weight:bold">Edge =
+Server Migration:</strong> Rashid is to provide a server migration schedule=
+ identifying what apps are moving, especially aligned with site cutover =
+plans.</li>
+<li><strong style=3D"font-weight:bold">Site Cutover =
+Pilots:</strong> Active pilot migrations are ongoing at two Pennsylvania =
+sites; details (lid codes and dates) will be provided.</li>
+<li><strong style=3D"font-weight:bold">Visibility &amp; =
+Communication:</strong> Emphasized importance of informing app owners of =
+their migration responsibilities and giving Sukai advance notice regarding =
+these pilots and changes.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-t=
+op:20px;font-size:1.5rem">Key Points:</h4><ul>
+<li>Server migrations are =
+specifically for edge servers located at physical sites, not data centers.=
+</li>
+<li>Communication plans involving IT Comms and Mahesh are necessary.=
+</li>
+<li>Broader visibility for Sukai on pilots and potential risks are =
+required.</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px;f=
+ont-size:1.75rem">4. <strong style=3D"font-weight:bold">CSA Exit Workshop =
+&amp; TSA Exit Planning</strong></h3><ul>
+<li><strong =
+style=3D"font-weight:bold">Workshop Preparation:</strong> Lane updated that=
+ a detailed, hour-by-hour agenda for the upcoming two-day workshop was =
+presented to Paul and team, and is aligned with expectations.</li>
+<li><strong style=3D"font-weight:bold">Contract Team Presentation:</strong>=
+ The contracts team will prepare a 30-minute presentation on securing RTUs =
+for day one to address access concerns.</li>
+<li><strong =
+style=3D"font-weight:bold">EIT and Interdependency Input:</strong> Paul =
+will coordinate with various teams (EIT, DEPs, DCM) on budget and =
+interdependency sessions; Lane will add to the All IT Connect agenda for =
+Monday.</li>
+<li><strong style=3D"font-weight:bold">Material &amp; Pre-read=
+ Preparation:</strong> Rashid confirmed a pre-read for the Dex DCN workshop=
+ is ready, pending review with Bill and senior managers.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem">Key =
+Points:</h4><ul>
+<li>Workshop readiness is high with over a week for final =
+preparations.</li>
+<li>Several requests for support and data from internal =
+functions in the coming week.</li>
+<li>Paul and Lane to coordinate on team =
+inputs and presentations for upcoming sessions.</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">5. <strong=
+ style=3D"font-weight:bold">Vendor &amp; IT Strategy / Resource =
+Funding</strong></h3><ul>
+<li><strong style=3D"font-weight:bold">Vendor =
+Scope Alignment:</strong> Discussion on aligning vendor IT strategy across =
+all work streams before TSA exit. Certain managed service scopes were =
+missed and will need to be handled via a new vendor or change request.</li>
+<li><strong style=3D"font-weight:bold">Resource Gap for DCN:</strong> James=
+ (now out of office for two weeks) highlighted the absence of EY support =
+for DCN and the need for advisory resources, especially for =
+M&amp;A-specific activities (e.g., Active Directory, device transitions).=
+</li>
+<li><strong style=3D"font-weight:bold">Funding Constraints:</strong> =
+Expansion requests for resources from James and Mahim require alignment and=
+ funding approval. The SOW for Phase 4 is already under budget pressure, (i=
+.e., additional headcount may require change requests and client =
+negotiation).</li>
+<li><strong style=3D"font-weight:bold">Resource =
+Commitments:</strong> The team will avoid making firm commitments before =
+funding and scope are clarified.</li>
+</ul>
+<h4 style=3D"font-weight:500;pa=
+dding-top:20px;font-size:1.5rem">Key Points:</h4><ul>
+<li>Next step: Draft a holistic resourcing and funding plan for new =
+requests; to be discussed with Paul, Sukai, and upcoming CIO.</li>
+<li>All resource discussions to be scoped and documented for potential =
+future change requests.</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padd=
+ing-top:20px;font-size:1.75rem">6. <strong style=3D"font-weight:bold">Progr=
+am &amp; Cost Tracking</strong></h3><ul>
+<li><strong =
+style=3D"font-weight:bold">Budget Tracking:</strong> Corey to provide an =
+updated view of budget vs. actuals for presentation.</li>
+<li><strong style=3D"font-weight:bold">Workshop Status Updates:</strong> =
+Status heatmaps and pending actions (specifically for ERP and cloud =
+deliverables) to be shared at All IT Connect.</li>
+<li><strong =
+style=3D"font-weight:bold">UAT Progress:</strong> SIT (System Integration =
+Testing) is starting. Calendar, trackers, and dashboards for readiness and =
+defect tracking will be developed and socialized, with daily morning and =
+afternoon reporting from next week.</li>
+</ul>
+<h4 style=3D"font-weight:500=
+;padding-top:20px;font-size:1.5rem">Key Points:</h4><ul>
+<li>UAT status updates and associated reporting mechanisms (defect tracker,=
+ execution dashboards) will be included in All NT Connect materials.</li>
+<li>ERP and cloud dependency information is pending (awaiting SAP =
+negotiation results).</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;paddin=
+g-top:20px;font-size:1.75rem">7. <strong style=3D"font-weight:bold">PC =
+Rollout &amp; Infrastructure Migration</strong></h3><ul>
+<li><strong style=3D"font-weight:bold">PC Rollout Schedule:</strong> Rashid=
+ has received the schedule; now focusing on mapping risks and aligning =
+sequences of user migrations.</li>
+<li><strong style=3D"font-weight:bold">H=
+olistic Infrastructure Migration:</strong> Emphasis on tracking risk across=
+ all infrastructure components (sites, servers, network, PCs, unstructured =
+data), not in isolation.</li>
+<li><strong style=3D"font-weight:bold">Risk =
+Reporting:</strong> Any risks or sequencing issues to be flagged for Sukai =
+and senior stakeholders.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-to=
+p:20px;font-size:1.5rem">Key Points:</h4><ul>
+<li>Risks specific to PC =
+deployment and broader infrastructure migrations need to be monitored and =
+communicated.</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20=
+px;font-size:1.75rem">8. <strong style=3D"font-weight:bold">Ownership and =
+Risk Gaps: PowerApps &amp; Power BI</strong></h3><ul>
+<li><strong style=3D"font-weight:bold">Responsibility =
+Misalignment:</strong> There is confusion regarding ownership of PowerApps =
+and Power BI migration. Data &amp; Analytics vs. other teams (Maheen/Paul) =
+have conflicting understandings.</li>
+<li><strong style=3D"font-weight:bold=
+">Action:</strong> Rashid to review project emails and clarify past =
+resolutions; both areas will need to align with the M365 migration schedule=
+ and be clearly assigned.</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-t=
+op:20px;font-size:1.5rem">Key Points:</h4><ul>
+<li>Ensuring clear =
+assignment of owners for these tools is critical, due to the scale of work =
+and impact.</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px=
+;font-size:1.75rem">9. <strong style=3D"font-weight:bold">Internal &amp; =
+Cross-Team Communication</strong></h3><ul>
+<li><strong =
+style=3D"font-weight:bold">Unscheduled/Undocumented Meetings:</strong> An =
+internal daily sync exists with Paul and Solstice team leads (not on =
+broader team calendars, nor including EY).</li>
+<li><strong =
+style=3D"font-weight:bold">Awareness:</strong> Bill and Lane participated =
+in the review of the TSA exit workshop agenda; teams to be made aware if =
+their attendance is specially required.</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">10. =
+<strong style=3D"font-weight:bold">Hypercare and Command Center =
+Strategy</strong></h3><ul>
+<li><strong style=3D"font-weight:bold">Upcoming =
+Meeting:</strong> A Hypercare meeting is scheduled for 2:30 Eastern; slides=
+ to be sent by Rajiv for pre-review.</li>
+<li><strong =
+style=3D"font-weight:bold">Ownership Misalignment within DCN:</strong> =
+Aaron Hicks claims scope ownership for Hypercare, while others disagree. =
+Need for consensus on roles before proceeding.</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Action =
+Items</h2><ol>
+<li><p><strong style=3D"font-weight:bold">Project =
+Structuring</strong></p>
+<ul>
+<li>All tower/function leads to draft and =
+circulate initial tactical workstream plans before next week=E2=80=99s =
+session.</li>
+<li>Rakesh/Prashant to coordinate and schedule the session to=
+ refine these plans.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Staffing</strong></p>
+<ul>
+<li>Sakina to onboard Tom Moker and complete all independence checks.</li>
+<li>Charles and Prashant to finalize discussion on cross-functional =
+staffing for App Factory.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Server &amp; Site Migration</strong></p>
+<ul>
+<li>Rashid to send the server migration schedule (with lid codes and dates)=
+ today.</li>
+<li>Team to review and coordinate communications with app =
+owners and Mahesh/IT Comms.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">CSA Exit Workshop</strong></p>
+<ul>
+<li>Contracts team to prepare a 30-min RTU access presentation.</li>
+<li>Lane to include EIT and other function=E2=80=99s input sessions in =
+Monday=E2=80=99s All IT Connect agenda.</li>
+<li>Rashid to complete and =
+circulate Dex DCN pre-read, finalize details with Bill.</li>
+<li>Bill/Lane to coordinate internal workshop alignment meetings as needed.=
+</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Vendor &amp; =
+Resource Requests</strong></p>
+<ul>
+<li>Document all new advisory/resource =
+requests (James, Mahim) and draft change request justification.</li>
+<li>Prepare funding/approval plan for review with Paul, Sukai, and new CIO.=
+</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">UAT &amp; =
+Reporting</strong></p>
+<ul>
+<li>Mac to finalize UAT calendar, trackers, and=
+ dashboards by Monday for All NT Connect.</li>
+<li>Status slides (including=
+ defect management) to be prepared for review.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">PC Rollout Risk =
+Tracking</strong></p>
+<ul>
+<li>Rashid to track and report on PC rollout =
+risks; socialize with affected teams.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">PowerApps/Power BI =
+Ownership</strong></p>
+<ul>
+<li>Rashid to clarify ownership and ensure all =
+parties are aligned; communicate results.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Hypercare</strong></p>
+<ul>
+<li>Rajiv to send slides in advance of the 2:30 Hypercare meeting.</li>
+<li>Team to clarify DCN ownership roles for Hypercare Command Center and =
+ensure alignment.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold=
+">Workshop &amp; Alignment Meetings</strong></p>
+<ul>
+<li>Plan time with Sukai next Monday for BRV walkthrough.</li>
+<li>Lane to update All IT Connect agenda with status of CSA and TSA topics.=
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20p=
+x;font-size:2rem">Follow-Up Items &amp; Meetings</h2><ul>
+<li><strong style=3D"font-weight:bold">Next Week:</strong> Tactical =
+planning and alignment meeting for all major deliverables (date TBD).</li>
+<li><strong style=3D"font-weight:bold">Monday (June 23, 2025):</strong> All=
+ IT Connect session with updated workshop topics, budget, UAT, and status =
+tracking.</li>
+<li><strong style=3D"font-weight:bold">Today:</strong> Dex =
+DCN pre-read review with senior managers.</li>
+<li><strong =
+style=3D"font-weight:bold">Later Today:</strong> Meeting with Sukai for BRV=
+ agenda walkthrough.</li>
+<li><strong style=3D"font-weight:bold">2:30 PM ET=
+ (Today):</strong> Hypercare strategy alignment meeting.</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Risks &amp; =
+Escalations</h2><ul>
+<li>Misalignment on deliverable ownership (notably =
+PowerApps/Power BI, Hypercare in DCN).</li>
+<li>Resource/funding requests =
+exceeding current SOW and client budget constraints.</li>
+<li>Visibility and timely communication to key stakeholders (especially =
+Sukai and Paul) to avoid last-minute escalations.</li>
+<li>Sequencing and integration risks across multiple parallel migrations =
+and deployments.</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top=
+:20px;font-size:2rem">Summary Statement</h2><p>The team is shifting from ad=
+ hoc to rigorously planned and documented cycles for major deliverables, =
+with an emphasis on proactive communication, risk tracking, and resource =
+management. Multiple action items and follow-ups are scheduled to ensure =
+clarity, alignment, and timely execution, particularly as several critical =
+workshops and migrations approach in the coming weeks.</p>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0,=
+ 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex;align-i=
+tems:center;gap:8px"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</=
+span>Transcription</h3><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">0:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Through just step by=
+ step, not just this, but when we come in, it&#x27;s not just, you know, =
+what happened today. What it is, I think we would like to have a structured=
+ timetable of steps so somewhat similar to what we were doing a couple of =
+months ago, two, three months ago. But we want to bring it back to the =
+point where it&#x27;s, we have a look ahead that you know, if we&#x27;re =
+working towards the BRV ready us, you know that there are a few workshops =
+coming, there are things kicking off. So we do a T minus plan and we =
+understand what the activities are. And one of the primary reasons has been=
+ as well that Sukai pinged us and told us that she doesn&#x27;t much =
+appreciate last minute notices. So particularly where it comes to providing=
+ her and Paul with any deliverables or anything that they need to be read =
+into and read out to the broader program. They would like time ahead to =
+prepare that with us. So the only, probably the most likely way we can do =
+that is if we game plan each of the key mile deliverables that&#x27;s =
+coming out. So all of the big rocks activities that are going to be coming =
+up between now and October, we should lay that out including all the =
+deliverables and have a tactical plan to do what we will day on day or week=
+ on week so that we understand and also bake in time for review with Paul =
+and her before. So again a couple of recent examples, you know, the BRB =
+readiness workshop has been, you know, just a fire drill mode. We submitted=
+ it but you know, Paul has been aware and he read into it somewhat and =
+we&#x27;re having the review with him. We&#x27;ve not had that review with =
+Sukai and I think she&#x27;d made the point that you know, on two things. =
+One, if there are urgencies and if there are risks, she would like to know =
+ahead of time that we bring it up to her. But two and two that we read in, =
+read her in into these, any deliverables or anything&#x27;s coming up from.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</span><sp=
+an style=3D"color:#64748b;font-size:14px">2:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Or.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>2:07</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Any other deliverable ahead of time. So we take that in, you know, into =
+consideration. So the point I&#x27;m trying to make here is that next week =
+we&#x27;ll spend some time just talking through as we lay out for each of =
+these key key big ticket items how we want to game plan that and a very =
+tactical game plan. Okay, there&#x27;s gig five deliverable. This is again =
+it&#x27;s not new. It&#x27;s what we&#x27;ve done. We just need to do it =
+with a bit more rigor. So we&#x27;ll, we&#x27;ll discuss that then. What =
+that means for this call then is it won&#x27;t be as much ad hoc. =
+We&#x27;ll have a structure, a bit more structure in place as to. =
+We&#x27;ll go through, you know, every step of it so that the right owner =
+here can come and provide a view into, you know, x has happened, Y has not =
+happened. This is a delay. This is where I see the risk and this is what =
+needs to be escalated. So let me stop there, see if Prashant, if you want =
+to add anything and then get a reaction or a thoughts and comments from the=
+ team, I.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</span><sp=
+an style=3D"color:#64748b;font-size:14px">3:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Think you covered it=
+. While we have a good, while we have a structure of what we&#x27;re doing,=
+ it&#x27;s kind of become a little bit tactical. So just aligning it to =
+what we are on the hook for and making sure that we have some review cycles=
+, plan. That&#x27;s the intent.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh<=
+/span><span style=3D"color:#64748b;font-size:14px">3:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And keep in mind =
+this list is as we go through this next phase, all of you saw the proposal.=
+ So if we get all of that work, including all this core stuff we&#x27;re =
+doing, there&#x27;s going to be work on app factory, unstructured data, end=
+ user migration. So it&#x27;s, it&#x27;s different. Several more work =
+streams that will be spun up and several more tactics, you know, somewhat =
+independent deliverables and somewhat related. So we do need to get a good =
+handle on that. So again, we&#x27;ll talk through that more next week. But =
+as you are working on your work streams here, think about, you know, =
+tactically, my ask of our ask of all of you is, you know, where it is =
+within your remit, you know, put together the initial view of the plan and =
+we will also work with you to refine that. So the goal next week, end of an=
+ activity or key item or body of work and talk through, you know, what is =
+it we&#x27;re going to be hitting in every day, every week so that =
+we&#x27;re marching to it with a bit more rigor. So having said that, =
+let&#x27;s get into it for this week certainly and into early next week. So=
+ I&#x27;ll turn it over to you, Sakina.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sakina</span><span style=3D"color:#64748b;font-size:14px"=
+>4:48</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Thank you Rakesh for starting us off. Yeah, so just starting with the =
+move as is coordination by dcn. Charles, I know you were planning on =
+chatting with Prashant. Any update on this area? Just generally on staffing=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</span><sp=
+an style=3D"color:#64748b;font-size:14px">5:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sorry I was not on =
+the one yesterday but I do see Charles to chat with Prashant GS staffing =
+topics resources is that linked to move as his effort?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sakina</span><span style=3D"color:#64748b;font-size:14px"=
+>5:24</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I don&#x27;t think to do with like staffing. So we were discussing at =
+Factory staffing and he said that he was wondering whether we could onboard=
+ resources that could help across he&#x27;s and it.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prashant</span><span style=3D"color:#64748b;font-size:14p=
+x">5:37</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Okay, so let&#x27;s take that off of there Sakina in that case and put=
+ that as a separate topic that we can discuss with her with Charles.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina</span><span=
+ style=3D"color:#64748b;font-size:14px">5:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You said yes.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</span><sp=
+an style=3D"color:#64748b;font-size:14px">5:49</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. So yeah, I =
+know. I&#x27;m aware of this and I need to get a conversation going with =
+Charles.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Corey</span><span =
+style=3D"color:#64748b;font-size:14px">5:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We&#x27;ll.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</span><sp=
+an style=3D"color:#64748b;font-size:14px">5:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We&#x27;ll do that =
+move as is Good. We&#x27;ve got a potential resource.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rashid</span><span style=3D"color:#64748b;font-size:14px"=
+>6:02</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">For to.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</span><sp=
+an style=3D"color:#64748b;font-size:14px">6:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Staff up App Factory=
+. The proposal or our approach is out and it&#x27;s been shared with all of=
+ the tower leads. No one has reacted. I&#x27;m going to have a conversation=
+ with Paul and assume that we&#x27;ll start getting people on the ground =
+next week. Internally we&#x27;ve identified a director Sakina. I will reach=
+ out to you to onboard Tom Moker on the project. We&#x27;ve got confidence.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">6:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prashant</span><span style=3D"color:#64748b;font-size:14p=
+x">6:32</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah, yeah, that is actually pretty nice. So I, I&#x27;ll need to. =
+I&#x27;ll work with you Sagina to set up some time and, and do an =
+onboarding and then of course we need to do all of the independent initial =
+independence checks and whatnot. Right. So we&#x27;ll just get those done.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina</span><span=
+ style=3D"color:#64748b;font-size:14px">6:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Got it.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</span><sp=
+an style=3D"color:#64748b;font-size:14px">6:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina</span><span=
+ style=3D"color:#64748b;font-size:14px">6:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep, sounds good. =
+Thank you for that.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rashid</span>=
+<span style=3D"color:#64748b;font-size:14px">6:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Can you put us to =
+keep an action item for me on this line item that I owe Rakesh and Prashan =
+the server migration schedule. This will show them what apps are moving, at=
+ least the line in the sand from dcn. So I need to get that over to them =
+today.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina</span><span=
+ style=3D"color:#64748b;font-size:14px">7:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Thanks, Rashid.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</span><sp=
+an style=3D"color:#64748b;font-size:14px">7:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Rashid, I know you =
+talked about this, but when you say server migration schedule, it is. So =
+apps are moving and they have some plans already. Right, so what servers =
+are these?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rashid</span><span=
+ style=3D"color:#64748b;font-size:14px">7:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, this is =
+specific to the edge server. So these are applications that are hosted at =
+the site. So we&#x27;re following.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prasha=
+nt</span><span style=3D"color:#64748b;font-size:14px">7:45</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">I think.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rashid</span><span=
+ style=3D"color:#64748b;font-size:14px">7:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, we&#x27;re =
+cutting over the network and so the app owners need to be aware of all the =
+work they need to be doing per the schedule.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prashant</span><span style=3D"color:#64748b;font-size:14p=
+x">7:53</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">So does this link to the site migration schedule then? Or are these =
+servers sitting on data centers or are these sitting on site?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rashid</span><span=
+ style=3D"color:#64748b;font-size:14px">8:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, they&#x27;re =
+sitting on site.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</spa=
+n><span style=3D"color:#64748b;font-size:14px">8:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So they&#x27;re =
+sitting on site, then they&#x27;re part. So basically what you&#x27;re =
+saying is that there is a site cutover schedule that has been published and=
+ then the server migration of these edge systems will be aligned to align =
+to that site move, Right?</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rashid</span>=
+<span style=3D"color:#64748b;font-size:14px">8:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;s right. =
+That&#x27;s a better way to say it.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prashant</span><span style=3D"color:#64748b;font-size:14p=
+x">8:22</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Okay, so which site is moving immediately? Like. Like right now I know=
+ the.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rashid</span><span=
+ style=3D"color:#64748b;font-size:14px">8:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">There&#x27;s two =
+sites that are being piloted in Pennsylvania. That but let me not speak =
+offhand, let me get to the actual lid codes and the dates on when =
+they&#x27;re moving. And it also includes the applications that are being =
+hosted on that site at that site.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh<=
+/span><span style=3D"color:#64748b;font-size:14px">8:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So that would be =
+good because. So for various reasons, Rashid, I think us as a team, we all =
+need to know but I think if there&#x27;s any communication that needs to go=
+ out as it relates to this and the pilot, it&#x27;s something that we need =
+to talk to Mahesh about, including the IT comms, etc. I don&#x27;t doubt =
+that that&#x27;s probably already in their minds and that team&#x27;s =
+communicating but it&#x27;d be good visibility for us that we bring in. So =
+these are things like that as a good example team and Rashid that we would =
+want Sukai to know that there is a pilot happening here and that this is =
+things that she needs to know in terms of look out for this or watch out =
+for this or heads up that these are things coming. So yeah, just to =
+publicize that with us, send it to the team so that we can review and if =
+there&#x27;s any actioning that we need to do as a team, let&#x27;s talk =
+through that so that we can make sure Paul and Sukai are up to date on that=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rashid</span><span=
+ style=3D"color:#64748b;font-size:14px">9:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sure, let&#x27;s do =
+that. I think most important is making the app owners aware of what work =
+they need to do by when. I think that&#x27;s the big piece of it. So we can=
+, when I share it with you, I say we have that conversation at least =
+something today.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">10:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Let&#x27;s do that. =
+We should, we should. And I think you have something later in the day so =
+you have the content review but perhaps after that.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rashid</span><span style=3D"color:#64748b;font-size:14px"=
+>10:12</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Sure, we&#x27;ll do okay.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina<=
+/span><span style=3D"color:#64748b;font-size:14px">10:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right, thank you=
+ both. Lane, anything on the teasing? Is the workshop after a meeting =
+earlier?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">10:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, so I&#x27;ll =
+update this meeting. So Bill and I met with Paul and the leads this morning=
+. We walked them through our outcomes and agenda for the two day workshop. =
+Kind of very detailed I would say hour by hour, what we&#x27;re doing, no =
+updates. I they&#x27;re aligned with what we want to accomplish accomplish =
+in the way that we&#x27;re going about doing that. I will say that there =
+will be a few asks of the team coming through today and into next week. So =
+specifically for the contracts team, we will be asking for you guys to put =
+together probably a 30 minute presentation of how your going about getting =
+RTUs prior to day one. And it&#x27;s really just going to meant to =
+alleviate any concerns on access and right to Use those during the interim =
+period for some other work streams. We&#x27;ll have some masks coming out =
+over the next few days, but I would say in general for the workshop =
+we&#x27;re in very good shape and we have have, you know, over a week to =
+get ready for it, which is puts us in a very good spot.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sakina</span><span style=3D"color:#64748b;font-size:14px"=
+>11:47</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Thank you, Lane. And I know Paul mentioned an all IT connect agenda =
+item on the CSA exit workshop.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</s=
+pan><span style=3D"color:#64748b;font-size:14px">11:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So Paul and I are =
+going to meet a little bit later today and that&#x27;s really just to get =
+awareness to his teams on where he needs some folks to plug in briefly =
+during this. So you can think about that as pulling in the EIT team when =
+we&#x27;ll go through our budgets because there&#x27;s obviously going to =
+be some resource needs and EIT input that are needed for that session as =
+well as DEPs and DCM for some of the interdependency sessions because their=
+ input will be needed.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina</span>=
+<span style=3D"color:#64748b;font-size:14px">12:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sounds good. And =
+I&#x27;ll add that to the all IT connect agenda for Monday. Rashid for the =
+Dex DC and he&#x27;s workshop we on track to share the pre read.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rashid</span><span=
+ style=3D"color:#64748b;font-size:14px">12:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And I&#x27;ve got a =
+meeting scheduled with the senior managers partners later this afternoon to=
+ go over it in detail. Just a few missing pieces from slideware that =
+I&#x27;m tracking so I think we&#x27;re in good shape here.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Lane</span><span style=3D"color:#64748b;font-size:14px">=
+13:01</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">And has it been reviewed with Bill?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rashid</span><span style=3D"color:#64748b;font-size:14px"=
+>13:06</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah, I gave him a preview yesterday night so he&#x27;s seen some of =
+the slides and then we&#x27;ve got a detailed page flip this afternoon.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">13:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rashid</span><span=
+ style=3D"color:#64748b;font-size:14px">13:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Would like to chat =
+about the third bullet on the updates though about the James request. =
+He&#x27;s going out of office I think for like two weeks. We&#x27;ve got =
+some time here but would like to maybe next week. Rakesh and Prashant, =
+while I&#x27;m in in Lane, while we&#x27;re in Charlotte, we chat about =
+this box on how we move forward.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh<=
+/span><span style=3D"color:#64748b;font-size:14px">13:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. And Charles =
+and that team would also be there. Right. Cyber. So I&#x27;m hoping we can =
+have that conversation with Charles as well.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Lane</span><span style=3D"color:#64748b;font-size:14px">1=
+3:51</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, we would need Charles, Sean and probably Bill for that discussion.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">13:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think we talked =
+already. Sorry, go ahead.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</spa=
+n><span style=3D"color:#64748b;font-size:14px">14:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sorry. This is part =
+of the vendor ID strategy. Right. So one, there was a partial scope for =
+managed services that has already been de auctioned. James has come back. =
+Lena saw the mail that Rashid you forwarded that there are pieces that are =
+missed out that need to now be, you know, sent out and packaged and sent =
+out for another vendor to be onboarded. Right. And that is that ideally it =
+needs to get also mixed with the app vendor strategy that they need to push=
+ forward. So I know James doesn&#x27;t ask, but I think we need to get Paul=
+ and others to look at this for holistically and like come up with a plan. =
+We did have a session on vendor IT strategy already with, with that, with =
+that group. So like it would be difficult for us to kind of pick this up =
+and do like an entire pre auction that scope of work for what, what James =
+needs. Right. But this is probably a quick change request or something that=
+ needs to come up.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><s=
+pan style=3D"color:#64748b;font-size:14px">15:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So. So yeah, =
+there&#x27;s two points here. So one is the vendor and IT strategy really =
+needs to be aligned across all work streams going into the TSA exit =
+workshop because that is going to impact budgets as well as timelines and =
+who they&#x27;re planning on supporting their TSAXA projects. The second =
+piece of this is James kind of what James highlighted in his ask is that =
+DCN really doesn&#x27;t have some EY support at all and he needs an advisor=
+ to come in and support him across some of the paper ops that he =
+didn&#x27;t even mention because he doesn&#x27;t likely doesn&#x27;t even =
+know that they&#x27;re going to hit because they&#x27;re not BAU things, =
+they&#x27;re M and A specific things. So you can think about that like =
+Active Directory and domain separation. Some of the EUC and device =
+transition that are going to be very different than what he would typically=
+ see in his day to day job, especially just given his background. So I =
+think what will likely happen is they&#x27;ll probably want the position =
+and advisors come in, start helping him through that and then hope and then=
+ try to turn that into additional work for our team. So I think Skip Shoal =
+was the name that I&#x27;ve heard.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prasha=
+nt</span><span style=3D"color:#64748b;font-size:14px">16:32</span></div><di=
+v style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, I hear=
+ you and all of this is good. We should discuss this further and scope it =
+out. The one point is that who&#x27;s going to fund it right now, right. =
+There&#x27;s already a, you know, an SOW that we are submitting overall. So=
+ for phase four, which already has a scope extension across certain areas =
+that include end user migration, additional day one support for erp, this =
+whole app factory piece. So we know that the client is under pressure to =
+reduce consultant requirements. So while we capture all of it and create a =
+view for James, it needs like we need to work with him to kind of get this =
+to Paul, to Sukai, to the new CIO who comes in and then kind of agree on =
+where the funds will come from for this. And he&#x27;s not the only one. =
+Mahim has separately reached out for and asked for two to three resources =
+that We&#x27;ve again not put into the sow, so I understand that we need to=
+ scope it well but I don&#x27;t want us to go and make any commitments =
+saying oh we&#x27;ll get you people because.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Lane</span><span style=3D"color:#64748b;font-size:14px">1=
+7:46</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">No, absolutely, yeah. To me this seems like something that would be a =
+change request and additional opportunity.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prashant</span><span style=3D"color:#64748b;font-size:14p=
+x">17:53</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">Yeah, absolutely. And not an immediate one in my understanding. I =
+don&#x27;t know Rakesh on the ground but like we&#x27;re going to have to =
+also depend our current scope that we&#x27;re proposing pretty you know, =
+significantly to like the tower leaders, Angela M and A teams and so on in =
+the next couple of weeks.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">18:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, so yeah, so =
+yeah, just action items there for us. But yes, I&#x27;m with you.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina</span><span=
+ style=3D"color:#64748b;font-size:14px">18:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sounds good. Also =
+just something to flag is that James is already on vacation as of this =
+morning. He was not on our solstice lead call in case the team was trying =
+to set up any time with him. Moving on to all IT connect topics on this =
+subject. Currently we have our topic for Paul to address the EIT support =
+for the TSA exit workshop. Lane, is there anything additional that needs to=
+ be presented for the TSA exit workshop?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Lane</span><span style=3D"color:#64748b;font-size:14px">1=
+8:57</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">No, nothing. At least three for sure.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sakina</span><span style=3D"color:#64748b;font-size:14px"=
+>19:00</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Perfect. And then Corey, is there any costing data that you would like =
+to socialize?</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Corey</span><span =
+style=3D"color:#64748b;font-size:14px">19:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think we, we =
+decided on showing.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</spa=
+n><span style=3D"color:#64748b;font-size:14px">19:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">A view of the.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Corey</span><span =
+style=3D"color:#64748b;font-size:14px">19:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The budget. Budget =
+versus actual unique. So we&#x27;ll get, we&#x27;ll get an updated view of =
+that.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina</span><span=
+ style=3D"color:#64748b;font-size:14px">19:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Corey</span><span =
+style=3D"color:#64748b;font-size:14px">19:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And Rakesh, I =
+don&#x27;t know what you thought, what you think about, you know, I =
+don&#x27;t know if there&#x27;s anything to show in the OIT connect or =
+remind some folks on. But we can, it might not, we may not need to have =
+like a slot for the gate deliverables or just, we can just mention that =
+those are due or you know, getting submitted. I think we have most of the =
+inputs and I mean I need to address that broadly with the whole team.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">19:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">19:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, it may be just=
+ enough. Do we need. Are we requesting any information from that?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rashid</span><span=
+ style=3D"color:#64748b;font-size:14px">20:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You know, I think =
+the requests are out there. I think for ERP it&#x27;s just getting.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Corey</span><span =
+style=3D"color:#64748b;font-size:14px">20:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Getting back =
+information based on SAP negotiations which, which I think we don&#x27;t =
+have yet.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">20:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And, and then for =
+cloud.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Corey</span><span =
+style=3D"color:#64748b;font-size:14px">20:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Information on those=
+ applications.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">20:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So let&#x27;s =
+include a slide on status update that essentially has your heat map but =
+essentially I would expect everything else to be closed out and just these =
+two for standalone costs, the particular sections.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sakina</span><span style=3D"color:#64748b;font-size:14px"=
+>20:40</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">And then Corey, I&#x27;ll just await the data from you. Thank you. And =
+then Matt, is there something to share for UAT on Monday? Is there anything=
+ we want to socialize Mac, Rakesh.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh=
+</span><span style=3D"color:#64748b;font-size:14px">20:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">For UAT Sit is =
+starting so I think it&#x27;s. We&#x27;d want to socialize the calendar =
+that&#x27;s been put together that will develop by end of the day. So that =
+will. Yeah. So there&#x27;ll be a couple of things that will socialize a =
+calendar, we&#x27;ll socialize the trackers and we&#x27;ll also socialize =
+the dashboard that we&#x27;re starting to maintain. So there will be a =
+morning and an afternoon reporting that goes out and a cadence set up. So a=
+ daily scrum call, etc. Being set up from Monday. So it&#x27;ll be more of =
+a morning evening update. So we can. We should add a slide there for what =
+the dashboard reporting and tracking would look like as well as potentially=
+ a defect tracker. So add that as well. So status execution status tracking=
+ readiness and execution status and then defect management.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Lane</span><span style=3D"color:#64748b;font-size:14px">=
+22:00</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay, so the defect management Rick has just like your set one, set two =
+set three defects.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">22:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Sakina</span><span style=3D"color:#64748b;font-size:14px=
+">22:13</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Mac, let&#x27;s align on this content so we have it in by Monday in =
+the slides for the all NT connect. Moving on to staffing. Prashant, I know =
+you are planning to discuss this with Charles, so I&#x27;m just going to =
+park for now until we have an update and then. Rashid, were you able to get=
+ the PC rollout schedule?</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rashid</span>=
+<span style=3D"color:#64748b;font-size:14px">22:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I received it about =
+1:00 clock yesterday.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina</span>=
+<span style=3D"color:#64748b;font-size:14px">22:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. And so for =
+this item, what are we tracking currently?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rashid</span><span style=3D"color:#64748b;font-size:14px"=
+>22:49</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">To me I&#x27;d close this out. We&#x27;ve got the schedule and now =
+it&#x27;s just designing and aligning on user migration schedules which we =
+were tracking I think on the right. No, we&#x27;re not actually. We took =
+that one off.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">23:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So track it here, =
+socialize that. Help us understand what could be potential risk, what may =
+need to be sequenced, etc. But let&#x27;s track it here again this goes =
+back to the. My first thing statement refer for.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rashid</span><span style=3D"color:#64748b;font-size:14px"=
+>23:23</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah, for Sukai.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</spa=
+n><span style=3D"color:#64748b;font-size:14px">23:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rashid</span><span=
+ style=3D"color:#64748b;font-size:14px">23:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">To me it&#x27;s a =
+broader. Like how is infrastructure migrating everything including you know=
+, just sites, servers, network PCs, unstructured data. Like it&#x27;s all =
+one thing. But agreed, we&#x27;ll. We&#x27;ll outline those risks specific =
+to PCs.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina</span><span=
+ style=3D"color:#64748b;font-size:14px">23:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right, thanks =
+Rashid. Moving on to BRV readiness, I&#x27;ve got.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Lane</span><span style=3D"color:#64748b;font-size:14px">2=
+3:48</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">One risk that I want to raise here on the left side of the PMO and =
+catcher word. So Rashid, I know that you have said that Power Apps and =
+Power BI are covered by the data and analytics team. I was just on a call =
+with Paul and the leads and Maheen specifically said believe that Power =
+Apps and Power BI are covered by. So there is a misalignment and A gap =
+there where that no one is picking this up.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rashid</span><span style=3D"color:#64748b;font-size:14px"=
+>24:27</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Let me, let me do some digging on my end because PowerApp came up early=
+ in the project and I know it got resolved somehow. So let me just go =
+through those emails. I&#x27;m sure it&#x27;s somewhere in there in.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><span =
+style=3D"color:#64748b;font-size:14px">24:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Power BI is probably=
+ the bigger piece but those will both need to follow the M365 migration =
+schedule. It&#x27;s specific being specifically called out in scope for aui=
+. So we just need to understand who owns that because it is a large piece =
+of work for shiny. Edgar.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</spa=
+n><span style=3D"color:#64748b;font-size:14px">25:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Hey, I&#x27;ve heard=
+ a couple of times today about some meeting with Paul and the Solstice team=
+ leads. I. I&#x27;m not sure is this a recurring thing? I&#x27;ve not seen =
+anything on the cat.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">25:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I&#x27;ve not.=
+ I haven&#x27;t seen anything on my calendar.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prashant</span><span style=3D"color:#64748b;font-size:14p=
+x">25:21</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">I just want to be sure.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</s=
+pan><span style=3D"color:#64748b;font-size:14px">25:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Specifically pulled =
+into that for us to present for 30 minutes. They have an hour long meeting =
+every day that&#x27;s internal to them that they asked us to join to take =
+them through the TSA exit workshop agenda.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>25:39</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Just keep us informed of that.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prasha=
+nt</span><span style=3D"color:#64748b;font-size:14px">25:41</span></div><di=
+v style=3D"color:#475569;font-size:16px;line-height:1.6">Interesting. So =
+who&#x27;s setting this up? Paul has set up a meeting. But EY is not on =
+that meeting, right?</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Lane</span><s=
+pan style=3D"color:#64748b;font-size:14px">25:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, ENY is not on =
+that call. It&#x27;s their internal daily sync and he asked Bill and I to =
+be on it last night so that we could take him through the agenda we joined =
+this morning and walk them through the TSAX workshop.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prashant</span><span style=3D"color:#64748b;font-size:14p=
+x">26:06</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">Okay. All right, that is good to know. I did not know that this =
+meeting existed. All right.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina</span>=
+<span style=3D"color:#64748b;font-size:14px">26:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Rashid, do you have =
+your hand out?</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rashid</span><span=
+ style=3D"color:#64748b;font-size:14px">26:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, just quickly =
+because I&#x27;ve got a drop. Prashant, Raquette, do you feel comfortable =
+with the hypercare meeting? You guys are able to join. No more talking =
+points. Do you want to see slides in advance?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prashant</span><span style=3D"color:#64748b;font-size:14p=
+x">26:25</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">I will be on Rajiv, if you can send me the slides in advance because =
+I also need to then work with. I mean between you, me and Paul will need to=
+ work with the deal PMO team to to kind of align on. On the overall =
+Hypercare command center strategy. Right. So that&#x27;s going to be run =
+centrally and IT command center will kind of be a big participant of that. =
+Right. So we need to kind of tie out with that.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rashid</span><span style=3D"color:#64748b;font-size:14px"=
+>26:53</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">That works just 30 seconds. D.C. there&#x27;s misalignment within DCN. =
+You know Aaron Hicks thinks absolutely. This is in my scope. I own this. =
+Okay. And Haritha, you saw their emails. They said absolutely not. =
+It&#x27;s not in our scope. And this is on Rachel. So that&#x27;s the kind =
+of the first let&#x27;s make sure everyone&#x27;s on the same page on =
+who&#x27;s doing what and then yeah, we can go through the content.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">27:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. This is the =
+one at 2:30 Eastern.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rashid</span>=
+<span style=3D"color:#64748b;font-size:14px">27:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I believe so.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">27:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</span><sp=
+an style=3D"color:#64748b;font-size:14px">27:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">If you want to =
+prioritize UAT and other areas, I, I will commit to joining that one.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">27:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. It&#x27;s =
+related to. Yeah, fair enough.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina<=
+/span><span style=3D"color:#64748b;font-size:14px">27:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Moving on to BRV =
+actually before we close out, I know we&#x27;re overtime but. General =
+update on this Mac.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</spa=
+n><span style=3D"color:#64748b;font-size:14px">27:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. For the =
+workshop tomorrow. We met with Paul. We&#x27;ve shared the data with him. =
+He&#x27;s walked through it. He&#x27;s largely aligned to the, to what =
+we&#x27;re putting in. He wants to go through the double clicks in more =
+detail and he wants to follow up with a couple of people to update the =
+content. So between the Monday morning sync is we&#x27;ll have to just plan=
+ on having this as a topic that we, we walk her through it. I know she has =
+some planned time off or whatever or she&#x27;s traveling somewhere else =
+next Monday. So I, I do need to work with you to get that 15 minutes with =
+her. Walk her through the BRB agenda.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>28:30</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Okay. So we, we have a, we have a connect later today on it. So =
+let&#x27;s talk during that time.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashan=
+t</span><span style=3D"color:#64748b;font-size:14px">28:36</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, thank you.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">28:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And sorry on the =
+other one the. Thank you. Arpit Prashant for and the rest of the team, =
+Sakina, everyone else for the content. Sukai is on board with the content. =
+She had some nets this morning and we have some talking points. We&#x27;re =
+meeting with Jeff and a few and then we&#x27;ll let you know how things go.=
+ But I think. Yeah, we&#x27;re. We&#x27;re providing an update on UAT to =
+Jeff in a little while.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Prashant</spa=
+n><span style=3D"color:#64748b;font-size:14px">29:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m not on that=
+ meeting. Rakesh, I don&#x27;t want.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px"=
+>29:16</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah, no, no, you&#x27;re good.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Prashant</span><span style=3D"color:#64748b;font-size:14p=
+x">29:20</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">Let me.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rashid</span><span=
+ style=3D"color:#64748b;font-size:14px">29:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sure. All right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sakina</span><span=
+ style=3D"color:#64748b;font-size:14px">29:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Anything that we =
+need to discuss Now I know we are over time and we have conflicting =
+meetings after but we can pick back up at eod.</div></div><div =
+style=3D"margin-bottom:0;padding:16px;background-color:#f8fafc;border-radiu=
+s:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-items=
+:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">29=
+:39</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Sounds good. It.</div></div></div><div style=3D"margin-top:36px;text-ali=
+gn:center;color:#64748b;font-size:14px;padding:20px;border-top:1px solid =
+#e2e8f0"><p style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note=
+ Taker</p><p style=3D"margin:0;font-size:12px">Your AI-powered =
+companion</p></div></div></div></div></html>
+----_NmP-d69c3b3d2c8edc36-Part_1--

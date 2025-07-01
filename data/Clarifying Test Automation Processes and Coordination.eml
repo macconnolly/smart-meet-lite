@@ -1,0 +1,987 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a05:6000:26d2:b0:3a5:23aa:6f43 with SMTP id 18csp848632wrm;
+        Fri, 20 Jun 2025 10:36:02 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHsswl/7sKCODw8dmAFyNnunxW8BR/9eNpnq3d72/G3zqAB3dwNw4lkuxI8wUk0sWUbb15+
+X-Received: by 2002:a05:6214:2348:b0:6e8:fbb7:6764 with SMTP id 6a1803df08f44-6fd0a632e4bmr64426186d6.45.1750440962409;
+        Fri, 20 Jun 2025 10:36:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750440962; cv=none;
+        d=google.com; s=arc-20240605;
+        b=GY1d7h3hC0LbsdpSFK8RFrP8U/FKpxfeMZ6DxSTw1TBjN9wTnWKP9lH4xO+Pbayc3R
+         4l2XBWKPzbnMIh6Jo+NCH6NPigyOJp2RZzzO19RkxrFKQmZVr5zlvYMimhZ/qxoysbhB
+         HlnM7c9WrQ4zF4dJZIqT20cF7o/2NJFLwF6L3oYS1lb64c+72XT+g6QG6FgffAuONw8v
+         a5P+GK15R+7KiFjpC+p4VMmJPYydZ78bYNUzlz150iqngQzpQChkeGtH3VX7ORjQ1DDy
+         Pdvi2236NLIaQBtpJAsu4z08yjWwkMDjAhLxtpg0jnWq7fG89ye6CDhnrAHALXoeIB7q
+         NOVQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=wJQkYRtScBB0DvWBkoQwOtWFIW2XY8Cmfe8FdxGbTCg=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=T0NOrwwYCIH+QppBwxTWQZXtgDett8mZVhTTxqqP17V0A1EEzb6+BAeu13EV/zJTAT
+         Zl3MbGNWBIl2HsRNXVoXhlhedq0qk9hjQkc/c15HtbIlUN6NdxJNb7niTP8poX+Vr7G3
+         OVhPQ/t4zPgH4hlYY0Anb/Almjod90i8y/tmIRkLarB3Hw/Zs75WvkPWhWtDDfHzEwb4
+         Oc7wTjXnPbDLAexjrxUjfhqF1f1Bizfg72pPB+cLvSlxmVyhcql2N8txjOCtgEA4YSgg
+         t/LDYdvlTLHLvydk3kfFw+SQe+E9DQroJ/ckbYZJhaflTUIS+XxS60xK1B+6IjYmVjYh
+         ZZQw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=VS6e+WKB;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=HqibagF+;
+       spf=pass (google.com: domain of 010001978e6966d8-507d94bc-360d-4355-8692-fe2261f5269e-000000@send.email.wave.co designates 54.240.9.30 as permitted sender) smtp.mailfrom=010001978e6966d8-507d94bc-360d-4355-8692-fe2261f5269e-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <010001978e6966d8-507d94bc-360d-4355-8692-fe2261f5269e-000000@send.email.wave.co>
+Received: from a9-30.smtp-out.amazonses.com (a9-30.smtp-out.amazonses.com. [54.240.9.30])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd09530e3esi24809146d6.201.2025.06.20.10.36.02
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 20 Jun 2025 10:36:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 010001978e6966d8-507d94bc-360d-4355-8692-fe2261f5269e-000000@send.email.wave.co designates 54.240.9.30 as permitted sender) client-ip=54.240.9.30;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=VS6e+WKB;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=HqibagF+;
+       spf=pass (google.com: domain of 010001978e6966d8-507d94bc-360d-4355-8692-fe2261f5269e-000000@send.email.wave.co designates 54.240.9.30 as permitted sender) smtp.mailfrom=010001978e6966d8-507d94bc-360d-4355-8692-fe2261f5269e-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1750440961;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=pSKN0nBRDilPuQgIq1g4ko1Bo/ObmxmiMhuFP6kFJf8=;
+	b=VS6e+WKBy2z1xMCRtnGhdjY/zTv/OMD883sfLMLbMj++Nj0jBq4DKGt9Xt51ItA3
+	Q3nD7FIiX+J5E68w+/2bzI4BxgRhMK3P9HqmWT/BCPNJ0hdjcccclQH2Pw7UjLK8mmX
+	2waKGhevSDQC0tPJIbNhmwKp6t+cXg3miqdnWhvM=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1750440961;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=pSKN0nBRDilPuQgIq1g4ko1Bo/ObmxmiMhuFP6kFJf8=;
+	b=HqibagF+4x4I8NL7dCGNIVOx0Df65iSjUYY74Ha2VVDaYQ8asBk0pEXrD3O0fjQs
+	c50KFoUKn74QQGoo5RRw9olwwaOrWZFcFoMRty2byaej+8couh05frK4fwFSpp4wYkq
+	lKfQLzgsO8FPJtfET8cC1W5QxvqFnN8/sStVRudY=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Clarifying Test Automation Processes and Coordination
+Message-ID: <010001978e6966d8-507d94bc-360d-4355-8692-fe2261f5269e-000000@email.amazonses.com>
+Date: Fri, 20 Jun 2025 17:36:01 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-987be904a8d47925-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.06.20-54.240.9.30
+
+----_NmP-987be904a8d47925-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Clarifying Test Automation Processes and Coordination
+
+## Main Topics Discussed
+
+### 1. Test Script Validation and Execution =
+Process
+
+- **Clarification of Automation vs. Manual Processes**
+  - Discussion centers on how to accurately categorize and track test =
+scripts as automated, manual, or semi-automated.
+  - Jeff is seeking =
+assurance that there=E2=80=99s a clear, detailed plan for how scripts are =
+tested, including exactly who is responsible and in what order tasks =
+occur=E2=80=94even down to specific individuals running scripts.
+  - Reference to two UAT (User Acceptance Testing) types: automated and =
+non-automated (e.g., finance and ERP).
+  - Suggestion to update the =
+execution status dashboard by adding a column for =E2=80=98testing =
+type=E2=80=99 and possibly providing an appendix with a detailed breakdown =
+(automated vs. manual).
+
+- **Insight Into Failures**
+  - Automated test failures are attributed more to system defects, while =
+manual test failures might be due to human error.
+  - Jeff appears to want =
+granular details, not just statistics, on which scripts in each set are =
+automated vs. manual.
+
+- **Clarification Needed From Bill**
+  - Discussion about certain scripts or functions denoted as =
+=E2=80=9Csemi-automated=E2=80=9D, =E2=80=9Cfully manual=E2=80=9D, and =
+combinations like =E2=80=9Cfully automated and manual=E2=80=9D=E2=80=94all =
+of which require clarification from Bill.
+  - Noted confusion over =
+definitions (e.g., a script may be automated, but output validation is =
+manual).
+
+- **Action Items**
+  - Team agrees to follow up with Bill for =
+clarity, particularly regarding different test automation combinations and =
+how these should be reported.
+  - Suggestion to set up a 30-minute call =
+with Bill, possibly by the end of the day.
+
+### 2. Coordination and =
+Assignment of Testers
+
+- **Tracking Testers**
+  - Paul is sending a =
+=E2=80=9Ccensus file=E2=80=9D with tester names.
+  - Max will match these =
+names with existing lists to identify Athens users.
+
+- **Tracking Defects**
+  - Defect management is split: automated cases will be tracked in Tosca; =
+manual cases will be tracked in a centralized manual tracker.
+  - Separate processes for ERP, Finance, and HR (with HR data coming from =
+ADP).
+
+### 3. Integrations and Communication With Other Teams
+
+- **HR Test Coordination**
+  - Importance of connecting with ADP and =
+identifying the correct UI/test coordination counterparts (i.e., =
+communications with Vicky, William, Arpit).
+  - Noted need to be included =
+in ADP-related communications.
+
+- **Setting Up Meetings and Ownership**
+  - Discussion around who will facilitate/lead meetings, with suggestion =
+for Pierce to be the primary contact for meetings, supported by others.
+
+### 4. Next Steps and Scheduling
+
+- Upcoming meeting proposed for later =
+today (moved to 2:00pm) to regroup after coordinating within their teams.
+- Vicki and another team member will continue conversations in the interim.
+- Plan to send Pierce an email outlining expectations for meeting =
+facilitation based on current week=E2=80=99s outcomes.
+
+## Action Items and Follow-ups
+
+1. **Clarify with Bill:**
+   - Definitions of semi-automated, automated, manual test =
+scripts/functions.
+   - Details on processes and reporting for each type.
+
+2. **Update Dashboard/Reporting:**
+   - Add a column for 'testing type' to =
+the execution status dashboard.
+   - Create an appendix for a detailed =
+breakdown by test type if needed.
+
+3. **Sync on Testers and Defect =
+Tracking:**
+   - Match tester names from the census with the Athens list =
+(Paul/Max).
+   - Ensure manual and automated defect tracking processes are =
+clear and assigned.
+
+4. **HR Integration:**
+   - Finalize point of contact =
+and integration process with ADP/UI.
+
+5. **Meeting Preparation:**
+   - Follow up with Vicki and other stakeholders as meetings are =
+rescheduled.
+   - Draft communication to Pierce regarding expectations for =
+upcoming meetings.
+
+6. **Schedule Call With Bill:**
+   - A 30-minute call to clarify test process definitions, ideally by the =
+end of today, June 20, 2025.
+
+---
+
+If further detail on any topic is =
+required, please specify.
+
+Transcript:
+0:00
+Is something that doesn't pass.=
+ It's really more a non passing of validation. It sounds like it's probably=
+ a simpler fix than some of the manual ones.
+
+0:10
+Yeah.
+
+0:14
+Maybe, maybe, maybe that's where Jeff's mind's at. I'm just.
+
+0:19
+I think he just wanted to validate that we know how they're being tested =
+and what like he, he wants to know that we have the underlying detailed =
+plan of we know exactly in what order and the people who are doing the =
+hands on keyboard work know, okay, I need to go in and I will hear from =
+this person or whatever. However, the coordination works down to the =
+individual person running the script level. Have we gotten the coordination=
+ down? And so we could do that in the way that you mentioned. Jessica, to =
+your point, with like the two, and I think to Jeff's point, the two UATs, =
+the automated and the non automated or finance and ERP. I suggested to =
+Rakesh earlier that we just add a column to the execution status dashboard =
+with the testing type. Hold on one second.
+
+1:28
+So just thinking through =
+that a bit. Maybe that's the direction go. Leave it in the overall but have=
+ some level of breakouts showing what's automated, what's manual. I'm =
+struggling a little.
+
+1:44
+Hold on, let me, I'm going to, I'll share my =
+screen and just show you really quickly here. One second.
+
+1:55
+My original thought was just do a version of this automated version of this=
+. It's manual. But maybe what we do is leave this and then do an automated =
+versus manual and put it in the appendix so we can show that breakout if =
+they want. I think just trying to glean insights into it because for =
+example, on an automated system the idea of human failure is gone. It's =
+likely not human failure, it's likely a defect somewhere in the background.=
+ But in the manual system something fails. It could very well be because =
+hey, Jessica hit the enter key instead of the submit key and so she didn't =
+get the outcome she expected because she did it wrong. So I think that's =
+what he's trying to glean from this is, you know, potential insights =
+knowing something's automated versus manual. But I think he's going to want=
+ more than just like a half and half. I think he's going to know like =
+within those five scripts which ones are automated, which ones are not. Now=
+ that I've said that out loud, maybe to your point, Rakash, within those =
+five, like let's say I pick one script. Would you say maybe this is what I =
+was processing to now within, let's say the one script you could have part =
+of it be automated or part of it be manual. Or is each script like.
+
+3:19
+No, no, I think within a script it would be. I don't think that's what Bill=
+ said. But so within, within the whole thing, I'm loading all 26 scripts =
+for order management into Tasker and running it our end to end audit cache.=
+ But within say logistics, I'm doing it all manual. And that could be. Yeah=
+, yeah. So it's not a mix within a sub function.
+
+3:55
+I mean that's how finance denoted it in their, like our erp. So in the ERP =
+file that we were looking at they went by function. And this was the one, =
+the example that Jeff asked Bill for trading compliance and Bill talked him=
+ through the testing.
+
+4:24
+Talk him through the process of testing.
+
+4:27
+No.
+
+4:31
+Day in the life.
+
+4:33
+Yeah. And, and what Bill described this. =
+It, it said manual. What Bill described was semi automated.
+
+4:41
+Don't change that. Leave that to Bill. Let's validate with him. Because his=
+, his latest tracker has a different view of it. So. But whatever it is, I =
+get your point.
+
+4:57
+So they went to workstream.
+
+5:00
+So then semi automated shouldn't mean that. Okay, the scripts are automated=
+. Maybe there's a manual validation that they hand off to a person and it =
+wouldn't be. I don't know if he talked about particularly trade compliance,=
+ but I know the ask he brought up was trade compliance, but this is where.
+
+5:23
+Yeah, but that's where I think we need to get better. Like all the =
+ones that say fully manual. Sure, I get that. Sourcing tosca fully =
+automated and manual, does that mean like some of those are automated and =
+some are manual? Because he says on line 6 he says semi automated, but then=
+ line 7 he says Tosca fully automated and manual.
+
+5:48
+So yeah, we need to get the clarity from him on what those mean. Now with =
+to your process, if the automation is where it will fail, the manual is the=
+ validation and the verification. So like the PO creation and ariva =
+automated PO creation and SAP automated. You know, indirect PO in Compass, =
+indirect in SAP, everything in SAP asset PO automated. I think it's the. =
+Perhaps there are validations around it that they need to look at.
+
+6:25
+Yeah, he said like a user will be given a script to go run that creates a =
+sales order, invoice or something and then they go deliver it to the pack =
+and ship folks. So they'll deliver the output. So they'll run the script =
+manually, but the test itself is automated and then they go validate the =
+output further along in the process. Right. So it's like the test is. The =
+script is automated, but the test is manual.
+
+7:00
+Let's ask those =
+questions of him because then we can determine what level of reporting we =
+need, whether we know you need to go to that level, or we call it, you know=
+, automated. So I think it will influence or determine how we want to =
+follow up, how we do that. So we do need now for manual. I think for =
+finance, it works for. Just for Bill. We need to talk through this process =
+and what each means.
+
+7:27
+So we need to get on the call with that, like 30=
+ minutes and.
+
+7:31
+Maybe end of the. Yeah, sorry, I've got to step on this=
+ other call. But yeah, the other part of this is the number of testers. So =
+I've got Paul sending me some information on the census file of the names. =
+So Max going to do a straight lookup against that and against our list to =
+see which of those are Athens names. Oh, yes. So we'll take care of that. =
+And then the defects also, we'll have to talk through then how we run the =
+defects or how we would track the defects. Whatever's in Tosca is in Tosca.=
+ Whatever is manual, we'll need to track in his. In our centralized manual =
+tracker. Whether ERP or Finance, whatever is HR will come from adp. We need=
+ to add that in there either as one per country. So we just need to.
+
+8:25
+On getting us in the loop with ADP if you want to. Also, I don't know who =
+our UI counterparts.
+
+8:33
+You pinged Vicky on. On what? I'm sorry.
+
+8:35
+On adp.
+
+8:36
+Okay, okay, I know why.
+
+8:41
+Counterpart. Just start getting=
+ us in the loop with that.
+
+8:44
+Yeah, we'll talk to William, Arpit and =
+William. Okay, I know Sandra mentioned that and Kelly R. Mentioned that, =
+but yeah, yeah, we'll talk to. And then the other piece of this obviously =
+is the. He said how would we note who would be standing up the MOs. And I =
+think talking through those things. I think we may need to run that to =
+ground as well.
+
+9:09
+I think that Vicki and I, I want to. So we. The three=
+ of us have a connect right now.
+
+9:15
+Do you.
+
+9:15
+Are you able to get on or.
+
+9:17
+I will. Oh, crap. I will in about half an =
+hour.
+
+9:22
+That's fine. Go to. Go to your meeting. Vicki and I can =
+continue talking. I think her and I are aligned because I think what we =
+need to do is have Pierce be the face of this and we all be here to support=
+ and like, I'll stand up some of the meetings, but we can just send Pierce =
+email saying, hey, this is what we expect you to stand up based on how this=
+ week's outcomes are. Yeah. So.
+
+9:45
+Okay, sounds good. We'll talk to you =
+in a bit.
+
+9:47
+Sounds good. Thanks, guys.
+
+9:48
+Thank you.
+
+9:49
+Bye.
+
+9:49
+Bye.
+
+10:06
+It. Hey, man.
+
+10:39
+Hey.
+
+10:42
+Vicki did not jump on, =
+but I also need to see if I can connect with somebody on my team. Let's do =
+this. Because I need to connect with somebody on my team. I'm just going to=
+ move this to two o' clock.
+
+11:03
+Perfect.
+
+11:03
+And I'll just regroup at=
+ two.
+
+11:05
+Okay, that sounds great. Thank you. Thank you.
+
+11:08
+Bye.
+----_NmP-987be904a8d47925-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Clarifying =
+Test Automation Processes and Coordination</h1></td></tr></table></div><div=
+ style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/3B84D456-8758-4A65-AD32-F0FAAFC4497A?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h2 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2rem">Main Topics Discussed</h2><h3 style=3D"font-weight:500;=
+padding-top:20px;font-size:1.75rem">1. Test Script Validation and Execution=
+ Process</h3><ul>
+<li><p><strong style=3D"font-weight:bold">Clarification =
+of Automation vs. Manual Processes</strong></p>
+<ul>
+<li>Discussion centers on how to accurately categorize and track test =
+scripts as automated, manual, or semi-automated.</li>
+<li>Jeff is seeking assurance that there=E2=80=99s a clear, detailed plan =
+for how scripts are tested, including exactly who is responsible and in =
+what order tasks occur=E2=80=94even down to specific individuals running =
+scripts.</li>
+<li>Reference to two UAT (User Acceptance Testing) types: =
+automated and non-automated (e.g., finance and ERP).</li>
+<li>Suggestion to update the execution status dashboard by adding a column =
+for =E2=80=98testing type=E2=80=99 and possibly providing an appendix with =
+a detailed breakdown (automated vs. manual).</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Insight Into =
+Failures</strong></p>
+<ul>
+<li>Automated test failures are attributed more =
+to system defects, while manual test failures might be due to human error.=
+</li>
+<li>Jeff appears to want granular details, not just statistics, on =
+which scripts in each set are automated vs. manual.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Clarification Needed From =
+Bill</strong></p>
+<ul>
+<li>Discussion about certain scripts or functions =
+denoted as =E2=80=9Csemi-automated=E2=80=9D, =E2=80=9Cfully manual=E2=80=9D=
+, and combinations like =E2=80=9Cfully automated and =
+manual=E2=80=9D=E2=80=94all of which require clarification from Bill.</li>
+<li>Noted confusion over definitions (e.g., a script may be automated, but =
+output validation is manual).</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Action Items</strong></p>
+<ul>
+<li>Team agrees to follow up with Bill for clarity, particularly regarding =
+different test automation combinations and how these should be reported.=
+</li>
+<li>Suggestion to set up a 30-minute call with Bill, possibly by the =
+end of the day.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding=
+-top:20px;font-size:1.75rem">2. Coordination and Assignment of =
+Testers</h3><ul>
+<li><p><strong style=3D"font-weight:bold">Tracking =
+Testers</strong></p>
+<ul>
+<li>Paul is sending a =E2=80=9Ccensus =
+file=E2=80=9D with tester names.</li>
+<li>Max will match these names with =
+existing lists to identify Athens users.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Tracking Defects</strong></p>
+<ul>
+<li>Defect management is split: automated cases will be tracked in =
+Tosca; manual cases will be tracked in a centralized manual tracker.</li>
+<li>Separate processes for ERP, Finance, and HR (with HR data coming from =
+ADP).</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;=
+font-size:1.75rem">3. Integrations and Communication With Other =
+Teams</h3><ul>
+<li><p><strong style=3D"font-weight:bold">HR Test =
+Coordination</strong></p>
+<ul>
+<li>Importance of connecting with ADP and =
+identifying the correct UI/test coordination counterparts (i.e., =
+communications with Vicky, William, Arpit).</li>
+<li>Noted need to be =
+included in ADP-related communications.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Setting Up Meetings and =
+Ownership</strong></p>
+<ul>
+<li>Discussion around who will facilitate/lead =
+meetings, with suggestion for Pierce to be the primary contact for meetings=
+, supported by others.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;=
+padding-top:20px;font-size:1.75rem">4. Next Steps and Scheduling</h3><ul>
+<li>Upcoming meeting proposed for later today (moved to 2:00pm) to regroup =
+after coordinating within their teams.</li>
+<li>Vicki and another team =
+member will continue conversations in the interim.</li>
+<li>Plan to send Pierce an email outlining expectations for meeting =
+facilitation based on current week=E2=80=99s outcomes.</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Action Items =
+and Follow-ups</h2><ol>
+<li><p><strong style=3D"font-weight:bold">Clarify =
+with Bill:</strong></p>
+<ul>
+<li>Definitions of semi-automated, automated, =
+manual test scripts/functions.</li>
+<li>Details on processes and reporting =
+for each type.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">U=
+pdate Dashboard/Reporting:</strong></p>
+<ul>
+<li>Add a column for =
+&#39;testing type&#39; to the execution status dashboard.</li>
+<li>Create an appendix for a detailed breakdown by test type if needed.=
+</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Sync on Testers=
+ and Defect Tracking:</strong></p>
+<ul>
+<li>Match tester names from the =
+census with the Athens list (Paul/Max).</li>
+<li>Ensure manual and =
+automated defect tracking processes are clear and assigned.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">HR Integration:</strong></p=
+>
+<ul>
+<li>Finalize point of contact and integration process with ADP/UI.=
+</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Meeting =
+Preparation:</strong></p>
+<ul>
+<li>Follow up with Vicki and other =
+stakeholders as meetings are rescheduled.</li>
+<li>Draft communication to =
+Pierce regarding expectations for upcoming meetings.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Schedule Call With =
+Bill:</strong></p>
+<ul>
+<li>A 30-minute call to clarify test process =
+definitions, ideally by the end of today, June 20, 2025.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<p>If further detail on any topic is required, please specify.=
+</p>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;=
+border-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, =
+0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;fon=
+t-size:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex;al=
+ign-items:center;gap:8px"><span style=3D"font-size:24px">=F0=9F=8E=99=
+=EF=B8=8F</span>Transcription</h3><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">0:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Is something that =
+doesn&#x27;t pass. It&#x27;s really more a non passing of validation. It =
+sounds like it&#x27;s probably a simpler fix than some of the manual ones.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">0:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">0:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Maybe, maybe, maybe =
+that&#x27;s where Jeff&#x27;s mind&#x27;s at. I&#x27;m just.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">0:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think he just =
+wanted to validate that we know how they&#x27;re being tested and what like=
+ he, he wants to know that we have the underlying detailed plan of we know =
+exactly in what order and the people who are doing the hands on keyboard =
+work know, okay, I need to go in and I will hear from this person or =
+whatever. However, the coordination works down to the individual person =
+running the script level. Have we gotten the coordination down? And so we =
+could do that in the way that you mentioned. Jessica, to your point, with =
+like the two, and I think to Jeff&#x27;s point, the two UATs, the automated=
+ and the non automated or finance and ERP. I suggested to Rakesh earlier =
+that we just add a column to the execution status dashboard with the =
+testing type. Hold on one second.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica=
+</span><span style=3D"color:#64748b;font-size:14px">1:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So just thinking =
+through that a bit. Maybe that&#x27;s the direction go. Leave it in the =
+overall but have some level of breakouts showing what&#x27;s automated, =
+what&#x27;s manual. I&#x27;m struggling a little.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:14px">1=
+:44</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Hold on, let me, I&#x27;m going to, I&#x27;ll share my screen and just =
+show you really quickly here. One second.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">1:55</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">My original thought was just do a version of this automated version of =
+this. It&#x27;s manual. But maybe what we do is leave this and then do an =
+automated versus manual and put it in the appendix so we can show that =
+breakout if they want. I think just trying to glean insights into it =
+because for example, on an automated system the idea of human failure is =
+gone. It&#x27;s likely not human failure, it&#x27;s likely a defect =
+somewhere in the background. But in the manual system something fails. It =
+could very well be because hey, Jessica hit the enter key instead of the =
+submit key and so she didn&#x27;t get the outcome she expected because she =
+did it wrong. So I think that&#x27;s what he&#x27;s trying to glean from =
+this is, you know, potential insights knowing something&#x27;s automated =
+versus manual. But I think he&#x27;s going to want more than just like a =
+half and half. I think he&#x27;s going to know like within those five =
+scripts which ones are automated, which ones are not. Now that I&#x27;ve =
+said that out loud, maybe to your point, Rakash, within those five, like =
+let&#x27;s say I pick one script. Would you say maybe this is what I was =
+processing to now within, let&#x27;s say the one script you could have part=
+ of it be automated or part of it be manual. Or is each script like.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">3:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, no, I think =
+within a script it would be. I don&#x27;t think that&#x27;s what Bill said.=
+ But so within, within the whole thing, I&#x27;m loading all 26 scripts for=
+ order management into Tasker and running it our end to end audit cache. =
+But within say logistics, I&#x27;m doing it all manual. And that could be. =
+Yeah, yeah. So it&#x27;s not a mix within a sub function.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:14px">3=
+:55</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I mean that&#x27;s how finance denoted it in their, like our erp. So in =
+the ERP file that we were looking at they went by function. And this was =
+the one, the example that Jeff asked Bill for trading compliance and Bill =
+talked him through the testing.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</s=
+pan><span style=3D"color:#64748b;font-size:14px">4:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Talk him through the=
+ process of testing.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><s=
+pan style=3D"color:#64748b;font-size:14px">4:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">4=
+:31</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Day in the life.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><s=
+pan style=3D"color:#64748b;font-size:14px">4:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. And, and what =
+Bill described this. It, it said manual. What Bill described was semi =
+automated.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">4:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Don&#x27;t change =
+that. Leave that to Bill. Let&#x27;s validate with him. Because his, his =
+latest tracker has a different view of it. So. But whatever it is, I get =
+your point.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">4:57</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So they went to =
+workstream.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">5:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So then semi =
+automated shouldn&#x27;t mean that. Okay, the scripts are automated. Maybe =
+there&#x27;s a manual validation that they hand off to a person and it =
+wouldn&#x27;t be. I don&#x27;t know if he talked about particularly trade =
+compliance, but I know the ask he brought up was trade compliance, but this=
+ is where.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">5:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, but =
+that&#x27;s where I think we need to get better. Like all the ones that say=
+ fully manual. Sure, I get that. Sourcing tosca fully automated and manual,=
+ does that mean like some of those are automated and some are manual? =
+Because he says on line 6 he says semi automated, but then line 7 he says =
+Tosca fully automated and manual.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</s=
+pan><span style=3D"color:#64748b;font-size:14px">5:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So yeah, we need to =
+get the clarity from him on what those mean. Now with to your process, if =
+the automation is where it will fail, the manual is the validation and the =
+verification. So like the PO creation and ariva automated PO creation and =
+SAP automated. You know, indirect PO in Compass, indirect in SAP, =
+everything in SAP asset PO automated. I think it&#x27;s the. Perhaps there =
+are validations around it that they need to look at.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:14px">6=
+:25</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, he said like a user will be given a script to go run that creates =
+a sales order, invoice or something and then they go deliver it to the pack=
+ and ship folks. So they&#x27;ll deliver the output. So they&#x27;ll run =
+the script manually, but the test itself is automated and then they go =
+validate the output further along in the process. Right. So it&#x27;s like =
+the test is. The script is automated, but the test is manual.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">7:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Let&#x27;s ask those=
+ questions of him because then we can determine what level of reporting we =
+need, whether we know you need to go to that level, or we call it, you know=
+, automated. So I think it will influence or determine how we want to =
+follow up, how we do that. So we do need now for manual. I think for =
+finance, it works for. Just for Bill. We need to talk through this process =
+and what each means.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">7:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So we need to get on=
+ the call with that, like 30 minutes and.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">7=
+:31</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Maybe end of the. Yeah, sorry, I&#x27;ve got to step on this other call.=
+ But yeah, the other part of this is the number of testers. So I&#x27;ve =
+got Paul sending me some information on the census file of the names. So =
+Max going to do a straight lookup against that and against our list to see =
+which of those are Athens names. Oh, yes. So we&#x27;ll take care of that. =
+And then the defects also, we&#x27;ll have to talk through then how we run =
+the defects or how we would track the defects. Whatever&#x27;s in Tosca is =
+in Tosca. Whatever is manual, we&#x27;ll need to track in his. In our =
+centralized manual tracker. Whether ERP or Finance, whatever is HR will =
+come from adp. We need to add that in there either as one per country. So =
+we just need to.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">8:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">On getting us in the=
+ loop with ADP if you want to. Also, I don&#x27;t know who our UI =
+counterparts.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">8:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You pinged Vicky on.=
+ On what? I&#x27;m sorry.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">8:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">On adp.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">8:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, okay, I know =
+why.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">8:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Counterpart. Just =
+start getting us in the loop with that.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Bill</span><span style=3D"color:#64748b;font-size:14px">8=
+:44</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, we&#x27;ll talk to William, Arpit and William. Okay, I know Sandra=
+ mentioned that and Kelly R. Mentioned that, but yeah, yeah, we&#x27;ll =
+talk to. And then the other piece of this obviously is the. He said how =
+would we note who would be standing up the MOs. And I think talking through=
+ those things. I think we may need to run that to ground as well.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">9:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think that Vicki =
+and I, I want to. So we. The three of us have a connect right now.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">9:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Do you.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">9:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Are you able to get =
+on or.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">9:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I will. Oh, crap. I =
+will in about half an hour.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">9:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;s fine. Go=
+ to. Go to your meeting. Vicki and I can continue talking. I think her and =
+I are aligned because I think what we need to do is have Pierce be the face=
+ of this and we all be here to support and like, I&#x27;ll stand up some of=
+ the meetings, but we can just send Pierce email saying, hey, this is what =
+we expect you to stand up based on how this week&#x27;s outcomes are. Yeah.=
+ So.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">9:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, sounds good. =
+We&#x27;ll talk to you in a bit.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica=
+</span><span style=3D"color:#64748b;font-size:14px">9:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sounds good. Thanks,=
+ guys.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">9:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Thank you.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">9:49</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Bye.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:14px">=
+9:49</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Bye.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">10:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It. Hey, man.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">10:39</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Hey.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14p=
+x">10:42</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">Vicki did not jump on, but I also need to see if I can connect with =
+somebody on my team. Let&#x27;s do this. Because I need to connect with =
+somebody on my team. I&#x27;m just going to move this to two o&#x27; clock.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Bill</span><span =
+style=3D"color:#64748b;font-size:14px">11:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Perfect.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">11:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And I&#x27;ll just =
+regroup at two.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><s=
+pan style=3D"color:#64748b;font-size:14px">11:05</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, that sounds =
+great. Thank you. Thank you.</div></div><div style=3D"margin-bottom:0;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">11:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Bye.=
+</div></div></div><div style=3D"margin-top:36px;text-align:center;color:#64=
+748b;font-size:14px;padding:20px;border-top:1px solid #e2e8f0"><p =
+style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note Taker</p><p=
+ style=3D"margin:0;font-size:12px">Your AI-powered companion</p></div></div=
+></div></div></html>
+----_NmP-987be904a8d47925-Part_1--

@@ -1,0 +1,2598 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a05:6000:26d2:b0:3a5:23aa:6f43 with SMTP id 18csp886962wrm;
+        Fri, 20 Jun 2025 12:08:18 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEdee43CZOU+gazcSjLk6lRM6eUJCgQFK9XvA8wze/EVxsv7c+HhyNtIdckzU0kNRm0KQI4
+X-Received: by 2002:a05:6214:590a:b0:6fa:fdb3:587b with SMTP id 6a1803df08f44-6fd0a4699e0mr53475246d6.1.1750446497631;
+        Fri, 20 Jun 2025 12:08:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750446497; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Vy92MOo9VHRMSQlWytRMRMenMq9PFk1xMYY3O7HMFFJ+4wZMK1c3TPPGEhIsGmqARN
+         8mp+1j8DdcFuJZc7S0piLuUzgM93CZqBy1rwrH5JNH7jvO5sw0jRE7i98x7RQVm5QFVl
+         KYQVZdIdi8wE27DK510EDG1z/n8dwCQzoupHtcIZhVvkx0WanPp54Asl5XypA7UQ8eHt
+         27g8tRiv6LFFNlAVt5On0JBmua1u8YXsWYghY+uCY+uzdnYTVzinK47cV5kOEahg8RFS
+         3+bg+/WBIMKGJY9/f9DARu5KjNnwIDeWhyZ3opfdkR5JrKAiMDG7OHRQ6mPPKYdN9mRf
+         B/hQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=wikCETpRUQMxfaqwOBBlxPC9J4D9TSHPnBOunzZT330=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=iOP585d8fKLrs+3aBhBppg2Q7+8hAIi3EhHAV5om6bHa3VX+oieUBOCJjF3n4FbPQX
+         BWKVoUdXF4tgvaOTLri8/7zZp2dfRytA51xOPVf6COY1j6RPpGV55QR74Sxcvhljzbrq
+         OqN/XYNXaYozFWWO/1Z1yYNpEwd0NIgZvflC0athVYVigrz2c8GzlhFBTzW9iT9ZwcLp
+         y/IhZ8erwaUtUwtDX9n9X3fdhiyBzXIto/AEPSGKk6FH6UXKGxqn8VO+PhlTN+DtHREm
+         RlnIIlfv4MvmGMkdLshYD4yd7pnOZnusY9B8vhz8rPxH6KfTdqXofnrk5jZMauG2aiJK
+         hjuw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b="X3lID/xk";
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=ScIYFCpB;
+       spf=pass (google.com: domain of 010001978ebddc5a-877eb6db-7cf1-41e2-8b45-1c3da6098429-000000@send.email.wave.co designates 54.240.9.31 as permitted sender) smtp.mailfrom=010001978ebddc5a-877eb6db-7cf1-41e2-8b45-1c3da6098429-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <010001978ebddc5a-877eb6db-7cf1-41e2-8b45-1c3da6098429-000000@send.email.wave.co>
+Received: from a9-31.smtp-out.amazonses.com (a9-31.smtp-out.amazonses.com. [54.240.9.31])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd094387d0si28620246d6.124.2025.06.20.12.08.17
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 20 Jun 2025 12:08:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 010001978ebddc5a-877eb6db-7cf1-41e2-8b45-1c3da6098429-000000@send.email.wave.co designates 54.240.9.31 as permitted sender) client-ip=54.240.9.31;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b="X3lID/xk";
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=ScIYFCpB;
+       spf=pass (google.com: domain of 010001978ebddc5a-877eb6db-7cf1-41e2-8b45-1c3da6098429-000000@send.email.wave.co designates 54.240.9.31 as permitted sender) smtp.mailfrom=010001978ebddc5a-877eb6db-7cf1-41e2-8b45-1c3da6098429-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1750446497;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=uqFHQfclxwPqROnC2JEkg/pk4/BsVG8LZ5Ywh8HwiZA=;
+	b=X3lID/xkZ7iI4daMotK2CY0isWCH8UQCPGP+3wN22/cEN1y+DQIB7ta8uCkrsmp3
+	7ViHSdExGdWfBZ20IqUKlwaS5AONAJ+7pjdFmKgS9Zu5hcfQ8R5nBfNIRWbqVZlRLm1
+	fZwJS311upox1rNzJcW38tsOaaHPT8u63pl98+LI=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1750446497;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=uqFHQfclxwPqROnC2JEkg/pk4/BsVG8LZ5Ywh8HwiZA=;
+	b=ScIYFCpB885Hf60bQ7mAIg2O3lKWvZrt0elhhzoteGXrvPOYd5WjH2ac486+QfFv
+	fMyGGm9DzEwbFlQQ8Q0pbxfJGPXbd0SUT7y6JMgbdTh8tkoASKilfeiU13rOOc34yhj
+	o57HFdNms8xYt2ib9we3xP0ZPaND2/9B+UOOuwNQ=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Coordinated SIT UAT Testing And Logistics Plan
+Message-ID: <010001978ebddc5a-877eb6db-7cf1-41e2-8b45-1c3da6098429-000000@email.amazonses.com>
+Date: Fri, 20 Jun 2025 19:08:16 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-fc4c72390a973a99-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.06.20-54.240.9.31
+
+----_NmP-fc4c72390a973a99-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Coordinated SIT UAT Testing And Logistics Plan
+
+# Meeting Summary =E2=80=93=
+ June 20, 2025
+
+## Attendees
+- Core Project Team (~9 members; includes =
+leads from Honeywell and Athens IT)
+- Honeywell Work Stream Lead & IT Lead
+- Athens IT Lead
+- Additional function, system, UAT, and testing =
+coordinators (some referenced by position/column in project spreadsheets)
+- Not all stakeholders present; Pierce will own certain =
+logistics/follow-ups
+
+---
+
+## Main Topics Discussed
+
+### 1. Scheduling & Coordination of SIT and UAT Testing
+
+#### a. Meeting Structure for SIT (System Integration Testing)
+- Two key meetings to be set up per day during the two-week SIT window: =20
+  - **Scrum Call (7:45=E2=80=938:00am Eastern):** Review daily plan, assign=
+ tasks, discuss priorities, and set alignment for testing. Bill highlighted=
+ as a key lead for these sessions.
+  - **Daily Wrap-Up Call =
+(4:30=E2=80=935:00pm Eastern):** Review completed items versus plan, defect=
+ review (pass/fail rates), gap analysis (risk/delay), and process for =
+real-time updates to trackers.
+- **Audience:** Core team (nine people), =
+including Honeywell & Athens IT leads, and key workstream leads.
+- **Time Zone Accommodations:** =20
+  - APAC team is not expected to attend=
+ nighttime wrap-up calls; must pass results to Shrier/Bill before going =
+offline.
+  - Bill (and similarly situated leads) not expected at pre-dawn =
+calls but must ensure communication with their teams via Pierce or setup =
+alternate connects.
+
+#### b. Meeting Structure for UAT (User Acceptance =
+Testing)
+- **Scrum and Wrap-Up Calls:** Similar two-call structure with =
+focus adjusted for UAT activities.
+  - Inclusion of UAT functional =
+coordinators and relevant testers (column-based invitation logic =
+clarified=E2=80=94see section on roster and invites below).
+- **Agenda Items:**=20
+  - Daily: Defects, plans, status against plan, and =
+next-day preparation (specific callout to review which function/business =
+unit testers are needed in advance).
+  - UAT Coordinators responsible for =
+proactive communication to day-before testers.
+
+#### c. In-Person vs Remote=
+ Weeks
+- **Mixed Format:** Second half of SIT/UAT includes a mix of remote =
+and in-person participation.
+  - Remote week logistics to be finalized by =
+Pierce.
+  - In-person week: Special attention to planning for food, =
+transportation (cars), and team-building activities.
+
+---
+
+### 2. Roles, Rosters, and Communication Structure
+
+- **Core Attendee Identification:** Mapped out via a spreadsheet =E2=80=93 =
+roles include various levels: system leads, workstream leads, UAT =
+coordinators, and functional testers.
+- **Communication Plan:** =20
+  - Over-communication preferred; invitation and CC policies discussed =
+(testers as =E2=80=9Cinput points=E2=80=9D for leads who do the actual =
+status reporting).
+  - Functions with delegated leads (e.g., Finance): =
+delegates will provide status in calls, with coordinator overseeing roll-up=
+.
+  - Special attention to functions/teams with prior communication gaps =
+regarding test participation.
+- **Supporting Documentation:** =20
+  - Roster Excel document (with UAT test case folder reference) provides =
+core contact/data structure.
+  - Vicki to supply summarized version/lists, =
+and email addresses to be compiled and distributed.
+
+---
+
+### 3. UAT, SIT Logistics, and Preparation
+
+#### a. Testing Schedules and =
+Assignment
+- **Daily Schedules:** Final hourly schedule to be released =
+Monday.
+- **Tester Assignment:** =20
+  - Proactive identification and =
+notification of next-day testers considered critical.
+  - Mandate for function leads to communicate requirements to their testers=
+ at least one day in advance; escalation procedures for unaddressed gaps.
+
+#### b. Reporting, Defect Tracking, and Executive Summaries
+- **Tracker Updates:** =20
+  - Live status entry by testers throughout the =
+day (target: all data updated by 4:00pm prior to 4:30 wrap-up).
+- **Reporting Structure:** =20
+  - Plan to create standardized =
+templates:=20
+    - Executive summary/front end
+    - Main =
+reporting/dashboard
+    - Defect summary (automated/non-automated, E2E, =
+system, function breakdowns)
+  - Food for thought on consolidation of =
+semi-automated and manual tracking and how to clearly present this to =
+senior/executive audiences.
+- **Follow-up with Reporting Leads:** Meeting =
+with Shrinivas and Bill set for discussion on definitions/process for =
+=E2=80=9Csemi-automated=E2=80=9D and other reporting nuances, pre-Monday.
+
+#### c. Onsite Logistics (for In-Person Week)
+- Pierce responsible for =
+finalizing logistics
+  - **Food:** Confirmation of headcount (proposed: =
+plan for 50 to account for anticipated + unconfirmed participants), =
+checking dietary restrictions (allergies, vegan/vegetarian, religious =
+restrictions), communication with Tricia (food coordinator)
+  - **Transportation (=E2=80=9Ccars=E2=80=9D):** Processed for all =
+in-person resources; two week lead time required for arrangements.
+  - **Room and Technology:** All participants presumed to have required =
+device access; confirm with Pierce if any exceptions or issues arise (e.g.,=
+ chargers, access/facilities).
+  - **Team Building:** Proposals for dinner =
+or team activity (intro dinner on arrival Sunday; possible dinner Thursday =
+to avoid travel disruptions), pending Paul=E2=80=99s approval on budget, =
+handled by Jessica.
+
+---
+
+### 4. Ownership, Action Items & Delegation
+
+- **Meeting Setup & Ownership:** =20
+  - Jessica: Set up daily SIT/UAT =
+calls, kickoff call, and schedule, compile final email lists. =20
+  - Pierce: Oversee coordination/logistics for remote and in-person weeks; =
+lead communication with food/catering, transportation, and follow up with =
+SRI.
+  - Vicki: Compile and distribute summarized rosters, provide email =
+listings, draft direct communication to testers/participants, review =
+kickoff content with Pierce.
+- **Transition & Back-up:** =20
+  - Pierce being prepped for primary leadership during the following week; =
+backup provided by Jessica and Rakesh as needed, with attention to =
+knowledge transfer and up-to-speed onboarding.
+
+---
+
+### 5. Risks, Concerns, & Mitigation
+
+- **Attendance:** Time zone =
+challenges expected; measures in place to ensure communication handoffs for=
+ global team.
+- **Communication Gaps:** Previous issues recognized with =
+late or unclear notifications to testers; actions put in place via direct =
+comms.
+- **Reporting Integrity:** Emphasis on real-time data entry to avoid=
+ delays and incomplete status snapshots; plan for live tracker review and =
+entry before wrap-up.
+- **Resource Gaps:** Proactive escalation protocol =
+for missing or unresponsive testers; immediate notification to management =
+(Jeff, etc.) for gap resolution.
+- **Onsite Uncertainties:** Reasoned food =
+planning and logistics to account for unconfirmed attendees; allergen and =
+dietary diversity explicitly considered.
+
+---
+
+## Action Items
+
+1. **Schedule Setup:**
+   - Jessica to set up SIT and UAT daily scrum and =
+wrap-up calls, starting Tuesday, with prep/notice to be given Monday, June =
+23.
+   - Kickoff call to be scheduled by Jessica.
+2. **Roster & =
+Communication:**
+   - Vicki to compile and distribute summarized roster, =
+email addresses, and direct communication templates for function/tester =
+leads.
+   - Function leads to assign and communicate to next-day testers; =
+escalation protocol for gaps.
+3. **Reporting & Trackers:**
+   - Consolidate and standardize reporting templates (executive summary, =
+main status, defect log).
+   - Schedule 3:30=E2=80=934:00pm call with =
+Shrinivas and Bill to refine reporting approach.
+   - Arpit to supply HR =
+country-level test counts and completion data.
+   - Schedule =E2=80=9Clive =
+update=E2=80=9D cut-off for tracker input at 4pm daily; readouts to be =
+succinct and data-backed.
+4. **Onsite Logistics:**
+   - Pierce to finalize =
+all remote and in-person logistics: food (via Tricia), transportation =
+(=E2=80=9Ccar=E2=80=9D process), and room/tech needs.
+   - Pierce to ensure food headcount and dietary needs are confirmed; email=
+ chain to be managed with Tricia.
+   - Confirm any last-minute =
+technology/support needs before in-person week.
+5. **Team Building / Event =
+Approval:**
+   - Jessica to seek Paul=E2=80=99s approval for team =
+dinner/event (tentatively intro dinner Sunday, possible event Thursday), =
+then coordinate with Paul's event coordinator.
+
+---
+
+## Follow-up Items & Meetings
+
+- **Monday, June 23:**
+  - Morning debrief with Pierce (7:30=E2=80=938:00am EST) to review =
+week=E2=80=99s plan and ensure readiness to run meetings.
+  - Reporting/Tracker approach meeting with Shrinivas/Bill =
+(3:30=E2=80=934:00pm).
+- **By Monday:**=20
+  - Finalize all action items =
+above; ensure communication of changes/schedule.
+  - Distribute all updated=
+ rosters, emails, and communications templates.
+- **Ongoing:**=20
+  - Live updating of test progress/defects in tracking files.
+  - Agile adjustment of scrum/wrap-up call agendas as actuals and =
+experiences dictate.
+
+---
+
+## Other Notes
+
+- Overarching emphasis on =
+clarity, transparency, proactive escalation, and alignment=E2=80=94across =
+both remote and in-person engagement.
+- Food, dietary, and logistical =
+inclusivity for a diverse global team.
+- Documentation (tests, rosters, =
+schedules, trackers) is centralized for project-wide access; ongoing =
+improvements expected as process matures.
+- Leadership and meeting handoffs=
+ planned to minimize risk during transitions (e.g., vacation/absence =
+coverage for Jessica).
+
+---
+
+**End of Summary**
+
+Transcript:
+0:00
+Yes, no worries. So for the two weeks of sit, I'm going to set up a scrum =
+call and I'm going to set up a daily wrap up call. The audience for both =
+calls same. It's going to be the core team from this week. The meeting with=
+ like the nine of us, not just the four but R9 and columns H and I from the=
+ spreadsheet.
+
+0:31
+Honeywell work stream lead. Honeywell IT lead. Yes.
+
+0:35
+And so my only other call out and Athens.
+
+0:38
+Athens IT lead.
+
+0:40
+Oh, so I need. Hold on. I, I partially said that wrong. I identified H and =
+I which are Honeywell IT lead and Athens it leads. Do I need Honeywell work=
+ streaming as well? So yes, do I need gh? Got it. Okay. So the only other =
+call out is time zones. I'm going to put a caveat note in there that says =
+for the nighttime call APAC team is not expected to be on but they are =
+expected to pass the results onto Shrier, Bill Srinivasa Bill. I mean =
+before they get offline, make sure you're connecting with them so they have=
+ your results. And then for the scrum call, I'm specifically calling out =
+Bill for this one because Bill is one of our true leads. I'm just gonna =
+note to tell Bill if you're not going to adjust your hours, which is fine. =
+I'm not expecting him to. But I am expecting that you be on at least the =
+daily wrap up so that way we can make sure we're aligned. Pierce can =
+communicate out to the team in the morning or if there's any questions in =
+the morning what Bill's team is going to be testing on. And Bill can set up=
+ a connect with them if he needs to. That's more in his time zone. So =
+meaning we're going to set up a 7:45 call. I'm not expecting Bill to be on =
+a call at 4:45 at the time. But if there is any connection point that he =
+needs to have with his team then he's going to need to either set something=
+ up or just make sure Pierce is informed. Let's say Monday night for what =
+Tuesday morning's activities are to review that with the team on the scrum.=
+ So I think that covers it. So my intention there is just identifying and =
+acknowledging the fact that this is outside of your. This is an off hour =
+for you. I know some people it's going to maybe be off like it's later in =
+the afternoon but I'm talking like APAC 4pm calls 4am I don't expect it to =
+be on so. Yeah, just aligning on that case. That's a good way to say it.
+
+2:51
+Okay. Yeah.
+
+2:54
+Okay. I was gonna go to GAT for a second unless you =
+had a question about the.
+
+2:57
+No, no, no. Just thinking through. Thinking=
+ through that. Yeah. That's. We have to level set that expectations. To =
+your point. I'm just concerned. I just. To Paul, to Jeff's point, I think =
+it's almost like we need to do a dry run of this and just see how it works =
+over the next few days and work out the kinks.
+
+3:16
+Yes.
+
+3:16
+Because it's going to be mess Wednesday, I think. And then.
+
+3:20
+Yes. So here's the deal. We had talked about not setting up the screen =
+until Wednesday.
+
+3:26
+Okay.
+
+3:27
+I think that we set it up for Tuesday. I=
+ don't want to put it. I don't want to put a meeting on the calendar right =
+now for 7:45 on Monday without giving people notice.
+
+3:35
+Yeah. Without people. Yes.
+
+3:36
+Yes.
+
+3:37
+Let's start Tuesday and then =
+prepare everything Monday.
+
+3:40
+Yes. Because my other concern is Bill and =
+Trini Mountain. Part of the reason I didn't invite them to this is I know =
+they're working on stuff but they both are very good technically aligned. =
+They have good organization. But they're so focused on.
+
+3:54
+It's tearing the weeds.
+
+3:56
+Yeah. They're component that I wanted to. We =
+need more of the high level right now and just the people side of this =
+deployment which has not really had so much thought. So that's why we have =
+this. So second half is from calls. So we are going to have half of that be=
+ remote and half of that be in person. But I still want to have it set up =
+because we're going to have some folks not there. So for the UAT scrum =
+calls, it's going to be R14. My first question is do I invite the people in=
+ columns G H and I to the UAT ones? And I think the answer is yes, but I =
+just want to get your validation.
+
+4:37
+Probably the Athens lead and the =
+Honeywell.
+
+4:41
+It leads but not necessarily the Honeywell work stream.
+
+4:45
+In many places they're the same but I mean they're not that many more.=
+ But probably just the. So if you unfilter.
+
+4:56
+You know what? I'll =
+unfilter, but sure.
+
+4:58
+There's not many.
+
+4:59
+Yeah.
+
+5:00
+Just clear filter and then data.
+
+5:04
+Back to Vicki's main point is I'd =
+rather over communicate than not if we have. Yeah. So here's the back half =
+of this that I just want to make sure we're especially aligned on. We have.=
+ Okay. Columns N, columns O. I Think if we invite everybody in O, it's =
+going to be a cluster. My thought is that we invite people in nature and we=
+ make it very clear that the people in N need to review whatever we talk =
+about with the people in O.
+
+5:48
+Yes.
+
+5:49
+Okay.
+
+5:50
+They are the ones because in technically they. And probably we need to =
+invite the. For uat, the UAT coordinators. So that's one level above these =
+function leads. So Sriram for all of supply chain or peers for all of =
+commercial or whoever it is for the other functions. Will J or you know, =
+his counterpart for well, Will J for all of.
+
+6:17
+Yeah, can we finance. We=
+ have the roster. Screenshot of that list again.
+
+6:21
+Yeah, here, I'll send you a link to the roster.
+
+6:24
+Okay. Rakesh. And send it to me once before. But guys.
+
+6:28
+Yeah, it's in your UAT folder. It's just, it's an Excel roster in the uat. =
+UAT test case folder.
+
+6:35
+Yeah. I also talked to Matt Teigen and I was =
+like, hey, Matt, are you interested in coming to these? He goes, no, =
+Jessica. He's like, just put Sandra on. And I was like, okay, I knew he was=
+ gonna say that because. And it should be Sandra. So. Yeah, I just, I =
+thought it was funny. He's like, I, I, he's already like triple booked most=
+ days that like whenever him and I would have connects, he would 90% of the=
+ time need to cancel them. So I was like, all right, this is, this is not =
+going to be him. But okay, so I will invite them as well and I'm going to =
+set it up for same expectations of, you know, if this is outside of your, =
+like the morning one. If you are. And I might just call it out and say, hey=
+, if you're west coast time zone, we know this is outside of your normal =
+working hours. You know, please just make sure that you have somebody on =
+this call, you know, as a representative with your information. And I'll =
+probably just need to call that out as like, please make sure you give to =
+Pierce. Vicki, can we CC those additional. Yes, Vicki. The answer to your =
+questions? Yes.
+
+7:37
+I mean, we could put them in a table. Like we have =
+them by system. You could say like these are the expected. You could call =
+them like status, input, point of contact, and then the folks above them. =
+Right. Like the, if I understand what you're saying, you're saying that the=
+ testers from that UAT tester column where we have a ton of names, they =
+would be listed as the input for the status reporting for the people that =
+are expected to join the call. And you make that linkage clear and then you=
+ can go up to the workstream lead and then up to the UAT coordinator.
+
+8:14
+So for finance to the point you're making, Vicky is Will has delegated it =
+to four or five people as points of contact. So those four or five within =
+his function finance areas will represent him. So those would get invited =
+as providing the readout. As a coordinator, they're supposed to read out =
+status on their function.
+
+8:39
+Yeah. But yeah, to Vicki's point, she's =
+also thinking about the email. So yeah, we should definitely see them in =
+the. The other thing I want to make sure we are aligned is for the agenda =
+for the UAT calls because we're going to start getting more people on these=
+ calls. What I'd like to do, and I think the answer is this comes from Bill=
+ and Srinivas, but I want to make sure that I reviewed this. Vicki and her =
+and I are lying but Mac and Rakesh kind of level set me here. We already =
+know there's a concern with some of these folks and either not wanting to =
+test or somebody got identified and it hasn't been communicated to them. =
+Because my expectation would be that these UAT functional leads have had =
+some kind of comms with their team. But we know that hasn't happened with =
+which is why we're getting myself and Vicki involved to send direct comms =
+to everyone. So we're sending this out now. We're doing the kickoff call. =
+But what I think is another level of coordination we should do is during =
+the scrum call we have a very clear agenda we're reviewing. We can figure =
+out the logistics. Not the logistics, but the details of the agenda. But =
+essentially we're going to review number of defects, we're going to review =
+the plan for the day. But one of the other aspects I want to review is =
+preparing for the next day.
+
+10:14
+Yes, yes.
+
+10:15
+And I want to do that during the scrum call, not the wrap up. Only because =
+if I'm finance lead and Vicki is one of my testers and it's Monday and =
+she's supposed to test on Tuesday, I want to make sure that we tell Jessica=
+ that, hey Jessica, we're going to run finance scripts 1, 2, 3, 4. I =
+Jessica, then go into whatever files I need to say, hey, I need Vicki, I =
+need Matt, I need Rakesh. And the expectation is that they connect with =
+their people the day before and say, hey, as a reminder, you're going to be=
+ involved in testing tomorrow, folks. Testing all week. It's not really a =
+big issue. I'm thinking more like the Tax people that are fighting back and=
+ forth on who it should be that we need for probably 10 minutes of their =
+time. So I want to make sure as part of our agenda for the UAT calls, that =
+we review what business unit or business UAT testers are needed and the =
+functional leads are responsible for connecting with them the day before =
+their tests.
+
+11:16
+Okay, I follow you. I think we just need to lay that =
+out in that agenda very clearly and talk through that on the first few =
+calls.
+
+11:28
+Okay. So if we, I think we have enough time to do this real =
+quick for the scrum calls for sit, it's going to be reviewing the daily =
+plan for the morning call. Other than reviewing the daily plan, I don't =
+really know that we need to review anything else. Again, sit because if =
+there's any defects or any defect tracking, they'll tell us about defects =
+end of day, but when they start working on them, they'll be part of their =
+plan. So I think the SCRUM for SIT can just be focused on here is our plan =
+that makes sense.
+
+12:13
+I follow you. Yep.
+
+12:15
+Okay. And again, to your=
+ point, as we hash out the details, you may say, hey, we also need to =
+review X, Y or Z. But I want to create the agenda in there now to start =
+getting people, you know, level set and we can always add things. So during=
+ the wrap up, it's going to be review what's completed, review any defects.=
+ Anything else for the wrap up that we should explicitly call out. Because =
+if they give us what's complete, completed to versus plan, I'm going to =
+call that out because if they just tell us we completed 10 and we forgot =
+they're supposed to complete 13, that's we'll want to know that. So yeah, =
+yeah. So what's completed versus what was the, the plan, the mitigation. If=
+ there's a gap, meaning the whole idea of if it's a risk versus a delay and=
+ then review of the defects. Now the defect component of that may =
+transition a little as we work through some of the defect tracking. But I =
+think for now I can just say review defects, slash meaning pass fail.
+
+13:31
+Which means we need to get all these trackers in play because people =
+either go in and update that or they tell us that and we live edit because =
+we need to get the result out right after that.
+
+13:43
+I think that we ask them to and maybe that's a call up item for the morning=
+ call is we remind them live update the file. So when we're doing the wrap =
+up, we're not having to do live edits. We have it Up. Oh, I think he just =
+came right back.
+
+14:21
+Sorry, I'm back.
+
+14:22
+No worries.
+
+14:26
+Yeah. So you were saying we have them provide the write up during that end =
+of day or do we want them to go in and provide it and update it and then =
+report on it?
+
+14:38
+I think that they just report on it during wrap up. So=
+ I think during our scrum, what the calls that we remind every day, =
+everybody every day put in the agenda is adding the details to the tracker =
+live through the day.
+
+14:55
+Okay.
+
+14:56
+And then theoretically when we =
+all connect at the end of day, I think we have the file open in case we =
+need to make live changes or updates. But I don't want to be sitting there =
+entering in, oh, Shreenivas tested 10 and Bill tested two. I'd rather that =
+be in there because I'm trying to keep this call to as short as possible =
+and I'd rather they have it in there and we're reviewing it.
+
+15:20
+Yeah, yeah, we should set that, that, that cadence then that, you know, if =
+the call is at 5 Eastern then that by 4:30 that people have updated that =
+whatever the status is at that point in time. And we come in and they read =
+out and say I've tested, I planned seven, I tested six, one's a delay and I=
+ got defects in two.
+
+15:42
+Okay. So the scrum call I was going to set up =
+for 7:45 to 8.
+
+15:51
+Okay.
+
+15:52
+And then the wrap up because I'm =
+thinking we're probably going to need a little more time on the wrap up. We=
+ do 30 minutes, we do 4:30 to 5.
+
+16:02
+Is that early? Is it? We need to do=
+ it a bit later. I like 4:30 to 5 Eastern. Well if it's a point in time. =
+Yeah. They probably are going to finish testing. Per your calendar, they're=
+ not going till 4pm Right. They test at 3, they're done.
+
+16:26
+I think we should keep it at 7:45 because we're still going to have our =
+policy. Yeah. And so let's do this Rakesh. Let's put it 4:30 to 5. And if =
+we again, this is a little evergreen. If someone says hey, you know what, I=
+ really want to be running test till 5, we can move it out because we have =
+people in so many different time zones. I don't know how critical it would =
+be because like Bill for example, I'm gonna speculate even though I haven't=
+ asked it. I don't think he's the type. He's gonna get up at 4am so life =
+revolves. Gonna get up at his know 8am which would be 11 our time that by =
+the time 4, 4:30 rolls around he may still have like 2, 3 hours of testing.=
+ So what we can do as part of our mos we realize like he's going to test =
+for two, three hours beyond our time. We can always add that as an agenda =
+item for the morning scrum to say, you know, give Bill five minutes for his=
+ wrap up notes for whatever he tested beyond our daily wrap up and then =
+work through the plan. So let's just tell, tell everyone you know =
+expectations that you fill in your edits as much as you can by like 4pm =
+Eastern standard. So when we review at 4:30, you know, we have the most =
+live information. Don't let it just be sitting on your desktop. And then =
+the only difference then for UAT is going to be in the morning. We are =
+going to want to review the next day's testers and have the UAT function =
+lead function send out palms to the next day testers.
+
+18:24
+Yeah, that you're in deck to test this or.
+
+18:26
+Yeah, yeah. Because if =
+they do that and then someone comes back and says it's not me, that's the =
+type of stuff that I'm not physically going to be testing. You're not =
+testing. Vicki's not testing. So we hear back, hey, Ben Goldstein has a =
+problem with tax. Guess what? Because immediately escalated to 65. =
+Immediately escalate to Jeff and then go try to track that person down. So =
+it gives us time versus that day. And if we start to realize that we =
+actually need two days notice, we can always pull that in a day. I'm a =
+little more concerned about the remote week than the in person week because=
+ in person week we should have most people in like the same spot but we =
+should be good to go from there. One other random question. Sri Bass like =
+kind of jokingly said this earlier, but would it be helpful, beneficial if =
+I can get Paul to approve like a, either a dinner out one night or like a =
+team building activity like nothing.
+
+19:22
+That's when they're in person. =
+Yeah, yeah, why not? I think absolutely. Maybe there's an intro. If they =
+all come in that Friday they, you know, that Sunday they maybe there's an =
+intro dinner on something Sunday as well. And then there's a, if they stick=
+ around, there's a Friday, you know. Yeah, absolutely. I think the, the =
+answer is absolutely.
+
+19:44
+All right, let me connect with Paul to see if =
+he has the budget and then I can. He gave me the name of his coordinator to=
+ work for work through food. So let me just ask him if he has any concern =
+with that. And if he does not, then I'll work to get something set up. So =
+to your point, maybe it's dinner Sunday night for those that come in. I =
+don't know what when people are traveling back out. So I don't know if I'd =
+want to wait till Friday, but maybe it's right.
+
+20:10
+Maybe a Wednesday or a Thursday thing.
+
+20:12
+Yeah, I'm thinking more =
+Thursday because if people decide to stay out a little late, it's not going=
+ to be too disruptive. Yep. Okay.
+
+20:22
+All right. I need to drop for =
+another call.
+
+20:26
+Call. No, you don't.
+
+20:29
+So in terms of the, the =
+other additional thing. So I see two things immediately, at least in =
+everything you've added. Mac, the list of employees. Paul has sent that to =
+me. Mac.
+
+20:43
+Yep.
+
+20:44
+Yeah. As you share your screen. Oh, Paul has =
+sent me the list of employees. It's password protected, so I need to get =
+that to you for you to do a lookup so that we understand the Athens testers=
+. And then we need to think through the reporting on page nine, how we want=
+ to add the dashboard and the reporting. Is there some sort of an executive=
+ summary front end? We do in addition to this page, you know, do we add =
+three pages, you know, to what we had? If you're sharing. Mac.
+
+21:16
+Oh, let me share again.
+
+21:22
+So this page, we probably have to have a =
+front end or maybe this is it. But yeah, we, I just need to think through =
+because I don't think just one. And then obviously there will be a line at =
+the bottom for HR because he wants to incorporate that in here. And I think=
+ yeah, we can talk through also the defect. So we'll probably send a =
+summary defect sheet as well that talks through that. So we need to think =
+through how we consolidate the automated, non automated end to end process =
+versus functional versus systems reporting that need to think through a bit=
+ more of that tomorrow and have something ready by Monday that we can, we =
+can share with peers and say this is how we're going to run the Tuesday =
+morning scrum. This is how we're going to send out the Tuesday email. =
+Evening end of day report using this template in the front page and then a =
+third page that has a defect. So just food for thought in terms of just =
+standardizing those trackers over the next couple of days. So, so, and then=
+ the rest of.
+
+22:25
+Sorry about 4. We want to just try to grab 3:30 to 4 =
+with Shrinivox and Belle to talk through the reporting a little bit. Not =
+that we needed. Okay. I don't, we don't need to finalize it. But I want to =
+at least get an idea of what they mean by like semi automated and not.
+
+22:44
+Yes, yes.
+
+22:45
+Because what I'm thinking is maybe you can work that=
+ a little bit, sort of the weekend. And then we have a meeting Monday =
+morning. Or you can hash out the remaining details. Okay.
+
+22:53
+Okay.
+
+22:55
+All right. Go Jumbo. Do your thing if you need to. Mac and Vicki, I =
+can stay on. Especially Vicki, if you had things you wanted to talk through=
+. And Mac, I do want to start looking slide three real quick.
+
+23:06
+Start with what I'm trying to do.
+
+23:08
+I want to look at slide three with=
+ you real quick.
+
+23:10
+I know.
+
+23:11
+Professionally. Okay, so here's all =
+our immediate tasks that we need to complete. UAT testing method, not add =
+testing method. 200 ERP.
+
+23:29
+Okay, that's this column. And then whatever=
+ we think through with.
+
+23:32
+Yeah, yeah.
+
+23:34
+UAT test another. So we =
+just need. I need to talk to Arpit and have him give me the count. I think =
+it's 26 countries that they're testing for HR. And then how many are done? =
+How many still need to be done? Etc. Add that to the master tracker and =
+then add it as a row in here. Hourly schedule.
+
+23:58
+That's on me. I will have that out on Monday.
+
+24:02
+Yeah. And then MOs and comms we talked through. You're going to send the =
+template to Paul with the instructions of who to send to. Right?
+
+24:12
+Vicki is going to do that once I give her the names.
+
+24:15
+Okay. Oh, yeah. Okay. So I put in the chat, not.
+
+24:21
+The names, but the email addresses. I need to just finish pulling them into=
+ your file.
+
+24:27
+Okay. I also put in the chat a link to. I summarized the=
+ roster data with the UAT functional coordinators for all of the functions.=
+ So you can pull up to the functional coordinator level for the core team.
+
+24:55
+Okay. For hr. All right. I think I'm just gonna invite Matt. I don't.=
+ I know that all of them are busy. I was talking with Matt. He said just to=
+ invite Sandra, but I think I might just invite him and then put Sandra as.=
+ Put Matt as. Option. Whatever. Oh, yeah. Thank you. Let's just stop there.=
+ Talking too much. All right, so I really want to copy column F for our UAT=
+ coordinators. Right? Yep. Okay. Put on here. We need to finalize the =
+logistics or the remote session. And Pierce is going to own this, so I'm =
+going to give you the specific things. Finalize food with Trisha. T R I C H=
+ I A. Yep. Vicki, I was just mentioned cars. And then in parentheses next =
+to it, actually, where it's like, where you have remote session logistics. =
+Put Pierce up there because Pierce is going to own this. And then after =
+that just say Jessica sent Ko email Friday. No, no, my apologies. Right =
+next to the finalized food with Trisha. Just say that Jessica send KO email=
+ Friday Pierce to finalize details week of 6 23. Because I'm gonna be out =
+and I don't like I would. If I have to get on a call, I'm gonna get on like=
+ a phone call with you guys. I'm not gonna coordinate food. Here's to do =
+that.
+
+27:12
+100.
+
+27:13
+Yeah. So where you have the word me, where you =
+suggest put in finalize cars details with tree sri. Oh, you can remove. No,=
+ no, you can remove my name. This is all. Pierce owns this. And Vicki, =
+you're aligned and understand that even though it may have Sree's name on =
+here, like Pierce needs to follow up with SRI to make sure that he sent all=
+ the stuff in. Yes, perfect. The other thing that we do need to do is have =
+a, a connection with Pierce on Monday. Don't put this down. I'm just gonna =
+do it right now. So I'm gonna try to set up meetings in the morning. My =
+preferences be that I attend all of my meetings in the morning and then I'm=
+ trying to be off for the rest of the rest of the day just being on =
+vacation. So for you two on the line, if I set up a 7:30 to 8 with Pierce =
+as a connect from like a debrief from this week, are you guys able to join?=
+ It would basically be right after.
+
+28:37
+Yeah, that's fine. I work so I =
+live in Denver, but I work east coast hours pretty much. So.
+
+28:45
+And Matt, to be honest, if you're not able to join but Rakesh is not a big =
+deal. But honestly I think it's really more. I think the critical people =
+are gonna be like me, Vicki and Pierce.
+
+28:56
+Good.
+
+28:58
+So I'm just gonna set it up for 7:30 and and I'm gonna literally call =
+debrief to get him up to speed and we'll see what happens. My biggest =
+concern is we want him to run the meetings on Tuesday and I will be back up=
+ if we need to, but I really want to get him up to speed as early as =
+possible. Like, hey, you need to connect out.
+
+29:26
+Of there and Rakesh and I can help sort of get him up to speed too. I think=
+ that he's good when he has a, like a plan of action and we sort of know =
+the roadmap, right. Like what needs to be done. So I think that he will =
+respond well enough to being told, hey, you need to go talk to this person =
+about this and set up this. And you have done such an excellent job of =
+putting that together. I think that we'll be able to. To all collectively =
+coach him along to make it happen.
+
+29:59
+I appreciate that much. But it's =
+funny because he is supposed to be.
+
+30:02
+I know. Well, yeah, I know. He's=
+ been.
+
+30:05
+We can end that. You don't need to elaborate. I get it.
+
+30:08
+Yeah.
+
+30:11
+No, but I can do that. That's what we're thinking next =
+week. That's why these simpler things like the takeoff pole. He can do all =
+that. The stuff that we did this week with the schedule. He doesn't really =
+need to talk that much to it, per se. I think if there's a question people =
+question like why was I identified? Or this, that or the other.
+
+30:31
+Yeah, well, we need. We'll just manage him on actions like you need to go =
+validate that. I don't know, whatever system needs to be in place to send =
+the next day testers the notification of their timing and the tests that =
+are required or whatever is in place and that those have been sent by the =
+functions or whatever it is. Right. Like we'll get tactical.
+
+30:56
+The other thing for Pierce is complete sign S I N E for all remote =
+resources. And all these things need to be completed by next week. That way=
+, if there's a gap. So the cars is supposed to get sent out today for all =
+the people that responded. It takes two weeks for cars to get done. Well, =
+they say two weeks, but they're trying to get themselves a little =
+permission. So cars need to be put in Monday, sign put in Friday, finalize =
+the boosters put in Friday. But the food's not really critical. Cars and =
+sign are the most critical of all that. Vicki. Thinking out loud, the bill =
+and Srinivas told me there's 32 people coming in for this, but I know =
+there's going to be some remote testers in Morris Plains. So I'm thinking =
+that we order enough food for 50 people because I know there's. There's =
+going to be 32 coming in, but I don't know exactly how many are. Okay, I'm =
+gonna put that in my email to. I'm gonna copy all the food stuff because =
+it's another one that needs to bear with Pierce. I'm gonna set up a new =
+email chain with just. Actually maybe I'll just reply to Trisha and say, =
+hey, we have 32 confirmed people coming in. We have two additional =
+resources that are going to be in Horse plains. And I'll put that question =
+on Pierce. Say Pierce, does it make sense to set it up for 50 people? And =
+what also just dawned on me is we may need to ask about food allergies. So =
+Matt, can you please add the Pierce list under the food there's a little =
+submarine. Reach out to the in person team to see if there's any food =
+restrictions. That's a better word to say because some people it's not an =
+allergy as much as this may be a personal choice of like I'm vegan =
+vegetarian. So we're gonna need that list.
+
+33:08
+There's probably gonna be=
+ vegetarians if they're coming from India.
+
+33:13
+I have the same thought. =
+So it's probably most likely going to be a vegetarian situation. Situation.
+
+33:17
+Yeah.
+
+33:18
+But some people are like, hey, I will eat, I won't eat =
+pork, but they'll eat other meat like chicken, beef. So yeah, the irony is =
+like I actually have a food allergy that I keep forgetting about because I =
+recently found out. But it's not like anaphylaxis. I always forget about it=
+. But like I have an allergy to shellfish. Not that you typically get =
+shellfish situation. But yeah, it's. It's usually more like the vegetarian =
+or pork type situation. You gotta think through cars, time, food. Shri got =
+the room. So we talked that through, so we're good. So I think those are =
+the only in person logistics. Vicki, we have on here the any technology =
+needs. So I don't. Let's talk that out loud, but I don't think so. All the =
+people that are going to be testing are going to be doing it with their =
+laptops. When it comes to like logins or anything. All these people have =
+access to these tools already. So it shouldn't be like a new license or =
+anything since you already have it theoretically are doing this right now. =
+There's no access concerns like moving things to a new instance and they =
+don't have logging criteria and they all should have their own laptops. The=
+ only potential technology needs would be if like somebody, let's say =
+forgot their charger. But if we all have conventionally the same laptops, I=
+ don't think that's a, an issue because they borrow somebody else's. So I =
+think we are good. But I think that's a good call out. Maybe review that =
+one Vicki, with Pierce. I don't know that we need to add it as an action =
+because I can't currently think of anything. Maybe just like ask Pierce =
+that question on Monday just in case. Okay, Mac, you're updating the =
+presentation. The country level data comment, is that the one? If somebody =
+is H.R. honeywell versus Advanced Materials. Sorry, what was. What was =
+number two?
+
+35:57
+Number two is just I need to add. I need to talk to =
+Arpit and Jeff this morning asked for at the country level for HR, how many=
+ test scripts are being run? So there's 26 countries that they're testing =
+how many have been run and you.
+
+36:13
+Mean just putting the ADP stuff in =
+here?
+
+36:15
+Yeah.
+
+36:16
+Okay, sorry. Let's go to the second. Okay.
+
+36:18
+I'd have to remind myself to do that or that's an easy. I just have to =
+reach out to Arpit and he's out of office and I need to remember to go back=
+ to him.
+
+36:27
+Got it. Can we do this? Can we consolidate those two and =
+just say updates to reporting? Yeah and I'm trying to make sure in my mind =
+like have MLS stuff we have to do, we have logistics stuff we have to do. =
+Yeah, those are both really like reporting updates. They're important but =
+let's consolidate. I'm just trying to make sure we're not missing anything.=
+ I orders the final hourly schedule.
+
+36:59
+Oh we need. I have to do the =
+thing from Rakesh on the. Oh that.
+
+37:11
+Yeah.
+
+37:11
+Athens test user scope validation and counts.
+
+37:34
+Yes. That Audrey never shows up to me. Vicki, out of curiosity, did you =
+connect with Pierce at all before he left? Like have you talked with Pierce=
+ previously? Vicki? No. Okay. The only reason I'm asking is because we're =
+gonna be like two bulls in a china closet when he gets back. He's gonna be =
+like who the hell are these two? Okay, so I'm setting up a couple call for =
+just out of curiosity, would it be better if I took a call for 3:00 clock =
+Eastern so 10 minutes from now or 3:30 to just have a quick conversation =
+with Trini boss and Bill regarding the recording.
+
+39:08
+3:30. I really need to eat something.
+
+39:11
+Totally fine. I'm asking. I =
+have a meeting at 4 which is I can't do it. Anything. Okay Vicki, if you =
+can't get on, that's totally fine. I want to just get some thoughts on =
+paper between you boss and Bill about Jeff's ask for that whole automated =
+versus manual and then have you and Mac, you and Rakesh sort of remaining =
+hours tonight, slash through the weekend, maybe do some updates and review =
+this on 9am on Monday. Vicki, give us one second because there's one more =
+thing I need Matt to add to this. Matt, can you just add where you see SIP =
+scrum calls underneath? Can you put in copy for UAT scrum calls or =
+something. So you have the SIT ones. I got to do the UAT ones too.
+
+40:13
+Can I just add it up here? Like SIT and UAT scrum calls?
+
+40:17
+Yeah, sure. There's, there's nuanced differences, but I have them in my =
+notes. So for the purpose of this, it's totally fine. Okay, so I think we =
+have everything. The three actions that I have out of this are, oh, and I =
+need to set up the take off call F4 under MoS and Comms. We need another =
+one. Just say Jessica to send out kickoff call and Vicki to review material=
+ for peers to present on Monday. I'll likely be on that call too, Vicki, =
+but I just want to make sure we note it on here like I'm setting it up. =
+Vicki, you've done a good job of like we're 80, 85% there with the content,=
+ but we need to review that with Pearson on Monday and then he's going to =
+do the actual presentation. So the four things that I owe is, Vicki, the =
+email addresses, which is the first thing I'm going to do as soon as we get=
+ off the call, I need to finish the schedule. I need to set up the SIT and =
+the UAT calls and then set up the kickoff call. But actually I'm going to =
+put the schedule last because I can do that over the weekend. I want to =
+make sure we get these calls set up before end of day. All right, Mac, if =
+you can email that out to all of us, I think that's a good one to send. And=
+ then Vicki, I see that you have this up here. Do you want us to take one =
+last read of it or did you have a question? I think we're good then. So =
+let's all just. Oh, Mac, you can jump and Vicki and I can just chat real =
+quick. I think she wants to show us something on the the comms and then we =
+connect at 3:30.
+
+42:17
+Okay, sweet. I'll send this to you in email, paste =
+it in the chat right now, real quick, and then we'll talk in a little bit =
+here. Thank you so much.
+
+42:26
+Sounds good. Thank you. Bye. Bye.
+----_NmP-fc4c72390a973a99-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Coordinated=
+ SIT UAT Testing And Logistics Plan</h1></td></tr></table></div><div =
+style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/4354C864-58C5-48CA-859E-8A80E3A11775?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h1 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2.5rem">Meeting Summary =E2=80=93 June 20, 2025</h1><h2 =
+style=3D"font-weight:500;padding-top:20px;font-size:2rem">Attendees</h2><ul=
+>
+<li>Core Project Team (~9 members; includes leads from Honeywell and =
+Athens IT)</li>
+<li>Honeywell Work Stream Lead &amp; IT Lead</li>
+<li>Athens IT Lead</li>
+<li>Additional function, system, UAT, and testing =
+coordinators (some referenced by position/column in project =
+spreadsheets)</li>
+<li>Not all stakeholders present; Pierce will own =
+certain logistics/follow-ups</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500=
+;padding-top:20px;font-size:2rem">Main Topics Discussed</h2><h3 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">1. Scheduling =
+&amp; Coordination of SIT and UAT Testing</h3><h4 style=3D"font-weight:500;=
+padding-top:20px;font-size:1.5rem">a. Meeting Structure for SIT (System =
+Integration Testing)</h4><ul>
+<li>Two key meetings to be set up per day =
+during the two-week SIT window:  <ul>
+<li><strong style=3D"font-weight:bold=
+">Scrum Call (7:45=E2=80=938:00am Eastern):</strong> Review daily plan, =
+assign tasks, discuss priorities, and set alignment for testing. Bill =
+highlighted as a key lead for these sessions.</li>
+<li><strong =
+style=3D"font-weight:bold">Daily Wrap-Up Call (4:30=E2=80=935:00pm =
+Eastern):</strong> Review completed items versus plan, defect review =
+(pass/fail rates), gap analysis (risk/delay), and process for real-time =
+updates to trackers.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold=
+">Audience:</strong> Core team (nine people), including Honeywell &amp; =
+Athens IT leads, and key workstream leads.</li>
+<li><strong =
+style=3D"font-weight:bold">Time Zone Accommodations:</strong>  <ul>
+<li>APAC team is not expected to attend nighttime wrap-up calls; must pass =
+results to Shrier/Bill before going offline.</li>
+<li>Bill (and similarly =
+situated leads) not expected at pre-dawn calls but must ensure =
+communication with their teams via Pierce or setup alternate connects.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1=
+.5rem">b. Meeting Structure for UAT (User Acceptance Testing)</h4><ul>
+<li><strong style=3D"font-weight:bold">Scrum and Wrap-Up Calls:</strong> =
+Similar two-call structure with focus adjusted for UAT activities.<ul>
+<li>Inclusion of UAT functional coordinators and relevant testers =
+(column-based invitation logic clarified=E2=80=94see section on roster and =
+invites below).</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Age=
+nda Items:</strong> <ul>
+<li>Daily: Defects, plans, status against plan, =
+and next-day preparation (specific callout to review which =
+function/business unit testers are needed in advance).</li>
+<li>UAT Coordinators responsible for proactive communication to day-before =
+testers.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20=
+px;font-size:1.5rem">c. In-Person vs Remote Weeks</h4><ul>
+<li><strong style=3D"font-weight:bold">Mixed Format:</strong> Second half =
+of SIT/UAT includes a mix of remote and in-person participation.<ul>
+<li>Remote week logistics to be finalized by Pierce.</li>
+<li>In-person week: Special attention to planning for food, transportation =
+(cars), and team-building activities.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">2. Roles, =
+Rosters, and Communication Structure</h3><ul>
+<li><strong =
+style=3D"font-weight:bold">Core Attendee Identification:</strong> Mapped =
+out via a spreadsheet =E2=80=93 roles include various levels: system leads,=
+ workstream leads, UAT coordinators, and functional testers.</li>
+<li><strong style=3D"font-weight:bold">Communication Plan:</strong>  <ul>
+<li>Over-communication preferred; invitation and CC policies discussed =
+(testers as =E2=80=9Cinput points=E2=80=9D for leads who do the actual =
+status reporting).</li>
+<li>Functions with delegated leads (e.g., Finance):=
+ delegates will provide status in calls, with coordinator overseeing =
+roll-up.</li>
+<li>Special attention to functions/teams with prior =
+communication gaps regarding test participation.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Supporting Documentation:</strong>  =
+<ul>
+<li>Roster Excel document (with UAT test case folder reference) =
+provides core contact/data structure.</li>
+<li>Vicki to supply summarized =
+version/lists, and email addresses to be compiled and distributed.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px;font=
+-size:1.75rem">3. UAT, SIT Logistics, and Preparation</h3><h4 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.5rem">a. Testing =
+Schedules and Assignment</h4><ul>
+<li><strong style=3D"font-weight:bold">Da=
+ily Schedules:</strong> Final hourly schedule to be released Monday.</li>
+<li><strong style=3D"font-weight:bold">Tester Assignment:</strong>  <ul>
+<li>Proactive identification and notification of next-day testers =
+considered critical.</li>
+<li>Mandate for function leads to communicate =
+requirements to their testers at least one day in advance; escalation =
+procedures for unaddressed gaps.</li>
+</ul>
+</li>
+</ul>
+<h4 style=3D"font-weight:500;padding-top:20px;font-size:1.5rem">b. =
+Reporting, Defect Tracking, and Executive Summaries</h4><ul>
+<li><strong style=3D"font-weight:bold">Tracker Updates:</strong>  <ul>
+<li>Live status entry by testers throughout the day (target: all data =
+updated by 4:00pm prior to 4:30 wrap-up).</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Reporting Structure:</strong>  <ul>
+<li>Plan to create standardized templates: <ul>
+<li>Executive summary/front=
+ end</li>
+<li>Main reporting/dashboard</li>
+<li>Defect summary =
+(automated/non-automated, E2E, system, function breakdowns)</li>
+</ul>
+</li>
+<li>Food for thought on consolidation of semi-automated and manual =
+tracking and how to clearly present this to senior/executive audiences.=
+</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Follow-up with =
+Reporting Leads:</strong> Meeting with Shrinivas and Bill set for =
+discussion on definitions/process for =E2=80=9Csemi-automated=E2=80=9D and =
+other reporting nuances, pre-Monday.</li>
+</ul>
+<h4 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.5rem">c. Onsite =
+Logistics (for In-Person Week)</h4><ul>
+<li>Pierce responsible for =
+finalizing logistics<ul>
+<li><strong style=3D"font-weight:bold">Food:</stro=
+ng> Confirmation of headcount (proposed: plan for 50 to account for =
+anticipated + unconfirmed participants), checking dietary restrictions =
+(allergies, vegan/vegetarian, religious restrictions), communication with =
+Tricia (food coordinator)</li>
+<li><strong style=3D"font-weight:bold">Trans=
+portation (=E2=80=9Ccars=E2=80=9D):</strong> Processed for all in-person =
+resources; two week lead time required for arrangements.</li>
+<li><strong style=3D"font-weight:bold">Room and Technology:</strong> All =
+participants presumed to have required device access; confirm with Pierce =
+if any exceptions or issues arise (e.g., chargers, access/facilities).</li>
+<li><strong style=3D"font-weight:bold">Team Building:</strong> Proposals =
+for dinner or team activity (intro dinner on arrival Sunday; possible =
+dinner Thursday to avoid travel disruptions), pending Paul=E2=80=99s =
+approval on budget, handled by Jessica.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">4. =
+Ownership, Action Items &amp; Delegation</h3><ul>
+<li><strong =
+style=3D"font-weight:bold">Meeting Setup &amp; Ownership:</strong>  <ul>
+<li>Jessica: Set up daily SIT/UAT calls, kickoff call, and schedule, =
+compile final email lists.  </li>
+<li>Pierce: Oversee =
+coordination/logistics for remote and in-person weeks; lead communication =
+with food/catering, transportation, and follow up with SRI.</li>
+<li>Vicki: Compile and distribute summarized rosters, provide email =
+listings, draft direct communication to testers/participants, review =
+kickoff content with Pierce.</li>
+</ul>
+</li>
+<li><strong =
+style=3D"font-weight:bold">Transition &amp; Back-up:</strong>  <ul>
+<li>Pierce being prepped for primary leadership during the following week; =
+backup provided by Jessica and Rakesh as needed, with attention to =
+knowledge transfer and up-to-speed onboarding.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">5. =
+Risks, Concerns, &amp; Mitigation</h3><ul>
+<li><strong =
+style=3D"font-weight:bold">Attendance:</strong> Time zone challenges =
+expected; measures in place to ensure communication handoffs for global =
+team.</li>
+<li><strong style=3D"font-weight:bold">Communication =
+Gaps:</strong> Previous issues recognized with late or unclear =
+notifications to testers; actions put in place via direct comms.</li>
+<li><strong style=3D"font-weight:bold">Reporting Integrity:</strong> =
+Emphasis on real-time data entry to avoid delays and incomplete status =
+snapshots; plan for live tracker review and entry before wrap-up.</li>
+<li><strong style=3D"font-weight:bold">Resource Gaps:</strong> Proactive =
+escalation protocol for missing or unresponsive testers; immediate =
+notification to management (Jeff, etc.) for gap resolution.</li>
+<li><strong style=3D"font-weight:bold">Onsite Uncertainties:</strong> =
+Reasoned food planning and logistics to account for unconfirmed attendees; =
+allergen and dietary diversity explicitly considered.</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Action =
+Items</h2><ol>
+<li><strong style=3D"font-weight:bold">Schedule =
+Setup:</strong><ul>
+<li>Jessica to set up SIT and UAT daily scrum and =
+wrap-up calls, starting Tuesday, with prep/notice to be given Monday, June =
+23.</li>
+<li>Kickoff call to be scheduled by Jessica.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Roster &amp; =
+Communication:</strong><ul>
+<li>Vicki to compile and distribute summarized =
+roster, email addresses, and direct communication templates for =
+function/tester leads.</li>
+<li>Function leads to assign and communicate to=
+ next-day testers; escalation protocol for gaps.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Reporting &amp; =
+Trackers:</strong><ul>
+<li>Consolidate and standardize reporting templates =
+(executive summary, main status, defect log).</li>
+<li>Schedule =
+3:30=E2=80=934:00pm call with Shrinivas and Bill to refine reporting =
+approach.</li>
+<li>Arpit to supply HR country-level test counts and =
+completion data.</li>
+<li>Schedule =E2=80=9Clive update=E2=80=9D cut-off =
+for tracker input at 4pm daily; readouts to be succinct and data-backed.=
+</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Onsite =
+Logistics:</strong><ul>
+<li>Pierce to finalize all remote and in-person =
+logistics: food (via Tricia), transportation (=E2=80=9Ccar=E2=80=9D =
+process), and room/tech needs.</li>
+<li>Pierce to ensure food headcount and=
+ dietary needs are confirmed; email chain to be managed with Tricia.</li>
+<li>Confirm any last-minute technology/support needs before in-person week.=
+</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Team Building / =
+Event Approval:</strong><ul>
+<li>Jessica to seek Paul=E2=80=99s approval =
+for team dinner/event (tentatively intro dinner Sunday, possible event =
+Thursday), then coordinate with Paul&#39;s event coordinator.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:=
+2rem">Follow-up Items &amp; Meetings</h2><ul>
+<li><strong =
+style=3D"font-weight:bold">Monday, June 23:</strong><ul>
+<li>Morning debrief with Pierce (7:30=E2=80=938:00am EST) to review =
+week=E2=80=99s plan and ensure readiness to run meetings.</li>
+<li>Reporting/Tracker approach meeting with Shrinivas/Bill =
+(3:30=E2=80=934:00pm).</li>
+</ul>
+</li>
+<li><strong =
+style=3D"font-weight:bold">By Monday:</strong> <ul>
+<li>Finalize all action items above; ensure communication of =
+changes/schedule.</li>
+<li>Distribute all updated rosters, emails, and =
+communications templates.</li>
+</ul>
+</li>
+<li><strong =
+style=3D"font-weight:bold">Ongoing:</strong> <ul>
+<li>Live updating of test=
+ progress/defects in tracking files.</li>
+<li>Agile adjustment of =
+scrum/wrap-up call agendas as actuals and experiences dictate.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:=
+2rem">Other Notes</h2><ul>
+<li>Overarching emphasis on clarity, =
+transparency, proactive escalation, and alignment=E2=80=94across both =
+remote and in-person engagement.</li>
+<li>Food, dietary, and logistical =
+inclusivity for a diverse global team.</li>
+<li>Documentation (tests, =
+rosters, schedules, trackers) is centralized for project-wide access; =
+ongoing improvements expected as process matures.</li>
+<li>Leadership and meeting handoffs planned to minimize risk during =
+transitions (e.g., vacation/absence coverage for Jessica).</li>
+</ul>
+<hr />
+<p><strong style=3D"font-weight:bold">End of Summary</strong></p>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0,=
+ 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex;align-i=
+tems:center;gap:8px"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</=
+span>Transcription</h3><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">0:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes, no worries. So =
+for the two weeks of sit, I&#x27;m going to set up a scrum call and =
+I&#x27;m going to set up a daily wrap up call. The audience for both calls =
+same. It&#x27;s going to be the core team from this week. The meeting with =
+like the nine of us, not just the four but R9 and columns H and I from the =
+spreadsheet.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">0:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Honeywell work =
+stream lead. Honeywell IT lead. Yes.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">0:35</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">And so my only other call out and Athens.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">0=
+:38</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Athens IT lead.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">0:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, so I need. Hold =
+on. I, I partially said that wrong. I identified H and I which are =
+Honeywell IT lead and Athens it leads. Do I need Honeywell work streaming =
+as well? So yes, do I need gh? Got it. Okay. So the only other call out is =
+time zones. I&#x27;m going to put a caveat note in there that says for the =
+nighttime call APAC team is not expected to be on but they are expected to =
+pass the results onto Shrier, Bill Srinivasa Bill. I mean before they get =
+offline, make sure you&#x27;re connecting with them so they have your =
+results. And then for the scrum call, I&#x27;m specifically calling out =
+Bill for this one because Bill is one of our true leads. I&#x27;m just =
+gonna note to tell Bill if you&#x27;re not going to adjust your hours, =
+which is fine. I&#x27;m not expecting him to. But I am expecting that you =
+be on at least the daily wrap up so that way we can make sure we&#x27;re =
+aligned. Pierce can communicate out to the team in the morning or if =
+there&#x27;s any questions in the morning what Bill&#x27;s team is going to=
+ be testing on. And Bill can set up a connect with them if he needs to. =
+That&#x27;s more in his time zone. So meaning we&#x27;re going to set up a =
+7:45 call. I&#x27;m not expecting Bill to be on a call at 4:45 at the time.=
+ But if there is any connection point that he needs to have with his team =
+then he&#x27;s going to need to either set something up or just make sure =
+Pierce is informed. Let&#x27;s say Monday night for what Tuesday =
+morning&#x27;s activities are to review that with the team on the scrum. So=
+ I think that covers it. So my intention there is just identifying and =
+acknowledging the fact that this is outside of your. This is an off hour =
+for you. I know some people it&#x27;s going to maybe be off like it&#x27;s =
+later in the afternoon but I&#x27;m talking like APAC 4pm calls 4am I =
+don&#x27;t expect it to be on so. Yeah, just aligning on that case. =
+That&#x27;s a good way to say it.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</s=
+pan><span style=3D"color:#64748b;font-size:14px">2:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">2:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. I was gonna go=
+ to GAT for a second unless you had a question about the.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">2=
+:57</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">No, no, no. Just thinking through. Thinking through that. Yeah. =
+That&#x27;s. We have to level set that expectations. To your point. =
+I&#x27;m just concerned. I just. To Paul, to Jeff&#x27;s point, I think =
+it&#x27;s almost like we need to do a dry run of this and just see how it =
+works over the next few days and work out the kinks.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">3:16</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yes.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">3:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Because it&#x27;s =
+going to be mess Wednesday, I think. And then.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">3:20</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yes. So here&#x27;s the deal. We had talked about not setting up the =
+screen until Wednesday.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><s=
+pan style=3D"color:#64748b;font-size:14px">3:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">3:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think that we set =
+it up for Tuesday. I don&#x27;t want to put it. I don&#x27;t want to put a =
+meeting on the calendar right now for 7:45 on Monday without giving people =
+notice.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">3:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Without people=
+. Yes.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">3:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">=
+3:37</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Let&#x27;s start Tuesday and then prepare everything Monday.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">3:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes. Because my =
+other concern is Bill and Trini Mountain. Part of the reason I didn&#x27;t =
+invite them to this is I know they&#x27;re working on stuff but they both =
+are very good technically aligned. They have good organization. But =
+they&#x27;re so focused on.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><s=
+pan style=3D"color:#64748b;font-size:14px">3:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It&#x27;s tearing =
+the weeds.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">3:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. They&#x27;re =
+component that I wanted to. We need more of the high level right now and =
+just the people side of this deployment which has not really had so much =
+thought. So that&#x27;s why we have this. So second half is from calls. So =
+we are going to have half of that be remote and half of that be in person. =
+But I still want to have it set up because we&#x27;re going to have some =
+folks not there. So for the UAT scrum calls, it&#x27;s going to be R14. My =
+first question is do I invite the people in columns G H and I to the UAT =
+ones? And I think the answer is yes, but I just want to get your validation=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">4:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Probably the Athens =
+lead and the Honeywell.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">4:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It leads but not =
+necessarily the Honeywell work stream.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">4=
+:45</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">In many places they&#x27;re the same but I mean they&#x27;re not that =
+many more. But probably just the. So if you unfilter.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">4:56</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">You know what? I&#x27;ll unfilter, but sure.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">4=
+:58</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">There&#x27;s not many.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">4:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">5:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Just clear filter =
+and then data.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">5:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Back to Vicki&#x27;s=
+ main point is I&#x27;d rather over communicate than not if we have. Yeah. =
+So here&#x27;s the back half of this that I just want to make sure =
+we&#x27;re especially aligned on. We have. Okay. Columns N, columns O. I =
+Think if we invite everybody in O, it&#x27;s going to be a cluster. My =
+thought is that we invite people in nature and we make it very clear that =
+the people in N need to review whatever we talk about with the people in O.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">5:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14p=
+x">5:49</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">5:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">They are the ones =
+because in technically they. And probably we need to invite the. For uat, =
+the UAT coordinators. So that&#x27;s one level above these function leads. =
+So Sriram for all of supply chain or peers for all of commercial or whoever=
+ it is for the other functions. Will J or you know, his counterpart for =
+well, Will J for all of.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">6:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, can we finance=
+. We have the roster. Screenshot of that list again.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Vicki</span><span style=3D"color:#64748b;font-size:14px">=
+6:21</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, here, I&#x27;ll send you a link to the roster.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">6:24</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Okay. Rakesh. And send it to me once before. But guys.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">6=
+:28</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, it&#x27;s in your UAT folder. It&#x27;s just, it&#x27;s an Excel =
+roster in the uat. UAT test case folder.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">6:35</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah. I also talked to Matt Teigen and I was like, hey, Matt, are you =
+interested in coming to these? He goes, no, Jessica. He&#x27;s like, just =
+put Sandra on. And I was like, okay, I knew he was gonna say that because. =
+And it should be Sandra. So. Yeah, I just, I thought it was funny. =
+He&#x27;s like, I, I, he&#x27;s already like triple booked most days that =
+like whenever him and I would have connects, he would 90% of the time need =
+to cancel them. So I was like, all right, this is, this is not going to be =
+him. But okay, so I will invite them as well and I&#x27;m going to set it =
+up for same expectations of, you know, if this is outside of your, like the=
+ morning one. If you are. And I might just call it out and say, hey, if =
+you&#x27;re west coast time zone, we know this is outside of your normal =
+working hours. You know, please just make sure that you have somebody on =
+this call, you know, as a representative with your information. And =
+I&#x27;ll probably just need to call that out as like, please make sure you=
+ give to Pierce. Vicki, can we CC those additional. Yes, Vicki. The answer =
+to your questions? Yes.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><=
+span style=3D"color:#64748b;font-size:14px">7:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I mean, we could put=
+ them in a table. Like we have them by system. You could say like these are=
+ the expected. You could call them like status, input, point of contact, =
+and then the folks above them. Right. Like the, if I understand what =
+you&#x27;re saying, you&#x27;re saying that the testers from that UAT =
+tester column where we have a ton of names, they would be listed as the =
+input for the status reporting for the people that are expected to join the=
+ call. And you make that linkage clear and then you can go up to the =
+workstream lead and then up to the UAT coordinator.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">8=
+:14</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So for finance to the point you&#x27;re making, Vicky is Will has =
+delegated it to four or five people as points of contact. So those four or =
+five within his function finance areas will represent him. So those would =
+get invited as providing the readout. As a coordinator, they&#x27;re =
+supposed to read out status on their function.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">8:39</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah. But yeah, to Vicki&#x27;s point, she&#x27;s also thinking about =
+the email. So yeah, we should definitely see them in the. The other thing I=
+ want to make sure we are aligned is for the agenda for the UAT calls =
+because we&#x27;re going to start getting more people on these calls. What =
+I&#x27;d like to do, and I think the answer is this comes from Bill and =
+Srinivas, but I want to make sure that I reviewed this. Vicki and her and I=
+ are lying but Mac and Rakesh kind of level set me here. We already know =
+there&#x27;s a concern with some of these folks and either not wanting to =
+test or somebody got identified and it hasn&#x27;t been communicated to =
+them. Because my expectation would be that these UAT functional leads have =
+had some kind of comms with their team. But we know that hasn&#x27;t =
+happened with which is why we&#x27;re getting myself and Vicki involved to =
+send direct comms to everyone. So we&#x27;re sending this out now. =
+We&#x27;re doing the kickoff call. But what I think is another level of =
+coordination we should do is during the scrum call we have a very clear =
+agenda we&#x27;re reviewing. We can figure out the logistics. Not the =
+logistics, but the details of the agenda. But essentially we&#x27;re going =
+to review number of defects, we&#x27;re going to review the plan for the =
+day. But one of the other aspects I want to review is preparing for the =
+next day.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">10:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes, yes.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">10:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And I want to do =
+that during the scrum call, not the wrap up. Only because if I&#x27;m =
+finance lead and Vicki is one of my testers and it&#x27;s Monday and =
+she&#x27;s supposed to test on Tuesday, I want to make sure that we tell =
+Jessica that, hey Jessica, we&#x27;re going to run finance scripts 1, 2, 3,=
+ 4. I Jessica, then go into whatever files I need to say, hey, I need Vicki=
+, I need Matt, I need Rakesh. And the expectation is that they connect with=
+ their people the day before and say, hey, as a reminder, you&#x27;re going=
+ to be involved in testing tomorrow, folks. Testing all week. It&#x27;s not=
+ really a big issue. I&#x27;m thinking more like the Tax people that are =
+fighting back and forth on who it should be that we need for probably 10 =
+minutes of their time. So I want to make sure as part of our agenda for the=
+ UAT calls, that we review what business unit or business UAT testers are =
+needed and the functional leads are responsible for connecting with them =
+the day before their tests.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><s=
+pan style=3D"color:#64748b;font-size:14px">11:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, I follow you. =
+I think we just need to lay that out in that agenda very clearly and talk =
+through that on the first few calls.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">11:28</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Okay. So if we, I think we have enough time to do this real quick for =
+the scrum calls for sit, it&#x27;s going to be reviewing the daily plan for=
+ the morning call. Other than reviewing the daily plan, I don&#x27;t really=
+ know that we need to review anything else. Again, sit because if =
+there&#x27;s any defects or any defect tracking, they&#x27;ll tell us about=
+ defects end of day, but when they start working on them, they&#x27;ll be =
+part of their plan. So I think the SCRUM for SIT can just be focused on =
+here is our plan that makes sense.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</=
+span><span style=3D"color:#64748b;font-size:14px">12:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I follow you. Yep.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">12:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. And again, to =
+your point, as we hash out the details, you may say, hey, we also need to =
+review X, Y or Z. But I want to create the agenda in there now to start =
+getting people, you know, level set and we can always add things. So during=
+ the wrap up, it&#x27;s going to be review what&#x27;s completed, review =
+any defects. Anything else for the wrap up that we should explicitly call =
+out. Because if they give us what&#x27;s complete, completed to versus plan=
+, I&#x27;m going to call that out because if they just tell us we completed=
+ 10 and we forgot they&#x27;re supposed to complete 13, that&#x27;s =
+we&#x27;ll want to know that. So yeah, yeah. So what&#x27;s completed =
+versus what was the, the plan, the mitigation. If there&#x27;s a gap, =
+meaning the whole idea of if it&#x27;s a risk versus a delay and then =
+review of the defects. Now the defect component of that may transition a =
+little as we work through some of the defect tracking. But I think for now =
+I can just say review defects, slash meaning pass fail.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">1=
+3:31</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Which means we need to get all these trackers in play because people =
+either go in and update that or they tell us that and we live edit because =
+we need to get the result out right after that.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">13:43</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">I think that we ask them to and maybe that&#x27;s a call up item for =
+the morning call is we remind them live update the file. So when we&#x27;re=
+ doing the wrap up, we&#x27;re not having to do live edits. We have it Up. =
+Oh, I think he just came right back.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">1=
+4:21</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Sorry, I&#x27;m back.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">14:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No worries.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">14:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So you were =
+saying we have them provide the write up during that end of day or do we =
+want them to go in and provide it and update it and then report on it?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">14:38</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think that they =
+just report on it during wrap up. So I think during our scrum, what the =
+calls that we remind every day, everybody every day put in the agenda is =
+adding the details to the tracker live through the day.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">1=
+4:55</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">14:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then =
+theoretically when we all connect at the end of day, I think we have the =
+file open in case we need to make live changes or updates. But I don&#x27;t=
+ want to be sitting there entering in, oh, Shreenivas tested 10 and Bill =
+tested two. I&#x27;d rather that be in there because I&#x27;m trying to =
+keep this call to as short as possible and I&#x27;d rather they have it in =
+there and we&#x27;re reviewing it.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</=
+span><span style=3D"color:#64748b;font-size:14px">15:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah, we =
+should set that, that, that cadence then that, you know, if the call is at =
+5 Eastern then that by 4:30 that people have updated that whatever the =
+status is at that point in time. And we come in and they read out and say =
+I&#x27;ve tested, I planned seven, I tested six, one&#x27;s a delay and I =
+got defects in two.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">15:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. So the scrum =
+call I was going to set up for 7:45 to 8.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">1=
+5:51</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">15:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then the wrap up=
+ because I&#x27;m thinking we&#x27;re probably going to need a little more =
+time on the wrap up. We do 30 minutes, we do 4:30 to 5.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">1=
+6:02</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Is that early? Is it? We need to do it a bit later. I like 4:30 to 5 =
+Eastern. Well if it&#x27;s a point in time. Yeah. They probably are going =
+to finish testing. Per your calendar, they&#x27;re not going till 4pm Right=
+. They test at 3, they&#x27;re done.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">16:26</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">I think we should keep it at 7:45 because we&#x27;re still going to =
+have our policy. Yeah. And so let&#x27;s do this Rakesh. Let&#x27;s put it =
+4:30 to 5. And if we again, this is a little evergreen. If someone says hey=
+, you know what, I really want to be running test till 5, we can move it =
+out because we have people in so many different time zones. I don&#x27;t =
+know how critical it would be because like Bill for example, I&#x27;m gonna=
+ speculate even though I haven&#x27;t asked it. I don&#x27;t think =
+he&#x27;s the type. He&#x27;s gonna get up at 4am so life revolves. Gonna =
+get up at his know 8am which would be 11 our time that by the time 4, 4:30 =
+rolls around he may still have like 2, 3 hours of testing. So what we can =
+do as part of our mos we realize like he&#x27;s going to test for two, =
+three hours beyond our time. We can always add that as an agenda item for =
+the morning scrum to say, you know, give Bill five minutes for his wrap up =
+notes for whatever he tested beyond our daily wrap up and then work through=
+ the plan. So let&#x27;s just tell, tell everyone you know expectations =
+that you fill in your edits as much as you can by like 4pm Eastern standard=
+. So when we review at 4:30, you know, we have the most live information. =
+Don&#x27;t let it just be sitting on your desktop. And then the only =
+difference then for UAT is going to be in the morning. We are going to want=
+ to review the next day&#x27;s testers and have the UAT function lead =
+function send out palms to the next day testers.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">1=
+8:24</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, that you&#x27;re in deck to test this or.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">18:26</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah, yeah. Because if they do that and then someone comes back and =
+says it&#x27;s not me, that&#x27;s the type of stuff that I&#x27;m not =
+physically going to be testing. You&#x27;re not testing. Vicki&#x27;s not =
+testing. So we hear back, hey, Ben Goldstein has a problem with tax. Guess =
+what? Because immediately escalated to 65. Immediately escalate to Jeff and=
+ then go try to track that person down. So it gives us time versus that day=
+. And if we start to realize that we actually need two days notice, we can =
+always pull that in a day. I&#x27;m a little more concerned about the =
+remote week than the in person week because in person week we should have =
+most people in like the same spot but we should be good to go from there. =
+One other random question. Sri Bass like kind of jokingly said this earlier=
+, but would it be helpful, beneficial if I can get Paul to approve like a, =
+either a dinner out one night or like a team building activity like nothing=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><span =
+style=3D"color:#64748b;font-size:14px">19:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;s when =
+they&#x27;re in person. Yeah, yeah, why not? I think absolutely. Maybe =
+there&#x27;s an intro. If they all come in that Friday they, you know, that=
+ Sunday they maybe there&#x27;s an intro dinner on something Sunday as well=
+. And then there&#x27;s a, if they stick around, there&#x27;s a Friday, you=
+ know. Yeah, absolutely. I think the, the answer is absolutely.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">19:44</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right, let me =
+connect with Paul to see if he has the budget and then I can. He gave me =
+the name of his coordinator to work for work through food. So let me just =
+ask him if he has any concern with that. And if he does not, then I&#x27;ll=
+ work to get something set up. So to your point, maybe it&#x27;s dinner =
+Sunday night for those that come in. I don&#x27;t know what when people are=
+ traveling back out. So I don&#x27;t know if I&#x27;d want to wait till =
+Friday, but maybe it&#x27;s right.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</=
+span><span style=3D"color:#64748b;font-size:14px">20:10</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Maybe a Wednesday or=
+ a Thursday thing.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">20:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I&#x27;m =
+thinking more Thursday because if people decide to stay out a little late, =
+it&#x27;s not going to be too disruptive. Yep. Okay.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">2=
+0:22</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">All right. I need to drop for another call.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">20:26</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Call. No, you don&#x27;t.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</s=
+pan><span style=3D"color:#64748b;font-size:14px">20:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So in terms of the, =
+the other additional thing. So I see two things immediately, at least in =
+everything you&#x27;ve added. Mac, the list of employees. Paul has sent =
+that to me. Mac.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><=
+span style=3D"color:#64748b;font-size:14px">20:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yep.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">=
+20:44</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. As you share your screen. Oh, Paul has sent me the list of =
+employees. It&#x27;s password protected, so I need to get that to you for =
+you to do a lookup so that we understand the Athens testers. And then we =
+need to think through the reporting on page nine, how we want to add the =
+dashboard and the reporting. Is there some sort of an executive summary =
+front end? We do in addition to this page, you know, do we add three pages,=
+ you know, to what we had? If you&#x27;re sharing. Mac.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Vicki</span><span style=3D"color:#64748b;font-size:14px">=
+21:16</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Oh, let me share again.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><s=
+pan style=3D"color:#64748b;font-size:14px">21:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So this page, we =
+probably have to have a front end or maybe this is it. But yeah, we, I just=
+ need to think through because I don&#x27;t think just one. And then =
+obviously there will be a line at the bottom for HR because he wants to =
+incorporate that in here. And I think yeah, we can talk through also the =
+defect. So we&#x27;ll probably send a summary defect sheet as well that =
+talks through that. So we need to think through how we consolidate the =
+automated, non automated end to end process versus functional versus =
+systems reporting that need to think through a bit more of that tomorrow =
+and have something ready by Monday that we can, we can share with peers and=
+ say this is how we&#x27;re going to run the Tuesday morning scrum. This is=
+ how we&#x27;re going to send out the Tuesday email. Evening end of day =
+report using this template in the front page and then a third page that has=
+ a defect. So just food for thought in terms of just standardizing those =
+trackers over the next couple of days. So, so, and then the rest of.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">22:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sorry about 4. We =
+want to just try to grab 3:30 to 4 with Shrinivox and Belle to talk through=
+ the reporting a little bit. Not that we needed. Okay. I don&#x27;t, we =
+don&#x27;t need to finalize it. But I want to at least get an idea of what =
+they mean by like semi automated and not.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Matt</span><span style=3D"color:#64748b;font-size:14px">2=
+2:44</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yes, yes.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">22:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Because what =
+I&#x27;m thinking is maybe you can work that a little bit, sort of the =
+weekend. And then we have a meeting Monday morning. Or you can hash out the=
+ remaining details. Okay.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Matt</span><s=
+pan style=3D"color:#64748b;font-size:14px">22:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">22:55</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">All right. Go Jumbo.=
+ Do your thing if you need to. Mac and Vicki, I can stay on. Especially =
+Vicki, if you had things you wanted to talk through. And Mac, I do want to =
+start looking slide three real quick.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Vicki</span><span style=3D"color:#64748b;font-size:14px">=
+23:06</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Start with what I&#x27;m trying to do.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">23:08</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">I want to look at slide three with you real quick.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Vicki</span><span style=3D"color:#64748b;font-size:14px">=
+23:10</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I know.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">23:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Professionally. Okay=
+, so here&#x27;s all our immediate tasks that we need to complete. UAT =
+testing method, not add testing method. 200 ERP.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Vicki</span><span style=3D"color:#64748b;font-size:14px">=
+23:29</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Okay, that&#x27;s this column. And then whatever we think through with.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">23:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">23:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">UAT test another. So=
+ we just need. I need to talk to Arpit and have him give me the count. I =
+think it&#x27;s 26 countries that they&#x27;re testing for HR. And then how=
+ many are done? How many still need to be done? Etc. Add that to the master=
+ tracker and then add it as a row in here. Hourly schedule.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14p=
+x">23:58</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">That&#x27;s on me. I will have that out on Monday.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Vicki</span><span style=3D"color:#64748b;font-size:14px">=
+24:02</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. And then MOs and comms we talked through. You&#x27;re going to =
+send the template to Paul with the instructions of who to send to. Right?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">24:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Vicki is going to do=
+ that once I give her the names.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</=
+span><span style=3D"color:#64748b;font-size:14px">24:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. Oh, yeah. Okay=
+. So I put in the chat, not.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</spa=
+n><span style=3D"color:#64748b;font-size:14px">24:21</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The names, but the =
+email addresses. I need to just finish pulling them into your file.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">24:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. I also put in =
+the chat a link to. I summarized the roster data with the UAT functional =
+coordinators for all of the functions. So you can pull up to the functional=
+ coordinator level for the core team.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">24:55</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Okay. For hr. All right. I think I&#x27;m just gonna invite Matt. I =
+don&#x27;t. I know that all of them are busy. I was talking with Matt. He =
+said just to invite Sandra, but I think I might just invite him and then =
+put Sandra as. Put Matt as. Option. Whatever. Oh, yeah. Thank you. =
+Let&#x27;s just stop there. Talking too much. All right, so I really want =
+to copy column F for our UAT coordinators. Right? Yep. Okay. Put on here. =
+We need to finalize the logistics or the remote session. And Pierce is =
+going to own this, so I&#x27;m going to give you the specific things. =
+Finalize food with Trisha. T R I C H I A. Yep. Vicki, I was just mentioned =
+cars. And then in parentheses next to it, actually, where it&#x27;s like, =
+where you have remote session logistics. Put Pierce up there because Pierce=
+ is going to own this. And then after that just say Jessica sent Ko email =
+Friday. No, no, my apologies. Right next to the finalized food with Trisha.=
+ Just say that Jessica send KO email Friday Pierce to finalize details week=
+ of 6 23. Because I&#x27;m gonna be out and I don&#x27;t like I would. If I=
+ have to get on a call, I&#x27;m gonna get on like a phone call with you =
+guys. I&#x27;m not gonna coordinate food. Here&#x27;s to do that.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">27:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">100.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-i=
+tems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14p=
+x">27:13</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">Yeah. So where you have the word me, where you suggest put in =
+finalize cars details with tree sri. Oh, you can remove. No, no, you can =
+remove my name. This is all. Pierce owns this. And Vicki, you&#x27;re =
+aligned and understand that even though it may have Sree&#x27;s name on =
+here, like Pierce needs to follow up with SRI to make sure that he sent all=
+ the stuff in. Yes, perfect. The other thing that we do need to do is have =
+a, a connection with Pierce on Monday. Don&#x27;t put this down. I&#x27;m =
+just gonna do it right now. So I&#x27;m gonna try to set up meetings in the=
+ morning. My preferences be that I attend all of my meetings in the morning=
+ and then I&#x27;m trying to be off for the rest of the rest of the day =
+just being on vacation. So for you two on the line, if I set up a 7:30 to 8=
+ with Pierce as a connect from like a debrief from this week, are you guys =
+able to join? It would basically be right after.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Vicki</span><span style=3D"color:#64748b;font-size:14px">=
+28:37</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, that&#x27;s fine. I work so I live in Denver, but I work east =
+coast hours pretty much. So.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</spa=
+n><span style=3D"color:#64748b;font-size:14px">28:45</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And Matt, to be =
+honest, if you&#x27;re not able to join but Rakesh is not a big deal. But =
+honestly I think it&#x27;s really more. I think the critical people are =
+gonna be like me, Vicki and Pierce.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Vicki</span><span style=3D"color:#64748b;font-size:14px">=
+28:56</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Good.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">28:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So I&#x27;m just =
+gonna set it up for 7:30 and and I&#x27;m gonna literally call debrief to =
+get him up to speed and we&#x27;ll see what happens. My biggest concern is =
+we want him to run the meetings on Tuesday and I will be back up if we need=
+ to, but I really want to get him up to speed as early as possible. Like, =
+hey, you need to connect out.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</=
+span><span style=3D"color:#64748b;font-size:14px">29:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Of there and Rakesh =
+and I can help sort of get him up to speed too. I think that he&#x27;s good=
+ when he has a, like a plan of action and we sort of know the roadmap, =
+right. Like what needs to be done. So I think that he will respond well =
+enough to being told, hey, you need to go talk to this person about this =
+and set up this. And you have done such an excellent job of putting that =
+together. I think that we&#x27;ll be able to. To all collectively coach him=
+ along to make it happen.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span=
+><span style=3D"color:#64748b;font-size:14px">29:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I appreciate that =
+much. But it&#x27;s funny because he is supposed to be.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Vicki</span><span style=3D"color:#64748b;font-size:14px">=
+30:02</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I know. Well, yeah, I know. He&#x27;s been.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">30:05</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">We can end that. You don&#x27;t need to elaborate. I get it.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">30:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">30:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, but I can do =
+that. That&#x27;s what we&#x27;re thinking next week. That&#x27;s why these=
+ simpler things like the takeoff pole. He can do all that. The stuff that =
+we did this week with the schedule. He doesn&#x27;t really need to talk =
+that much to it, per se. I think if there&#x27;s a question people question=
+ like why was I identified? Or this, that or the other.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Vicki</span><span style=3D"color:#64748b;font-size:14px">=
+30:31</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, well, we need. We&#x27;ll just manage him on actions like you need=
+ to go validate that. I don&#x27;t know, whatever system needs to be in =
+place to send the next day testers the notification of their timing and the=
+ tests that are required or whatever is in place and that those have been =
+sent by the functions or whatever it is. Right. Like we&#x27;ll get =
+tactical.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">30:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">The other thing for =
+Pierce is complete sign S I N E for all remote resources. And all these =
+things need to be completed by next week. That way, if there&#x27;s a gap. =
+So the cars is supposed to get sent out today for all the people that =
+responded. It takes two weeks for cars to get done. Well, they say two =
+weeks, but they&#x27;re trying to get themselves a little permission. So =
+cars need to be put in Monday, sign put in Friday, finalize the boosters =
+put in Friday. But the food&#x27;s not really critical. Cars and sign are =
+the most critical of all that. Vicki. Thinking out loud, the bill and =
+Srinivas told me there&#x27;s 32 people coming in for this, but I know =
+there&#x27;s going to be some remote testers in Morris Plains. So I&#x27;m =
+thinking that we order enough food for 50 people because I know =
+there&#x27;s. There&#x27;s going to be 32 coming in, but I don&#x27;t know =
+exactly how many are. Okay, I&#x27;m gonna put that in my email to. =
+I&#x27;m gonna copy all the food stuff because it&#x27;s another one that =
+needs to bear with Pierce. I&#x27;m gonna set up a new email chain with =
+just. Actually maybe I&#x27;ll just reply to Trisha and say, hey, we have =
+32 confirmed people coming in. We have two additional resources that are =
+going to be in Horse plains. And I&#x27;ll put that question on Pierce. Say=
+ Pierce, does it make sense to set it up for 50 people? And what also just =
+dawned on me is we may need to ask about food allergies. So Matt, can you =
+please add the Pierce list under the food there&#x27;s a little submarine. =
+Reach out to the in person team to see if there&#x27;s any food =
+restrictions. That&#x27;s a better word to say because some people =
+it&#x27;s not an allergy as much as this may be a personal choice of like =
+I&#x27;m vegan vegetarian. So we&#x27;re gonna need that list.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">33:08</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">There&#x27;s =
+probably gonna be vegetarians if they&#x27;re coming from India.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">33:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I have the same =
+thought. So it&#x27;s probably most likely going to be a vegetarian =
+situation. Situation.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><=
+span style=3D"color:#64748b;font-size:14px">33:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">33:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">But some people are =
+like, hey, I will eat, I won&#x27;t eat pork, but they&#x27;ll eat other =
+meat like chicken, beef. So yeah, the irony is like I actually have a food =
+allergy that I keep forgetting about because I recently found out. But =
+it&#x27;s not like anaphylaxis. I always forget about it. But like I have =
+an allergy to shellfish. Not that you typically get shellfish situation. =
+But yeah, it&#x27;s. It&#x27;s usually more like the vegetarian or pork =
+type situation. You gotta think through cars, time, food. Shri got the room=
+. So we talked that through, so we&#x27;re good. So I think those are the =
+only in person logistics. Vicki, we have on here the any technology needs. =
+So I don&#x27;t. Let&#x27;s talk that out loud, but I don&#x27;t think so. =
+All the people that are going to be testing are going to be doing it with =
+their laptops. When it comes to like logins or anything. All these people =
+have access to these tools already. So it shouldn&#x27;t be like a new =
+license or anything since you already have it theoretically are doing this =
+right now. There&#x27;s no access concerns like moving things to a new =
+instance and they don&#x27;t have logging criteria and they all should have=
+ their own laptops. The only potential technology needs would be if like =
+somebody, let&#x27;s say forgot their charger. But if we all have =
+conventionally the same laptops, I don&#x27;t think that&#x27;s a, an issue=
+ because they borrow somebody else&#x27;s. So I think we are good. But I =
+think that&#x27;s a good call out. Maybe review that one Vicki, with Pierce=
+. I don&#x27;t know that we need to add it as an action because I =
+can&#x27;t currently think of anything. Maybe just like ask Pierce that =
+question on Monday just in case. Okay, Mac, you&#x27;re updating the =
+presentation. The country level data comment, is that the one? If somebody =
+is H.R. honeywell versus Advanced Materials. Sorry, what was. What was =
+number two?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">35:57</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Number two is just I=
+ need to add. I need to talk to Arpit and Jeff this morning asked for at =
+the country level for HR, how many test scripts are being run? So =
+there&#x27;s 26 countries that they&#x27;re testing how many have been run =
+and you.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">36:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Mean just putting =
+the ADP stuff in here?</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><=
+span style=3D"color:#64748b;font-size:14px">36:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">36:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, sorry. =
+Let&#x27;s go to the second. Okay.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki<=
+/span><span style=3D"color:#64748b;font-size:14px">36:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;d have to =
+remind myself to do that or that&#x27;s an easy. I just have to reach out =
+to Arpit and he&#x27;s out of office and I need to remember to go back to =
+him.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">36:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Got it. Can we do =
+this? Can we consolidate those two and just say updates to reporting? Yeah =
+and I&#x27;m trying to make sure in my mind like have MLS stuff we have to =
+do, we have logistics stuff we have to do. Yeah, those are both really like=
+ reporting updates. They&#x27;re important but let&#x27;s consolidate. =
+I&#x27;m just trying to make sure we&#x27;re not missing anything. I orders=
+ the final hourly schedule.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><=
+span style=3D"color:#64748b;font-size:14px">36:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Oh we need. I have =
+to do the thing from Rakesh on the. Oh that.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">37:11</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">37:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Athens test user =
+scope validation and counts.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</spa=
+n><span style=3D"color:#64748b;font-size:14px">37:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yes. That Audrey =
+never shows up to me. Vicki, out of curiosity, did you connect with Pierce =
+at all before he left? Like have you talked with Pierce previously? Vicki? =
+No. Okay. The only reason I&#x27;m asking is because we&#x27;re gonna be =
+like two bulls in a china closet when he gets back. He&#x27;s gonna be like=
+ who the hell are these two? Okay, so I&#x27;m setting up a couple call for=
+ just out of curiosity, would it be better if I took a call for 3:00 clock =
+Eastern so 10 minutes from now or 3:30 to just have a quick conversation =
+with Trini boss and Bill regarding the recording.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Vicki</span><span style=3D"color:#64748b;font-size:14px">=
+39:08</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">3:30. I really need to eat something.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">39:11</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Totally fine. I&#x27;m asking. I have a meeting at 4 which is I =
+can&#x27;t do it. Anything. Okay Vicki, if you can&#x27;t get on, =
+that&#x27;s totally fine. I want to just get some thoughts on paper between=
+ you boss and Bill about Jeff&#x27;s ask for that whole automated versus =
+manual and then have you and Mac, you and Rakesh sort of remaining hours =
+tonight, slash through the weekend, maybe do some updates and review this =
+on 9am on Monday. Vicki, give us one second because there&#x27;s one more =
+thing I need Matt to add to this. Matt, can you just add where you see SIP =
+scrum calls underneath? Can you put in copy for UAT scrum calls or =
+something. So you have the SIT ones. I got to do the UAT ones too.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">40:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Can I just add it up=
+ here? Like SIT and UAT scrum calls?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Jessica</span><span style=3D"color:#64748b;font-size:14px=
+">40:17</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah, sure. There&#x27;s, there&#x27;s nuanced differences, but I have=
+ them in my notes. So for the purpose of this, it&#x27;s totally fine. Okay=
+, so I think we have everything. The three actions that I have out of this =
+are, oh, and I need to set up the take off call F4 under MoS and Comms. We =
+need another one. Just say Jessica to send out kickoff call and Vicki to =
+review material for peers to present on Monday. I&#x27;ll likely be on that=
+ call too, Vicki, but I just want to make sure we note it on here like =
+I&#x27;m setting it up. Vicki, you&#x27;ve done a good job of like =
+we&#x27;re 80, 85% there with the content, but we need to review that with =
+Pearson on Monday and then he&#x27;s going to do the actual presentation. =
+So the four things that I owe is, Vicki, the email addresses, which is the =
+first thing I&#x27;m going to do as soon as we get off the call, I need to =
+finish the schedule. I need to set up the SIT and the UAT calls and then =
+set up the kickoff call. But actually I&#x27;m going to put the schedule =
+last because I can do that over the weekend. I want to make sure we get =
+these calls set up before end of day. All right, Mac, if you can email that=
+ out to all of us, I think that&#x27;s a good one to send. And then Vicki, =
+I see that you have this up here. Do you want us to take one last read of =
+it or did you have a question? I think we&#x27;re good then. So let&#x27;s =
+all just. Oh, Mac, you can jump and Vicki and I can just chat real quick. I=
+ think she wants to show us something on the the comms and then we connect =
+at 3:30.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Vicki</span><span =
+style=3D"color:#64748b;font-size:14px">42:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, sweet. =
+I&#x27;ll send this to you in email, paste it in the chat right now, real =
+quick, and then we&#x27;ll talk in a little bit here. Thank you so much.=
+</div></div><div style=3D"margin-bottom:0;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jessica</span><spa=
+n style=3D"color:#64748b;font-size:14px">42:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sounds good. Thank =
+you. Bye. Bye.</div></div></div><div style=3D"margin-top:36px;text-align:ce=
+nter;color:#64748b;font-size:14px;padding:20px;border-top:1px solid =
+#e2e8f0"><p style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note=
+ Taker</p><p style=3D"margin:0;font-size:12px">Your AI-powered =
+companion</p></div></div></div></div></html>
+----_NmP-fc4c72390a973a99-Part_1--

@@ -1,0 +1,1112 @@
+MIME-Version: 1.0
+Date: Fri, 13 Jun 2025 13:20:52 -0400
+References: <0100019765437a78-e1c24bb1-7bff-42d3-a394-40317a2167ba-000000@email.amazonses.com>
+In-Reply-To: <0100019765437a78-e1c24bb1-7bff-42d3-a394-40317a2167ba-000000@email.amazonses.com>
+Message-ID: <CAOat4ZABYuw5qtqLq_fnQHSwsrLwVQhQUvLw54LgqV_b=R1aQQ@mail.gmail.com>
+Subject: Fwd: Project Data Management And Dashboard Planning
+From: Mac Connolly <mac@macconnolly.com>
+To: save@mem.ai
+Content-Type: multipart/alternative; boundary="000000000000bcbf6306377744b2"
+
+--000000000000bcbf6306377744b2
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+---------- Forwarded message ---------
+From: Wave AI Note Taker <summary@email.wave.co>
+Date: Thu, 12 Jun 2025 at 13:50
+Subject: Project Data Management And Dashboard Planning
+To: <mac@macconnolly.com>
+
+
+[image: Wave AI Logo]Project Data Management And Dashboard Planning
+=E2=9C=A8 View Your Session on the Web
+<https://app.wave.co/sessions/C5C5FFB1-4C53-4EF9-8919-5CF976FB291A?lastLogi=
+nParam=3Dgoogle>
+=F0=9F=93=9DSummary
+
+*Project Data Management & Dashboard Design Meeting (June 12, 2025)*
+------------------------------
+Main Topics Discussed1. Data Ownership and System Usage
+
+   - *Smartsheets Ownership:* Confirmed that Misumi and her team manage and
+   own Smartsheets, which holds detailed work plan data.
+   - *Capital Edge:* Used for high-level work planning; detailed tracking
+   remains in Smartsheets to avoid duplicative effort.
+   - *Leadership Support:* Decision to use Smartsheets for details is
+   supported to streamline process and prevent double entry.
+
+2. Data Structure and Field Definitions
+
+   - *Owner/Lead Field:*
+      - Questioned text vs. dropdown format.
+      - Chose text fields due to user access constraints with Capital Edge.
+   - *Functions Field:*
+      - Discussion about dropdowns with multi-select vs. comma-delimited
+      vs. separate columns.
+      - Decision: Use separate columns for primary, secondary, tertiary
+      functions to support dashboard use and import/export robustness.
+      - Dropdown options to be based on existing lists such as "functional
+      status".
+   - *Sub Function:*
+      - To be text field, since sub-functions are not always consistent.
+   - *KT (Knowledge Transfer), SIT, SAT, UAT Fields:*
+      - Wanted to minimize number of data inputs for users.
+      - Decided on adding:
+         - KT status and KT target date as distinct fields.
+         - SIT status and UAT fields (start, end, status).
+      - Agreed that status fields (e.g., "delayed start") should be
+      calculated based on start date and progress.
+
+3. Status Calculations & Metrics
+
+   - *Delayed Start:* Calculated based on not started when past start date.
+   - *At Risk/Behind Schedule:* At risk is a manual status; 'behind
+   schedule' is calculated.
+   - *Metrics:* Need to show counts for various statuses (delayed, on
+   track, not started, completed) for dashboarding.
+   - *Burn Down & Waterfall Charts:* Required for visualizing planned vs.
+   actual project progression.
+
+4. Data Source Alignment & Integration
+
+   - *Source of UAT Dates:* Confirmed that app-level dates are managed in
+   Smartsheets, not linked to project-level work plans, matching intentiona=
+l
+   design for flexibility.
+   - *Data Consistency:* Where discrepancies exist, use the most recently
+   confirmed source; prioritize reusing existing data to minimize additiona=
+l
+   user work.
+
+5. Timeline and Deliverables
+
+   - *Immediate Need:* Stakeholder working session scheduled today,
+   requiring at least a basic summary/dashboard.
+   - *Short-term Timeline:*
+      - *By June 13, 2025:* Aim to have summarized KPI/counts
+      (Wireframe/Table View) ready for stakeholder review.
+      - *By June 16=E2=80=9317, 2025:* Expected completion of more complex
+      dashboard elements (e.g., burndown charts), depending on BI resource
+      availability and feedback/testing.
+   - *Resource Constraints:* Burndown chart logic is noted as complex,
+   typically taking 12-16 hours. Primary BI resource for this available.
+
+------------------------------
+Action Items & Follow-Ups
+
+   1. *Finalize Field Definitions:* Update data structure to use separate
+   columns for functions, set required fields, and finalize dropdown option
+   lists.
+   2. *Data Sourcing Verification:* Confirm original sources for owner, UAT
+   dates, and other key fields. Include Pre for confirmation about CMDB-ori=
+gin
+   columns.
+   3. *Dashboard Build:*
+      - Prepare initial KPI/count metrics and table view for June 13.
+      - Communicate with stakeholders in session today about what will be
+      shown in v0.
+      - Proceed with burndown and waterfall logic for target completion
+      early next week.
+   4. *Status Calculations:* Implement logic for "delayed start", "not
+   started", and clarifications for overlapping statuses.
+   5. *Communication:*
+      - Notify team this afternoon on progress and any questions.
+      - Maintain transparency about deliverable timelines and adjust as
+      needed.
+
+------------------------------
+Additional Notes
+
+   - User experience for data entry is a priority; repetitive requests for
+   info are causing frustration, so keep new asks minimal.
+   - The summary counts for certain statuses may overlap (e.g., "delayed
+   start" and "not started") =E2=80=94 sum totals should be clearly explain=
+ed to
+   stakeholders to avoid confusion.
+   - If needed, temporary dashboards/tables can be built in Excel for
+   short-term visibility while BI tools and full dashboards are under
+   development.
+
+------------------------------
+Next Steps
+
+   - Update and agree on data templates.
+   - Share initial summary/KPIs by tomorrow.
+   - Full dashboard expected early next week, pending feedback and testing.
+
+=F0=9F=8E=99=EF=B8=8FTranscription
+Brian0:00
+Smart Sheets is this one that Misumi and her team is actually owning and
+managing?
+Unspecified colleague0:06
+I think so, probably.
+Brian0:07
+Okay, so from their perspective, they do kind of like a high level work
+plan in Capital Edge, but their kind of nitty gritty details are all still
+housed in Smartsheets. And that was the functional team's choice, supported
+by leadership. Just so that way they're not managing the same thing in two
+different places, but also that they're not making a huge effort to try to
+bring them into Capital Edge.
+Unspecified colleague0:33
+Yeah, and that was kind of our concern with this one as well, is trying to
+avoid that. We don't want them to have to go and edit in multiple different
+places, you know, ideally. So were you able to take a look at that file
+that I sent you?
+Brian0:55
+Yep. So I've got it pulled up here. Everything's pretty straightforward. So
+just a couple questions on it. Owner lead, do we want these as dropdowns or
+text fields? And the reason I ask is owner and Capital Edge is typically
+driven by who has access. So if we're going to assign people who don't have
+access to Capital Edge, I would advise us to go with a text field.
+Unspecified colleague1:18
+So text. Yeah.
+Brian1:20
+Okay. Functions in the system, again, you can either do a drop down or a
+text field. The biggest thing is I see we've got multiple.
+Unspecified colleague1:31
+Can we do a drop down with multiple selects?
+Brian1:34
+We can, but it breaks the import export process.
+Unspecified colleague1:37
+Oh shit. Okay. And I know the import export limit.
+Brian1:41
+We can still do it that way if we. What if we use comma delimitation like
+here in ISC and Finance.
+Unspecified colleague1:47
+Yeah, we.
+Brian1:48
+We can use that and still pull.
+Unspecified colleague1:50
+It to the dashboard. Okay. I mean, or we could have. Because I want to give
+them a standard list of things to choose from, kind of. And there's. In any
+of these, I think we only have a maximum of two. Right. So like
+theoretically we could have function one like dependent function one and
+then another column is dependent function two and dependent function three
+just in case and then manipulate that however we need across the backend.
+What is easier the comma separated if you delimit them by commas and import
+it that way. Or separate the columns, I think separating.
+Brian2:31
+The columns and then also drive a consistent experience. So if we look at
+BRV and I'll use process as the example function is going to be that
+dropdown because it's tied to a project team and we'll just make multiple
+iterations of that column with only one being like a required field. But
+then sub function we have as a text Field because they're not always
+consistent and we have a mapping to pull it to the dashboard, things like
+that. But that's true now for contract cutover and hiring and system I
+think is currently operating that way as well. Yeah, yeah.
+Unspecified colleague3:06
+Do you have examples of like we could use the same dropdown options that
+we're giving them for dependent function.
+Brian3:16
+Yep. So just if we're going to have two or three, I would say do primary,
+secondary, tertiary or whatever naming convention.
+Unspecified colleague3:23
+And then, but I mean the option like the options in the drop downs, like do
+you have an example of like a comprehensive list of what you're giving them
+on any of these?
+Brian3:32
+Like so the easiest way to see that is functional status and it's
+everything here.
+Unspecified colleague3:36
+Okay, perfect.
+Brian3:37
+So function and project team and Honeywell's case are equivalent.
+Unspecified colleague3:42
+Okay, perfect.
+Brian3:48
+And then the other kind of thing that I noticed. So we've got KT status,
+sit, sat, uat, UAT uat. Do we need KT dates and do we need an SAT status?
+Unspecified colleague4:10
+Do we need KT dates? So we had talked about, I talked about with Rakesh
+doing like kt, like having it be the, like the target date for KT or the
+status. But I guess we can't wrap a date and a status in the same column.
+So I would say KT target date or something. I, I want to minimize the
+number of, I want to minimize the number of inputs that we're asking for
+here just to begin with because they've probably filled out all of this
+information before somewhere else and it really, it's starting to frust,
+frustrate some of those folks. So maybe just like one KT date, like KT
+target date and KT status and then we should add SIT status. Yeah. And then
+we have UAT start, UAT end, UAT status.
+Brian5:11
+Yep. So and then that drives me to the second set of questions. So sic
+complete delayed start at risk. When we talk about these delayed start, are
+we simply driving and I'll go to system based on the status and it going
+into delayed here or do we need to do an actual calculation that says hey,
+status is on or not started by the start date is now delayed start.
+Unspecified colleague5:42
+Yeah, I think we would calculate it.
+Brian5:44
+Right.
+Unspecified colleague5:44
+Like it's not started by the start date, it's now delayed start.
+Brian5:50
+Okay, we can do that. At risk is just a kind of at risk. Same with buying
+schedule.
+Unspecified colleague5:54
+Yeah, exactly.
+Brian5:56
+So and then behind schedule still on.
+Unspecified colleague5:59
+Track or something else and delayed. Perfect.
+Brian6:04
+So does that work?
+Unspecified colleague6:06
+Yeah, delayed is perfect.
+Brian6:07
+Okay. All right, so delayed start and then Actual delayed, sat on track,
+just on track count, not started count and then what's actually completed.
+This is total of everything on the dashboard and then a waterfall burn
+down, basically, if I'm understanding this correctly. Yeah. So we used
+offer starts.
+Unspecified colleague6:25
+Yeah, we used planned starts here. Like what? Like when are they going to
+be? I mean whatever. Like once we get the data in there. I'm sure that it
+depends how it looks and we have a working session with our stakeholders
+today to really dig into what they want to show here. So I think we could
+do starts. This was the true starts data from that file that I shared with
+you. And it's good. Like it tells a good story that the majority of our UAT
+is focused in July. Some of it starts in the end of this month and we
+should be completely wrapped up by 8:1 with a couple stragglers continuing
+on through the fall is kind of the message here that we're trying to
+convey. And then the next one is the burn down of just a regular burn down.
+Brian7:18
+Yeah. So that's pretty simple timing wise. I know we kind of discussed the
+high level. When are we looking to have this ready bike?
+Unspecified colleague7:27
+Well, how busy are you? And I hate when people give me something and say I
+need this in 12 hours. But whenever you can get it to me. With the caveat
+that we have to review something with them tomorrow. But we'll probably
+just do it on our. We can and have the capability to just do it in Excel or
+something and give them a dashboard there. It depends on what the
+turnaround times look like. And I don't want to disrupt you or your
+schedule based on like my lack of planning, you know.
+Brian8:04
+No, completely get it. So I mean most of the stuff is pretty simple, but
+when we get into waterfalls and especially burn downs, the logic can get
+pretty complicated.
+Unspecified colleague8:14
+Yeah.
+Brian8:15
+And because this isn't a base report project, say work plan and we're going
+to be kind of transforming the data as we build this, it won't be ready for
+tomorrow.
+Unspecified colleague8:28
+So do we have. And so here's the question, do we have. So this system
+cutover tracker from brb, these UAT start and UAT end dates, are those from
+the work plans or are those linked to the project? Because if these are
+reported by the work streams on the app level granular basis, then we can
+just use these dates.
+Brian8:52
+Yeah, this is all app level. This has no tie into work plan. And we did
+that intentionally.
+Unspecified colleague8:58
+Yeah.
+Brian8:59
+So in case. And the way we also set it up so I'm sure I could find an
+Example, let's do adp because Rakesh.
+Unspecified colleague9:07
+Was confused about this and I this is what I was hoping for. Because if
+that's the case, then the dates that we have will go through and there are
+some that we know we've gotten more confirmation on that might differ from
+what's in those columns. To update the dates in those start and end date
+columns that you have, would they go into their smartsheet workplace and
+update it there or would they go into Cap Edge and update it there? Like
+where are those pulled from originally? I don't know originally.
+Brian9:48
+My assumption would be sourced from the smartsheet, but there's no data
+connection between the two.
+Unspecified colleague9:53
+Okay.
+Brian9:56
+The other caveat. So in the way it was set up when we talked with three
+about it. And I'll just use this one view as an example. If IT and HR both
+have this one view system, there are two distinct line items for it. If
+there's only one, there's only one. And we did that instead of having two
+function columns. So we can keep it this way and keep everything in here or
+we can do basically a rip and replace if this isn't the most up to date.
+Unspecified colleague10:23
+Yeah, I mean I think that that's fine. I would like to use as much of what
+we already have as possible. Right. For all of the reasons that we talked
+about. So does it make it easier for you if we say we're going to use
+everything that we already have from these and just pull views together
+just with that additional information on like the status and some of the
+things like that? Or is it better to just like keep this self contained in
+its own.
+Brian10:54
+We can do it like this. I'm just looking. I mean a lot of the information
+is the same. Right. So we have function, system disposition, function
+system disposition, business function. This looks like sub function data
+and intelligence. Does that line up here? Data center and networking. So it
+may not be an exact one to one, but we can always adjust. This is a text
+column too. If we have to again replace things. Owner is already in there.
+Unspecified colleague11:38
+This came out of that master. We have like somewhere. Again it's a
+smartsheet. I don't know what tables there are in it in Cap Edge, but it's
+like a smartsheet. That's like Master system inventory tracker. And this
+was from cmdb. It was one of the columns from CMDB that they called. I can
+get the original naming of it. It was something something something cmdb.
+Right. So okay, well I think that's where.
+Brian12:06
+It would have come from. I Don't want to say 100% for sure it is, but pre
+would be able to confirm that.
+Unspecified colleague12:12
+Yeah. Okay. Okey dokey. Well, yeah, what does the timing look like for you,
+at least for some of the counts, maybe excluding the charts. If we had
+something with just the counts on it, I think that for them, even a table
+view with some of the summary metrics for all of these would be perfectly
+sufficient for a view zero version of it.
+Brian12:43
+Yeah, I was going to say we can probably get a wireframe again. Burndown
+may not be fully functional by tomorrow and I'm just making sure I've got
+some allocation for the preferred BI resource. I do. All right, so we
+should be able to get the KPI kind of count metrics into place. Hopefully
+should be able to do more. Typically burndowns take 12 to 16 hours. She's
+also the one that's kind of the wizard with burn downs and is able to knock
+them out. So I would conservatively say yes, we'll have the KPIs and then
+probably Monday, maybe Tuesday, depending on testing and feedback for the
+remainder of the report.
+Unspecified colleague13:26
+Yeah, that would be so, so great.
+Brian13:30
+Okay.
+Unspecified colleague13:32
+Okay. Well, yeah, so let me know. Maybe just shoot me a ping this afternoon
+if you have any questions. I'll be on the whole rest of the day and then
+let me know what progress she's able to make. And again, Brian, I really
+appreciate you jumping in and helping on this.
+Brian13:49
+Yep, absolutely. And then one other question that I had just to be sure
+I've got this. So we've got the delayed start and the not start started. Do
+we care if there's overlap between the two? And the reason I ask is delayed
+start will look for anything that's not started by its start date, but that
+would also be encompassing things that are just not started.
+Unspecified colleague14:10
+Anyway, I think that that's fine that there's overlap. We will just caveat
+it with the sum total is not going to. We're not driving towards like a
+concrete number of apps as long as at some point we align on what is that
+sum total of all of those counts look like and it doesn't change the total
+as we go week over week. I think that it will be fine. Right.
+Brian14:37
+Okay. And that's basically what I was going to ask is. Okay, so. And we
+can. I mean, delayed start would be the only one that wouldn't go into the
+total count because everything else would be inclusive of that. That would
+just be the caveat number. That's like, hey, this is. Yeah, things that
+should have been started in arm. Yeah.
+Unspecified colleague14:54
+Easy.
+Brian14:56
+So, all right.
+Unspecified colleague14:56
+Perfect. Okie dokie. Thank you so much, Brian.
+Brian14:59
+Absolutely. Thanks, man.
+Unspecified colleague14:59
+I appreciate the time. Thanks. Bye.
+Brian15:01
+Thanks.
+Unspecified colleague15:04
+Oh, yay. That is such good news.
+
+Captured with Wave AI Note Taker
+
+Your AI-powered companion
+
+--000000000000bcbf6306377744b2
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-size:small;colo=
+r:#444444"><br></div><br><div class=3D"gmail_quote gmail_quote_container"><=
+div dir=3D"ltr" class=3D"gmail_attr">---------- Forwarded message ---------=
+<br>From: <strong class=3D"gmail_sendername" dir=3D"auto">Wave AI Note Take=
+r</strong> <span dir=3D"auto">&lt;<a href=3D"mailto:summary@email.wave.co">=
+summary@email.wave.co</a>&gt;</span><br>Date: Thu, 12 Jun 2025 at 13:50<br>=
+Subject: Project Data Management And Dashboard Planning<br>To:  &lt;<a href=
+=3D"mailto:mac@macconnolly.com">mac@macconnolly.com</a>&gt;<br></div><br><b=
+r><div style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Helvetica,Arial,sans-serif;margin:0;padding:0;background-colo=
+r:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 auto;backgroun=
+d-color:#ffffff"><div style=3D"background-image:url(https://upcdn.io/W142ia=
+x/raw/email/banner_clean.png);background-size:cover;background-position:cen=
+ter;width:604px;height:297px;margin:0 auto"><table cellpadding=3D"0" cellsp=
+acing=3D"0" border=3D"0" width=3D"100%" height=3D"100%"><tbody><tr><td vali=
+gn=3D"center" align=3D"center" style=3D"padding:0"><img src=3D"https://upcd=
+n.io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" style=3D"width:=
+41px;height:58px;max-width:41px;margin-bottom:10px"><h1 style=3D"color:whit=
+e;font-size:32px;margin:0;padding:0 0 10px;text-align:center">Project Data =
+Management And Dashboard Planning</h1></td></tr></tbody></table></div><div =
+style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div style=3D"tex=
+t-align:center;margin-bottom:32px"><a href=3D"https://app.wave.co/sessions/=
+C5C5FFB1-4C53-4EF9-8919-5CF976FB291A?lastLoginParam=3Dgoogle" style=3D"back=
+ground-color:#e6f0ff;color:#0066cc;padding:12px 24px;border-radius:8px;text=
+-decoration:none;font-weight:500;font-size:16px;display:inline-block;margin=
+-top:8px;margin-bottom:8px" target=3D"_blank">=E2=9C=A8 View Your Session o=
+n the Web</a></div><div style=3D"text-align:center;margin-bottom:36px"></di=
+v><div style=3D"background-color:#ffffff;padding:28px;border-radius:12px;bo=
+rder:1px solid #e2e8f0;margin-bottom:28px"><h3 style=3D"color:#0f172a;font-=
+size:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex"><sp=
+an style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div style=3D"co=
+lor:#475569;font-size:16px;line-height:1.6"><div><p><strong style=3D"font-w=
+eight:bold">Project Data Management &amp; Dashboard Design Meeting (June 12=
+, 2025)</strong></p>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Main Topics D=
+iscussed</h2><h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75re=
+m">1. Data Ownership and System Usage</h3><ul>
+<li><strong style=3D"font-weight:bold">Smartsheets Ownership:</strong> Conf=
+irmed that Misumi and her team manage and own Smartsheets, which holds deta=
+iled work plan data.</li>
+<li><strong style=3D"font-weight:bold">Capital Edge:</strong> Used for high=
+-level work planning; detailed tracking remains in Smartsheets to avoid dup=
+licative effort.</li>
+<li><strong style=3D"font-weight:bold">Leadership Support:</strong> Decisio=
+n to use Smartsheets for details is supported to streamline process and pre=
+vent double entry.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">2. Data St=
+ructure and Field Definitions</h3><ul>
+<li><strong style=3D"font-weight:bold">Owner/Lead Field:</strong><ul>
+<li>Questioned text vs. dropdown format.</li>
+<li>Chose text fields due to user access constraints with Capital Edge.</li=
+>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Functions Field:</strong><ul>
+<li>Discussion about dropdowns with multi-select vs. comma-delimited vs. se=
+parate columns.</li>
+<li>Decision: Use separate columns for primary, secondary, tertiary functio=
+ns to support dashboard use and import/export robustness.</li>
+<li>Dropdown options to be based on existing lists such as &quot;functional=
+ status&quot;.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Sub Function:</strong><ul>
+<li>To be text field, since sub-functions are not always consistent.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">KT (Knowledge Transfer), SIT, SAT, U=
+AT Fields:</strong><ul>
+<li>Wanted to minimize number of data inputs for users.</li>
+<li>Decided on adding:<ul>
+<li>KT status and KT target date as distinct fields.</li>
+<li>SIT status and UAT fields (start, end, status).</li>
+</ul>
+</li>
+<li>Agreed that status fields (e.g., &quot;delayed start&quot;) should be c=
+alculated based on start date and progress.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">3. Status =
+Calculations &amp; Metrics</h3><ul>
+<li><strong style=3D"font-weight:bold">Delayed Start:</strong> Calculated b=
+ased on not started when past start date.</li>
+<li><strong style=3D"font-weight:bold">At Risk/Behind Schedule:</strong> At=
+ risk is a manual status; &#39;behind schedule&#39; is calculated.</li>
+<li><strong style=3D"font-weight:bold">Metrics:</strong> Need to show count=
+s for various statuses (delayed, on track, not started, completed) for dash=
+boarding.</li>
+<li><strong style=3D"font-weight:bold">Burn Down &amp; Waterfall Charts:</s=
+trong> Required for visualizing planned vs. actual project progression.</li=
+>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">4. Data So=
+urce Alignment &amp; Integration</h3><ul>
+<li><strong style=3D"font-weight:bold">Source of UAT Dates:</strong> Confir=
+med that app-level dates are managed in Smartsheets, not linked to project-=
+level work plans, matching intentional design for flexibility.</li>
+<li><strong style=3D"font-weight:bold">Data Consistency:</strong> Where dis=
+crepancies exist, use the most recently confirmed source; prioritize reusin=
+g existing data to minimize additional user work.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">5. Timelin=
+e and Deliverables</h3><ul>
+<li><strong style=3D"font-weight:bold">Immediate Need:</strong> Stakeholder=
+ working session scheduled today, requiring at least a basic summary/dashbo=
+ard.</li>
+<li><strong style=3D"font-weight:bold">Short-term Timeline:</strong><ul>
+<li><strong style=3D"font-weight:bold">By June 13, 2025:</strong> Aim to ha=
+ve summarized KPI/counts (Wireframe/Table View) ready for stakeholder revie=
+w.</li>
+<li><strong style=3D"font-weight:bold">By June 16=E2=80=9317, 2025:</strong=
+> Expected completion of more complex dashboard elements (e.g., burndown ch=
+arts), depending on BI resource availability and feedback/testing.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Resource Constraints:</strong> Burnd=
+own chart logic is noted as complex, typically taking 12-16 hours. Primary =
+BI resource for this available.</li>
+</ul>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Action Items =
+&amp; Follow-Ups</h2><ol>
+<li><strong style=3D"font-weight:bold">Finalize Field Definitions:</strong>=
+ Update data structure to use separate columns for functions, set required =
+fields, and finalize dropdown option lists.</li>
+<li><strong style=3D"font-weight:bold">Data Sourcing Verification:</strong>=
+ Confirm original sources for owner, UAT dates, and other key fields. Inclu=
+de Pre for confirmation about CMDB-origin columns.</li>
+<li><strong style=3D"font-weight:bold">Dashboard Build:</strong><ul>
+<li>Prepare initial KPI/count metrics and table view for June 13.</li>
+<li>Communicate with stakeholders in session today about what will be shown=
+ in v0.</li>
+<li>Proceed with burndown and waterfall logic for target completion early n=
+ext week.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Status Calculations:</strong> Implem=
+ent logic for &quot;delayed start&quot;, &quot;not started&quot;, and clari=
+fications for overlapping statuses.</li>
+<li><strong style=3D"font-weight:bold">Communication:</strong><ul>
+<li>Notify team this afternoon on progress and any questions.</li>
+<li>Maintain transparency about deliverable timelines and adjust as needed.=
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Additional No=
+tes</h2><ul>
+<li>User experience for data entry is a priority; repetitive requests for i=
+nfo are causing frustration, so keep new asks minimal.</li>
+<li>The summary counts for certain statuses may overlap (e.g., &quot;delaye=
+d start&quot; and &quot;not started&quot;) =E2=80=94 sum totals should be c=
+learly explained to stakeholders to avoid confusion.</li>
+<li>If needed, temporary dashboards/tables can be built in Excel for short-=
+term visibility while BI tools and full dashboards are under development.</=
+li>
+</ul>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Next Steps</h=
+2><ul>
+<li>Update and agree on data templates.</li>
+<li>Share initial summary/KPIs by tomorrow.</li>
+<li>Full dashboard expected early next week, pending feedback and testing.<=
+/li>
+</ul>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex"><span =
+style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription</h3><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-=
+bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">=
+Brian</span><span style=3D"color:#64748b;font-size:14px">0:00</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">Smart Sheets is =
+this one that Misumi and her team is actually owning and managing?</div></d=
+iv><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;b=
+order-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;=
+margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-righ=
+t:8px">Unspecified colleague</span><span style=3D"color:#64748b;font-size:1=
+4px">0:06</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">I think so, probably.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"colo=
+r:#3b82f6;font-weight:600;margin-right:8px">Brian</span><span style=3D"colo=
+r:#64748b;font-size:14px">0:07</span></div><div style=3D"color:#475569;font=
+-size:16px;line-height:1.6">Okay, so from their perspective, they do kind o=
+f like a high level work plan in Capital Edge, but their kind of nitty grit=
+ty details are all still housed in Smartsheets. And that was the functional=
+ team&#39;s choice, supported by leadership. Just so that way they&#39;re n=
+ot managing the same thing in two different places, but also that they&#39;=
+re not making a huge effort to try to bring them into Capital Edge.</div></=
+div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex=
+;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-rig=
+ht:8px">Unspecified colleague</span><span style=3D"color:#64748b;font-size:=
+14px">0:33</span></div><div style=3D"color:#475569;font-size:16px;line-heig=
+ht:1.6">Yeah, and that was kind of our concern with this one as well, is tr=
+ying to avoid that. We don&#39;t want them to have to go and edit in multip=
+le different places, you know, ideally. So were you able to take a look at =
+that file that I sent you?</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #=
+3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:=
+#3b82f6;font-weight:600;margin-right:8px">Brian</span><span style=3D"color:=
+#64748b;font-size:14px">0:55</span></div><div style=3D"color:#475569;font-s=
+ize:16px;line-height:1.6">Yep. So I&#39;ve got it pulled up here. Everythin=
+g&#39;s pretty straightforward. So just a couple questions on it. Owner lea=
+d, do we want these as dropdowns or text fields? And the reason I ask is ow=
+ner and Capital Edge is typically driven by who has access. So if we&#39;re=
+ going to assign people who don&#39;t have access to Capital Edge, I would =
+advise us to go with a text field.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unspecified colleague</=
+span><span style=3D"color:#64748b;font-size:14px">1:18</span></div><div sty=
+le=3D"color:#475569;font-size:16px;line-height:1.6">So text. Yeah.</div></d=
+iv><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;b=
+order-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;=
+margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-righ=
+t:8px">Brian</span><span style=3D"color:#64748b;font-size:14px">1:20</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. Fun=
+ctions in the system, again, you can either do a drop down or a text field.=
+ The biggest thing is I see we&#39;ve got multiple.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unspec=
+ified colleague</span><span style=3D"color:#64748b;font-size:14px">1:31</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Can we=
+ do a drop down with multiple selects?</div></div><div style=3D"margin-bott=
+om:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left=
+:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span sty=
+le=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brian</span><span sty=
+le=3D"color:#64748b;font-size:14px">1:34</span></div><div style=3D"color:#4=
+75569;font-size:16px;line-height:1.6">We can, but it breaks the import expo=
+rt process.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div st=
+yle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-we=
+ight:600;margin-right:8px">Unspecified colleague</span><span style=3D"color=
+:#64748b;font-size:14px">1:37</span></div><div style=3D"color:#475569;font-=
+size:16px;line-height:1.6">Oh shit. Okay. And I know the import export limi=
+t.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-colo=
+r:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"di=
+splay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Brian</span><span style=3D"color:#64748b;font-size:14px">=
+1:41</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">We can still do it that way if we. What if we use comma delimitation like=
+ here in ISC and Finance.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3=
+b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#=
+3b82f6;font-weight:600;margin-right:8px">Unspecified colleague</span><span =
+style=3D"color:#64748b;font-size:14px">1:47</span></div><div style=3D"color=
+:#475569;font-size:16px;line-height:1.6">Yeah, we.</div></div><div style=3D=
+"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px=
+;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8p=
+x"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brian</sp=
+an><span style=3D"color:#64748b;font-size:14px">1:48</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">We can use that and still=
+ pull.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Unspecified colleague</span><span style=3D"color:#6=
+4748b;font-size:14px">1:50</span></div><div style=3D"color:#475569;font-siz=
+e:16px;line-height:1.6">It to the dashboard. Okay. I mean, or we could have=
+. Because I want to give them a standard list of things to choose from, kin=
+d of. And there&#39;s. In any of these, I think we only have a maximum of t=
+wo. Right. So like theoretically we could have function one like dependent =
+function one and then another column is dependent function two and dependen=
+t function three just in case and then manipulate that however we need acro=
+ss the backend. What is easier the comma separated if you delimit them by c=
+ommas and import it that way. Or separate the columns, I think separating.<=
+/div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#=
+f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displ=
+ay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Brian</span><span style=3D"color:#64748b;font-size:14px">2:3=
+1</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">T=
+he columns and then also drive a consistent experience. So if we look at BR=
+V and I&#39;ll use process as the example function is going to be that drop=
+down because it&#39;s tied to a project team and we&#39;ll just make multip=
+le iterations of that column with only one being like a required field. But=
+ then sub function we have as a text Field because they&#39;re not always c=
+onsistent and we have a mapping to pull it to the dashboard, things like th=
+at. But that&#39;s true now for contract cutover and hiring and system I th=
+ink is currently operating that way as well. Yeah, yeah.</div></div><div st=
+yle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radi=
+us:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bot=
+tom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Uns=
+pecified colleague</span><span style=3D"color:#64748b;font-size:14px">3:06<=
+/span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Do =
+you have examples of like we could use the same dropdown options that we&#3=
+9;re giving them for dependent function.</div></div><div style=3D"margin-bo=
+ttom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-le=
+ft:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span s=
+tyle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brian</span><span s=
+tyle=3D"color:#64748b;font-size:14px">3:16</span></div><div style=3D"color:=
+#475569;font-size:16px;line-height:1.6">Yep. So just if we&#39;re going to =
+have two or three, I would say do primary, secondary, tertiary or whatever =
+naming convention.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6">=
+<div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;=
+font-weight:600;margin-right:8px">Unspecified colleague</span><span style=
+=3D"color:#64748b;font-size:14px">3:23</span></div><div style=3D"color:#475=
+569;font-size:16px;line-height:1.6">And then, but I mean the option like th=
+e options in the drop downs, like do you have an example of like a comprehe=
+nsive list of what you&#39;re giving them on any of these?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-b=
+ottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">B=
+rian</span><span style=3D"color:#64748b;font-size:14px">3:32</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Like so the easie=
+st way to see that is functional status and it&#39;s everything here.</div>=
+</div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8faf=
+c;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fl=
+ex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-r=
+ight:8px">Unspecified colleague</span><span style=3D"color:#64748b;font-siz=
+e:14px">3:36</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">Okay, perfect.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b=
+82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3=
+b82f6;font-weight:600;margin-right:8px">Brian</span><span style=3D"color:#6=
+4748b;font-size:14px">3:37</span></div><div style=3D"color:#475569;font-siz=
+e:16px;line-height:1.6">So function and project team and Honeywell&#39;s ca=
+se are equivalent.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6">=
+<div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;=
+font-weight:600;margin-right:8px">Unspecified colleague</span><span style=
+=3D"color:#64748b;font-size:14px">3:42</span></div><div style=3D"color:#475=
+569;font-size:16px;line-height:1.6">Okay, perfect.</div></div><div style=3D=
+"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px=
+;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8p=
+x"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brian</sp=
+an><span style=3D"color:#64748b;font-size:14px">3:48</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">And then the other kind o=
+f thing that I noticed. So we&#39;ve got KT status, sit, sat, uat, UAT uat.=
+ Do we need KT dates and do we need an SAT status?</div></div><div style=3D=
+"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px=
+;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8p=
+x"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unspecifi=
+ed colleague</span><span style=3D"color:#64748b;font-size:14px">4:10</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Do we nee=
+d KT dates? So we had talked about, I talked about with Rakesh doing like k=
+t, like having it be the, like the target date for KT or the status. But I =
+guess we can&#39;t wrap a date and a status in the same column. So I would =
+say KT target date or something. I, I want to minimize the number of, I wan=
+t to minimize the number of inputs that we&#39;re asking for here just to b=
+egin with because they&#39;ve probably filled out all of this information b=
+efore somewhere else and it really, it&#39;s starting to frust, frustrate s=
+ome of those folks. So maybe just like one KT date, like KT target date and=
+ KT status and then we should add SIT status. Yeah. And then we have UAT st=
+art, UAT end, UAT status.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3=
+b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#=
+3b82f6;font-weight:600;margin-right:8px">Brian</span><span style=3D"color:#=
+64748b;font-size:14px">5:11</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">Yep. So and then that drives me to the second set =
+of questions. So sic complete delayed start at risk. When we talk about the=
+se delayed start, are we simply driving and I&#39;ll go to system based on =
+the status and it going into delayed here or do we need to do an actual cal=
+culation that says hey, status is on or not started by the start date is no=
+w delayed start.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><d=
+iv style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fo=
+nt-weight:600;margin-right:8px">Unspecified colleague</span><span style=3D"=
+color:#64748b;font-size:14px">5:42</span></div><div style=3D"color:#475569;=
+font-size:16px;line-height:1.6">Yeah, I think we would calculate it.</div><=
+/div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc=
+;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fle=
+x;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-ri=
+ght:8px">Brian</span><span style=3D"color:#64748b;font-size:14px">5:44</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Right.<=
+/div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#=
+f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displ=
+ay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Unspecified colleague</span><span style=3D"color:#64748b;fon=
+t-size:14px">5:44</span></div><div style=3D"color:#475569;font-size:16px;li=
+ne-height:1.6">Like it&#39;s not started by the start date, it&#39;s now de=
+layed start.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div s=
+tyle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-w=
+eight:600;margin-right:8px">Brian</span><span style=3D"color:#64748b;font-s=
+ize:14px">5:50</span></div><div style=3D"color:#475569;font-size:16px;line-=
+height:1.6">Okay, we can do that. At risk is just a kind of at risk. Same w=
+ith buying schedule.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6=
+"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f=
+6;font-weight:600;margin-right:8px">Unspecified colleague</span><span style=
+=3D"color:#64748b;font-size:14px">5:54</span></div><div style=3D"color:#475=
+569;font-size:16px;line-height:1.6">Yeah, exactly.</div></div><div style=3D=
+"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px=
+;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8p=
+x"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brian</sp=
+an><span style=3D"color:#64748b;font-size:14px">5:56</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">So and then behind schedu=
+le still on.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div s=
+tyle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-w=
+eight:600;margin-right:8px">Unspecified colleague</span><span style=3D"colo=
+r:#64748b;font-size:14px">5:59</span></div><div style=3D"color:#475569;font=
+-size:16px;line-height:1.6">Track or something else and delayed. Perfect.</=
+div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f=
+8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displa=
+y:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;marg=
+in-right:8px">Brian</span><span style=3D"color:#64748b;font-size:14px">6:04=
+</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So=
+ does that work?</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><d=
+iv style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fo=
+nt-weight:600;margin-right:8px">Unspecified colleague</span><span style=3D"=
+color:#64748b;font-size:14px">6:06</span></div><div style=3D"color:#475569;=
+font-size:16px;line-height:1.6">Yeah, delayed is perfect.</div></div><div s=
+tyle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-rad=
+ius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bo=
+ttom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Br=
+ian</span><span style=3D"color:#64748b;font-size:14px">6:07</span></div><di=
+v style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. All right, s=
+o delayed start and then Actual delayed, sat on track, just on track count,=
+ not started count and then what&#39;s actually completed. This is total of=
+ everything on the dashboard and then a waterfall burn down, basically, if =
+I&#39;m understanding this correctly. Yeah. So we used offer starts.</div><=
+/div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc=
+;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fle=
+x;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-ri=
+ght:8px">Unspecified colleague</span><span style=3D"color:#64748b;font-size=
+:14px">6:25</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">Yeah, we used planned starts here. Like what? Like when are they g=
+oing to be? I mean whatever. Like once we get the data in there. I&#39;m su=
+re that it depends how it looks and we have a working session with our stak=
+eholders today to really dig into what they want to show here. So I think w=
+e could do starts. This was the true starts data from that file that I shar=
+ed with you. And it&#39;s good. Like it tells a good story that the majorit=
+y of our UAT is focused in July. Some of it starts in the end of this month=
+ and we should be completely wrapped up by 8:1 with a couple stragglers con=
+tinuing on through the fall is kind of the message here that we&#39;re tryi=
+ng to convey. And then the next one is the burn down of just a regular burn=
+ down.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Brian</span><span style=3D"color:#64748b;font-size:=
+14px">7:18</span></div><div style=3D"color:#475569;font-size:16px;line-heig=
+ht:1.6">Yeah. So that&#39;s pretty simple timing wise. I know we kind of di=
+scussed the high level. When are we looking to have this ready bike?</div><=
+/div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc=
+;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fle=
+x;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-ri=
+ght:8px">Unspecified colleague</span><span style=3D"color:#64748b;font-size=
+:14px">7:27</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">Well, how busy are you? And I hate when people give me something a=
+nd say I need this in 12 hours. But whenever you can get it to me. With the=
+ caveat that we have to review something with them tomorrow. But we&#39;ll =
+probably just do it on our. We can and have the capability to just do it in=
+ Excel or something and give them a dashboard there. It depends on what the=
+ turnaround times look like. And I don&#39;t want to disrupt you or your sc=
+hedule based on like my lack of planning, you know.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brian<=
+/span><span style=3D"color:#64748b;font-size:14px">8:04</span></div><div st=
+yle=3D"color:#475569;font-size:16px;line-height:1.6">No, completely get it.=
+ So I mean most of the stuff is pretty simple, but when we get into waterfa=
+lls and especially burn downs, the logic can get pretty complicated.</div><=
+/div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc=
+;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fle=
+x;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-ri=
+ght:8px">Unspecified colleague</span><span style=3D"color:#64748b;font-size=
+:14px">8:14</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font=
+-weight:600;margin-right:8px">Brian</span><span style=3D"color:#64748b;font=
+-size:14px">8:15</span></div><div style=3D"color:#475569;font-size:16px;lin=
+e-height:1.6">And because this isn&#39;t a base report project, say work pl=
+an and we&#39;re going to be kind of transforming the data as we build this=
+, it won&#39;t be ready for tomorrow.</div></div><div style=3D"margin-botto=
+m:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:=
+4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span styl=
+e=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unspecified colleague<=
+/span><span style=3D"color:#64748b;font-size:14px">8:28</span></div><div st=
+yle=3D"color:#475569;font-size:16px;line-height:1.6">So do we have. And so =
+here&#39;s the question, do we have. So this system cutover tracker from br=
+b, these UAT start and UAT end dates, are those from the work plans or are =
+those linked to the project? Because if these are reported by the work stre=
+ams on the app level granular basis, then we can just use these dates.</div=
+></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fa=
+fc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:f=
+lex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-=
+right:8px">Brian</span><span style=3D"color:#64748b;font-size:14px">8:52</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah,=
+ this is all app level. This has no tie into work plan. And we did that int=
+entionally.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div st=
+yle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-we=
+ight:600;margin-right:8px">Unspecified colleague</span><span style=3D"color=
+:#64748b;font-size:14px">8:58</span></div><div style=3D"color:#475569;font-=
+size:16px;line-height:1.6">Yeah.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px s=
+olid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"=
+color:#3b82f6;font-weight:600;margin-right:8px">Brian</span><span style=3D"=
+color:#64748b;font-size:14px">8:59</span></div><div style=3D"color:#475569;=
+font-size:16px;line-height:1.6">So in case. And the way we also set it up s=
+o I&#39;m sure I could find an Example, let&#39;s do adp because Rakesh.</d=
+iv></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display=
+:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margi=
+n-right:8px">Unspecified colleague</span><span style=3D"color:#64748b;font-=
+size:14px">9:07</span></div><div style=3D"color:#475569;font-size:16px;line=
+-height:1.6">Was confused about this and I this is what I was hoping for. B=
+ecause if that&#39;s the case, then the dates that we have will go through =
+and there are some that we know we&#39;ve gotten more confirmation on that =
+might differ from what&#39;s in those columns. To update the dates in those=
+ start and end date columns that you have, would they go into their smartsh=
+eet workplace and update it there or would they go into Cap Edge and update=
+ it there? Like where are those pulled from originally? I don&#39;t know or=
+iginally.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div styl=
+e=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weig=
+ht:600;margin-right:8px">Brian</span><span style=3D"color:#64748b;font-size=
+:14px">9:48</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">My assumption would be sourced from the smartsheet, but there&#39;=
+s no data connection between the two.</div></div><div style=3D"margin-botto=
+m:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:=
+4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span styl=
+e=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unspecified colleague<=
+/span><span style=3D"color:#64748b;font-size:14px">9:53</span></div><div st=
+yle=3D"color:#475569;font-size:16px;line-height:1.6">Okay.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-b=
+ottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">B=
+rian</span><span style=3D"color:#64748b;font-size:14px">9:56</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">The other caveat.=
+ So in the way it was set up when we talked with three about it. And I&#39;=
+ll just use this one view as an example. If IT and HR both have this one vi=
+ew system, there are two distinct line items for it. If there&#39;s only on=
+e, there&#39;s only one. And we did that instead of having two function col=
+umns. So we can keep it this way and keep everything in here or we can do b=
+asically a rip and replace if this isn&#39;t the most up to date.</div></di=
+v><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bo=
+rder-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;m=
+argin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right=
+:8px">Unspecified colleague</span><span style=3D"color:#64748b;font-size:14=
+px">10:23</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">Yeah, I mean I think that that&#39;s fine. I would like to use as mu=
+ch of what we already have as possible. Right. For all of the reasons that =
+we talked about. So does it make it easier for you if we say we&#39;re goin=
+g to use everything that we already have from these and just pull views tog=
+ether just with that additional information on like the status and some of =
+the things like that? Or is it better to just like keep this self contained=
+ in its own.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div s=
+tyle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-w=
+eight:600;margin-right:8px">Brian</span><span style=3D"color:#64748b;font-s=
+ize:14px">10:54</span></div><div style=3D"color:#475569;font-size:16px;line=
+-height:1.6">We can do it like this. I&#39;m just looking. I mean a lot of =
+the information is the same. Right. So we have function, system disposition=
+, function system disposition, business function. This looks like sub funct=
+ion data and intelligence. Does that line up here? Data center and networki=
+ng. So it may not be an exact one to one, but we can always adjust. This is=
+ a text column too. If we have to again replace things. Owner is already in=
+ there.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Unspecified colleague</span><span style=3D"color:#6=
+4748b;font-size:14px">11:38</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">This came out of that master. We have like somewhe=
+re. Again it&#39;s a smartsheet. I don&#39;t know what tables there are in =
+it in Cap Edge, but it&#39;s like a smartsheet. That&#39;s like Master syst=
+em inventory tracker. And this was from cmdb. It was one of the columns fro=
+m CMDB that they called. I can get the original naming of it. It was someth=
+ing something something cmdb. Right. So okay, well I think that&#39;s where=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"dis=
+play:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;m=
+argin-right:8px">Brian</span><span style=3D"color:#64748b;font-size:14px">1=
+2:06</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">It would have come from. I Don&#39;t want to say 100% for sure it is, but=
+ pre would be able to confirm that.</div></div><div style=3D"margin-bottom:=
+16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4p=
+x solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unspecified colleague</=
+span><span style=3D"color:#64748b;font-size:14px">12:12</span></div><div st=
+yle=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Okay. Okey dokey=
+. Well, yeah, what does the timing look like for you, at least for some of =
+the counts, maybe excluding the charts. If we had something with just the c=
+ounts on it, I think that for them, even a table view with some of the summ=
+ary metrics for all of these would be perfectly sufficient for a view zero =
+version of it.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font=
+-weight:600;margin-right:8px">Brian</span><span style=3D"color:#64748b;font=
+-size:14px">12:43</span></div><div style=3D"color:#475569;font-size:16px;li=
+ne-height:1.6">Yeah, I was going to say we can probably get a wireframe aga=
+in. Burndown may not be fully functional by tomorrow and I&#39;m just makin=
+g sure I&#39;ve got some allocation for the preferred BI resource. I do. Al=
+l right, so we should be able to get the KPI kind of count metrics into pla=
+ce. Hopefully should be able to do more. Typically burndowns take 12 to 16 =
+hours. She&#39;s also the one that&#39;s kind of the wizard with burn downs=
+ and is able to knock them out. So I would conservatively say yes, we&#39;l=
+l have the KPIs and then probably Monday, maybe Tuesday, depending on testi=
+ng and feedback for the remainder of the report.</div></div><div style=3D"m=
+argin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;b=
+order-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"=
+><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unspecified=
+ colleague</span><span style=3D"color:#64748b;font-size:14px">13:26</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, that=
+ would be so, so great.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b8=
+2f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b=
+82f6;font-weight:600;margin-right:8px">Brian</span><span style=3D"color:#64=
+748b;font-size:14px">13:30</span></div><div style=3D"color:#475569;font-siz=
+e:16px;line-height:1.6">Okay.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px soli=
+d #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"col=
+or:#3b82f6;font-weight:600;margin-right:8px">Unspecified colleague</span><s=
+pan style=3D"color:#64748b;font-size:14px">13:32</span></div><div style=3D"=
+color:#475569;font-size:16px;line-height:1.6">Okay. Well, yeah, so let me k=
+now. Maybe just shoot me a ping this afternoon if you have any questions. I=
+&#39;ll be on the whole rest of the day and then let me know what progress =
+she&#39;s able to make. And again, Brian, I really appreciate you jumping i=
+n and helping on this.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82=
+f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b8=
+2f6;font-weight:600;margin-right:8px">Brian</span><span style=3D"color:#647=
+48b;font-size:14px">13:49</span></div><div style=3D"color:#475569;font-size=
+:16px;line-height:1.6">Yep, absolutely. And then one other question that I =
+had just to be sure I&#39;ve got this. So we&#39;ve got the delayed start a=
+nd the not start started. Do we care if there&#39;s overlap between the two=
+? And the reason I ask is delayed start will look for anything that&#39;s n=
+ot started by its start date, but that would also be encompassing things th=
+at are just not started.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b=
+82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3=
+b82f6;font-weight:600;margin-right:8px">Unspecified colleague</span><span s=
+tyle=3D"color:#64748b;font-size:14px">14:10</span></div><div style=3D"color=
+:#475569;font-size:16px;line-height:1.6">Anyway, I think that that&#39;s fi=
+ne that there&#39;s overlap. We will just caveat it with the sum total is n=
+ot going to. We&#39;re not driving towards like a concrete number of apps a=
+s long as at some point we align on what is that sum total of all of those =
+counts look like and it doesn&#39;t change the total as we go week over wee=
+k. I think that it will be fine. Right.</div></div><div style=3D"margin-bot=
+tom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-lef=
+t:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span st=
+yle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brian</span><span st=
+yle=3D"color:#64748b;font-size:14px">14:37</span></div><div style=3D"color:=
+#475569;font-size:16px;line-height:1.6">Okay. And that&#39;s basically what=
+ I was going to ask is. Okay, so. And we can. I mean, delayed start would b=
+e the only one that wouldn&#39;t go into the total count because everything=
+ else would be inclusive of that. That would just be the caveat number. Tha=
+t&#39;s like, hey, this is. Yeah, things that should have been started in a=
+rm. Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div styl=
+e=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weig=
+ht:600;margin-right:8px">Unspecified colleague</span><span style=3D"color:#=
+64748b;font-size:14px">14:54</span></div><div style=3D"color:#475569;font-s=
+ize:16px;line-height:1.6">Easy.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px so=
+lid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"c=
+olor:#3b82f6;font-weight:600;margin-right:8px">Brian</span><span style=3D"c=
+olor:#64748b;font-size:14px">14:56</span></div><div style=3D"color:#475569;=
+font-size:16px;line-height:1.6">So, all right.</div></div><div style=3D"mar=
+gin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bor=
+der-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unspecified c=
+olleague</span><span style=3D"color:#64748b;font-size:14px">14:56</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Perfect. Oki=
+e dokie. Thank you so much, Brian.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brian</span><span style=
+=3D"color:#64748b;font-size:14px">14:59</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">Absolutely. Thanks, man.</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border=
+-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margi=
+n-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px=
+">Unspecified colleague</span><span style=3D"color:#64748b;font-size:14px">=
+14:59</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I appreciate the time. Thanks. Bye.</div></div><div style=3D"margin-bott=
+om:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left=
+:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span sty=
+le=3D"color:#3b82f6;font-weight:600;margin-right:8px">Brian</span><span sty=
+le=3D"color:#64748b;font-size:14px">15:01</span></div><div style=3D"color:#=
+475569;font-size:16px;line-height:1.6">Thanks.</div></div><div style=3D"mar=
+gin-bottom:0;padding:16px;background-color:#f8fafc;border-radius:8px;border=
+-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><spa=
+n style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unspecified coll=
+eague</span><span style=3D"color:#64748b;font-size:14px">15:04</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">Oh, yay. That i=
+s such good news.</div></div></div><div style=3D"margin-top:36px;text-align=
+:center;color:#64748b;font-size:14px;padding:20px;border-top:1px solid #e2e=
+8f0"><p style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note Tak=
+er</p><p style=3D"margin:0;font-size:12px">Your AI-powered companion</p></d=
+iv></div></div></div></div></div>
+
+--000000000000bcbf6306377744b2--

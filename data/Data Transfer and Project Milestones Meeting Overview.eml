@@ -1,0 +1,2113 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:a5d:4523:0:b0:391:3c18:836e with SMTP id j3csp113134wra;
+        Thu, 13 Mar 2025 12:32:53 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHtLwC4NWwgaDNdjdw4PU06VFiT/8wy+GeODew37rttlxX5gZA1NDmdXwdtPLQuqKzFiAvE
+X-Received: by 2002:a05:6102:304d:b0:4c1:9e65:f90b with SMTP id ada2fe7eead31-4c381131cdbmr609039137.17.1741894373091;
+        Thu, 13 Mar 2025 12:32:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741894373; cv=none;
+        d=google.com; s=arc-20240605;
+        b=K0E7m+0ZQeU0lU0ntL5kq3DSt1RpQE9NzwPvlfhS2s1asKHDDYAL26CQnqYlthKGBl
+         7xXgzzopQCtxGEG5TblKy/DwwTX8vHQ3L3dMbTHUlrHfQ+GTf9tYAeMAJJM0lTmSAXNr
+         qKUF1tUz/QK03mldTiG47V7XqmPOGc6WCN+OsRJb7tbJ3A15tYUOqzF0EI6GQ+9B7bDW
+         RPhCxRrvzqW5pePB65Pn/1m7i/f+V7kKmwh5/cirWbatWmdKJ2KXB62AG+VjREmLrPAx
+         V6+nIv5OSYxDMFolA9AWgzxyfjsfK3/U3CLV/R6t18CWT0c9nz/of5CCvnc9Wi+5Kzxn
+         5v7g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=oUQICZTvErPGFoAAmo0JX4UL40KR1RGmbL8I7x76U+Y=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=dyu/uoZqEsngYt9WofJkNJtYp1e+izPOEVBuenYJH3bMcWdxehyhQfIEwDDt6COOPz
+         4eUkecrKc/qidSq0ZNXV3kIA/3RwTAZceilLaNOhLAhJ3w3SiWH5orhlPKnvYIKl/qkI
+         6HtDPD+yY7d9Bm3yT8D2SfJSZaV/13CGS61qcZW5oXp56Col2+Wv7Y7Us4WRBeyb2jPO
+         oHoIU2bkrOe3W8W7d5J6JqNgyoRcbqJnklmLcK82aHuJq1s9/yygl4WZKp8az1FqVD1d
+         4qSJm2WZqklRGnkbmsmbPIxxIvtzgXPkLMS6aVoCL+q6y+/6gOYqx8gcC6PIJGwzfoSD
+         6EvA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=cYPG2o47;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=q0AAzLei;
+       spf=pass (google.com: domain of 0100019590fecbac-ff729cf6-8c27-4520-8909-f5540a97da8e-000000@send.email.wave.co designates 54.240.9.31 as permitted sender) smtp.mailfrom=0100019590fecbac-ff729cf6-8c27-4520-8909-f5540a97da8e-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <0100019590fecbac-ff729cf6-8c27-4520-8909-f5540a97da8e-000000@send.email.wave.co>
+Received: from a9-31.smtp-out.amazonses.com (a9-31.smtp-out.amazonses.com. [54.240.9.31])
+        by mx.google.com with ESMTPS id a1e0cc1a2514c-86d90d7280dsi997051241.6.2025.03.13.12.32.52
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 13 Mar 2025 12:32:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 0100019590fecbac-ff729cf6-8c27-4520-8909-f5540a97da8e-000000@send.email.wave.co designates 54.240.9.31 as permitted sender) client-ip=54.240.9.31;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=cYPG2o47;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=q0AAzLei;
+       spf=pass (google.com: domain of 0100019590fecbac-ff729cf6-8c27-4520-8909-f5540a97da8e-000000@send.email.wave.co designates 54.240.9.31 as permitted sender) smtp.mailfrom=0100019590fecbac-ff729cf6-8c27-4520-8909-f5540a97da8e-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1741894372;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=43thVf+v4g2C6OI50CuGvn3e5lmkeMU382JUnwM9irA=;
+	b=cYPG2o473CZTGu2GpWZ0TYpJ8AHDxPQW5UkP/jvqsXcUUfxHtN5A8oy9EFfK2UJ1
+	v+zQU4ZsWoEvoinrfrnQfF4wHq1W2xTCGMFL8yT+Uc1XU1oBTVhBhcDK9LfQFecW+/n
+	PE3qXi6oe12cojeZxzJF8UHQE3TpdF4fTIjEZBBE=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1741894372;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=43thVf+v4g2C6OI50CuGvn3e5lmkeMU382JUnwM9irA=;
+	b=q0AAzLeiOwWUuvFCsls+LPSmyh2py01+i0jnetZrw/jEcMoz4rpYgqczZxtszTQq
+	IbfvXrf9GHRSOU5F6OtWkexyiMJQ1dg02TH3b5mumVgTGMp8+YwgoGXijIwPYf7z99S
+	g2hY1IdHn4+kUxxHSVSmjjBES0JT9L6ps8/m65CM=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Data Transfer and Project Milestones Meeting Overview
+Message-ID: <0100019590fecbac-ff729cf6-8c27-4520-8909-f5540a97da8e-000000@email.amazonses.com>
+Date: Thu, 13 Mar 2025 19:32:52 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-554edd353a634be0-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.03.13-54.240.9.31
+
+----_NmP-554edd353a634be0-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Data Transfer and Project Milestones Meeting Overview
+
+# Meeting Summary
+
+## Main Topics Discussed
+
+### Data Transfer to Saffran / Actuation
+- **Objective:** Ensure secure and appropriate transfer of data to Saffran =
+without unauthorized leakage before the official closure.
+- **Key Points:**
+  - Differentiation between Saffran and Actuation regarding data access and=
+ rights.
+  - Saffran should only receive necessary and possibly redacted =
+data pre-close.
+  - Actuation will have access through a new project copy =
+without disrupting current access on day one.
+  - Importance of segregating=
+ data to limit access based on necessity.
+
+### Work Plan and Milestones
+- **Objective:** Align on the work plan dates and ensure all milestones are=
+ clearly defined and agreed upon.
+- **Key Points:**
+  - **Row 11 Discussion:**=20
+    - Initial terminology caused confusion =
+and was challenged by Jen.
+    - Agreed to change "sign off" to "validate" =
+to better reflect the required actions.
+    - Emphasis on business =
+validation of data rather than formal sign-off.
+  - **Deadlines:**
+    - **Scope Locked Down:** Next Thursday.
+    - **Prototyping Phase:** =
+Completion aligned with scope finalization.
+    - **Execution Phase:** To =
+follow after prototyping, specific dates to be determined.
+  - **Terminology Alignment:** Ensuring all team members use consistent =
+terms to prevent misunderstandings.
+
+### Project Validation and =
+Disentanglement
+- **Objective:** Validate project dispositions and manage =
+entangled projects effectively.
+- **Key Points:**
+  - **Identify Polarian =
+Projects:** Max has completed dispositioning for Polarian projects.
+  - **Validate Actuation Project Dispositions:**=20
+    - Assigned to Adam and Prashant.
+    - Deadline set for Tuesday.
+    - Focus on confirming the relevance and accuracy of each project's =
+disposition.
+  - **Entangled Projects:**=20
+    - Identification of =
+projects with interlinked work items.
+    - Bruce responsible for copying =
+these projects and ensuring link integrity in the new copies.
+ =20
+### Communication and Collaboration
+- **Objective:** Streamline =
+communication among team members to maintain context and ensure information=
+ flows effectively.
+- **Key Points:**
+  - Creation of a dedicated Polarian =
+working team chat to consolidate discussions.
+  - Ensuring all relevant =
+stakeholders are kept informed and engaged.
+  - Avoiding side chats that =
+may exclude key team members like Nick or Todd.
+
+### Scheduling and =
+Meetings
+- **Objective:** Coordinate meeting times to accommodate all =
+necessary discussions without conflicts.
+- **Key Points:**
+  - **Review Session:** Planned for tomorrow morning or afternoon to =
+finalize work plan structure.
+  - **Tag-Up Huddle:**=20
+    - Regular meeting moved to 10:30 AM Central to avoid conflict with the =
+meeting at 11:30 AM Eastern.
+    - Ensures availability for the meeting =
+with Adam and Co. without missing internal updates.
+
+## Action Items
+
+- **Rachel:**
+  - Create a Polarian working team chat to centralize =
+communications.
+  - Send Adam the template on the team site for input.
+- **Adam and Prashant:**
+  - Validate actuation project dispositions by =
+Tuesday.
+  - Confirm the accuracy and relevance of each project's =
+disposition.
+- **Bruce:**
+  - Begin copying entangled projects and ensure =
+inter-project links function correctly.
+  - Work on identifying projects =
+with multiple linked work items for proper copying.
+- **All Team Members:**
+  - Review and finalize the work plan structure during the scheduled review=
+ session.
+  - Ensure all related tasks are updated and aligned with the =
+agreed terminology and deadlines.
+
+## Follow-up
+
+- **Review Meeting:**
+  - Scheduled for the next day to discuss updates and finalize the work =
+plan structure.
+  - Ensure Adam and Prashant are prepared with their =
+validations and have completed the necessary templates.
+- **Ongoing Communication:**
+  - Maintain engagement with Adam and Prashant=
+ to monitor progress on project validations.
+  - Continue using the =
+dedicated team chat for all Polarian-related discussions to keep everyone =
+informed.
+
+## Key Dates and Deadlines
+
+- **Early May:** Creation of data =
+copies.
+- **End of May:** Cutover deadline for data transfer.
+- **Next Thursday:** Deadline to lock down project scope.
+- **Tuesday (specific date needed):** Validation of actuation project =
+dispositions.
+- **March 20:** Expected date for Collins' approval of =
+project dispositions.
+
+Transcript:
+0:00
+You are now connected.
+
+0:01
+You can merge your calls when ready.
+
+0:07
+Don't want anything leaking to =
+Safran before we close. So curious on if you had any feelings towards kind =
+of those major milestones.
+
+0:21
+Yeah, I mean, you brought up a good point.=
+ Yeah, you bring up a good point. Like, we've been told to, like, you know,=
+ get things done as quickly as we can so we're not, you know, held up on =
+day one. And ideally, this information that they already have access to now=
+ and information they already have that's going to be going with the sale. =
+So I'm assuming that, like, when we segregate, like, they should only have =
+what they need anyways. Right. So I think he just joined. I'm not sure if =
+you want to repeat that and see if he has an opinion.
+
+0:54
+Right. No. And I think. I think, you know, I'm mostly aligned with you, =
+Rachel. Hey, Anthony, can you hear us?
+
+1:01
+Hey, guys, how you doing?
+
+1:03
+Question was just around, is there a mandate or guiding principle on =
+how data is being transferred to Saffron?
+
+1:11
+Right.
+
+1:12
+I mean, we've got cutover as the end of May, but, you know, we plan to have=
+ the copies created at the beginning of May, and of course we'll go through=
+ testing and things like that, but is there any date we should be backing =
+into, you know, which would then say, hey, maybe we need to speed up =
+creating the copies or is close the right time frame to be cutting over?
+
+1:40
+So just one clarification. Transferring data to actuation or =
+transferring it to Saffron.
+
+1:48
+I'm using those interchangeably.
+
+1:50
+Okay.
+
+1:51
+So correct me if I'm. If I'm wrong there, but I mean, and that =
+was the risk I was. We were just talking about. Right. So we don't want to =
+share anything that might inadvertently go to Saffron before official close=
+. Although potentially we could finish before then and do that before then.=
+ Right. Especially if it's redacted. So I was just curious if you had an =
+opinion or knowledge there.
+
+2:15
+So. So yeah, So I wouldn't use Saffron =
+and actuation interchangeably. Just a couple. Like one reason why, =
+essentially, is if we're giving Saffron, essentially has no rights. Like =
+they shouldn't be getting. Let me take a step back. If we're disentangling =
+pre day one, then we can do it pre day one. The only time we need to give =
+something to actuation is if they request it specifically via the data site=
+ or we're giving it to them as a data extract disposition on day one. And I=
+ hope I didn't lose you with some of the terminology there. But for =
+Polarium, we don't need to give anything to Saffron for day one.
+
+3:02
+Because Nick, at least I'm understanding their IDs won't be changing on day=
+ one. So they'll still have access through what they do now. They'll just =
+be going through their new copy of the project rather than the project that=
+ they use now. Right, Anthony?
+
+3:18
+Yeah. So maybe like we should probably=
+ talk about an example just so that I'm tracking. I may not be =
+understanding it properly. So.
+
+3:29
+I think that's.
+
+3:30
+Which line item are you referring to? Sorry?
+
+3:33
+You highlighted on 23 =
+and 24, but then there's also 33 and 34, which are. So creating the copies =
+and then sharing the copies.
+
+3:44
+Oh, okay. Yeah, yeah. So this is going =
+to actuation. It's not going to suffer as the buyer. And so the question is=
+ when do we do this or.
+
+3:56
+Correct. So we've got sharing the copies at =
+the end of May. Should we try to expedite that? Right. Because. Right. Our =
+activity right now is to go through these start and end dates and to =
+optimize this. And so we have an opportunity to optimize those dates of =
+sharing the copies. Should it be earlier or not?
+
+4:18
+So I think one thing we may need to do here. Right. Is and let's just agree=
+ on the strategy is I think and this session specifically around a work =
+plan. Is that fair?
+
+4:31
+This is. This meeting is about the work plan =
+dates.
+
+4:34
+Yes. Okay, cool, cool. All right.
+
+4:36
+So when we have share a copy, I think it's create a copy on like the =
+existing instance. Right. That they have rights to. Like, I think that =
+that's where we're getting lost or confused here is like in this copy =
+terminology and we're not sure we're not sharing a copy. It's like you're =
+creating a copy that they will continue to have access to on day one. So =
+like the business process is not interrupted. Right.
+
+5:07
+Yeah, I think for. I think from my standpoint. Can you put row 11 in like a=
+ bright font for a sec?
+
+5:20
+Just like gray.
+
+5:23
+Just. Yeah. Red font. Like just a. Sorry. Just a way to really distinguish =
+it because this is milestone one. Right. So we're saying.
+
+5:30
+But also, Anthony, I got challenged by Jen that this is really not =
+something we need to have because she directed me to just CCV on all of our=
+ communications of people like Adam and our respective Collins counterpart.=
+ And that is her awareness not getting a scope signed off. So she =
+challenged this item, this line item.
+
+5:55
+Okay, but then what happens =
+when we're missing 20 projects on day one. I understand what she's coming =
+from and maybe it's the verbiage that may have upset her. Rachel. Maybe =
+it's just like actuation, validation or something. A sign off may seem like=
+. Was it the word sign off or was it actuation? Shouldn't be involved in =
+what actuation business has.
+
+6:20
+She was saying that the app owners are =
+the ones that need to be okay with the changes, not Stevie. So she should =
+just be brought in as awareness.
+
+6:30
+Yeah. So I guess I would politely =
+disagree with that because we don't know what we're. So this is where Jinha=
+ Maryann always says we need the business to validate the data for SAP. =
+Like we need the business to validate the data. Otherwise whatever we're =
+doing, I guess I'm trying to understand where she's coming from. If it's =
+like we don't need them to sign off, then that's probably fair. Right? We =
+probably just need to have them engaged. But if it's like we don't need to =
+involve actuation on what data they use for their business, then I. We =
+would just be doing complete guesswork. So do you know which angle it was? =
+Sorry, Nick.
+
+7:22
+No, I didn't mean to jump in. I, I me hearing you walk =
+through that. I think it was the signed off. I mean, I, I would politely =
+agree with Anthony Rachel that somebody from the business needs to validate=
+. And validate is probably a better word than signed off. And then scope =
+might also be a word that, that spooked her a little bit. So.
+
+7:49
+Because she said that like Adam giving the sign off is what we need, not =
+Stevie. Because Stevie's not gonna, she's not in the tools. She won't know.=
+ Oh, so she just needs awareness. Like every time, like we're working with =
+our Adam and whoever Colin's counterpart ends up being that Stevie should =
+be cc'd on what the agreement is coming to. But she advised that the app =
+owners, the people engaged and are tied off while CC Stevie in those emails=
+ and discussions.
+
+8:24
+So I wasn't thinking of Stevie at all in this row. =
+This is to me is Atwell. This to me is Adam.
+
+8:34
+So Adam's considered the=
+ business lead.
+
+8:36
+Yeah. For Rockford. That's what Andy Ragg has said in=
+ his thing. Adam and Prashant kb.
+
+8:43
+Okay. Because I guess I got thrown =
+off when I saw this term. Not Adam C like these other line items. So if =
+he's already.
+
+8:50
+I could see why that's the case. Right. So. So I didn't=
+. Yeah, yeah.
+
+8:56
+Line Eight. That's what Adam's doing.
+
+8:58
+I thought so.
+
+8:59
+Rachel, that's like, you're like. That's you on the =
+owner for that one, right? Like I. We've already got the answer for that =
+one. Like we know who the stakeholders are. It's Adam because he sent those=
+ names through. I thought already.
+
+9:16
+Adam sent what? Sorry about that.
+
+9:18
+So Andy Rag has already sent. Like this has already been done. Andy's =
+already said who's the right people?
+
+9:24
+There were like two people he =
+mentioned.
+
+9:26
+Right. So yes, let's. Let's bring this back up just one =
+level for a sec. Regardless of what row 11 says, this is we're done with =
+the scoping kind of thing. We can agree on terminology later, I think, but =
+we're saying next. What day today? Next Thursday. We are fully locked into =
+what projects dedicated to actuation, dedicated to columns, common or =
+entangled. Is that feasible for Rockford?
+
+10:06
+I think that's an Adam =
+question.
+
+10:09
+Well, I just thinking like from what we've seen. Right. So=
+ how many projects are at Rockford? Total.
+
+10:18
+Rockford. Total projects.=
+ Give me one.
+
+10:25
+Because I guess what I'm just trying to do is to make =
+it easier for Rachel to speak to this plan. We say finalize scope. We say =
+prototyping complete. We say execution. Well, we'll get to that in a sec, =
+but I think it's going to be much and I'm sorry, Rachel, I had to drop from=
+ the update that you gave this morning, but. Well, that's not the actuation=
+ ones. Mac, how many did we share with Prashant and Adam to review? 6.
+
+11:02
+It was 68 and 11, so. 78.
+
+11:06
+That's right.
+
+11:07
+Those have been shared with them. I'm sorry, have those been shaved, like =
+shared with them yet?
+
+11:13
+Yeah, I had just done it directly before we =
+chatted yesterday and you got me in the team site and then I think Nick =
+sent you the template that we can put into the team site and load for them =
+to enter their data into live. But they have the underlying data to have =
+those conversations. And then the ask is here's the template in the team =
+site. Please fill it out live.
+
+11:42
+Yeah, I have the template. I just =
+want to make sure they have what they need to have a productive =
+conversation tomorrow, you know.
+
+11:48
+Yeah, I was pinging with them =
+earlier. I think that they do let me follow up with Prashant and make sure =
+that he's been able to make some progress. But either way I think that we =
+have to keep our foot on the gas and have a conversation with them and make=
+ sure that it's making sense. We can also talk about the test of that =
+internal app and start to gather that information from them too. So if =
+they're not prepared to have the full review, we can get that from them as =
+well. What project should we test with that's entangled so Bruce can make =
+that copy which we. That's what we talked about this morning, I think.
+
+12:27
+Okay, so just a couple of housekeeping items, I think. Rachel, do you=
+ mind creating like I don't love the. The side chats and because like we're=
+ all going to get poured into a different call at a different time. Right. =
+Rachel's going to get summoned by Jason or just being able to give an =
+update. So I think what might help Rachel, if you're okay with this, is =
+this a creative Polarian working team chat or something? Because I just =
+like Mac, I appreciate you reaching out and hustling. I just worry that =
+that's not making it back to Nick or myself or Rachel or Todd and it just. =
+Because that's the thing. Right. We're trying to hand this back to the DT =
+team. We need to make sure that they've got all the context that you have. =
+So anyway, I think row 11 is next Friday. We have to have the scope locked =
+down. Right. And then prototyping. Well, this is for Rockford. Is this the.=
+ Do we have this duplicated for Bangalore?
+
+13:35
+Not yet.
+
+13:36
+Not yet.
+
+13:37
+Okay, so Bangalore is a bit ahead, but I think actuation scope signed=
+ off. So I think we need to have this done. We need to put the pressure on.=
+ So we're saying obtain a list of Polarian projects. Max done that =
+disposition. Polarian projects is. That's like a draft, but yes. Identify =
+actuation users. Max on that alarm. Actuation users to actuation projects. =
+Oh, that's the mapping. Interview aligned actuation users to validate =
+actuation. Interview aligned actuation users to validate actuations.
+
+14:20
+Yeah. So this one was the one where he said he had to go and talk to. =
+Because there's that one person who's on like, you know, 30 a bit entangled=
+. He has to go speak to that person.
+
+14:36
+Okay. So I would put validate =
+actuation. Like where is it? Interview. I would put validate actuation use.=
+ Well, like validate like actuation scope.
+
+14:56
+Yeah, like the. Like =
+whoever's name is on that project was how it was determined to be =
+actuations and Adam doesn't know. It's that person who has to confirm. So =
+Adam has to go ask that person, is this reality or is this some crap that's=
+ 10 years old and never happened, that kind of thing.
+
+15:14
+Yeah, but it's still Adam's a choke point. So I would put validate =
+actuation project dispositions as that row. And then we're saying 3:14 so =
+saying he's going to have all that done tomorrow.
+
+15:33
+It's not. Yeah, there's it. I don't think like based on those folks, I =
+don't think that they are 100% the right people. Prashant was willing I =
+think by the end to take more ownership of going and facilitating those =
+conversations. But it depends who we're putting this in front of. I don't =
+want to set ourselves up to be running red if we don't want to be. But I =
+don't think that they're going to have it fully validated by tomorrow.
+
+16:04
+Yeah. And that's where those yellows come in. Antony.
+
+16:07
+Okay, so let's be realistic.
+
+16:09
+Yellow.
+
+16:09
+Yeah. So I think it's a =
+line actuation uses the projects. I would just put. So let's give ourselves=
+ a tick here. Right. Just put onboard actuation stakeholders for this one.
+
+16:24
+Okay.
+
+16:26
+And this is onboard actuation stakeholders. And I just =
+realized this is out of order now because number eight says identify who =
+they are. But. And then. So we can do that as yesterday and mark it =
+complete. Nick.
+
+16:44
+So do you want me to delete this line item, Anthony?
+
+16:47
+Yeah, we can. Sorry, I didn't realise you were driving.
+
+16:52
+And I think the align on row five can just be. The word can be changed to =
+Mac instead of a line.
+
+16:58
+So a line actuation.
+
+17:01
+Mapped. So. So that's complete mactive though.
+
+17:07
+Yeah, exactly. Yeah, that's fine. And then identify columns, identify =
+actuation. And the next one is I would just put actuation to validate. I =
+would just put here. What's that? Identify plarium project with links =
+outside project. That's a different thing. Or to get. Well hold off on that=
+ one because that one's an output of dispositioning. That's more in =
+execution to be honest. So for this Rockford discovery, just put actuation =
+to validate project dispositions. And when do we want Adam and Prashant to =
+have that done by.
+
+17:55
+Tuesday.
+
+17:56
+That's running through the 678. =
+You said Mac and saying yes actuation no kind of thing.
+
+18:04
+Yeah, it's got to be before. It's got to be for this one. Right. So Bruce =
+can do the copies.
+
+18:11
+Well, Bruce can start. Well technically, yeah, =
+Bruce can start with some of that stuff now. But yeah, I think we need to =
+make this like Tuesday.
+
+18:22
+Rachel.
+
+18:22
+That is feasible.
+
+18:25
+I think Tuesday Is feasible. Yeah, Tuesday is realistic.
+
+18:29
+And so I think that what. Because what we want to do, team, is once we get =
+this buttoned up, cleaned up, we send it to Adam and Prashant. Okay, guys, =
+you're on the hook. Like actuation to validate project dispositions. =
+Identify Polarian project with links outside project. What does that mean? =
+Is that the bri. Is that the Bruce issue, where they're.
+
+18:53
+Like multiple projects for one. You want to go ahead Mac, but yeah, that's =
+what it is, I think.
+
+19:00
+Sorry, go ahead.
+
+19:02
+No, I mean, I was just going to probably say the same thing. So this is =
+where there are multiple projects linked to the same work item, I think. Or=
+. Or there's some complexity there where it's not just one project. And so =
+Bruce has to see if he can properly copy that. And then the project shows =
+the right. The copy shows the right links to other projects in the copy.
+
+19:29
+Yeah, it's like linking outside of the project because like if a work=
+ item for a document links to, there's a link in it to another project. =
+Like there were two examples this morning that were interlinked. Will it =
+point to the new copied version of the other project? We know that it can =
+do it for itself. Like if it is self referencing, but externally =
+referencing, I think he has to make sure that that automation works.
+
+20:00
+So I don't want to conflate that with like, I almost think for initiative =
+for here I would maybe just call this phase. And I hate to do this and you =
+guys can tell me no, but I don't want to put detailed disentanglement stuff=
+ into the discovery section. Like we need to clear base level discovery.
+
+20:19
+Agreed.
+
+20:20
+And I see that, like what, I see what you're talking =
+about now is being done at the project level.
+
+20:27
+I think, up here. And it doesn't have to be in discovery, but because he =
+should be able to do that tomorrow. Right. He just has to find one. And so,=
+ you know, we can hand it to Bruce and Bruce can do that before he has to =
+or while he's doing his current testing before he has to test kind of the =
+full moxie. So I think prototyping works, but he can definitely do that =
+sooner rather than later.
+
+20:54
+Is this identifying one project?
+
+20:58
+Right.
+
+20:58
+We just need an example.
+
+21:01
+Yeah, I would put that into =
+prototyping. It also doesn't say that here. It says like what? Like, oh, =
+okay, plarium project. So this is. Yes, I think that's the. That's the =
+second line item in. In prototyping. Right. To get that going.
+
+21:21
+Which line are you Describing.
+
+21:23
+So if you insert a row above 13.
+
+21:25
+Okay.
+
+21:31
+And then put. And then copy row, row nine in there and =
+just put like identify a single and we just want one or multiple.
+
+21:47
+Bruce has asked for one. All right, Maybe.
+
+21:52
+Does Adam know he has to =
+do this? I thought we just discussed this with Bengalore.
+
+21:58
+Adam probably does not know he needs to do this. I have not. Can you do =
+that to him again? I think we were going to plan and communicate that with =
+him during tomorrow's meeting. We could probably try to send him something =
+ahead of time with all of our asks of him and Prashant.
+
+22:26
+Okay. So I think discovery actuation to validate project dispositions. I =
+would just put. For row 10, you've got there. I would just put columns. To =
+perform final validation. To perform final validation of dispositions. Yeah=
+. So if he gets that done on Tuesday, we give say two days. That's 220. So =
+that's a week from today. So that's 320 where Collins is. Collins is going =
+to say yes. These 68 projects should be this way. So that's 320. Okay. And =
+that's gonna. That needs to be Nate Gove. Nate G.
+
+23:20
+And you want this to change to the 20th?
+
+23:22
+No, it's. Well, you're only=
+ giving them a day. Yeah, if we can.
+
+23:30
+And then delete line 10.
+
+23:32
+Yeah, that's the one that upset Jen and I could see why. It's a pretty =
+strongly worded item. All right, so we're saying we're done with. We know =
+our scope by next Thursday, which is longer than Jason's out. Which. Which =
+is good. Not good. Well, yeah, it's good. And the draft is. Yeah, so Nate's=
+ done. So. Not Nate. Bruce has done the. The Polarian project copy approach=
+. Identify Valerian project with links outside project. That's Adam. Manual=
+ identification of work items to inform copies. What's that mean? Is this =
+for the prototype or is this for everything?
+
+24:19
+This is the whole thing. So this is. Adam has to go through and say which =
+work items do not need to be copied over.
+
+24:27
+So that's not prototyping.=
+ I would say that's like execution or like it's. Yeah, I would almost say =
+that's requiring requirements gathering or something. Because we're not =
+going to do all that in prototype. Like my envision of prototyping is do =
+two quick projects, get us in the clear, and then we know we've got a path =
+forward to punch on with.
+
+24:53
+Yeah, I think execution makes a lot of =
+sense for that one.
+
+24:58
+Do we want to split it? Because it's going to be=
+ the only thing that. Like that. I. This is where we're going to have to =
+split it out a bit. I. Because I think we only need to do that for projects=
+ that are common. Well, no, sorry, we only need to do that for comment for =
+projects that are entangled, which is six projects in India know this is =
+Rockford, but you.
+
+25:28
+Know what I'm saying, like agreed, exactly.
+
+25:34
+Of entangled work items.
+
+25:37
+Well, I think what we want to say is =
+execution. Is this going into cap edge?
+
+25:44
+It will eventually. Yeah.
+
+25:46
+Okay, so I think with execution we want to have execution Rockford. =
+Common. Sorry, I'm using their terms now. Execution Rockford. And then it's=
+ going to be dedicated columns. Dedicated. Like it's going to break it into=
+ our disposition type. So there'll be kind of four subsections for each =
+site. I'll take a pause there to see if that makes sense.
+
+26:14
+So you're saying dedicated.
+
+26:17
+They need to be their own line. Right. =
+Well, so it's like menu identification of work items is only for entangled =
+projects. So I guess what I'm trying to say is we have execution and then =
+in like execution we'll have actuation dedicated. And then it's identify =
+Collins users who have access to tool. Remove Collins users who have access=
+ to project. And then the next one is identify Collins projects. Identify =
+actuation users. Remove actuation users. And I've got to jump. Do you mind =
+pinging me the link to this one, Rachel? I might be able to make some quick=
+ edits just on structure and maybe.
+
+27:11
+Tomorrow morning or afternoon =
+might be best to review. We have our standing tag up so we can do that, but=
+ that we also have our call with Adam at that same time. So I can move our =
+standing session to a different time if we want Both.
+
+27:27
+So what times do we have? Did you say? Sorry.
+
+27:31
+We're talking to Adam & Co. At 11:30 Eastern, which is during our regular =
+tag up huddle. But I can move that tag up huddle to another time slot if we=
+ want to keep it.
+
+27:48
+I'm actually surprisingly free tomorrow morning =
+and.
+
+27:51
+I don't know why that's scary.
+
+27:56
+Yeah. Oh, I accepted. =
+Someone's out of office.
+
+28:00
+You did? I thought you were out this =
+afternoon.
+
+28:04
+Yeah, people send out of offices and when you accept them=
+, they don't. You've got to. Anyway, I'm free like honestly for like the =
+hour and a half before then, Rachel. So I'm Whenever, like whenever you =
+want to do it. I'm good.
+
+28:18
+Okay. I move it the half hour before =
+because I'm pretty booked until 11, so I'm gonna move it to 10:30 Central, =
+11 Eastern. That sound good?
+
+28:31
+Yeah. Yeah. Okay. Yeah. Cool. All =
+righty. Thank you, guys.
+
+28:40
+Thank you so much.
+
+28:41
+And you have.
+----_NmP-554edd353a634be0-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><div style=3D"font-family:-apple-system, =
+BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, =
+sans-serif;margin:0;padding:0;background-color:#f4f4f4"><div =
+style=3D"width:100%;max-width:604px;margin:0 auto;background-color:#ffffff"=
+><div style=3D"background-image:url(https://upcdn.io/W142iax/raw/email/bann=
+er_clean.png);background-size:cover;background-position:center;width:604px;=
+height:297px;margin:0 auto;position:relative"><table cellPadding=3D"0" =
+cellSpacing=3D"0" border=3D"0" width=3D"100%" height=3D"100%"><tr><td =
+valign=3D"center" align=3D"center" style=3D"padding:0"><img =
+src=3D"https://upcdn.io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI =
+Logo" style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><=
+h1 style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Data =
+Transfer and Project Milestones Meeting Overview</h1></td></tr></table></di=
+v><div style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/CA5183468529080ac85702e3cc5dbdf367?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View and Edit Your session on the Wave Web App</a></div><div =
+style=3D"text-align:center;margin-bottom:36px"></div><div =
+style=3D"background-color:#ffffff;padding:28px;border-radius:12px;border:1p=
+x solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 =
+rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex;align-i=
+tems:center;gap:8px"><span style=3D"font-size:24px">=F0=9F=93=9D</span>Summ=
+ary</h3><div style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><h1 style=3D"font-weight:500;padding-top:2=
+0px;font-size:2.5rem">Meeting Summary</h1><h2 style=3D"font-weight:500;padd=
+ing-top:20px;font-size:2rem">Main Topics Discussed</h2><h3 =
+style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">Data Transfer =
+to Saffran / Actuation</h3><ul>
+<li><strong style=3D"font-weight:bold">Obje=
+ctive:</strong> Ensure secure and appropriate transfer of data to Saffran =
+without unauthorized leakage before the official closure.</li>
+<li><strong style=3D"font-weight:bold">Key Points:</strong><ul>
+<li>Differentiation between Saffran and Actuation regarding data access and=
+ rights.</li>
+<li>Saffran should only receive necessary and possibly =
+redacted data pre-close.</li>
+<li>Actuation will have access through a new =
+project copy without disrupting current access on day one.</li>
+<li>Importance of segregating data to limit access based on necessity.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1=
+.75rem">Work Plan and Milestones</h3><ul>
+<li><strong =
+style=3D"font-weight:bold">Objective:</strong> Align on the work plan dates=
+ and ensure all milestones are clearly defined and agreed upon.</li>
+<li><strong style=3D"font-weight:bold">Key Points:</strong><ul>
+<li><strong style=3D"font-weight:bold">Row 11 Discussion:</strong> <ul>
+<li>Initial terminology caused confusion and was challenged by Jen.</li>
+<li>Agreed to change &quot;sign off&quot; to &quot;validate&quot; to better=
+ reflect the required actions.</li>
+<li>Emphasis on business validation of =
+data rather than formal sign-off.</li>
+</ul>
+</li>
+<li><strong =
+style=3D"font-weight:bold">Deadlines:</strong><ul>
+<li><strong =
+style=3D"font-weight:bold">Scope Locked Down:</strong> Next Thursday.</li>
+<li><strong style=3D"font-weight:bold">Prototyping Phase:</strong> =
+Completion aligned with scope finalization.</li>
+<li><strong =
+style=3D"font-weight:bold">Execution Phase:</strong> To follow after =
+prototyping, specific dates to be determined.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Terminology Alignment:</strong> =
+Ensuring all team members use consistent terms to prevent misunderstandings=
+.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font=
+-size:1.75rem">Project Validation and Disentanglement</h3><ul>
+<li><strong style=3D"font-weight:bold">Objective:</strong> Validate project=
+ dispositions and manage entangled projects effectively.</li>
+<li><strong style=3D"font-weight:bold">Key Points:</strong><ul>
+<li><strong style=3D"font-weight:bold">Identify Polarian Projects:</strong>=
+ Max has completed dispositioning for Polarian projects.</li>
+<li><strong style=3D"font-weight:bold">Validate Actuation Project =
+Dispositions:</strong> <ul>
+<li>Assigned to Adam and Prashant.</li>
+<li>Deadline set for Tuesday.</li>
+<li>Focus on confirming the relevance =
+and accuracy of each project&#39;s disposition.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Entangled Projects:</strong> <ul>
+<li>Identification of projects with interlinked work items.</li>
+<li>Bruce responsible for copying these projects and ensuring link =
+integrity in the new copies.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.=
+75rem">Communication and Collaboration</h3><ul>
+<li><strong =
+style=3D"font-weight:bold">Objective:</strong> Streamline communication =
+among team members to maintain context and ensure information flows =
+effectively.</li>
+<li><strong style=3D"font-weight:bold">Key =
+Points:</strong><ul>
+<li>Creation of a dedicated Polarian working team chat=
+ to consolidate discussions.</li>
+<li>Ensuring all relevant stakeholders =
+are kept informed and engaged.</li>
+<li>Avoiding side chats that may =
+exclude key team members like Nick or Todd.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">Scheduling=
+ and Meetings</h3><ul>
+<li><strong style=3D"font-weight:bold">Objective:</s=
+trong> Coordinate meeting times to accommodate all necessary discussions =
+without conflicts.</li>
+<li><strong style=3D"font-weight:bold">Key =
+Points:</strong><ul>
+<li><strong style=3D"font-weight:bold">Review =
+Session:</strong> Planned for tomorrow morning or afternoon to finalize =
+work plan structure.</li>
+<li><strong style=3D"font-weight:bold">Tag-Up =
+Huddle:</strong> <ul>
+<li>Regular meeting moved to 10:30 AM Central to =
+avoid conflict with the meeting at 11:30 AM Eastern.</li>
+<li>Ensures availability for the meeting with Adam and Co. without missing =
+internal updates.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Action =
+Items</h2><ul>
+<li><strong style=3D"font-weight:bold">Rachel:</strong><ul>
+<li>Create a Polarian working team chat to centralize communications.</li>
+<li>Send Adam the template on the team site for input.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Adam and Prashant:</strong><ul>
+<li>Validate actuation project dispositions by Tuesday.</li>
+<li>Confirm the accuracy and relevance of each project&#39;s disposition.=
+</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Bruce:</strong><ul=
+>
+<li>Begin copying entangled projects and ensure inter-project links =
+function correctly.</li>
+<li>Work on identifying projects with multiple =
+linked work items for proper copying.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">All Team Members:</strong><ul>
+<li>Review and finalize the work plan structure during the scheduled review=
+ session.</li>
+<li>Ensure all related tasks are updated and aligned with =
+the agreed terminology and deadlines.</li>
+</ul>
+</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Follow-up</h2=
+><ul>
+<li><strong style=3D"font-weight:bold">Review Meeting:</strong><ul>
+<li>Scheduled for the next day to discuss updates and finalize the work =
+plan structure.</li>
+<li>Ensure Adam and Prashant are prepared with their =
+validations and have completed the necessary templates.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Ongoing Communication:</strong><ul>
+<li>Maintain engagement with Adam and Prashant to monitor progress on =
+project validations.</li>
+<li>Continue using the dedicated team chat for =
+all Polarian-related discussions to keep everyone informed.</li>
+</ul>
+</li>
+</ul>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">K=
+ey Dates and Deadlines</h2><ul>
+<li><strong style=3D"font-weight:bold">Earl=
+y May:</strong> Creation of data copies.</li>
+<li><strong =
+style=3D"font-weight:bold">End of May:</strong> Cutover deadline for data =
+transfer.</li>
+<li><strong style=3D"font-weight:bold">Next =
+Thursday:</strong> Deadline to lock down project scope.</li>
+<li><strong style=3D"font-weight:bold">Tuesday (specific date =
+needed):</strong> Validation of actuation project dispositions.</li>
+<li><strong style=3D"font-weight:bold">March 20:</strong> Expected date for=
+ Collins&#39; approval of project dispositions.</li>
+</ul>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0,=
+ 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex;align-i=
+tems:center;gap:8px"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</=
+span>Transcription</h3><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel</span><span=
+ style=3D"color:#64748b;font-size:14px">0:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You are now =
+connected.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">0:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You can merge your =
+calls when ready.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><s=
+pan style=3D"color:#64748b;font-size:14px">0:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Don&#x27;t want =
+anything leaking to Safran before we close. So curious on if you had any =
+feelings towards kind of those major milestones.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rachel</span><span style=3D"color:#64748b;font-size:14px"=
+>0:21</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, I mean, you brought up a good point. Yeah, you bring up a good =
+point. Like, we&#x27;ve been told to, like, you know, get things done as =
+quickly as we can so we&#x27;re not, you know, held up on day one. And =
+ideally, this information that they already have access to now and =
+information they already have that&#x27;s going to be going with the sale. =
+So I&#x27;m assuming that, like, when we segregate, like, they should only =
+have what they need anyways. Right. So I think he just joined. I&#x27;m not=
+ sure if you want to repeat that and see if he has an opinion.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">0:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right. No. And I =
+think. I think, you know, I&#x27;m mostly aligned with you, Rachel. Hey, =
+Anthony, can you hear us?</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span=
+><span style=3D"color:#64748b;font-size:14px">1:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Hey, guys, how you =
+doing?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">1:03</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Question was just =
+around, is there a mandate or guiding principle on how data is being =
+transferred to Saffron?</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span=
+><span style=3D"color:#64748b;font-size:14px">1:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">1:12</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I mean, we&#x27;ve =
+got cutover as the end of May, but, you know, we plan to have the copies =
+created at the beginning of May, and of course we&#x27;ll go through =
+testing and things like that, but is there any date we should be backing =
+into, you know, which would then say, hey, maybe we need to speed up =
+creating the copies or is close the right time frame to be cutting over?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">1:40</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So just one =
+clarification. Transferring data to actuation or transferring it to Saffron=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">1:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m using those=
+ interchangeably.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span=
+><span style=3D"color:#64748b;font-size:14px">1:50</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">1:51</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So correct me if =
+I&#x27;m. If I&#x27;m wrong there, but I mean, and that was the risk I was.=
+ We were just talking about. Right. So we don&#x27;t want to share anything=
+ that might inadvertently go to Saffron before official close. Although =
+potentially we could finish before then and do that before then. Right. =
+Especially if it&#x27;s redacted. So I was just curious if you had an =
+opinion or knowledge there.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span=
+><span style=3D"color:#64748b;font-size:14px">2:15</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So. So yeah, So I =
+wouldn&#x27;t use Saffron and actuation interchangeably. Just a couple. =
+Like one reason why, essentially, is if we&#x27;re giving Saffron, =
+essentially has no rights. Like they shouldn&#x27;t be getting. Let me take=
+ a step back. If we&#x27;re disentangling pre day one, then we can do it =
+pre day one. The only time we need to give something to actuation is if =
+they request it specifically via the data site or we&#x27;re giving it to =
+them as a data extract disposition on day one. And I hope I didn&#x27;t =
+lose you with some of the terminology there. But for Polarium, we =
+don&#x27;t need to give anything to Saffron for day one.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rachel</span><span style=3D"color:#64748b;font-size:14px"=
+>3:02</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Because Nick, at least I&#x27;m understanding their IDs won&#x27;t be =
+changing on day one. So they&#x27;ll still have access through what they do=
+ now. They&#x27;ll just be going through their new copy of the project =
+rather than the project that they use now. Right, Anthony?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">3:18</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah. So maybe like we should probably talk about an example just so =
+that I&#x27;m tracking. I may not be understanding it properly. So.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">3:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think that&#x27;s.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">3:30</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Which line item are =
+you referring to? Sorry?</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><s=
+pan style=3D"color:#64748b;font-size:14px">3:33</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">You highlighted on =
+23 and 24, but then there&#x27;s also 33 and 34, which are. So creating the=
+ copies and then sharing the copies.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">3:44</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Oh, okay. Yeah, yeah. So this is going to actuation. It&#x27;s not =
+going to suffer as the buyer. And so the question is when do we do this or.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">3:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Correct. So =
+we&#x27;ve got sharing the copies at the end of May. Should we try to =
+expedite that? Right. Because. Right. Our activity right now is to go =
+through these start and end dates and to optimize this. And so we have an =
+opportunity to optimize those dates of sharing the copies. Should it be =
+earlier or not?</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span=
+><span style=3D"color:#64748b;font-size:14px">4:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So I think one thing=
+ we may need to do here. Right. Is and let&#x27;s just agree on the =
+strategy is I think and this session specifically around a work plan. Is =
+that fair?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">4:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">This is. This =
+meeting is about the work plan dates.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">4:34</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yes. Okay, cool, cool. All right.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">4:=
+36</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">So when we have share a copy, I think it&#x27;s create a copy on like =
+the existing instance. Right. That they have rights to. Like, I think that =
+that&#x27;s where we&#x27;re getting lost or confused here is like in this =
+copy terminology and we&#x27;re not sure we&#x27;re not sharing a copy. =
+It&#x27;s like you&#x27;re creating a copy that they will continue to have =
+access to on day one. So like the business process is not interrupted. =
+Right.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">5:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I think for. I=
+ think from my standpoint. Can you put row 11 in like a bright font for a =
+sec?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel</span><span=
+ style=3D"color:#64748b;font-size:14px">5:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Just like gray.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">5:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Just. Yeah. Red font=
+. Like just a. Sorry. Just a way to really distinguish it because this is =
+milestone one. Right. So we&#x27;re saying.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rachel</span><span style=3D"color:#64748b;font-size:14px"=
+>5:30</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">But also, Anthony, I got challenged by Jen that this is really not =
+something we need to have because she directed me to just CCV on all of our=
+ communications of people like Adam and our respective Collins counterpart.=
+ And that is her awareness not getting a scope signed off. So she =
+challenged this item, this line item.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">5:55</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Okay, but then what happens when we&#x27;re missing 20 projects on day =
+one. I understand what she&#x27;s coming from and maybe it&#x27;s the =
+verbiage that may have upset her. Rachel. Maybe it&#x27;s just like =
+actuation, validation or something. A sign off may seem like. Was it the =
+word sign off or was it actuation? Shouldn&#x27;t be involved in what =
+actuation business has.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel</span>=
+<span style=3D"color:#64748b;font-size:14px">6:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">She was saying that =
+the app owners are the ones that need to be okay with the changes, not =
+Stevie. So she should just be brought in as awareness.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">6:30</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yeah. So I guess I would politely disagree with that because we =
+don&#x27;t know what we&#x27;re. So this is where Jinha Maryann always says=
+ we need the business to validate the data for SAP. Like we need the =
+business to validate the data. Otherwise whatever we&#x27;re doing, I guess=
+ I&#x27;m trying to understand where she&#x27;s coming from. If it&#x27;s =
+like we don&#x27;t need them to sign off, then that&#x27;s probably fair. =
+Right? We probably just need to have them engaged. But if it&#x27;s like we=
+ don&#x27;t need to involve actuation on what data they use for their =
+business, then I. We would just be doing complete guesswork. So do you know=
+ which angle it was? Sorry, Nick.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</s=
+pan><span style=3D"color:#64748b;font-size:14px">7:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, I didn&#x27;t =
+mean to jump in. I, I me hearing you walk through that. I think it was the =
+signed off. I mean, I, I would politely agree with Anthony Rachel that =
+somebody from the business needs to validate. And validate is probably a =
+better word than signed off. And then scope might also be a word that, that=
+ spooked her a little bit. So.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel<=
+/span><span style=3D"color:#64748b;font-size:14px">7:49</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Because she said =
+that like Adam giving the sign off is what we need, not Stevie. Because =
+Stevie&#x27;s not gonna, she&#x27;s not in the tools. She won&#x27;t know. =
+Oh, so she just needs awareness. Like every time, like we&#x27;re working =
+with our Adam and whoever Colin&#x27;s counterpart ends up being that =
+Stevie should be cc&#x27;d on what the agreement is coming to. But she =
+advised that the app owners, the people engaged and are tied off while CC =
+Stevie in those emails and discussions.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">8:24</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">So I wasn&#x27;t thinking of Stevie at all in this row. This is to me =
+is Atwell. This to me is Adam.</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel<=
+/span><span style=3D"color:#64748b;font-size:14px">8:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So Adam&#x27;s =
+considered the business lead.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony=
+</span><span style=3D"color:#64748b;font-size:14px">8:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. For Rockford. =
+That&#x27;s what Andy Ragg has said in his thing. Adam and Prashant kb.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel</span><span=
+ style=3D"color:#64748b;font-size:14px">8:43</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. Because I =
+guess I got thrown off when I saw this term. Not Adam C like these other =
+line items. So if he&#x27;s already.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">8:50</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">I could see why that&#x27;s the case. Right. So. So I didn&#x27;t. Yeah=
+, yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel</span><span=
+ style=3D"color:#64748b;font-size:14px">8:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Line Eight. =
+That&#x27;s what Adam&#x27;s doing.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">8:=
+58</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I thought so.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span=
+><span style=3D"color:#64748b;font-size:14px">8:59</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Rachel, that&#x27;s =
+like, you&#x27;re like. That&#x27;s you on the owner for that one, right? =
+Like I. We&#x27;ve already got the answer for that one. Like we know who =
+the stakeholders are. It&#x27;s Adam because he sent those names through. I=
+ thought already.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel</span>=
+<span style=3D"color:#64748b;font-size:14px">9:16</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Adam sent what? =
+Sorry about that.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span=
+><span style=3D"color:#64748b;font-size:14px">9:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So Andy Rag has =
+already sent. Like this has already been done. Andy&#x27;s already said =
+who&#x27;s the right people?</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><=
+span style=3D"color:#64748b;font-size:14px">9:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">There were like two =
+people he mentioned.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span=
+><span style=3D"color:#64748b;font-size:14px">9:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right. So yes, =
+let&#x27;s. Let&#x27;s bring this back up just one level for a sec. =
+Regardless of what row 11 says, this is we&#x27;re done with the scoping =
+kind of thing. We can agree on terminology later, I think, but we&#x27;re =
+saying next. What day today? Next Thursday. We are fully locked into what =
+projects dedicated to actuation, dedicated to columns, common or entangled.=
+ Is that feasible for Rockford?</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</s=
+pan><span style=3D"color:#64748b;font-size:14px">10:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think that&#x27;s =
+an Adam question.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span=
+><span style=3D"color:#64748b;font-size:14px">10:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Well, I just =
+thinking like from what we&#x27;ve seen. Right. So how many projects are at=
+ Rockford? Total.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><s=
+pan style=3D"color:#64748b;font-size:14px">10:18</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Rockford. Total =
+projects. Give me one.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span=
+><span style=3D"color:#64748b;font-size:14px">10:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Because I guess what=
+ I&#x27;m just trying to do is to make it easier for Rachel to speak to =
+this plan. We say finalize scope. We say prototyping complete. We say =
+execution. Well, we&#x27;ll get to that in a sec, but I think it&#x27;s =
+going to be much and I&#x27;m sorry, Rachel, I had to drop from the update =
+that you gave this morning, but. Well, that&#x27;s not the actuation ones. =
+Mac, how many did we share with Prashant and Adam to review? 6.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">11:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">It was 68 and 11, so=
+. 78.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">11:06</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;s right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel</span><span=
+ style=3D"color:#64748b;font-size:14px">11:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Those have been =
+shared with them. I&#x27;m sorry, have those been shaved, like shared with =
+them yet?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">11:13</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I had just =
+done it directly before we chatted yesterday and you got me in the team =
+site and then I think Nick sent you the template that we can put into the =
+team site and load for them to enter their data into live. But they have =
+the underlying data to have those conversations. And then the ask is =
+here&#x27;s the template in the team site. Please fill it out live.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel</span><span=
+ style=3D"color:#64748b;font-size:14px">11:42</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I have the =
+template. I just want to make sure they have what they need to have a =
+productive conversation tomorrow, you know.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">11=
+:48</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah, I was pinging with them earlier. I think that they do let me =
+follow up with Prashant and make sure that he&#x27;s been able to make some=
+ progress. But either way I think that we have to keep our foot on the gas =
+and have a conversation with them and make sure that it&#x27;s making sense=
+. We can also talk about the test of that internal app and start to gather =
+that information from them too. So if they&#x27;re not prepared to have the=
+ full review, we can get that from them as well. What project should we =
+test with that&#x27;s entangled so Bruce can make that copy which we. =
+That&#x27;s what we talked about this morning, I think.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">12:27</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Okay, so just a couple of housekeeping items, I think. Rachel, do you =
+mind creating like I don&#x27;t love the. The side chats and because like =
+we&#x27;re all going to get poured into a different call at a different =
+time. Right. Rachel&#x27;s going to get summoned by Jason or just being =
+able to give an update. So I think what might help Rachel, if you&#x27;re =
+okay with this, is this a creative Polarian working team chat or something?=
+ Because I just like Mac, I appreciate you reaching out and hustling. I =
+just worry that that&#x27;s not making it back to Nick or myself or Rachel =
+or Todd and it just. Because that&#x27;s the thing. Right. We&#x27;re =
+trying to hand this back to the DT team. We need to make sure that =
+they&#x27;ve got all the context that you have. So anyway, I think row 11 =
+is next Friday. We have to have the scope locked down. Right. And then =
+prototyping. Well, this is for Rockford. Is this the. Do we have this =
+duplicated for Bangalore?</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">13:35</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Not yet.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">13:36</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Not yet.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">13:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so Bangalore =
+is a bit ahead, but I think actuation scope signed off. So I think we need =
+to have this done. We need to put the pressure on. So we&#x27;re saying =
+obtain a list of Polarian projects. Max done that disposition. Polarian =
+projects is. That&#x27;s like a draft, but yes. Identify actuation users. =
+Max on that alarm. Actuation users to actuation projects. Oh, that&#x27;s =
+the mapping. Interview aligned actuation users to validate actuation. =
+Interview aligned actuation users to validate actuations.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Nick</span><span style=3D"color:#64748b;font-size:14px">1=
+4:20</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. So this one was the one where he said he had to go and talk to. =
+Because there&#x27;s that one person who&#x27;s on like, you know, 30 a bit=
+ entangled. He has to go speak to that person.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">14:36</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Okay. So I would put validate actuation. Like where is it? Interview. =
+I would put validate actuation use. Well, like validate like actuation =
+scope.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">14:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, like the. Like=
+ whoever&#x27;s name is on that project was how it was determined to be =
+actuations and Adam doesn&#x27;t know. It&#x27;s that person who has to =
+confirm. So Adam has to go ask that person, is this reality or is this some=
+ crap that&#x27;s 10 years old and never happened, that kind of thing.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">15:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, but it&#x27;s =
+still Adam&#x27;s a choke point. So I would put validate actuation project =
+dispositions as that row. And then we&#x27;re saying 3:14 so saying =
+he&#x27;s going to have all that done tomorrow.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">15=
+:33</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">It&#x27;s not. Yeah, there&#x27;s it. I don&#x27;t think like based on =
+those folks, I don&#x27;t think that they are 100% the right people. =
+Prashant was willing I think by the end to take more ownership of going and=
+ facilitating those conversations. But it depends who we&#x27;re putting =
+this in front of. I don&#x27;t want to set ourselves up to be running red =
+if we don&#x27;t want to be. But I don&#x27;t think that they&#x27;re going=
+ to have it fully validated by tomorrow.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Nick</span><span style=3D"color:#64748b;font-size:14px">1=
+6:04</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. And that&#x27;s where those yellows come in. Antony.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">16:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so let&#x27;s =
+be realistic.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">16:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yellow.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">16:09</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. So I think =
+it&#x27;s a line actuation uses the projects. I would just put. So =
+let&#x27;s give ourselves a tick here. Right. Just put onboard actuation =
+stakeholders for this one.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel</span>=
+<span style=3D"color:#64748b;font-size:14px">16:24</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">16:26</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And this is onboard =
+actuation stakeholders. And I just realized this is out of order now =
+because number eight says identify who they are. But. And then. So we can =
+do that as yesterday and mark it complete. Nick.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rachel</span><span style=3D"color:#64748b;font-size:14px"=
+>16:44</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">So do you want me to delete this line item, Anthony?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">16:47</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah, we can. Sorry, I didn&#x27;t realise you were driving.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">16:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And I think the =
+align on row five can just be. The word can be changed to Mac instead of a =
+line.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">16:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So a line actuation.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">17:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Mapped. So. So =
+that&#x27;s complete mactive though.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">17:07</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah, exactly. Yeah, that&#x27;s fine. And then identify columns, =
+identify actuation. And the next one is I would just put actuation to =
+validate. I would just put here. What&#x27;s that? Identify plarium project=
+ with links outside project. That&#x27;s a different thing. Or to get. Well=
+ hold off on that one because that one&#x27;s an output of dispositioning. =
+That&#x27;s more in execution to be honest. So for this Rockford discovery,=
+ just put actuation to validate project dispositions. And when do we want =
+Adam and Prashant to have that done by.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">17=
+:55</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Tuesday.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">17:56</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That&#x27;s running =
+through the 678. You said Mac and saying yes actuation no kind of thing.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel</span><span=
+ style=3D"color:#64748b;font-size:14px">18:04</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, it&#x27;s got =
+to be before. It&#x27;s got to be for this one. Right. So Bruce can do the =
+copies.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">18:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Well, Bruce can =
+start. Well technically, yeah, Bruce can start with some of that stuff now.=
+ But yeah, I think we need to make this like Tuesday.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rachel</span><span style=3D"color:#64748b;font-size:14px"=
+>18:22</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Rachel.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">18:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">That is feasible.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">18:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think Tuesday Is =
+feasible. Yeah, Tuesday is realistic.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">18:29</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">And so I think that what. Because what we want to do, team, is once we=
+ get this buttoned up, cleaned up, we send it to Adam and Prashant. Okay, =
+guys, you&#x27;re on the hook. Like actuation to validate project =
+dispositions. Identify Polarian project with links outside project. What =
+does that mean? Is that the bri. Is that the Bruce issue, where =
+they&#x27;re.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">18:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Like multiple =
+projects for one. You want to go ahead Mac, but yeah, that&#x27;s what it =
+is, I think.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">19:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Sorry, go ahead.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">19:02</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, I mean, I was =
+just going to probably say the same thing. So this is where there are =
+multiple projects linked to the same work item, I think. Or. Or =
+there&#x27;s some complexity there where it&#x27;s not just one project. =
+And so Bruce has to see if he can properly copy that. And then the project =
+shows the right. The copy shows the right links to other projects in the =
+copy.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">19:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, it&#x27;s like=
+ linking outside of the project because like if a work item for a document =
+links to, there&#x27;s a link in it to another project. Like there were two=
+ examples this morning that were interlinked. Will it point to the new =
+copied version of the other project? We know that it can do it for itself. =
+Like if it is self referencing, but externally referencing, I think he has =
+to make sure that that automation works.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">20:00</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">So I don&#x27;t want to conflate that with like, I almost think for =
+initiative for here I would maybe just call this phase. And I hate to do =
+this and you guys can tell me no, but I don&#x27;t want to put detailed =
+disentanglement stuff into the discovery section. Like we need to clear =
+base level discovery.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><sp=
+an style=3D"color:#64748b;font-size:14px">20:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Agreed.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">20:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And I see that, like=
+ what, I see what you&#x27;re talking about now is being done at the =
+project level.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">20:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I think, up here. =
+And it doesn&#x27;t have to be in discovery, but because he should be able =
+to do that tomorrow. Right. He just has to find one. And so, you know, we =
+can hand it to Bruce and Bruce can do that before he has to or while =
+he&#x27;s doing his current testing before he has to test kind of the full =
+moxie. So I think prototyping works, but he can definitely do that sooner =
+rather than later.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span=
+><span style=3D"color:#64748b;font-size:14px">20:54</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Is this identifying =
+one project?</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">20:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Right.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">20:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We just need an =
+example.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">21:01</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I would put =
+that into prototyping. It also doesn&#x27;t say that here. It says like =
+what? Like, oh, okay, plarium project. So this is. Yes, I think that&#x27;s=
+ the. That&#x27;s the second line item in. In prototyping. Right. To get =
+that going.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel</span><span=
+ style=3D"color:#64748b;font-size:14px">21:21</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Which line are you =
+Describing.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">21:23</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So if you insert a =
+row above 13.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel</span><span=
+ style=3D"color:#64748b;font-size:14px">21:25</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">21:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And then put. And =
+then copy row, row nine in there and just put like identify a single and we=
+ just want one or multiple.</div></div><div style=3D"margin-bottom:16px;pad=
+ding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><s=
+pan style=3D"color:#64748b;font-size:14px">21:47</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Bruce has asked for =
+one. All right, Maybe.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span=
+><span style=3D"color:#64748b;font-size:14px">21:52</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Does Adam know he =
+has to do this? I thought we just discussed this with Bengalore.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">21:58</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Adam probably does =
+not know he needs to do this. I have not. Can you do that to him again? I =
+think we were going to plan and communicate that with him during =
+tomorrow&#x27;s meeting. We could probably try to send him something ahead =
+of time with all of our asks of him and Prashant.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">22:26</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Okay. So I think discovery actuation to validate project dispositions.=
+ I would just put. For row 10, you&#x27;ve got there. I would just put =
+columns. To perform final validation. To perform final validation of =
+dispositions. Yeah. So if he gets that done on Tuesday, we give say two =
+days. That&#x27;s 220. So that&#x27;s a week from today. So that&#x27;s 320=
+ where Collins is. Collins is going to say yes. These 68 projects should be=
+ this way. So that&#x27;s 320. Okay. And that&#x27;s gonna. That needs to =
+be Nate Gove. Nate G.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel</span>=
+<span style=3D"color:#64748b;font-size:14px">23:20</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And you want this to=
+ change to the 20th?</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span=
+><span style=3D"color:#64748b;font-size:14px">23:22</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">No, it&#x27;s. Well,=
+ you&#x27;re only giving them a day. Yeah, if we can.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rachel</span><span style=3D"color:#64748b;font-size:14px"=
+>23:30</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">And then delete line 10.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</spa=
+n><span style=3D"color:#64748b;font-size:14px">23:32</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, that&#x27;s =
+the one that upset Jen and I could see why. It&#x27;s a pretty strongly =
+worded item. All right, so we&#x27;re saying we&#x27;re done with. We know =
+our scope by next Thursday, which is longer than Jason&#x27;s out. Which. =
+Which is good. Not good. Well, yeah, it&#x27;s good. And the draft is. Yeah=
+, so Nate&#x27;s done. So. Not Nate. Bruce has done the. The Polarian =
+project copy approach. Identify Valerian project with links outside project=
+. That&#x27;s Adam. Manual identification of work items to inform copies. =
+What&#x27;s that mean? Is this for the prototype or is this for everything?=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">24:19</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">This is the whole =
+thing. So this is. Adam has to go through and say which work items do not =
+need to be copied over.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span=
+><span style=3D"color:#64748b;font-size:14px">24:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So that&#x27;s not =
+prototyping. I would say that&#x27;s like execution or like it&#x27;s. Yeah=
+, I would almost say that&#x27;s requiring requirements gathering or =
+something. Because we&#x27;re not going to do all that in prototype. Like =
+my envision of prototyping is do two quick projects, get us in the clear, =
+and then we know we&#x27;ve got a path forward to punch on with.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</span><span =
+style=3D"color:#64748b;font-size:14px">24:53</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I think =
+execution makes a lot of sense for that one.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">24:58</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Do we want to split it? Because it&#x27;s going to be the only thing =
+that. Like that. I. This is where we&#x27;re going to have to split it out =
+a bit. I. Because I think we only need to do that for projects that are =
+common. Well, no, sorry, we only need to do that for comment for projects =
+that are entangled, which is six projects in India know this is Rockford, =
+but you.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Mac</span><span =
+style=3D"color:#64748b;font-size:14px">25:28</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Know what I&#x27;m =
+saying, like agreed, exactly.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Nick</s=
+pan><span style=3D"color:#64748b;font-size:14px">25:34</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Of entangled work =
+items.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">25:37</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Well, I think what =
+we want to say is execution. Is this going into cap edge?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rachel</span><span style=3D"color:#64748b;font-size:14px"=
+>25:44</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">It will eventually. Yeah.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:=
+8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony=
+</span><span style=3D"color:#64748b;font-size:14px">25:46</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, so I think =
+with execution we want to have execution Rockford. Common. Sorry, I&#x27;m =
+using their terms now. Execution Rockford. And then it&#x27;s going to be =
+dedicated columns. Dedicated. Like it&#x27;s going to break it into our =
+disposition type. So there&#x27;ll be kind of four subsections for each =
+site. I&#x27;ll take a pause there to see if that makes sense.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel</span><span=
+ style=3D"color:#64748b;font-size:14px">26:14</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So you&#x27;re =
+saying dedicated.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span=
+><span style=3D"color:#64748b;font-size:14px">26:17</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">They need to be =
+their own line. Right. Well, so it&#x27;s like menu identification of work =
+items is only for entangled projects. So I guess what I&#x27;m trying to =
+say is we have execution and then in like execution we&#x27;ll have =
+actuation dedicated. And then it&#x27;s identify Collins users who have =
+access to tool. Remove Collins users who have access to project. And then =
+the next one is identify Collins projects. Identify actuation users. Remove=
+ actuation users. And I&#x27;ve got to jump. Do you mind pinging me the =
+link to this one, Rachel? I might be able to make some quick edits just on =
+structure and maybe.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel</span>=
+<span style=3D"color:#64748b;font-size:14px">27:11</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Tomorrow morning or =
+afternoon might be best to review. We have our standing tag up so we can do=
+ that, but that we also have our call with Adam at that same time. So I can=
+ move our standing session to a different time if we want Both.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">27:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">So what times do we =
+have? Did you say? Sorry.</div></div><div style=3D"margin-bottom:16px;paddi=
+ng:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel</span>=
+<span style=3D"color:#64748b;font-size:14px">27:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">We&#x27;re talking =
+to Adam &amp; Co. At 11:30 Eastern, which is during our regular tag up =
+huddle. But I can move that tag up huddle to another time slot if we want =
+to keep it.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">27:48</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m actually =
+surprisingly free tomorrow morning and.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">27=
+:51</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">I don&#x27;t know why that&#x27;s scary.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">27:56</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah. Oh, I accepted. Someone&#x27;s out of office.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">28=
+:00</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">You did? I thought you were out this afternoon.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Anthony</span><span style=3D"color:#64748b;font-size:14px=
+">28:04</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">Yeah, people send out of offices and when you accept them, they =
+don&#x27;t. You&#x27;ve got to. Anyway, I&#x27;m free like honestly for =
+like the hour and a half before then, Rachel. So I&#x27;m Whenever, like =
+whenever you want to do it. I&#x27;m good.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Rachel</span><span style=3D"color:#64748b;font-size:14px"=
+>28:18</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Okay. I move it the half hour before because I&#x27;m pretty booked =
+until 11, so I&#x27;m gonna move it to 10:30 Central, 11 Eastern. That =
+sound good?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Anthony</span><spa=
+n style=3D"color:#64748b;font-size:14px">28:31</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Yeah. Okay. =
+Yeah. Cool. All righty. Thank you, guys.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;align-it=
+ems:center;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Mac</span><span style=3D"color:#64748b;font-size:14px">28=
+:40</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Thank you so much.</div></div><div style=3D"margin-bottom:0;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid =
+#3b82f6"><div style=3D"display:flex;align-items:center;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rachel</span>=
+<span style=3D"color:#64748b;font-size:14px">28:41</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">And you have.=
+</div></div></div><div style=3D"margin-top:36px;text-align:center;color:#64=
+748b;font-size:14px;padding:20px;border-top:1px solid #e2e8f0"><p =
+style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note Taker</p><p=
+ style=3D"margin:0;font-size:12px">Your AI-powered companion</p></div></div=
+></div></div></html>
+----_NmP-554edd353a634be0-Part_1--

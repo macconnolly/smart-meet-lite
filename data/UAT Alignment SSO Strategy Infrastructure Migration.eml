@@ -1,0 +1,1772 @@
+MIME-Version: 1.0
+Date: Tue, 3 Jun 2025 00:55:34 -0400
+References: <01000197312b21fc-29df48a9-7cf7-4259-a816-3045d3f33d42-000000@email.amazonses.com>
+In-Reply-To: <01000197312b21fc-29df48a9-7cf7-4259-a816-3045d3f33d42-000000@email.amazonses.com>
+Message-ID: <CAOat4ZBdqvXSKPO1TvMcO61Xa1ywST7hGTyRAjXMYLNh9M8H8w@mail.gmail.com>
+Subject: Fwd: UAT Alignment SSO Strategy Infrastructure Migration
+From: Mac Connolly <mac@macconnolly.com>
+To: save@mem.ai
+Content-Type: multipart/alternative; boundary="000000000000e050f20636a3b062"
+
+--000000000000e050f20636a3b062
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+---------- Forwarded message ---------
+From: Wave AI Note Taker <summary@email.wave.co>
+Date: Mon, 2 Jun 2025 at 11:09
+Subject: UAT Alignment SSO Strategy Infrastructure Migration
+To: <mac@macconnolly.com>
+
+
+[image: Wave AI Logo]UAT Alignment SSO Strategy Infrastructure Migration
+=E2=9C=A8 View Your Session on the Web
+<https://app.wave.co/sessions/9b24a506-b8cb-484e-8905-ea22e1be94cf?lastLogi=
+nParam=3Dgoogle>
+=F0=9F=93=9DSummary
+Meeting SummaryDate: June 2, 2025
+------------------------------
+Main Topics Discussed1. UAT (User Acceptance Testing) Planning & Alignment
+
+*Summary:*
+
+   - Overall timelines for UAT testing of in-scope applications have been
+   established.
+   - Baseline test cases for all applications are ready.
+   - Super users for each application have been identified.
+   - Plan to schedule review calls:
+      - Function-specific calls for super users to ensure alignment with
+      UAT timelines, test cases, and access provisioning.
+      - Manufacturing applications will have a joint call with
+      manufacturing super users; similar approach for other functions.
+   - Target for super user review calls: end of June 2025.
+   - All architecture and design activities are complete except ongoing
+   design reviews for Web Broker and Taller (target completion: within a we=
+ek).
+   - Builds are already in progress for most applications, and the project
+   is on track with proposed timelines.
+
+*Key Points:*
+
+   - Anything highlighted in yellow on the slide indicates pending
+   reconfirmation with respective function leads.
+   - For =E2=80=9CBuy Value AP 900=E2=80=9D application, timelines are base=
+d on current
+   estimations=E2=80=94calls set up to discuss these with business leaders =
+next week
+   (week of June 9, 2025).
+   - Weekly calls to be scheduled with business teams to ensure ongoing
+   alignment and prevent surprises due to tight schedules.
+
+------------------------------
+2. Workstream and Organizational Alignment
+
+*Summary:*
+
+   - Applications currently span at least five main workstreams:
+      - ERP, IMA (analytics), CCEX (customer experience), business-managed
+      applications, and IT-managed ISC (Integrated Supply Chain) applicatio=
+ns.
+   - Concern raised about business users receiving multiple overlapping
+   UAT/testing requests from different workstreams, creating confusion.
+   - Proposal to consolidate plans from all workstreams into a single,
+   common plan for business leaders.
+   - Current activity to set up a SharePoint site and develop a dashboard
+   for visibility on testing overlaps, resource allocations, and escalation
+   points.
+      - A meeting to review this is proposed for Wednesday afternoon or
+      Thursday morning (June 4=E2=80=935, 2025).
+
+*Key Points:*
+
+   - Importance of integrated communication and status tracking across
+   workstreams stressed by multiple attendees.
+   - Goal: Improve visibility and reduce redundant efforts or conflicting
+   asks on business teams.
+   - Efforts in place to accumulate and aggregate status for all
+   ISC-applicable applications across workstreams.
+
+------------------------------
+3. SSO (Single Sign-On) Strategy
+
+*Summary:*
+
+   - Ongoing discussions on SSO implementation for Day 1 (August 1, 2025,
+   targeted go-live):
+      - Identification of application impacts and use cases continues, with
+      meetings set up between application teams and the SSO team.
+      - Testing strategy is being clarified, especially regarding QA/lower
+      environments versus production.
+   - Applications notably impacted by SSO in Day 1: Taller UI, Sparta, Web
+   Broker, Toller Portal.
+   - Some technical SSO concerns:
+      - Handling of HID (Honeywell ID) to SID (SpinCo ID) transitions in
+      credentials and reporting.
+      - Ensuring clarity on SSO credential use in re-imaged laptops for
+      Solstice entity users (users will use a single, re-imaged laptop, wit=
+h
+      credentials for Solstice apps and existing Honeywell credentials for
+      applications still on the Honeywell tenant).
+
+*Key Points:*
+
+   - Laptops to be re-imaged and distributed to users prior to Day 1.
+   - Some processes and access scenarios are only confirmed verbally at
+   this stage=E2=80=94more solidification required through QA testing and o=
+ngoing SSO
+   team coordination.
+   - Special challenge in Toller Portal due to storage of IDs/passwords and
+   existence of external users; a separate session scheduled.
+
+------------------------------
+4. Infrastructure Migration and Ownership (Team Guru, ECAT, and Scheduling
+Tools)
+
+*Summary:*
+
+   - Progress on Team Guru and ECAT applications is positive.
+   - Vendor POs are in place, with extraction activity planned for this
+   week (first week of June 2025).
+   - A compliance-driven migration:
+      - Decision to move UI Scheduling Tool to on-premises due to CGMP
+      compliance, necessitating another server/domain migration
+(global Honeywell
+      domain to SpinCo in September/October 2025).
+   - Open question regarding long-term application/service owner roles for
+   new on-prem servers=E2=80=94possible initial assignment to Benny or to f=
+ield-based
+   personnel (e.g., Jatinder for on-site support).
+   - Integration points noted with Documentum, LIMS, and SATC.
+
+*Risks Identified:*
+
+   - Network and firewall changes for large site cutovers (MER, Baton
+   Rouge, etc.) scheduled for September=E2=80=93October, which is close to =
+go-live.
+   - This creates risk in completing UAT and QA testing ahead of the
+   October go-live for on-prem applications.
+
+------------------------------
+5. Toller Portal, TMC, and BDS Application Updates
+
+*Summary:*
+
+   - Toller Portal: Test case design and business pocket ready; next steps
+   are focused on testing.
+   - TMC and BDS: Build starts this week or next; design documents ready.
+   - Toller Portal migration kickoff planned for next week.
+   - For BDS, a cost increase (previously $23,900, now up by $3,000 to
+   $27,700) will be handled via a change request (CR) and updated purchase
+   order (PO).
+   - Support contract for the Toller Portal under review; post=E2=80=93Oct =
+27,
+   2025, a separate support contract will be needed=E2=80=94conversations o=
+ngoing with
+   vendors and suppliers.
+
+*Key Points:*
+
+   - Production support and contract/licensing discussions underway, aiming
+   for clarity early next month (July 2025).
+   - Need to kickoff work with BDS and TFC has been emphasized.
+
+------------------------------
+6. Trade Compliance & Ownership Changes
+
+*Summary:*
+
+   - Recent change: Sashi has left a key role; Nitin Kulkarni is the new
+   point of contact for trade-related applications.
+   - Some outstanding issues referenced, but minimal current details
+   provided; more follow-up expected.
+
+------------------------------
+Action Items
+
+   1.
+
+   *Schedule Super User Review Calls:*
+   - Organize function-specific calls by end of June 2025 to review test
+      cases, access, and UAT timelines.
+   2.
+
+   *Consolidated Workstream Plan:*
+   - Continue development of a unified project/testing plan and dashboard;
+      schedule cross-workstream meeting (June 4 or 5, 2025).
+   3.
+
+   *Regular Business Alignment Calls:*
+   - Initiate weekly alignment calls with business teams to manage
+      expectations and maintain UAT/testing cadence.
+   4.
+
+   *Clarify SSO Implementation:*
+   - Finalize SSO behavior in QA and production; set up and document
+      answers from the SSO team for all impacted applications.
+   5.
+
+   *Server/Service Ownership Decisions:*
+   - Confirm interim and long-term server/service ownership, specifically
+      for on-prem deployments (contact Benny, Jatinder, James Solomon as
+      appropriate).
+   6.
+
+   *Handle BDS Cost Change:*
+   - Initiate and process change request (CR) for BDS cost adjustment;
+      update Statement of Work and PO accordingly.
+   7.
+
+   *Toller Portal Support Contracts:*
+   - Finalize plans and contracts for post=E2=80=93October 27, 2025, suppor=
+t and
+      O&M responsibilities for Toller Portal and related applications.
+   8.
+
+   *Vendor Engagement:*
+   - Continue outreach to vendors/suppliers regarding support contracts,
+      production support manpower, and licensing.
+   9.
+
+   *Mitigate Testing Risk for Large Site Cutovers:*
+   - Develop contingency plans to assure UAT completion despite late
+      September=E2=80=93October network/infra changes.
+   10.
+
+   *Ongoing SSO and Hosting QA:*
+   - Ensure QA testing plans account for SSO and new on-prem hosting,
+      particularly for applications moving off cloud/Azure.
+
+------------------------------
+Follow-up Points & Upcoming Meetings
+
+   - *Super User Review Meetings:* To be scheduled and held by end of June
+   2025.
+   - *Cross-Workstream Alignment Meeting:* Targeted for June 4 or 5, 2025,
+   to review the consolidated plan/dashboard.
+   - *BDS and TFC Kickoff:* Needs to be initiated for timely project
+   progress.
+   - *Vendor and Supplier Contract Feedback:* Await responses for Toller
+   Portal and broader application support/maintenance contracts.
+   - *Trade Compliance Role Transition:* Await further direction from Nitin
+   Kulkarni regarding outstanding trade-related issues.
+   - *Repeat Risk Review:* Follow up on risks associated with late
+   infrastructure changes and potential UAT compression as part of ongoing
+   weekly calls.
+   - *Additional SSO Clarification Sessions:* As needed, especially for
+   apps with complex user scenarios like Toller Portal.
+
+------------------------------
+
+This summary captures the critical discussions, decisions, action items,
+and follow-up points from the meeting on June 2, 2025, offering a
+comprehensive view into the current state of application migration/testing
+and relevant project streams.
+=F0=9F=8E=99=EF=B8=8FTranscription
+Pramod0:00
+It and yeah we my plan is to because now we have some sort of timelines on
+the testing the UAT testing for the applications that are in scope and we
+do have the test cases as well the baseline test cases for all the
+applications and we already figured out the super users for each of the
+applications. So since you know we have we have the alignment in all the
+three cases. I'll probably schedule a call with the super users to review
+the test cases. Probably one manufacturing call for all the manufacturing
+applications with the manufacturing super users. Likewise we can do that
+for all other functions as well to make sure the super users are aligned
+with the UAT timeline, they're aligned with the test cases, they align with
+the accesses and from that now we can take it forward to do the testing.
+I'll probably now said something maybe the end of June or something like
+that and probably we don't need to talk more about this. It's a useful
+slide. If you have any questions you can reach me out. And yeah this is
+where we are with regards to the timeline. We are done with the design for
+all the architecture, the design and everything is completed. The only part
+is some design review is in progress with a couple of applications web
+broker taller and we are targeting to complete in a week or so but the
+build is already in progress for most of the applications at least the
+discussions and stuff like that and you know we will be able to march
+towards the timeline. Whatever I have given here. Yeah this is the usual
+slide with the partnership between the IT sorry the entity honeybal versus
+the third party vendor. So you know we are just using the slide as a
+reference for that. So here is the plan we have Wherever you see as yellow
+highlighted we still need to reconfirm this with the respective function
+leads but anything without the yellow highlighted those are aligned with
+the functional leads and they would be able to. You know we will be able to
+complete the UATN test on time as per the timelines that I have updated
+here. So the only thing is for the buy value of AP 900 I have given the
+timeline based on my thought process. I created some high level scheduled
+and I reviewed that with Rahul and Nare Daniel. I schedule a call next week
+with with the business and it it's basically a call to portray about the
+the timelines for completing the ABS of functionality, the Capslon
+functionality and also you know when we are going to engage people to do
+the testing right and also we can utilize the call to do some sort of
+solution walkthrough because Anyway, we are going to, you know, it's going
+to be the same functionality in brdbrd but we have to make the
+customization on top of it to make it work for aim and we will showcase on,
+you know, what is the way to move forward, how we are going to approach the
+solution. Something like that. Okay. I set up a call on that. So it's
+daily, not a call Daniel or someone from sourcing organization. No. Daniel,
+you there?
+Neil3:58
+Yep.
+Pramod4:00
+Okay. Okay. So yeah, so probably now you can also forward the team right.
+To other people who need to participate in that call. It's basically a
+timeline conversation plus the business engagement plus the solution
+walkthrough and once that is done and the expectation is set because during
+that call Maybe the functional COEs and the IT organization may have some
+open questions about you know, the vendor mapping, stuff like that.
+Probably can answer that. And then once that is solidified, then we will go
+with the solution build process and everything. I'm going to schedule a
+call on a regular basis to touch base with the business to make sure if
+both are aligned because as long as we have that kind of close
+coordination. Right. There won't be any surprises during the UA3 because of
+the aggressive timelines. Right. So I'm going to schedule the call on a
+weekly basis as well just to make sure if you're all aligned.
+Jaime5:00
+Sounds good.
+Pramod5:01
+All right, thank you. No problem. You can also follow that in my trollers.
+Okay. Yeah. Whatever you see here, some of the things, you know we are not
+going to do any testing because those are going to spin with site. There
+are no opportunity to do the testing. It should ideally work. Some of the
+applications are SaaS as I explained before, it's having a separate
+credentials and of course if it is working today and it should work
+tomorrow and wherever I have highlighted in the amber color like with
+broker ebay student that's where we have to put more stress on to do the
+testing during day one. Yeah, so of course there are a few changes going
+on. The core changes that are currently happening on the bit broker, some
+of the things on the toilet, some of the other changes on the bot. Of
+course you know I value of CE8900 and SAPGTs is more of user access control
+in place. But you know we are working with, I mean Jeff is from the
+functional COE of IT side is working with the business to identify the user
+list for GTS and EAP and those kind of conversation is going on. Okay, any,
+any questions from anyone on this? And Neil, I think we spoke on this last
+Friday. Yeah, you me and promote it. Just. I'm just, you know, keeping it
+as in progress slide. Maybe you can assign someone from your team who can
+probably pull the status on the business managed or any ISE impacted
+applications that we are not taking care under the IEC IEP inventory. We
+can also put together something here.
+Neil6:52
+Yeah, yeah. Last week though, we discussed that, Jaime, didn't we?
+Pramod6:57
+Yeah. Correct. Correct. You have any questions, probably you can use this
+meeting to talk about that. If hi Ma is there on the call or others that
+are on the call, you can probably keep some alignment.
+Neil7:09
+Is he invited to this call? I don't see. He's not on the call. But is he
+invited?
+Pramod7:14
+Hi Mom.
+Stephen7:15
+Yeah, yeah, he is invited.
+Kunal7:17
+Yeah.
+Stephen7:17
+He must have conflict.
+Neil7:19
+Yeah.
+Stephen7:19
+I think he's the right person for this.
+Neil7:21
+I have easy. But sure. I think one of the quick and easy answers is. I
+don't. If you can flip back. I don't see any of this DX applications. CX
+your customer service.
+Pramod7:41
+No, this is.
+Stephen7:43
+Yeah, this is what you see.
+Neil7:44
+So CX is part of a. Yeah, understood. But at a minimum.
+Stephen7:50
+Right.
+Neil7:52
+CX applications are most certainly of interest and in fact we actually
+manage that transition. So you know, let's. We can accumulate a list, but
+let's start with their stuff particularly I'm worried about like EDI
+transitions, everything around web portal. Those will all be important.
+Pramod8:17
+Ecom will be what I'm talking about.
+Neil8:19
+Yeah.
+Pramod8:19
+Yep, yep, yep, yep.
+Promote8:23
+Yeah. This is. This is where me will play myself connected and threading.
+And what I proposed is there is a different view of how isc when I'm saying
+isc, the business ISC looks into it. Business ISC probably has three
+separate set of applications. One, the one that is managed by IT ioc, which
+is what you see on the screen. Two, the business manager applications which
+Steve Dellard is managing partnering with Yaritza. And three, the
+applications which for IEC like the CS applications where we need to
+probably go to the other work streams like CS as a work stream from the IT
+standpoint and then understand what is the disposition or what is the
+status on those applications. And that's where I need someone like either
+you or me to really coordinate that efforts. I'm happy to schedule a call
+with hima and then hyma 10th of guidelines. But then I see someone like you
+are really those different work streams.
+Stephen9:38
+Hey, so last week just follow up from that Friday discussion. So this is.
+We're only seeing 1/4 of the slice of the IT applications that's affecting
+ISC Steve. Stephen and there is, to Pramod's point, and what I gathered was
+there is an ERP work stream, there is an IMA work stream, which is more
+analytics and then there's a CCEX work stream. And now in this call, I
+heard there was another one with Steve Delat with business Managed
+Application. So there are at least five. And there is. That's why I was
+asking Pierce and Paul Offline in an email that can bring the five work
+streams into a common plan that the business leaders can actually see. The
+folks that are impacted and the people we call for UAT and testing are
+getting pinged by multiple folks across work streams. And so we just want
+to express the proper plan across these work streams so that the business
+teams are informed and then take some Q and A. And that was an aspect that
+Pierce, I had for you. We can connect on that offline, but I think that's
+my request.
+Jaime10:55
+Yeah, and we're actually working on that right now. There is a SharePoint
+that we've set up and then there will be a dashboard that all the different
+groups have access to to where we can actually see where some of the
+testing is coinciding with another function and then we can see who's
+behind or what escalations there are. So that's going to be reviewed. I'll
+set up a meeting for us. It'll probably be Wednesday afternoon or Thursday
+morning, but we're working on that right now. And that should help align
+the different business units.
+Stephen11:24
+Okay, thank you. It's very much needed. I mean, I've got things from
+multiple LoB members across the AIs and SND teams where they're asking why
+are we getting all these requests from multiple people? I want to support,
+but I don't. I want to see a larger plan first. And so that's why I was
+asking you for help.
+Pramod11:49
+Yeah, I have also updated from my end on whatever that we know from ISC
+side. You were asking some contacts, Ima.
+Stephen11:58
+Yeah, I got it, I got it.
+Pramod12:00
+Okay, no problem. So once we have, you know, some sort of plan in place and
+once we have some shape, you know, we can start accumulating all that this
+here. Right. Probably we can talk about it. I think Srinam, you have to see
+the similar kind of call on the ERP side as well. You rightly said that,
+you know, we need some common call wherever you see any impact on the ISC
+applications with regards to any other work streams. It could be IMA or it
+could be CCX or ISE or erp, blah blah. So you need some common forum to
+discuss all of that, right?
+Neil12:34
+Yeah.
+Stephen12:35
+Each work stream is doing a really good job working within their silo,
+which is fantastic. I think that's good. We want to see the larger plan and
+ensure that our stakeholders are communicated correctly, that this is how
+we're managing this overall project. I think the activity is happening.
+There's a communication that we can close out on.
+Pramod12:55
+Sure. So any help needed from IFE site, please let us know.
+Neil12:59
+Yeah, yeah.
+Pramod13:00
+Problem. So yeah, I think we spoke about the SSO approach last week. I
+think we've been talking about this in all of our calls, internal calls.
+There are a few things happening like in terms of at least we know
+understood about the high level approach on what's going to happen during
+day one versus day two. So now the application team is working on
+identifying the use cases. Wherever they see any impact on their
+application, they are just going over those things and working with the SSO
+team to understand some clarity on that. Right. Because the first and
+foremost question is they have given all these guidelines from the fraud
+production system standpoint. Okay, then how are we going to do this
+testing in the QA environment, the lower end when it is a question. So now
+the team is, you know, kind of identifying the test cases and also, you
+know, setting up a meeting with the SO team to understand more clarity on
+this before we get into the product development. Right. So these are the
+applications that I have put here, like Taller ui, Sparta, Web Broker.
+Those are the only applications that are going to get impacted during day
+one. So that's where in our functionalities from IT side they are having
+conversations with the team on that. So there are no questions here.
+Probably we can move on to the next slide. So these are some of the use
+cases that I was mentioned about before. Right. These are the very general
+use cases as of today that came into our mind. But this is what you know,
+they have to further drill down more and understand with regards to each of
+the application and then they need to do the testing before we get into
+production.
+Neil14:47
+Yeah.
+Pramod14:48
+So one of the important thing is, you know, if there were any role assigned
+to the HID to access so the HID to be changed based ID or if there are any
+reports that are currently working through a hid, should that be changed to
+sid? So these are the generic things but we have to keep this more specific
+to the application wise with regards to toll or EY or web broker, how this
+is going to get impacted. Right. So yeah, so that's the thing going on for
+sso. Yeah, let's get into the function wise status.
+Stephen15:24
+A quick question Gokul. So after this. This is a. After the spin or after
+8:1 I'm imagining right Is are people going to have access to both systems
+when they log in differently to each entity like the Honeywell and the
+solstice entities to login two username passwords.
+Pramod15:46
+No, no, no. You are talking about each one that's going to be 2710. Each
+one is only the softest pin. 2710 is what we are targeting the full day one
+so they will be issued laptop the reimagined laptop with the solicitors
+credential and any applications that are physically separated from day one.
+Right. Any move assets are build back that are going to go with day one
+client for those applications they would be accessed through the SSO atance
+server and SSO credentials But any applications that are going to stick
+with the Honeywell if those are a PSA during day one those are only
+logically separated for those applications they can still be able to use
+the existing Honeywell credentials and it works through the Honeywell sso.
+Stephen16:38
+So in their reimaged laptop they can log in through the Honeywell
+credentials Only one.
+Pramod16:46
+It's not two laptops, it's going to be one. Yes. They don't need to log off
+anything. They will be prompted with the credential if they have to access
+any honeymoon application Same as how we answer Amazon. Okay, but.
+Stephen17:00
+But they're gonna get the laptops before 8:1 or after 8:1.
+Pramod17:05
+That's what I know. I think we have to check that with the ski dell. After.
+It'll be after.
+Neil17:12
+Okay.
+Pramod17:13
+After innocent they need date. Oh yeah, day one. No, it'd be before day one=
+.
+Jaime17:17
+Sorry.
+Pramod17:26
+Yes. Yeah.
+Neil17:27
+Yes.
+Pramod17:28
+Okay, thank you. So. So Steven, that's what we are. Because all these are a
+verbal understanding, right? We need to solidify this. We need to do some
+testing. That's what the application owners and the functional leads are
+currently coordinating with the SS14 how this is going to play out. Yeah,
+thank you.
+Srinam17:54
+Yeah, I'm there.
+Pramod17:56
+So.
+Srinam17:57
+Hi everyone. So we are progressing okay on all the applications on the team
+guru as well as on the ecat. We have a line of sight and we have started
+progressing in that direction as well as in the ecat. We already have a PO
+with the vendor and extract extraction activity we have planned this week.
+One point I would like to highlight which is mentioned in the this column
+is we have what decision that we will move to the on prem version for the
+UI scheduling Tool from the Azure because of the CGMP compliance and based
+on that what has happened now today we have a global domain within
+Honeyware only where we are going to move the servers so there will be one
+more migration which will be happening from the global domain to spinco
+domain in the month of September October time frame which was something
+which we discovered last week Just want to share that would like to
+understand how much we will need to involve vendor in this whole process
+and whenever we are ordering new servers right now we need to decide a path
+who can be the server owner Today server owner is the service owner right
+now which is within Honeywell but whenever we are ordering new server for
+the application which will be on prem need to understand who can be that
+service server owner so need some guidance in that area we do have
+integration with the Documentum limbs and SATC where we are connecting to
+them and the XSOPs Google has taken at length what are the different
+questions or queries we people have and we are trying to set up a call with
+SSO team and get that clarified.
+Neil20:00
+That's all from my side.
+Pramod20:02
+Yeah.
+Neil20:02
+Any questions?
+Pramod20:03
+Yeah yeah maybe you know we can ask is there anyone who can help us out on
+what's going to be the plan for the new application owner or service owner
+for Athens So I.
+Promote20:13
+Can give a guidance there? Yes, I mean I will confirm that but then my
+thought is we will put Benny's name to start with. I know Benny is in
+process of hiring the the managers or team members for each different
+function that we have like one for manufacturing, one for planning, one for
+logistics and all that.
+Pramod20:36
+Okay.
+Promote20:36
+To start with I will. I will probably get Benny's name. I will confirm that
+field based server.
+Pramod20:43
+Owners are probably going to end up being somebody in James Solomon's group
+because he owns infrastructure.
+Promote20:50
+Yeah but he owns a CO and he owns a colo. Yeah, that's. That's not how we.
+We own it. Correct. Here the here everything is owned by service owners not
+the infra team.
+Pramod21:02
+Yeah that's exact puzzle that we need to.
+Promote21:04
+That's the exact puzzle.
+Pramod21:09
+I think Prasanna you can EVOE is the only area where we need the local
+server. Right. So maybe we can reach out James Solomon as you mentioned
+promote. We can also copy Benny if it is.
+Promote21:25
+If it is case of ey. I thought in case of EY we already have a service
+existing service which.
+Srinam21:30
+We are using no, we created new ones promote but we do have an
+infrastructure person on site his name is Jatinder. Clear Ms. My proposal
+will be if he's a server owner, he will be the person going to take care in
+future also. But we need to understand and agree on that approach.
+Pramod21:53
+Okay. Yeah. I think what we see here is everything is going in the right
+direction. The only area is there are few questions on the yes approach on
+how this is going to work. During day one we need to do some QA testing,
+low level environment testing. Then EY is going to deploy the things not on
+the cloud and on the on prem which is on the local sales or server. And we
+we are getting from you know the site cut over the DCN team that they are
+taking Muskegon as a pilot that they are going to start the work from July.
+But for the rest of the larger sites like any case MER or Baton Rouge and
+stuff like that, I think they are going to take the during September time
+frame which means that all the network change, the firewall change, the
+domain change for the site specific cutover will happen only during
+September October time frame. If that is the case, how do we ensure that
+you know the testing and stuff like that, you know during our qa, you know
+the UAT testing I'm talking about. Right. Because we are targeting the go
+live itself by October. If they themselves, you know take their time to
+complete the cutover during September October, then how do we ensure to do
+the testing before that question. So that is still a risk I think. Pramod,
+we talked about it in our internal call today. Right. We need to keep some
+plans ready.
+Promote23:34
+Yep, I agree.
+Pramod23:36
+So that that is a risk anywhere. You know we are talking about on prem
+applications and hosting. Yeah, that's. That's going to be the risk. Yeah.
+Okay, good. Thank you pr. Yeah thank you. And anyone from logistics, Shilpa
+or.
+Kunal23:56
+So SSO thing we already discussed about and there is a special case in case
+of Toller Portal SSO where we are storing the Honeywell IDs and password
+and Toler portal and there are external users also. So there is all
+schedule to discuss on the approach that one part. Regarding the toller
+portal we got the test case design and business pocket. The next we'll be
+doing testing part. So we are cover on that part. Regarding the TMC and BDS
+the buildover will start this week this probably next week and design
+documents are ready for toller PMC and PDS and then next next week plan is
+to open a toler portal migration.
+Pramod24:45
+Yeah, I think the only important thing is I think for BDS they have I think
+Belden and Bill. Bill both you Know clarified with BDS team about the uop.
+I think we have some plan in place. There is a change in the cost as well.
+Previously it was 23 900, something like that. Now it is 2700 with the
+increase of 3000 on top of it. And those things will have to go through the
+CR process like update the addendum in the state of work and then they have
+to update the PO as well. So promote this is FYI for you and we probably
+need to work on the CR process to catch all these things in the po.
+Neil25:28
+Yeah, yeah.
+Promote25:29
+We definitely need to raise a CR for the po. Financials. I think we should
+be able to manage that.
+Pramod25:36
+Yes, yes. Financials it's only 3,000 on top of it. So I think we have to do
+that.
+Srinam25:41
+And.
+Pramod25:43
+Yeah, anything apart from that.
+Kunal25:46
+Yes, yes. So present as present. The service ownership is one point. Other
+point is regarding the move as the application. So for the total portal,
+the current support contract is. So if you're going live on the 27th of
+October, what's the plan from the November. Is it separate contact to be?
+Pramod26:07
+Yeah, we have already initiated the conversation with Akim Pregler in one
+of the forum. I think she has to, you know, come back to the plan. It is
+not only about the new contract over managing the application at Hannibal.
+It is also there are a few questions also we have raised. I think we. We
+have to get done something for them. Yeah.
+Promote26:27
+So PR has already initiated those conversations with every vendor,
+supplier, Kemal and everyone. So we will definitely hear back if you have
+any feedback from them. Otherwise there will be definitely a separate
+contracts.
+Pramod26:43
+Yeah, that is one thing from both. One is we are talking about a manpower
+to do the production support. Right.
+Promote26:50
+So they have the conversation again that's happening at the broader level.
+Yeah. So that again we should have more feedback on that maybe by early
+next month. Paul and team are definitely looking into it.
+Pramod27:06
+License has full right.
+Promote27:11
+One is O and M operate and maintain which is support. Another is license
+and third is the TSA contracts. So all three are getting worked parallel.
+Pramod27:24
+Good, thank you. So Kunal, anything apart from this?
+Kunal27:27
+No, that's it.
+Pramod27:29
+That's it. Right? No, no other risk. Right. The SS was the only piece that
+we are talking about. Nothing other than that. Right. Timeline, Spice, all
+good. Tmc, all the test cases we have, all the super users is identified.
+Right. The only thing what I. What I. What we need here is we need to
+enable the conversation with BDS and TFC to do the kickoff. They need to
+stop the work. That's what we have to do. Yeah. I've been telling this
+tuition as well. Good. Thank you. On trade complaints. I think we are
+running out of time. Yes. Trade. This is fine. I mean, there were a few
+issues until last week. You know, we were. We were asking about the
+successor for Sashi because Sashi has taken up a different role, and now we
+have Nitin Kulkarni, I think, who. Who has to, you know, provide some
+direction on the trade side. I don't see any.
+
+Captured with Wave AI Note Taker
+
+Your AI-powered companion
+
+--000000000000e050f20636a3b062
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-size:small;colo=
+r:#444444"><br></div><br><div class=3D"gmail_quote gmail_quote_container"><=
+div dir=3D"ltr" class=3D"gmail_attr">---------- Forwarded message ---------=
+<br>From: <strong class=3D"gmail_sendername" dir=3D"auto">Wave AI Note Take=
+r</strong> <span dir=3D"auto">&lt;<a href=3D"mailto:summary@email.wave.co">=
+summary@email.wave.co</a>&gt;</span><br>Date: Mon, 2 Jun 2025 at 11:09<br>S=
+ubject: UAT Alignment SSO Strategy Infrastructure Migration<br>To:  &lt;<a =
+href=3D"mailto:mac@macconnolly.com">mac@macconnolly.com</a>&gt;<br></div><b=
+r><br><div style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Sego=
+e UI&quot;,Roboto,Helvetica,Arial,sans-serif;margin:0;padding:0;background-=
+color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 auto;backg=
+round-color:#ffffff"><div style=3D"background-image:url(https://upcdn.io/W1=
+42iax/raw/email/banner_clean.png);background-size:cover;background-position=
+:center;width:604px;height:297px;margin:0 auto"><table cellpadding=3D"0" ce=
+llspacing=3D"0" border=3D"0" width=3D"100%" height=3D"100%"><tbody><tr><td =
+valign=3D"center" align=3D"center" style=3D"padding:0"><img src=3D"https://=
+upcdn.io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" style=3D"wi=
+dth:41px;height:58px;max-width:41px;margin-bottom:10px"><h1 style=3D"color:=
+white;font-size:32px;margin:0;padding:0 0 10px;text-align:center">UAT Align=
+ment SSO Strategy Infrastructure Migration</h1></td></tr></tbody></table></=
+div><div style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div sty=
+le=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.co/=
+sessions/9b24a506-b8cb-484e-8905-ea22e1be94cf?lastLoginParam=3Dgoogle" styl=
+e=3D"background-color:#e6f0ff;color:#0066cc;padding:12px 24px;border-radius=
+:8px;text-decoration:none;font-weight:500;font-size:16px;display:inline-blo=
+ck;margin-top:8px;margin-bottom:8px" target=3D"_blank">=E2=9C=A8 View Your =
+Session on the Web</a></div><div style=3D"text-align:center;margin-bottom:3=
+6px"></div><div style=3D"background-color:#ffffff;padding:28px;border-radiu=
+s:12px;border:1px solid #e2e8f0;margin-bottom:28px"><h3 style=3D"color:#0f1=
+72a;font-size:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:=
+flex"><span style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div st=
+yle=3D"color:#475569;font-size:16px;line-height:1.6"><div><h1 style=3D"font=
+-weight:500;padding-top:20px;font-size:2.5rem">Meeting Summary</h1><h3 styl=
+e=3D"font-weight:500;padding-top:20px;font-size:1.75rem">Date: June 2, 2025=
+</h3><hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Main Topics D=
+iscussed</h2><h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75re=
+m">1. UAT (User Acceptance Testing) Planning &amp; Alignment</h3><p><strong=
+ style=3D"font-weight:bold">Summary:</strong></p>
+<ul>
+<li>Overall timelines for UAT testing of in-scope applications have been es=
+tablished.</li>
+<li>Baseline test cases for all applications are ready.</li>
+<li>Super users for each application have been identified.</li>
+<li>Plan to schedule review calls:<ul>
+<li>Function-specific calls for super users to ensure alignment with UAT ti=
+melines, test cases, and access provisioning.</li>
+<li>Manufacturing applications will have a joint call with manufacturing su=
+per users; similar approach for other functions.</li>
+</ul>
+</li>
+<li>Target for super user review calls: end of June 2025.</li>
+<li>All architecture and design activities are complete except ongoing desi=
+gn reviews for Web Broker and Taller (target completion: within a week).</l=
+i>
+<li>Builds are already in progress for most applications, and the project i=
+s on track with proposed timelines.</li>
+</ul>
+<p><strong style=3D"font-weight:bold">Key Points:</strong></p>
+<ul>
+<li>Anything highlighted in yellow on the slide indicates pending reconfirm=
+ation with respective function leads.</li>
+<li>For =E2=80=9CBuy Value AP 900=E2=80=9D application, timelines are based=
+ on current estimations=E2=80=94calls set up to discuss these with business=
+ leaders next week (week of June 9, 2025).</li>
+<li>Weekly calls to be scheduled with business teams to ensure ongoing alig=
+nment and prevent surprises due to tight schedules.</li>
+</ul>
+<hr>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">2. Workstr=
+eam and Organizational Alignment</h3><p><strong style=3D"font-weight:bold">=
+Summary:</strong></p>
+<ul>
+<li>Applications currently span at least five main workstreams:<ul>
+<li>ERP, IMA (analytics), CCEX (customer experience), business-managed appl=
+ications, and IT-managed ISC (Integrated Supply Chain) applications.</li>
+</ul>
+</li>
+<li>Concern raised about business users receiving multiple overlapping UAT/=
+testing requests from different workstreams, creating confusion.</li>
+<li>Proposal to consolidate plans from all workstreams into a single, commo=
+n plan for business leaders.</li>
+<li>Current activity to set up a SharePoint site and develop a dashboard fo=
+r visibility on testing overlaps, resource allocations, and escalation poin=
+ts.<ul>
+<li>A meeting to review this is proposed for Wednesday afternoon or Thursda=
+y morning (June 4=E2=80=935, 2025).</li>
+</ul>
+</li>
+</ul>
+<p><strong style=3D"font-weight:bold">Key Points:</strong></p>
+<ul>
+<li>Importance of integrated communication and status tracking across works=
+treams stressed by multiple attendees.</li>
+<li>Goal: Improve visibility and reduce redundant efforts or conflicting as=
+ks on business teams.</li>
+<li>Efforts in place to accumulate and aggregate status for all ISC-applica=
+ble applications across workstreams.</li>
+</ul>
+<hr>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">3. SSO (Si=
+ngle Sign-On) Strategy</h3><p><strong style=3D"font-weight:bold">Summary:</=
+strong></p>
+<ul>
+<li>Ongoing discussions on SSO implementation for Day 1 (August 1, 2025, ta=
+rgeted go-live):<ul>
+<li>Identification of application impacts and use cases continues, with mee=
+tings set up between application teams and the SSO team.</li>
+<li>Testing strategy is being clarified, especially regarding QA/lower envi=
+ronments versus production.</li>
+</ul>
+</li>
+<li>Applications notably impacted by SSO in Day 1: Taller UI, Sparta, Web B=
+roker, Toller Portal.</li>
+<li>Some technical SSO concerns:<ul>
+<li>Handling of HID (Honeywell ID) to SID (SpinCo ID) transitions in creden=
+tials and reporting.</li>
+<li>Ensuring clarity on SSO credential use in re-imaged laptops for Solstic=
+e entity users (users will use a single, re-imaged laptop, with credentials=
+ for Solstice apps and existing Honeywell credentials for applications stil=
+l on the Honeywell tenant).</li>
+</ul>
+</li>
+</ul>
+<p><strong style=3D"font-weight:bold">Key Points:</strong></p>
+<ul>
+<li>Laptops to be re-imaged and distributed to users prior to Day 1.</li>
+<li>Some processes and access scenarios are only confirmed verbally at this=
+ stage=E2=80=94more solidification required through QA testing and ongoing =
+SSO team coordination.</li>
+<li>Special challenge in Toller Portal due to storage of IDs/passwords and =
+existence of external users; a separate session scheduled.</li>
+</ul>
+<hr>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">4. Infrast=
+ructure Migration and Ownership (Team Guru, ECAT, and Scheduling Tools)</h3=
+><p><strong style=3D"font-weight:bold">Summary:</strong></p>
+<ul>
+<li>Progress on Team Guru and ECAT applications is positive.</li>
+<li>Vendor POs are in place, with extraction activity planned for this week=
+ (first week of June 2025).</li>
+<li>A compliance-driven migration:<ul>
+<li>Decision to move UI Scheduling Tool to on-premises due to CGMP complian=
+ce, necessitating another server/domain migration (global Honeywell domain =
+to SpinCo in September/October 2025).</li>
+</ul>
+</li>
+<li>Open question regarding long-term application/service owner roles for n=
+ew on-prem servers=E2=80=94possible initial assignment to Benny or to field=
+-based personnel (e.g., Jatinder for on-site support).</li>
+<li>Integration points noted with Documentum, LIMS, and SATC.</li>
+</ul>
+<p><strong style=3D"font-weight:bold">Risks Identified:</strong></p>
+<ul>
+<li>Network and firewall changes for large site cutovers (MER, Baton Rouge,=
+ etc.) scheduled for September=E2=80=93October, which is close to go-live.<=
+/li>
+<li>This creates risk in completing UAT and QA testing ahead of the October=
+ go-live for on-prem applications.</li>
+</ul>
+<hr>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">5. Toller =
+Portal, TMC, and BDS Application Updates</h3><p><strong style=3D"font-weigh=
+t:bold">Summary:</strong></p>
+<ul>
+<li>Toller Portal: Test case design and business pocket ready; next steps a=
+re focused on testing.</li>
+<li>TMC and BDS: Build starts this week or next; design documents ready.</l=
+i>
+<li>Toller Portal migration kickoff planned for next week.</li>
+<li>For BDS, a cost increase (previously $23,900, now up by $3,000 to $27,7=
+00) will be handled via a change request (CR) and updated purchase order (P=
+O).</li>
+<li>Support contract for the Toller Portal under review; post=E2=80=93Oct 2=
+7, 2025, a separate support contract will be needed=E2=80=94conversations o=
+ngoing with vendors and suppliers.</li>
+</ul>
+<p><strong style=3D"font-weight:bold">Key Points:</strong></p>
+<ul>
+<li>Production support and contract/licensing discussions underway, aiming =
+for clarity early next month (July 2025).</li>
+<li>Need to kickoff work with BDS and TFC has been emphasized.</li>
+</ul>
+<hr>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">6. Trade C=
+ompliance &amp; Ownership Changes</h3><p><strong style=3D"font-weight:bold"=
+>Summary:</strong></p>
+<ul>
+<li>Recent change: Sashi has left a key role; Nitin Kulkarni is the new poi=
+nt of contact for trade-related applications.</li>
+<li>Some outstanding issues referenced, but minimal current details provide=
+d; more follow-up expected.</li>
+</ul>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Action Items<=
+/h2><ol>
+<li><p><strong style=3D"font-weight:bold">Schedule Super User Review Calls:=
+</strong></p>
+<ul>
+<li>Organize function-specific calls by end of June 2025 to review test cas=
+es, access, and UAT timelines.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Consolidated Workstream Plan:</st=
+rong></p>
+<ul>
+<li>Continue development of a unified project/testing plan and dashboard; s=
+chedule cross-workstream meeting (June 4 or 5, 2025).</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Regular Business Alignment Calls:=
+</strong></p>
+<ul>
+<li>Initiate weekly alignment calls with business teams to manage expectati=
+ons and maintain UAT/testing cadence.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Clarify SSO Implementation:</stro=
+ng></p>
+<ul>
+<li>Finalize SSO behavior in QA and production; set up and document answers=
+ from the SSO team for all impacted applications.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Server/Service Ownership Decision=
+s:</strong></p>
+<ul>
+<li>Confirm interim and long-term server/service ownership, specifically fo=
+r on-prem deployments (contact Benny, Jatinder, James Solomon as appropriat=
+e).</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Handle BDS Cost Change:</strong><=
+/p>
+<ul>
+<li>Initiate and process change request (CR) for BDS cost adjustment; updat=
+e Statement of Work and PO accordingly.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Toller Portal Support Contracts:<=
+/strong></p>
+<ul>
+<li>Finalize plans and contracts for post=E2=80=93October 27, 2025, support=
+ and O&amp;M responsibilities for Toller Portal and related applications.</=
+li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Vendor Engagement:</strong></p>
+<ul>
+<li>Continue outreach to vendors/suppliers regarding support contracts, pro=
+duction support manpower, and licensing.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Mitigate Testing Risk for Large S=
+ite Cutovers:</strong></p>
+<ul>
+<li>Develop contingency plans to assure UAT completion despite late Septemb=
+er=E2=80=93October network/infra changes.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Ongoing SSO and Hosting QA:</stro=
+ng></p>
+<ul>
+<li>Ensure QA testing plans account for SSO and new on-prem hosting, partic=
+ularly for applications moving off cloud/Azure.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Follow-up Poi=
+nts &amp; Upcoming Meetings</h2><ul>
+<li><strong style=3D"font-weight:bold">Super User Review Meetings:</strong>=
+ To be scheduled and held by end of June 2025.</li>
+<li><strong style=3D"font-weight:bold">Cross-Workstream Alignment Meeting:<=
+/strong> Targeted for June 4 or 5, 2025, to review the consolidated plan/da=
+shboard.</li>
+<li><strong style=3D"font-weight:bold">BDS and TFC Kickoff:</strong> Needs =
+to be initiated for timely project progress.</li>
+<li><strong style=3D"font-weight:bold">Vendor and Supplier Contract Feedbac=
+k:</strong> Await responses for Toller Portal and broader application suppo=
+rt/maintenance contracts.</li>
+<li><strong style=3D"font-weight:bold">Trade Compliance Role Transition:</s=
+trong> Await further direction from Nitin Kulkarni regarding outstanding tr=
+ade-related issues.</li>
+<li><strong style=3D"font-weight:bold">Repeat Risk Review:</strong> Follow =
+up on risks associated with late infrastructure changes and potential UAT c=
+ompression as part of ongoing weekly calls.</li>
+<li><strong style=3D"font-weight:bold">Additional SSO Clarification Session=
+s:</strong> As needed, especially for apps with complex user scenarios like=
+ Toller Portal.</li>
+</ul>
+<hr>
+<p>This summary captures the critical discussions, decisions, action items,=
+ and follow-up points from the meeting on June 2, 2025, offering a comprehe=
+nsive view into the current state of application migration/testing and rele=
+vant project streams.</p>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex"><span =
+style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription</h3><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-=
+bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">=
+Pramod</span><span style=3D"color:#64748b;font-size:14px">0:00</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">It and yeah we =
+my plan is to because now we have some sort of timelines on the testing the=
+ UAT testing for the applications that are in scope and we do have the test=
+ cases as well the baseline test cases for all the applications and we alre=
+ady figured out the super users for each of the applications. So since you =
+know we have we have the alignment in all the three cases. I&#39;ll probabl=
+y schedule a call with the super users to review the test cases. Probably o=
+ne manufacturing call for all the manufacturing applications with the manuf=
+acturing super users. Likewise we can do that for all other functions as we=
+ll to make sure the super users are aligned with the UAT timeline, they&#39=
+;re aligned with the test cases, they align with the accesses and from that=
+ now we can take it forward to do the testing. I&#39;ll probably now said s=
+omething maybe the end of June or something like that and probably we don&#=
+39;t need to talk more about this. It&#39;s a useful slide. If you have any=
+ questions you can reach me out. And yeah this is where we are with regards=
+ to the timeline. We are done with the design for all the architecture, the=
+ design and everything is completed. The only part is some design review is=
+ in progress with a couple of applications web broker taller and we are tar=
+geting to complete in a week or so but the build is already in progress for=
+ most of the applications at least the discussions and stuff like that and =
+you know we will be able to march towards the timeline. Whatever I have giv=
+en here. Yeah this is the usual slide with the partnership between the IT s=
+orry the entity honeybal versus the third party vendor. So you know we are =
+just using the slide as a reference for that. So here is the plan we have W=
+herever you see as yellow highlighted we still need to reconfirm this with =
+the respective function leads but anything without the yellow highlighted t=
+hose are aligned with the functional leads and they would be able to. You k=
+now we will be able to complete the UATN test on time as per the timelines =
+that I have updated here. So the only thing is for the buy value of AP 900 =
+I have given the timeline based on my thought process. I created some high =
+level scheduled and I reviewed that with Rahul and Nare Daniel. I schedule =
+a call next week with with the business and it it&#39;s basically a call to=
+ portray about the the timelines for completing the ABS of functionality, t=
+he Capslon functionality and also you know when we are going to engage peop=
+le to do the testing right and also we can utilize the call to do some sort=
+ of solution walkthrough because Anyway, we are going to, you know, it&#39;=
+s going to be the same functionality in brdbrd but we have to make the cust=
+omization on top of it to make it work for aim and we will showcase on, you=
+ know, what is the way to move forward, how we are going to approach the so=
+lution. Something like that. Okay. I set up a call on that. So it&#39;s dai=
+ly, not a call Daniel or someone from sourcing organization. No. Daniel, yo=
+u there?</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Neil</span><span style=3D"color:#64748b;font-size:1=
+4px">3:58</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">Yep.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div st=
+yle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-we=
+ight:600;margin-right:8px">Pramod</span><span style=3D"color:#64748b;font-s=
+ize:14px">4:00</span></div><div style=3D"color:#475569;font-size:16px;line-=
+height:1.6">Okay. Okay. So yeah, so probably now you can also forward the t=
+eam right. To other people who need to participate in that call. It&#39;s b=
+asically a timeline conversation plus the business engagement plus the solu=
+tion walkthrough and once that is done and the expectation is set because d=
+uring that call Maybe the functional COEs and the IT organization may have =
+some open questions about you know, the vendor mapping, stuff like that. Pr=
+obably can answer that. And then once that is solidified, then we will go w=
+ith the solution build process and everything. I&#39;m going to schedule a =
+call on a regular basis to touch base with the business to make sure if bot=
+h are aligned because as long as we have that kind of close coordination. R=
+ight. There won&#39;t be any surprises during the UA3 because of the aggres=
+sive timelines. Right. So I&#39;m going to schedule the call on a weekly ba=
+sis as well just to make sure if you&#39;re all aligned.</div></div><div st=
+yle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radi=
+us:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bot=
+tom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jai=
+me</span><span style=3D"color:#64748b;font-size:14px">5:00</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Sounds good.</div><=
+/div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc=
+;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fle=
+x;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-ri=
+ght:8px">Pramod</span><span style=3D"color:#64748b;font-size:14px">5:01</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">All ri=
+ght, thank you. No problem. You can also follow that in my trollers. Okay. =
+Yeah. Whatever you see here, some of the things, you know we are not going =
+to do any testing because those are going to spin with site. There are no o=
+pportunity to do the testing. It should ideally work. Some of the applicati=
+ons are SaaS as I explained before, it&#39;s having a separate credentials =
+and of course if it is working today and it should work tomorrow and wherev=
+er I have highlighted in the amber color like with broker ebay student that=
+&#39;s where we have to put more stress on to do the testing during day one=
+. Yeah, so of course there are a few changes going on. The core changes tha=
+t are currently happening on the bit broker, some of the things on the toil=
+et, some of the other changes on the bot. Of course you know I value of CE8=
+900 and SAPGTs is more of user access control in place. But you know we are=
+ working with, I mean Jeff is from the functional COE of IT side is working=
+ with the business to identify the user list for GTS and EAP and those kind=
+ of conversation is going on. Okay, any, any questions from anyone on this?=
+ And Neil, I think we spoke on this last Friday. Yeah, you me and promote i=
+t. Just. I&#39;m just, you know, keeping it as in progress slide. Maybe you=
+ can assign someone from your team who can probably pull the status on the =
+business managed or any ISE impacted applications that we are not taking ca=
+re under the IEC IEP inventory. We can also put together something here.</d=
+iv></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display=
+:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margi=
+n-right:8px">Neil</span><span style=3D"color:#64748b;font-size:14px">6:52</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah=
+, yeah. Last week though, we discussed that, Jaime, didn&#39;t we?</div></d=
+iv><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;b=
+order-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;=
+margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-righ=
+t:8px">Pramod</span><span style=3D"color:#64748b;font-size:14px">6:57</span=
+></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. Co=
+rrect. Correct. You have any questions, probably you can use this meeting t=
+o talk about that. If hi Ma is there on the call or others that are on the =
+call, you can probably keep some alignment.</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border=
+-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><spa=
+n style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Neil</span><span=
+ style=3D"color:#64748b;font-size:14px">7:09</span></div><div style=3D"colo=
+r:#475569;font-size:16px;line-height:1.6">Is he invited to this call? I don=
+&#39;t see. He&#39;s not on the call. But is he invited?</div></div><div st=
+yle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radi=
+us:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bot=
+tom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pra=
+mod</span><span style=3D"color:#64748b;font-size:14px">7:14</span></div><di=
+v style=3D"color:#475569;font-size:16px;line-height:1.6">Hi Mom.</div></div=
+><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bor=
+der-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;ma=
+rgin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:=
+8px">Stephen</span><span style=3D"color:#64748b;font-size:14px">7:15</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, yea=
+h, he is invited.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><=
+div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;f=
+ont-weight:600;margin-right:8px">Kunal</span><span style=3D"color:#64748b;f=
+ont-size:14px">7:17</span></div><div style=3D"color:#475569;font-size:16px;=
+line-height:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82=
+f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b8=
+2f6;font-weight:600;margin-right:8px">Stephen</span><span style=3D"color:#6=
+4748b;font-size:14px">7:17</span></div><div style=3D"color:#475569;font-siz=
+e:16px;line-height:1.6">He must have conflict.</div></div><div style=3D"mar=
+gin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bor=
+der-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Neil</span><s=
+pan style=3D"color:#64748b;font-size:14px">7:19</span></div><div style=3D"c=
+olor:#475569;font-size:16px;line-height:1.6">Yeah.</div></div><div style=3D=
+"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px=
+;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8p=
+x"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Stephen</=
+span><span style=3D"color:#64748b;font-size:14px">7:19</span></div><div sty=
+le=3D"color:#475569;font-size:16px;line-height:1.6">I think he&#39;s the ri=
+ght person for this.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6=
+"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f=
+6;font-weight:600;margin-right:8px">Neil</span><span style=3D"color:#64748b=
+;font-size:14px">7:21</span></div><div style=3D"color:#475569;font-size:16p=
+x;line-height:1.6">I have easy. But sure. I think one of the quick and easy=
+ answers is. I don&#39;t. If you can flip back. I don&#39;t see any of this=
+ DX applications. CX your customer service.</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border=
+-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><spa=
+n style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pramod</span><sp=
+an style=3D"color:#64748b;font-size:14px">7:41</span></div><div style=3D"co=
+lor:#475569;font-size:16px;line-height:1.6">No, this is.</div></div><div st=
+yle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radi=
+us:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bot=
+tom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Ste=
+phen</span><span style=3D"color:#64748b;font-size:14px">7:43</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, this is wha=
+t you see.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div sty=
+le=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-wei=
+ght:600;margin-right:8px">Neil</span><span style=3D"color:#64748b;font-size=
+:14px">7:44</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">So CX is part of a. Yeah, understood. But at a minimum.</div></div=
+><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bor=
+der-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;ma=
+rgin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:=
+8px">Stephen</span><span style=3D"color:#64748b;font-size:14px">7:50</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Right.</d=
+iv></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display=
+:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margi=
+n-right:8px">Neil</span><span style=3D"color:#64748b;font-size:14px">7:52</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">CX a=
+pplications are most certainly of interest and in fact we actually manage t=
+hat transition. So you know, let&#39;s. We can accumulate a list, but let&#=
+39;s start with their stuff particularly I&#39;m worried about like EDI tra=
+nsitions, everything around web portal. Those will all be important.</div><=
+/div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc=
+;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fle=
+x;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-ri=
+ght:8px">Pramod</span><span style=3D"color:#64748b;font-size:14px">8:17</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Ecom w=
+ill be what I&#39;m talking about.</div></div><div style=3D"margin-bottom:1=
+6px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px=
+ solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Neil</span><span style=
+=3D"color:#64748b;font-size:14px">8:19</span></div><div style=3D"color:#475=
+569;font-size:16px;line-height:1.6">Yeah.</div></div><div style=3D"margin-b=
+ottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-l=
+eft:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pramod</span><span=
+ style=3D"color:#64748b;font-size:14px">8:19</span></div><div style=3D"colo=
+r:#475569;font-size:16px;line-height:1.6">Yep, yep, yep, yep.</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border=
+-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margi=
+n-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px=
+">Promote</span><span style=3D"color:#64748b;font-size:14px">8:23</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah. This i=
+s. This is where me will play myself connected and threading. And what I pr=
+oposed is there is a different view of how isc when I&#39;m saying isc, the=
+ business ISC looks into it. Business ISC probably has three separate set o=
+f applications. One, the one that is managed by IT ioc, which is what you s=
+ee on the screen. Two, the business manager applications which Steve Dellar=
+d is managing partnering with Yaritza. And three, the applications which fo=
+r IEC like the CS applications where we need to probably go to the other wo=
+rk streams like CS as a work stream from the IT standpoint and then underst=
+and what is the disposition or what is the status on those applications. An=
+d that&#39;s where I need someone like either you or me to really coordinat=
+e that efforts. I&#39;m happy to schedule a call with hima and then hyma 10=
+th of guidelines. But then I see someone like you are really those differen=
+t work streams.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><di=
+v style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fon=
+t-weight:600;margin-right:8px">Stephen</span><span style=3D"color:#64748b;f=
+ont-size:14px">9:38</span></div><div style=3D"color:#475569;font-size:16px;=
+line-height:1.6">Hey, so last week just follow up from that Friday discussi=
+on. So this is. We&#39;re only seeing 1/4 of the slice of the IT applicatio=
+ns that&#39;s affecting ISC Steve. Stephen and there is, to Pramod&#39;s po=
+int, and what I gathered was there is an ERP work stream, there is an IMA w=
+ork stream, which is more analytics and then there&#39;s a CCEX work stream=
+. And now in this call, I heard there was another one with Steve Delat with=
+ business Managed Application. So there are at least five. And there is. Th=
+at&#39;s why I was asking Pierce and Paul Offline in an email that can brin=
+g the five work streams into a common plan that the business leaders can ac=
+tually see. The folks that are impacted and the people we call for UAT and =
+testing are getting pinged by multiple folks across work streams. And so we=
+ just want to express the proper plan across these work streams so that the=
+ business teams are informed and then take some Q and A. And that was an as=
+pect that Pierce, I had for you. We can connect on that offline, but I thin=
+k that&#39;s my request.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b=
+82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3=
+b82f6;font-weight:600;margin-right:8px">Jaime</span><span style=3D"color:#6=
+4748b;font-size:14px">10:55</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">Yeah, and we&#39;re actually working on that right=
+ now. There is a SharePoint that we&#39;ve set up and then there will be a =
+dashboard that all the different groups have access to to where we can actu=
+ally see where some of the testing is coinciding with another function and =
+then we can see who&#39;s behind or what escalations there are. So that&#39=
+;s going to be reviewed. I&#39;ll set up a meeting for us. It&#39;ll probab=
+ly be Wednesday afternoon or Thursday morning, but we&#39;re working on tha=
+t right now. And that should help align the different business units.</div>=
+</div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8faf=
+c;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fl=
+ex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-r=
+ight:8px">Stephen</span><span style=3D"color:#64748b;font-size:14px">11:24<=
+/span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Oka=
+y, thank you. It&#39;s very much needed. I mean, I&#39;ve got things from m=
+ultiple LoB members across the AIs and SND teams where they&#39;re asking w=
+hy are we getting all these requests from multiple people? I want to suppor=
+t, but I don&#39;t. I want to see a larger plan first. And so that&#39;s wh=
+y I was asking you for help.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"colo=
+r:#3b82f6;font-weight:600;margin-right:8px">Pramod</span><span style=3D"col=
+or:#64748b;font-size:14px">11:49</span></div><div style=3D"color:#475569;fo=
+nt-size:16px;line-height:1.6">Yeah, I have also updated from my end on what=
+ever that we know from ISC side. You were asking some contacts, Ima.</div><=
+/div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc=
+;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fle=
+x;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-ri=
+ght:8px">Stephen</span><span style=3D"color:#64748b;font-size:14px">11:58</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah=
+, I got it, I got it.</div></div><div style=3D"margin-bottom:16px;padding:1=
+6px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f=
+6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82=
+f6;font-weight:600;margin-right:8px">Pramod</span><span style=3D"color:#647=
+48b;font-size:14px">12:00</span></div><div style=3D"color:#475569;font-size=
+:16px;line-height:1.6">Okay, no problem. So once we have, you know, some so=
+rt of plan in place and once we have some shape, you know, we can start acc=
+umulating all that this here. Right. Probably we can talk about it. I think=
+ Srinam, you have to see the similar kind of call on the ERP side as well. =
+You rightly said that, you know, we need some common call wherever you see =
+any impact on the ISC applications with regards to any other work streams. =
+It could be IMA or it could be CCX or ISE or erp, blah blah. So you need so=
+me common forum to discuss all of that, right?</div></div><div style=3D"mar=
+gin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bor=
+der-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Neil</span><s=
+pan style=3D"color:#64748b;font-size:14px">12:34</span></div><div style=3D"=
+color:#475569;font-size:16px;line-height:1.6">Yeah.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Stephe=
+n</span><span style=3D"color:#64748b;font-size:14px">12:35</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">Each work stream is=
+ doing a really good job working within their silo, which is fantastic. I t=
+hink that&#39;s good. We want to see the larger plan and ensure that our st=
+akeholders are communicated correctly, that this is how we&#39;re managing =
+this overall project. I think the activity is happening. There&#39;s a comm=
+unication that we can close out on.</div></div><div style=3D"margin-bottom:=
+16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4p=
+x solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pramod</span><span styl=
+e=3D"color:#64748b;font-size:14px">12:55</span></div><div style=3D"color:#4=
+75569;font-size:16px;line-height:1.6">Sure. So any help needed from IFE sit=
+e, please let us know.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82=
+f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b8=
+2f6;font-weight:600;margin-right:8px">Neil</span><span style=3D"color:#6474=
+8b;font-size:14px">12:59</span></div><div style=3D"color:#475569;font-size:=
+16px;line-height:1.6">Yeah, yeah.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D=
+"color:#3b82f6;font-weight:600;margin-right:8px">Pramod</span><span style=
+=3D"color:#64748b;font-size:14px">13:00</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">Problem. So yeah, I think we spoke abo=
+ut the SSO approach last week. I think we&#39;ve been talking about this in=
+ all of our calls, internal calls. There are a few things happening like in=
+ terms of at least we know understood about the high level approach on what=
+&#39;s going to happen during day one versus day two. So now the applicatio=
+n team is working on identifying the use cases. Wherever they see any impac=
+t on their application, they are just going over those things and working w=
+ith the SSO team to understand some clarity on that. Right. Because the fir=
+st and foremost question is they have given all these guidelines from the f=
+raud production system standpoint. Okay, then how are we going to do this t=
+esting in the QA environment, the lower end when it is a question. So now t=
+he team is, you know, kind of identifying the test cases and also, you know=
+, setting up a meeting with the SO team to understand more clarity on this =
+before we get into the product development. Right. So these are the applica=
+tions that I have put here, like Taller ui, Sparta, Web Broker. Those are t=
+he only applications that are going to get impacted during day one. So that=
+&#39;s where in our functionalities from IT side they are having conversati=
+ons with the team on that. So there are no questions here. Probably we can =
+move on to the next slide. So these are some of the use cases that I was me=
+ntioned about before. Right. These are the very general use cases as of tod=
+ay that came into our mind. But this is what you know, they have to further=
+ drill down more and understand with regards to each of the application and=
+ then they need to do the testing before we get into production.</div></div=
+><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bor=
+der-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;ma=
+rgin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:=
+8px">Neil</span><span style=3D"color:#64748b;font-size:14px">14:47</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.</div>=
+</div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8faf=
+c;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fl=
+ex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-r=
+ight:8px">Pramod</span><span style=3D"color:#64748b;font-size:14px">14:48</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So o=
+ne of the important thing is, you know, if there were any role assigned to =
+the HID to access so the HID to be changed based ID or if there are any rep=
+orts that are currently working through a hid, should that be changed to si=
+d? So these are the generic things but we have to keep this more specific t=
+o the application wise with regards to toll or EY or web broker, how this i=
+s going to get impacted. Right. So yeah, so that&#39;s the thing going on f=
+or sso. Yeah, let&#39;s get into the function wise status.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-b=
+ottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">S=
+tephen</span><span style=3D"color:#64748b;font-size:14px">15:24</span></div=
+><div style=3D"color:#475569;font-size:16px;line-height:1.6">A quick questi=
+on Gokul. So after this. This is a. After the spin or after 8:1 I&#39;m ima=
+gining right Is are people going to have access to both systems when they l=
+og in differently to each entity like the Honeywell and the solstice entiti=
+es to login two username passwords.</div></div><div style=3D"margin-bottom:=
+16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4p=
+x solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pramod</span><span styl=
+e=3D"color:#64748b;font-size:14px">15:46</span></div><div style=3D"color:#4=
+75569;font-size:16px;line-height:1.6">No, no, no. You are talking about eac=
+h one that&#39;s going to be 2710. Each one is only the softest pin. 2710 i=
+s what we are targeting the full day one so they will be issued laptop the =
+reimagined laptop with the solicitors credential and any applications that =
+are physically separated from day one. Right. Any move assets are build bac=
+k that are going to go with day one client for those applications they woul=
+d be accessed through the SSO atance server and SSO credentials But any app=
+lications that are going to stick with the Honeywell if those are a PSA dur=
+ing day one those are only logically separated for those applications they =
+can still be able to use the existing Honeywell credentials and it works th=
+rough the Honeywell sso.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b=
+82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3=
+b82f6;font-weight:600;margin-right:8px">Stephen</span><span style=3D"color:=
+#64748b;font-size:14px">16:38</span></div><div style=3D"color:#475569;font-=
+size:16px;line-height:1.6">So in their reimaged laptop they can log in thro=
+ugh the Honeywell credentials Only one.</div></div><div style=3D"margin-bot=
+tom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-lef=
+t:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span st=
+yle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pramod</span><span s=
+tyle=3D"color:#64748b;font-size:14px">16:46</span></div><div style=3D"color=
+:#475569;font-size:16px;line-height:1.6">It&#39;s not two laptops, it&#39;s=
+ going to be one. Yes. They don&#39;t need to log off anything. They will b=
+e prompted with the credential if they have to access any honeymoon applica=
+tion Same as how we answer Amazon. Okay, but.</div></div><div style=3D"marg=
+in-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bord=
+er-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><s=
+pan style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Stephen</span>=
+<span style=3D"color:#64748b;font-size:14px">17:00</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">But they&#39;re gonna get=
+ the laptops before 8:1 or after 8:1.</div></div><div style=3D"margin-botto=
+m:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:=
+4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span styl=
+e=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pramod</span><span sty=
+le=3D"color:#64748b;font-size:14px">17:05</span></div><div style=3D"color:#=
+475569;font-size:16px;line-height:1.6">That&#39;s what I know. I think we h=
+ave to check that with the ski dell. After. It&#39;ll be after.</div></div>=
+<div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bord=
+er-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;mar=
+gin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8=
+px">Neil</span><span style=3D"color:#64748b;font-size:14px">17:12</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay.</div><=
+/div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc=
+;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fle=
+x;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-ri=
+ght:8px">Pramod</span><span style=3D"color:#64748b;font-size:14px">17:13</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">After=
+ innocent they need date. Oh yeah, day one. No, it&#39;d be before day one.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"disp=
+lay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;ma=
+rgin-right:8px">Jaime</span><span style=3D"color:#64748b;font-size:14px">17=
+:17</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6"=
+>Sorry.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Pramod</span><span style=3D"color:#64748b;font-size=
+:14px">17:26</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">Yes. Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6=
+"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f=
+6;font-weight:600;margin-right:8px">Neil</span><span style=3D"color:#64748b=
+;font-size:14px">17:27</span></div><div style=3D"color:#475569;font-size:16=
+px;line-height:1.6">Yes.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b=
+82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3=
+b82f6;font-weight:600;margin-right:8px">Pramod</span><span style=3D"color:#=
+64748b;font-size:14px">17:28</span></div><div style=3D"color:#475569;font-s=
+ize:16px;line-height:1.6">Okay, thank you. So. So Steven, that&#39;s what w=
+e are. Because all these are a verbal understanding, right? We need to soli=
+dify this. We need to do some testing. That&#39;s what the application owne=
+rs and the functional leads are currently coordinating with the SS14 how th=
+is is going to play out. Yeah, thank you.</div></div><div style=3D"margin-b=
+ottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-l=
+eft:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinam</span><span=
+ style=3D"color:#64748b;font-size:14px">17:54</span></div><div style=3D"col=
+or:#475569;font-size:16px;line-height:1.6">Yeah, I&#39;m there.</div></div>=
+<div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bord=
+er-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;mar=
+gin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8=
+px">Pramod</span><span style=3D"color:#64748b;font-size:14px">17:56</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So.</div><=
+/div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc=
+;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fle=
+x;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-ri=
+ght:8px">Srinam</span><span style=3D"color:#64748b;font-size:14px">17:57</s=
+pan></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Hi ev=
+eryone. So we are progressing okay on all the applications on the team guru=
+ as well as on the ecat. We have a line of sight and we have started progre=
+ssing in that direction as well as in the ecat. We already have a PO with t=
+he vendor and extract extraction activity we have planned this week. One po=
+int I would like to highlight which is mentioned in the this column is we h=
+ave what decision that we will move to the on prem version for the UI sched=
+uling Tool from the Azure because of the CGMP compliance and based on that =
+what has happened now today we have a global domain within Honeyware only w=
+here we are going to move the servers so there will be one more migration w=
+hich will be happening from the global domain to spinco domain in the month=
+ of September October time frame which was something which we discovered la=
+st week Just want to share that would like to understand how much we will n=
+eed to involve vendor in this whole process and whenever we are ordering ne=
+w servers right now we need to decide a path who can be the server owner To=
+day server owner is the service owner right now which is within Honeywell b=
+ut whenever we are ordering new server for the application which will be on=
+ prem need to understand who can be that service server owner so need some =
+guidance in that area we do have integration with the Documentum limbs and =
+SATC where we are connecting to them and the XSOPs Google has taken at leng=
+th what are the different questions or queries we people have and we are tr=
+ying to set up a call with SSO team and get that clarified.</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-=
+bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">=
+Neil</span><span style=3D"color:#64748b;font-size:14px">20:00</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">That&#39;s all f=
+rom my side.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div s=
+tyle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-w=
+eight:600;margin-right:8px">Pramod</span><span style=3D"color:#64748b;font-=
+size:14px">20:02</span></div><div style=3D"color:#475569;font-size:16px;lin=
+e-height:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16p=
+x;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"=
+><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6=
+;font-weight:600;margin-right:8px">Neil</span><span style=3D"color:#64748b;=
+font-size:14px">20:02</span></div><div style=3D"color:#475569;font-size:16p=
+x;line-height:1.6">Any questions?</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D=
+"color:#3b82f6;font-weight:600;margin-right:8px">Pramod</span><span style=
+=3D"color:#64748b;font-size:14px">20:03</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">Yeah yeah maybe you know we can ask is=
+ there anyone who can help us out on what&#39;s going to be the plan for th=
+e new application owner or service owner for Athens So I.</div></div><div s=
+tyle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-rad=
+ius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bo=
+ttom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pr=
+omote</span><span style=3D"color:#64748b;font-size:14px">20:13</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">Can give a guid=
+ance there? Yes, I mean I will confirm that but then my thought is we will =
+put Benny&#39;s name to start with. I know Benny is in process of hiring th=
+e the managers or team members for each different function that we have lik=
+e one for manufacturing, one for planning, one for logistics and all that.<=
+/div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#=
+f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displ=
+ay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Pramod</span><span style=3D"color:#64748b;font-size:14px">20=
+:36</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6"=
+>Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Promote</span><span style=3D"color:#64748b;font-siz=
+e:14px">20:36</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">To start with I will. I will probably get Benny&#39;s name. I wi=
+ll confirm that field based server.</div></div><div style=3D"margin-bottom:=
+16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4p=
+x solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pramod</span><span styl=
+e=3D"color:#64748b;font-size:14px">20:43</span></div><div style=3D"color:#4=
+75569;font-size:16px;line-height:1.6">Owners are probably going to end up b=
+eing somebody in James Solomon&#39;s group because he owns infrastructure.<=
+/div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#=
+f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displ=
+ay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;mar=
+gin-right:8px">Promote</span><span style=3D"color:#64748b;font-size:14px">2=
+0:50</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">Yeah but he owns a CO and he owns a colo. Yeah, that&#39;s. That&#39;s no=
+t how we. We own it. Correct. Here the here everything is owned by service =
+owners not the infra team.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #=
+3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:=
+#3b82f6;font-weight:600;margin-right:8px">Pramod</span><span style=3D"color=
+:#64748b;font-size:14px">21:02</span></div><div style=3D"color:#475569;font=
+-size:16px;line-height:1.6">Yeah that&#39;s exact puzzle that we need to.</=
+div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f=
+8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"displa=
+y:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;marg=
+in-right:8px">Promote</span><span style=3D"color:#64748b;font-size:14px">21=
+:04</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6"=
+>That&#39;s the exact puzzle.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px soli=
+d #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"col=
+or:#3b82f6;font-weight:600;margin-right:8px">Pramod</span><span style=3D"co=
+lor:#64748b;font-size:14px">21:09</span></div><div style=3D"color:#475569;f=
+ont-size:16px;line-height:1.6">I think Prasanna you can EVOE is the only ar=
+ea where we need the local server. Right. So maybe we can reach out James S=
+olomon as you mentioned promote. We can also copy Benny if it is.</div></di=
+v><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bo=
+rder-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;m=
+argin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right=
+:8px">Promote</span><span style=3D"color:#64748b;font-size:14px">21:25</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">If it i=
+s case of ey. I thought in case of EY we already have a service existing se=
+rvice which.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div s=
+tyle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-w=
+eight:600;margin-right:8px">Srinam</span><span style=3D"color:#64748b;font-=
+size:14px">21:30</span></div><div style=3D"color:#475569;font-size:16px;lin=
+e-height:1.6">We are using no, we created new ones promote but we do have a=
+n infrastructure person on site his name is Jatinder. Clear Ms. My proposal=
+ will be if he&#39;s a server owner, he will be the person going to take ca=
+re in future also. But we need to understand and agree on that approach.</d=
+iv></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display=
+:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margi=
+n-right:8px">Pramod</span><span style=3D"color:#64748b;font-size:14px">21:5=
+3</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">O=
+kay. Yeah. I think what we see here is everything is going in the right dir=
+ection. The only area is there are few questions on the yes approach on how=
+ this is going to work. During day one we need to do some QA testing, low l=
+evel environment testing. Then EY is going to deploy the things not on the =
+cloud and on the on prem which is on the local sales or server. And we we a=
+re getting from you know the site cut over the DCN team that they are takin=
+g Muskegon as a pilot that they are going to start the work from July. But =
+for the rest of the larger sites like any case MER or Baton Rouge and stuff=
+ like that, I think they are going to take the during September time frame =
+which means that all the network change, the firewall change, the domain ch=
+ange for the site specific cutover will happen only during September Octobe=
+r time frame. If that is the case, how do we ensure that you know the testi=
+ng and stuff like that, you know during our qa, you know the UAT testing I&=
+#39;m talking about. Right. Because we are targeting the go live itself by =
+October. If they themselves, you know take their time to complete the cutov=
+er during September October, then how do we ensure to do the testing before=
+ that question. So that is still a risk I think. Pramod, we talked about it=
+ in our internal call today. Right. We need to keep some plans ready.</div>=
+</div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8faf=
+c;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fl=
+ex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-r=
+ight:8px">Promote</span><span style=3D"color:#64748b;font-size:14px">23:34<=
+/span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yep=
+, I agree.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div sty=
+le=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-wei=
+ght:600;margin-right:8px">Pramod</span><span style=3D"color:#64748b;font-si=
+ze:14px">23:36</span></div><div style=3D"color:#475569;font-size:16px;line-=
+height:1.6">So that that is a risk anywhere. You know we are talking about =
+on prem applications and hosting. Yeah, that&#39;s. That&#39;s going to be =
+the risk. Yeah. Okay, good. Thank you pr. Yeah thank you. And anyone from l=
+ogistics, Shilpa or.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6=
+"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f=
+6;font-weight:600;margin-right:8px">Kunal</span><span style=3D"color:#64748=
+b;font-size:14px">23:56</span></div><div style=3D"color:#475569;font-size:1=
+6px;line-height:1.6">So SSO thing we already discussed about and there is a=
+ special case in case of Toller Portal SSO where we are storing the Honeywe=
+ll IDs and password and Toler portal and there are external users also. So =
+there is all schedule to discuss on the approach that one part. Regarding t=
+he toller portal we got the test case design and business pocket. The next =
+we&#39;ll be doing testing part. So we are cover on that part. Regarding th=
+e TMC and BDS the buildover will start this week this probably next week an=
+d design documents are ready for toller PMC and PDS and then next next week=
+ plan is to open a toler portal migration.</div></div><div style=3D"margin-=
+bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-=
+left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span=
+ style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pramod</span><spa=
+n style=3D"color:#64748b;font-size:14px">24:45</span></div><div style=3D"co=
+lor:#475569;font-size:16px;line-height:1.6">Yeah, I think the only importan=
+t thing is I think for BDS they have I think Belden and Bill. Bill both you=
+ Know clarified with BDS team about the uop. I think we have some plan in p=
+lace. There is a change in the cost as well. Previously it was 23 900, some=
+thing like that. Now it is 2700 with the increase of 3000 on top of it. And=
+ those things will have to go through the CR process like update the addend=
+um in the state of work and then they have to update the PO as well. So pro=
+mote this is FYI for you and we probably need to work on the CR process to =
+catch all these things in the po.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D=
+"color:#3b82f6;font-weight:600;margin-right:8px">Neil</span><span style=3D"=
+color:#64748b;font-size:14px">25:28</span></div><div style=3D"color:#475569=
+;font-size:16px;line-height:1.6">Yeah, yeah.</div></div><div style=3D"margi=
+n-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;borde=
+r-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><sp=
+an style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Promote</span><=
+span style=3D"color:#64748b;font-size:14px">25:29</span></div><div style=3D=
+"color:#475569;font-size:16px;line-height:1.6">We definitely need to raise =
+a CR for the po. Financials. I think we should be able to manage that.</div=
+></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fa=
+fc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:f=
+lex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-=
+right:8px">Pramod</span><span style=3D"color:#64748b;font-size:14px">25:36<=
+/span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yes=
+, yes. Financials it&#39;s only 3,000 on top of it. So I think we have to d=
+o that.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Srinam</span><span style=3D"color:#64748b;font-size=
+:14px">25:41</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">And.</div></div><div style=3D"margin-bottom:16px;padding:16px;bac=
+kground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div=
+ style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font=
+-weight:600;margin-right:8px">Pramod</span><span style=3D"color:#64748b;fon=
+t-size:14px">25:43</span></div><div style=3D"color:#475569;font-size:16px;l=
+ine-height:1.6">Yeah, anything apart from that.</div></div><div style=3D"ma=
+rgin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bo=
+rder-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Kunal</span>=
+<span style=3D"color:#64748b;font-size:14px">25:46</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">Yes, yes. So present as p=
+resent. The service ownership is one point. Other point is regarding the mo=
+ve as the application. So for the total portal, the current support contrac=
+t is. So if you&#39;re going live on the 27th of October, what&#39;s the pl=
+an from the November. Is it separate contact to be?</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pramod=
+</span><span style=3D"color:#64748b;font-size:14px">26:07</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, we have alread=
+y initiated the conversation with Akim Pregler in one of the forum. I think=
+ she has to, you know, come back to the plan. It is not only about the new =
+contract over managing the application at Hannibal. It is also there are a =
+few questions also we have raised. I think we. We have to get done somethin=
+g for them. Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;=
+background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><=
+div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;f=
+ont-weight:600;margin-right:8px">Promote</span><span style=3D"color:#64748b=
+;font-size:14px">26:27</span></div><div style=3D"color:#475569;font-size:16=
+px;line-height:1.6">So PR has already initiated those conversations with ev=
+ery vendor, supplier, Kemal and everyone. So we will definitely hear back i=
+f you have any feedback from them. Otherwise there will be definitely a sep=
+arate contracts.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><d=
+iv style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fo=
+nt-weight:600;margin-right:8px">Pramod</span><span style=3D"color:#64748b;f=
+ont-size:14px">26:43</span></div><div style=3D"color:#475569;font-size:16px=
+;line-height:1.6">Yeah, that is one thing from both. One is we are talking =
+about a manpower to do the production support. Right.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Promot=
+e</span><span style=3D"color:#64748b;font-size:14px">26:50</span></div><div=
+ style=3D"color:#475569;font-size:16px;line-height:1.6">So they have the co=
+nversation again that&#39;s happening at the broader level. Yeah. So that a=
+gain we should have more feedback on that maybe by early next month. Paul a=
+nd team are definitely looking into it.</div></div><div style=3D"margin-bot=
+tom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-lef=
+t:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span st=
+yle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Pramod</span><span s=
+tyle=3D"color:#64748b;font-size:14px">27:06</span></div><div style=3D"color=
+:#475569;font-size:16px;line-height:1.6">License has full right.</div></div=
+><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bor=
+der-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;ma=
+rgin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:=
+8px">Promote</span><span style=3D"color:#64748b;font-size:14px">27:11</span=
+></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">One is O=
+ and M operate and maintain which is support. Another is license and third =
+is the TSA contracts. So all three are getting worked parallel.</div></div>=
+<div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bord=
+er-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;mar=
+gin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8=
+px">Pramod</span><span style=3D"color:#64748b;font-size:14px">27:24</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Good, than=
+k you. So Kunal, anything apart from this?</div></div><div style=3D"margin-=
+bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-=
+left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span=
+ style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Kunal</span><span=
+ style=3D"color:#64748b;font-size:14px">27:27</span></div><div style=3D"col=
+or:#475569;font-size:16px;line-height:1.6">No, that&#39;s it.</div></div><d=
+iv style=3D"margin-bottom:0;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-b=
+ottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">P=
+ramod</span><span style=3D"color:#64748b;font-size:14px">27:29</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">That&#39;s it. =
+Right? No, no other risk. Right. The SS was the only piece that we are talk=
+ing about. Nothing other than that. Right. Timeline, Spice, all good. Tmc, =
+all the test cases we have, all the super users is identified. Right. The o=
+nly thing what I. What I. What we need here is we need to enable the conver=
+sation with BDS and TFC to do the kickoff. They need to stop the work. That=
+&#39;s what we have to do. Yeah. I&#39;ve been telling this tuition as well=
+. Good. Thank you. On trade complaints. I think we are running out of time.=
+ Yes. Trade. This is fine. I mean, there were a few issues until last week.=
+ You know, we were. We were asking about the successor for Sashi because Sa=
+shi has taken up a different role, and now we have Nitin Kulkarni, I think,=
+ who. Who has to, you know, provide some direction on the trade side. I don=
+&#39;t see any.</div></div></div><div style=3D"margin-top:36px;text-align:c=
+enter;color:#64748b;font-size:14px;padding:20px;border-top:1px solid #e2e8f=
+0"><p style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note Taker=
+</p><p style=3D"margin:0;font-size:12px">Your AI-powered companion</p></div=
+></div></div></div></div></div>
+
+--000000000000e050f20636a3b062--

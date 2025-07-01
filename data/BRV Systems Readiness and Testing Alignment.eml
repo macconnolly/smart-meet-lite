@@ -1,0 +1,1796 @@
+MIME-Version: 1.0
+Date: Fri, 13 Jun 2025 13:20:58 -0400
+References: <0100019764c451eb-1c7d66d9-1f7b-44df-a728-ea1f35ab403d-000000@email.amazonses.com>
+In-Reply-To: <0100019764c451eb-1c7d66d9-1f7b-44df-a728-ea1f35ab403d-000000@email.amazonses.com>
+Message-ID: <CAOat4ZB=duLSn=dN-OOL2KV+U=8m1uTzLWRiTdTzjfOUuf8jvg@mail.gmail.com>
+Subject: Fwd: BRV Systems Readiness and Testing Alignment
+From: Mac Connolly <mac@macconnolly.com>
+To: save@mem.ai
+Content-Type: multipart/alternative; boundary="00000000000028d99406377745fa"
+
+--00000000000028d99406377745fa
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+---------- Forwarded message ---------
+From: Wave AI Note Taker <summary@email.wave.co>
+Date: Thu, 12 Jun 2025 at 11:31
+Subject: BRV Systems Readiness and Testing Alignment
+To: <mac@macconnolly.com>
+
+
+[image: Wave AI Logo]BRV Systems Readiness and Testing Alignment
+=E2=9C=A8 View Your Session on the Web
+<https://app.wave.co/sessions/B607A8DA-11A1-4333-B467-02B03C951ED1?lastLogi=
+nParam=3Dgoogle>
+=F0=9F=93=9DSummary
+Meeting Summary: IT & Functional Teams Alignment Session
+
+*Date:* June 12, 2025
+*Location:* Virtual / Hybrid (noted: Jeff, Sandra, Arpit, Srinivas, others)
+*Purpose:* To review status and planning for systems and process readiness,
+alignment, and testing related to BRV (Business Reorganization/Value
+initiative) and upcoming 8/1 changes=E2=80=94especially HR/HCM, payroll, an=
+d
+supporting IT systems.
+------------------------------
+Main Topics Discussed1. Alignment Sessions and Background
+
+   - *Kickoff Timeline:*
+      - *Initial Kickoffs:* April and first week of May
+      - *Broader Process Kickoff & UAT Sessions:* Mid-May
+   - *Ongoing Work:* Since mid-May, focus has been on:
+      - Assessing readiness of functions and systems for 8/1 changes.
+      - Validating what systems are impacted and process changes required.
+      - Confirming test dates, windows, entry/exit criteria, and workflow
+      responsibilities.
+      - Tracking test tools and ownership of test script/scenario
+      definitions.
+      - Planning logistics for business user testing (especially in
+      HR/HCM), recognizing that HCM testing is less intensive than ERP/Fina=
+nce
+      scopes.
+
+2. Scope of Impacted Systems
+
+   - *Primary Systems Identified:*
+      - *PeopleSoft*
+      - *Honeywell HCM*
+      - *ADP Payroll*
+      - *SAP (data dependency)*
+   - *Clarifications:*
+      - HCM references corrected (no SCM mislabel).
+      - Finance involvement needed for creating cost centers (tracking
+      handled internally, owner in Finance: Michael Carvalho).
+      - Coordination between Finance-created cost centers with HR/HCM
+      mapping.
+
+3. Current Status & Testing Plan
+
+   - *Test Data & Setup:*
+      - Each employee file (PFEP) will be mapped to future state cost
+      centers (effective 8/1), loaded to Honeywell HCM QA, then sent
+downstream.
+      - All foundational data (cost centers) must be present in QA before
+      loads.
+      - Cost center setup requests (except for Saudi and UAE due to
+      incorporation/bank account delays).
+   - *Testing Activities Breakdown:*
+      - *HCM (HR) Testing:* Load and validate employee transfer file in QA.
+      Final master load for production shortly before 8/1.
+      - *PeopleSoft:* Setup of new legal entities; no lower environment
+      testing indicated.
+      - *Payroll System (ADP & Celergo):* Payroll configuration for new
+      legal entities, especially US, is complete in QA and tested.
+      - *Manual Interface:* For non-automated ADP payroll feeds, countries
+      will use a manual process (test plan included by ADP PMs).
+      - *Testing Periods:*
+         - *HCM QA Testing:* Planned for July, dependent on completion of
+         data and mapping.
+         - *Payroll Parallel Testing:* US to use June data for testing in
+         July (not =E2=80=9Ctrue=E2=80=9D parallel for all geographies).
+      - *Downstream/Bridge Testing:* No downstream impact expected per HR
+      analysis=E2=80=94no structural reorg, only data changes.
+      - *UAT Responsibilities:* IT supports technical loading and error
+      correction; business (HR) and ADP vendors handle user acceptance and
+      sign-off for respective areas.
+   - *Testing Entry & Exit Criteria:* Not all typical ITSIT/UAT processes
+   are relevant, as this is not a code/systems change but a data
+   migration/activity.
+
+4. Status of Country-Specific Activities
+
+   - *Cost Center Setup:*
+      - All countries submitted except Saudi and UAE (due to delays);
+      Ireland set up but delayed for business reasons.
+      - Ongoing coordination with Michael Carvalho (Finance).
+   - *Payroll:*
+      - US payroll config complete and tested; changes in QA ready for
+      production migration.
+      - For rest of world, manual feeds to ADP (testing under global/local
+      ADP PMs).
+
+5. Readiness Tracking and Reporting
+
+   - *Upcoming Readout:*
+      - *June 25, 2025 (6/25):* Full-day BRV workshop in Charlotte to
+      provide a holistic readiness view; Jeff leading.
+      - Alignment needed for presentation, standardized template across
+      work streams.
+      - Action to ensure non-ERP/HR testing/changes are appropriately
+      represented.
+   - *Team Coordination:*
+      - Coordination with Rakesh, Arpit, and others to validate testing and
+      readiness dates.
+      - Communication of upcoming activities, status, and inclusion of all
+      relevant stakeholders (e.g., Matt, Kelly, Sarah).
+   - *Follow-up / Future Focus:*
+      - 10/27 initiative is a separate topic to be handled after BRV is
+      complete, with appropriate CAPG involvement.
+
+------------------------------
+Action Items
+
+   1. *Finalize Cost Center Setup:*
+      - Coordinate with Michael Carvalho to ensure all cost centers are
+      created in EHM and QA (except deferred countries).
+      - Ensure ready for employee mapping and downstream distribution.
+   2. *Testing Calendar:*
+      - Arpit and Mac to confirm/validate and update all key HCM/Payroll
+      test dates.
+      - Share and track testing readiness, especially for UAT and July
+      activities.
+   3. *Manual Payroll Testing:*
+      - Connect with William Douglas (US Payroll), Will Harper (ADP Global
+      PM), and local PMs to ensure manual ADP process is included and
+tracked in
+      all test plans.
+      - Confirm process for sharing test results and sign-offs.
+   4. *Readiness Tracking for BRV Readout:*
+      - Rakesh/Arpit to prepare consolidated view for 6/25 Charlotte
+      workshop.
+      - Include HR and non-ERP testing activities in standard template
+      slides.
+      - Distribute slides/presentations to key stakeholders (e.g., Sandra,
+      Matt, Kelly, Sarah) by next week.
+   5. *Systems Check:*
+      - Srinivas to check with Satish=E2=80=99s team regarding EHM to SAP c=
+ost
+      center configuration and SIT testing.
+      - Report readiness for SIT before handoff to users.
+   6. *Confirm UAT Ownership & Sign-off Procedures:*
+      - Clarify with Rajni=E2=80=99s HR IT team on UAT responsibilities=E2=
+=80=94business
+      for transaction/testing, IT for technical support.
+      - Ensure clear reporting and upstream communication on sign-offs and
+      testing status.
+   7. *Final Data Load Planning:*
+      - Plan for a final, complete employee master file update to Honeywell
+      HCM just before 8/1 to capture all late changes/new hires.
+   8. *Meeting Follow-ups:*
+      - Schedule follow-up with Srinivas and Mac on separate ERP-related
+      topics (Bill Faria=E2=80=99s attendance may be required).
+      - Arrange for inclusion of CAPG discussion for 10/27 after BRV
+      activities completed.
+
+------------------------------
+Follow-Up Points and Next Steps
+
+   - *6/25/2025:* Full-day BRV Readout/Workshop in Charlotte; coordinated
+   presentations required.
+   - *Testing Windows:*
+      - July: Target window for QA testing and parallel payroll runs.
+      - Late July: Final employee master file update.
+      - August 1, 2025 (8/1): Target go-live for all related data/process
+      changes.
+   - *Additional Sessions:*
+      - Separate topic and team session for 10/27 initiatives after BRV is
+      fully addressed.
+      - Cross-team check-ins as needed for systems and testing dependencies
+      (Finance, IT, HR, ADP/Payroll).
+   - *Status Updates:*
+      - Action item reports and meeting notes to be distributed to all
+      involved parties.
+      - Invite additional stakeholders to relevant presentation reviews and
+      schedule updates.
+
+------------------------------
+
+*Meeting Adjourned*
+All participants thanked for their input and attention to next steps.
+Meeting ran efficiently, concluding early to enable follow-up work.
+------------------------------
+=F0=9F=8E=99=EF=B8=8FTranscription
+Rakesh0:00
+What we're trying to do is get alignment sessions going between the IT
+teams and the functional teams. We had the kickoffs back in April. Well,
+first week of May. We had the broader process kickoff and UAT sessions in
+the middle of May. Since then, we've been working with each of the
+functions to understand how ready they are, what do they need from it, how,
+how ready are the systems? Where are we with, you know, having. Confirming
+all the test dates in windows? Do we have entry and exit criterias? Hey,
+Sandra, thanks for making it.
+Sandra0:37
+Hello.
+Rakesh0:37
+Welcome back.
+Sandra0:39
+Thank you.
+Rakesh0:40
+All right, so let me take a step back. So again, alignment calls between IT
+and the functions. We kicked off in May. We had the middle of May
+conversation around the process workshop. Since then we've been working
+with each of the functions to say for all the systems impacted and all the
+processes changing for 8.1, how ready are we? What does it need to do?
+Where are we in terms of validating all of the systems and having owners
+around it? Confirming all of the testing windows, the dates, the testing
+tools if needed. Have we sorted out the entry exit criteria for these ruled
+roles and responsibilities? And we'll have to see in the HR space, HCM
+space, how applicable that is because I think they're all well defined. But
+you know, what tools are we using, who's going to define any test scripts,
+who's going to define the scenarios if needed, etc. How are we running the
+tests, how are we managing defects, if any, you know, logistics and next
+steps around, you know, what sort of testing will be needed, what sort of
+business user testing are we signing up for, etc. Now, in the HCM space, it
+may not be as intensive and as I guess intensive is in Word, as the case
+may be in ERP or Finance scope, but this call was more of a working session
+for this team to talk through some of these things and identify if there's
+anything still pending for the systems, for the windows, for the owners,
+etc. So let me pause there before we step into more details and work
+through the sausage making here. See if. Jeff, Sandra, you had any comments
+or thoughts or anything else you would like to discuss as part of this
+conversation?
+Jeff2:33
+You know, I don't think I have anything else right now. Let's. I think we
+just, let's go ahead and get into it and I'll probably have questions along
+the way.
+Sandra2:42
+Okay, yeah. And just FYI, I am in Charlotte for a full week of HR workshops
+and comp workshops.
+Rakesh2:50
+Okay.
+Sandra2:50
+I stepped out for this call, so if I don't have heavy lifting for the next
+hour. I'll maybe stay for another five or 10 and then I'll contact with our
+pit or Jeff, anything HCM specific, if that's okay.
+Rakesh3:03
+So perfect. So that's fine then if you want to go back to that folder here.
+So it may not be that intensive as well. So I know we have Srinivas as
+well. So from a systems perspective, I think what we're saying is, you
+know, and Arpit, keep me honest here as well that you know, PeopleSoft will
+be touched. Honeywell HCM would be touched. ADP payroll would be touched.
+We have information or data we need from SAP. Are there other areas that
+are going to be impacted by BRV that we need to start tracking and
+understanding? You know, where readiness.
+Sandra3:42
+Is that Honeywell HCM or is SCM just a misspelling?
+Rakesh3:46
+No, no H. Hcm. Yeah, the second one is hcm. Yeah, it should be misspelled
+no problem.
+Sandra3:52
+I just wanted to confirm. Yeah, I wasn't aware of. No H. Yeah, hcm. There
+you go.
+Rakesh3:57
+And then it's Honeywell ADP payroll. You might have. Your keyboard might
+have been off.
+Sandra4:05
+Now if we have to touch. We don't. But Finance has to create cost centers
+for us. Are they tracking their own list of things they need to do?
+Rakesh4:18
+They are and we need validation and confirmation of that. I know Finance
+had it in their list as one of the items Srinivas. Would you be able to
+answer that? Would you know.
+Srinivas4:33
+Yeah, I think there is a person named called Michael. He's submitting all
+of those requests.
+Sandra4:37
+Right, right.
+Srinivas4:39
+Once we have that list, I think we can share.
+Arpit4:43
+So from, yeah, from the system's perspective, I think EHM will be covered
+by Finance. We just have to make sure.
+Sandra4:49
+That's fine.
+Arpit4:50
+It is in their inventory.
+Sandra4:51
+That's fine.
+Arpit4:52
+Yeah. And that's the starting point for the changes which will flow to HCM
+and other systems.
+Sandra4:58
+Okay, great.
+Rakesh5:00
+Now from a testing perspective, Sandra, maybe, and maybe Arpit, you can
+provide some info on this. Like where are we? Is there any SIT testing
+periods or scenarios that are being run to make sure all of this is
+working, whether it's a tabletop exercise or if there's actually true SIT
+going on at this time for this?
+Sandra5:25
+No, not that I'm aware of, but ARPIC can answer after me. What I know we
+have to do is load the employee file with the new cost centers aligned to
+the new legal entities. Right. And all that foundation data needs to be set
+up in QA of hcm.
+Rakesh5:54
+Sorry, sorry, sorry. Let's go. I apologize. Copilot messed up. Do you mind
+repeating that, Sandra? You may. It might have put you in mute as well.
+Sandra6:15
+Hello?
+Rakesh6:16
+Yeah, sorry.
+Sandra6:17
+Okay. Okay. No, no, no. No worries. I didn't realize I was muted. So. Okay.
+So the plan for every person file pfep, it lists each employee with the
+future state call center with the effective date of 8:1. Right. And that is
+our employee transfer file we have to load into QA of hcm. Honeywell hcm.
+Right. It loads into the test environment. So all the foundation data needs
+to be set up in QA with the call centers that Trini just commented. Michael
+Carvalho. Right. Is currently submitting in EHM to get set up for us. Those
+need to be created in QA as well. And the PFEP file will be loaded there
+and sent to downstream systems recipients of employees and their cost
+centers. So it goes to all downstream for them to test. That's just the
+employee transfer piece of it. I'm not aware of any SIT or any other lower
+environment that needs to be tested.
+Rakesh7:26
+Okay.
+Arpit7:28
+Yeah.
+Sandra7:28
+Now from a PeopleSoft perspective, I think the only thing is that the
+illegal entities, the PeopleSoft companies. Companies need to be set up
+with the new legal entities and they obviously there's a whole bridge
+process between PeopleSoft and HCM, but I don't believe there's any lower
+environment testing from a PeopleSoft perspective.
+Rakesh7:49
+Got it.
+Arpit7:50
+That is correct. So in short, there are two pieces where we will have
+testing. Not really following the typical ITSIT UAT over there, but there
+is going to be a testing. First the employee load, which Sandra just said.
+Like we're going to load everything in QA and validate everything and then
+same activity happens in prod when the time comes.
+Rakesh8:11
+When is the QA testing? Do you know? Is should be like July.
+Sandra8:17
+It should be the month of July, but we are still waiting on the data to be
+completed.
+Rakesh8:23
+Okay.
+Sandra8:24
+The call center set up. Right. The employees need to be mapped to the cost
+center. There's a whole pfep, the line by line mapping once the cost
+centers are completed.
+Rakesh8:35
+And that we would get from Michael Carvalho as to the when that might be
+complete.
+Sandra8:39
+Michael is creating the cost centers required in country by function. Then
+HR owns mapping line by line. Right. People to cost center.
+Jeff8:51
+Yeah.
+Rakesh8:52
+Okay. And Arpit, maybe Mac and I will work with you on dates for those I
+think because part of the thing that Jeff is starting, the other Jeff is
+wanting to know is understanding all the test dates and readiness dates and
+he wants us to Start tracking that for UAT right now. Certainly coming into
+the 625 workshop, he wants a view of, you know, where we are across these.
+So if we have dates for these and I think we have them in the track one, I
+assume. In the track one I was going.
+Srinivas9:25
+Rakesh, I think for Michael's recent update to me, he did complete
+submitting the requests, I believe so I think it.
+Sandra9:34
+Was for every country except for Saudi and UAE because we don't have
+PeopleSoft company set up because of the incorporated delay and the bank
+accounts and everything else. So I believe those two countries were being
+replanned anyway.
+Rakesh9:51
+Okay.
+Srinivas9:52
+Including Ireland as well.
+Sandra9:53
+Right, right, right, right. We don't have an issue with Ireland. I think
+Ireland's set up already. But I believe there was business reasons that was
+getting delayed.
+Rakesh10:04
+Okay.
+Arpit10:05
+Yeah.
+Rakesh10:05
+All right, so we'll track that. Yeah.
+Arpit10:07
+In the track one, if you remember the evening, track one, track two calls,
+I have an activity list. I will just run it by you again. It's a older
+version, so probably the dates might have changed. But I see like for now I
+have like initial HCM load for validation planned for 7, 1. I will
+revalidate all the dates with you.
+Sandra10:28
+That was the plan. But we have to get realistic now and see where the data
+is. So.
+Arpit10:32
+Yes, so that's on the employee like coset is getting created in EHM system,
+employees getting mapped and that mapping file or whatever that table needs
+to be updated or initial load. The employee master load in hcm. This is one
+set of activity, Rakesh. The second set of activity is kind of activating
+payroll for those new legal entities. That is on Prabhakar, the HR IT team
+to configure those legal entities for activating the payroll. That has been
+done for the us. For the US Yeah, that has been done and tested. They are.
+And the changes are in qa. So whenever the Q like all other elements are
+ready, the QA can be done and IT can move to production.
+Rakesh11:28
+And production would be eight, one.
+Sandra11:31
+Yes, yes.
+Rakesh11:35
+Okay.
+Arpit11:36
+I just have one last question for Sandra on testing. Sandra, like the
+Celero or the rest of the world, payroll will have its own entire testing
+and payroll parallel. There is going to be a, you know, there's a manual
+feed we need to provide to adp. Like extract some employee information from
+hcm, send that file to adp. Are we planning to test that manual process as
+well? Like who's going to do it? Is it email or we place it in some folder.
+Sandra12:09
+It's part of the ADP Test plan. So that is the part of the process because
+the Celergo connector. I don't know if you were on. There was a tech or IT
+call yesterday with them.
+Arpit12:22
+Yeah, I was there.
+Sandra12:23
+Yeah. That planning is happening for 11:1 but the manual process to get it
+to ADP is part of what each country's.
+Arpit12:31
+Right, Perfect.
+Rakesh12:33
+Yeah.
+Arpit12:33
+So that's part of. Got it. So if I pick up payrolls plan from William
+Douglas, it will cover the manual testing as well.
+Sandra12:43
+I don't know if William Douglas has it. I think the ADP Will Harper. Right.
+Is the global PM and then they have a PM for each country.
+Arpit12:54
+Okay.
+Rakesh12:55
+Okay.
+Arpit12:55
+So like if I have to pull up like overall dates for testing and provide it
+to Rakesh and Mac. Sandra, will William have it or I'll have to reach out
+to adp.
+Sandra13:06
+You can ask Will Douglas. He will probably know right. Where to go get it.
+But just so you know, I don't know if he's managing the global plan. That's
+an ADP plan.
+Arpit13:16
+Yeah.
+Sandra13:16
+I mean the plan is for July to be doing what they call parallel testing.
+Even though it's not truly parallel. Us will be doing parallel testing in
+Lyric. Right. From say like June data. They'll use June data for July
+parallel. Okay. But I think Celergo is a slightly different process they
+follow.
+Rakesh13:38
+Got it.
+Sandra13:38
+Yeah.
+Arpit13:39
+So I'll connect with William Douglas and share that information with Rakesh=
+.
+Rakesh13:44
+Yep.
+Arpit13:45
+That's the payroll piece.
+Sandra13:46
+Yes.
+Jeff13:48
+Hey Arpit on. On that employee master load from a testing perspective.
+Beyond testing the data updates in Honeywell hcm, are we anticipating a
+testing plan to look at as well that PeopleSoft Bridge and some sample
+testing I guess of downstream interfaces as well. Like what's. What's the
+full scope of that test or is that up for discussion?
+Sandra14:21
+I would need the HR to speak to that.
+Arpit14:26
+Yeah, I will have to check but I don't think I've not heard that from
+Rajni's team that there's going to be a downstream impact testing. They did
+a downstream impact analysis and came back saying like there is no
+downstream impact from the changes which HR is suggesting.
+Sandra14:47
+It's not a reorg. Right? Exactly. It's not a reorg. So there's no
+structural as I would say. Right. Complex maybe as a rework would have been=
+.
+Jeff14:56
+Got it. And then just my other question too. As we talk about like the
+concept of uat, are you looking or are we looking to HR it to do user
+acceptance testing or are there solstice. Is there a user base there that
+we're planning to like double coordinate the testing. Like, is that an HR
+function, an HR systems or an HR IT function as we consider uat.
+Sandra15:21
+I think it's it, which is why Rajani was concerned up front. Right. Because
+of resources. She wanted to make sure. Right. They understood what the
+change was because it requires IT support, because they have to load in the
+QA and then it has to be pushed to downstreams.
+Jeff15:37
+And who does the testing and sign off there? Like does Raj and his team
+sign off on the UAT or is that a business function?
+Sandra15:43
+That's probably, that's more than likely business.
+Arpit15:47
+So Jeff, right now the payroll piece of configuration, which I said is
+already done in PeopleSoftware US, that is like an IT system change which
+Rajni's team is involved in. Employee transfer is a business transaction.
+So business will conduct that transaction and validate and sign off. No, it
+like it will be involved if there is something which is not not working
+correctly and to fix that. But it will not be coordinating or signing off
+on that activity. The third piece is ADP for rest of the world. It is
+following the entire implementation plan. So ADP vendor as IT is involved
+along with HR business, Kellero, Zen's team.
+Jeff16:31
+Okay, got it. All right, that, that makes sense.
+Rakesh16:35
+Yeah, thanks for that clarification.
+Sandra16:37
+So, so, and just so you guys are aware, if it comes up, if it's questioned,
+but the test file that will be sent is just that it's a point in time. We
+know they're still onboarding people or trying to bring on additional
+resources in those incremental hire roles. So there will have to be a final
+file sent right at the end of July just prior to 8:1 to make sure we've
+included all the right additional resources. We can't, we can't leave a man
+behind, so to speak.
+Jeff17:10
+So the testing will be sometime in, I guess, early July presumably. Then
+there'll be a final file that.
+Sandra17:16
+Will be like, yes, just before 8. 1. Because people could have moved, we
+could have ads, you know, I don't know terms. Who knows.
+Arpit17:31
+Anything else?
+Rakesh17:32
+Yeah, no, I think, I think, I think this is a good spot. So now certainly
+we spoke about, you know, some of the sign ops. And so again, I think, you
+know, what I'm understanding is the testing is again, it's handled by
+different teams here. We may need to understand with Rajni and her team,
+you know, how those sign offs are happening and how they're reporting on
+it. Certainly if anything that's in the ADP purview, if they're going to
+handle it fully. We may just need an update. We will need an update from
+them on how that is coming along and we'll just report out on it. I think
+outside that and what we're.
+Sandra18:11
+Doing with with Rajini and team right with hrit this is. It's pretty
+standard. I know they've not done it very often in HCM but the process of
+transfers and you know mass load transfers, things like that happen. So
+there is a you know, standard test plan process for approvals etc. So it
+shouldn't be.
+Rakesh18:31
+It's not any reinventing.
+Sandra18:33
+It is not.
+Jeff18:34
+There's no code or systematic change. It's a data change, right? Pretty
+much data change, yeah. And the exception being just it sounds like the
+payroll piece of this. Right. Ensuring we've got payroll configuration for
+us system and we're validating that and then the ADP piece of course seems
+like maybe the larger right piece to this.
+Rakesh18:56
+Yep, got it. So and again this is all for 81 now certainly for 1027 there's
+a whole slew of different and we that I think arit we should get from Cap G
+in terms of all of that activity. Correct.
+Arpit19:12
+Yeah. My ace is suggestion is Rakesh if we start like we talk about that as
+a separate topic because a lot of times we confuse the audience with two
+systems. So we focus and get everything you need for BRV and the moment we
+have everything for BRV I'll make sure we have the right people from CAPG
+to talk about 1027 as well.
+Rakesh19:32
+Okay. Understood.
+Arpit19:34
+Yeah.
+Rakesh19:34
+So I think as a whole, I think from a systems perspective we have a V so we
+we have action item to work with you Arpit to get that view from a from a
+testing readiness perspective we'll also work with you to understand that I
+don't know if we need anything else from a systems perspective Srinivas
+Anything on the ERP side that we need to talk about here?
+Srinivas20:00
+The only one actually I think I'll have to go and check with Satish team
+from EHM to SAP and the setup that what we have already in place IFI coe to
+see if they have they were able to get all of those cost centers that were
+submitted in EHM are configured approach for testing in SIT before giving
+it to users. So let me do that.
+Sandra20:27
+Yeah.
+Rakesh20:29
+Okay. I and Srinivas I know Mac and I were connecting with you separately
+on another ask so we can if we end this call early we'll try to connect
+with you on that.
+Srinivas20:39
+Sorry for the Interruption. I think we need Bill there some majority of the
+scope is Bill Faria. I want him to be on the call to us.
+Rakesh20:52
+Okay, we'll try to get a set up call but outside that I, I think we have
+good information here. Again, as we said, it's not the typical ITSIT uat.
+So some of the activities around entry exit criteria are probably not
+relevant here. Some of the testing and logistics is probably not relevant
+here as well. I think the rest of it is in terms of just tracking. So we
+have action items. It's just tracking to readiness and, and then I think
+some of this information will start reporting on and use for the 625 BRV
+readout that Jeff is planning in Charlotte. So I think the invites would go
+out for that, that's the full day workshop, etc. But I think more to come
+on that from the pmo.
+Sandra21:41
+So Rakesh, can you guys include me on whatever your presentations look like
+for this piece so. So I can be aware?
+Rakesh21:48
+Yes, absolutely. And I think it's a canned set of slides that different
+work streams would do. There's a standard template they've done and there's
+probably a line item for non ERP systems or HR here for it.
+Sandra22:02
+Because Matt and Kelly and Sarah will be in the room. So I want to make
+sure they're aware also going in.
+Rakesh22:08
+Understood. Yes, we'll share that information ahead of I think by next week=
+.
+Sandra22:12
+So thank you.
+Rakesh22:13
+Okay. I think we're in a good spot. So I don't have much more on this and
+we'll give you back half an hour but no thanks Sandra for jumping in on
+this.
+Sandra22:25
+No problem.
+Rakesh22:27
+Other things, Jeff or Srinivas, any other questions or clarifications you
+needed?
+Srinivas22:33
+I think I'm good for now, Rakesh, thanks.
+Rakesh22:35
+Okay, so we'll send out the notes and action items again. Certainly. So.
+Jeff22:39
+Sounds good.
+Rakesh22:41
+All right, thank you all. Thank you.
+Sandra22:43
+Thank you everyone.
+
+Captured with Wave AI Note Taker
+
+Your AI-powered companion
+
+--00000000000028d99406377745fa
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-size:small;colo=
+r:#444444"><br></div><br><div class=3D"gmail_quote gmail_quote_container"><=
+div dir=3D"ltr" class=3D"gmail_attr">---------- Forwarded message ---------=
+<br>From: <strong class=3D"gmail_sendername" dir=3D"auto">Wave AI Note Take=
+r</strong> <span dir=3D"auto">&lt;<a href=3D"mailto:summary@email.wave.co">=
+summary@email.wave.co</a>&gt;</span><br>Date: Thu, 12 Jun 2025 at 11:31<br>=
+Subject: BRV Systems Readiness and Testing Alignment<br>To:  &lt;<a href=3D=
+"mailto:mac@macconnolly.com">mac@macconnolly.com</a>&gt;<br></div><br><br><=
+div style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&qu=
+ot;,Roboto,Helvetica,Arial,sans-serif;margin:0;padding:0;background-color:#=
+f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 auto;background-c=
+olor:#ffffff"><div style=3D"background-image:url(https://upcdn.io/W142iax/r=
+aw/email/banner_clean.png);background-size:cover;background-position:center=
+;width:604px;height:297px;margin:0 auto"><table cellpadding=3D"0" cellspaci=
+ng=3D"0" border=3D"0" width=3D"100%" height=3D"100%"><tbody><tr><td valign=
+=3D"center" align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" style=3D"width:41=
+px;height:58px;max-width:41px;margin-bottom:10px"><h1 style=3D"color:white;=
+font-size:32px;margin:0;padding:0 0 10px;text-align:center">BRV Systems Rea=
+diness and Testing Alignment</h1></td></tr></tbody></table></div><div style=
+=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div style=3D"text-ali=
+gn:center;margin-bottom:32px"><a href=3D"https://app.wave.co/sessions/B607A=
+8DA-11A1-4333-B467-02B03C951ED1?lastLoginParam=3Dgoogle" style=3D"backgroun=
+d-color:#e6f0ff;color:#0066cc;padding:12px 24px;border-radius:8px;text-deco=
+ration:none;font-weight:500;font-size:16px;display:inline-block;margin-top:=
+8px;margin-bottom:8px" target=3D"_blank">=E2=9C=A8 View Your Session on the=
+ Web</a></div><div style=3D"text-align:center;margin-bottom:36px"></div><di=
+v style=3D"background-color:#ffffff;padding:28px;border-radius:12px;border:=
+1px solid #e2e8f0;margin-bottom:28px"><h3 style=3D"color:#0f172a;font-size:=
+20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex"><span st=
+yle=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div style=3D"color:#=
+475569;font-size:16px;line-height:1.6"><div><h1 style=3D"font-weight:500;pa=
+dding-top:20px;font-size:2.5rem">Meeting Summary: IT &amp; Functional Teams=
+ Alignment Session</h1><p><strong style=3D"font-weight:bold">Date:</strong>=
+ June 12, 2025<br><strong style=3D"font-weight:bold">Location:</strong> Vir=
+tual / Hybrid (noted: Jeff, Sandra, Arpit, Srinivas, others)<br><strong sty=
+le=3D"font-weight:bold">Purpose:</strong> To review status and planning for=
+ systems and process readiness, alignment, and testing related to BRV (Busi=
+ness Reorganization/Value initiative) and upcoming 8/1 changes=E2=80=94espe=
+cially HR/HCM, payroll, and supporting IT systems.</p>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Main Topics D=
+iscussed</h2><h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75re=
+m">1. Alignment Sessions and Background</h3><ul>
+<li><strong style=3D"font-weight:bold">Kickoff Timeline:</strong>  <ul>
+<li><strong style=3D"font-weight:bold">Initial Kickoffs:</strong> April and=
+ first week of May  </li>
+<li><strong style=3D"font-weight:bold">Broader Process Kickoff &amp; UAT Se=
+ssions:</strong> Mid-May</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Ongoing Work:</strong> Since mid-May=
+, focus has been on:<ul>
+<li>Assessing readiness of functions and systems for 8/1 changes.</li>
+<li>Validating what systems are impacted and process changes required.</li>
+<li>Confirming test dates, windows, entry/exit criteria, and workflow respo=
+nsibilities.</li>
+<li>Tracking test tools and ownership of test script/scenario definitions.<=
+/li>
+<li>Planning logistics for business user testing (especially in HR/HCM), re=
+cognizing that HCM testing is less intensive than ERP/Finance scopes.</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">2. Scope o=
+f Impacted Systems</h3><ul>
+<li><strong style=3D"font-weight:bold">Primary Systems Identified:</strong>=
+<ul>
+<li><strong style=3D"font-weight:bold">PeopleSoft</strong></li>
+<li><strong style=3D"font-weight:bold">Honeywell HCM</strong></li>
+<li><strong style=3D"font-weight:bold">ADP Payroll</strong></li>
+<li><strong style=3D"font-weight:bold">SAP (data dependency)</strong></li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Clarifications:</strong><ul>
+<li>HCM references corrected (no SCM mislabel).</li>
+<li>Finance involvement needed for creating cost centers (tracking handled =
+internally, owner in Finance: Michael Carvalho).</li>
+<li>Coordination between Finance-created cost centers with HR/HCM mapping.<=
+/li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">3. Current=
+ Status &amp; Testing Plan</h3><ul>
+<li><strong style=3D"font-weight:bold">Test Data &amp; Setup:</strong><ul>
+<li>Each employee file (PFEP) will be mapped to future state cost centers (=
+effective 8/1), loaded to Honeywell HCM QA, then sent downstream.</li>
+<li>All foundational data (cost centers) must be present in QA before loads=
+.</li>
+<li>Cost center setup requests (except for Saudi and UAE due to incorporati=
+on/bank account delays).</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Testing Activities Breakdown:</stron=
+g><ul>
+<li><strong style=3D"font-weight:bold">HCM (HR) Testing:</strong> Load and =
+validate employee transfer file in QA. Final master load for production sho=
+rtly before 8/1.</li>
+<li><strong style=3D"font-weight:bold">PeopleSoft:</strong> Setup of new le=
+gal entities; no lower environment testing indicated.</li>
+<li><strong style=3D"font-weight:bold">Payroll System (ADP &amp; Celergo):<=
+/strong> Payroll configuration for new legal entities, especially US, is co=
+mplete in QA and tested.</li>
+<li><strong style=3D"font-weight:bold">Manual Interface:</strong> For non-a=
+utomated ADP payroll feeds, countries will use a manual process (test plan =
+included by ADP PMs).</li>
+<li><strong style=3D"font-weight:bold">Testing Periods:</strong><ul>
+<li><strong style=3D"font-weight:bold">HCM QA Testing:</strong> Planned for=
+ July, dependent on completion of data and mapping.</li>
+<li><strong style=3D"font-weight:bold">Payroll Parallel Testing:</strong> U=
+S to use June data for testing in July (not =E2=80=9Ctrue=E2=80=9D parallel=
+ for all geographies).</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Downstream/Bridge Testing:</strong> =
+No downstream impact expected per HR analysis=E2=80=94no structural reorg, =
+only data changes.</li>
+<li><strong style=3D"font-weight:bold">UAT Responsibilities:</strong> IT su=
+pports technical loading and error correction; business (HR) and ADP vendor=
+s handle user acceptance and sign-off for respective areas.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Testing Entry &amp; Exit Criteria:</=
+strong> Not all typical ITSIT/UAT processes are relevant, as this is not a =
+code/systems change but a data migration/activity.</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">4. Status =
+of Country-Specific Activities</h3><ul>
+<li><strong style=3D"font-weight:bold">Cost Center Setup:</strong><ul>
+<li>All countries submitted except Saudi and UAE (due to delays); Ireland s=
+et up but delayed for business reasons.</li>
+<li>Ongoing coordination with Michael Carvalho (Finance).</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Payroll:</strong>  <ul>
+<li>US payroll config complete and tested; changes in QA ready for producti=
+on migration.</li>
+<li>For rest of world, manual feeds to ADP (testing under global/local ADP =
+PMs).</li>
+</ul>
+</li>
+</ul>
+<h3 style=3D"font-weight:500;padding-top:20px;font-size:1.75rem">5. Readine=
+ss Tracking and Reporting</h3><ul>
+<li><strong style=3D"font-weight:bold">Upcoming Readout:</strong><ul>
+<li><strong style=3D"font-weight:bold">June 25, 2025 (6/25):</strong> Full-=
+day BRV workshop in Charlotte to provide a holistic readiness view; Jeff le=
+ading.</li>
+<li>Alignment needed for presentation, standardized template across work st=
+reams.</li>
+<li>Action to ensure non-ERP/HR testing/changes are appropriately represent=
+ed.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Team Coordination:</strong>  <ul>
+<li>Coordination with Rakesh, Arpit, and others to validate testing and rea=
+diness dates.</li>
+<li>Communication of upcoming activities, status, and inclusion of all rele=
+vant stakeholders (e.g., Matt, Kelly, Sarah).</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Follow-up / Future Focus:</strong><u=
+l>
+<li>10/27 initiative is a separate topic to be handled after BRV is complet=
+e, with appropriate CAPG involvement.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Action Items<=
+/h2><ol>
+<li><strong style=3D"font-weight:bold">Finalize Cost Center Setup:</strong>=
+<ul>
+<li>Coordinate with Michael Carvalho to ensure all cost centers are created=
+ in EHM and QA (except deferred countries).</li>
+<li>Ensure ready for employee mapping and downstream distribution.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Testing Calendar:</strong><ul>
+<li>Arpit and Mac to confirm/validate and update all key HCM/Payroll test d=
+ates.</li>
+<li>Share and track testing readiness, especially for UAT and July activiti=
+es.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Manual Payroll Testing:</strong><ul>
+<li>Connect with William Douglas (US Payroll), Will Harper (ADP Global PM),=
+ and local PMs to ensure manual ADP process is included and tracked in all =
+test plans.</li>
+<li>Confirm process for sharing test results and sign-offs.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Readiness Tracking for BRV Readout:<=
+/strong><ul>
+<li>Rakesh/Arpit to prepare consolidated view for 6/25 Charlotte workshop.<=
+/li>
+<li>Include HR and non-ERP testing activities in standard template slides.<=
+/li>
+<li>Distribute slides/presentations to key stakeholders (e.g., Sandra, Matt=
+, Kelly, Sarah) by next week.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Systems Check:</strong><ul>
+<li>Srinivas to check with Satish=E2=80=99s team regarding EHM to SAP cost =
+center configuration and SIT testing.</li>
+<li>Report readiness for SIT before handoff to users.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Confirm UAT Ownership &amp; Sign-off=
+ Procedures:</strong><ul>
+<li>Clarify with Rajni=E2=80=99s HR IT team on UAT responsibilities=E2=80=
+=94business for transaction/testing, IT for technical support.</li>
+<li>Ensure clear reporting and upstream communication on sign-offs and test=
+ing status.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Final Data Load Planning:</strong><u=
+l>
+<li>Plan for a final, complete employee master file update to Honeywell HCM=
+ just before 8/1 to capture all late changes/new hires.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Meeting Follow-ups:</strong><ul>
+<li>Schedule follow-up with Srinivas and Mac on separate ERP-related topics=
+ (Bill Faria=E2=80=99s attendance may be required).</li>
+<li>Arrange for inclusion of CAPG discussion for 10/27 after BRV activities=
+ completed.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 style=3D"font-weight:500;padding-top:20px;font-size:2rem">Follow-Up Poi=
+nts and Next Steps</h2><ul>
+<li><strong style=3D"font-weight:bold">6/25/2025:</strong> Full-day BRV Rea=
+dout/Workshop in Charlotte; coordinated presentations required.</li>
+<li><strong style=3D"font-weight:bold">Testing Windows:</strong>  <ul>
+<li>July: Target window for QA testing and parallel payroll runs.</li>
+<li>Late July: Final employee master file update.</li>
+<li>August 1, 2025 (8/1): Target go-live for all related data/process chang=
+es.</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Additional Sessions:</strong>  <ul>
+<li>Separate topic and team session for 10/27 initiatives after BRV is full=
+y addressed.</li>
+<li>Cross-team check-ins as needed for systems and testing dependencies (Fi=
+nance, IT, HR, ADP/Payroll).</li>
+</ul>
+</li>
+<li><strong style=3D"font-weight:bold">Status Updates:</strong>  <ul>
+<li>Action item reports and meeting notes to be distributed to all involved=
+ parties.</li>
+<li>Invite additional stakeholders to relevant presentation reviews and sch=
+edule updates.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong style=3D"font-weight:bold">Meeting Adjourned</strong><br>All par=
+ticipants thanked for their input and attention to next steps. Meeting ran =
+efficiently, concluding early to enable follow-up work.</p>
+<hr>
+</div></div></div><div style=3D"background-color:#ffffff;padding:28px;borde=
+r-radius:12px;border:1px solid #e2e8f0"><h3 style=3D"color:#0f172a;font-siz=
+e:20px;font-weight:600;margin-top:0;margin-bottom:20px;display:flex"><span =
+style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription</h3><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-=
+bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">=
+Rakesh</span><span style=3D"color:#64748b;font-size:14px">0:00</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">What we&#39;re =
+trying to do is get alignment sessions going between the IT teams and the f=
+unctional teams. We had the kickoffs back in April. Well, first week of May=
+. We had the broader process kickoff and UAT sessions in the middle of May.=
+ Since then, we&#39;ve been working with each of the functions to understan=
+d how ready they are, what do they need from it, how, how ready are the sys=
+tems? Where are we with, you know, having. Confirming all the test dates in=
+ windows? Do we have entry and exit criterias? Hey, Sandra, thanks for maki=
+ng it.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Sandra</span><span style=3D"color:#64748b;font-size=
+:14px">0:37</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">Hello.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><di=
+v style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fon=
+t-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;fo=
+nt-size:14px">0:37</span></div><div style=3D"color:#475569;font-size:16px;l=
+ine-height:1.6">Welcome back.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px soli=
+d #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"col=
+or:#3b82f6;font-weight:600;margin-right:8px">Sandra</span><span style=3D"co=
+lor:#64748b;font-size:14px">0:39</span></div><div style=3D"color:#475569;fo=
+nt-size:16px;line-height:1.6">Thank you.</div></div><div style=3D"margin-bo=
+ttom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-le=
+ft:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span s=
+tyle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span =
+style=3D"color:#64748b;font-size:14px">0:40</span></div><div style=3D"color=
+:#475569;font-size:16px;line-height:1.6">All right, so let me take a step b=
+ack. So again, alignment calls between IT and the functions. We kicked off =
+in May. We had the middle of May conversation around the process workshop. =
+Since then we&#39;ve been working with each of the functions to say for all=
+ the systems impacted and all the processes changing for 8.1, how ready are=
+ we? What does it need to do? Where are we in terms of validating all of th=
+e systems and having owners around it? Confirming all of the testing window=
+s, the dates, the testing tools if needed. Have we sorted out the entry exi=
+t criteria for these ruled roles and responsibilities? And we&#39;ll have t=
+o see in the HR space, HCM space, how applicable that is because I think th=
+ey&#39;re all well defined. But you know, what tools are we using, who&#39;=
+s going to define any test scripts, who&#39;s going to define the scenarios=
+ if needed, etc. How are we running the tests, how are we managing defects,=
+ if any, you know, logistics and next steps around, you know, what sort of =
+testing will be needed, what sort of business user testing are we signing u=
+p for, etc. Now, in the HCM space, it may not be as intensive and as I gues=
+s intensive is in Word, as the case may be in ERP or Finance scope, but thi=
+s call was more of a working session for this team to talk through some of =
+these things and identify if there&#39;s anything still pending for the sys=
+tems, for the windows, for the owners, etc. So let me pause there before we=
+ step into more details and work through the sausage making here. See if. J=
+eff, Sandra, you had any comments or thoughts or anything else you would li=
+ke to discuss as part of this conversation?</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border=
+-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><spa=
+n style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span=
+ style=3D"color:#64748b;font-size:14px">2:33</span></div><div style=3D"colo=
+r:#475569;font-size:16px;line-height:1.6">You know, I don&#39;t think I hav=
+e anything else right now. Let&#39;s. I think we just, let&#39;s go ahead a=
+nd get into it and I&#39;ll probably have questions along the way.</div></d=
+iv><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;b=
+order-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;=
+margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-righ=
+t:8px">Sandra</span><span style=3D"color:#64748b;font-size:14px">2:42</span=
+></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, ye=
+ah. And just FYI, I am in Charlotte for a full week of HR workshops and com=
+p workshops.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div s=
+tyle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-w=
+eight:600;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-=
+size:14px">2:50</span></div><div style=3D"color:#475569;font-size:16px;line=
+-height:1.6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6">=
+<div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;=
+font-weight:600;margin-right:8px">Sandra</span><span style=3D"color:#64748b=
+;font-size:14px">2:50</span></div><div style=3D"color:#475569;font-size:16p=
+x;line-height:1.6">I stepped out for this call, so if I don&#39;t have heav=
+y lifting for the next hour. I&#39;ll maybe stay for another five or 10 and=
+ then I&#39;ll contact with our pit or Jeff, anything HCM specific, if that=
+&#39;s okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div s=
+tyle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-w=
+eight:600;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-=
+size:14px">3:03</span></div><div style=3D"color:#475569;font-size:16px;line=
+-height:1.6">So perfect. So that&#39;s fine then if you want to go back to =
+that folder here. So it may not be that intensive as well. So I know we hav=
+e Srinivas as well. So from a systems perspective, I think what we&#39;re s=
+aying is, you know, and Arpit, keep me honest here as well that you know, P=
+eopleSoft will be touched. Honeywell HCM would be touched. ADP payroll woul=
+d be touched. We have information or data we need from SAP. Are there other=
+ areas that are going to be impacted by BRV that we need to start tracking =
+and understanding? You know, where readiness.</div></div><div style=3D"marg=
+in-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bord=
+er-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><s=
+pan style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sandra</span><=
+span style=3D"color:#64748b;font-size:14px">3:42</span></div><div style=3D"=
+color:#475569;font-size:16px;line-height:1.6">Is that Honeywell HCM or is S=
+CM just a misspelling?</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82=
+f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b8=
+2f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#64=
+748b;font-size:14px">3:46</span></div><div style=3D"color:#475569;font-size=
+:16px;line-height:1.6">No, no H. Hcm. Yeah, the second one is hcm. Yeah, it=
+ should be misspelled no problem.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D=
+"color:#3b82f6;font-weight:600;margin-right:8px">Sandra</span><span style=
+=3D"color:#64748b;font-size:14px">3:52</span></div><div style=3D"color:#475=
+569;font-size:16px;line-height:1.6">I just wanted to confirm. Yeah, I wasn&=
+#39;t aware of. No H. Yeah, hcm. There you go.</div></div><div style=3D"mar=
+gin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bor=
+der-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span>=
+<span style=3D"color:#64748b;font-size:14px">3:57</span></div><div style=3D=
+"color:#475569;font-size:16px;line-height:1.6">And then it&#39;s Honeywell =
+ADP payroll. You might have. Your keyboard might have been off.</div></div>=
+<div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bord=
+er-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;mar=
+gin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8=
+px">Sandra</span><span style=3D"color:#64748b;font-size:14px">4:05</span></=
+div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Now if we h=
+ave to touch. We don&#39;t. But Finance has to create cost centers for us. =
+Are they tracking their own list of things they need to do?</div></div><div=
+ style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-r=
+adius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-=
+bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">=
+Rakesh</span><span style=3D"color:#64748b;font-size:14px">4:18</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">They are and we=
+ need validation and confirmation of that. I know Finance had it in their l=
+ist as one of the items Srinivas. Would you be able to answer that? Would y=
+ou know.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgroun=
+d-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Srinivas</span><span style=3D"color:#64748b;font-si=
+ze:14px">4:33</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Yeah, I think there is a person named called Michael. He&#39;s s=
+ubmitting all of those requests.</div></div><div style=3D"margin-bottom:16p=
+x;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px s=
+olid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"=
+color:#3b82f6;font-weight:600;margin-right:8px">Sandra</span><span style=3D=
+"color:#64748b;font-size:14px">4:37</span></div><div style=3D"color:#475569=
+;font-size:16px;line-height:1.6">Right, right.</div></div><div style=3D"mar=
+gin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bor=
+der-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srinivas</spa=
+n><span style=3D"color:#64748b;font-size:14px">4:39</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">Once we have that list, I=
+ think we can share.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6=
+"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f=
+6;font-weight:600;margin-right:8px">Arpit</span><span style=3D"color:#64748=
+b;font-size:14px">4:43</span></div><div style=3D"color:#475569;font-size:16=
+px;line-height:1.6">So from, yeah, from the system&#39;s perspective, I thi=
+nk EHM will be covered by Finance. We just have to make sure.</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border=
+-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margi=
+n-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px=
+">Sandra</span><span style=3D"color:#64748b;font-size:14px">4:49</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">That&#39;s fi=
+ne.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-col=
+or:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"d=
+isplay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600=
+;margin-right:8px">Arpit</span><span style=3D"color:#64748b;font-size:14px"=
+>4:50</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">It is in their inventory.</div></div><div style=3D"margin-bottom:16px;pa=
+dding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid=
+ #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"colo=
+r:#3b82f6;font-weight:600;margin-right:8px">Sandra</span><span style=3D"col=
+or:#64748b;font-size:14px">4:51</span></div><div style=3D"color:#475569;fon=
+t-size:16px;line-height:1.6">That&#39;s fine.</div></div><div style=3D"marg=
+in-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bord=
+er-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><s=
+pan style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><s=
+pan style=3D"color:#64748b;font-size:14px">4:52</span></div><div style=3D"c=
+olor:#475569;font-size:16px;line-height:1.6">Yeah. And that&#39;s the start=
+ing point for the changes which will flow to HCM and other systems.</div></=
+div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex=
+;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-rig=
+ht:8px">Sandra</span><span style=3D"color:#64748b;font-size:14px">4:58</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, g=
+reat.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D=
+"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:6=
+00;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14=
+px">5:00</span></div><div style=3D"color:#475569;font-size:16px;line-height=
+:1.6">Now from a testing perspective, Sandra, maybe, and maybe Arpit, you c=
+an provide some info on this. Like where are we? Is there any SIT testing p=
+eriods or scenarios that are being run to make sure all of this is working,=
+ whether it&#39;s a tabletop exercise or if there&#39;s actually true SIT g=
+oing on at this time for this?</div></div><div style=3D"margin-bottom:16px;=
+padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px sol=
+id #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"co=
+lor:#3b82f6;font-weight:600;margin-right:8px">Sandra</span><span style=3D"c=
+olor:#64748b;font-size:14px">5:25</span></div><div style=3D"color:#475569;f=
+ont-size:16px;line-height:1.6">No, not that I&#39;m aware of, but ARPIC can=
+ answer after me. What I know we have to do is load the employee file with =
+the new cost centers aligned to the new legal entities. Right. And all that=
+ foundation data needs to be set up in QA of hcm.</div></div><div style=3D"=
+margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;=
+border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px=
+"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</sp=
+an><span style=3D"color:#64748b;font-size:14px">5:54</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">Sorry, sorry, sorry. Let&=
+#39;s go. I apologize. Copilot messed up. Do you mind repeating that, Sandr=
+a? You may. It might have put you in mute as well.</div></div><div style=3D=
+"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px=
+;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8p=
+x"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sandra</s=
+pan><span style=3D"color:#64748b;font-size:14px">6:15</span></div><div styl=
+e=3D"color:#475569;font-size:16px;line-height:1.6">Hello?</div></div><div s=
+tyle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-rad=
+ius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bo=
+ttom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Ra=
+kesh</span><span style=3D"color:#64748b;font-size:14px">6:16</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, sorry.</div=
+></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fa=
+fc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:f=
+lex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-=
+right:8px">Sandra</span><span style=3D"color:#64748b;font-size:14px">6:17</=
+span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay=
+. Okay. No, no, no. No worries. I didn&#39;t realize I was muted. So. Okay.=
+ So the plan for every person file pfep, it lists each employee with the fu=
+ture state call center with the effective date of 8:1. Right. And that is o=
+ur employee transfer file we have to load into QA of hcm. Honeywell hcm. Ri=
+ght. It loads into the test environment. So all the foundation data needs t=
+o be set up in QA with the call centers that Trini just commented. Michael =
+Carvalho. Right. Is currently submitting in EHM to get set up for us. Those=
+ need to be created in QA as well. And the PFEP file will be loaded there a=
+nd sent to downstream systems recipients of employees and their cost center=
+s. So it goes to all downstream for them to test. That&#39;s just the emplo=
+yee transfer piece of it. I&#39;m not aware of any SIT or any other lower e=
+nvironment that needs to be tested.</div></div><div style=3D"margin-bottom:=
+16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4p=
+x solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span styl=
+e=3D"color:#64748b;font-size:14px">7:26</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">Okay.</div></div><div style=3D"margin-=
+bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-=
+left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span=
+ style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><span=
+ style=3D"color:#64748b;font-size:14px">7:28</span></div><div style=3D"colo=
+r:#475569;font-size:16px;line-height:1.6">Yeah.</div></div><div style=3D"ma=
+rgin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bo=
+rder-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px">=
+<span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sandra</span=
+><span style=3D"color:#64748b;font-size:14px">7:28</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">Now from a PeopleSoft per=
+spective, I think the only thing is that the illegal entities, the PeopleSo=
+ft companies. Companies need to be set up with the new legal entities and t=
+hey obviously there&#39;s a whole bridge process between PeopleSoft and HCM=
+, but I don&#39;t believe there&#39;s any lower environment testing from a =
+PeopleSoft perspective.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b8=
+2f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b=
+82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#6=
+4748b;font-size:14px">7:49</span></div><div style=3D"color:#475569;font-siz=
+e:16px;line-height:1.6">Got it.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px so=
+lid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"c=
+olor:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><span style=3D"c=
+olor:#64748b;font-size:14px">7:50</span></div><div style=3D"color:#475569;f=
+ont-size:16px;line-height:1.6">That is correct. So in short, there are two =
+pieces where we will have testing. Not really following the typical ITSIT U=
+AT over there, but there is going to be a testing. First the employee load,=
+ which Sandra just said. Like we&#39;re going to load everything in QA and =
+validate everything and then same activity happens in prod when the time co=
+mes.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-co=
+lor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"=
+display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:60=
+0;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14p=
+x">8:11</span></div><div style=3D"color:#475569;font-size:16px;line-height:=
+1.6">When is the QA testing? Do you know? Is should be like July.</div></di=
+v><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;bo=
+rder-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;m=
+argin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right=
+:8px">Sandra</span><span style=3D"color:#64748b;font-size:14px">8:17</span>=
+</div><div style=3D"color:#475569;font-size:16px;line-height:1.6">It should=
+ be the month of July, but we are still waiting on the data to be completed=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"dis=
+play:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;m=
+argin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">=
+8:23</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Sandra</span><span style=3D"color:#64748b;font-size=
+:14px">8:24</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">The call center set up. Right. The employees need to be mapped to =
+the cost center. There&#39;s a whole pfep, the line by line mapping once th=
+e cost centers are completed.</div></div><div style=3D"margin-bottom:16px;p=
+adding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px soli=
+d #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"col=
+or:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"co=
+lor:#64748b;font-size:14px">8:35</span></div><div style=3D"color:#475569;fo=
+nt-size:16px;line-height:1.6">And that we would get from Michael Carvalho a=
+s to the when that might be complete.</div></div><div style=3D"margin-botto=
+m:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:=
+4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span styl=
+e=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sandra</span><span sty=
+le=3D"color:#64748b;font-size:14px">8:39</span></div><div style=3D"color:#4=
+75569;font-size:16px;line-height:1.6">Michael is creating the cost centers =
+required in country by function. Then HR owns mapping line by line. Right. =
+People to cost center.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82=
+f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b8=
+2f6;font-weight:600;margin-right:8px">Jeff</span><span style=3D"color:#6474=
+8b;font-size:14px">8:51</span></div><div style=3D"color:#475569;font-size:1=
+6px;line-height:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #=
+3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:=
+#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color=
+:#64748b;font-size:14px">8:52</span></div><div style=3D"color:#475569;font-=
+size:16px;line-height:1.6">Okay. And Arpit, maybe Mac and I will work with =
+you on dates for those I think because part of the thing that Jeff is start=
+ing, the other Jeff is wanting to know is understanding all the test dates =
+and readiness dates and he wants us to Start tracking that for UAT right no=
+w. Certainly coming into the 625 workshop, he wants a view of, you know, wh=
+ere we are across these. So if we have dates for these and I think we have =
+them in the track one, I assume. In the track one I was going.</div></div><=
+div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;borde=
+r-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;marg=
+in-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8p=
+x">Srinivas</span><span style=3D"color:#64748b;font-size:14px">9:25</span><=
+/div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Rakesh, I =
+think for Michael&#39;s recent update to me, he did complete submitting the=
+ requests, I believe so I think it.</div></div><div style=3D"margin-bottom:=
+16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4p=
+x solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sandra</span><span styl=
+e=3D"color:#64748b;font-size:14px">9:34</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">Was for every country except for Saudi=
+ and UAE because we don&#39;t have PeopleSoft company set up because of the=
+ incorporated delay and the bank accounts and everything else. So I believe=
+ those two countries were being replanned anyway.</div></div><div style=3D"=
+margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;=
+border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px=
+"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</sp=
+an><span style=3D"color:#64748b;font-size:14px">9:51</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">Okay.</div></div><div sty=
+le=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radiu=
+s:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bott=
+om:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Srin=
+ivas</span><span style=3D"color:#64748b;font-size:14px">9:52</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Including Ireland=
+ as well.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div styl=
+e=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weig=
+ht:600;margin-right:8px">Sandra</span><span style=3D"color:#64748b;font-siz=
+e:14px">9:53</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">Right, right, right, right. We don&#39;t have an issue with Irela=
+nd. I think Ireland&#39;s set up already. But I believe there was business =
+reasons that was getting delayed.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D=
+"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=
+=3D"color:#64748b;font-size:14px">10:04</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">Okay.</div></div><div style=3D"margin-=
+bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-=
+left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span=
+ style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><span=
+ style=3D"color:#64748b;font-size:14px">10:05</span></div><div style=3D"col=
+or:#475569;font-size:16px;line-height:1.6">Yeah.</div></div><div style=3D"m=
+argin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;b=
+order-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"=
+><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</spa=
+n><span style=3D"color:#64748b;font-size:14px">10:05</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">All right, so we&#39;ll t=
+rack that. Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><d=
+iv style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fo=
+nt-weight:600;margin-right:8px">Arpit</span><span style=3D"color:#64748b;fo=
+nt-size:14px">10:07</span></div><div style=3D"color:#475569;font-size:16px;=
+line-height:1.6">In the track one, if you remember the evening, track one, =
+track two calls, I have an activity list. I will just run it by you again. =
+It&#39;s a older version, so probably the dates might have changed. But I s=
+ee like for now I have like initial HCM load for validation planned for 7, =
+1. I will revalidate all the dates with you.</div></div><div style=3D"margi=
+n-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;borde=
+r-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><sp=
+an style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sandra</span><s=
+pan style=3D"color:#64748b;font-size:14px">10:28</span></div><div style=3D"=
+color:#475569;font-size:16px;line-height:1.6">That was the plan. But we hav=
+e to get realistic now and see where the data is. So.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit<=
+/span><span style=3D"color:#64748b;font-size:14px">10:32</span></div><div s=
+tyle=3D"color:#475569;font-size:16px;line-height:1.6">Yes, so that&#39;s on=
+ the employee like coset is getting created in EHM system, employees gettin=
+g mapped and that mapping file or whatever that table needs to be updated o=
+r initial load. The employee master load in hcm. This is one set of activit=
+y, Rakesh. The second set of activity is kind of activating payroll for tho=
+se new legal entities. That is on Prabhakar, the HR IT team to configure th=
+ose legal entities for activating the payroll. That has been done for the u=
+s. For the US Yeah, that has been done and tested. They are. And the change=
+s are in qa. So whenever the Q like all other elements are ready, the QA ca=
+n be done and IT can move to production.</div></div><div style=3D"margin-bo=
+ttom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-le=
+ft:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span s=
+tyle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span =
+style=3D"color:#64748b;font-size:14px">11:28</span></div><div style=3D"colo=
+r:#475569;font-size:16px;line-height:1.6">And production would be eight, on=
+e.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-colo=
+r:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"di=
+splay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;=
+margin-right:8px">Sandra</span><span style=3D"color:#64748b;font-size:14px"=
+>11:31</span></div><div style=3D"color:#475569;font-size:16px;line-height:1=
+.6">Yes, yes.</div></div><div style=3D"margin-bottom:16px;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-=
+weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font=
+-size:14px">11:35</span></div><div style=3D"color:#475569;font-size:16px;li=
+ne-height:1.6">Okay.</div></div><div style=3D"margin-bottom:16px;padding:16=
+px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6=
+"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f=
+6;font-weight:600;margin-right:8px">Arpit</span><span style=3D"color:#64748=
+b;font-size:14px">11:36</span></div><div style=3D"color:#475569;font-size:1=
+6px;line-height:1.6">I just have one last question for Sandra on testing. S=
+andra, like the Celero or the rest of the world, payroll will have its own =
+entire testing and payroll parallel. There is going to be a, you know, ther=
+e&#39;s a manual feed we need to provide to adp. Like extract some employee=
+ information from hcm, send that file to adp. Are we planning to test that =
+manual process as well? Like who&#39;s going to do it? Is it email or we pl=
+ace it in some folder.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82=
+f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b8=
+2f6;font-weight:600;margin-right:8px">Sandra</span><span style=3D"color:#64=
+748b;font-size:14px">12:09</span></div><div style=3D"color:#475569;font-siz=
+e:16px;line-height:1.6">It&#39;s part of the ADP Test plan. So that is the =
+part of the process because the Celergo connector. I don&#39;t know if you =
+were on. There was a tech or IT call yesterday with them.</div></div><div s=
+tyle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-rad=
+ius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bo=
+ttom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Ar=
+pit</span><span style=3D"color:#64748b;font-size:14px">12:22</span></div><d=
+iv style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, I was there=
+.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color=
+:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"dis=
+play:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;m=
+argin-right:8px">Sandra</span><span style=3D"color:#64748b;font-size:14px">=
+12:23</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.=
+6">Yeah. That planning is happening for 11:1 but the manual process to get =
+it to ADP is part of what each country&#39;s.</div></div><div style=3D"marg=
+in-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bord=
+er-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><s=
+pan style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><s=
+pan style=3D"color:#64748b;font-size:14px">12:31</span></div><div style=3D"=
+color:#475569;font-size:16px;line-height:1.6">Right, Perfect.</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border=
+-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margi=
+n-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px=
+">Rakesh</span><span style=3D"color:#64748b;font-size:14px">12:33</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah.</div><=
+/div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc=
+;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fle=
+x;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-ri=
+ght:8px">Arpit</span><span style=3D"color:#64748b;font-size:14px">12:33</sp=
+an></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">So tha=
+t&#39;s part of. Got it. So if I pick up payrolls plan from William Douglas=
+, it will cover the manual testing as well.</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border=
+-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><spa=
+n style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sandra</span><sp=
+an style=3D"color:#64748b;font-size:14px">12:43</span></div><div style=3D"c=
+olor:#475569;font-size:16px;line-height:1.6">I don&#39;t know if William Do=
+uglas has it. I think the ADP Will Harper. Right. Is the global PM and then=
+ they have a PM for each country.</div></div><div style=3D"margin-bottom:16=
+px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px =
+solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D=
+"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><span style=3D=
+"color:#64748b;font-size:14px">12:54</span></div><div style=3D"color:#47556=
+9;font-size:16px;line-height:1.6">Okay.</div></div><div style=3D"margin-bot=
+tom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-lef=
+t:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span st=
+yle=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span s=
+tyle=3D"color:#64748b;font-size:14px">12:55</span></div><div style=3D"color=
+:#475569;font-size:16px;line-height:1.6">Okay.</div></div><div style=3D"mar=
+gin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bor=
+der-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><=
+span style=3D"color:#64748b;font-size:14px">12:55</span></div><div style=3D=
+"color:#475569;font-size:16px;line-height:1.6">So like if I have to pull up=
+ like overall dates for testing and provide it to Rakesh and Mac. Sandra, w=
+ill William have it or I&#39;ll have to reach out to adp.</div></div><div s=
+tyle=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-rad=
+ius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bo=
+ttom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sa=
+ndra</span><span style=3D"color:#64748b;font-size:14px">13:06</span></div><=
+div style=3D"color:#475569;font-size:16px;line-height:1.6">You can ask Will=
+ Douglas. He will probably know right. Where to go get it. But just so you =
+know, I don&#39;t know if he&#39;s managing the global plan. That&#39;s an =
+ADP plan.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div styl=
+e=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weig=
+ht:600;margin-right:8px">Arpit</span><span style=3D"color:#64748b;font-size=
+:14px">13:16</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;ba=
+ckground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><di=
+v style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fon=
+t-weight:600;margin-right:8px">Sandra</span><span style=3D"color:#64748b;fo=
+nt-size:14px">13:16</span></div><div style=3D"color:#475569;font-size:16px;=
+line-height:1.6">I mean the plan is for July to be doing what they call par=
+allel testing. Even though it&#39;s not truly parallel. Us will be doing pa=
+rallel testing in Lyric. Right. From say like June data. They&#39;ll use Ju=
+ne data for July parallel. Okay. But I think Celergo is a slightly differen=
+t process they follow.</div></div><div style=3D"margin-bottom:16px;padding:=
+16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82=
+f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b8=
+2f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#64=
+748b;font-size:14px">13:38</span></div><div style=3D"color:#475569;font-siz=
+e:16px;line-height:1.6">Got it.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px so=
+lid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"c=
+olor:#3b82f6;font-weight:600;margin-right:8px">Sandra</span><span style=3D"=
+color:#64748b;font-size:14px">13:38</span></div><div style=3D"color:#475569=
+;font-size:16px;line-height:1.6">Yeah.</div></div><div style=3D"margin-bott=
+om:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left=
+:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span sty=
+le=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><span sty=
+le=3D"color:#64748b;font-size:14px">13:39</span></div><div style=3D"color:#=
+475569;font-size:16px;line-height:1.6">So I&#39;ll connect with William Dou=
+glas and share that information with Rakesh.</div></div><div style=3D"margi=
+n-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;borde=
+r-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><sp=
+an style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><s=
+pan style=3D"color:#64748b;font-size:14px">13:44</span></div><div style=3D"=
+color:#475569;font-size:16px;line-height:1.6">Yep.</div></div><div style=3D=
+"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px=
+;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8p=
+x"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</sp=
+an><span style=3D"color:#64748b;font-size:14px">13:45</span></div><div styl=
+e=3D"color:#475569;font-size:16px;line-height:1.6">That&#39;s the payroll p=
+iece.</div></div><div style=3D"margin-bottom:16px;padding:16px;background-c=
+olor:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D=
+"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:6=
+00;margin-right:8px">Sandra</span><span style=3D"color:#64748b;font-size:14=
+px">13:46</span></div><div style=3D"color:#475569;font-size:16px;line-heigh=
+t:1.6">Yes.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div st=
+yle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-we=
+ight:600;margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-siz=
+e:14px">13:48</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Hey Arpit on. On that employee master load from a testing perspe=
+ctive. Beyond testing the data updates in Honeywell hcm, are we anticipatin=
+g a testing plan to look at as well that PeopleSoft Bridge and some sample =
+testing I guess of downstream interfaces as well. Like what&#39;s. What&#39=
+;s the full scope of that test or is that up for discussion?</div></div><di=
+v style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-=
+radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin=
+-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px"=
+>Sandra</span><span style=3D"color:#64748b;font-size:14px">14:21</span></di=
+v><div style=3D"color:#475569;font-size:16px;line-height:1.6">I would need =
+the HR to speak to that.</div></div><div style=3D"margin-bottom:16px;paddin=
+g:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b=
+82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3=
+b82f6;font-weight:600;margin-right:8px">Arpit</span><span style=3D"color:#6=
+4748b;font-size:14px">14:26</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">Yeah, I will have to check but I don&#39;t think I=
+&#39;ve not heard that from Rajni&#39;s team that there&#39;s going to be a=
+ downstream impact testing. They did a downstream impact analysis and came =
+back saying like there is no downstream impact from the changes which HR is=
+ suggesting.</div></div><div style=3D"margin-bottom:16px;padding:16px;backg=
+round-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div s=
+tyle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-w=
+eight:600;margin-right:8px">Sandra</span><span style=3D"color:#64748b;font-=
+size:14px">14:47</span></div><div style=3D"color:#475569;font-size:16px;lin=
+e-height:1.6">It&#39;s not a reorg. Right? Exactly. It&#39;s not a reorg. S=
+o there&#39;s no structural as I would say. Right. Complex maybe as a rewor=
+k would have been.</div></div><div style=3D"margin-bottom:16px;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6">=
+<div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;=
+font-weight:600;margin-right:8px">Jeff</span><span style=3D"color:#64748b;f=
+ont-size:14px">14:56</span></div><div style=3D"color:#475569;font-size:16px=
+;line-height:1.6">Got it. And then just my other question too. As we talk a=
+bout like the concept of uat, are you looking or are we looking to HR it to=
+ do user acceptance testing or are there solstice. Is there a user base the=
+re that we&#39;re planning to like double coordinate the testing. Like, is =
+that an HR function, an HR systems or an HR IT function as we consider uat.=
+</div></div><div style=3D"margin-bottom:16px;padding:16px;background-color:=
+#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"disp=
+lay:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;ma=
+rgin-right:8px">Sandra</span><span style=3D"color:#64748b;font-size:14px">1=
+5:21</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6=
+">I think it&#39;s it, which is why Rajani was concerned up front. Right. B=
+ecause of resources. She wanted to make sure. Right. They understood what t=
+he change was because it requires IT support, because they have to load in =
+the QA and then it has to be pushed to downstreams.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</=
+span><span style=3D"color:#64748b;font-size:14px">15:37</span></div><div st=
+yle=3D"color:#475569;font-size:16px;line-height:1.6">And who does the testi=
+ng and sign off there? Like does Raj and his team sign off on the UAT or is=
+ that a business function?</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #=
+3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:=
+#3b82f6;font-weight:600;margin-right:8px">Sandra</span><span style=3D"color=
+:#64748b;font-size:14px">15:43</span></div><div style=3D"color:#475569;font=
+-size:16px;line-height:1.6">That&#39;s probably, that&#39;s more than likel=
+y business.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgr=
+ound-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div st=
+yle=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-we=
+ight:600;margin-right:8px">Arpit</span><span style=3D"color:#64748b;font-si=
+ze:14px">15:47</span></div><div style=3D"color:#475569;font-size:16px;line-=
+height:1.6">So Jeff, right now the payroll piece of configuration, which I =
+said is already done in PeopleSoftware US, that is like an IT system change=
+ which Rajni&#39;s team is involved in. Employee transfer is a business tra=
+nsaction. So business will conduct that transaction and validate and sign o=
+ff. No, it like it will be involved if there is something which is not not =
+working correctly and to fix that. But it will not be coordinating or signi=
+ng off on that activity. The third piece is ADP for rest of the world. It i=
+s following the entire implementation plan. So ADP vendor as IT is involved=
+ along with HR business, Kellero, Zen&#39;s team.</div></div><div style=3D"=
+margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;=
+border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px=
+"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span=
+><span style=3D"color:#64748b;font-size:14px">16:31</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">Okay, got it. All right, =
+that, that makes sense.</div></div><div style=3D"margin-bottom:16px;padding=
+:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b8=
+2f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b=
+82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#6=
+4748b;font-size:14px">16:35</span></div><div style=3D"color:#475569;font-si=
+ze:16px;line-height:1.6">Yeah, thanks for that clarification.</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border=
+-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margi=
+n-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px=
+">Sandra</span><span style=3D"color:#64748b;font-size:14px">16:37</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">So, so, and =
+just so you guys are aware, if it comes up, if it&#39;s questioned, but the=
+ test file that will be sent is just that it&#39;s a point in time. We know=
+ they&#39;re still onboarding people or trying to bring on additional resou=
+rces in those incremental hire roles. So there will have to be a final file=
+ sent right at the end of July just prior to 8:1 to make sure we&#39;ve inc=
+luded all the right additional resources. We can&#39;t, we can&#39;t leave =
+a man behind, so to speak.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #=
+3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:=
+#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span style=3D"color:#=
+64748b;font-size:14px">17:10</span></div><div style=3D"color:#475569;font-s=
+ize:16px;line-height:1.6">So the testing will be sometime in, I guess, earl=
+y July presumably. Then there&#39;ll be a final file that.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-b=
+ottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">S=
+andra</span><span style=3D"color:#64748b;font-size:14px">17:16</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">Will be like, y=
+es, just before 8. 1. Because people could have moved, we could have ads, y=
+ou know, I don&#39;t know terms. Who knows.</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border=
+-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><spa=
+n style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><spa=
+n style=3D"color:#64748b;font-size:14px">17:31</span></div><div style=3D"co=
+lor:#475569;font-size:16px;line-height:1.6">Anything else?</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-b=
+ottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">R=
+akesh</span><span style=3D"color:#64748b;font-size:14px">17:32</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">Yeah, no, I thi=
+nk, I think, I think this is a good spot. So now certainly we spoke about, =
+you know, some of the sign ops. And so again, I think, you know, what I&#39=
+;m understanding is the testing is again, it&#39;s handled by different tea=
+ms here. We may need to understand with Rajni and her team, you know, how t=
+hose sign offs are happening and how they&#39;re reporting on it. Certainly=
+ if anything that&#39;s in the ADP purview, if they&#39;re going to handle =
+it fully. We may just need an update. We will need an update from them on h=
+ow that is coming along and we&#39;ll just report out on it. I think outsid=
+e that and what we&#39;re.</div></div><div style=3D"margin-bottom:16px;padd=
+ing:16px;background-color:#f8fafc;border-radius:8px;border-left:4px solid #=
+3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:=
+#3b82f6;font-weight:600;margin-right:8px">Sandra</span><span style=3D"color=
+:#64748b;font-size:14px">18:11</span></div><div style=3D"color:#475569;font=
+-size:16px;line-height:1.6">Doing with with Rajini and team right with hrit=
+ this is. It&#39;s pretty standard. I know they&#39;ve not done it very oft=
+en in HCM but the process of transfers and you know mass load transfers, th=
+ings like that happen. So there is a you know, standard test plan process f=
+or approvals etc. So it shouldn&#39;t be.</div></div><div style=3D"margin-b=
+ottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-l=
+eft:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span=
+ style=3D"color:#64748b;font-size:14px">18:31</span></div><div style=3D"col=
+or:#475569;font-size:16px;line-height:1.6">It&#39;s not any reinventing.</d=
+iv></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display=
+:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margi=
+n-right:8px">Sandra</span><span style=3D"color:#64748b;font-size:14px">18:3=
+3</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">I=
+t is not.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div styl=
+e=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weig=
+ht:600;margin-right:8px">Jeff</span><span style=3D"color:#64748b;font-size:=
+14px">18:34</span></div><div style=3D"color:#475569;font-size:16px;line-hei=
+ght:1.6">There&#39;s no code or systematic change. It&#39;s a data change, =
+right? Pretty much data change, yeah. And the exception being just it sound=
+s like the payroll piece of this. Right. Ensuring we&#39;ve got payroll con=
+figuration for us system and we&#39;re validating that and then the ADP pie=
+ce of course seems like maybe the larger right piece to this.</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border=
+-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margi=
+n-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px=
+">Rakesh</span><span style=3D"color:#64748b;font-size:14px">18:56</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Yep, got it.=
+ So and again this is all for 81 now certainly for 1027 there&#39;s a whole=
+ slew of different and we that I think arit we should get from Cap G in ter=
+ms of all of that activity. Correct.</div></div><div style=3D"margin-bottom=
+:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4=
+px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=
+=3D"color:#3b82f6;font-weight:600;margin-right:8px">Arpit</span><span style=
+=3D"color:#64748b;font-size:14px">19:12</span></div><div style=3D"color:#47=
+5569;font-size:16px;line-height:1.6">Yeah. My ace is suggestion is Rakesh i=
+f we start like we talk about that as a separate topic because a lot of tim=
+es we confuse the audience with two systems. So we focus and get everything=
+ you need for BRV and the moment we have everything for BRV I&#39;ll make s=
+ure we have the right people from CAPG to talk about 1027 as well.</div></d=
+iv><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;b=
+order-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;=
+margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-righ=
+t:8px">Rakesh</span><span style=3D"color:#64748b;font-size:14px">19:32</spa=
+n></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. U=
+nderstood.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgro=
+und-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div sty=
+le=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-wei=
+ght:600;margin-right:8px">Arpit</span><span style=3D"color:#64748b;font-siz=
+e:14px">19:34</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Yeah.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><d=
+iv style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fo=
+nt-weight:600;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;f=
+ont-size:14px">19:34</span></div><div style=3D"color:#475569;font-size:16px=
+;line-height:1.6">So I think as a whole, I think from a systems perspective=
+ we have a V so we we have action item to work with you Arpit to get that v=
+iew from a from a testing readiness perspective we&#39;ll also work with yo=
+u to understand that I don&#39;t know if we need anything else from a syste=
+ms perspective Srinivas Anything on the ERP side that we need to talk about=
+ here?</div></div><div style=3D"margin-bottom:16px;padding:16px;background-=
+color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Srinivas</span><span style=3D"color:#64748b;font-si=
+ze:14px">20:00</span></div><div style=3D"color:#475569;font-size:16px;line-=
+height:1.6">The only one actually I think I&#39;ll have to go and check wit=
+h Satish team from EHM to SAP and the setup that what we have already in pl=
+ace IFI coe to see if they have they were able to get all of those cost cen=
+ters that were submitted in EHM are configured approach for testing in SIT =
+before giving it to users. So let me do that.</div></div><div style=3D"marg=
+in-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bord=
+er-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><s=
+pan style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sandra</span><=
+span style=3D"color:#64748b;font-size:14px">20:27</span></div><div style=3D=
+"color:#475569;font-size:16px;line-height:1.6">Yeah.</div></div><div style=
+=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:=
+8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom=
+:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh=
+</span><span style=3D"color:#64748b;font-size:14px">20:29</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Okay. I and Srinivas=
+ I know Mac and I were connecting with you separately on another ask so we =
+can if we end this call early we&#39;ll try to connect with you on that.</d=
+iv></div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8=
+fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display=
+:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margi=
+n-right:8px">Srinivas</span><span style=3D"color:#64748b;font-size:14px">20=
+:39</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6"=
+>Sorry for the Interruption. I think we need Bill there some majority of th=
+e scope is Bill Faria. I want him to be on the call to us.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-b=
+ottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">R=
+akesh</span><span style=3D"color:#64748b;font-size:14px">20:52</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">Okay, we&#39;ll=
+ try to get a set up call but outside that I, I think we have good informat=
+ion here. Again, as we said, it&#39;s not the typical ITSIT uat. So some of=
+ the activities around entry exit criteria are probably not relevant here. =
+Some of the testing and logistics is probably not relevant here as well. I =
+think the rest of it is in terms of just tracking. So we have action items.=
+ It&#39;s just tracking to readiness and, and then I think some of this inf=
+ormation will start reporting on and use for the 625 BRV readout that Jeff =
+is planning in Charlotte. So I think the invites would go out for that, tha=
+t&#39;s the full day workshop, etc. But I think more to come on that from t=
+he pmo.</div></div><div style=3D"margin-bottom:16px;padding:16px;background=
+-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div style=
+=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weigh=
+t:600;margin-right:8px">Sandra</span><span style=3D"color:#64748b;font-size=
+:14px">21:41</span></div><div style=3D"color:#475569;font-size:16px;line-he=
+ight:1.6">So Rakesh, can you guys include me on whatever your presentations=
+ look like for this piece so. So I can be aware?</div></div><div style=3D"m=
+argin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;b=
+order-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"=
+><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</spa=
+n><span style=3D"color:#64748b;font-size:14px">21:48</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">Yes, absolutely. And I th=
+ink it&#39;s a canned set of slides that different work streams would do. T=
+here&#39;s a standard template they&#39;ve done and there&#39;s probably a =
+line item for non ERP systems or HR here for it.</div></div><div style=3D"m=
+argin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;b=
+order-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"=
+><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sandra</spa=
+n><span style=3D"color:#64748b;font-size:14px">22:02</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">Because Matt and Kelly an=
+d Sarah will be in the room. So I want to make sure they&#39;re aware also =
+going in.</div></div><div style=3D"margin-bottom:16px;padding:16px;backgrou=
+nd-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div styl=
+e=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weig=
+ht:600;margin-right:8px">Rakesh</span><span style=3D"color:#64748b;font-siz=
+e:14px">22:08</span></div><div style=3D"color:#475569;font-size:16px;line-h=
+eight:1.6">Understood. Yes, we&#39;ll share that information ahead of I thi=
+nk by next week.</div></div><div style=3D"margin-bottom:16px;padding:16px;b=
+ackground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><d=
+iv style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;fo=
+nt-weight:600;margin-right:8px">Sandra</span><span style=3D"color:#64748b;f=
+ont-size:14px">22:12</span></div><div style=3D"color:#475569;font-size:16px=
+;line-height:1.6">So thank you.</div></div><div style=3D"margin-bottom:16px=
+;padding:16px;background-color:#f8fafc;border-radius:8px;border-left:4px so=
+lid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><span style=3D"c=
+olor:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><span style=3D"=
+color:#64748b;font-size:14px">22:13</span></div><div style=3D"color:#475569=
+;font-size:16px;line-height:1.6">Okay. I think we&#39;re in a good spot. So=
+ I don&#39;t have much more on this and we&#39;ll give you back half an hou=
+r but no thanks Sandra for jumping in on this.</div></div><div style=3D"mar=
+gin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bor=
+der-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Sandra</span>=
+<span style=3D"color:#64748b;font-size:14px">22:25</span></div><div style=
+=3D"color:#475569;font-size:16px;line-height:1.6">No problem.</div></div><d=
+iv style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border=
+-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margi=
+n-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px=
+">Rakesh</span><span style=3D"color:#64748b;font-size:14px">22:27</span></d=
+iv><div style=3D"color:#475569;font-size:16px;line-height:1.6">Other things=
+, Jeff or Srinivas, any other questions or clarifications you needed?</div>=
+</div><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8faf=
+c;border-radius:8px;border-left:4px solid #3b82f6"><div style=3D"display:fl=
+ex;margin-bottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-r=
+ight:8px">Srinivas</span><span style=3D"color:#64748b;font-size:14px">22:33=
+</span></div><div style=3D"color:#475569;font-size:16px;line-height:1.6">I =
+think I&#39;m good for now, Rakesh, thanks.</div></div><div style=3D"margin=
+-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;border=
+-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><spa=
+n style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Rakesh</span><sp=
+an style=3D"color:#64748b;font-size:14px">22:35</span></div><div style=3D"c=
+olor:#475569;font-size:16px;line-height:1.6">Okay, so we&#39;ll send out th=
+e notes and action items again. Certainly. So.</div></div><div style=3D"mar=
+gin-bottom:16px;padding:16px;background-color:#f8fafc;border-radius:8px;bor=
+der-left:4px solid #3b82f6"><div style=3D"display:flex;margin-bottom:8px"><=
+span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><s=
+pan style=3D"color:#64748b;font-size:14px">22:39</span></div><div style=3D"=
+color:#475569;font-size:16px;line-height:1.6">Sounds good.</div></div><div =
+style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;border-ra=
+dius:8px;border-left:4px solid #3b82f6"><div style=3D"display:flex;margin-b=
+ottom:8px"><span style=3D"color:#3b82f6;font-weight:600;margin-right:8px">R=
+akesh</span><span style=3D"color:#64748b;font-size:14px">22:41</span></div>=
+<div style=3D"color:#475569;font-size:16px;line-height:1.6">All right, than=
+k you all. Thank you.</div></div><div style=3D"margin-bottom:0;padding:16px=
+;background-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6">=
+<div style=3D"display:flex;margin-bottom:8px"><span style=3D"color:#3b82f6;=
+font-weight:600;margin-right:8px">Sandra</span><span style=3D"color:#64748b=
+;font-size:14px">22:43</span></div><div style=3D"color:#475569;font-size:16=
+px;line-height:1.6">Thank you everyone.</div></div></div><div style=3D"marg=
+in-top:36px;text-align:center;color:#64748b;font-size:14px;padding:20px;bor=
+der-top:1px solid #e2e8f0"><p style=3D"margin:0;margin-bottom:8px">Captured=
+ with Wave AI Note Taker</p><p style=3D"margin:0;font-size:12px">Your AI-po=
+wered companion</p></div></div></div></div></div></div>
+
+--00000000000028d99406377745fa--

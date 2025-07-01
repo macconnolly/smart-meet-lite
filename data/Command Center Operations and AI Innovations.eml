@@ -1,0 +1,265 @@
+Delivered-To: mac@macconnolly.com
+Received: by 2002:adf:a403:0:b0:3a4:dc5b:9678 with SMTP id d3csp874608wra;
+        Fri, 30 May 2025 07:38:54 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHyrAzn43LDKlen+vG1cgzgHNUrZFuVZfXf5cL8KN6t09YMIpnMwrkKHMY5HkLRwL/yTNs0
+X-Received: by 2002:a05:620a:1913:b0:7c5:53ab:a745 with SMTP id af79cd13be357-7d0a2038c1amr615993185a.36.1748615933568;
+        Fri, 30 May 2025 07:38:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748615933; cv=none;
+        d=google.com; s=arc-20240605;
+        b=VSKdf1onv1nvEcXk6AwFsMPvLuOEjSNqn4P6xgX/59vxV1zd4+vFHiyPWUOO3p1q16
+         6faL2/2Sijt1M8lqm+wVsNzWEOzqCWyMb4UVSthR75XpkadpIhNrHJgJ0TSUIih5F99s
+         TX9yJci4NP9+yTLeUtwBlUY8kx1xTYQ6bzfF2Yzbc96PEhzXOqgxSLViasjAC+wgK1dS
+         4L8oCUbM0waJU2Z6XZIykars9Jkh4gQ6e7+Prs25Vl6kxraXTnlFAIWdF6e/z7FvYgdS
+         Q3x2O0e5PO6sz+fF221dNooTJr4TJpsw/0/fY8Igi6tPARlYegRYYuqCjsohVkLIntwX
+         4m7Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:mime-version:date:message-id:subject:reply-to:to:from
+         :dkim-signature:dkim-signature;
+        bh=4pHA/+uMMYeAUDElapjNxKMngL0lPkbet2Ibqppto30=;
+        fh=jN0oa6nicAEaAPyjArv1sk/Yi9c5L2zdjtJI4cxkS80=;
+        b=c5iia0orscuyZdN9qc9zMzkag5V+MSjSbJEYKakvf5lUIRdf4VRCVkQWwIfA2idymq
+         y4ZCexEB57Fc9xRkY/sAUaIhAllvzqTzgjgyBDQqi5PICpifUjACBCHfELpUc2p9wGHu
+         n28BdpovU9uyr3BC1/nB7apzxsIo6i1EievmYIZ8VIEoc7cVcvC+fqICk/0e0i4F/RNG
+         LHFMeo6Ch+piArgkwNtIBrLCXXShJ/SFEk/l08HjIteRD6Wmmhs7xPeCAgMdANcoYRe3
+         9pG4WD1a9/MetSco6LNdBdCv/AiqMsQmas41lUuTNxlHDVIbHwMVtXrw7iM4RxORruM9
+         g6XA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=uF9KCL83;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=eNc2PcDs;
+       spf=pass (google.com: domain of 0100019721a1ab39-64590280-ed3b-4bdb-a1f9-97a20f5f3dc7-000000@send.email.wave.co designates 54.240.9.30 as permitted sender) smtp.mailfrom=0100019721a1ab39-64590280-ed3b-4bdb-a1f9-97a20f5f3dc7-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+Return-Path: <0100019721a1ab39-64590280-ed3b-4bdb-a1f9-97a20f5f3dc7-000000@send.email.wave.co>
+Received: from a9-30.smtp-out.amazonses.com (a9-30.smtp-out.amazonses.com. [54.240.9.30])
+        by mx.google.com with ESMTPS id af79cd13be357-7d09a1135adsi389001485a.30.2025.05.30.07.38.53
+        for <mac@macconnolly.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 30 May 2025 07:38:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 0100019721a1ab39-64590280-ed3b-4bdb-a1f9-97a20f5f3dc7-000000@send.email.wave.co designates 54.240.9.30 as permitted sender) client-ip=54.240.9.30;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.wave.co header.s=resend header.b=uF9KCL83;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=eNc2PcDs;
+       spf=pass (google.com: domain of 0100019721a1ab39-64590280-ed3b-4bdb-a1f9-97a20f5f3dc7-000000@send.email.wave.co designates 54.240.9.30 as permitted sender) smtp.mailfrom=0100019721a1ab39-64590280-ed3b-4bdb-a1f9-97a20f5f3dc7-000000@send.email.wave.co;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wave.co
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=email.wave.co; t=1748615932;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=PF0DuxjfajcLoiuN23FVKdAh39OjJJslbN3I++UPVfc=;
+	b=uF9KCL83nHGXBYlw+yxW+yp4Y1nqjCmt1ECxxOhnvN1oJvAR6gKIt9KNzm4zCcLT
+	dtLr/qc/T/Dxs3L3o7fdxE9BI/Z6sV7/dhcLm0dLVVXLO/3kSwQur0gP+yp80JFUOua
+	o1A6vXM2cUm36kgV7twbNNnQ+Y730v8VZRiMKoYU=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1748615932;
+	h=From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=PF0DuxjfajcLoiuN23FVKdAh39OjJJslbN3I++UPVfc=;
+	b=eNc2PcDsrGuF6MMiJRnwbK5bOujUT4WSzP7UXUtBWa6ad0xiaDlbmGsEXWB62oXl
+	adPaotgYeU08rQVD+q5HyN0YASGvaI2QsZ10U8LpKuLzf/PIrfJ6Gj9Li77BFA+uxpl
+	v/h188SmB9H99dg0BqiukYQTFVDZ6gwXWC7+obMk=
+From: Wave AI Note Taker <summary@email.wave.co>
+To: mac@macconnolly.com
+Reply-To: l7jmcjmp@wave-18b2c5f9306e.intercom-mail.com
+Subject: Command Center Operations and AI Innovations
+Message-ID: <0100019721a1ab39-64590280-ed3b-4bdb-a1f9-97a20f5f3dc7-000000@email.amazonses.com>
+Date: Fri, 30 May 2025 14:38:52 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-23d090f3ca95b4f7-Part_1"
+Feedback-ID: ::1.us-east-1.pAEstvQcjyhQNKGKcgSlzI7SVR8ZSG5wSmKwiz/A8Dg=:AmazonSES
+X-SES-Outgoing: 2025.05.30-54.240.9.30
+
+----_NmP-23d090f3ca95b4f7-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Command Center Operations and AI Innovations
+
+- **Main Topics Discussed:**
+
+  1. **Command Center Operations and Preparation**
+     - The command =
+center is headquartered in Charlotte with multiple operational locations =
+allowing for a =E2=80=9Cfollow the sun=E2=80=9D support model.
+     - Focus on preparation for both User Acceptance Testing (UAT) and =
+Hyper Care phases.
+     - Use of tools and detailed documentation (such as =
+Red to submit) are emphasized for readiness.
+     - Team alignment and =
+updates have been shared by Jeff and others.
+
+  2. **Exploration of AI =
+Opportunities**
+     - A new idea was introduced regarding the use of AI =
+for operational improvements, specifically:
+       - Utilizing AI to =
+analyze SOPOs (possibly Standard Operating Procedures or Orders).
+       - Allowing the AI to detect outdated entities or bank accounts =
+within these documents.
+       - Automating the correction process: =
+changing the affected items to the correct entity, and automatically =
+notifying customers about the amendment.
+     - This idea is suggested for =
+further discussion at a later date or possibly at the end of the meeting.
+
+- **Dates and Figures Mentioned:**
+  - Transcript references upcoming =
+events (UAT, Hyper Care) but does not specify dates.
+  - The conversation takes place before May 30th, 2025.
+
+- **Follow-up/Action Items:**
+  - Await team input and progress updates on =
+preparation for UAT and Hyper Care.
+  - Consider scheduling further =
+discussion about potential AI-driven automation for document/entity =
+correction and customer notification processes.
+
+Transcript:
+0:00
+Command center in Charlotte, where we have it in multiple places, where we =
+have an opportunity to follow the sun. We would use things like Red to =
+submit. You know, all just all the details are the pieces that we want to =
+kind of get our arms around now in preparation for both uat, but equally =
+preparation for Hyper Care. So, no, I agree with everything you just shared=
+. Jeff and I shared it with the team and so kind of look forward to what =
+they put together so far.
+
+0:27
+I'm going to introduce a Divergent thought.=
+ We don't need to talk about it today, or maybe at the end we could discuss=
+ it a little bit. But one of the things that's clear of problems and so one=
+ of the things that I would like to explore is, you know, where are there =
+opportunities where we could use AI to look at, like, SOPOs. Like, read =
+that SOPO, determine if it's using an old entity or an old bank account, =
+and then have it change that PLSO to the right entity and send a note back =
+to the customer that says, we've amended this order with the right =
+information. You need to make.
+----_NmP-23d090f3ca95b4f7-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr" lang=3D"en"><head><link rel=3D"preload" as=3D"image" =
+href=3D"https://upcdn.io/W142iax/raw/email/logo_white.png"/></head><div =
+style=3D"font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe =
+UI&quot;, Roboto, Helvetica, Arial, sans-serif;margin:0;padding:0;backgroun=
+d-color:#f4f4f4"><div style=3D"width:100%;max-width:604px;margin:0 =
+auto;background-color:#ffffff"><div style=3D"background-image:url(https://u=
+pcdn.io/W142iax/raw/email/banner_clean.png);background-size:cover;backgroun=
+d-position:center;width:604px;height:297px;margin:0 =
+auto;position:relative"><table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" height=3D"100%"><tr><td valign=3D"center" =
+align=3D"center" style=3D"padding:0"><img src=3D"https://upcdn.=
+io/W142iax/raw/email/logo_white.png" alt=3D"Wave AI Logo" =
+style=3D"width:41px;height:58px;max-width:41px;margin-bottom:10px"/><h1 =
+style=3D"color:white;font-size:32px;margin:0;padding:0 0 =
+10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);text-align:center">Command =
+Center Operations and AI Innovations</h1></td></tr></table></div><div =
+style=3D"max-width:600px;margin:0 auto;padding:32px 20px"><div =
+style=3D"text-align:center;margin-bottom:32px"><a href=3D"https://app.wave.=
+co/sessions/82d1d1fe-4e62-4ad7-81de-4af83bcdbdda?lastLoginParam=3Dgoogle" =
+style=3D"background-color:#E6F0FF;color:#0066CC;padding:12px =
+24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:16px;=
+display:inline-block;box-shadow:0 2px 4px rgba(0, 0, 0, 0.=
+05);transition:all 0.15s ease;margin-top:8px;margin-bottom:8px">=E2=9C=A8 =
+View Your Session on the Web</a></div><div style=3D"text-align:center;margi=
+n-bottom:36px"></div><div style=3D"background-color:#ffffff;padding:28px;bo=
+rder-radius:12px;border:1px solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0,=
+ 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);margin-bottom:28px"><h3 =
+style=3D"color:#0f172a;font-size:20px;font-weight:600;margin-top:0;margin-b=
+ottom:20px;display:flex;align-items:center;gap:8px"><span =
+style=3D"font-size:24px">=F0=9F=93=9D</span>Summary</h3><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6"><div =
+data-id=3D"react-email-markdown"><ul>
+<li><p><strong =
+style=3D"font-weight:bold">Main Topics Discussed:</strong></p>
+<ol>
+<li><p><strong style=3D"font-weight:bold">Command Center Operations and =
+Preparation</strong></p>
+<ul>
+<li>The command center is headquartered in =
+Charlotte with multiple operational locations allowing for a =
+=E2=80=9Cfollow the sun=E2=80=9D support model.</li>
+<li>Focus on preparation for both User Acceptance Testing (UAT) and Hyper =
+Care phases.</li>
+<li>Use of tools and detailed documentation (such as Red =
+to submit) are emphasized for readiness.</li>
+<li>Team alignment and =
+updates have been shared by Jeff and others.</li>
+</ul>
+</li>
+<li><p><strong style=3D"font-weight:bold">Exploration of AI =
+Opportunities</strong></p>
+<ul>
+<li>A new idea was introduced regarding the=
+ use of AI for operational improvements, specifically:<ul>
+<li>Utilizing AI to analyze SOPOs (possibly Standard Operating Procedures =
+or Orders).</li>
+<li>Allowing the AI to detect outdated entities or bank =
+accounts within these documents.</li>
+<li>Automating the correction =
+process: changing the affected items to the correct entity, and =
+automatically notifying customers about the amendment.</li>
+</ul>
+</li>
+<li>This idea is suggested for further discussion at a later date or =
+possibly at the end of the meeting.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p><strong style=3D"font-weight:bold">Dates and Figures =
+Mentioned:</strong></p>
+<ul>
+<li>Transcript references upcoming events (UAT=
+, Hyper Care) but does not specify dates.</li>
+<li>The conversation takes =
+place before May 30th, 2025.</li>
+</ul>
+</li>
+<li><p><strong =
+style=3D"font-weight:bold">Follow-up/Action Items:</strong></p>
+<ul>
+<li>Await team input and progress updates on preparation for UAT and Hyper =
+Care.</li>
+<li>Consider scheduling further discussion about potential =
+AI-driven automation for document/entity correction and customer =
+notification processes.</li>
+</ul>
+</li>
+</ul>
+</div></div></div><div =
+style=3D"background-color:#ffffff;padding:28px;border-radius:12px;border:1p=
+x solid #e2e8f0;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 =
+rgba(0, 0, 0, 0.06)"><h3 style=3D"color:#0f172a;font-size:20px;font-weight:=
+600;margin-top:0;margin-bottom:20px;display:flex;align-items:center;gap:8px=
+"><span style=3D"font-size:24px">=F0=9F=8E=99=EF=B8=8F</span>Transcription<=
+/h3><div style=3D"margin-bottom:16px;padding:16px;background-color:#f8fafc;=
+border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Jeff</span><span =
+style=3D"color:#64748b;font-size:14px">0:00</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">Command center in =
+Charlotte, where we have it in multiple places, where we have an =
+opportunity to follow the sun. We would use things like Red to submit. You =
+know, all just all the details are the pieces that we want to kind of get =
+our arms around now in preparation for both uat, but equally preparation =
+for Hyper Care. So, no, I agree with everything you just shared. Jeff and I=
+ shared it with the team and so kind of look forward to what they put =
+together so far.</div></div><div style=3D"margin-bottom:0;padding:16px;back=
+ground-color:#f8fafc;border-radius:8px;border-left:4px solid #3b82f6"><div =
+style=3D"display:flex;align-items:center;margin-bottom:8px"><span =
+style=3D"color:#3b82f6;font-weight:600;margin-right:8px">Unknown</span><spa=
+n style=3D"color:#64748b;font-size:14px">0:27</span></div><div =
+style=3D"color:#475569;font-size:16px;line-height:1.6">I&#x27;m going to =
+introduce a Divergent thought. We don&#x27;t need to talk about it today, =
+or maybe at the end we could discuss it a little bit. But one of the things=
+ that&#x27;s clear of problems and so one of the things that I would like =
+to explore is, you know, where are there opportunities where we could use =
+AI to look at, like, SOPOs. Like, read that SOPO, determine if it&#x27;s =
+using an old entity or an old bank account, and then have it change that =
+PLSO to the right entity and send a note back to the customer that says, =
+we&#x27;ve amended this order with the right information. You need to make.=
+</div></div></div><div style=3D"margin-top:36px;text-align:center;color:#64=
+748b;font-size:14px;padding:20px;border-top:1px solid #e2e8f0"><p =
+style=3D"margin:0;margin-bottom:8px">Captured with Wave AI Note Taker</p><p=
+ style=3D"margin:0;font-size:12px">Your AI-powered companion</p></div></div=
+></div></div></html>
+----_NmP-23d090f3ca95b4f7-Part_1--
