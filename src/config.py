@@ -17,6 +17,7 @@ class Settings(BaseSettings):
     qdrant_host: str = "localhost"
     qdrant_port: int = 6333
     qdrant_collection: str = "memories"
+    qdrant_entity_collection: str = "entity_embeddings"
 
     # Model
     onnx_model_path: str = "models/onnx/all-MiniLM-L6-v2.onnx"

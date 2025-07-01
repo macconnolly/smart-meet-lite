@@ -5,7 +5,6 @@ from datetime import datetime
 from typing import Optional, List, Dict, Any, Literal
 from enum import Enum
 import uuid
-import numpy as np
 
 
 # Entity types
@@ -51,10 +50,6 @@ class Entity:
     first_seen: datetime = field(default_factory=datetime.now)
     last_updated: datetime = field(default_factory=datetime.now)
 
-    # Fields for vector search
-    name_embedding: Optional[Any] = None  # Will be np.ndarray when loaded
-    embedding_model: Optional[str] = None
-    embedding_generated_at: Optional[datetime] = None
 
 
 @dataclass

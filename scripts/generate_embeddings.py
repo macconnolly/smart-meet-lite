@@ -1,4 +1,8 @@
-"""Generate embeddings for existing entities that don't have them."""
+"""Generate embeddings for existing entities that don't have them.
+
+DEPRECATED: This script is for the old SQLite BLOB storage.
+Use migrate_entity_embeddings.py instead for the new Qdrant-based system.
+"""
 
 import sys
 import time

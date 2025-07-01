@@ -9,7 +9,6 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Any, Tuple
 
 import numpy as np
-from scipy.spatial.distance import cosine
 from openai import OpenAI
 
 from .models import Entity, EntityMatch, EntityType
@@ -42,7 +41,6 @@ class EntityResolver:
         self._cache_lock = threading.RLock()
         self._entity_cache: Optional[List[Entity]] = None
         self._cache_time: Optional[datetime] = None
-        self._entity_embeddings: Dict[str, np.ndarray] = {}
         
         # Performance metrics
         self._resolution_stats = {
@@ -68,9 +66,6 @@ class EntityResolver:
                 self._entity_cache = self.storage.get_all_entities()
                 self._cache_time = now
                 
-                # Pre-compute embeddings for cached entities
-                self._precompute_embeddings()
-                
                 self._resolution_stats['cache_misses'] += 1
                 logger.info(f"Entity cache refreshed with {len(self._entity_cache)} entities")
             else:
@@ -78,28 +73,6 @@ class EntityResolver:
             
             return self._entity_cache
     
-    def _precompute_embeddings(self):
-        """Pre-compute and cache entity name embeddings."""
-        self._entity_embeddings.clear()
-        
-        for entity in self._entity_cache:
-            if hasattr(entity, 'name_embedding') and entity.name_embedding is not None:
-                self._entity_embeddings[entity.id] = entity.name_embedding
-            else:
-                # Generate embedding if missing
-                try:
-                    embedding = self.embeddings.encode(entity.name)
-                    if embedding.ndim > 1:
-                        embedding = embedding[0]
-                    self._entity_embeddings[entity.id] = embedding
-                    
-                    # Async update to database
-                    threading.Thread(
-                        target=self.storage.update_entity_embedding,
-                        args=(entity.id, embedding)
-                    ).start()
-                except Exception as e:
-                    logger.warning(f"Failed to generate embedding for entity {entity.name}: {e}")
     
     def resolve_entities(self, 
                         query_terms: List[str], 
@@ -188,36 +161,28 @@ class EntityResolver:
         return None
     
     def _try_vector_match(self, term: str, entities: List[Entity]) -> Optional[EntityMatch]:
-        """Try vector similarity matching."""
+        """Try vector similarity matching using Qdrant."""
         try:
-            # Generate embedding for query term
             query_embedding = self.embeddings.encode(term)
             if query_embedding.ndim > 1:
                 query_embedding = query_embedding[0]
             
-            best_match = None
-            best_score = 0.0
+            # Search Qdrant for similar entity embeddings
+            qdrant_results = self.storage.search_entity_embeddings(query_embedding, limit=1)
             
-            for entity in entities:
-                if entity.id in self._entity_embeddings:
-                    entity_embedding = self._entity_embeddings[entity.id]
-                    
-                    # Cosine similarity
-                    similarity = 1 - cosine(query_embedding, entity_embedding)
-                    
-                    if similarity > best_score:
-                        best_score = similarity
-                        best_match = entity
-            
-            if best_match and best_score > 0.5:  # Minimum threshold
-                return EntityMatch(
-                    query_term=term,
-                    entity=best_match,
-                    confidence=best_score,
-                    match_type='vector',
-                    metadata={'similarity_score': best_score}
-                )
-        
+            if qdrant_results:
+                entity_id, score = qdrant_results[0]
+                if score > 0.5:  # Minimum threshold for Qdrant match
+                    # Retrieve the full entity object from SQLite
+                    entity = self.storage.get_entity(entity_id)
+                    if entity:
+                        return EntityMatch(
+                            query_term=term,
+                            entity=entity,
+                            confidence=score,
+                            match_type='vector',
+                            metadata={'similarity_score': score}
+                        )
         except Exception as e:
             logger.warning(f"Vector matching failed for '{term}': {e}")
         

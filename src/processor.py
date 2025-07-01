@@ -377,8 +377,8 @@ class EntityProcessor:
                     if embedding.ndim > 1:
                         embedding = embedding[0]
                     
-                    # Update in database
-                    self.storage.update_entity_embedding(entity.id, embedding)
+                    # Save to Qdrant
+                    self.storage.save_entity_embedding(entity.id, embedding)
                     logging.info(f"Generated embedding for entity: {entity.name}")
                     
                 except Exception as e:

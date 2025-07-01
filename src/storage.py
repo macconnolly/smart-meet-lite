@@ -87,10 +87,7 @@ class MemoryStorage:
                 normalized_name TEXT NOT NULL,
                 attributes TEXT,
                 first_seen TIMESTAMP NOT NULL,
-                last_updated TIMESTAMP NOT NULL,
-                name_embedding BLOB,
-                embedding_model VARCHAR(100),
-                embedding_generated_at TIMESTAMP
+                last_updated TIMESTAMP NOT NULL
             )
         """
         )
@@ -179,29 +176,8 @@ class MemoryStorage:
     def _row_to_entity(self, row: sqlite3.Row) -> Entity:
         """Convert a database row to an Entity object.
         
-        Handles sqlite3.Row objects properly and deals with potentially missing columns
-        for backward compatibility.
+        Handles sqlite3.Row objects properly.
         """
-        import logging
-        
-        # Handle embedding deserialization
-        embedding = None
-        if 'name_embedding' in row.keys() and row['name_embedding']:
-            try:
-                embedding = np.frombuffer(row['name_embedding'], dtype=np.float32)
-            except Exception as e:
-                logging.warning(f"Failed to deserialize embedding for entity {row['id']}: {e}")
-        
-        # Handle optional columns that might not exist in older databases
-        embedding_model = None
-        embedding_generated_at = None
-        
-        if 'embedding_model' in row.keys():
-            embedding_model = row['embedding_model']
-        
-        if 'embedding_generated_at' in row.keys() and row['embedding_generated_at']:
-            embedding_generated_at = datetime.fromisoformat(row['embedding_generated_at'])
-        
         return Entity(
             id=row['id'],
             type=EntityType(row['type']),
@@ -209,11 +185,7 @@ class MemoryStorage:
             normalized_name=row['normalized_name'],
             attributes=json.loads(row['attributes']) if row['attributes'] else {},
             first_seen=datetime.fromisoformat(row['first_seen']),
-            last_updated=datetime.fromisoformat(row['last_updated']),
-            # Extended attributes
-            name_embedding=embedding,
-            embedding_model=embedding_model,
-            embedding_generated_at=embedding_generated_at
+            last_updated=datetime.fromisoformat(row['last_updated'])
         )
 
     def _init_qdrant(self):
@@ -225,6 +197,14 @@ class MemoryStorage:
             self.qdrant.create_collection(
                 collection_name=self.collection_name,
                 vectors_config=VectorParams(size=384, distance=Distance.COSINE),
+            )
+        
+        # Ensure entity embeddings collection exists
+        entity_exists = any(c.name == settings.qdrant_entity_collection for c in collections)
+        if not entity_exists:
+            self.qdrant.create_collection(
+                collection_name=settings.qdrant_entity_collection,
+                vectors_config=VectorParams(size=384, distance=Distance.COSINE),  # Assuming 384-dim embeddings
             )
 
     def save_meeting(self, meeting: Meeting) -> str:
@@ -611,49 +591,71 @@ class MemoryStorage:
         conn.close()
         return entities
 
-    def update_entity_embedding(self, 
-                              entity_id: str, 
-                              embedding: np.ndarray,
-                              model_name: str = "sentence-transformers/all-MiniLM-L6-v2"):
-        """Update entity name embedding for vector search."""
-        conn = sqlite3.connect(self.db_path)
-        cursor = conn.cursor()
+    def save_entity_embedding(self, entity_id: str, embedding: np.ndarray):
+        """Save a single entity's name embedding to Qdrant."""
+        if embedding.ndim > 1:
+            embedding = embedding.squeeze()  # Ensure 1D vector
         
-        cursor.execute("""
-            UPDATE entities 
-            SET name_embedding = ?, 
-                embedding_model = ?,
-                embedding_generated_at = ?
-            WHERE id = ?
-        """, (
-            embedding.tobytes(),
-            model_name,
-            datetime.now().isoformat(),
-            entity_id
-        ))
-        
-        conn.commit()
-        conn.close()
+        self.qdrant.upsert(
+            collection_name=settings.qdrant_entity_collection,
+            points=[
+                PointStruct(
+                    id=entity_id,
+                    vector=embedding.tolist(),
+                    payload={"entity_id": entity_id}  # Store ID in payload for consistency
+                )
+            ]
+        )
 
-    def get_entities_needing_embeddings(self, limit: int = 100) -> List[Entity]:
-        """Get entities that don't have embeddings yet."""
+    def get_entity_embedding(self, entity_id: str) -> Optional[np.ndarray]:
+        """Retrieve a single entity's name embedding from Qdrant."""
+        try:
+            points = self.qdrant.retrieve(
+                collection_name=settings.qdrant_entity_collection,
+                ids=[entity_id],
+                with_vectors=True
+            )
+            if points:
+                return np.array(points[0].vector, dtype=np.float32)
+        except Exception as e:
+            # Log error, e.g., entity not found in Qdrant
+            import logging
+            logging.warning(f"Could not retrieve embedding for entity {entity_id} from Qdrant: {e}")
+        return None
+
+    def search_entity_embeddings(self, query_embedding: np.ndarray, limit: int = 5) -> List[Tuple[str, float]]:
+        """Search for similar entity embeddings in Qdrant."""
+        if query_embedding.ndim > 1:
+            query_embedding = query_embedding.squeeze()  # Ensure 1D vector
+        
+        results = self.qdrant.search(
+            collection_name=settings.qdrant_entity_collection,
+            query_vector=query_embedding.tolist(),
+            limit=limit,
+            with_payload=False  # Only need ID and score
+        )
+        return [(result.id, result.score) for result in results]
+
+    def get_entity(self, entity_id: str) -> Optional[Entity]:
+        """Get entity by ID."""
         conn = sqlite3.connect(self.db_path)
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
         
-        cursor.execute("""
-            SELECT * FROM entities 
-            WHERE name_embedding IS NULL 
-            ORDER BY last_updated DESC
-            LIMIT ?
-        """, (limit,))
+        cursor.execute(
+            """
+            SELECT * FROM entities
+            WHERE id = ?
+            """,
+            (entity_id,),
+        )
         
-        entities = []
-        for row in cursor.fetchall():
-            entities.append(self._row_to_entity(row))
-        
+        row = cursor.fetchone()
         conn.close()
-        return entities
+        
+        if row:
+            return self._row_to_entity(row)
+        return None
 
     def get_analytics_data(
         self, metric: str, time_range: Optional[Tuple[datetime, datetime]] = None
