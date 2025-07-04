@@ -4,449 +4,507 @@
 
 This document contains the EXACT implementation requirements based on a comprehensive forensic audit of the codebase against the Master Implementation Plan (010_Master_Implementation_Plan.md). Every item includes exact line numbers, exact code to add/remove, and detailed context for implementation.
 
-## Recent Progress Update (2025-01-04)
+## 🚨 CRITICAL: READ THIS FIRST
 
-### ✅ COMPLETED TODAY: Critical Bug Fixes
+The system HAS all components but they're NOT properly connected. We need to:
+1. Fix database indexes (wrong names)
+2. Remove brittle regex patterns that break state tracking
+3. Use existing batch operations for performance
+4. Add self-healing validation
+5. Make query engine async
 
-1. **Async Event Loop Fix**
-   - File: `src/processor_v2.py` (lines 166-168)
-   - Removed nested asyncio.run() causing FastAPI conflicts
-   - Now directly awaits _create_comprehensive_transitions
-
-2. **Query Engine Method Fix**
-   - File: `src/query_engine_v2.py` (line 610)
-   - Fixed non-existent search_memories → search
-   - Added compatibility wrapper in storage.py
-
-3. **Configuration Robustness**
-   - File: `src/config.py` (lines 54-79)
-   - Enhanced clean_openrouter_model to handle comments and whitespace
-   - Added validation and logging
-
-4. **Extraction Fallback**
-   - File: `src/extractor_enhanced.py` (lines 467-585)
-   - Basic extraction now produces real data with regex parsing
-   - Guarantees at least one memory even on total failure
-
-5. **Qdrant Filter Fix**
-   - File: `src/storage.py` (lines 1065-1082)
-   - Proper Filter object construction
-   - Added try/except for parameter compatibility
-
-6. **Error Handling**
-   - File: `src/extractor_enhanced.py` (lines 403-438)
-   - Specific exception types (AuthenticationError, BadRequestError)
-   - Detailed error metadata in responses
-
-7. **Health Monitoring**
-   - File: `src/api.py` (lines 718-833)
-   - Comprehensive /health/detailed endpoint
-   - Checks LLM, Qdrant, database, embeddings
+**DO NOT** add new features. **DO NOT** refactor working code. Just fix the specific issues listed below.
 
 ---
 
-## Current System Status
+## 🔴 PHASE 1: DATABASE INDEX FIXES (30 minutes)
 
-### What's Working
-- All critical code paths are now functional
-- Fallback mechanisms prevent total failures
-- Error messages are clear and actionable
-- System can degrade gracefully
+### Task 1.1: Fix Duplicate Index
+**FILE**: `src/storage.py`
+**URGENCY**: CRITICAL - Duplicate indexes slow writes
 
-### What Needs Testing
-- End-to-end ingestion → query pipeline
-- State transition detection accuracy
-- Multi-meeting entity tracking
-- Performance under load
+**EXACT STEPS**:
 
-### What's Not Implemented (from Master Plan)
-- Batch database operations (performance optimization)
-- Removal of regex patterns (code cleanup)
-- Query engine batch fetching (performance)
-
----
-
-## 🔴 IMMEDIATE TASKS (Next 2 Hours)
-
-### 1. System Validation Testing
-**Priority**: CRITICAL
-**Time**: 30 minutes
-
-```bash
-# 1. Start services
-docker-compose up -d
-python -m src.api
-
-# 2. Health check
-curl http://localhost:8000/health/detailed
-
-# 3. Test ingestion
-python examples/bi_demo.py
-
-# 4. Verify state tracking
-# Check logs for "Created state transition" messages
-# Confirm transitions have semantic reasons
+1. Open `src/storage.py`
+2. Go to line 154
+3. **DELETE** lines 154-156:
+```python
+cursor.execute(
+    "CREATE INDEX IF NOT EXISTS idx_entities_normalized ON entities(normalized_name)"
+)
 ```
 
-**Success Criteria**:
-- Health check shows all green
-- Ingestion completes without errors
-- State transitions are created with meaningful reasons
-- Queries return actual data
+**WHY**: Line 172 creates the same index with the correct name. Having duplicates wastes space and slows INSERT/UPDATE operations.
 
-### 2. Fix Any Remaining Issues
-**Priority**: CRITICAL
-**Time**: 30 minutes
+### Task 1.2: Fix Entity States Index Name
+**FILE**: `src/storage.py`
+**URGENCY**: CRITICAL - Wrong name means queries don't use index
 
-Based on test results:
-- If LLM connectivity fails: Check API key and model name
-- If Qdrant unhealthy: Check Docker logs, restart container
-- If no state transitions: Check processor logs for errors
-- If queries fail: Check storage method implementations
+**EXACT STEPS**:
 
-### 3. Performance Baseline
-**Priority**: HIGH
-**Time**: 30 minutes
-
-Create performance baseline script:
+1. Stay in `src/storage.py`
+2. Go to line 158 (after deletion above, might be line 155)
+3. **REPLACE**:
 ```python
-# test_performance_baseline.py
-import time
-import asyncio
-from src.api import app
-from fastapi.testclient import TestClient
+# OLD:
+cursor.execute(
+    "CREATE INDEX IF NOT EXISTS idx_entity_states_entity ON entity_states(entity_id)"
+)
 
-async def measure_performance():
-    client = TestClient(app)
-    
-    # Measure ingestion time
-    start = time.time()
-    response = client.post("/api/ingest", json={
-        "title": "Performance Test Meeting",
-        "transcript": large_transcript  # 10KB+ transcript
-    })
-    ingestion_time = time.time() - start
-    
-    # Measure query time
-    start = time.time()
-    response = client.post("/api/query", json={
-        "query": "What's the status of all projects?"
-    })
-    query_time = time.time() - start
-    
-    print(f"Ingestion: {ingestion_time:.2f}s")
-    print(f"Query: {query_time:.2f}s")
+# NEW:
+cursor.execute(
+    "CREATE INDEX IF NOT EXISTS idx_entity_states_entity_id ON entity_states(entity_id)"
+)
 ```
 
-### 4. Document Current Behavior
-**Priority**: HIGH
-**Time**: 30 minutes
+**WHY**: The query optimizer looks for indexes by exact name. Wrong name = full table scan = slow queries.
 
-Create `SYSTEM_BEHAVIOR.md`:
-- Actual extraction output examples
-- State transition examples
-- Query response examples
-- Error message examples
+### Task 1.3: Fix Transitions Index Name
+**FILE**: `src/storage.py`
+**URGENCY**: CRITICAL - Wrong name causes slow timeline queries
+
+**EXACT STEPS**:
+
+1. Stay in `src/storage.py`
+2. Go to line 167 (after deletions above, might be line 164)
+3. **REPLACE**:
+```python
+# OLD:
+cursor.execute(
+    "CREATE INDEX IF NOT EXISTS idx_transitions_entity ON state_transitions(entity_id)"
+)
+
+# NEW:
+cursor.execute(
+    "CREATE INDEX IF NOT EXISTS idx_state_transitions_entity_id ON state_transitions(entity_id)"
+)
+```
+
+**TEST**: After changes, restart the API. Check logs for "CREATE INDEX" statements. Should see 4 indexes created with correct names.
 
 ---
 
-## 🟡 SHORT-TERM TASKS (This Week)
+## 🔴 PHASE 2: REMOVE REGEX PATTERNS (1 hour)
 
-### 1. Implement Batch Operations
-**Priority**: HIGH
-**Time**: 3 hours
-**Files**: `src/storage.py`, `src/processor_v2.py`, `src/query_engine_v2.py`
+### Task 2.1: Delete Pattern Definitions
+**FILE**: `src/processor_v2.py`
+**URGENCY**: CRITICAL - Regex patterns conflict with LLM results
 
+**EXACT STEPS**:
+
+1. Open `src/processor_v2.py`
+2. Go to line 31
+3. **DELETE** everything from line 31 to line 93 (entire STATE_PATTERNS, ASSIGNMENT_PATTERNS, PROGRESS_PATTERNS)
+
+**WHAT YOU'RE DELETING**:
 ```python
-# storage.py - Already have methods, need to use them
-def save_entities_batch(self, entities: List[Entity]) -> List[str]:
-    # Existing implementation
-    
-# processor_v2.py - Update to use batch
-# Line ~440: Replace individual saves with batch
+# State patterns for inference
+STATE_PATTERNS = {
+    "in_progress": [
+        ...
+    ],
+    ...
+}
+
+# Assignment patterns for ownership detection
+ASSIGNMENT_PATTERNS = [
+    ...
+]
+
+# Progress indicators
+PROGRESS_PATTERNS = [
+    ...
+]
+```
+
+### Task 2.2: Remove Duplicate LLM Client
+**FILE**: `src/processor_v2.py`
+**URGENCY**: HIGH - Wastes resources creating duplicate clients
+
+**EXACT STEPS**:
+
+1. Stay in `src/processor_v2.py`
+2. Go to line 101 (after deletions above, might be around line 40)
+3. **DELETE** lines 101-121 (all the proxy setup and self.llm_client creation)
+
+**KEEP** the constructor signature unchanged:
+```python
+def __init__(self, storage: Storage, entity_resolver: EntityResolver, embeddings: LocalEmbeddings, llm_processor: LLMProcessor):
+    self.storage = storage
+    self.entity_resolver = entity_resolver
+    self.embeddings = embeddings
+    self.llm_processor = llm_processor
+    self.validation_metrics = {}
+    # DELETE EVERYTHING BELOW THIS
+```
+
+### Task 2.3: Delete Pattern-Based Methods
+**FILE**: `src/processor_v2.py`
+**URGENCY**: CRITICAL - These methods use deleted patterns
+
+**EXACT STEPS**:
+
+1. Find and **DELETE** entire method `_infer_states_from_patterns` (around lines 227-257)
+2. Find and **DELETE** entire method `_extract_progress_indicators` (around lines 259-287)
+3. Find and **DELETE** entire method `_extract_assignments` (around lines 290-312)
+4. Find and **DELETE** entire method `_merge_state_information` (search for it after line 312)
+
+### Task 2.4: Fix process_meeting_with_context
+**FILE**: `src/processor_v2.py`
+**URGENCY**: CRITICAL - References deleted methods
+
+**EXACT STEPS**:
+
+1. Find `process_meeting_with_context` method
+2. Go to approximately line 150
+3. **REPLACE** lines 150-164 with:
+```python
+# 3. Extract current states from LLM output ONLY
+extracted_states = self._extract_current_states(extraction, entity_map)
+self.validation_metrics["states_captured"] = len(extracted_states)
+
+# 4. Create transitions for ALL changes
+transitions = await self._create_comprehensive_transitions(
+    prior_states, extracted_states, meeting_id, extraction
+)
+self.validation_metrics["transitions_created"] = len(transitions)
+
+# 5. Process relationships
+relationships = self._process_relationships(
+    extraction.relationships, entity_map, meeting_id
+)
+
+# 6. Update memory mentions
+self._update_memory_mentions(extraction.memories, entity_map)
+
+# 7. Validate completeness
+self._validate_state_tracking(entity_map, extracted_states, transitions)
+```
+
+### Task 2.5: Remove Dead Code
+**FILE**: `src/processor_v2.py`
+**URGENCY**: MEDIUM - Cleans up confusion
+
+**EXACT STEPS**:
+
+1. In `_extract_current_states` method (around line 211)
+2. **DELETE** lines 222-224 (the comment about extraction.states being empty)
+3. The method should only process entities, not states
+
+---
+
+## 🔴 PHASE 3: USE BATCH OPERATIONS (30 minutes)
+
+### Task 3.1: Batch Save Entities
+**FILE**: `src/processor_v2.py`
+**URGENCY**: HIGH - 10x performance improvement
+
+**EXACT STEPS**:
+
+1. Find `_process_entities` method
+2. Go to approximately line 641
+3. **REPLACE**:
+```python
+# OLD:
+self.storage.save_entities(processed_entities)
+
+# NEW:
 self.storage.save_entities_batch(processed_entities)
+```
+
+### Task 3.2: Verify Batch Transitions
+**FILE**: `src/processor_v2.py`
+**URGENCY**: LOW - Already implemented
+
+**EXACT STEPS**:
+
+1. Find `_create_comprehensive_transitions` method
+2. Go to line 436
+3. **VERIFY** it shows:
+```python
 self.storage.save_transitions_batch(transitions)
-
-# query_engine_v2.py - Update _build_query_context
-# Line ~315: Use batch fetching
-entity_ids = [e.id for e in context.entities]
-all_timelines = self.storage.get_timelines_batch(entity_ids)
 ```
 
-### 2. Remove Regex Patterns (Clean Code)
-**Priority**: MEDIUM
-**Time**: 2 hours
-**File**: `src/processor_v2.py`
+If not, change it to use batch method.
 
-**Current State**: Lines 33-93 define STATE_PATTERNS, ASSIGNMENT_PATTERNS, PROGRESS_PATTERNS
-**Action**: 
-1. Comment out pattern definitions
-2. Remove methods: _infer_states_from_patterns, _extract_progress_indicators, _extract_assignments
-3. Simplify _merge_state_information to only use LLM results
-4. Test to ensure no regression
+---
 
-### 3. Add Connection Pooling
-**Priority**: MEDIUM
-**Time**: 2 hours
-**File**: `src/storage.py`
+## 🔴 PHASE 4: FIX QUERY ENGINE (1 hour)
 
+### Task 4.1: Make Query Processing Async
+**FILE**: `src/query_engine_v2.py`
+**URGENCY**: CRITICAL - API expects async
+
+**EXACT STEPS**:
+
+1. Open `src/query_engine_v2.py`
+2. Go to line 147
+3. **REPLACE**:
 ```python
-import sqlite3
-from contextlib import contextmanager
-from queue import Queue
+# OLD:
+def process_query(self, query: str, user_context: Optional[Dict] = None) -> BIQueryResult:
 
-class ConnectionPool:
-    def __init__(self, database_path: str, pool_size: int = 5):
-        self.database_path = database_path
-        self.pool = Queue(maxsize=pool_size)
-        for _ in range(pool_size):
-            conn = sqlite3.connect(database_path)
-            conn.row_factory = sqlite3.Row
-            self.pool.put(conn)
+# NEW:
+async def process_query(self, query: str, user_context: Optional[Dict] = None) -> BIQueryResult:
+```
+
+### Task 4.2: Add Batch Fetching
+**FILE**: `src/query_engine_v2.py`
+**URGENCY**: HIGH - Major performance impact
+
+**EXACT STEPS**:
+
+1. Find `_build_query_context` method (around line 300)
+2. Find the section that fetches entities
+3. **REPLACE** the entity fetching logic with:
+```python
+# Collect all entity IDs from memories
+entity_ids = set()
+for result in relevant_memories:
+    if result.memory.entity_mentions:
+        entity_ids.update(result.memory.entity_mentions)
+
+if entity_ids:
+    # Batch fetch all entities and states
+    entity_list = list(entity_ids)
+    entities_dict = self.storage.get_entities_batch(entity_list)
+    states_dict = self.storage.get_states_batch(entity_list)
     
-    @contextmanager
-    def get_connection(self):
-        conn = self.pool.get()
-        try:
-            yield conn
-        finally:
-            self.pool.put(conn)
+    # Convert to lists
+    entities = list(entities_dict.values())
+    
+    # Build state history
+    state_history = {}
+    for entity_id, state in states_dict.items():
+        state_history[entity_id] = [state]  # Current state only
+else:
+    entities = []
+    state_history = {}
 ```
 
-### 4. Implement Caching Strategy
-**Priority**: MEDIUM
-**Time**: 3 hours
+### Task 4.3: Fix Async Handler Calls
+**FILE**: `src/query_engine_v2.py`
+**URGENCY**: CRITICAL - Must await async methods
 
-**Cache Layers**:
-1. Query results (TTL: 5 minutes)
-2. Entity resolutions (TTL: 1 hour)
-3. Current states (TTL: 1 minute)
+**EXACT STEPS**:
 
+1. In `process_query` method, find all handler calls (lines 162-176)
+2. Add `await` to any that are async:
 ```python
-# Add to query_engine_v2.py
-@cache.cached(ttl=300)
-def process_query(self, query: str) -> BIQueryResult:
-    # Existing implementation
-```
-
-### 5. Add Monitoring
-**Priority**: HIGH
-**Time**: 4 hours
-
-```python
-# monitoring.py
-from prometheus_client import Counter, Histogram, Gauge
-
-# Metrics
-query_duration = Histogram('smartmeet_query_duration_seconds', 
-                          'Query processing time',
-                          ['query_type'])
-ingestion_duration = Histogram('smartmeet_ingestion_duration_seconds',
-                              'Meeting ingestion time')
-state_transitions_created = Counter('smartmeet_state_transitions_total',
-                                   'Total state transitions created')
-cache_hits = Counter('smartmeet_cache_hits_total',
-                    'Cache hit count',
-                    ['cache_type'])
-active_entities = Gauge('smartmeet_active_entities',
-                       'Number of tracked entities')
+# If handlers are async, change:
+result = self._handle_timeline_query(context)
+# To:
+result = await self._handle_timeline_query(context)
 ```
 
 ---
 
-## 🟢 MEDIUM-TERM TASKS (Next 2 Weeks)
+## 🔴 PHASE 5: ADD ENTITY RESOLVER (30 minutes)
 
-### 1. Entity Deduplication System
-**Priority**: HIGH
-**Time**: 1 day
+### Task 5.1: Use Resolver in Entity Processing
+**FILE**: `src/processor_v2.py`
+**URGENCY**: HIGH - Prevents duplicate entities
 
-**Problem**: Multiple entities for same concept
-**Solution**:
+**EXACT STEPS**:
+
+1. Find `_process_entities` method
+2. Go to approximately line 606 (after entity name extraction)
+3. **INSERT** after `normalized_name = self._normalize_name(name)`:
 ```python
-class EntityDeduplicator:
-    def find_duplicates(self) -> List[Tuple[Entity, Entity]]:
-        # Use embeddings + edit distance
+# Try entity resolver first
+resolved = self.entity_resolver.resolve_entities([name])
+if name in resolved and resolved[name].entity:
+    # Use the resolved entity
+    existing = resolved[name].entity
+    logger.info(f"Resolved '{name}' to existing entity '{existing.name}' (confidence: {resolved[name].confidence})")
+else:
+    # Fall back to direct lookup
+    existing = self.storage.get_entity_by_name(normalized_name, entity_type)
+```
+
+---
+
+## 🔴 PHASE 6: ADD SELF-HEALING VALIDATION (45 minutes)
+
+### Task 6.1: Add Validation Method
+**FILE**: `src/processor_v2.py`
+**URGENCY**: CRITICAL - Prevents data loss
+
+**EXACT STEPS**:
+
+1. Find `_validate_state_tracking` method (around line 543)
+2. **ADD** this new method immediately after it:
+```python
+def _validate_state_tracking_completeness(self, entity_map: Dict[str, Dict[str, Any]], 
+                                         final_states: Dict[str, Dict[str, Any]], 
+                                         transitions: List[StateTransition],
+                                         meeting_id: str) -> None:
+    """
+    Self-heal missing transitions to ensure data integrity.
+    This prevents state changes from being lost due to processing errors.
+    """
+    healing_transitions = []
+    
+    for entity_name, entity_info in entity_map.items():
+        entity_id = entity_info["id"]
         
-    def merge_entities(self, primary: Entity, duplicate: Entity):
-        # Merge states, transitions, relationships
-        # Update all references
-        # Archive duplicate
-```
-
-### 2. State Schema Validation
-**Priority**: MEDIUM
-**Time**: 1 day
-
-```python
-from pydantic import BaseModel, Field
-
-class ProjectState(BaseModel):
-    status: Literal["planned", "in_progress", "blocked", "completed"]
-    progress: Optional[int] = Field(ge=0, le=100)
-    blockers: List[str] = []
-    assigned_to: Optional[str]
-    confidence: float = Field(ge=0.0, le=1.0)
+        # Check if entity has a state but no transition
+        if entity_id in final_states:
+            current_state = final_states[entity_id]
+            has_transition = any(t.entity_id == entity_id for t in transitions)
+            
+            if not has_transition and current_state:
+                # Create healing transition
+                prior_state = self.storage.get_entity_current_state(entity_id)
+                
+                # Only create if state actually changed
+                if prior_state != current_state:
+                    healing_transition = StateTransition(
+                        entity_id=entity_id,
+                        from_state=prior_state,
+                        to_state=current_state,
+                        changed_fields=list(current_state.keys()),
+                        reason="Auto-healed: State change detected without transition",
+                        meeting_id=meeting_id
+                    )
+                    healing_transitions.append(healing_transition)
+                    logger.warning(f"Self-healing: Created missing transition for {entity_name}")
     
-class FeatureState(BaseModel):
-    status: Literal["proposed", "approved", "development", "testing", "deployed"]
-    dependencies: List[str] = []
-    target_date: Optional[datetime]
+    # Save healing transitions
+    if healing_transitions:
+        self.storage.save_transitions_batch(healing_transitions)
+        self.validation_metrics["self_healed_transitions"] = len(healing_transitions)
+        logger.info(f"Self-healing complete: Created {len(healing_transitions)} transitions")
 ```
 
-### 3. Advanced Query Capabilities
-**Priority**: MEDIUM
-**Time**: 2 days
+### Task 6.2: Call Validation Method
+**FILE**: `src/processor_v2.py`
+**URGENCY**: CRITICAL - Must be called
 
-**New Query Types**:
-1. **Trend Analysis**: "Show me velocity trends for Team A"
-2. **Predictive**: "When will Project X likely complete?"
-3. **Comparative**: "Compare progress between Project A and B"
-4. **Root Cause**: "What's causing the most blockers?"
+**EXACT STEPS**:
 
-### 4. Real-time Updates
-**Priority**: LOW
-**Time**: 2 days
-
+1. In `process_meeting_with_context` method
+2. Find the call to `_validate_state_tracking` (around line 180)
+3. **ADD** immediately after:
 ```python
-# WebSocket support
-@app.websocket("/ws/updates")
-async def websocket_endpoint(websocket: WebSocket):
-    await websocket.accept()
-    # Push state changes in real-time
+# 11. Self-heal any missing transitions
+self._validate_state_tracking_completeness(entity_map, extracted_states, transitions, meeting_id)
 ```
 
 ---
 
-## ⚪ BACKLOG (Future)
+## 🟡 PHASE 7: UPDATE API HANDLERS (15 minutes)
 
-### From Previous Plans
-1. **Email Context Enhancement** (from claude_tasks.md Phase 1)
-   - Full email metadata extraction
-   - Thread tracking
-   - Organization context
+### Task 7.1: Fix Query Endpoint
+**FILE**: `src/api.py`
+**URGENCY**: HIGH - Queries will fail without this
 
-2. **Meeting Type Classification** (from claude_tasks.md)
-   - Auto-detect standup vs planning vs review
-   - Type-specific extraction rules
+**EXACT STEPS**:
 
-3. **Multi-tenancy** (from 012 Long-term)
-   - Organization isolation
-   - Role-based access
-   - Usage quotas
-
-4. **Advanced Analytics** (from 012)
-   - Custom dashboards
-   - Report generation
-   - Predictive modeling
-
-5. **Integration Layer** (from 012)
-   - Slack notifications
-   - JIRA sync
-   - Calendar integration
-
-### New Ideas
-1. **Conversation Analysis**
-   - Speaker participation metrics
-   - Sentiment tracking
-   - Decision quality scoring
-
-2. **Knowledge Graph**
-   - Visual entity relationships
-   - Dependency mapping
-   - Impact analysis
-
-3. **AI Assistant**
-   - Proactive insights
-   - Meeting preparation
-   - Follow-up suggestions
-
----
-
-## Testing Requirements
-
-### Unit Tests (Priority: HIGH)
+1. Find the `/api/query` endpoint handler
+2. Make sure it awaits the async query engine:
 ```python
-# test_extraction_fallback.py
-def test_basic_extraction_produces_data():
-    extractor = EnhancedMeetingExtractor(mock_client)
-    # Force LLM to fail
-    result = extractor.extract(transcript, "test-123")
-    assert len(result.memories) > 0
-    assert result.meeting_metadata["extraction_method"] == "basic_fallback"
-
-# test_state_comparison.py
-async def test_semantic_state_comparison():
-    old_state = {"status": "working on API"}
-    new_state = {"status": "API development in progress"}
-    result = await processor.compare_states_batch([(old_state, new_state)])
-    assert result[0]["has_changes"] == False  # Semantically equivalent
-```
-
-### Integration Tests (Priority: HIGH)
-```python
-# test_full_pipeline.py
-async def test_multi_meeting_tracking():
-    # Meeting 1: Project starts
-    response1 = await client.post("/api/ingest", json=meeting1)
-    
-    # Meeting 2: Progress update
-    response2 = await client.post("/api/ingest", json=meeting2)
-    
-    # Query timeline
-    timeline = await client.post("/api/query", json={
-        "query": "Show me the timeline for Project Alpha"
-    })
-    
-    assert len(timeline.json()["supporting_data"][0]["timeline"]) >= 2
-```
-
-### Performance Tests (Priority: MEDIUM)
-```python
-# test_performance.py
-def test_large_transcript_handling():
-    # 50KB transcript with 20+ entities
-    large_transcript = generate_large_transcript()
-    
-    start = time.time()
-    response = client.post("/api/ingest", json={
-        "title": "Large Meeting",
-        "transcript": large_transcript
-    })
-    
-    assert response.status_code == 200
-    assert time.time() - start < 30  # Should complete within 30s
+# Should be:
+result = await query_engine.process_query(request.query)
+# NOT:
+result = query_engine.process_query(request.query)
 ```
 
 ---
 
-## Success Metrics
+## 🟢 TESTING & VERIFICATION
 
-### Week 1
-- [ ] 100% of test queries return valid results
-- [ ] State tracking accuracy > 90%
-- [ ] Query response time < 2 seconds
-- [ ] Zero unhandled exceptions in 24 hours
+### Step 1: Start Services
+```bash
+# Terminal 1 - Start Qdrant
+docker-compose up -d
 
-### Month 1
-- [ ] 1000+ meetings ingested successfully
-- [ ] 5000+ state transitions tracked
-- [ ] Cache hit rate > 50%
-- [ ] Query response time < 500ms (cached)
+# Terminal 2 - Start API
+cd /path/to/smart-meet-lite
+python -m src.api
+```
 
-### Quarter 1
-- [ ] 10,000+ meetings processed
-- [ ] 50,000+ entities tracked
-- [ ] 99.9% API uptime
-- [ ] Full audit trail for all changes
+### Step 2: Verify Health
+```bash
+curl http://localhost:8000/health/detailed
+```
+
+**EXPECTED**: All components show "healthy"
+
+### Step 3: Test Ingestion
+```bash
+curl -X POST http://localhost:8000/api/ingest \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Sprint Planning",
+    "transcript": "Alice: The authentication API is now in progress. Bob: Great! The database redesign is blocked on infrastructure approval."
+  }'
+```
+
+**EXPECTED**: 
+- Response includes entity_count > 0
+- Logs show "Created state transition"
+
+### Step 4: Test Search
+```bash
+curl -X POST http://localhost:8000/api/search \
+  -H "Content-Type: application/json" \
+  -d '{"query": "authentication API", "limit": 5}'
+```
+
+**EXPECTED**: Returns memories with scores
+
+### Step 5: Test Business Query
+```bash
+curl -X POST http://localhost:8000/api/query \
+  -H "Content-Type: application/json" \
+  -d '{"query": "What is the status of all projects?"}'
+```
+
+**EXPECTED**: Structured response with project statuses
 
 ---
 
-## Implementation Notes
+## ⚠️ COMMON ISSUES & FIXES
 
-1. **Always test after each change** - The system is complex with many interactions
-2. **Keep backward compatibility** - Don't break existing API contracts
-3. **Document schema changes** - Critical for debugging state issues
-4. **Monitor performance** - Watch for degradation as data grows
-5. **Plan for scale** - Current SQLite approach has limits
+### Issue: "RuntimeError: This event loop is already running"
+**Fix**: Make sure all async methods are properly awaited, not called with asyncio.run()
 
-The system is now functionally complete. Focus should be on testing, performance optimization, and preparing for production scale.
+### Issue: "No state transitions created"
+**Fix**: Check logs for "Self-healing" messages - validation should auto-create missing transitions
+
+### Issue: "Slow queries"
+**Fix**: Restart API after index changes. Check SQLite with `.schema` to verify indexes exist
+
+### Issue: "Duplicate entities"
+**Fix**: Entity resolver changes should prevent this. Check logs for "Resolved X to existing entity"
+
+---
+
+## 📋 FINAL CHECKLIST
+
+Before considering this complete, verify:
+
+- [ ] API starts without errors
+- [ ] Health check shows all green
+- [ ] Ingestion creates entities and transitions
+- [ ] Search returns relevant results
+- [ ] Business queries return structured data
+- [ ] State transitions have meaningful reasons (not empty)
+- [ ] Timeline queries show state progression
+- [ ] No "event loop already running" errors
+- [ ] Performance: Ingestion < 10s for normal meetings
+- [ ] Logs show batch operations being used
+
+---
+
+## 🎯 SUCCESS CRITERIA
+
+The system is working when:
+1. You can ingest a meeting and see entities + state transitions created
+2. You can search for content and get relevant memories back
+3. You can ask business questions and get structured answers
+4. Multiple meetings about the same entities show state progression
+5. No unhandled exceptions in 10 consecutive operations
+
+Remember: We're restoring WORKING functionality, not adding features. Resist the urge to optimize or refactor beyond these specific fixes.
