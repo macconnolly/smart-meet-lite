@@ -55,7 +55,15 @@ class MemoryStorage:
                 action_items TEXT,
                 created_at TIMESTAMP NOT NULL,
                 memory_count INTEGER DEFAULT 0,
-                entity_count INTEGER DEFAULT 0
+                entity_count INTEGER DEFAULT 0,
+                email_metadata TEXT,
+                project_tags TEXT,
+                meeting_type TEXT,
+                actual_start_time TIMESTAMP,
+                actual_end_time TIMESTAMP,
+                detailed_summary TEXT,
+                raw_extraction TEXT,
+                organization_context TEXT
             )
         """
         )
@@ -169,6 +177,99 @@ class MemoryStorage:
         cursor.execute(
             "CREATE INDEX IF NOT EXISTS idx_entities_last_updated ON entities(last_updated)"
         )
+        
+        # New tables for enhanced meeting intelligence
+        cursor.execute(
+            """
+            CREATE TABLE IF NOT EXISTS meeting_deliverables (
+                id TEXT PRIMARY KEY,
+                meeting_id TEXT NOT NULL,
+                name TEXT NOT NULL,
+                type TEXT NOT NULL,
+                target_audience TEXT,
+                requirements TEXT,
+                discussed_evolution TEXT,
+                dependencies TEXT,
+                deadline TEXT,
+                format_preferences TEXT,
+                created_at TIMESTAMP NOT NULL,
+                FOREIGN KEY (meeting_id) REFERENCES meetings(id)
+            )
+        """
+        )
+        
+        cursor.execute(
+            """
+            CREATE TABLE IF NOT EXISTS stakeholder_intelligence (
+                id TEXT PRIMARY KEY,
+                meeting_id TEXT NOT NULL,
+                stakeholder TEXT NOT NULL,
+                role TEXT,
+                communication_preferences TEXT,
+                noted_concerns TEXT,
+                format_preferences TEXT,
+                questions_asked TEXT,
+                key_interests TEXT,
+                created_at TIMESTAMP NOT NULL,
+                FOREIGN KEY (meeting_id) REFERENCES meetings(id)
+            )
+        """
+        )
+        
+        cursor.execute(
+            """
+            CREATE TABLE IF NOT EXISTS decisions_with_context (
+                id TEXT PRIMARY KEY,
+                meeting_id TEXT NOT NULL,
+                decision TEXT NOT NULL,
+                rationale TEXT,
+                stakeholders_involved TEXT,
+                impact_areas TEXT,
+                supersedes_decision TEXT,
+                decision_status TEXT,
+                created_at TIMESTAMP NOT NULL,
+                FOREIGN KEY (meeting_id) REFERENCES meetings(id)
+            )
+        """
+        )
+        
+        cursor.execute(
+            """
+            CREATE TABLE IF NOT EXISTS risk_areas (
+                id TEXT PRIMARY KEY,
+                meeting_id TEXT NOT NULL,
+                risk TEXT NOT NULL,
+                severity TEXT NOT NULL,
+                mitigation_approach TEXT,
+                created_at TIMESTAMP NOT NULL,
+                FOREIGN KEY (meeting_id) REFERENCES meetings(id)
+            )
+        """
+        )
+        
+        cursor.execute(
+            """
+            CREATE TABLE IF NOT EXISTS cross_project_impacts (
+                id TEXT PRIMARY KEY,
+                meeting_id TEXT NOT NULL,
+                project TEXT NOT NULL,
+                impact_description TEXT NOT NULL,
+                coordination_needed BOOLEAN DEFAULT 0,
+                created_at TIMESTAMP NOT NULL,
+                FOREIGN KEY (meeting_id) REFERENCES meetings(id)
+            )
+        """
+        )
+        
+        # Indexes for new tables
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_deliverables_meeting ON meeting_deliverables(meeting_id)")
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_stakeholder_meeting ON stakeholder_intelligence(meeting_id)")
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_decisions_meeting ON decisions_with_context(meeting_id)")
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_risks_meeting ON risk_areas(meeting_id)")
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_impacts_meeting ON cross_project_impacts(meeting_id)")
+        
+        # CRITICAL: Add missing index for memories table to prevent timeouts
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_memories_meeting_id ON memories(meeting_id)")
 
         conn.commit()
         conn.close()
@@ -216,8 +317,10 @@ class MemoryStorage:
             """
             INSERT INTO meetings 
             (id, title, transcript, participants, date, summary, topics, 
-             key_decisions, action_items, created_at, memory_count, entity_count)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+             key_decisions, action_items, created_at, memory_count, entity_count,
+             email_metadata, project_tags, meeting_type, actual_start_time, 
+             actual_end_time, detailed_summary, raw_extraction, organization_context)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """,
             (
                 meeting.id,
@@ -232,6 +335,14 @@ class MemoryStorage:
                 meeting.created_at.isoformat(),
                 meeting.memory_count,
                 meeting.entity_count,
+                json.dumps(meeting.email_metadata) if hasattr(meeting, 'email_metadata') and meeting.email_metadata else None,
+                json.dumps(meeting.project_tags) if hasattr(meeting, 'project_tags') and meeting.project_tags else None,
+                meeting.meeting_type if hasattr(meeting, 'meeting_type') else None,
+                meeting.actual_start_time.isoformat() if hasattr(meeting, 'actual_start_time') and meeting.actual_start_time else None,
+                meeting.actual_end_time.isoformat() if hasattr(meeting, 'actual_end_time') and meeting.actual_end_time else None,
+                meeting.detailed_summary if hasattr(meeting, 'detailed_summary') else None,
+                json.dumps(meeting.raw_extraction) if hasattr(meeting, 'raw_extraction') and meeting.raw_extraction else None,
+                meeting.organization_context if hasattr(meeting, 'organization_context') else None,
             ),
         )
 
@@ -378,6 +489,159 @@ class MemoryStorage:
                 ),
             )
 
+        conn.commit()
+        conn.close()
+
+    def update_meeting_raw_extraction(self, meeting_id: str, extraction_data: Dict[str, Any]) -> None:
+        """Store raw extraction data and detailed summary for future reference."""
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        cursor.execute(
+            """
+            UPDATE meetings 
+            SET raw_extraction = ?,
+                detailed_summary = ?
+            WHERE id = ?
+            """,
+            (
+                json.dumps(extraction_data) if extraction_data else None,
+                extraction_data.get('detailed_summary', '') if extraction_data else '',
+                meeting_id
+            )
+        )
+        
+        conn.commit()
+        conn.close()
+    
+    def save_meeting_deliverables(self, meeting_id: str, deliverables: List[Dict[str, Any]]) -> None:
+        """Save deliverable intelligence from meeting."""
+        if not deliverables:
+            return
+            
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        for deliverable in deliverables:
+            import uuid
+            cursor.execute(
+                """
+                INSERT INTO meeting_deliverables 
+                (id, meeting_id, name, type, target_audience, requirements, 
+                 discussed_evolution, dependencies, deadline, format_preferences, created_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    str(uuid.uuid4()),
+                    meeting_id,
+                    deliverable.get("name"),
+                    deliverable.get("type"),
+                    json.dumps(deliverable.get("target_audience", [])),
+                    json.dumps(deliverable.get("requirements", [])),
+                    deliverable.get("discussed_evolution"),
+                    json.dumps(deliverable.get("dependencies", [])),
+                    deliverable.get("deadline"),
+                    deliverable.get("format_preferences"),
+                    datetime.now().isoformat()
+                )
+            )
+        
+        conn.commit()
+        conn.close()
+    
+    def save_stakeholder_intelligence(self, meeting_id: str, stakeholders: List[Dict[str, Any]]) -> None:
+        """Save stakeholder intelligence from meeting."""
+        if not stakeholders:
+            return
+            
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        for stakeholder in stakeholders:
+            import uuid
+            cursor.execute(
+                """
+                INSERT INTO stakeholder_intelligence
+                (id, meeting_id, stakeholder, role, communication_preferences,
+                 noted_concerns, format_preferences, questions_asked, key_interests, created_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    str(uuid.uuid4()),
+                    meeting_id,
+                    stakeholder.get("stakeholder"),
+                    stakeholder.get("role"),
+                    stakeholder.get("communication_preferences"),
+                    json.dumps(stakeholder.get("noted_concerns", [])),
+                    stakeholder.get("format_preferences"),
+                    json.dumps(stakeholder.get("questions_asked", [])),
+                    json.dumps(stakeholder.get("key_interests", [])),
+                    datetime.now().isoformat()
+                )
+            )
+        
+        conn.commit()
+        conn.close()
+    
+    def save_decisions_with_context(self, meeting_id: str, decisions: List[Dict[str, Any]]) -> None:
+        """Save decisions with full context."""
+        if not decisions:
+            return
+            
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        for decision in decisions:
+            import uuid
+            cursor.execute(
+                """
+                INSERT INTO decisions_with_context
+                (id, meeting_id, decision, rationale, stakeholders_involved,
+                 impact_areas, supersedes_decision, decision_status, created_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    str(uuid.uuid4()),
+                    meeting_id,
+                    decision.get("decision"),
+                    decision.get("rationale"),
+                    json.dumps(decision.get("stakeholders_involved", [])),
+                    json.dumps(decision.get("impact_areas", [])),
+                    decision.get("supersedes_decision"),
+                    decision.get("decision_status", "proposed"),
+                    datetime.now().isoformat()
+                )
+            )
+        
+        conn.commit()
+        conn.close()
+    
+    def save_risk_areas(self, meeting_id: str, risks: List[Dict[str, Any]]) -> None:
+        """Save identified risks from meeting."""
+        if not risks:
+            return
+            
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        for risk in risks:
+            import uuid
+            cursor.execute(
+                """
+                INSERT INTO risk_areas
+                (id, meeting_id, risk, severity, mitigation_approach, created_at)
+                VALUES (?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    str(uuid.uuid4()),
+                    meeting_id,
+                    risk.get("risk"),
+                    risk.get("severity", "medium"),
+                    risk.get("mitigation_approach"),
+                    datetime.now().isoformat()
+                )
+            )
+        
         conn.commit()
         conn.close()
 
@@ -905,7 +1169,7 @@ class MemoryStorage:
         conn.close()
 
         if row:
-            return Meeting(
+            meeting = Meeting(
                 id=row[0],
                 title=row[1],
                 transcript=row[2],
@@ -919,6 +1183,19 @@ class MemoryStorage:
                 memory_count=row[10],
                 entity_count=row[11],
             )
+            
+            # Handle new fields if they exist (backward compatibility)
+            if len(row) > 12:
+                meeting.email_metadata = json.loads(row[12]) if row[12] else None
+                meeting.project_tags = json.loads(row[13]) if row[13] else []
+                meeting.meeting_type = row[14]
+                meeting.actual_start_time = datetime.fromisoformat(row[15]) if row[15] else None
+                meeting.actual_end_time = datetime.fromisoformat(row[16]) if row[16] else None
+                meeting.detailed_summary = row[17]
+                meeting.raw_extraction = json.loads(row[18]) if row[18] else None
+                meeting.organization_context = row[19]
+            
+            return meeting
 
         return None
 
@@ -935,22 +1212,33 @@ class MemoryStorage:
 
         meetings = []
         for row in cursor.fetchall():
-            meetings.append(
-                Meeting(
-                    id=row[0],
-                    title=row[1],
-                    transcript=row[2],
-                    participants=json.loads(row[3]) if row[3] else [],
-                    date=datetime.fromisoformat(row[4]) if row[4] else None,
-                    summary=row[5],
-                    topics=json.loads(row[6]) if row[6] else [],
-                    key_decisions=json.loads(row[7]) if row[7] else [],
-                    action_items=json.loads(row[8]) if row[8] else [],
-                    created_at=datetime.fromisoformat(row[9]),
-                    memory_count=row[10],
-                    entity_count=row[11],
-                )
+            meeting = Meeting(
+                id=row[0],
+                title=row[1],
+                transcript=row[2],
+                participants=json.loads(row[3]) if row[3] else [],
+                date=datetime.fromisoformat(row[4]) if row[4] else None,
+                summary=row[5],
+                topics=json.loads(row[6]) if row[6] else [],
+                key_decisions=json.loads(row[7]) if row[7] else [],
+                action_items=json.loads(row[8]) if row[8] else [],
+                created_at=datetime.fromisoformat(row[9]),
+                memory_count=row[10],
+                entity_count=row[11],
             )
+            
+            # Handle new fields if they exist (backward compatibility)
+            if len(row) > 12:
+                meeting.email_metadata = json.loads(row[12]) if row[12] else None
+                meeting.project_tags = json.loads(row[13]) if row[13] else []
+                meeting.meeting_type = row[14]
+                meeting.actual_start_time = datetime.fromisoformat(row[15]) if row[15] else None
+                meeting.actual_end_time = datetime.fromisoformat(row[16]) if row[16] else None
+                meeting.detailed_summary = row[17]
+                meeting.raw_extraction = json.loads(row[18]) if row[18] else None
+                meeting.organization_context = row[19]
+            
+            meetings.append(meeting)
 
         conn.close()
         return meetings
@@ -987,3 +1275,240 @@ class MemoryStorage:
 
         conn.close()
         return memories
+    
+    # BATCH OPERATIONS FOR PERFORMANCE
+    def save_entities_batch(self, entities: List[Entity]) -> List[str]:
+        """Save or update entities in batch for better performance."""
+        if not entities:
+            return []
+            
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        saved_ids = []
+        
+        try:
+            # First, check which entities already exist
+            normalized_names_types = [(e.normalized_name, e.type) for e in entities]
+            placeholders = ','.join(['(?, ?)'] * len(normalized_names_types))
+            flat_values = [item for sublist in normalized_names_types for item in sublist]
+            
+            cursor.execute(f"""
+                SELECT normalized_name, type, id, attributes
+                FROM entities
+                WHERE (normalized_name, type) IN ({placeholders})
+            """, flat_values)
+            
+            existing_entities = {(row[0], row[1]): {'id': row[2], 'attrs': row[3]} 
+                               for row in cursor.fetchall()}
+            
+            # Separate into updates and inserts
+            updates = []
+            inserts = []
+            
+            for entity in entities:
+                key = (entity.normalized_name, entity.type)
+                if key in existing_entities:
+                    # Prepare update
+                    entity_id = existing_entities[key]['id']
+                    old_attrs = json.loads(existing_entities[key]['attrs']) if existing_entities[key]['attrs'] else {}
+                    merged_attrs = {**old_attrs, **entity.attributes}
+                    updates.append((json.dumps(merged_attrs), datetime.now().isoformat(), entity_id))
+                    saved_ids.append(entity_id)
+                else:
+                    # Prepare insert
+                    inserts.append((
+                        entity.id,
+                        entity.type,
+                        entity.name,
+                        entity.normalized_name,
+                        json.dumps(entity.attributes),
+                        entity.first_seen.isoformat(),
+                        entity.last_updated.isoformat()
+                    ))
+                    saved_ids.append(entity.id)
+            
+            # Execute batch updates
+            if updates:
+                cursor.executemany("""
+                    UPDATE entities 
+                    SET attributes = ?, last_updated = ?
+                    WHERE id = ?
+                """, updates)
+            
+            # Execute batch inserts
+            if inserts:
+                cursor.executemany("""
+                    INSERT INTO entities 
+                    (id, type, name, normalized_name, attributes, first_seen, last_updated)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)
+                """, inserts)
+            
+            conn.commit()
+        finally:
+            conn.close()
+        
+        return saved_ids
+    
+    def save_transitions_batch(self, transitions: List[StateTransition]) -> None:
+        """Save state transitions in batch for better performance."""
+        if not transitions:
+            return
+            
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        try:
+            data = [
+                (
+                    trans.id,
+                    trans.entity_id,
+                    json.dumps(trans.from_state) if trans.from_state else None,
+                    json.dumps(trans.to_state),
+                    json.dumps(trans.changed_fields),
+                    trans.reason,
+                    trans.meeting_id,
+                    trans.timestamp.isoformat()
+                )
+                for trans in transitions
+            ]
+            
+            cursor.executemany("""
+                INSERT INTO state_transitions 
+                (id, entity_id, from_state, to_state, changed_fields, 
+                 reason, meeting_id, timestamp)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """, data)
+            
+            conn.commit()
+        finally:
+            conn.close()
+    
+    def get_entities_batch(self, entity_ids: List[str]) -> Dict[str, Entity]:
+        """Get multiple entities by ID in a single query."""
+        if not entity_ids:
+            return {}
+            
+        conn = sqlite3.connect(self.db_path)
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+        
+        try:
+            placeholders = ','.join(['?'] * len(entity_ids))
+            cursor.execute(f"""
+                SELECT * FROM entities
+                WHERE id IN ({placeholders})
+            """, entity_ids)
+            
+            entities = {}
+            for row in cursor.fetchall():
+                entity = self._row_to_entity(row)
+                entities[entity.id] = entity
+            
+            return entities
+        finally:
+            conn.close()
+    
+    def search_memories(
+        self, 
+        query_embedding: np.ndarray,
+        filters: Optional[Dict[str, Any]] = None,
+        limit: int = 20
+    ) -> List[SearchResult]:
+        """Search for similar memories using vector search."""
+        from qdrant_client.models import Filter, FieldCondition, MatchValue
+        
+        # Build Qdrant filters
+        qdrant_filters = []
+        if filters:
+            for key, value in filters.items():
+                qdrant_filters.append(
+                    FieldCondition(
+                        key=key,
+                        match=MatchValue(value=value)
+                    )
+                )
+        
+        # Search in Qdrant
+        search_filter = Filter(must=qdrant_filters) if qdrant_filters else None
+        
+        results = self.qdrant.search(
+            collection_name=self.collection_name,
+            query_vector=query_embedding.tolist(),
+            filter=search_filter,
+            limit=limit,
+            with_payload=True
+        )
+        
+        # Convert to SearchResult objects
+        search_results = []
+        for result in results:
+            # Get the memory from database
+            memory_id = result.payload.get("memory_id")
+            if memory_id:
+                conn = sqlite3.connect(self.db_path)
+                cursor = conn.cursor()
+                cursor.execute(
+                    "SELECT * FROM memories WHERE id = ?",
+                    (memory_id,)
+                )
+                row = cursor.fetchone()
+                conn.close()
+                
+                if row:
+                    memory = Memory(
+                        id=row[0],
+                        meeting_id=row[1],
+                        content=row[2],
+                        speaker=row[3],
+                        timestamp=row[4],
+                        metadata=json.loads(row[5]) if row[5] else {},
+                        entity_mentions=json.loads(row[6]) if row[6] else [],
+                        embedding_id=row[7],
+                        created_at=datetime.fromisoformat(row[8])
+                    )
+                    
+                    search_results.append(SearchResult(
+                        memory=memory,
+                        score=result.score,
+                        metadata=result.payload
+                    ))
+        
+        return search_results
+    
+    def get_states_batch(self, entity_ids: List[str]) -> Dict[str, EntityState]:
+        """Get the most recent state for multiple entities in a single query."""
+        if not entity_ids:
+            return {}
+            
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        try:
+            # Get the most recent state for each entity
+            placeholders = ','.join(['?'] * len(entity_ids))
+            cursor.execute(f"""
+                SELECT es1.*
+                FROM entity_states es1
+                INNER JOIN (
+                    SELECT entity_id, MAX(timestamp) as max_timestamp
+                    FROM entity_states
+                    WHERE entity_id IN ({placeholders})
+                    GROUP BY entity_id
+                ) es2 ON es1.entity_id = es2.entity_id AND es1.timestamp = es2.max_timestamp
+            """, entity_ids)
+            
+            states = {}
+            for row in cursor.fetchall():
+                state = EntityState(
+                    id=row[0],
+                    entity_id=row[1],
+                    state=json.loads(row[2]) if row[2] else {},
+                    meeting_id=row[3],
+                    timestamp=datetime.fromisoformat(row[4]),
+                    confidence=row[5]
+                )
+                states[state.entity_id] = state
+            
+            return states
+        finally:
+            conn.close()

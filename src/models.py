@@ -133,6 +133,15 @@ class Meeting:
     created_at: datetime = field(default_factory=datetime.now)
     memory_count: int = 0
     entity_count: int = 0
+    # Enhanced metadata fields
+    email_metadata: Optional[Dict[str, Any]] = None
+    project_tags: List[str] = field(default_factory=list)
+    meeting_type: Optional[str] = None
+    actual_start_time: Optional[datetime] = None
+    actual_end_time: Optional[datetime] = None
+    detailed_summary: Optional[str] = None
+    raw_extraction: Optional[Dict[str, Any]] = None
+    organization_context: Optional[str] = None
 
 
 @dataclass
@@ -187,3 +196,75 @@ class BIQueryResult:
     confidence: float
     visualizations: Optional[List[Dict[str, Any]]] = None
     metadata: Optional[Dict[str, Any]] = None
+
+
+@dataclass
+class Deliverable:
+    """A deliverable discussed in a meeting."""
+    
+    id: str = field(default_factory=lambda: str(uuid.uuid4()))
+    meeting_id: str = ""
+    name: str = ""
+    type: str = ""  # presentation, model, tracker, analysis, report, dashboard, documentation, other
+    target_audience: List[str] = field(default_factory=list)
+    requirements: List[str] = field(default_factory=list)
+    discussed_evolution: Optional[str] = None
+    dependencies: List[str] = field(default_factory=list)
+    deadline: Optional[str] = None
+    format_preferences: Optional[str] = None
+    created_at: datetime = field(default_factory=datetime.now)
+
+
+@dataclass
+class StakeholderIntelligence:
+    """Intelligence about a stakeholder from meetings."""
+    
+    id: str = field(default_factory=lambda: str(uuid.uuid4()))
+    meeting_id: str = ""
+    stakeholder: str = ""
+    role: Optional[str] = None
+    communication_preferences: Optional[str] = None
+    noted_concerns: List[str] = field(default_factory=list)
+    format_preferences: Optional[str] = None
+    questions_asked: List[str] = field(default_factory=list)
+    key_interests: List[str] = field(default_factory=list)
+    created_at: datetime = field(default_factory=datetime.now)
+
+
+@dataclass
+class DecisionWithContext:
+    """A decision made in a meeting with full context."""
+    
+    id: str = field(default_factory=lambda: str(uuid.uuid4()))
+    meeting_id: str = ""
+    decision: str = ""
+    rationale: str = ""
+    stakeholders_involved: List[str] = field(default_factory=list)
+    impact_areas: List[str] = field(default_factory=list)
+    supersedes_decision: Optional[str] = None
+    decision_status: str = "proposed"  # proposed, approved, rejected, pending, implemented
+    created_at: datetime = field(default_factory=datetime.now)
+
+
+@dataclass
+class RiskArea:
+    """A risk identified in a meeting."""
+    
+    id: str = field(default_factory=lambda: str(uuid.uuid4()))
+    meeting_id: str = ""
+    risk: str = ""
+    severity: str = "medium"  # low, medium, high, critical
+    mitigation_approach: Optional[str] = None
+    created_at: datetime = field(default_factory=datetime.now)
+
+
+@dataclass 
+class CrossProjectImpact:
+    """Impact on other projects discussed in meeting."""
+    
+    id: str = field(default_factory=lambda: str(uuid.uuid4()))
+    meeting_id: str = ""
+    project: str = ""
+    impact_description: str = ""
+    coordination_needed: bool = False
+    created_at: datetime = field(default_factory=datetime.now)

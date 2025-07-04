@@ -107,8 +107,26 @@ Return JSON with this exact structure:
   "summary": "brief summary",
   "decisions": ["decision 1", "decision 2"],
   "action_items": [{"action": "string", "assignee": "name", "due": "date"}],
-  "metadata": {}
-}"""
+  "metadata": {
+    "meeting_type": "string (e.g., client_meeting, internal_sync, executive_update, etc.)",
+    "email_from": "sender email",
+    "email_to": ["recipient emails"],
+    "email_cc": ["cc emails"],
+    "email_date": "email timestamp",
+    "email_subject": "email subject line",
+    "project_tags": ["related projects mentioned"],
+    "actual_start_time": "meeting start time if mentioned",
+    "actual_end_time": "meeting end time if mentioned",
+    "organization_context": "organization/department context",
+    "detailed_summary": "comprehensive 2-3 paragraph summary of the meeting",
+    "key_metrics": {}
+  }
+}
+
+When the input is an email, extract email headers (From, To, CC, Date, Subject) into the metadata fields.
+Infer the meeting type from the content and participants.
+Extract any project names or tags mentioned throughout the discussion.
+Provide a detailed summary that captures the full context and outcomes."""
 
         # JSON Schema for structured output
         self.json_schema = {
@@ -281,6 +299,25 @@ Return JSON with this exact structure:
                                 "type": "object",
                                 "additionalProperties": True,
                             },
+                            "email_from": {"type": ["string", "null"]},
+                            "email_to": {
+                                "type": "array",
+                                "items": {"type": "string"}
+                            },
+                            "email_cc": {
+                                "type": "array", 
+                                "items": {"type": "string"}
+                            },
+                            "email_date": {"type": ["string", "null"]},
+                            "email_subject": {"type": ["string", "null"]},
+                            "project_tags": {
+                                "type": "array",
+                                "items": {"type": "string"}
+                            },
+                            "actual_start_time": {"type": ["string", "null"]},
+                            "actual_end_time": {"type": ["string", "null"]},
+                            "organization_context": {"type": ["string", "null"]},
+                            "detailed_summary": {"type": "string"},
                         },
                         "additionalProperties": True,
                     },
@@ -507,6 +544,6 @@ Return JSON with this exact structure:
                 set(e["name"] for e in entities if e["type"] in ["feature", "project"])
             ),
             participants=list(participants),
-            decisions=decisions[:5],  # Limit to top 5
-            action_items=action_items[:5],  # Limit to top 5
+            decisions=decisions,  # Return all decisions
+            action_items=action_items,  # Return all action items
         )

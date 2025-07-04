@@ -7,14 +7,19 @@ from typing import List, Optional, Dict, Any
 from datetime import datetime
 import uvicorn
 import logging
+import json
 
 from .models import Meeting
 from .extractor import MemoryExtractor
+from .extractor_enhanced import EnhancedMeetingExtractor
 from .embeddings import EmbeddingEngine
 from .storage import MemoryStorage
 from .processor import EntityProcessor
 from .query_engine import QueryEngine
+from .entity_resolver import EntityResolver
 from .config import settings
+import httpx
+from openai import OpenAI
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -37,10 +42,73 @@ app.add_middleware(
 
 # Initialize components
 storage = MemoryStorage()
-extractor = MemoryExtractor()
 embeddings = EmbeddingEngine()
-processor = EntityProcessor(storage)
-query_engine = QueryEngine(storage, embeddings)
+
+# Setup proxy configuration for corporate environments
+proxies = None
+if settings.https_proxy or settings.http_proxy:
+    proxies = {}
+    if settings.http_proxy:
+        proxies["http://"] = settings.http_proxy
+    if settings.https_proxy:
+        proxies["https://"] = settings.https_proxy
+    logger.info(f"Using proxy configuration: {proxies}")
+
+# Create shared HTTP client with proxy and SSL configuration
+http_client = httpx.Client(
+    verify=settings.ssl_verify,
+    proxies=proxies,
+    timeout=30.0
+)
+
+# Create shared LLM client
+llm_client = OpenAI(
+    api_key=settings.openrouter_api_key,
+    base_url=settings.openrouter_base_url,
+    default_headers={
+        "HTTP-Referer": "http://localhost:8000",
+        "X-Title": "Smart-Meet Lite"
+    },
+    http_client=http_client
+)
+
+# Create extractors - both basic and enhanced
+extractor = MemoryExtractor()
+enhanced_extractor = EnhancedMeetingExtractor(llm_client)
+
+# Create cache and LLM processor for production use
+from .cache import CacheLayer
+from .llm_processor import LLMProcessor
+
+cache = CacheLayer(default_ttl=3600)  # 1 hour cache
+llm_processor = LLMProcessor(cache)
+
+# Create shared EntityResolver
+entity_resolver = EntityResolver(
+    storage=storage,
+    embeddings=embeddings,
+    llm_client=llm_client,
+    use_llm=settings.entity_resolution_use_llm
+)
+
+# Try to import production implementations first, fallback to original if not available
+try:
+    from .processor_v2 import EnhancedMeetingProcessor
+    processor = EnhancedMeetingProcessor(storage, entity_resolver, embeddings, llm_processor)
+    logger.info("Using production-ready processor_v2 with LLM batch processing")
+except ImportError:
+    from .processor import EntityProcessor
+    processor = EntityProcessor(storage, entity_resolver)
+    logger.warning("processor_v2 not found, using original processor")
+
+try:
+    from .query_engine_v2 import ProductionQueryEngine
+    query_engine = ProductionQueryEngine(storage, embeddings, entity_resolver, llm_client)
+    logger.info("Using production-ready query_engine_v2")
+except ImportError:
+    from .query_engine import QueryEngine
+    query_engine = QueryEngine(storage, embeddings, entity_resolver)
+    logger.warning("query_engine_v2 not found, using original query engine")
 
 
 # Request/Response models
@@ -115,8 +183,17 @@ async def ingest_meeting(request: IngestRequest):
             title=request.title, transcript=request.transcript, date=request.date
         )
 
-        # Extract comprehensive intelligence using LLM
-        extraction = extractor.extract(request.transcript, meeting.id)
+        # Use enhanced extractor for comprehensive intelligence
+        # Pass email metadata if available
+        email_metadata = {}
+        if hasattr(request, 'email_metadata') and request.email_metadata:
+            email_metadata = request.email_metadata
+        
+        extraction = enhanced_extractor.extract(
+            request.transcript, 
+            meeting.id,
+            email_metadata=email_metadata
+        )
 
         # Update meeting with extracted metadata
         meeting.summary = extraction.summary
@@ -125,12 +202,75 @@ async def ingest_meeting(request: IngestRequest):
         meeting.key_decisions = extraction.decisions
         meeting.action_items = extraction.action_items
         meeting.memory_count = len(extraction.memories)
+        
+        # Update with enhanced metadata
+        metadata = extraction.meeting_metadata
+        meeting.email_metadata = {
+            "from": metadata.get("email_from"),
+            "to": metadata.get("email_to", []),
+            "cc": metadata.get("email_cc", []),
+            "date": metadata.get("email_date"),
+            "subject": metadata.get("email_subject")
+        }
+        meeting.project_tags = metadata.get("project_tags", [])
+        meeting.meeting_type = metadata.get("meeting_type")
+        meeting.organization_context = metadata.get("organization_context")
+        meeting.detailed_summary = metadata.get("detailed_summary", extraction.summary)
+        
+        # Parse actual times if provided
+        if metadata.get("actual_start_time"):
+            try:
+                from datetime import datetime
+                meeting.actual_start_time = datetime.fromisoformat(metadata["actual_start_time"])
+            except:
+                pass
+        if metadata.get("actual_end_time"):
+            try:
+                from datetime import datetime
+                meeting.actual_end_time = datetime.fromisoformat(metadata["actual_end_time"])
+            except:
+                pass
 
-        # Save meeting
+        # Save meeting with all metadata
         storage.save_meeting(meeting)
+        
+        # Store raw extraction for future reference
+        storage.update_meeting_raw_extraction(meeting.id, {
+            "entities": extraction.entities,
+            "relationships": extraction.relationships,
+            "states": extraction.states,
+            "metadata": extraction.meeting_metadata,
+            "detailed_summary": meeting.detailed_summary
+        })
+        
+        # Save enhanced data to specialized tables
+        enhanced_metadata = extraction.meeting_metadata
+        
+        # Save deliverables intelligence
+        if enhanced_metadata.get("deliverables"):
+            storage.save_meeting_deliverables(meeting.id, enhanced_metadata["deliverables"])
+        
+        # Save stakeholder intelligence
+        if enhanced_metadata.get("stakeholder_intelligence"):
+            storage.save_stakeholder_intelligence(meeting.id, enhanced_metadata["stakeholder_intelligence"])
+        
+        # Save decisions with context
+        if enhanced_metadata.get("decisions_with_context"):
+            storage.save_decisions_with_context(meeting.id, enhanced_metadata["decisions_with_context"])
+        
+        # Save risk areas
+        implementation_insights = enhanced_metadata.get("implementation_insights", {})
+        if implementation_insights.get("risk_areas"):
+            storage.save_risk_areas(meeting.id, implementation_insights["risk_areas"])
 
         # Process entities, states, and relationships
-        processing_results = processor.process_extraction(extraction, meeting.id)
+        # Use the appropriate method based on processor type
+        if hasattr(processor, 'process_meeting_with_context'):
+            # Using enhanced processor v2
+            processing_results = await processor.process_meeting_with_context(extraction, meeting.id)
+        else:
+            # Using original processor
+            processing_results = processor.process_extraction(extraction, meeting.id)
         meeting.entity_count = len(processing_results["entity_map"])
 
         # Generate embeddings for memories
@@ -232,7 +372,13 @@ async def business_intelligence_query(request: BIQueryRequest):
     """Answer business intelligence questions."""
     try:
         # Process query through query engine
-        result = query_engine.answer_query(request.query)
+        # Use the appropriate method based on query engine type
+        if hasattr(query_engine, 'process_query'):
+            # Using production query engine v2
+            result = query_engine.process_query(request.query)
+        else:
+            # Using original query engine
+            result = query_engine.answer_query(request.query)
 
         return {
             "query": result.query,
@@ -316,6 +462,100 @@ async def get_entity_timeline(entity_id: str):
         }
 
     except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/meetings/{meeting_id}/intelligence")
+async def get_meeting_intelligence(meeting_id: str):
+    """Get comprehensive intelligence for a meeting including deliverables, stakeholders, risks."""
+    try:
+        meeting = storage.get_meeting(meeting_id)
+        if not meeting:
+            raise HTTPException(status_code=404, detail="Meeting not found")
+        
+        # Get all enhanced data
+        conn = storage.db_path
+        import sqlite3
+        db = sqlite3.connect(conn)
+        cursor = db.cursor()
+        
+        # Get deliverables
+        cursor.execute("SELECT * FROM meeting_deliverables WHERE meeting_id = ?", (meeting_id,))
+        deliverables = []
+        for row in cursor.fetchall():
+            deliverables.append({
+                "name": row[2],
+                "type": row[3],
+                "target_audience": json.loads(row[4]) if row[4] else [],
+                "requirements": json.loads(row[5]) if row[5] else [],
+                "discussed_evolution": row[6],
+                "dependencies": json.loads(row[7]) if row[7] else [],
+                "deadline": row[8],
+                "format_preferences": row[9]
+            })
+        
+        # Get stakeholder intelligence
+        cursor.execute("SELECT * FROM stakeholder_intelligence WHERE meeting_id = ?", (meeting_id,))
+        stakeholders = []
+        for row in cursor.fetchall():
+            stakeholders.append({
+                "stakeholder": row[2],
+                "role": row[3],
+                "communication_preferences": row[4],
+                "noted_concerns": json.loads(row[5]) if row[5] else [],
+                "format_preferences": row[6],
+                "questions_asked": json.loads(row[7]) if row[7] else [],
+                "key_interests": json.loads(row[8]) if row[8] else []
+            })
+        
+        # Get decisions with context
+        cursor.execute("SELECT * FROM decisions_with_context WHERE meeting_id = ?", (meeting_id,))
+        decisions = []
+        for row in cursor.fetchall():
+            decisions.append({
+                "decision": row[2],
+                "rationale": row[3],
+                "stakeholders_involved": json.loads(row[4]) if row[4] else [],
+                "impact_areas": json.loads(row[5]) if row[5] else [],
+                "supersedes_decision": row[6],
+                "decision_status": row[7]
+            })
+        
+        # Get risks
+        cursor.execute("SELECT * FROM risk_areas WHERE meeting_id = ?", (meeting_id,))
+        risks = []
+        for row in cursor.fetchall():
+            risks.append({
+                "risk": row[2],
+                "severity": row[3],
+                "mitigation_approach": row[4]
+            })
+        
+        db.close()
+        
+        return {
+            "meeting": {
+                "id": meeting.id,
+                "title": meeting.title,
+                "date": meeting.date,
+                "summary": meeting.summary,
+                "detailed_summary": meeting.detailed_summary,
+                "meeting_type": meeting.meeting_type,
+                "project_tags": meeting.project_tags
+            },
+            "intelligence": {
+                "deliverables": deliverables,
+                "stakeholder_intelligence": stakeholders,
+                "decisions_with_context": decisions,
+                "risk_areas": risks,
+                "total_entities": meeting.entity_count,
+                "total_memories": meeting.memory_count
+            }
+        }
+        
+    except Exception as e:
+        import traceback
+        logger.error(f"Error getting meeting intelligence: {traceback.format_exc()}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -440,6 +680,24 @@ async def ingest_file(file: UploadFile = File(...), title: Optional[str] = None)
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.on_event("startup")
+async def startup_event():
+    """Initialize system on startup."""
+    logger.info("=== Smart-Meet Lite Production System Starting ===")
+    logger.info(f"Using LLM Processor with {len(llm_processor.MODELS)} fallback models")
+    logger.info(f"Cache initialized with {cache.default_ttl}s TTL")
+    logger.info(f"Database path: {storage.db_path}")
+    logger.info(f"Qdrant collection: {storage.collection_name}")
+    
+    # Log which components are being used
+    if "processor_v2" in str(type(processor)):
+        logger.info("✓ Using enhanced processor v2 with batch state comparison")
+    if "ProductionQueryEngine" in str(type(query_engine)):
+        logger.info("✓ Using production query engine")
+    
+    logger.info("=== System Ready ===")
 
 
 def main():

@@ -9,6 +9,7 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Any, Tuple
 
 import numpy as np
+import httpx
 from openai import OpenAI
 
 from .models import Entity, EntityMatch, EntityType
@@ -29,13 +30,15 @@ class EntityResolver:
                  llm_client: OpenAI,
                  cache_ttl: int = 300,  # 5 minutes
                  vector_threshold: float = 0.85,
-                 fuzzy_threshold: float = 0.75):
+                 fuzzy_threshold: float = 0.75,
+                 use_llm: bool = True):
         self.storage = storage
         self.embeddings = embeddings
         self.llm_client = llm_client
         self.cache_ttl = timedelta(seconds=cache_ttl)
         self.vector_threshold = vector_threshold
         self.fuzzy_threshold = fuzzy_threshold
+        self.use_llm = use_llm
         
         # Thread-safe caching
         self._cache_lock = threading.RLock()
@@ -129,7 +132,7 @@ class EntityResolver:
             llm_candidates.append(term)
         
         # Batch LLM resolution for remaining terms
-        if llm_candidates:
+        if llm_candidates and self.use_llm:
             llm_matches = self._resolve_with_llm(llm_candidates, entities, context)
             for term, match in llm_matches.items():
                 if match.entity:
@@ -137,6 +140,11 @@ class EntityResolver:
                 else:
                     self._resolution_stats['no_matches'] += 1
             results.update(llm_matches)
+        elif llm_candidates:
+            # LLM disabled, mark as unresolved
+            for term in llm_candidates:
+                results[term] = EntityMatch(term, None, 0.0, "llm_disabled")
+                self._resolution_stats["no_matches"] += 1
         
         # Combine all results
         results.update(exact_matches)
@@ -237,57 +245,70 @@ class EntityResolver:
                          terms: List[str], 
                          entities: List[Entity],
                          context: Optional[str] = None) -> Dict[str, EntityMatch]:
-        """Use LLM for complex entity resolution."""
+        """Use LLM for complex entity resolution with a strict JSON schema."""
         
-        # Prepare entity catalog (limit to prevent token overflow)
-        entity_catalog = []
-        for entity in entities[:200]:  # Adaptive limit
-            catalog_entry = {
-                'id': entity.id,
-                'name': entity.name,
-                'type': entity.type.value,
-                'keywords': []
-            }
-            
-            # Extract keywords from attributes
-            if hasattr(entity, 'attributes') and entity.attributes:
-                if 'description' in entity.attributes:
-                    catalog_entry['keywords'].append(entity.attributes['description'][:50])
-                if 'aliases' in entity.attributes:
-                    catalog_entry['keywords'].extend(entity.attributes['aliases'])
-            
-            entity_catalog.append(catalog_entry)
+        entity_catalog = [{
+            'id': entity.id,
+            'name': entity.name,
+            'type': entity.type.value,
+            'description': entity.attributes.get('description', '')[:200] if hasattr(entity, 'attributes') and entity.attributes else ''
+        } for entity in entities[:200]] # Adaptive limit
+
+        resolution_schema = {
+            "type": "object",
+            "properties": {
+                "resolutions": {
+                    "type": "array",
+                    "description": "A list of resolved entities.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "query_term": {
+                                "type": "string",
+                                "description": "The original term that was being resolved."
+                            },
+                            "entity_id": {
+                                "type": ["string", "null"],
+                                "description": "The ID of the matched entity, or null if no match was found."
+                            },
+                            "confidence": {
+                                "type": "number",
+                                "description": "The confidence score of the match (0.0 to 1.0)."
+                            }
+                        },
+                        "required": ["query_term", "entity_id", "confidence"]
+                    }
+                }
+            },
+            "required": ["resolutions"]
+        }
+
+        system_prompt = """You are an advanced entity resolution system. Your task is to intelligently match query terms to database entities based on semantic meaning, context, and domain knowledge. You must respond with valid JSON only."""
+
+        user_prompt = f"""Match the following query terms to the most appropriate entities from the catalog.
         
-        # Sophisticated prompt
-        system_prompt = """You are an advanced entity resolution system. Your task is to intelligently match query terms to database entities based on semantic meaning, context, and domain knowledge.
+Query Terms: {json.dumps(terms)}
+Context: {context or 'No additional context provided.'}
 
-Key principles:
-1. Consider semantic similarity, not just string matching
-2. Understand abbreviations, synonyms, and variations
-3. Use context clues when available
-4. Be confident in obvious matches, conservative in ambiguous cases
-5. Return null for terms that have no reasonable match
-
-Examples of good matches:
-- "mobile app redesign" → "Mobile App Redesign Project"
-- "API work" → "API Optimization Initiative"
-- "ML pipeline" → "Machine Learning Data Pipeline"
-- "backend perf" → "Backend Performance Optimization"
-"""
-
-        user_prompt = f"""Match these query terms to the most appropriate entities.
-
-Query terms: {json.dumps(terms)}
-{f'Context: {context}' if context else ''}
-
-Available entities:
+Available Entities:
 {json.dumps(entity_catalog, indent=2)}
 
-Return a JSON object mapping each query term to either:
-- An entity ID (if confident match exists)
-- null (if no reasonable match)
-
-Include confidence scores (0-1) for each match."""
+Instructions:
+1.  Analyze each query term and find the best match in the 'Available Entities' list.
+2.  Consider semantic similarity, abbreviations, and context.
+3.  For each term, provide the matched entity's ID and a confidence score from 0.0 to 1.0.
+4.  If no reasonable match is found for a term, use `null` for the `entity_id` and `0.0` for the confidence.
+5.  Return a JSON object with this exact structure:
+{{
+  "resolutions": [
+    {{
+      "query_term": "the original term",
+      "entity_id": "matched entity ID or null",
+      "confidence": 0.0 to 1.0
+    }}
+  ]
+}}
+"""
 
         try:
             response = self._call_llm_with_retry(
@@ -296,47 +317,54 @@ Include confidence scores (0-1) for each match."""
                     {"role": "user", "content": user_prompt}
                 ],
                 temperature=0.1,
-                max_tokens=1000,
-                response_format={"type": "json_object"}
+                max_tokens=1500
             )
             
-            result = json.loads(response.choices[0].message.content)
+            message_content = response.choices[0].message.content
             
-            # Convert to EntityMatch objects
-            matches = {}
-            entity_lookup = {e.id: e for e in entities}
-            
-            for term in terms:
-                if term in result:
-                    match_data = result[term]
-                    if isinstance(match_data, dict) and 'entity_id' in match_data:
-                        entity = entity_lookup.get(match_data['entity_id'])
-                        confidence = match_data.get('confidence', 0.7)
-                    elif isinstance(match_data, str):
-                        entity = entity_lookup.get(match_data)
-                        confidence = 0.7
-                    else:
-                        entity = None
-                        confidence = 0.0
+            # Parse JSON response
+            try:
+                result = json.loads(message_content)
+                arguments = result
+                resolutions = arguments.get("resolutions", [])
+                
+                matches = {}
+                entity_lookup = {e.id: e for e in entities}
+                
+                for res in resolutions:
+                    term = res.get("query_term")
+                    if not term:
+                        continue
+                    
+                    entity_id = res.get("entity_id")
+                    entity = entity_lookup.get(entity_id) if entity_id else None
+                    confidence = res.get("confidence", 0.0)
                     
                     matches[term] = EntityMatch(
                         query_term=term,
                         entity=entity,
                         confidence=confidence,
-                        match_type='llm',
-                        metadata={'llm_response': match_data}
+                        match_type='llm' if entity else 'llm_no_match',
+                        metadata={'llm_response': res}
                     )
-                else:
-                    matches[term] = EntityMatch(term, None, 0.0, 'llm_no_match')
+                
+                # Ensure all original terms are in the result
+                for term in terms:
+                    if term not in matches:
+                        matches[term] = EntityMatch(term, None, 0.0, 'llm_missing_term')
+
+                return matches
             
-            return matches
-            
+            except json.JSONDecodeError as e:
+                logger.error(f"Failed to parse LLM JSON response: {e}")
+                return {term: EntityMatch(term, None, 0.0, 'llm_json_error') for term in terms}
+                
         except Exception as e:
             logger.error(f"LLM resolution failed: {e}")
-            # Return empty matches on failure
-            return {term: EntityMatch(term, None, 0.0, 'llm_error') 
-                    for term in terms}
-    
+            return {term: EntityMatch(term, None, 0.0, 'llm_error') for term in terms}
+        
+        return {term: EntityMatch(term, None, 0.0, 'llm_fallback') for term in terms}
+
     def _call_llm_with_retry(self, messages, max_retries=3, **kwargs):
         """Call LLM with exponential backoff retry."""
         last_exception = None

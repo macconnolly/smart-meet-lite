@@ -23,35 +23,14 @@ logger = logging.getLogger(__name__)
 class QueryEngine:
     """Simplified query engine with centralized entity resolution."""
 
-    def __init__(self, storage: MemoryStorage, embeddings: EmbeddingEngine):
+    def __init__(self, storage: MemoryStorage, embeddings: EmbeddingEngine, entity_resolver: EntityResolver):
         """Initialize with storage and embedding engine."""
         self.storage = storage
         self.embeddings = embeddings
+        self.entity_resolver = entity_resolver
         
-        # Create HTTP client with SSL verification disabled for corporate networks
-        http_client = httpx.Client(verify=False)
-        
-        self.client = OpenAI(
-            api_key=settings.openrouter_api_key, 
-            base_url=settings.openrouter_base_url,
-            default_headers={
-                "HTTP-Referer": "http://localhost:8000",
-                "X-Title": "Smart-Meet Lite",
-            },
-            http_client=http_client
-        )
-        
-        # Initialize entity resolver with error handling
-        try:
-            self.entity_resolver = EntityResolver(
-                storage=storage,
-                embeddings=embeddings,
-                llm_client=self.client
-            )
-        except Exception as e:
-            logger.error(f"Failed to initialize EntityResolver: {e}")
-            logger.warning("Entity resolution will be limited to exact matches")
-            self.entity_resolver = None
+        # Reuse the LLM client from entity resolver
+        self.client = entity_resolver.llm_client
 
     def parse_intent(self, query: str) -> QueryIntent:
         """Parse user query to understand intent."""
@@ -488,8 +467,8 @@ Return JSON:
         if timeline_data:
             answer_parts = []
             
-            # Show top 5 changes with confidence awareness
-            for event in timeline_data[:5]:
+            # Show configurable number of timeline changes with confidence awareness
+            for event in timeline_data[:settings.timeline_display_limit]:
                 changed = ", ".join(event["changed_fields"])
                 
                 if event['confidence'] > 0.8:
@@ -514,7 +493,7 @@ Return JSON:
                 if unresolved:
                     answer += f" I couldn't find timeline data for: {', '.join(unresolved)}."
                     
-            confidence = sum(e['confidence'] for e in timeline_data[:5]) / min(5, len(timeline_data)) if timeline_data else 0.8
+            confidence = sum(e['confidence'] for e in timeline_data) / len(timeline_data) if timeline_data else 0.8
         else:
             answer = "No timeline data found for the specified entities."
             
@@ -587,8 +566,8 @@ Return JSON:
             answer_parts = []
             
             # Group by confidence
-            high_confidence = [r for r in relationship_data[:10] if r['confidence'] > 0.8]
-            medium_confidence = [r for r in relationship_data[:10] if 0.6 < r['confidence'] <= 0.8]
+            high_confidence = [r for r in relationship_data if r['confidence'] > 0.8]
+            medium_confidence = [r for r in relationship_data if 0.6 < r['confidence'] <= 0.8]
             
             for rel in high_confidence:
                 answer_parts.append(
@@ -617,7 +596,7 @@ Return JSON:
                     answer += f" I couldn't find relationships for: {', '.join(unresolved)}."
                     
             # Calculate overall confidence
-            shown_relationships = relationship_data[:10]
+            shown_relationships = relationship_data
             confidence = sum(r['confidence'] for r in shown_relationships) / len(shown_relationships) if shown_relationships else 0.8
         else:
             answer = "No relationships found for the specified entities."

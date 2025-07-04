@@ -10,16 +10,37 @@ from email.parser import Parser
 import re
 
 def extract_text_from_eml(eml_path):
-    """Extract text content from an EML file."""
+    """Extract full email content including headers and metadata."""
     try:
         with open(eml_path, 'r', encoding='utf-8', errors='ignore') as f:
             msg = email.message_from_file(f, policy=policy.default)
         
+        # Get email metadata
+        email_metadata = {
+            'from': msg.get('from', ''),
+            'to': msg.get('to', ''),
+            'cc': msg.get('cc', ''),
+            'date': msg.get('date', ''),
+            'subject': msg.get('subject', ''),
+            'message_id': msg.get('message-id', '')
+        }
+        
+        # Get subject for title
+        subject = email_metadata['subject'] or Path(eml_path).stem.replace('_', ' ')
+        
+        # Build complete email content for LLM
+        email_content = f"""Email Headers:
+From: {email_metadata['from']}
+To: {email_metadata['to']}
+CC: {email_metadata['cc']}
+Date: {email_metadata['date']}
+Subject: {email_metadata['subject']}
+
+Email Body:
+"""
+        
         # Extract text content
         text_content = []
-        
-        # Get subject
-        subject = msg.get('subject', '')
         
         # Extract body
         if msg.is_multipart():
@@ -54,32 +75,37 @@ def extract_text_from_eml(eml_path):
         # Combine all text
         full_text = '\n'.join(text_content)
         
-        # Clean up common email artifacts
-        full_text = re.sub(r'From:.*?\n', '', full_text)
-        full_text = re.sub(r'To:.*?\n', '', full_text)
-        full_text = re.sub(r'Sent:.*?\n', '', full_text)
-        full_text = re.sub(r'Subject:.*?\n', '', full_text)
-        full_text = re.sub(r'-{3,}.*?-{3,}', '', full_text, flags=re.DOTALL)
+        # Add body to email content
+        email_content += full_text
         
-        # Limit length for API
-        if len(full_text) > 10000:
-            full_text = full_text[:10000] + "... [truncated]"
+        # Limit length for API while keeping headers
+        if len(email_content) > 15000:
+            # Keep headers and truncate body
+            header_lines = email_content.split('\nEmail Body:\n')[0] + '\nEmail Body:\n'
+            remaining = 15000 - len(header_lines) - 50
+            email_content = header_lines + full_text[:remaining] + "\n... [truncated]"
         
-        return subject, full_text.strip()
+        return subject, email_content.strip(), email_metadata
     
     except Exception as e:
         print(f"Error parsing {eml_path}: {e}")
-        return None, None
+        return None, None, None
 
-def ingest_meeting(title, transcript):
-    """Ingest a meeting via the API."""
+def ingest_meeting(title, transcript, email_metadata=None):
+    """Ingest a meeting via the API with metadata."""
     try:
+        payload = {
+            "title": title,
+            "transcript": transcript
+        }
+        
+        # Add email metadata if available
+        if email_metadata:
+            payload["email_metadata"] = email_metadata
+            
         response = requests.post(
             "http://localhost:8000/api/ingest",
-            json={
-                "title": title,
-                "transcript": transcript
-            },
+            json=payload,
             timeout=30
         )
         return response
