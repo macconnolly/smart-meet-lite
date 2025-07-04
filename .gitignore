@@ -18,6 +18,20 @@ data/*.db
 data/qdrant/
 models/onnx/*.onnx
 
+# Large files and backups
+*.json.backup
+*_backup.json
+entity_embeddings_backup.json
+qdrant_data/
+storage/
+
+# Certificates and proxy files
+*.crt
+*.pem
+*.p7c
+zscaler*
+combined-ca-bundle.crt
+
 # IDE
 .vscode/
 .idea/
@@ -28,6 +42,7 @@ models/onnx/*.onnx
 # Logs
 *.log
 logs/
+api_*.log
 
 # Testing
 .coverage
