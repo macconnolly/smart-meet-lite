@@ -2,17 +2,39 @@
 
 An intelligent meeting memory system with business intelligence capabilities.
 
-## 🚀 Quick Start (Windows)
+## 🚀 Quick Start
+
+### Prerequisites
+- Python 3.11+
+- Docker Desktop (must be running)
+- OpenRouter API key (get one at https://openrouter.ai/)
+
+### Start Services
 
 ```bash
-# 1. Run the setup script
-setup_windows.bat
+# 1. Start Qdrant Vector Database (REQUIRED)
+docker-compose up -d
 
-# 2. Start the system
-start_windows.bat
+# 2. Copy environment template and add your API key
+cp .env.example .env
+# Edit .env and add your OPENROUTER_API_KEY
 
-# 3. Open in browser
-http://localhost:8000
+# 3. Install dependencies (if not done)
+pip install -r requirements.txt
+
+# 4. Start the API server
+python -m src.api
+
+# 5. Verify everything is working
+curl http://localhost:8000/health/detailed
+```
+
+### Alternative: Windows Quick Start
+
+```bash
+# Use the automated scripts
+setup_windows.bat    # First time setup
+start_windows.bat    # Start all services
 ```
 
 For detailed setup instructions, see **[SETUP_GUIDE.md](SETUP_GUIDE.md)**
@@ -189,14 +211,25 @@ python bi_demo.py
 1. **"Cannot connect to API"**
    - Ensure API is running: `python -m src.api`
    - Check port 8000 is free
+   - Run from project root directory
 
 2. **"Qdrant connection failed"**
-   - Start Docker Desktop
+   - Start Docker Desktop first
    - Run: `docker-compose up -d`
+   - Check Docker logs: `docker logs qdrant`
 
 3. **"OpenRouter API key not configured"**
    - Edit `.env` file
    - Add your key: `OPENROUTER_API_KEY=sk-or-...`
+   - Restart the API after changing
+
+4. **"No module named 'src'"**
+   - Run from project root: `cd smart-meet-lite`
+   - Use: `python -m src.api` (not `python src/api.py`)
+
+5. **"Event loop already running"**
+   - This is a known issue being fixed
+   - Restart the API server
 
 See [SETUP_GUIDE.md](SETUP_GUIDE.md#troubleshooting) for detailed troubleshooting.
 
