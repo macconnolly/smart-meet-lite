@@ -372,7 +372,7 @@ Instructions:
         for attempt in range(max_retries):
             try:
                 return self.llm_client.chat.completions.create(
-                    model=settings.openrouter_model,
+                    model=settings.clean_openrouter_model,
                     messages=messages,
                     **kwargs
                 )

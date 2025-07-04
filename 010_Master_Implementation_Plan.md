@@ -60,7 +60,7 @@ Our principles are:
     ```python
     class LLMProcessor:
         MODELS = [
-            "anthropic/claude-3-haiku-20240307",
+            "openai/gpt-4o-mini",
             "openai/gpt-4-turbo-preview",
             "openai/gpt-3.5-turbo",
             "mistralai/mixtral-8x7b"

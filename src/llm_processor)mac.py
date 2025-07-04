@@ -23,7 +23,7 @@ class LLMProcessor:
     
     # Model fallback chain - ordered by preference
     MODELS = [
-        "anthropic/claude-3-haiku-20240307",  # Best for structured output
+        "openai/gpt-4o-mini",   # Open source fallback
         "openai/gpt-4-turbo-preview",         # Good alternative
         "openai/gpt-3.5-turbo",               # Fast and reliable
         "mistralai/mixtral-8x7b-instruct",   # Open source fallback

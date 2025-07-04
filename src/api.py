@@ -8,6 +8,7 @@ from datetime import datetime
 import uvicorn
 import logging
 import json
+import sqlite3
 
 from .models import Meeting
 from .extractor import MemoryExtractor
@@ -194,6 +195,39 @@ async def ingest_meeting(request: IngestRequest):
             meeting.id,
             email_metadata=email_metadata
         )
+        
+        # Validate extraction produced data
+        if not extraction.memories and not extraction.entities:
+            # Check if this is a fallback
+            extraction_method = extraction.meeting_metadata.get("extraction_method", "unknown")
+            error_info = extraction.meeting_metadata.get("extraction_error", "No error details")
+            
+            if extraction_method == "basic_fallback":
+                logger.warning(f"Enhanced extraction failed, using basic extraction. Error: {error_info}")
+                # Add warning to meeting metadata
+                meeting.metadata = {"extraction_warning": "Processed with basic extraction - data may be incomplete"}
+                
+                # If even basic extraction produced no data, this is critical
+                if len(extraction.memories) == 0 and len(extraction.entities) == 0:
+                    raise HTTPException(
+                        status_code=500,
+                        detail={
+                            "error": "Both enhanced and basic extraction failed to produce any data",
+                            "extraction_metadata": extraction.meeting_metadata,
+                            "transcript_length": len(request.transcript),
+                            "suggestion": "Check transcript format and LLM configuration"
+                        }
+                    )
+            else:
+                # Complete extraction failure
+                raise HTTPException(
+                    status_code=500,
+                    detail={
+                        "error": "Extraction failed to produce any data",
+                        "extraction_metadata": extraction.meeting_metadata,
+                        "suggestion": "Check LLM configuration and API keys"
+                    }
+                )
 
         # Update meeting with extracted metadata
         meeting.summary = extraction.summary
@@ -680,6 +714,124 @@ async def ingest_file(file: UploadFile = File(...), title: Optional[str] = None)
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/health/detailed")
+async def detailed_health_check():
+    """Comprehensive system health check."""
+    health_status = {
+        "status": "checking",
+        "timestamp": datetime.now().isoformat(),
+        "checks": {}
+    }
+    
+    # Check LLM configuration
+    try:
+        model_name = settings.clean_openrouter_model
+        raw_model = settings.openrouter_model
+        health_status["checks"]["llm_config"] = {
+            "status": "ok",
+            "raw_model": raw_model,
+            "clean_model": model_name,
+            "has_comment": '#' in raw_model,
+            "has_whitespace": raw_model != raw_model.strip()
+        }
+    except Exception as e:
+        health_status["checks"]["llm_config"] = {
+            "status": "error",
+            "error": str(e)
+        }
+    
+    # Test LLM connectivity
+    try:
+        test_response = llm_client.chat.completions.create(
+            model=settings.clean_openrouter_model,
+            messages=[{"role": "user", "content": "Say 'ok'"}],
+            max_tokens=10
+        )
+        health_status["checks"]["llm_connectivity"] = {
+            "status": "ok",
+            "model_used": settings.clean_openrouter_model,
+            "response": test_response.choices[0].message.content
+        }
+    except Exception as e:
+        health_status["checks"]["llm_connectivity"] = {
+            "status": "error",
+            "error": str(e),
+            "error_type": type(e).__name__,
+            "model_attempted": settings.clean_openrouter_model
+        }
+    
+    # Check Qdrant
+    try:
+        info = storage.qdrant.get_collection(storage.collection_name)
+        health_status["checks"]["qdrant"] = {
+            "status": "ok",
+            "collection": storage.collection_name,
+            "vectors_count": info.vectors_count,
+            "points_count": info.points_count
+        }
+    except Exception as e:
+        health_status["checks"]["qdrant"] = {
+            "status": "error",
+            "error": str(e),
+            "collection_name": storage.collection_name
+        }
+    
+    # Check database
+    try:
+        conn = sqlite3.connect(storage.db_path)
+        cursor = conn.cursor()
+        cursor.execute("SELECT COUNT(*) FROM entities")
+        entity_count = cursor.fetchone()[0]
+        cursor.execute("SELECT COUNT(*) FROM memories")
+        memory_count = cursor.fetchone()[0]
+        cursor.execute("SELECT COUNT(*) FROM meetings")
+        meeting_count = cursor.fetchone()[0]
+        conn.close()
+        
+        health_status["checks"]["database"] = {
+            "status": "ok",
+            "path": storage.db_path,
+            "entity_count": entity_count,
+            "memory_count": memory_count,
+            "meeting_count": meeting_count
+        }
+    except Exception as e:
+        health_status["checks"]["database"] = {
+            "status": "error",
+            "error": str(e),
+            "path": storage.db_path
+        }
+    
+    # Check embeddings
+    try:
+        test_text = "test"
+        test_embedding = embeddings.encode([test_text])
+        health_status["checks"]["embeddings"] = {
+            "status": "ok",
+            "model_path": settings.onnx_model_path,
+            "embedding_dim": test_embedding.shape[1] if len(test_embedding.shape) > 1 else test_embedding.shape[0]
+        }
+    except Exception as e:
+        health_status["checks"]["embeddings"] = {
+            "status": "error", 
+            "error": str(e),
+            "model_path": settings.onnx_model_path
+        }
+    
+    # Overall status
+    all_ok = all(check.get("status") == "ok" for check in health_status["checks"].values())
+    health_status["status"] = "healthy" if all_ok else "unhealthy"
+    
+    # Add warnings if using fallback extraction
+    warnings = []
+    if health_status["checks"]["llm_connectivity"].get("status") == "error":
+        warnings.append("LLM connectivity failed - system will use basic extraction")
+    if warnings:
+        health_status["warnings"] = warnings
+    
+    return health_status
 
 
 @app.on_event("startup")

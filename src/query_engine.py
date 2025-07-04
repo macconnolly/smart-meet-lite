@@ -68,7 +68,7 @@ Return JSON:
 
         try:
             response = self.client.chat.completions.create(
-                model=settings.openrouter_model,
+                model=settings.clean_openrouter_model,
                 messages=[
                     {"role": "system", "content": prompt},
                     {"role": "user", "content": query},
@@ -788,7 +788,7 @@ Return JSON:
 
         try:
             response = self.client.chat.completions.create(
-                model=settings.openrouter_model,
+                model=settings.clean_openrouter_model,
                 messages=[
                     {
                         "role": "system",

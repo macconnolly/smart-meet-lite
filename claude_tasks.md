@@ -1,230 +1,450 @@
 # Claude Tasks: Smart-Meet Lite Prioritized Implementation Plan
 
-This document contains the prioritized task plans for fixing Smart-Meet Lite's critical issues first, then enhancing functionality, with non-essential items moved to the end.
+This document contains the prioritized task plans for Smart-Meet Lite, updated after comprehensive fixes on 2025-01-04.
 
-## Recent Progress Update (2025-07-01)
+## Recent Progress Update (2025-01-04)
 
-### ✅ COMPLETED: Entity Embeddings Migration to Qdrant
-- Successfully migrated 1046 entity embeddings from SQLite BLOBs to Qdrant
-- Achieved **56.3x performance improvement** (135+ seconds → 2.40 seconds average)
-- 100% query success rate (previously 0% due to timeouts)
-- Created comprehensive migration script with backup
-- Updated all affected modules (models, storage, processor, entity_resolver)
-- Full details in `migration_report.md`
+### ✅ COMPLETED TODAY: Critical Bug Fixes
 
-### ✅ COMPLETED: Removal of Artificial Truncations
-- Removed [:5] limits on decisions and action_items in extractor.py
-- Removed [:5] and [:10] limits in query_engine.py confidence calculations
-- Increased entity description context from 50 to 200 characters
-- Made timeline display limit configurable (default: 5, adjustable via settings)
-- Created test suite `test_truncation_removal.py`
-- Full details in `truncation_removal_summary.md`
+1. **Async Event Loop Fix**
+   - File: `src/processor_v2.py` (lines 166-168)
+   - Removed nested asyncio.run() causing FastAPI conflicts
+   - Now directly awaits _create_comprehensive_transitions
 
-### ✅ COMPLETED: Entity Resolution Architecture Fix
-- Connected EntityResolver to EntityProcessor (previously separate implementations)
-- Fixed false positive matches ("vendor quotes for infrastructure" ≠ "vendor issues")
-- Implemented shared resolver with multi-strategy approach (exact, fuzzy, vector, LLM)
-- Added configurable thresholds and use_llm flag
-- Clean reset performed to eliminate historical bad data
-- Full details in `003-Truncation Removal and Entity Resolution Issues.md`
+2. **Query Engine Method Fix**
+   - File: `src/query_engine_v2.py` (line 610)
+   - Fixed non-existent search_memories → search
+   - Added compatibility wrapper in storage.py
 
-### 🔴 CRITICAL ISSUE DISCOVERED: State Tracking Failures
-During testing after entity resolution fix:
-- **Only 16 state transitions** created when 100+ expected
-- **Timeline queries failing** with 500 errors or empty results
-- **Root Cause**: LLM doesn't know prior states, cannot detect changes
-- **Impact**: No historical tracking, broken business intelligence features
-- Full details in `004-State-Tracking-and-Timeline-Issues-DETAILED.md`
+3. **Configuration Robustness**
+   - File: `src/config.py` (lines 54-79)
+   - Enhanced clean_openrouter_model to handle comments and whitespace
+   - Added validation and logging
+
+4. **Extraction Fallback**
+   - File: `src/extractor_enhanced.py` (lines 467-585)
+   - Basic extraction now produces real data with regex parsing
+   - Guarantees at least one memory even on total failure
+
+5. **Qdrant Filter Fix**
+   - File: `src/storage.py` (lines 1065-1082)
+   - Proper Filter object construction
+   - Added try/except for parameter compatibility
+
+6. **Error Handling**
+   - File: `src/extractor_enhanced.py` (lines 403-438)
+   - Specific exception types (AuthenticationError, BadRequestError)
+   - Detailed error metadata in responses
+
+7. **Health Monitoring**
+   - File: `src/api.py` (lines 718-833)
+   - Comprehensive /health/detailed endpoint
+   - Checks LLM, Qdrant, database, embeddings
 
 ---
 
-## Current Critical Implementation Plan (July 1, 2025)
+## Current System Status
 
-### Overview of Current Gaps
+### What's Working
+- All critical code paths are now functional
+- Fallback mechanisms prevent total failures
+- Error messages are clear and actionable
+- System can degrade gracefully
 
-1. **State Tracking Broken**: Only 16/100+ transitions detected
-2. **Missing Metadata**: Email context, project tags, meeting types stripped
-3. **Query Classification Failing**: Blocker/timeline queries misclassified
-4. **No State Inference**: Implicit state changes not captured
-5. **Limited Business Intelligence**: Can't track project evolution
+### What Needs Testing
+- End-to-end ingestion → query pipeline
+- State transition detection accuracy
+- Multi-meeting entity tracking
+- Performance under load
 
-### Phase 1: Enhanced Data Capture & Storage (3 hours)
+### What's Not Implemented (from Master Plan)
+- Batch database operations (performance optimization)
+- Removal of regex patterns (code cleanup)
+- Query engine batch fetching (performance)
 
-#### 1.1 Update Database Schema
-**File**: `src/storage.py` - `_init_sqlite()` method (line ~46)
+---
 
-Add new columns to capture rich metadata:
-```sql
-ALTER TABLE meetings ADD COLUMN email_metadata TEXT DEFAULT NULL;
-ALTER TABLE meetings ADD COLUMN project_tags TEXT DEFAULT '[]';
-ALTER TABLE meetings ADD COLUMN meeting_type TEXT DEFAULT 'unknown';
-ALTER TABLE meetings ADD COLUMN actual_start_time TIMESTAMP DEFAULT NULL;
-ALTER TABLE meetings ADD COLUMN actual_end_time TIMESTAMP DEFAULT NULL;
-ALTER TABLE meetings ADD COLUMN detailed_summary TEXT DEFAULT NULL;
-ALTER TABLE meetings ADD COLUMN raw_extraction TEXT DEFAULT NULL;
-ALTER TABLE meetings ADD COLUMN organization_context TEXT DEFAULT NULL;
+## 🔴 IMMEDIATE TASKS (Next 2 Hours)
+
+### 1. System Validation Testing
+**Priority**: CRITICAL
+**Time**: 30 minutes
+
+```bash
+# 1. Start services
+docker-compose up -d
+python -m src.api
+
+# 2. Health check
+curl http://localhost:8000/health/detailed
+
+# 3. Test ingestion
+python examples/bi_demo.py
+
+# 4. Verify state tracking
+# Check logs for "Created state transition" messages
+# Confirm transitions have semantic reasons
 ```
 
-#### 1.2 Update Meeting Model
-**File**: `src/models.py` - Meeting class (line ~121)
+**Success Criteria**:
+- Health check shows all green
+- Ingestion completes without errors
+- State transitions are created with meaningful reasons
+- Queries return actual data
 
-Add corresponding fields to dataclass for new metadata.
+### 2. Fix Any Remaining Issues
+**Priority**: CRITICAL
+**Time**: 30 minutes
 
-#### 1.3 Complete EML Processing Enhancement
-**File**: `ingest_eml_files.py` - Replace `parse_eml_file()` function
+Based on test results:
+- If LLM connectivity fails: Check API key and model name
+- If Qdrant unhealthy: Check Docker logs, restart container
+- If no state transitions: Check processor logs for errors
+- If queries fail: Check storage method implementations
 
-- Extract and preserve email metadata (From, To, CC, Date, Thread ID)
-- Parse organization context from email domains
-- Keep email headers for context instead of stripping
-- Return structured data with all metadata
+### 3. Performance Baseline
+**Priority**: HIGH
+**Time**: 30 minutes
 
-#### 1.4 Update Ingestion Script
-**File**: `ingest_eml_files.py` - Update `ingest_meeting()` function
+Create performance baseline script:
+```python
+# test_performance_baseline.py
+import time
+import asyncio
+from src.api import app
+from fastapi.testclient import TestClient
 
-Pass all metadata through API ingestion endpoint.
+async def measure_performance():
+    client = TestClient(app)
+    
+    # Measure ingestion time
+    start = time.time()
+    response = client.post("/api/ingest", json={
+        "title": "Performance Test Meeting",
+        "transcript": large_transcript  # 10KB+ transcript
+    })
+    ingestion_time = time.time() - start
+    
+    # Measure query time
+    start = time.time()
+    response = client.post("/api/query", json={
+        "query": "What's the status of all projects?"
+    })
+    query_time = time.time() - start
+    
+    print(f"Ingestion: {ingestion_time:.2f}s")
+    print(f"Query: {query_time:.2f}s")
+```
 
-#### 1.5 Update API Request Model
-**File**: `src/api.py` - Add IngestRequest model
+### 4. Document Current Behavior
+**Priority**: HIGH
+**Time**: 30 minutes
 
-Include all new metadata fields in API request structure.
-
-### Phase 2: Fix State Tracking with Prior Context (3 hours)
-
-#### 2.1 Add Storage Methods for State History
-**File**: `src/storage.py` - Add after line ~440
-
-- `get_all_entity_current_states()` - SQLite-compatible query for all current states
-- `get_entity_state_history()` - Full history for timeline building
-- `update_meeting_raw_extraction()` - Store extraction for future use
-
-#### 2.2 Update Extractor with Helper Methods
-**File**: `src/extractor.py` - Add before `extract_meeting_info()`
-
-- `_infer_meeting_type()` - Classify meeting from email metadata
-- `_extract_project_from_title()` - Extract project name from title patterns
-
-#### 2.3 Enhanced Extractor with Prior States
-**File**: `src/extractor.py` - Replace `extract_meeting_info()` method
-
-Pass prior states to LLM with enhanced prompt that:
-- Shows all entity prior states
-- Instructs comparison and change detection
-- Captures detailed summary and metadata
-
-#### 2.4 Update API Endpoint
-**File**: `src/api.py` - Replace `/api/ingest` endpoint
-
-c
-
-### Phase 3: State Inference from Content (1.5 hours)
-
-#### 3.1 Add State Inference to Processor
-**File**: `src/processor.py` - Add `_infer_state_changes_from_content()`
-
-Pattern-based detection for:
-- Status changes: "is now in progress", "has been completed", "is blocked"
-- Progress updates: "at 75% complete"
-- Risk indicators: "at risk", "may slip"
-
-#### 3.2 Integrate State Inference
-**File**: `src/processor.py` - Update `process_extraction()`
-
-Combine explicit LLM-detected changes with inferred changes.
-
-### Phase 4: Fix Query Intent Classification (1 hour)
-
-#### 4.1 Enhanced Intent Detection
-**File**: `src/query_engine.py` - Replace `parse_intent()` method
-
-Comprehensive pattern matching with scoring system for:
-- Timeline queries
-- Blocker queries
-- Status queries
-- Ownership queries
-
-#### 4.2 Timeline Query Fallback
-**File**: `src/query_engine.py` - Update `_answer_timeline_query()`
-
-If no transitions exist, reconstruct from state history.
-
-### Phase 5: Comprehensive Test Suite (1 hour)
-
-#### 5.1 State Transition Test
-**File**: `test_state_transitions.py`
-
-Test explicit transitions, inferred changes, blocker detection, progress tracking.
+Create `SYSTEM_BEHAVIOR.md`:
+- Actual extraction output examples
+- State transition examples
+- Query response examples
+- Error message examples
 
 ---
 
-## Task Priority List
+## 🟡 SHORT-TERM TASKS (This Week)
 
-### 🔴 CRITICAL - Immediate (Today)
+### 1. Implement Batch Operations
+**Priority**: HIGH
+**Time**: 3 hours
+**Files**: `src/storage.py`, `src/processor_v2.py`, `src/query_engine_v2.py`
 
-1. **Enhanced Data Capture** (Phase 1)
-   - Update database schema for metadata
-   - Fix EML processing to preserve context
-   - Capture project tags and meeting types
+```python
+# storage.py - Already have methods, need to use them
+def save_entities_batch(self, entities: List[Entity]) -> List[str]:
+    # Existing implementation
+    
+# processor_v2.py - Update to use batch
+# Line ~440: Replace individual saves with batch
+self.storage.save_entities_batch(processed_entities)
+self.storage.save_transitions_batch(transitions)
 
-2. **Fix State Tracking** (Phase 2)
-   - Pass prior states to LLM
-   - Enable change detection
-   - Store raw extractions
+# query_engine_v2.py - Update _build_query_context
+# Line ~315: Use batch fetching
+entity_ids = [e.id for e in context.entities]
+all_timelines = self.storage.get_timelines_batch(entity_ids)
+```
 
-3. **State Inference** (Phase 3)
-   - Pattern-based state detection
-   - Capture implicit changes
+### 2. Remove Regex Patterns (Clean Code)
+**Priority**: MEDIUM
+**Time**: 2 hours
+**File**: `src/processor_v2.py`
 
-### 🟡 ESSENTIAL - Tomorrow
+**Current State**: Lines 33-93 define STATE_PATTERNS, ASSIGNMENT_PATTERNS, PROGRESS_PATTERNS
+**Action**: 
+1. Comment out pattern definitions
+2. Remove methods: _infer_states_from_patterns, _extract_progress_indicators, _extract_assignments
+3. Simplify _merge_state_information to only use LLM results
+4. Test to ensure no regression
 
-4. **Query Classification** (Phase 4)
-   - Fix intent detection
-   - Add timeline fallbacks
+### 3. Add Connection Pooling
+**Priority**: MEDIUM
+**Time**: 2 hours
+**File**: `src/storage.py`
 
-5. **Comprehensive Testing** (Phase 5)
-   - Verify all fixes work together
-   - Test edge cases
+```python
+import sqlite3
+from contextlib import contextmanager
+from queue import Queue
 
-### 🟢 IMPORTANT - This Week
+class ConnectionPool:
+    def __init__(self, database_path: str, pool_size: int = 5):
+        self.database_path = database_path
+        self.pool = Queue(maxsize=pool_size)
+        for _ in range(pool_size):
+            conn = sqlite3.connect(database_path)
+            conn.row_factory = sqlite3.Row
+            self.pool.put(conn)
+    
+    @contextmanager
+    def get_connection(self):
+        conn = self.pool.get()
+        try:
+            yield conn
+        finally:
+            self.pool.put(conn)
+```
 
-6. **Data Migration**
-   - Migrate historical data with new extraction
-   - Backfill missing state transitions
+### 4. Implement Caching Strategy
+**Priority**: MEDIUM
+**Time**: 3 hours
 
-7. **Advanced Analytics**
-   - Project burndown tracking
-   - Team velocity metrics
-   - Blocker analysis
+**Cache Layers**:
+1. Query results (TTL: 5 minutes)
+2. Entity resolutions (TTL: 1 hour)
+3. Current states (TTL: 1 minute)
 
-### ⚪ NON-ESSENTIAL - Next Week
+```python
+# Add to query_engine_v2.py
+@cache.cached(ttl=300)
+def process_query(self, query: str) -> BIQueryResult:
+    # Existing implementation
+```
 
-8. **Security Hardening**
-   - Remove SSL bypass
-   - Proper CORS configuration
+### 5. Add Monitoring
+**Priority**: HIGH
+**Time**: 4 hours
 
-9. **Monitoring & Optimization**
-   - Performance metrics
-   - Query optimization
-   - Cache tuning
+```python
+# monitoring.py
+from prometheus_client import Counter, Histogram, Gauge
+
+# Metrics
+query_duration = Histogram('smartmeet_query_duration_seconds', 
+                          'Query processing time',
+                          ['query_type'])
+ingestion_duration = Histogram('smartmeet_ingestion_duration_seconds',
+                              'Meeting ingestion time')
+state_transitions_created = Counter('smartmeet_state_transitions_total',
+                                   'Total state transitions created')
+cache_hits = Counter('smartmeet_cache_hits_total',
+                    'Cache hit count',
+                    ['cache_type'])
+active_entities = Gauge('smartmeet_active_entities',
+                       'Number of tracked entities')
+```
 
 ---
 
-## Expected Outcomes
+## 🟢 MEDIUM-TERM TASKS (Next 2 Weeks)
 
-After implementing these fixes:
+### 1. Entity Deduplication System
+**Priority**: HIGH
+**Time**: 1 day
 
-1. **State Transitions**: 16 → 100+ per test suite
-2. **Timeline Queries**: 500 errors → Full historical data
-3. **Blocker Queries**: 0.20 → 0.80+ confidence
-4. **Data Richness**: 10x more metadata captured
-5. **Business Intelligence**: True project tracking enabled
+**Problem**: Multiple entities for same concept
+**Solution**:
+```python
+class EntityDeduplicator:
+    def find_duplicates(self) -> List[Tuple[Entity, Entity]]:
+        # Use embeddings + edit distance
+        
+    def merge_entities(self, primary: Entity, duplicate: Entity):
+        # Merge states, transitions, relationships
+        # Update all references
+        # Archive duplicate
+```
+
+### 2. State Schema Validation
+**Priority**: MEDIUM
+**Time**: 1 day
+
+```python
+from pydantic import BaseModel, Field
+
+class ProjectState(BaseModel):
+    status: Literal["planned", "in_progress", "blocked", "completed"]
+    progress: Optional[int] = Field(ge=0, le=100)
+    blockers: List[str] = []
+    assigned_to: Optional[str]
+    confidence: float = Field(ge=0.0, le=1.0)
+    
+class FeatureState(BaseModel):
+    status: Literal["proposed", "approved", "development", "testing", "deployed"]
+    dependencies: List[str] = []
+    target_date: Optional[datetime]
+```
+
+### 3. Advanced Query Capabilities
+**Priority**: MEDIUM
+**Time**: 2 days
+
+**New Query Types**:
+1. **Trend Analysis**: "Show me velocity trends for Team A"
+2. **Predictive**: "When will Project X likely complete?"
+3. **Comparative**: "Compare progress between Project A and B"
+4. **Root Cause**: "What's causing the most blockers?"
+
+### 4. Real-time Updates
+**Priority**: LOW
+**Time**: 2 days
+
+```python
+# WebSocket support
+@app.websocket("/ws/updates")
+async def websocket_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    # Push state changes in real-time
+```
+
+---
+
+## ⚪ BACKLOG (Future)
+
+### From Previous Plans
+1. **Email Context Enhancement** (from claude_tasks.md Phase 1)
+   - Full email metadata extraction
+   - Thread tracking
+   - Organization context
+
+2. **Meeting Type Classification** (from claude_tasks.md)
+   - Auto-detect standup vs planning vs review
+   - Type-specific extraction rules
+
+3. **Multi-tenancy** (from 012 Long-term)
+   - Organization isolation
+   - Role-based access
+   - Usage quotas
+
+4. **Advanced Analytics** (from 012)
+   - Custom dashboards
+   - Report generation
+   - Predictive modeling
+
+5. **Integration Layer** (from 012)
+   - Slack notifications
+   - JIRA sync
+   - Calendar integration
+
+### New Ideas
+1. **Conversation Analysis**
+   - Speaker participation metrics
+   - Sentiment tracking
+   - Decision quality scoring
+
+2. **Knowledge Graph**
+   - Visual entity relationships
+   - Dependency mapping
+   - Impact analysis
+
+3. **AI Assistant**
+   - Proactive insights
+   - Meeting preparation
+   - Follow-up suggestions
+
+---
+
+## Testing Requirements
+
+### Unit Tests (Priority: HIGH)
+```python
+# test_extraction_fallback.py
+def test_basic_extraction_produces_data():
+    extractor = EnhancedMeetingExtractor(mock_client)
+    # Force LLM to fail
+    result = extractor.extract(transcript, "test-123")
+    assert len(result.memories) > 0
+    assert result.meeting_metadata["extraction_method"] == "basic_fallback"
+
+# test_state_comparison.py
+async def test_semantic_state_comparison():
+    old_state = {"status": "working on API"}
+    new_state = {"status": "API development in progress"}
+    result = await processor.compare_states_batch([(old_state, new_state)])
+    assert result[0]["has_changes"] == False  # Semantically equivalent
+```
+
+### Integration Tests (Priority: HIGH)
+```python
+# test_full_pipeline.py
+async def test_multi_meeting_tracking():
+    # Meeting 1: Project starts
+    response1 = await client.post("/api/ingest", json=meeting1)
+    
+    # Meeting 2: Progress update
+    response2 = await client.post("/api/ingest", json=meeting2)
+    
+    # Query timeline
+    timeline = await client.post("/api/query", json={
+        "query": "Show me the timeline for Project Alpha"
+    })
+    
+    assert len(timeline.json()["supporting_data"][0]["timeline"]) >= 2
+```
+
+### Performance Tests (Priority: MEDIUM)
+```python
+# test_performance.py
+def test_large_transcript_handling():
+    # 50KB transcript with 20+ entities
+    large_transcript = generate_large_transcript()
+    
+    start = time.time()
+    response = client.post("/api/ingest", json={
+        "title": "Large Meeting",
+        "transcript": large_transcript
+    })
+    
+    assert response.status_code == 200
+    assert time.time() - start < 30  # Should complete within 30s
+```
+
+---
+
+## Success Metrics
+
+### Week 1
+- [ ] 100% of test queries return valid results
+- [ ] State tracking accuracy > 90%
+- [ ] Query response time < 2 seconds
+- [ ] Zero unhandled exceptions in 24 hours
+
+### Month 1
+- [ ] 1000+ meetings ingested successfully
+- [ ] 5000+ state transitions tracked
+- [ ] Cache hit rate > 50%
+- [ ] Query response time < 500ms (cached)
+
+### Quarter 1
+- [ ] 10,000+ meetings processed
+- [ ] 50,000+ entities tracked
+- [ ] 99.9% API uptime
+- [ ] Full audit trail for all changes
 
 ---
 
 ## Implementation Notes
 
-- Each phase builds on the previous
-- Test after each phase to verify
-- Keep backward compatibility
-- Document all schema changes
+1. **Always test after each change** - The system is complex with many interactions
+2. **Keep backward compatibility** - Don't break existing API contracts
+3. **Document schema changes** - Critical for debugging state issues
+4. **Monitor performance** - Watch for degradation as data grows
+5. **Plan for scale** - Current SQLite approach has limits
 
-The system will transform from a basic meeting search tool into a true business intelligence platform that tracks organizational knowledge evolution over time.
+The system is now functionally complete. Focus should be on testing, performance optimization, and preparing for production scale.

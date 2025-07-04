@@ -163,20 +163,9 @@ class EnhancedMeetingProcessor:
         self.validation_metrics["states_captured"] = len(final_states)
         
         # 7. Create transitions for ALL changes
-        # Check if we're already in an event loop
-        try:
-            import asyncio
-            loop = asyncio.get_running_loop()
-            # We're in an async context, but need to handle it differently
-            # Use the sync version to avoid nested event loop issues
-            transitions = self._create_comprehensive_transitions_sync(
-                prior_states, final_states, meeting_id, extraction
-            )
-        except RuntimeError:
-            # No event loop, safe to use asyncio.run()
-            transitions = asyncio.run(self._create_comprehensive_transitions(
-                prior_states, final_states, meeting_id, extraction
-            ))
+        transitions = await self._create_comprehensive_transitions(
+            prior_states, final_states, meeting_id, extraction
+        )
         self.validation_metrics["transitions_created"] = len(transitions)
         
         # 8. Process relationships
@@ -455,79 +444,6 @@ class EnhancedMeetingProcessor:
         """
         return self._simple_field_comparison(old_state, new_state)
     
-    def _create_comprehensive_transitions_sync(
-        self, 
-        prior_states: Dict[str, Optional[Dict]], 
-        current_states: Dict[str, Dict],
-        meeting_id: str,
-        extraction: ExtractionResult
-    ) -> List[StateTransition]:
-        """Synchronous version of _create_comprehensive_transitions to avoid event loop issues."""
-        # For now, use simple comparison until we fix the async issues
-        transitions = []
-        new_states = []
-        
-        for entity_id, current_state in current_states.items():
-            # Skip if no actual state data
-            if self._is_empty_state(current_state):
-                continue
-                
-            prior_state = prior_states.get(entity_id)
-            
-            if prior_state is None:
-                # First state for this entity
-                transition = StateTransition(
-                    entity_id=entity_id,
-                    from_state=None,
-                    to_state=current_state,
-                    changed_fields=list(current_state.keys()),
-                    reason="Initial state captured",
-                    meeting_id=meeting_id
-                )
-                transitions.append(transition)
-                new_states.append(EntityState(
-                    entity_id=entity_id,
-                    state=current_state,
-                    meeting_id=meeting_id,
-                    confidence=0.9
-                ))
-                logger.info(f"Created initial state transition for entity {entity_id}")
-            else:
-                # Use simple comparison for now
-                changed_fields = self._simple_field_comparison(prior_state, current_state)
-                
-                if changed_fields:
-                    # Create transition
-                    transition = StateTransition(
-                        entity_id=entity_id,
-                        from_state=prior_state,
-                        to_state=current_state,
-                        changed_fields=changed_fields,
-                        reason=f"Fields changed: {', '.join(changed_fields)}",
-                        meeting_id=meeting_id
-                    )
-                    transitions.append(transition)
-                    
-                    # Save new state
-                    new_states.append(EntityState(
-                        entity_id=entity_id,
-                        state=current_state,
-                        meeting_id=meeting_id,
-                        confidence=0.9
-                    ))
-                    
-                    logger.info(f"Created state transition for entity {entity_id}: {changed_fields}")
-        
-        # Save all new states
-        if new_states:
-            self.storage.save_entity_states(new_states)
-            
-        # Save all transitions using batch method
-        if transitions:
-            self.storage.save_transitions_batch(transitions)
-            logger.info(f"Saved {len(transitions)} state transitions")
-        
-        return transitions
     
     def _simple_field_comparison(self, old_state: Dict[str, Any], new_state: Dict[str, Any]) -> List[str]:
         """Simple exact field comparison."""
@@ -579,7 +495,7 @@ Example response:
         try:
             # Use strict JSON mode
             response = self.llm_client.chat.completions.create(
-                model=settings.openrouter_model,
+                model=settings.clean_openrouter_model,
                 messages=[
                     {"role": "system", "content": "You are a system that analyzes state changes and provides clear, concise reasons. Always respond with valid JSON containing a 'reason' field."},
                     {"role": "user", "content": reason_prompt}

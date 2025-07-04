@@ -4,7 +4,7 @@ import sqlite3
 import json
 from typing import List, Optional, Dict, Any, Tuple
 from qdrant_client import QdrantClient
-from qdrant_client.models import Distance, PointStruct, VectorParams
+from qdrant_client.models import Distance, PointStruct, VectorParams, Filter, FieldCondition, MatchValue, MatchAny
 import numpy as np
 from datetime import datetime
 from .models import (
@@ -900,6 +900,10 @@ class MemoryStorage:
         )
         return [(result.id, result.score) for result in results]
 
+    def search_memories(self, query_embedding: np.ndarray, limit: int = 20, filters: Optional[Dict] = None) -> List[SearchResult]:
+        """Compatibility wrapper for query engine - searches memories using vector similarity."""
+        return self.search(query_embedding, limit, filters)
+
     def get_entity(self, entity_id: str) -> Optional[Entity]:
         """Get entity by ID."""
         conn = sqlite3.connect(self.db_path)
@@ -1055,31 +1059,48 @@ class MemoryStorage:
         # Build Qdrant filter if provided
         qdrant_filter = None
         if filters:
-            must_conditions = []
+            filter_conditions = []
+            
             if "meeting_id" in filters:
-                must_conditions.append(
-                    {"key": "meeting_id", "match": {"value": filters["meeting_id"]}}
-                )
-            if "entity_mentions" in filters:
-                for entity_id in filters["entity_mentions"]:
-                    must_conditions.append(
-                        {"key": "entity_mentions", "match": {"any": [entity_id]}}
+                filter_conditions.append(
+                    FieldCondition(
+                        key="meeting_id",
+                        match=MatchValue(value=filters["meeting_id"])
                     )
-
-            if must_conditions:
-                qdrant_filter = {"must": must_conditions}
+                )
+            
+            if "entity_mentions" in filters:
+                # For array fields, use MatchAny
+                filter_conditions.append(
+                    FieldCondition(
+                        key="entity_mentions",
+                        match=MatchAny(any=filters["entity_mentions"])
+                    )
+                )
+            
+            if filter_conditions:
+                qdrant_filter = Filter(must=filter_conditions)
 
         # Ensure query_embedding is 1D
         if query_embedding.ndim > 1:
             query_embedding = query_embedding.squeeze()
 
         # Search in Qdrant
-        results = self.qdrant.search(
-            collection_name=self.collection_name,
-            query_vector=query_embedding.tolist(),
-            limit=limit,
-            query_filter=qdrant_filter,
-        )
+        try:
+            results = self.qdrant.search(
+                collection_name=self.collection_name,
+                query_vector=query_embedding.tolist(),
+                limit=limit,
+                query_filter=qdrant_filter,  # Note: some versions use 'query_filter'
+            )
+        except TypeError:
+            # Fallback if parameter name is different
+            results = self.qdrant.search(
+                collection_name=self.collection_name,
+                query_vector=query_embedding.tolist(),
+                limit=limit,
+                filter=qdrant_filter,
+            )
 
         if not results:
             return []

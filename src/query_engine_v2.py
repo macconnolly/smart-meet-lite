@@ -10,6 +10,7 @@ from datetime import datetime, timedelta
 from typing import List, Dict, Any, Optional, Tuple
 from dataclasses import dataclass
 from collections import defaultdict
+from types import SimpleNamespace
 
 from src.models import (
     Entity, EntityState, StateTransition, Memory,
@@ -317,23 +318,23 @@ class ProductionQueryEngine:
                 if entity:
                     context.entities.append(entity)
                     
-                    # Load state history
-                    states = self.storage.get_entity_timeline(entity.id)
-                    context.state_history[entity.id] = states
-                    
-                    # Load transitions (timeline returns dicts, not StateTransition objects)
+                    # Load state history and transitions (timeline returns dicts, not StateTransition objects)
                     timeline_data = self.storage.get_entity_timeline(entity.id)
+                    context.state_history[entity.id] = timeline_data
+                    
                     # Convert dicts to StateTransition-like objects for compatibility
                     transitions = []
                     for item in timeline_data:
-                        transitions.append(type('Transition', (), {
-                            'timestamp': datetime.fromisoformat(item['timestamp']),
-                            'from_state': item['from_state'],
-                            'to_state': item['to_state'],
-                            'changed_fields': item['changed_fields'],
-                            'reason': item['reason'],
-                            'meeting_id': item['meeting_id']
-                        })())
+                        # Create a simple namespace object instead of dynamic type
+                        transition = SimpleNamespace(
+                            timestamp=datetime.fromisoformat(item['timestamp']),
+                            from_state=item['from_state'],
+                            to_state=item['to_state'],
+                            changed_fields=item['changed_fields'],
+                            reason=item['reason'],
+                            meeting_id=item['meeting_id']
+                        )
+                        transitions.append(transition)
                     context.transitions[entity.id] = transitions
                     
                     # Load relationships
@@ -587,7 +588,7 @@ You MUST respond with valid JSON in this exact format:
 
         # Use OpenAI client with strict JSON mode
         response = self.llm_client.chat.completions.create(
-            model=settings.openrouter_model,
+            model=settings.clean_openrouter_model,
             messages=[
                 {"role": "system", "content": "You are a helpful assistant that analyzes timeline data and provides comprehensive answers. Respond only with valid JSON matching the requested schema."},
                 {"role": "user", "content": prompt}
@@ -606,11 +607,8 @@ You MUST respond with valid JSON in this exact format:
         # Generate embedding for query
         query_embedding = self.embeddings.encode([query])[0]
         
-        # Search in Qdrant
-        results = self.storage.search_memories(
-            query_embedding=query_embedding,
-            limit=limit
-        )
+        # Search in storage using the correct method
+        results = self.storage.search(query_embedding, limit=limit)
         
         return results
     
@@ -675,10 +673,10 @@ Instructions:
 Be specific and actionable in your response.
 
 You MUST respond with valid JSON in this exact format:
-{
+{{
     "answer": "Your comprehensive answer here",
     "confidence": 0.95
-}
+}}
 """
         
         json_schema = {
@@ -696,13 +694,17 @@ You MUST respond with valid JSON in this exact format:
 
         # Use OpenAI client with strict JSON mode
         response = self.llm_client.chat.completions.create(
-            model=settings.openrouter_model,
+            model=settings.clean_openrouter_model,
             messages=[
-                {"role": "system", "content": "You are a helpful assistant that analyzes blocker data and provides comprehensive answers. Respond only with valid JSON matching the requested schema."},
+                {"role": "system", "content": "You are a helpful assistant that analyzes blocker data and provides comprehensive answers."},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.3,
             max_tokens=800,
+            response_format={
+                "type": "json_schema",
+                "json_schema": json_schema
+            }
         )
         
         response_text = response.choices[0].message.content
@@ -728,10 +730,10 @@ Instructions:
 Format as a clear status update.
 
 You MUST respond with valid JSON in this exact format:
-{
+{{
     "answer": "Your comprehensive answer here",
     "confidence": 0.95
-}
+}}
 """
         
         json_schema = {
@@ -749,13 +751,17 @@ You MUST respond with valid JSON in this exact format:
 
         # Use OpenAI client with strict JSON mode
         response = self.llm_client.chat.completions.create(
-            model=settings.openrouter_model,
+            model=settings.clean_openrouter_model,
             messages=[
-                {"role": "system", "content": "You are a helpful assistant that analyzes status data and provides comprehensive answers. Respond only with valid JSON matching the requested schema."},
+                {"role": "system", "content": "You are a helpful assistant that analyzes status data and provides comprehensive answers."},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.3,
             max_tokens=600,
+            response_format={
+                "type": "json_schema",
+                "json_schema": json_schema
+            }
         )
         
         response_text = response.choices[0].message.content
@@ -1182,15 +1188,33 @@ Instructions:
 Format as a clear ownership summary.
 """
         
+        # Define JSON schema
+        json_schema = {
+            "name": "ownership_response",
+            "strict": True,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "answer": {"type": "string"},
+                    "confidence": {"type": "number"}
+                },
+                "required": ["answer", "confidence"]
+            }
+        }
+        
         # Use OpenAI client with explicit JSON request
         response = self.llm_client.chat.completions.create(
-            model=settings.openrouter_model,
+            model=settings.clean_openrouter_model,
             messages=[
-                {"role": "system", "content": "You are a helpful assistant that analyzes ownership data. Respond with a JSON object containing 'answer' (string) and 'confidence' (number 0-1) fields."},
-                {"role": "user", "content": prompt + "\n\nRespond with JSON containing 'answer' and 'confidence' fields."}
+                {"role": "system", "content": "You are a helpful assistant that analyzes ownership data."},
+                {"role": "user", "content": prompt}
             ],
             temperature=0.3,
-            max_tokens=600
+            max_tokens=600,
+            response_format={
+                "type": "json_schema",
+                "json_schema": json_schema
+            }
         )
         
         response_text = response.choices[0].message.content
@@ -1222,15 +1246,33 @@ Instructions:
 Format as a professional analytics summary.
 """
         
+        # Define JSON schema
+        json_schema = {
+            "name": "analytics_response",
+            "strict": True,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "answer": {"type": "string"},
+                    "confidence": {"type": "number"}
+                },
+                "required": ["answer", "confidence"]
+            }
+        }
+        
         # Use OpenAI client with explicit JSON request
         response = self.llm_client.chat.completions.create(
-            model=settings.openrouter_model,
+            model=settings.clean_openrouter_model,
             messages=[
-                {"role": "system", "content": "You are a helpful assistant that analyzes analytics data. Respond with a JSON object containing 'answer' (string) and 'confidence' (number 0-1) fields."},
-                {"role": "user", "content": prompt + "\n\nRespond with JSON containing 'answer' and 'confidence' fields."}
+                {"role": "system", "content": "You are a helpful assistant that analyzes analytics data."},
+                {"role": "user", "content": prompt}
             ],
             temperature=0.3,
-            max_tokens=800
+            max_tokens=800,
+            response_format={
+                "type": "json_schema",
+                "json_schema": json_schema
+            }
         )
         
         response_text = response.choices[0].message.content
@@ -1261,15 +1303,34 @@ Instructions:
 Format as a clear dependency summary.
 """
         
+        # Define JSON schema exactly as required
+        json_schema = {
+            "name": "relationship_response",
+            "strict": True,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "answer": {"type": "string"},
+                    "confidence": {"type": "number"}
+                },
+                "required": ["answer", "confidence"],
+                "additionalProperties": False
+            }
+        }
+        
         # Use OpenAI client with explicit JSON request
         response = self.llm_client.chat.completions.create(
-            model=settings.openrouter_model,
+            model=settings.clean_openrouter_model,
             messages=[
-                {"role": "system", "content": "You are a helpful assistant that analyzes relationship data. Respond with a JSON object containing 'answer' (string) and 'confidence' (number 0-1) fields."},
-                {"role": "user", "content": prompt + "\n\nRespond with JSON containing 'answer' and 'confidence' fields."}
+                {"role": "system", "content": "You are a helpful assistant that analyzes relationship data."},
+                {"role": "user", "content": prompt}
             ],
             temperature=0.3,
-            max_tokens=600
+            max_tokens=600,
+            response_format={
+                "type": "json_schema",
+                "json_schema": json_schema
+            }
         )
         
         response_text = response.choices[0].message.content
@@ -1300,15 +1361,34 @@ Instructions:
 Provide a complete answer based on the search results.
 """
         
+        # Define JSON schema with strict formatting
+        json_schema = {
+            "name": "search_response",
+            "strict": True,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "answer": {"type": "string"},
+                    "confidence": {"type": "number"}
+                },
+                "required": ["answer", "confidence"],
+                "additionalProperties": False
+            }
+        }
+        
         # Use OpenAI client with explicit JSON request
         response = self.llm_client.chat.completions.create(
-            model=settings.openrouter_model,
+            model=settings.clean_openrouter_model,
             messages=[
-                {"role": "system", "content": "You are a helpful assistant that analyzes search results. Respond with a JSON object containing 'answer' (string) and 'confidence' (number 0-1) fields."},
-                {"role": "user", "content": prompt + "\n\nRespond with JSON containing 'answer' and 'confidence' fields."}
+                {"role": "system", "content": "You are a helpful assistant that analyzes search results."},
+                {"role": "user", "content": prompt}
             ],
             temperature=0.3,
-            max_tokens=800
+            max_tokens=800,
+            response_format={
+                "type": "json_schema",
+                "json_schema": json_schema
+            }
         )
         
         response_text = response.choices[0].message.content

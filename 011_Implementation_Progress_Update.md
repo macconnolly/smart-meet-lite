@@ -299,10 +299,7 @@ The fallback provides basic functionality but misses semantic changes:
 ### 2. Cache Not Working - Architectural Insight
 
 **The Subtle Bug:**
-When LLM calls fail, the code path is:
-1. Try LLM comparison → Fails
-2. Use simple comparison → Success
-3. Return results → **Never stores in cache**
+When LLM calls fail, the code path i
 
 **Why This Happens:**
 ```python

@@ -24,10 +24,10 @@ class LLMProcessor:
     
     # Model fallback chain - ordered by preference
     MODELS = [
-        "openrouter/cypher-alpha:free",       # Fast and free
-        "openai/gpt-4-turbo-preview",         # Good alternative
-        "openai/gpt-3.5-turbo",               # Fast and reliable
-        "mistralai/mixtral-8x7b-instruct"     # Open source fallback
+        "openai/gpt-4o-mini",  # Primary: fast and reliable
+        "openai/gpt-3.5-turbo",               # Fallback 1: widely supported
+        "mistralai/mixtral-8x7b-instruct",    # Fallback 2: open source
+        "meta-llama/llama-3-8b-instruct"      # Fallback 3: lightweight
     ]
     
     def __init__(self, cache_layer: CacheLayer):

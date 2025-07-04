@@ -4,7 +4,7 @@ import json
 import logging
 from typing import List, Dict, Any, Optional
 from datetime import datetime
-import openai
+from openai import OpenAI, AuthenticationError, BadRequestError
 import httpx
 from .models import (
     Memory,
@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 class EnhancedMeetingExtractor:
     """Extract comprehensive business intelligence from meeting transcripts."""
 
-    def __init__(self, llm_client: openai.OpenAI):
+    def __init__(self, llm_client: OpenAI):
         """Initialize with shared LLM client."""
         self.client = llm_client
         
@@ -377,7 +377,7 @@ IMPORTANT: You must respond ONLY with valid JSON that matches the provided schem
             context_with_schema = f"{context}\n\nRESPOND ONLY WITH VALID JSON. No other text. The JSON must match this exact schema:\n\n{schema_str}\n\nRemember: Start with {{ and end with }}. No explanations."
             
             response = self.client.chat.completions.create(
-                model=settings.openrouter_model,
+                model=settings.clean_openrouter_model,
                 messages=[
                     {"role": "system", "content": self.system_prompt},
                     {"role": "user", "content": context_with_schema}
@@ -400,10 +400,42 @@ IMPORTANT: You must respond ONLY with valid JSON that matches the provided schem
             # Convert to our format while preserving all the rich data
             return self._convert_to_extraction_result(data, meeting_id, transcript)
             
+        except AuthenticationError as e:
+            logger.error(f"OpenAI Authentication failed: {e}")
+            logger.error("Check your OPENROUTER_API_KEY in .env file")
+            # Authentication errors should not fall back silently
+            result = self._basic_extraction(transcript, meeting_id)
+            result.meeting_metadata["extraction_error"] = f"Authentication failed: {str(e)}"
+            result.meeting_metadata["error_type"] = "auth_error"
+            return result
+            
+        except BadRequestError as e:
+            logger.error(f"OpenAI Bad Request: {e}")
+            logger.error(f"Model name being used: '{settings.clean_openrouter_model}'")
+            logger.error(f"Raw model config: '{settings.openrouter_model}'")
+            # This often indicates model name issues
+            result = self._basic_extraction(transcript, meeting_id)
+            result.meeting_metadata["extraction_error"] = f"Bad request: {str(e)}"
+            result.meeting_metadata["error_type"] = "bad_request"
+            result.meeting_metadata["model_attempted"] = settings.clean_openrouter_model
+            return result
+            
+        except json.JSONDecodeError as e:
+            logger.error(f"Failed to parse LLM response as JSON: {e}")
+            logger.error(f"Response content: {content[:500] if 'content' in locals() else 'N/A'}")
+            result = self._basic_extraction(transcript, meeting_id)
+            result.meeting_metadata["extraction_error"] = f"JSON parse error: {str(e)}"
+            result.meeting_metadata["error_type"] = "parse_error"
+            return result
+            
         except Exception as e:
-            logger.error(f"Enhanced extraction failed: {e}")
-            # Fall back to basic extraction
-            return self._basic_extraction(transcript, meeting_id)
+            logger.error(f"Unexpected extraction error: {type(e).__name__}: {e}")
+            logger.error(f"Full exception: ", exc_info=True)
+            # Generic fallback
+            result = self._basic_extraction(transcript, meeting_id)
+            result.meeting_metadata["extraction_error"] = f"{type(e).__name__}: {str(e)}"
+            result.meeting_metadata["error_type"] = "unknown_error"
+            return result
     
     def _convert_to_extraction_result(self, data: Dict[str, Any], meeting_id: str, transcript: str) -> ExtractionResult:
         """Convert enhanced extraction to our ExtractionResult format."""
@@ -465,17 +497,121 @@ IMPORTANT: You must respond ONLY with valid JSON that matches the provided schem
         )
     
     def _basic_extraction(self, transcript: str, meeting_id: str) -> ExtractionResult:
-        """Fallback basic extraction if enhanced fails."""
-        # Simple extraction logic
+        """Fallback extraction with heuristic-based parsing - produces usable data."""
+        logger.warning("Using basic extraction fallback - enhanced extraction failed")
+        
+        import re
+        from datetime import datetime
+        
+        # Extract speakers and content using regex
+        speaker_pattern = r'([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\s*(?:\([^)]+\))?\s*:'
+        memories = []
+        entities_found = {}
+        speakers = set()
+        
+        # Split transcript into speaker segments
+        segments = re.split(speaker_pattern, transcript)
+        
+        # Process segments (odd indices are speakers, even are content)
+        for i in range(1, len(segments)-1, 2):
+            if i+1 < len(segments):
+                speaker = segments[i].strip()
+                content = segments[i+1].strip()
+                
+                if speaker and content and len(content) > 10:
+                    speakers.add(speaker)
+                    
+                    # Create memory for substantial content
+                    if len(content) >= 30:
+                        memory = Memory(
+                            content=content[:500],  # Limit length
+                            speaker=speaker,
+                            meeting_id=meeting_id,
+                            metadata={"extraction_method": "basic"},
+                            entity_mentions=[]
+                        )
+                        memories.append(memory)
+                    
+                    # Extract potential entities (capitalized multi-word phrases)
+                    entity_pattern = r'\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\b'
+                    for match in re.finditer(entity_pattern, content):
+                        entity_name = match.group(1)
+                        # Filter out common words and speaker names
+                        if (len(entity_name) > 3 and 
+                            entity_name not in speakers and
+                            entity_name not in ['The', 'This', 'That', 'These', 'Those']):
+                            entities_found[entity_name] = entities_found.get(entity_name, 0) + 1
+        
+        # Convert to entity objects
+        entities = []
+        for name, count in entities_found.items():
+            if count >= 2:  # Mentioned at least twice
+                # Try to guess entity type
+                entity_type = "project"
+                if any(word in name.lower() for word in ['api', 'system', 'app', 'service']):
+                    entity_type = "feature"
+                elif any(word in name.lower() for word in ['team', 'department', 'group']):
+                    entity_type = "team"
+                
+                entities.append({
+                    "name": name,
+                    "type": entity_type,
+                    "attributes": {
+                        "mention_count": count,
+                        "extraction_method": "basic"
+                    }
+                })
+        
+        # Extract basic action items
+        action_items = []
+        action_patterns = [
+            r'(?:will|going to|need to|should|must)\s+(\w+\s+.{10,50})',
+            r'(?:action|todo|task):\s*(.+?)(?:\.|$)',
+            r'(?:I\'ll|We\'ll)\s+(.+?)(?:\.|$)'
+        ]
+        
+        for pattern in action_patterns:
+            for match in re.finditer(pattern, transcript, re.IGNORECASE):
+                action_text = match.group(1).strip()
+                if len(action_text) > 10:
+                    action_items.append({
+                        "action": action_text[:100],
+                        "owner": "unassigned",
+                        "status": "pending"
+                    })
+        
+        # Extract topics based on repeated phrases
+        topics = []
+        topic_candidates = {}
+        for entity_name, count in entities_found.items():
+            if count >= 3:
+                topics.append(entity_name)
+        
+        # Ensure we have at least some data
+        if not memories:
+            # Create at least one memory from the transcript
+            memories.append(Memory(
+                content=transcript[:500],
+                speaker="Unknown",
+                meeting_id=meeting_id,
+                metadata={"extraction_method": "basic", "full_transcript": True},
+                entity_mentions=[]
+            ))
+        
         return ExtractionResult(
-            memories=[],
-            entities=[],
+            memories=memories[:50],  # Limit to 50 memories
+            entities=entities[:20],  # Limit to 20 entities  
             relationships=[],
             states=[],
-            meeting_metadata={},
-            summary="Meeting transcript processed with basic extraction.",
-            topics=[],
-            participants=[],
+            meeting_metadata={
+                "extraction_method": "basic_fallback",
+                "warning": "Enhanced extraction failed - using basic heuristics",
+                "transcript_length": len(transcript),
+                "extraction_timestamp": datetime.now().isoformat()
+            },
+            summary=f"Basic extraction: Found {len(memories)} statements from {len(speakers)} participants discussing {len(entities)} topics",
+            topics=topics[:5] or ["General Discussion"],
+            participants=list(speakers) or ["Unknown Participants"],
             decisions=[],
-            action_items=[]
+            action_items=action_items[:10]
         )

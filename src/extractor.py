@@ -342,7 +342,7 @@ Provide a detailed summary that captures the full context and outcomes."""
         try:
             # Call OpenRouter API with structured output
             response = self.client.chat.completions.create(
-                model=settings.openrouter_model,
+                model=settings.clean_openrouter_model,
                 messages=[
                     {"role": "system", "content": self.system_prompt},
                     {
