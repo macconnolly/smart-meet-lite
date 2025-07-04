@@ -28,68 +28,69 @@ logger = logging.getLogger(__name__)
 class EnhancedMeetingProcessor:
     """Production-ready processor with comprehensive state tracking."""
     
-    # State patterns for inference
-    STATE_PATTERNS = {
-        "in_progress": [
-            r"(?:is|are) (?:now |currently )?(?:in progress|underway|being worked on)",
-            r"(?:started|beginning|commenced) (?:work on|working on)",
-            r"(?:actively|currently) working on",
-            r"making (?:good )?progress on",
-            r"(?:continues|continuing) (?:to work on|with)",
-            r"still working on"
-        ],
-        "completed": [
-            r"(?:is|are) (?:now |)?(?:complete|completed|done|finished)",
-            r"(?:successfully |)?(?:completed|finished|delivered)",
-            r"signed off on",
-            r"wrapped up",
-            r"closed out",
-            r"(?:has|have) been (?:completed|finished)"
-        ],
-        "blocked": [
-            r"(?:is|are) (?:currently |)?blocked",
-            r"waiting (?:on|for)",
-            r"(?:need|needs|require|requires) .* before",
-            r"can't (?:proceed|continue|move forward)",
-            r"(?:stuck|stalled) (?:on|at)",
-            r"pending (?:approval|review|input)"
-        ],
-        "planned": [
-            r"(?:is|are) planned",
-            r"(?:will|going to) (?:start|begin)",
-            r"scheduled (?:for|to)",
-            r"(?:in the|on the) (?:roadmap|pipeline)",
-            r"upcoming",
-            r"(?:plan|planning) to"
-        ],
-        "on_hold": [
-            r"(?:is|are) on hold",
-            r"(?:paused|suspended)",
-            r"(?:temporarily|indefinitely) (?:stopped|halted)",
-            r"deprioritized"
-        ]
-    }
+    # State patterns for inference - DISABLED to preserve LLM accuracy
+    # These regex patterns were overwriting accurate LLM-extracted states
+    # STATE_PATTERNS = {
+    #     "in_progress": [
+    #         r"(?:is|are) (?:now |currently )?(?:in progress|underway|being worked on)",
+    #         r"(?:started|beginning|commenced) (?:work on|working on)",
+    #         r"(?:actively|currently) working on",
+    #         r"making (?:good )?progress on",
+    #         r"(?:continues|continuing) (?:to work on|with)",
+    #         r"still working on"
+    #     ],
+    #     "completed": [
+    #         r"(?:is|are) (?:now |)?(?:complete|completed|done|finished)",
+    #         r"(?:successfully |)?(?:completed|finished|delivered)",
+    #         r"signed off on",
+    #         r"wrapped up",
+    #         r"closed out",
+    #         r"(?:has|have) been (?:completed|finished)"
+    #     ],
+    #     "blocked": [
+    #         r"(?:is|are) (?:currently |)?blocked",
+    #         r"waiting (?:on|for)",
+    #         r"(?:need|needs|require|requires) .* before",
+    #         r"can't (?:proceed|continue|move forward)",
+    #         r"(?:stuck|stalled) (?:on|at)",
+    #         r"pending (?:approval|review|input)"
+    #     ],
+    #     "planned": [
+    #         r"(?:is|are) planned",
+    #         r"(?:will|going to) (?:start|begin)",
+    #         r"scheduled (?:for|to)",
+    #         r"(?:in the|on the) (?:roadmap|pipeline)",
+    #         r"upcoming",
+    #         r"(?:plan|planning) to"
+    #     ],
+    #     "on_hold": [
+    #         r"(?:is|are) on hold",
+    #         r"(?:paused|suspended)",
+    #         r"(?:temporarily|indefinitely) (?:stopped|halted)",
+    #         r"deprioritized"
+    #     ]
+    # }
     
-    # Assignment patterns for ownership detection
-    ASSIGNMENT_PATTERNS = [
-        (r"(\w+(?:\s+\w+)?)\s+(?:is|will be|has been)\s+(?:leading|assigned to|responsible for|working on|owns)\s+{entity}", 1),
-        (r"{entity}\s+(?:is|will be|has been)\s+(?:led by|assigned to|owned by)\s+(\w+(?:\s+\w+)?)", 1),
-        (r"(\w+(?:\s+\w+)?)\s+(?:reports|reported|says|mentioned).*{entity}", 1),
-        (r"assigning\s+{entity}\s+to\s+(\w+(?:\s+\w+)?)", 1),
-        (r"(\w+(?:\s+\w+)?)\s+(?:takes|taking|took)\s+(?:over|ownership of)\s+{entity}", 1)
-    ]
+    # # Assignment patterns for ownership detection - DISABLED
+    # ASSIGNMENT_PATTERNS = [
+    #     (r"(\w+(?:\s+\w+)?)\s+(?:is|will be|has been)\s+(?:leading|assigned to|responsible for|working on|owns)\s+{entity}", 1),
+    #     (r"{entity}\s+(?:is|will be|has been)\s+(?:led by|assigned to|owned by)\s+(\w+(?:\s+\w+)?)", 1),
+    #     (r"(\w+(?:\s+\w+)?)\s+(?:reports|reported|says|mentioned).*{entity}", 1),
+    #     (r"assigning\s+{entity}\s+to\s+(\w+(?:\s+\w+)?)", 1),
+    #     (r"(\w+(?:\s+\w+)?)\s+(?:takes|taking|took)\s+(?:over|ownership of)\s+{entity}", 1)
+    # ]
     
-    # Progress indicators
-    PROGRESS_PATTERNS = [
-        (r"(\d+)%\s+(?:complete|done|finished)", lambda m: f"{m.group(1)}%"),
-        (r"(\d+)\s+(?:percent|pct)\s+(?:complete|done)", lambda m: f"{m.group(1)}%"),
-        (r"(?:about|approximately|roughly)\s+(\d+)%", lambda m: f"~{m.group(1)}%"),
-        (r"(?:quarter|1/4)\s+(?:done|complete)", lambda m: "25%"),
-        (r"(?:half|halfway|1/2)\s+(?:done|complete)", lambda m: "50%"),
-        (r"(?:three.?quarters|3/4)\s+(?:done|complete)", lambda m: "75%"),
-        (r"almost (?:done|complete|finished)", lambda m: "90%"),
-        (r"nearly (?:done|complete|finished)", lambda m: "85%")
-    ]
+    # # Progress indicators - DISABLED
+    # PROGRESS_PATTERNS = [
+    #     (r"(\d+)%\s+(?:complete|done|finished)", lambda m: f"{m.group(1)}%"),
+    #     (r"(\d+)\s+(?:percent|pct)\s+(?:complete|done)", lambda m: f"{m.group(1)}%"),
+    #     (r"(?:about|approximately|roughly)\s+(\d+)%", lambda m: f"~{m.group(1)}%"),
+    #     (r"(?:quarter|1/4)\s+(?:done|complete)", lambda m: "25%"),
+    #     (r"(?:half|halfway|1/2)\s+(?:done|complete)", lambda m: "50%"),
+    #     (r"(?:three.?quarters|3/4)\s+(?:done|complete)", lambda m: "75%"),
+    #     (r"almost (?:done|complete|finished)", lambda m: "90%"),
+    #     (r"nearly (?:done|complete|finished)", lambda m: "85%")
+    # ]
     
     def __init__(self, storage: Storage, entity_resolver: EntityResolver, embeddings: LocalEmbeddings, llm_processor: LLMProcessor):
         self.storage = storage
@@ -147,14 +148,14 @@ class EnhancedMeetingProcessor:
         # 3. Extract current states from LLM output
         extracted_states = self._extract_current_states(extraction, entity_map)
         
-        # 4. Infer states from patterns in transcript
+        # 4. Infer states from patterns in transcript - DISABLED to preserve LLM accuracy
         transcript = extraction.meeting_metadata.get("transcript_context", "")
-        inferred_states = self._infer_states_from_patterns(transcript, entity_map)
-        self.validation_metrics["patterns_matched"] = len(inferred_states)
+        inferred_states = {}  # Disabled regex inference to preserve LLM accuracy
+        self.validation_metrics["patterns_matched"] = 0
         
-        # 5. Extract progress and assignments
-        progress_updates = self._extract_progress_indicators(transcript, entity_map)
-        assignments = self._extract_assignments(transcript, entity_map)
+        # 5. Extract progress and assignments - DISABLED to preserve LLM accuracy
+        progress_updates = {}  # Disabled regex extraction
+        assignments = {}  # Disabled regex extraction
         
         # 6. Merge all state information
         final_states = self._merge_state_information(
@@ -224,94 +225,97 @@ class EnhancedMeetingProcessor:
         
         return current_states
     
-    def _infer_states_from_patterns(self, transcript: str, entity_map: Dict[str, Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
-        """Infer entity states using pattern matching."""
-        inferred_states = {}
-        
-        if not transcript:
-            return inferred_states
-        
-        # Convert transcript to lowercase for matching
-        transcript_lower = transcript.lower()
-        
-        for entity_name, entity_info in entity_map.items():
-            entity_id = entity_info["id"]
-            entity_lower = entity_name.lower()
-            
-            # Check each state pattern
-            for state, patterns in self.STATE_PATTERNS.items():
-                for pattern in patterns:
-                    # Create pattern with entity name
-                    entity_pattern = pattern.replace("{entity}", re.escape(entity_lower))
-                    
-                    # Also check with just the entity name mentioned nearby
-                    context_pattern = f"(?:.{{0,50}}{re.escape(entity_lower)}.{{0,50}})(?:{pattern})"
-                    
-                    if re.search(entity_pattern, transcript_lower) or re.search(context_pattern, transcript_lower):
-                        if entity_id not in inferred_states:
-                            inferred_states[entity_id] = {}
-                        inferred_states[entity_id]["status"] = state
-                        logger.info(f"Inferred state '{state}' for '{entity_name}' from pattern")
-                        break
-        
-        return inferred_states
+    # Method disabled to preserve LLM accuracy
+    # def _infer_states_from_patterns(self, transcript: str, entity_map: Dict[str, Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+    #     """Infer entity states using pattern matching."""
+    #     inferred_states = {}
+    #     
+    #     if not transcript:
+    #         return inferred_states
+    #     
+    #     # Convert transcript to lowercase for matching
+    #     transcript_lower = transcript.lower()
+    #     
+    #     for entity_name, entity_info in entity_map.items():
+    #         entity_id = entity_info["id"]
+    #         entity_lower = entity_name.lower()
+    #         
+    #         # Check each state pattern
+    #         for state, patterns in self.STATE_PATTERNS.items():
+    #             for pattern in patterns:
+    #                 # Create pattern with entity name
+    #                 entity_pattern = pattern.replace("{entity}", re.escape(entity_lower))
+    #                 
+    #                 # Also check with just the entity name mentioned nearby
+    #                 context_pattern = f"(?:.{{0,50}}{re.escape(entity_lower)}.{{0,50}})(?:{pattern})"
+    #                 
+    #                 if re.search(entity_pattern, transcript_lower) or re.search(context_pattern, transcript_lower):
+    #                     if entity_id not in inferred_states:
+    #                         inferred_states[entity_id] = {}
+    #                     inferred_states[entity_id]["status"] = state
+    #                     logger.info(f"Inferred state '{state}' for '{entity_name}' from pattern")
+    #                     break
+    #     
+    #     return inferred_states
     
-    def _extract_progress_indicators(self, transcript: str, entity_map: Dict[str, Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
-        """Extract progress percentages and indicators."""
-        progress_updates = {}
-        
-        if not transcript:
-            return progress_updates
-        
-        for entity_name, entity_info in entity_map.items():
-            entity_id = entity_info["id"]
-            entity_lower = entity_name.lower()
-            
-            # Look for progress mentions near entity name
-            # Search window of 100 chars before/after entity mention
-            pattern = f"(.{{0,100}}{re.escape(entity_lower)}.{{0,100}})"
-            matches = re.finditer(pattern, transcript.lower())
-            
-            for match in matches:
-                context = match.group(1)
-                
-                # Check progress patterns
-                for prog_pattern, extractor in self.PROGRESS_PATTERNS:
-                    prog_match = re.search(prog_pattern, context)
-                    if prog_match:
-                        if entity_id not in progress_updates:
-                            progress_updates[entity_id] = {}
-                        progress_updates[entity_id]["progress"] = extractor(prog_match)
-                        logger.info(f"Extracted progress '{extractor(prog_match)}' for '{entity_name}'")
-                        break
-        
-        return progress_updates
+    # Method disabled to preserve LLM accuracy
+    # def _extract_progress_indicators(self, transcript: str, entity_map: Dict[str, Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+    #     """Extract progress percentages and indicators."""
+    #     progress_updates = {}
+    #     
+    #     if not transcript:
+    #         return progress_updates
+    #     
+    #     for entity_name, entity_info in entity_map.items():
+    #         entity_id = entity_info["id"]
+    #         entity_lower = entity_name.lower()
+    #         
+    #         # Look for progress mentions near entity name
+    #         # Search window of 100 chars before/after entity mention
+    #         pattern = f"(.{{0,100}}{re.escape(entity_lower)}.{{0,100}})"
+    #         matches = re.finditer(pattern, transcript.lower())
+    #         
+    #         for match in matches:
+    #             context = match.group(1)
+    #             
+    #             # Check progress patterns
+    #             for prog_pattern, extractor in self.PROGRESS_PATTERNS:
+    #                 prog_match = re.search(prog_pattern, context)
+    #                 if prog_match:
+    #                     if entity_id not in progress_updates:
+    #                         progress_updates[entity_id] = {}
+    #                     progress_updates[entity_id]["progress"] = extractor(prog_match)
+    #                     logger.info(f"Extracted progress '{extractor(prog_match)}' for '{entity_name}'")
+    #                     break
+    #     
+    #     return progress_updates
     
-    def _extract_assignments(self, transcript: str, entity_map: Dict[str, Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
-        """Extract ownership and assignment information."""
-        assignments = {}
-        
-        if not transcript:
-            return assignments
-        
-        for entity_name, entity_info in entity_map.items():
-            entity_id = entity_info["id"]
-            entity_lower = entity_name.lower()
-            
-            # Check assignment patterns
-            for pattern_template, group_idx in self.ASSIGNMENT_PATTERNS:
-                pattern = pattern_template.format(entity=re.escape(entity_lower))
-                match = re.search(pattern, transcript, re.IGNORECASE)
-                
-                if match:
-                    assigned_to = match.group(group_idx).strip()
-                    if entity_id not in assignments:
-                        assignments[entity_id] = {}
-                    assignments[entity_id]["assigned_to"] = assigned_to
-                    logger.info(f"Extracted assignment '{assigned_to}' for '{entity_name}'")
-                    break
-        
-        return assignments
+    # Method disabled to preserve LLM accuracy
+    # def _extract_assignments(self, transcript: str, entity_map: Dict[str, Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+    #     """Extract ownership and assignment information."""
+    #     assignments = {}
+    #     
+    #     if not transcript:
+    #         return assignments
+    #     
+    #     for entity_name, entity_info in entity_map.items():
+    #         entity_id = entity_info["id"]
+    #         entity_lower = entity_name.lower()
+    #         
+    #         # Check assignment patterns
+    #         for pattern_template, group_idx in self.ASSIGNMENT_PATTERNS:
+    #             pattern = pattern_template.format(entity=re.escape(entity_lower))
+    #             match = re.search(pattern, transcript, re.IGNORECASE)
+    #             
+    #             if match:
+    #                 assigned_to = match.group(group_idx).strip()
+    #                 if entity_id not in assignments:
+    #                     assignments[entity_id] = {}
+    #                 assignments[entity_id]["assigned_to"] = assigned_to
+    #                 logger.info(f"Extracted assignment '{assigned_to}' for '{entity_name}'")
+    #                 break
+    #     
+    #     return assignments
     
     def _merge_state_information(self, extracted: Dict, inferred: Dict, progress: Dict, assignments: Dict) -> Dict[str, Dict[str, Any]]:
         """Merge all sources of state information intelligently."""

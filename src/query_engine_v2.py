@@ -144,7 +144,7 @@ class ProductionQueryEngine:
                 for pattern in config["patterns"]
             ]
     
-    def process_query(self, query: str, user_context: Optional[Dict] = None) -> BIQueryResult:
+    async def process_query(self, query: str, user_context: Optional[Dict] = None) -> BIQueryResult:
         """
         Process any query with intelligent routing and comprehensive results.
         This is the main entry point for all queries.

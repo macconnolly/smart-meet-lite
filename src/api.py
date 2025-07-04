@@ -409,7 +409,7 @@ async def business_intelligence_query(request: BIQueryRequest):
         # Use the appropriate method based on query engine type
         if hasattr(query_engine, 'process_query'):
             # Using production query engine v2
-            result = query_engine.process_query(request.query)
+            result = await query_engine.process_query(request.query)
         else:
             # Using original query engine
             result = query_engine.answer_query(request.query)
