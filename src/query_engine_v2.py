@@ -595,6 +595,10 @@ You MUST respond with valid JSON in this exact format:
             ],
             temperature=0.3,
             max_tokens=1000,
+            response_format={
+                "type": "json_schema",
+                "json_schema": json_schema
+            }
         )
         
         response_text = response.choices[0].message.content

@@ -4,8 +4,8 @@ import json
 import logging
 from typing import List, Dict, Any, Optional
 from datetime import datetime
-from openai import OpenAI, AuthenticationError, BadRequestError
-import httpx
+import requests
+from openai import OpenAI
 from .models import (
     Memory,
     Entity,
@@ -22,31 +22,28 @@ class EnhancedMeetingExtractor:
 
     def __init__(self, llm_client: OpenAI):
         """Initialize with shared LLM client."""
-        self.client = llm_client
+        # We receive the OpenAI client but will use direct requests instead
+        # This maintains compatibility with the API initialization
+        self.client = llm_client  # Keep for potential future use
         
-        self.system_prompt = """You are a world-class management consultant and an expert notetaker. Your task is to analyze the provided meeting transcript and produce a highly detailed, structured set of internal notes.
+        self.system_prompt = """You are an expert meeting analyst. Analyze the transcript and extract structured information.
 
-Extract all available information according to the schema, but don't force fields that aren't applicable. Focus on:
+Focus on:
+1. **Key Information**: Decisions, action items, and important discussions
+2. **Entities**: People, projects, features, deadlines, systems mentioned
+3. **Relationships**: How entities relate to each other (who owns what, dependencies)
+4. **Context**: Meeting metadata, topics discussed, follow-up needed
 
-1. **Strategic Context**: Decisions, risks, dependencies, cross-project impacts
-2. **Deliverable Intelligence**: Requirements evolution, format preferences, stakeholder needs  
-3. **Stakeholder Intelligence**: Communication preferences, concerns, interests
-4. **Knowledge Connections**: Entity relationships and how they connect
-5. **Implementation Insights**: Challenges, success criteria, dependencies
-
-Remember:
+Guidelines:
 - Use FULL entity names (e.g., "mobile app redesign project" not just "redesign")
-- Capture requirement evolution when discussed
-- Note stakeholder preferences and concerns
-- Track decision rationale and impacts
-- Identify risks with severity levels
-- Connect entities with clear relationships
+- Capture the speaker for each memory when identifiable
+- Extract actionable items with clear owners
+- Identify entity relationships (owns, works_on, depends_on, etc.)
+- Keep content concise but complete
 
-Even if you can only extract 50% of the schema fields, capture what's there. The goal is building organizational knowledge over time.
+Extract what's available without forcing fields. Quality over quantity."""
 
-IMPORTANT: You must respond ONLY with valid JSON that matches the provided schema. Do not include any explanatory text before or after the JSON. Start your response with { and end with }."""
-
-        # Your comprehensive JSON schema
+        # Simplified JSON schema with proper additionalProperties
         self.json_schema = {
             "name": "meeting_notes",
             "strict": True,
@@ -57,66 +54,14 @@ IMPORTANT: You must respond ONLY with valid JSON that matches the provided schem
                     "meeting_title": {"type": "string"},
                     "meeting_date": {"type": "string"},
                     "participants": {"type": "array", "items": {"type": "string"}},
-                    "meeting_id": {"type": "string", "description": "Unique identifier for the meeting (e.g., project-YYYYMMDD-type)"},
-                    "meeting_type": {"type": "string", "enum": ["project_standup", "status_update", "decision_making", "requirements_gathering", "stakeholder_alignment", "planning", "review", "other"]},
-                    "meeting_duration": {"type": "integer", "description": "Duration in minutes"},
+                    "meeting_id": {"type": "string"},
+                    "meeting_type": {"type": "string"},
                     
-                    # Summary fields
+                    # Summary
                     "executive_summary": {"type": "string"},
-                    "executive_summary_bullets": {"type": "array", "items": {"type": "string"}, "minItems": 3, "maxItems": 5},
-                    
-                    # Detailed minutes with enhanced structure
-                    "detailed_minutes": {
-                        "type": "object",
-                        "properties": {
-                            "sections": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "title": {"type": "string"},
-                                        "key_points": {"type": "array", "items": {"type": "string"}},
-                                        "stakeholders_mentioned": {"type": "array", "items": {"type": "string"}},
-                                        "deliverables_discussed": {"type": "array", "items": {"type": "string"}},
-                                        "requirements_evolution": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "requirement": {"type": "string"},
-                                                    "previous_state": {"type": "string"},
-                                                    "current_state": {"type": "string"},
-                                                    "stakeholder_source": {"type": "string"}
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "required": ["title", "key_points"]
-                                }
-                            }
-                        },
-                        "required": ["sections"]
-                    },
-                    
-                    # Decision tracking with context
                     "key_decisions": {"type": "array", "items": {"type": "string"}},
-                    "decisions_with_context": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "decision": {"type": "string"},
-                                "rationale": {"type": "string"},
-                                "stakeholders_involved": {"type": "array", "items": {"type": "string"}},
-                                "impact_areas": {"type": "array", "items": {"type": "string"}},
-                                "supersedes_decision": {"type": ["string", "null"]},
-                                "decision_status": {"type": "string", "enum": ["proposed", "approved", "rejected", "pending", "implemented"]}
-                            },
-                            "required": ["decision", "rationale"]
-                        }
-                    },
                     
-                    # Action items with enhanced tracking
+                    # Action items - simplified
                     "action_items": {
                         "type": "array",
                         "items": {
@@ -125,146 +70,28 @@ IMPORTANT: You must respond ONLY with valid JSON that matches the provided schem
                                 "description": {"type": "string"},
                                 "owner": {"type": "string"},
                                 "due_date": {"type": ["string", "null"]},
-                                "priority": {"type": "string", "enum": ["high", "medium", "low"]},
-                                "tags": {"type": "array", "items": {"type": "string"}},
-                                "suggested_next_steps": {"type": "string"},
-                                "related_deliverable": {"type": ["string", "null"]},
-                                "related_project": {"type": ["string", "null"]},
-                                "status": {"type": "string", "enum": ["not_started", "in_progress", "blocked", "completed", "deferred"]},
-                                "blockers": {"type": ["string", "null"]}
+                                "priority": {"type": "string"},
+                                "status": {"type": "string"}
                             },
-                            "required": ["description", "owner"]
+                            "required": ["description", "owner", "due_date", "priority", "status"],
+                            "additionalProperties": False
                         }
                     },
                     
-                    # Follow-up items
-                    "follow_up_items": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "description": {"type": "string"},
-                                "context": {"type": "string"},
-                                "related_topics": {"type": "array", "items": {"type": "string"}}
-                            },
-                            "required": ["description"]
-                        }
-                    },
-                    
-                    # Deliverable intelligence
-                    "deliverables": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "name": {"type": "string"},
-                                "type": {"type": "string", "enum": ["presentation", "model", "tracker", "analysis", "report", "dashboard", "documentation", "other"]},
-                                "target_audience": {"type": "array", "items": {"type": "string"}},
-                                "requirements": {"type": "array", "items": {"type": "string"}},
-                                "discussed_evolution": {"type": ["string", "null"]},
-                                "dependencies": {"type": "array", "items": {"type": "string"}},
-                                "deadline": {"type": ["string", "null"]},
-                                "format_preferences": {"type": ["string", "null"]}
-                            },
-                            "required": ["name", "type"]
-                        }
-                    },
-                    
-                    # Stakeholder intelligence
-                    "stakeholder_intelligence": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "stakeholder": {"type": "string"},
-                                "role": {"type": ["string", "null"]},
-                                "communication_preferences": {"type": ["string", "null"]},
-                                "noted_concerns": {"type": "array", "items": {"type": "string"}},
-                                "format_preferences": {"type": ["string", "null"]},
-                                "questions_asked": {"type": "array", "items": {"type": "string"}},
-                                "key_interests": {"type": "array", "items": {"type": "string"}}
-                            },
-                            "required": ["stakeholder"]
-                        }
-                    },
-                    
-                    # Knowledge graph connections
-                    "knowledge_connections": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "entity": {"type": "string"},
-                                "entity_type": {"type": "string", "enum": ["person", "stakeholder_group", "project", "system", "deliverable", "requirement", "process", "decision", "concept"]},
-                                "relationship": {"type": ["string", "null"]},
-                                "related_entity": {"type": ["string", "null"]},
-                                "context": {"type": ["string", "null"]}
-                            },
-                            "required": ["entity", "entity_type"]
-                        }
-                    },
-                    
-                    # Enhanced metadata
+                    # Simplified metadata
                     "metadata": {
                         "type": "object",
                         "properties": {
                             "topics": {"type": "array", "items": {"type": "string"}},
                             "projects": {"type": "array", "items": {"type": "string"}},
-                            "departments": {"type": "array", "items": {"type": "string"}},
-                            "systems_discussed": {"type": "array", "items": {"type": "string"}},
-                            "source_file": {"type": ["string", "null"]},
-                            "related_meetings": {"type": "array", "items": {"type": "string"}},
-                            "process_areas": {"type": "array", "items": {"type": "string", "enum": ["order_to_cash", "procure_to_pay", "record_to_report", "hire_to_retire", "other"]}},
-                            "meeting_sentiment": {"type": "string", "enum": ["positive", "neutral", "mixed", "negative", "urgent"]},
+                            "risks": {"type": "array", "items": {"type": "string"}},
                             "follow_up_required": {"type": "boolean"}
-                        }
+                        },
+                        "required": ["topics", "projects", "risks", "follow_up_required"],
+                        "additionalProperties": False
                     },
                     
-                    # Implementation insights
-                    "implementation_insights": {
-                        "type": "object",
-                        "properties": {
-                            "challenges_identified": {"type": "array", "items": {"type": "string"}},
-                            "risk_areas": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "risk": {"type": "string"},
-                                        "severity": {"type": "string", "enum": ["low", "medium", "high", "critical"]},
-                                        "mitigation_approach": {"type": ["string", "null"]}
-                                    }
-                                }
-                            },
-                            "success_criteria_discussed": {"type": "array", "items": {"type": "string"}},
-                            "dependencies_highlighted": {"type": "array", "items": {"type": "string"}}
-                        }
-                    },
-                    
-                    # Cross-project context
-                    "cross_project_context": {
-                        "type": "object",
-                        "properties": {
-                            "related_initiatives": {"type": "array", "items": {"type": "string"}},
-                            "shared_resources": {"type": "array", "items": {"type": "string"}},
-                            "impact_on_other_projects": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "project": {"type": "string"},
-                                        "impact_description": {"type": "string"},
-                                        "coordination_needed": {"type": "boolean"}
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    
-                    # Client-ready email
-                    "client_ready_email": {"type": "string", "description": "A complete, client-facing follow-up email draft."},
-                    
-                    # Map to our existing schema for compatibility
+                    # Memories for our system
                     "memories": {
                         "type": "array",
                         "items": {
@@ -276,18 +103,16 @@ IMPORTANT: You must respond ONLY with valid JSON that matches the provided schem
                                 "metadata": {
                                     "type": "object",
                                     "properties": {
-                                        "type": {
-                                            "type": "string",
-                                            "enum": ["decision", "action", "insight", "discussion", "risk", "deadline"]
-                                        },
-                                        "importance": {
-                                            "type": "string",
-                                            "enum": ["high", "medium", "low"]
-                                        }
-                                    }
+                                        "type": {"type": "string"},
+                                        "importance": {"type": "string"}
+                                    },
+                                    "required": ["type", "importance"],
+                                    "additionalProperties": False
                                 },
                                 "entity_mentions": {"type": "array", "items": {"type": "string"}}
-                            }
+                            },
+                            "required": ["content", "speaker", "timestamp", "metadata", "entity_mentions"],
+                            "additionalProperties": False
                         }
                     },
                     
@@ -298,24 +123,20 @@ IMPORTANT: You must respond ONLY with valid JSON that matches the provided schem
                             "type": "object",
                             "properties": {
                                 "name": {"type": "string"},
-                                "type": {
-                                    "type": "string",
-                                    "enum": ["person", "project", "feature", "deadline", "metric", "team", "system", "technology"]
-                                },
+                                "type": {"type": "string"},
                                 "current_state": {
                                     "type": "object",
                                     "properties": {
                                         "status": {"type": ["string", "null"]},
-                                        "progress": {"type": ["string", "null"]},
-                                        "health": {"type": ["string", "null"]},
                                         "assigned_to": {"type": ["string", "null"]},
-                                        "deadline": {"type": ["string", "null"]},
-                                        "blockers": {"type": "array", "items": {"type": "string"}}
-                                    }
-                                },
-                                "attributes": {"type": "object"}
+                                        "deadline": {"type": ["string", "null"]}
+                                    },
+                                    "required": ["status", "assigned_to", "deadline"],
+                                    "additionalProperties": False
+                                }
                             },
-                            "required": ["name", "type"]
+                            "required": ["name", "type", "current_state"],
+                            "additionalProperties": False
                         }
                     },
                     
@@ -327,13 +148,10 @@ IMPORTANT: You must respond ONLY with valid JSON that matches the provided schem
                             "properties": {
                                 "from": {"type": "string"},
                                 "to": {"type": "string"},
-                                "type": {
-                                    "type": "string",
-                                    "enum": ["owns", "works_on", "reports_to", "depends_on", "blocks", "assigned_to", "responsible_for", "collaborates_with"]
-                                },
-                                "attributes": {"type": "object"}
+                                "type": {"type": "string"}
                             },
-                            "required": ["from", "to", "type"]
+                            "required": ["from", "to", "type"],
+                            "additionalProperties": False
                         }
                     }
                 },
@@ -342,17 +160,29 @@ IMPORTANT: You must respond ONLY with valid JSON that matches the provided schem
                     "meeting_date",
                     "participants",
                     "meeting_id",
+                    "meeting_type",
                     "executive_summary",
-                    "detailed_minutes",
                     "key_decisions",
                     "action_items",
                     "metadata",
                     "memories",
                     "entities",
                     "relationships"
-                ]
+                ],
+                "additionalProperties": False
             }
         }
+
+    def _get_proxies(self) -> Optional[Dict[str, str]]:
+        """Get proxy configuration from settings."""
+        if settings.https_proxy or settings.http_proxy:
+            proxies = {}
+            if settings.http_proxy:
+                proxies["http"] = settings.http_proxy
+            if settings.https_proxy:
+                proxies["https"] = settings.https_proxy
+            return proxies
+        return None
 
     def extract(self, transcript: str, meeting_id: str, email_metadata: Optional[Dict[str, Any]] = None) -> ExtractionResult:
         """Extract comprehensive meeting intelligence."""
@@ -371,26 +201,43 @@ IMPORTANT: You must respond ONLY with valid JSON that matches the provided schem
                 if email_metadata.get("subject"):
                     context += f"Subject: {email_metadata['subject']}\n"
 
-            # Call LLM with enhanced schema
-            # Add schema to the user message for Claude
-            schema_str = json.dumps(self.json_schema["schema"], indent=2)
-            context_with_schema = f"{context}\n\nRESPOND ONLY WITH VALID JSON. No other text. The JSON must match this exact schema:\n\n{schema_str}\n\nRemember: Start with {{ and end with }}. No explanations."
-            
-            response = self.client.chat.completions.create(
-                model=settings.clean_openrouter_model,
-                messages=[
+            # Create request body with proper response_format
+            request_body = {
+                "model": settings.clean_openrouter_model,
+                "messages": [
                     {"role": "system", "content": self.system_prompt},
-                    {"role": "user", "content": context_with_schema}
+                    {"role": "user", "content": context}
                 ],
-                temperature=0.3,
-                max_tokens=20000
+                "temperature": 0.3,
+                "max_tokens": 20000,
+                "response_format": {
+                    "type": "json_schema",
+                    "json_schema": self.json_schema
+                }
+            }
+            
+            # Make direct HTTP request to OpenRouter
+            response = requests.post(
+                "https://openrouter.ai/api/v1/chat/completions",
+                headers={
+                    "Authorization": f"Bearer {settings.openrouter_api_key}",
+                    "Content-Type": "application/json",
+                    "HTTP-Referer": "http://localhost:8000",
+                    "X-Title": "Smart-Meet Lite"
+                },
+                json=request_body,
+                timeout=30.0,
+                verify=False,  # Disable SSL verification as requested
+                proxies=self._get_proxies()
             )
 
-            # Parse response
-            content = response.choices[0].message.content
+            # Parse HTTP response
+            response.raise_for_status()  # Raise exception for HTTP errors
+            response_data = response.json()
+            content = response_data["choices"][0]["message"]["content"]
             logger.info(f"LLM response content: {repr(content)[:200]}")
             logger.info(f"LLM response type: {type(content)}")
-            logger.info(f"Full response: {response}")
+            logger.info(f"Full response: {response_data}")
             
             if not content:
                 logger.error("Empty response from LLM")
@@ -400,24 +247,38 @@ IMPORTANT: You must respond ONLY with valid JSON that matches the provided schem
             # Convert to our format while preserving all the rich data
             return self._convert_to_extraction_result(data, meeting_id, transcript)
             
-        except AuthenticationError as e:
-            logger.error(f"OpenAI Authentication failed: {e}")
-            logger.error("Check your OPENROUTER_API_KEY in .env file")
-            # Authentication errors should not fall back silently
+        except requests.exceptions.HTTPError as e:
+            if e.response.status_code == 401:
+                logger.error(f"Authentication failed: {e}")
+                logger.error("Check your OPENROUTER_API_KEY in .env file")
+                result = self._basic_extraction(transcript, meeting_id)
+                result.meeting_metadata["extraction_error"] = f"Authentication failed: {str(e)}"
+                result.meeting_metadata["error_type"] = "auth_error"
+                return result
+            elif e.response.status_code == 400:
+                logger.error(f"Bad Request: {e}")
+                logger.error(f"Model name being used: '{settings.clean_openrouter_model}'")
+                logger.error(f"Raw model config: '{settings.openrouter_model}'")
+                logger.error(f"Response: {e.response.text[:500] if e.response.text else 'N/A'}")
+                result = self._basic_extraction(transcript, meeting_id)
+                result.meeting_metadata["extraction_error"] = f"Bad request: {str(e)}"
+                result.meeting_metadata["error_type"] = "bad_request"
+                result.meeting_metadata["model_attempted"] = settings.clean_openrouter_model
+                return result
+            else:
+                # Re-raise for other HTTP errors
+                logger.error(f"HTTP Error {e.response.status_code}: {e}")
+                logger.error(f"Response: {e.response.text[:500] if e.response.text else 'N/A'}")
+                result = self._basic_extraction(transcript, meeting_id)
+                result.meeting_metadata["extraction_error"] = f"HTTP {e.response.status_code}: {str(e)}"
+                result.meeting_metadata["error_type"] = "http_error"
+                return result
+        
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Request failed: {e}")
             result = self._basic_extraction(transcript, meeting_id)
-            result.meeting_metadata["extraction_error"] = f"Authentication failed: {str(e)}"
-            result.meeting_metadata["error_type"] = "auth_error"
-            return result
-            
-        except BadRequestError as e:
-            logger.error(f"OpenAI Bad Request: {e}")
-            logger.error(f"Model name being used: '{settings.clean_openrouter_model}'")
-            logger.error(f"Raw model config: '{settings.openrouter_model}'")
-            # This often indicates model name issues
-            result = self._basic_extraction(transcript, meeting_id)
-            result.meeting_metadata["extraction_error"] = f"Bad request: {str(e)}"
-            result.meeting_metadata["error_type"] = "bad_request"
-            result.meeting_metadata["model_attempted"] = settings.clean_openrouter_model
+            result.meeting_metadata["extraction_error"] = f"Request failed: {str(e)}"
+            result.meeting_metadata["error_type"] = "connection_error"
             return result
             
         except json.JSONDecodeError as e:
@@ -438,16 +299,16 @@ IMPORTANT: You must respond ONLY with valid JSON that matches the provided schem
             return result
     
     def _convert_to_extraction_result(self, data: Dict[str, Any], meeting_id: str, transcript: str) -> ExtractionResult:
-        """Convert enhanced extraction to our ExtractionResult format."""
-        # Convert memories from detailed minutes and key points
+        """Convert simplified extraction to our ExtractionResult format."""
+        # Convert memories from LLM extraction
         memories = data.get("memories", [])
         
-        # Also create memories from key decisions and action items
-        for decision in data.get("decisions_with_context", []):
+        # Also create memories from key decisions
+        for decision in data.get("key_decisions", []):
             memories.append({
-                "content": f"Decision: {decision['decision']} - Rationale: {decision['rationale']}",
+                "content": f"Decision: {decision}",
                 "metadata": {"type": "decision", "importance": "high"},
-                "entity_mentions": decision.get("stakeholders_involved", [])
+                "entity_mentions": []
             })
         
         # Convert to Memory objects
@@ -463,18 +324,11 @@ IMPORTANT: You must respond ONLY with valid JSON that matches the provided schem
             )
             memory_objects.append(memory)
         
-        # Build comprehensive metadata
+        # Build metadata
         metadata = data.get("metadata", {})
         metadata.update({
-            "meeting_type": data.get("meeting_type"),
-            "meeting_duration": data.get("meeting_duration"),
-            "executive_summary_bullets": data.get("executive_summary_bullets", []),
-            "deliverables": data.get("deliverables", []),
-            "stakeholder_intelligence": data.get("stakeholder_intelligence", []),
-            "implementation_insights": data.get("implementation_insights", {}),
-            "cross_project_context": data.get("cross_project_context", {}),
+            "meeting_type": data.get("meeting_type", "general"),
             "detailed_summary": data.get("executive_summary", ""),
-            "client_email": data.get("client_ready_email", ""),
             "transcript_context": transcript  # Pass full transcript for pattern matching
         })
         
@@ -582,7 +436,6 @@ IMPORTANT: You must respond ONLY with valid JSON that matches the provided schem
         
         # Extract topics based on repeated phrases
         topics = []
-        topic_candidates = {}
         for entity_name, count in entities_found.items():
             if count >= 3:
                 topics.append(entity_name)
