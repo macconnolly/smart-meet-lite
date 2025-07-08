@@ -21,6 +21,8 @@ from src.entity_resolver import EntityResolver
 from src.embeddings import EmbeddingEngine as LocalEmbeddings
 from src.llm_processor import LLMProcessor
 from src.config import settings
+from src.relationship_normalizer import normalize_relationship_type
+from src.state_normalizer import normalize_state_dict
 
 logger = logging.getLogger(__name__)
 
@@ -218,7 +220,8 @@ class EnhancedMeetingProcessor:
             name = entity_data.get("name", "").strip()
             if name in entity_map and "current_state" in entity_data:
                 entity_id = entity_map[name]["id"]
-                current_states[entity_id] = entity_data["current_state"]
+                # Normalize the current state extracted from LLM before using it
+                current_states[entity_id] = normalize_state_dict(entity_data["current_state"])
         
         # Note: extraction.states is always empty in current implementation
         # All state extraction happens through entity current_state field
@@ -407,14 +410,23 @@ class EnhancedMeetingProcessor:
                 prior_state = state_pairs_to_compare[i][0]
                 current_state = state_pairs_to_compare[i][1]
                 
-                if result["has_changes"]:
+                # Post-process LLM comparison result to filter out cosmetic changes
+                filtered_result = self._filter_cosmetic_changes(
+                    prior_state,
+                    current_state,
+                    result["has_changes"],
+                    result["changed_fields"],
+                    result["reason"]
+                )
+
+                if filtered_result["has_changes"]:
                     # Create transition
                     transition = StateTransition(
                         entity_id=entity_id,
                         from_state=prior_state,
                         to_state=current_state,
-                        changed_fields=result["changed_fields"],
-                        reason=result["reason"],
+                        changed_fields=filtered_result["changed_fields"],
+                        reason=filtered_result["reason"],
                         meeting_id=meeting_id
                     )
                     transitions.append(transition)
@@ -427,7 +439,7 @@ class EnhancedMeetingProcessor:
                         confidence=0.9
                     ))
                     
-                    logger.info(f"Created state transition for entity {entity_id}: {result['changed_fields']}")
+                    logger.info(f"Created state transition for entity {entity_id}: {filtered_result['changed_fields']}")
                 else:
                     logger.debug(f"No changes detected for entity {entity_id}")
         
@@ -470,6 +482,39 @@ class EnhancedMeetingProcessor:
                 changed.append(key)
 
         return changed
+    
+    def _filter_cosmetic_changes(self, from_state: Dict[str, Any], to_state: Dict[str, Any], 
+                                 has_changes: bool, changed_fields: List[str], reason: str) -> Dict[str, Any]:
+        """Filters out cosmetic changes (e.g., casing) if normalized states are identical.
+        Assumes from_state and to_state are already normalized.
+        """
+        if not has_changes:
+            return {"has_changes": False, "changed_fields": [], "reason": "No changes detected"}
+
+        # If only 'status' field changed and normalized values are identical, it's cosmetic
+        if len(changed_fields) == 1 and 'status' in changed_fields:
+            # Use the state_normalizer to get canonical forms for comparison
+            from src.state_normalizer import normalize_state_value # Import here to avoid circular dependency
+            
+            normalized_from_status = normalize_state_value(from_state.get('status'))
+            normalized_to_status = normalize_state_value(to_state.get('status'))
+
+            if normalized_from_status == normalized_to_status:
+                # It's a cosmetic change, override has_changes and reason
+                return {"has_changes": False, "changed_fields": [], "reason": "No semantic change detected (cosmetic status update)"}
+        
+        # If the reason explicitly mentions capitalization/formatting and no other fields changed
+        # This is a fallback in case the LLM still reports it despite normalization
+        cosmetic_keywords = ['capitalization', 'casing', 'formatting', 'format change', 'case change']
+        if any(keyword in reason.lower() for keyword in cosmetic_keywords) and len(changed_fields) == 1 and 'status' in changed_fields:
+             # Double check normalized values are same
+            from src.state_normalizer import normalize_state_value
+            normalized_from_status = normalize_state_value(from_state.get('status'))
+            normalized_to_status = normalize_state_value(to_state.get('status'))
+            if normalized_from_status == normalized_to_status:
+                return {"has_changes": False, "changed_fields": [], "reason": "No semantic change detected (cosmetic status update)"}
+
+        return {"has_changes": has_changes, "changed_fields": changed_fields, "reason": reason}
     
     
     def _generate_transition_reason(self, from_state: Optional[Dict], to_state: Dict, extraction: ExtractionResult) -> str:
@@ -725,9 +770,11 @@ Example response:
             return None
     
     def _validate_relationship_type(self, type_str: str) -> Optional[RelationshipType]:
-        """Validate and convert relationship type string."""
+        """Validate and convert relationship type string with normalization."""
         try:
-            return RelationshipType(type_str.lower())
+            # First normalize the relationship type
+            normalized = normalize_relationship_type(type_str)
+            return RelationshipType(normalized)
         except ValueError:
-            logger.warning(f"Invalid relationship type: {type_str}")
+            logger.warning(f"Invalid relationship type even after normalization: {type_str} -> {normalized}")
             return None
