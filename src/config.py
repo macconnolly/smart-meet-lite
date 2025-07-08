@@ -35,7 +35,8 @@ class Settings(BaseSettings):
     timeline_display_limit: int = 10  # Number of timeline events to show in query results
     
     # Entity Resolution
-    entity_resolution_threshold: float = 0.6  # Lower than current 80%
+    vector_resolution_threshold: float = 0.70  # Default vector similarity threshold
+    fuzzy_resolution_threshold: float = 0.65   # Default fuzzy matching threshold
     create_deliverables_on_assignment: bool = True  # Auto-create task entities
     entity_resolution_use_llm: bool = True  # Enable LLM fallback
 

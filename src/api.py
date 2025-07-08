@@ -184,6 +184,91 @@ async def ingest_meeting(request: IngestRequest):
             title=request.title, transcript=request.transcript, date=request.date
         )
 
+        # HYBRID APPROACH: Use both vector similarity and text extraction
+        logger.info("[CONTEXT] Finding relevant entities using hybrid approach")
+        
+        existing_entities = []
+        matched_entity_names = set()
+        vector_entities = []  # Track entities found via vector search
+        text_entities = []    # Track entities found via text matching
+        
+        # APPROACH 1: Vector similarity search on transcript embedding
+        # This finds entities semantically related to the transcript content
+        logger.info("[VECTOR] Creating transcript embedding for semantic entity search")
+        transcript_embedding = embeddings.encode(request.transcript)
+        if transcript_embedding.ndim > 1:
+            transcript_embedding = transcript_embedding[0]
+        
+        # Search for semantically similar entities
+        similar_entity_results = storage.search_entity_embeddings(
+            query_embedding=transcript_embedding,
+            limit=10  # Get top semantically related entities
+        )
+        
+        logger.info(f"[VECTOR] Found {len(similar_entity_results)} semantically similar entities")
+        for entity_id, score in similar_entity_results:
+            entity = storage.get_entity(entity_id)
+            if entity:
+                logger.info(f"[VECTOR] Entity '{entity.name}' (ID: {entity_id}) has similarity score: {score:.3f}")
+                if score > 0.5:  # Lowered threshold to 0.5 for better recall
+                    if entity.name not in matched_entity_names:
+                        existing_entities.append(entity)
+                        matched_entity_names.add(entity.name)
+                        vector_entities.append(entity)  # Track vector-found entities
+                        logger.info(f"[VECTOR] Including semantically related entity '{entity.name}' (score: {score:.2f})")
+        
+        # APPROACH 2: Extract and resolve entity names from text
+        import re
+        potential_entities = set()
+        
+        # Pattern for capitalized words/phrases
+        entity_pattern = r'\b[A-Z][a-zA-Z]*(?:\s+[A-Z][a-zA-Z]*)*\b'
+        matches = re.findall(entity_pattern, request.transcript)
+        
+        # Also look for known entity names in lowercase
+        # Get all existing entity names for case-insensitive matching
+        all_entities = storage.get_all_entities()
+        transcript_lower = request.transcript.lower()
+        
+        for entity in all_entities:
+            # Check if entity name appears in transcript (case-insensitive)
+            if entity.name.lower() in transcript_lower:
+                # Directly add to existing entities since we have an exact name match
+                if entity.name not in matched_entity_names:
+                    existing_entities.append(entity)
+                    matched_entity_names.add(entity.name)
+                    text_entities.append(entity)  # Track text-found entities
+                    logger.info(f"[TEXT] Found and including existing entity in transcript: {entity.name}")
+                potential_entities.add(entity.name)
+        
+        # Add capitalized matches
+        for match in matches:
+            if len(match) > 1 and match.lower() not in {
+                'the', 'this', 'that', 'these', 'those', 'what', 'when', 'where',
+                'who', 'why', 'how', 'is', 'are', 'was', 'were', 'been', 'being',
+                'have', 'has', 'had', 'will', 'would', 'could', 'should', 'may',
+                'i', 'we', 'you', 'he', 'she', 'it', 'they', 'them'
+            }:
+                potential_entities.add(match)
+        
+        logger.info(f"[TEXT] Found {len(potential_entities)} potential entity mentions")
+        
+        # Use entity resolver on extracted names
+        if potential_entities:
+            resolution_results = entity_resolver.resolve_entities(
+                list(potential_entities),
+                context=f"Meeting transcript entity extraction. Transcript snippet: {request.transcript[:500]}..."
+            )
+            
+            for term, match in resolution_results.items():
+                if match.entity and match.confidence > 0.5:
+                    if match.entity.name not in matched_entity_names:
+                        existing_entities.append(match.entity)
+                        matched_entity_names.add(match.entity.name)
+                        logger.info(f"[RESOLVED] '{term}' -> '{match.entity.name}' (type: {match.match_type}, confidence: {match.confidence:.2f})")
+        
+        logger.info(f"[CONTEXT] Passing {len(existing_entities)} relevant existing entities to extractor (vector: {len(vector_entities)} + text: {len(text_entities)})")
+        
         # Use enhanced extractor for comprehensive intelligence
         # Pass email metadata if available
         email_metadata = {}
@@ -193,7 +278,8 @@ async def ingest_meeting(request: IngestRequest):
         extraction = enhanced_extractor.extract(
             request.transcript, 
             meeting.id,
-            email_metadata=email_metadata
+            email_metadata=email_metadata,
+            existing_entities=existing_entities
         )
         
         # Validate extraction produced data
@@ -432,6 +518,8 @@ async def business_intelligence_query(request: BIQueryRequest):
         }
 
     except Exception as e:
+        logger.error(f"Query processing failed: {type(e).__name__}: {str(e)}")
+        logger.error(f"Stack trace: ", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
 

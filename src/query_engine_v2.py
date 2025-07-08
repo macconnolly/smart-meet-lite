@@ -11,9 +11,10 @@ from typing import List, Dict, Any, Optional, Tuple
 from dataclasses import dataclass
 from collections import defaultdict
 from types import SimpleNamespace
+import requests
 
 from src.models import (
-    Entity, EntityState, StateTransition, Memory,
+    Entity, EntityState, StateTransition, EntityType,
     QueryIntent, BIQueryResult, SearchResult
 )
 from src.storage import MemoryStorage as Storage
@@ -143,6 +144,95 @@ class ProductionQueryEngine:
                 re.compile(pattern, re.IGNORECASE) 
                 for pattern in config["patterns"]
             ]
+    
+    def _get_proxies(self) -> Optional[Dict[str, str]]:
+        """Get proxy configuration from settings."""
+        if settings.https_proxy or settings.http_proxy:
+            proxies = {}
+            if settings.http_proxy:
+                proxies["http"] = settings.http_proxy
+            if settings.https_proxy:
+                proxies["https"] = settings.https_proxy
+            return proxies
+        return None
+    
+    def _call_openrouter_api(self, prompt: str, json_schema: Dict[str, Any], 
+                           temperature: float = 0.3, max_tokens: int = 1000) -> Dict[str, Any]:
+        """Make direct HTTP request to OpenRouter API with structured output."""
+        try:
+            # Create request body with proper response_format
+            request_body = {
+                "model": settings.clean_openrouter_model,
+                "messages": [
+                    {"role": "system", "content": "You are a helpful assistant that provides comprehensive answers. Respond only with valid JSON matching the requested schema."},
+                    {"role": "user", "content": prompt}
+                ],
+                "temperature": temperature,
+                "max_tokens": max_tokens,
+                "response_format": {
+                    "type": "json_schema",
+                    "json_schema": json_schema
+                }
+            }
+            
+            # Make direct HTTP request to OpenRouter
+            response = requests.post(
+                "https://openrouter.ai/api/v1/chat/completions",
+                headers={
+                    "Authorization": f"Bearer {settings.openrouter_api_key}",
+                    "Content-Type": "application/json",
+                    "HTTP-Referer": "http://localhost:8000",
+                    "X-Title": "Smart-Meet Lite"
+                },
+                json=request_body,
+                timeout=30.0,
+                verify=False,  # Disable SSL verification as in enhanced extractor
+                proxies=self._get_proxies()
+            )
+            
+            # Parse HTTP response
+            response.raise_for_status()  # Raise exception for HTTP errors
+            response_data = response.json()
+            content = response_data["choices"][0]["message"]["content"]
+            
+            if not content:
+                logger.error("Empty response from OpenRouter")
+                raise ValueError("Empty response from OpenRouter")
+                
+            # Parse JSON response
+            response_json = json.loads(content)
+            return response_json
+            
+        except requests.exceptions.HTTPError as e:
+            logger.error(f"OpenRouter HTTP Error {e.response.status_code}: {e}")
+            if e.response:
+                logger.error(f"Response: {e.response.text[:500]}")
+            # Return fallback response
+            return {
+                "answer": f"I encountered an error processing your query. HTTP {e.response.status_code if e.response else 'Unknown'}",
+                "confidence": 0.1
+            }
+            
+        except requests.exceptions.RequestException as e:
+            logger.error(f"OpenRouter request failed: {e}")
+            return {
+                "answer": "I encountered a connection error while processing your query.",
+                "confidence": 0.1
+            }
+            
+        except json.JSONDecodeError as e:
+            logger.error(f"Failed to parse OpenRouter response as JSON: {e}")
+            return {
+                "answer": "I received an invalid response format while processing your query.",
+                "confidence": 0.1
+            }
+            
+        except Exception as e:
+            logger.error(f"Unexpected error calling OpenRouter: {type(e).__name__}: {e}")
+            return {
+                "answer": "An unexpected error occurred while processing your query.",
+                "confidence": 0.1
+            }
     
     async def process_query(self, query: str, user_context: Optional[Dict] = None) -> BIQueryResult:
         """
@@ -317,29 +407,38 @@ class ProductionQueryEngine:
                 entity = self.storage.get_entity_by_name(entity_name)
                 if entity:
                     context.entities.append(entity)
-                    
-                    # Load state history and transitions (timeline returns dicts, not StateTransition objects)
-                    timeline_data = self.storage.get_entity_timeline(entity.id)
-                    context.state_history[entity.id] = timeline_data
-                    
-                    # Convert dicts to StateTransition-like objects for compatibility
-                    transitions = []
-                    for item in timeline_data:
-                        # Create a simple namespace object instead of dynamic type
-                        transition = SimpleNamespace(
-                            timestamp=datetime.fromisoformat(item['timestamp']),
-                            from_state=item['from_state'],
-                            to_state=item['to_state'],
-                            changed_fields=item['changed_fields'],
-                            reason=item['reason'],
-                            meeting_id=item['meeting_id']
-                        )
-                        transitions.append(transition)
-                    context.transitions[entity.id] = transitions
-                    
-                    # Load relationships
-                    relationships = self.storage.get_entity_relationships(entity.id)
-                    context.relationships[entity.id] = relationships
+        elif intent.intent_type in ["timeline", "status", "analytics"]:
+            # For broad queries, load all projects and features
+            all_projects = self.storage.get_entities_by_type(EntityType.PROJECT)
+            all_features = self.storage.get_entities_by_type(EntityType.FEATURE)
+            context.entities.extend(all_projects)
+            context.entities.extend(all_features)
+            logger.info(f"Loaded {len(context.entities)} projects/features for broad query.")
+
+        # Load state history, transitions, and relationships for all relevant entities
+        for entity in context.entities:
+            # Load state history and transitions (timeline returns dicts, not StateTransition objects)
+            timeline_data = self.storage.get_entity_timeline(entity.id)
+            context.state_history[entity.id] = timeline_data
+            
+            # Convert dicts to StateTransition-like objects for compatibility
+            transitions = []
+            for item in timeline_data:
+                # Create a simple namespace object instead of dynamic type
+                transition = SimpleNamespace(
+                    timestamp=datetime.fromisoformat(item['timestamp']),
+                    from_state=item['from_state'],
+                    to_state=item['to_state'],
+                    changed_fields=item['changed_fields'],
+                    reason=item['reason'],
+                    meeting_id=item['meeting_id']
+                )
+                transitions.append(transition)
+            context.transitions[entity.id] = transitions
+            
+            # Load relationships
+            relationships = self.storage.get_entity_relationships(entity.id)
+            context.relationships[entity.id] = relationships
         
         # Semantic search for relevant memories
         if query:
@@ -371,13 +470,25 @@ class ProductionQueryEngine:
             
             # Format timeline entries
             for transition in transitions:
-                entry = {
-                    "date": transition.timestamp.isoformat(),
-                    "from_state": transition.from_state,
-                    "to_state": transition.to_state,
-                    "changes": transition.changed_fields,
-                    "reason": transition.reason
-                }
+                # Handle both SimpleNamespace objects and dicts
+                if hasattr(transition, 'timestamp'):
+                    # SimpleNamespace object from _build_query_context
+                    entry = {
+                        "date": transition.timestamp.isoformat(),
+                        "from_state": transition.from_state,
+                        "to_state": transition.to_state,
+                        "changes": transition.changed_fields,
+                        "reason": transition.reason
+                    }
+                else:
+                    # Dict from direct storage call
+                    entry = {
+                        "date": transition["timestamp"],
+                        "from_state": transition.get("from_state"),
+                        "to_state": transition.get("to_state"),
+                        "changes": transition.get("changed_fields", []),
+                        "reason": transition.get("reason", "")
+                    }
                 timeline_data["timeline"].append(entry)
             
             timelines.append(timeline_data)
@@ -428,25 +539,24 @@ class ProductionQueryEngine:
             }
             
             # Get current state
-            current_states = self.storage.get_entity_current_state(entity.id)
-            if current_states:
-                state = current_states[0].state
-                if isinstance(state, str):
-                    import json
-                    state = json.loads(state)
-                
-                if state.get("blockers"):
-                    blocker_info["current_blockers"] = state["blockers"]
+            current_state = self.storage.get_entity_current_state(entity.id)
+            if current_state:
+                # Debug: log the type and content
+                logger.debug(f"Blocker query - current_state type: {type(current_state)}, content: {current_state}")
+                if isinstance(current_state, dict) and current_state.get("blockers"):
+                    blocker_info["current_blockers"] = current_state["blockers"]
             
             # Get blocker resolution history
             transitions = self.storage.get_entity_timeline(entity.id)
             for transition in transitions:
-                if "blockers" in transition.changed_fields:
+                # transitions are dicts from get_entity_timeline, not objects
+                changed_fields = transition.get("changed_fields", [])
+                if "blockers" in changed_fields:
                     blocker_info["resolution_history"].append({
-                        "date": transition.timestamp.isoformat(),
-                        "change": transition.reason,
-                        "from_blockers": transition.from_state.get("blockers", []) if transition.from_state else [],
-                        "to_blockers": transition.to_state.get("blockers", [])
+                        "date": transition["timestamp"],
+                        "change": transition.get("reason", ""),
+                        "from_blockers": transition.get("from_state", {}).get("blockers", []) if transition.get("from_state") else [],
+                        "to_blockers": transition.get("to_state", {}).get("blockers", [])
                     })
             
             blockers.append(blocker_info)
@@ -478,22 +588,36 @@ class ProductionQueryEngine:
             }
             
             # Get current state
-            current_states = self.storage.get_entity_current_state(entity.id)
-            if current_states:
-                state = current_states[0]
-                entity_status["current_state"] = state.state if isinstance(state.state, dict) else json.loads(state.state)
-                entity_status["last_updated"] = state.timestamp.isoformat()
+            current_state = self.storage.get_entity_current_state(entity.id)
+            if current_state:
+                entity_status["current_state"] = current_state
+                # Note: get_entity_current_state returns a dict directly, not an EntityState object
+                # So we don't have timestamp info here - would need to query entity_states table for that
             
             # Get recent changes
-            transitions = context.transitions.get(entity.id, [])
+            logger.debug(f"Status query - transitions type: {type(context.transitions)}")
+            logger.debug(f"Status query - entity.id: {entity.id}")
+            try:
+                transitions = context.transitions.get(entity.id, [])
+            except Exception as e:
+                logger.error(f"Error getting transitions: {e}, transitions object: {context.transitions}")
+                transitions = []
             recent_transitions = sorted(transitions, key=lambda t: t.timestamp, reverse=True)[:3]
             
             for transition in recent_transitions:
-                entity_status["recent_changes"].append({
-                    "date": transition.timestamp.isoformat(),
-                    "change": transition.reason,
-                    "fields": transition.changed_fields
-                })
+                # Handle both SimpleNamespace objects and dicts
+                if hasattr(transition, 'timestamp'):
+                    entity_status["recent_changes"].append({
+                        "date": transition.timestamp.isoformat(),
+                        "change": transition.reason,
+                        "fields": transition.changed_fields
+                    })
+                else:
+                    entity_status["recent_changes"].append({
+                        "date": transition["timestamp"],
+                        "change": transition.get("reason", ""),
+                        "fields": transition.get("changed_fields", [])
+                    })
             
             status_data.append(entity_status)
         
@@ -551,27 +675,19 @@ class ProductionQueryEngine:
     def _generate_timeline_response(self, timelines: List[Dict], context: QueryContext) -> Dict[str, Any]:
         """Generate natural language response for timeline queries."""
         
-        prompt = f"""
-Based on the timeline data below, provide a comprehensive answer to this query: {context.query}
-
-Timeline Data:
-{json.dumps(timelines, indent=2)}
-
-Instructions:
-1. Describe the progression chronologically
-2. Highlight key state changes and milestones
-3. Note any patterns or significant events
-4. If multiple entities, compare their progressions
-5. Be specific about dates and changes
-
-Format the response in clear, business-friendly language.
-
-You MUST respond with valid JSON in this exact format:
-{
-    "answer": "Your comprehensive answer here",
-    "confidence": 0.95
-}
-"""
+        prompt = (
+            "Based on the timeline data below, provide a comprehensive answer to this query: " + 
+            context.query + "\n\n" +
+            "Timeline Data:\n" +
+            json.dumps(timelines, indent=2) + "\n\n" +
+            "Instructions:\n" +
+            "1. Describe the progression chronologically\n" +
+            "2. Highlight key state changes and milestones\n" +
+            "3. Note any patterns or significant events\n" +
+            "4. If multiple entities, compare their progressions\n" +
+            "5. Be specific about dates and changes\n\n" +
+            "Format the response in clear, business-friendly language."
+        )
         
         json_schema = {
             "name": "timeline_response",
@@ -582,29 +698,13 @@ You MUST respond with valid JSON in this exact format:
                     "answer": { "type": "string", "description": "A comprehensive answer to the user's query based on the timeline data." },
                     "confidence": { "type": "number", "description": "Confidence score in the answer, from 0.0 to 1.0." }
                 },
-                "required": ["answer", "confidence"]
+                "required": ["answer", "confidence"],
+                "additionalProperties": False
             }
         }
 
-        # Use OpenAI client with strict JSON mode
-        response = self.llm_client.chat.completions.create(
-            model=settings.clean_openrouter_model,
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant that analyzes timeline data and provides comprehensive answers. Respond only with valid JSON matching the requested schema."},
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.3,
-            max_tokens=1000,
-            response_format={
-                "type": "json_schema",
-                "json_schema": json_schema
-            }
-        )
-        
-        response_text = response.choices[0].message.content
-        response_json = json.loads(response_text)
-        
-        return response_json
+        # Use direct API call
+        return self._call_openrouter_api(prompt, json_schema, temperature=0.3, max_tokens=1000)
 
     def _search_memories(self, query: str, limit: int = 20) -> List[SearchResult]:
         """Search memories using vector similarity."""
@@ -661,27 +761,19 @@ You MUST respond with valid JSON in this exact format:
     
     def _generate_blocker_response(self, blockers: List[Dict], context: QueryContext) -> Dict[str, Any]:
         """Generate response for blocker queries."""
-        prompt = f"""
-Based on the blocker data below, answer this query: {context.query}
-
-Blocker Data:
-{json.dumps(blockers, indent=2)}
-
-Instructions:
-1. List all current blockers clearly
-2. Group by severity or impact if applicable
-3. Show resolution history for resolved blockers
-4. Identify any patterns or recurring issues
-5. Suggest potential resolution paths
-
-Be specific and actionable in your response.
-
-You MUST respond with valid JSON in this exact format:
-{{
-    "answer": "Your comprehensive answer here",
-    "confidence": 0.95
-}}
-"""
+        prompt = (
+            "Based on the blocker data below, answer this query: " +
+            context.query + "\n\n" +
+            "Blocker Data:\n" +
+            json.dumps(blockers, indent=2) + "\n\n" +
+            "Instructions:\n" +
+            "1. List all current blockers clearly\n" +
+            "2. Group by severity or impact if applicable\n" +
+            "3. Show resolution history for resolved blockers\n" +
+            "4. Identify any patterns or recurring issues\n" +
+            "5. Suggest potential resolution paths\n\n" +
+            "Be specific and actionable in your response."
+        )
         
         json_schema = {
             "name": "blocker_response",
@@ -692,53 +784,29 @@ You MUST respond with valid JSON in this exact format:
                     "answer": { "type": "string", "description": "A comprehensive answer to the user's query based on the blocker data." },
                     "confidence": { "type": "number", "description": "Confidence score in the answer, from 0.0 to 1.0." }
                 },
-                "required": ["answer", "confidence"]
+                "required": ["answer", "confidence"],
+                "additionalProperties": False
             }
         }
 
-        # Use OpenAI client with strict JSON mode
-        response = self.llm_client.chat.completions.create(
-            model=settings.clean_openrouter_model,
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant that analyzes blocker data and provides comprehensive answers."},
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.3,
-            max_tokens=800,
-            response_format={
-                "type": "json_schema",
-                "json_schema": json_schema
-            }
-        )
-        
-        response_text = response.choices[0].message.content
-        response_json = json.loads(response_text)
-        
-        return response_json
+        # Use direct API call
+        return self._call_openrouter_api(prompt, json_schema, temperature=0.3, max_tokens=800)
     
     def _generate_status_response(self, status_data: List[Dict], context: QueryContext) -> Dict[str, Any]:
         """Generate response for status queries."""
-        prompt = f"""
-Based on the status data below, answer this query: {context.query}
-
-Status Data:
-{json.dumps(status_data, indent=2)}
-
-Instructions:
-1. Provide current status for each entity
-2. Highlight any critical information (blockers, delays)
-3. Note recent changes or updates
-4. Include relevant metrics (progress %, dates)
-5. Be concise but comprehensive
-
-Format as a clear status update.
-
-You MUST respond with valid JSON in this exact format:
-{{
-    "answer": "Your comprehensive answer here",
-    "confidence": 0.95
-}}
-"""
+        prompt = (
+            "Based on the status data below, answer this query: " +
+            context.query + "\n\n" +
+            "Status Data:\n" +
+            json.dumps(status_data, indent=2) + "\n\n" +
+            "Instructions:\n" +
+            "1. Provide current status for each entity\n" +
+            "2. Highlight any critical information (blockers, delays)\n" +
+            "3. Note recent changes or updates\n" +
+            "4. Include relevant metrics (progress %, dates)\n" +
+            "5. Be concise but comprehensive\n\n" +
+            "Format as a clear status update."
+        )
         
         json_schema = {
             "name": "status_response",
@@ -749,29 +817,13 @@ You MUST respond with valid JSON in this exact format:
                     "answer": { "type": "string", "description": "A comprehensive answer to the user's query based on the status data." },
                     "confidence": { "type": "number", "description": "Confidence score in the answer, from 0.0 to 1.0." }
                 },
-                "required": ["answer", "confidence"]
+                "required": ["answer", "confidence"],
+                "additionalProperties": False
             }
         }
 
-        # Use OpenAI client with strict JSON mode
-        response = self.llm_client.chat.completions.create(
-            model=settings.clean_openrouter_model,
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant that analyzes status data and provides comprehensive answers."},
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.3,
-            max_tokens=600,
-            response_format={
-                "type": "json_schema",
-                "json_schema": json_schema
-            }
-        )
-        
-        response_text = response.choices[0].message.content
-        response_json = json.loads(response_text)
-        
-        return response_json
+        # Use direct API call
+        return self._call_openrouter_api(prompt, json_schema, temperature=0.3, max_tokens=600)
     
     def _extract_query_filters(self, query: str) -> Dict[str, Any]:
         """Extract filters from query text."""
@@ -867,22 +919,21 @@ You MUST respond with valid JSON in this exact format:
             }
             
             # Get current owner
-            current_states = self.storage.get_entity_current_state(entity.id)
-            if current_states:
-                state = current_states[0].state
-                if isinstance(state, str):
-                    state = json.loads(state)
-                ownership_info["current_owner"] = state.get("assigned_to")
+            current_state = self.storage.get_entity_current_state(entity.id)
+            if current_state:
+                ownership_info["current_owner"] = current_state.get("assigned_to")
             
             # Get ownership history
             transitions = self.storage.get_entity_timeline(entity.id)
             for transition in transitions:
-                if "assigned_to" in transition.changed_fields:
+                # transitions are dicts from get_entity_timeline, not objects
+                changed_fields = transition.get("changed_fields", [])
+                if "assigned_to" in changed_fields:
                     ownership_info["ownership_history"].append({
-                        "date": transition.timestamp.isoformat(),
-                        "from": transition.from_state.get("assigned_to") if transition.from_state else None,
-                        "to": transition.to_state.get("assigned_to"),
-                        "reason": transition.reason
+                        "date": transition["timestamp"],
+                        "from": transition.get("from_state", {}).get("assigned_to") if transition.get("from_state") else None,
+                        "to": transition.get("to_state", {}).get("assigned_to"),
+                        "reason": transition.get("reason", "")
                     })
             
             ownership_data.append(ownership_info)
@@ -978,7 +1029,7 @@ You MUST respond with valid JSON in this exact format:
             relevant_data.append({
                 "content": result.memory.content,
                 "meeting": result.meeting.title if result.meeting else "Unknown",
-                "date": result.meeting.date.isoformat() if result.meeting else None,
+                "date": result.meeting.date.isoformat() if result.meeting and result.meeting.date else None,
                 "score": result.score,
                 "entities": [e.name for e in result.relevant_entities]
             })
@@ -1021,13 +1072,9 @@ You MUST respond with valid JSON in this exact format:
             counts["by_type"][entity.type.value] += 1
             
             # Get current state
-            current_states = self.storage.get_entity_current_state(entity.id)
-            if current_states:
-                state = current_states[0].state
-                if isinstance(state, str):
-                    state = json.loads(state)
-                
-                status = state.get("status", "unknown")
+            current_state = self.storage.get_entity_current_state(entity.id)
+            if current_state:
+                status = current_state.get("status", "unknown")
                 counts["by_status"][status] += 1
                 
                 if status == "blocked":
@@ -1066,12 +1113,22 @@ You MUST respond with valid JSON in this exact format:
         
         # Group by week
         for transition in all_transitions:
-            week = transition.timestamp.isocalendar()[1]
+            # Handle both object and dict formats
+            if hasattr(transition, 'timestamp'):
+                week = transition.timestamp.isocalendar()[1]
+                to_state = transition.to_state
+                from_state = transition.from_state
+            else:
+                # Parse timestamp if it's a string
+                timestamp = datetime.fromisoformat(transition["timestamp"]) if isinstance(transition["timestamp"], str) else transition["timestamp"]
+                week = timestamp.isocalendar()[1]
+                to_state = transition.get("to_state", {})
+                from_state = transition.get("from_state", {})
             
-            if transition.to_state.get("status") == "completed":
+            if to_state.get("status") == "completed":
                 velocity["completed_per_week"][week] += 1
-            elif transition.to_state.get("status") == "in_progress" and (
-                not transition.from_state or transition.from_state.get("status") != "in_progress"
+            elif to_state.get("status") == "in_progress" and (
+                not from_state or from_state.get("status") != "in_progress"
             ):
                 velocity["started_per_week"][week] += 1
         
@@ -1093,10 +1150,18 @@ You MUST respond with valid JSON in this exact format:
             end_time = None
             
             for transition in transitions:
-                if transition.to_state.get("status") == "in_progress" and not start_time:
-                    start_time = transition.timestamp
-                elif transition.to_state.get("status") == "completed":
-                    end_time = transition.timestamp
+                # Handle both object and dict formats
+                if hasattr(transition, 'timestamp'):
+                    timestamp = transition.timestamp
+                    to_state = transition.to_state
+                else:
+                    timestamp = datetime.fromisoformat(transition["timestamp"]) if isinstance(transition["timestamp"], str) else transition["timestamp"]
+                    to_state = transition.get("to_state", {})
+                    
+                if to_state.get("status") == "in_progress" and not start_time:
+                    start_time = timestamp
+                elif to_state.get("status") == "completed":
+                    end_time = timestamp
             
             if start_time and end_time:
                 cycle_time = (end_time - start_time).days
@@ -1123,16 +1188,26 @@ You MUST respond with valid JSON in this exact format:
             blocked_start = None
             
             for transition in transitions:
-                if transition.to_state.get("status") == "blocked":
-                    blocked_start = transition.timestamp
+                # Handle both object and dict formats
+                if hasattr(transition, 'timestamp'):
+                    timestamp = transition.timestamp
+                    to_state = transition.to_state
+                    from_state = transition.from_state
+                else:
+                    timestamp = datetime.fromisoformat(transition["timestamp"]) if isinstance(transition["timestamp"], str) else transition["timestamp"]
+                    to_state = transition.get("to_state", {})
+                    from_state = transition.get("from_state", {})
+                    
+                if to_state.get("status") == "blocked":
+                    blocked_start = timestamp
                     # Count blocker types
-                    blockers = transition.to_state.get("blockers", [])
+                    blockers = to_state.get("blockers", [])
                     for blocker in blockers:
                         blocker_types[blocker] += 1
                         
-                elif blocked_start and transition.from_state and transition.from_state.get("status") == "blocked":
+                elif blocked_start and from_state and from_state.get("status") == "blocked":
                     # Blocker resolved
-                    duration = (transition.timestamp - blocked_start).days
+                    duration = (timestamp - blocked_start).days
                     blocker_durations.append(duration)
                     blocked_start = None
         
@@ -1176,21 +1251,19 @@ You MUST respond with valid JSON in this exact format:
     
     def _generate_ownership_response(self, ownership_data: List[Dict], context: QueryContext) -> Dict[str, Any]:
         """Generate response for ownership queries."""
-        prompt = f"""
-Based on the ownership data below, answer this query: {context.query}
-
-Ownership Data:
-{json.dumps(ownership_data, indent=2)}
-
-Instructions:
-1. Clearly state current owners/assignees
-2. Show ownership changes if relevant
-3. Group by owner if multiple entities
-4. Note any entities without owners
-5. Be specific about names and dates
-
-Format as a clear ownership summary.
-"""
+        prompt = (
+            "Based on the ownership data below, answer this query: " +
+            context.query + "\n\n" +
+            "Ownership Data:\n" +
+            json.dumps(ownership_data, indent=2) + "\n\n" +
+            "Instructions:\n" +
+            "1. Clearly state current owners/assignees\n" +
+            "2. Show ownership changes if relevant\n" +
+            "3. Group by owner if multiple entities\n" +
+            "4. Note any entities without owners\n" +
+            "5. Be specific about names and dates\n\n" +
+            "Format as a clear ownership summary."
+        )
         
         # Define JSON schema
         json_schema = {
@@ -1199,56 +1272,32 @@ Format as a clear ownership summary.
             "schema": {
                 "type": "object",
                 "properties": {
-                    "answer": {"type": "string"},
-                    "confidence": {"type": "number"}
+                    "answer": {"type": "string", "description": "A comprehensive answer to the user's query based on the ownership data."},
+                    "confidence": {"type": "number", "description": "Confidence score in the answer, from 0.0 to 1.0."}
                 },
-                "required": ["answer", "confidence"]
+                "required": ["answer", "confidence"],
+                "additionalProperties": False
             }
         }
         
-        # Use OpenAI client with explicit JSON request
-        response = self.llm_client.chat.completions.create(
-            model=settings.clean_openrouter_model,
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant that analyzes ownership data."},
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.3,
-            max_tokens=600,
-            response_format={
-                "type": "json_schema",
-                "json_schema": json_schema
-            }
-        )
-        
-        response_text = response.choices[0].message.content
-        try:
-            response_json = json.loads(response_text)
-            return response_json
-        except json.JSONDecodeError:
-            # Fallback if response isn't valid JSON
-            return {
-                "answer": response_text,
-                "confidence": 0.9 if ownership_data else 0.3
-            }
+        # Use direct API call
+        return self._call_openrouter_api(prompt, json_schema, temperature=0.3, max_tokens=600)
     
     def _generate_analytics_response(self, analytics_data: Dict, context: QueryContext) -> Dict[str, Any]:
         """Generate response for analytics queries."""
-        prompt = f"""
-Based on the analytics data below, answer this query: {context.query}
-
-Analytics Data:
-{json.dumps(analytics_data, indent=2)}
-
-Instructions:
-1. Present key metrics clearly
-2. Highlight important trends or patterns
-3. Compare metrics where relevant
-4. Provide context for the numbers
-5. Suggest areas of concern or success
-
-Format as a professional analytics summary.
-"""
+        prompt = (
+            "Based on the analytics data below, answer this query: " +
+            context.query + "\n\n" +
+            "Analytics Data:\n" +
+            json.dumps(analytics_data, indent=2) + "\n\n" +
+            "Instructions:\n" +
+            "1. Present key metrics clearly\n" +
+            "2. Highlight important trends or patterns\n" +
+            "3. Compare metrics where relevant\n" +
+            "4. Provide context for the numbers\n" +
+            "5. Suggest areas of concern or success\n\n" +
+            "Format as a professional analytics summary."
+        )
         
         # Define JSON schema
         json_schema = {
@@ -1257,55 +1306,32 @@ Format as a professional analytics summary.
             "schema": {
                 "type": "object",
                 "properties": {
-                    "answer": {"type": "string"},
-                    "confidence": {"type": "number"}
+                    "answer": {"type": "string", "description": "A comprehensive answer to the user's query based on the analytics data."},
+                    "confidence": {"type": "number", "description": "Confidence score in the answer, from 0.0 to 1.0."}
                 },
-                "required": ["answer", "confidence"]
+                "required": ["answer", "confidence"],
+                "additionalProperties": False
             }
         }
         
-        # Use OpenAI client with explicit JSON request
-        response = self.llm_client.chat.completions.create(
-            model=settings.clean_openrouter_model,
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant that analyzes analytics data."},
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.3,
-            max_tokens=800,
-            response_format={
-                "type": "json_schema",
-                "json_schema": json_schema
-            }
-        )
-        
-        response_text = response.choices[0].message.content
-        try:
-            response_json = json.loads(response_text)
-            return response_json
-        except json.JSONDecodeError:
-            return {
-                "answer": response_text,
-                "confidence": 0.85
-            }
+        # Use direct API call
+        return self._call_openrouter_api(prompt, json_schema, temperature=0.3, max_tokens=800)
     
     def _generate_relationship_response(self, relationship_data: List[Dict], context: QueryContext) -> Dict[str, Any]:
         """Generate response for relationship queries."""
-        prompt = f"""
-Based on the relationship data below, answer this query: {context.query}
-
-Relationship Data:
-{json.dumps(relationship_data, indent=2)}
-
-Instructions:
-1. Show all relevant relationships clearly
-2. Highlight critical dependencies
-3. Note any circular dependencies
-4. Group by relationship type if helpful
-5. Include impact analysis where relevant
-
-Format as a clear dependency summary.
-"""
+        prompt = (
+            "Based on the relationship data below, answer this query: " +
+            context.query + "\n\n" +
+            "Relationship Data:\n" +
+            json.dumps(relationship_data, indent=2) + "\n\n" +
+            "Instructions:\n" +
+            "1. Show all relevant relationships clearly\n" +
+            "2. Highlight critical dependencies\n" +
+            "3. Note any circular dependencies\n" +
+            "4. Group by relationship type if helpful\n" +
+            "5. Include impact analysis where relevant\n\n" +
+            "Format as a clear dependency summary."
+        )
         
         # Define JSON schema exactly as required
         json_schema = {
@@ -1314,56 +1340,32 @@ Format as a clear dependency summary.
             "schema": {
                 "type": "object",
                 "properties": {
-                    "answer": {"type": "string"},
-                    "confidence": {"type": "number"}
+                    "answer": {"type": "string", "description": "A comprehensive answer to the user's query based on the relationship data."},
+                    "confidence": {"type": "number", "description": "Confidence score in the answer, from 0.0 to 1.0."}
                 },
                 "required": ["answer", "confidence"],
                 "additionalProperties": False
             }
         }
         
-        # Use OpenAI client with explicit JSON request
-        response = self.llm_client.chat.completions.create(
-            model=settings.clean_openrouter_model,
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant that analyzes relationship data."},
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.3,
-            max_tokens=600,
-            response_format={
-                "type": "json_schema",
-                "json_schema": json_schema
-            }
-        )
-        
-        response_text = response.choices[0].message.content
-        try:
-            response_json = json.loads(response_text)
-            return response_json
-        except json.JSONDecodeError:
-            return {
-                "answer": response_text,
-                "confidence": 0.85 if relationship_data else 0.4
-            }
+        # Use direct API call
+        return self._call_openrouter_api(prompt, json_schema, temperature=0.3, max_tokens=600)
     
     def _generate_search_response(self, search_results: List[Dict], context: QueryContext) -> Dict[str, Any]:
         """Generate response for search queries."""
-        prompt = f"""
-Based on the search results below, answer this query: {context.query}
-
-Search Results:
-{json.dumps(search_results, indent=2)}
-
-Instructions:
-1. Synthesize information from multiple results
-2. Prioritize most relevant information
-3. Include context (meeting, date, speaker)
-4. Note any conflicting information
-5. Be comprehensive but concise
-
-Provide a complete answer based on the search results.
-"""
+        prompt = (
+            "Based on the search results below, answer this query: " +
+            context.query + "\n\n" +
+            "Search Results:\n" +
+            json.dumps(search_results, indent=2) + "\n\n" +
+            "Instructions:\n" +
+            "1. Synthesize information from multiple results\n" +
+            "2. Prioritize most relevant information\n" +
+            "3. Include context (meeting, date, speaker)\n" +
+            "4. Note any conflicting information\n" +
+            "5. Be comprehensive but concise\n\n" +
+            "Provide a complete answer based on the search results."
+        )
         
         # Define JSON schema with strict formatting
         json_schema = {
@@ -1372,35 +1374,13 @@ Provide a complete answer based on the search results.
             "schema": {
                 "type": "object",
                 "properties": {
-                    "answer": {"type": "string"},
-                    "confidence": {"type": "number"}
+                    "answer": {"type": "string", "description": "A comprehensive answer to the user's query based on the search results."},
+                    "confidence": {"type": "number", "description": "Confidence score in the answer, from 0.0 to 1.0."}
                 },
                 "required": ["answer", "confidence"],
                 "additionalProperties": False
             }
         }
         
-        # Use OpenAI client with explicit JSON request
-        response = self.llm_client.chat.completions.create(
-            model=settings.clean_openrouter_model,
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant that analyzes search results."},
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.3,
-            max_tokens=800,
-            response_format={
-                "type": "json_schema",
-                "json_schema": json_schema
-            }
-        )
-        
-        response_text = response.choices[0].message.content
-        try:
-            response_json = json.loads(response_text)
-            return response_json
-        except json.JSONDecodeError:
-            return {
-                "answer": response_text,
-                "confidence": min(0.5 + (len(search_results) * 0.05), 0.9)
-            }
+        # Use direct API call
+        return self._call_openrouter_api(prompt, json_schema, temperature=0.3, max_tokens=800)

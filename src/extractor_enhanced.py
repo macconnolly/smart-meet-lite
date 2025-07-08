@@ -34,11 +34,43 @@ Focus on:
 3. **Relationships**: How entities relate to each other (who owns what, dependencies)
 4. **Context**: Meeting metadata, topics discussed, follow-up needed
 
+CRITICAL ENTITY NAMING AND TYPE RULES:
+- ALWAYS check the "Existing Entities in System" list FIRST
+- If an entity is listed there, use the EXACT name and type from that list
+- NEVER create variations like "API Migration feature" if "API Migration" already exists
+- For NEW entities not in the list:
+  - Use the core name WITHOUT suffixes (e.g., "API Migration" not "API Migration feature")
+  - For projects: Use the base name (e.g., "Database Upgrade" not "Database Upgrade project")
+  - Be consistent: if it's "Project Alpha" in one place, don't use "project alpha" elsewhere
+  - Remove redundant descriptors: "feature", "project", "system", "module" unless they're part of the official name
+
+ENTITY TYPE CLASSIFICATION:
+- "project": Major initiatives with multiple features/tasks (e.g., "Project Alpha", "Database Upgrade")
+- "feature": Specific functionality or component within a project (e.g., "Login System", "Payment Gateway")
+- "person": Individual team members (e.g., "Alice", "Bob")
+- "deadline": Specific dates or timeframes
+- "system": External systems or platforms (e.g., "AWS", "Kubernetes")
+
+IMPORTANT: If something like "API Migration" is mentioned as both a feature and a project in different contexts, classify it consistently based on its primary nature. When in doubt, prefer "project" for larger initiatives.
+
+PROGRESS AND BLOCKERS EXTRACTION:
+- For "progress": Extract specific percentage completion (e.g., "30%", "50% complete") or phase descriptions (e.g., "initial design", "testing phase")
+- For "blockers": Extract specific issues preventing progress as an array (e.g., ["waiting for vendor credentials", "resource constraints", "technical debt"])
+- If no progress is mentioned, use null
+- If no blockers exist, use an empty array []
+
+Examples:
+- "Project Alpha is now at 50% completion" → progress: "50%"
+- "API Migration is blocked, waiting for vendor credentials" → blockers: ["waiting for vendor credentials"]
+- "Database Upgrade has moved from planning to in progress" → progress: "in progress phase" (or null if not specific)
+- "Project Beta is blocked due to resource constraints" → blockers: ["resource constraints"]
+
 Guidelines:
-- Use FULL entity names (e.g., "mobile app redesign project" not just "redesign")
 - Capture the speaker for each memory when identifiable
 - Extract actionable items with clear owners
 - Identify entity relationships (owns, works_on, depends_on, etc.)
+- Always extract progress percentages when mentioned
+- Always capture blockers when entities are described as blocked
 - Keep content concise but complete
 
 Extract what's available without forcing fields. Quality over quantity."""
@@ -129,9 +161,11 @@ Extract what's available without forcing fields. Quality over quantity."""
                                     "properties": {
                                         "status": {"type": ["string", "null"]},
                                         "assigned_to": {"type": ["string", "null"]},
-                                        "deadline": {"type": ["string", "null"]}
+                                        "deadline": {"type": ["string", "null"]},
+                                        "progress": {"type": ["string", "null"]},
+                                        "blockers": {"type": "array", "items": {"type": "string"}}
                                     },
-                                    "required": ["status", "assigned_to", "deadline"],
+                                    "required": ["status", "assigned_to", "deadline", "progress", "blockers"],
                                     "additionalProperties": False
                                 }
                             },
@@ -184,11 +218,31 @@ Extract what's available without forcing fields. Quality over quantity."""
             return proxies
         return None
 
-    def extract(self, transcript: str, meeting_id: str, email_metadata: Optional[Dict[str, Any]] = None) -> ExtractionResult:
+    def extract(self, transcript: str, meeting_id: str, email_metadata: Optional[Dict[str, Any]] = None, existing_entities: Optional[List[Entity]] = None) -> ExtractionResult:
         """Extract comprehensive meeting intelligence."""
         try:
-            # Add email metadata to prompt if available
-            context = f"Extract business intelligence from this transcript:\n\n{transcript}"
+            # Build context with existing entities
+            context = "Extract business intelligence from this transcript.\n\n"
+            
+            # Add existing entities to ensure consistency
+            if existing_entities:
+                context += "IMPORTANT - Existing Entities in System:\n"
+                context += "When these entities are mentioned in the transcript, use the EXACT name and type listed here:\n\n"
+                
+                # Group by type for clarity
+                entities_by_type = {}
+                for entity in existing_entities:
+                    if entity.type not in entities_by_type:
+                        entities_by_type[entity.type] = []
+                    entities_by_type[entity.type].append(entity)
+                
+                for entity_type, entities in entities_by_type.items():
+                    context += f"{entity_type.value.upper()}S:\n"
+                    for entity in entities:
+                        context += f"  - {entity.name}\n"
+                context += "\n"
+            
+            context += f"Transcript:\n{transcript}"
             
             if email_metadata:
                 context += f"\n\nEmail Context:\n"

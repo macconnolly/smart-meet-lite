@@ -638,7 +638,7 @@ Example response:
         return True
     
     def _process_entities(self, raw_entities: List[Dict[str, Any]], meeting_id: str) -> Dict[str, Dict[str, Any]]:
-        """Process entities with production-ready logic."""
+        """Process entities with enhanced resolution logic."""
         entity_map = {}
         processed_entities = []
         
@@ -652,8 +652,70 @@ Example response:
                     logger.warning(f"Skipping entity with missing name or type: {raw_entity}")
                     continue
                 
-                # Check for existing entity
+                # Log entity processing details
+                logger.info(f"[ENTITY PROCESSING] Raw name: '{name}', Normalized: '{normalized_name}', Type: {entity_type}")
+                
+                # First try exact match
                 existing = self.storage.get_entity_by_name(normalized_name, entity_type)
+                
+                if existing:
+                    logger.info(f"[EXACT MATCH] Found existing entity ID {existing.id} for '{name}'")
+                
+                # If no exact match, use entity resolver for fuzzy matching
+                if not existing:
+                    logger.info(f"[NO EXACT MATCH] For '{name}' (normalized: '{normalized_name}'), trying entity resolver...")
+                    
+                    # Get all entities of the same type for resolution
+                    all_entities = self.storage.get_entities_by_type(entity_type)
+                    logger.info(f"[ENTITY RESOLVER] Found {len(all_entities)} existing {entity_type} entities to check")
+                    
+                    # If no matches found for same type, also check related types
+                    # This helps when LLM inconsistently classifies entities
+                    if len(all_entities) == 0:
+                        logger.info(f"[CROSS-TYPE CHECK] No {entity_type} entities found, checking related types...")
+                        
+                        # Define related types that could be confused
+                        related_types = {
+                            EntityType.PROJECT: [EntityType.FEATURE],
+                            EntityType.FEATURE: [EntityType.PROJECT],
+                        }
+                        
+                        if entity_type in related_types:
+                            for related_type in related_types[entity_type]:
+                                related_entities = self.storage.get_entities_by_type(related_type)
+                                if related_entities:
+                                    logger.info(f"[CROSS-TYPE CHECK] Found {len(related_entities)} {related_type} entities to check")
+                                    all_entities.extend(related_entities)
+                    
+                    # Use entity resolver to find best match
+                    resolution_result = self.entity_resolver.resolve_entities(
+                        [name], 
+                        context=f"Entity type: {entity_type}"
+                    )
+                    
+                    if name in resolution_result:
+                        match = resolution_result[name]
+                        logger.info(f"[RESOLUTION RESULT] Query: '{name}', Match type: {match.match_type}, Confidence: {match.confidence}")
+                        
+                        if match.entity:
+                            matched_entity = match.entity
+                            logger.info(f"[MATCH FOUND] '{name}' -> '{matched_entity.name}' (ID: {matched_entity.id})")
+                            
+                            # Verify the type matches
+                            # Always accept high-confidence matches from entity resolver
+                            # If types don't match, update the matched entity's type
+                            if match.confidence >= self.entity_resolver.vector_threshold or match.confidence >= self.entity_resolver.fuzzy_threshold:
+                                if matched_entity.type != entity_type:
+                                    logger.warning(f"[TYPE MISMATCH - ACCEPTING & UPDATING] High confidence match ({match.confidence:.2f}) despite type mismatch: '{matched_entity.name}' is {matched_entity.type} but looking for {entity_type}. Updating entity type.")
+                                    matched_entity.type = entity_type
+                                existing = matched_entity
+                                logger.info(f"[MATCH ACCEPTED] Entity resolver matched '{name}' to existing entity '{existing.name}' with confidence {match.confidence}")
+                            else:
+                                logger.warning(f"[MATCH REJECTED] Entity resolver found '{matched_entity.name}' but confidence ({match.confidence:.2f}) was too low for '{name}'")
+                        else:
+                            logger.info(f"[NO MATCH] Entity resolver could not find a match for '{name}'")
+                    else:
+                        logger.warning(f"[RESOLVER ERROR] No resolution result returned for '{name}'")
                 
                 if existing:
                     entity = existing
@@ -673,6 +735,7 @@ Example response:
                         attributes=raw_entity.get("attributes", {})
                     )
                     created = True
+                    logger.info(f"Creating new entity: '{name}' of type {entity_type}")
                 
                 processed_entities.append(entity)
                 entity_map[name] = {
@@ -688,6 +751,21 @@ Example response:
         # Save all entities
         if processed_entities:
             self.storage.save_entities(processed_entities)
+            
+            # Generate and save entity embeddings for vector search
+            logger.info(f"Generating embeddings for {len(processed_entities)} entities")
+            for entity in processed_entities:
+                try:
+                    # Generate embedding for entity name
+                    embedding = self.embeddings.encode(entity.name)
+                    if embedding.ndim > 1:
+                        embedding = embedding[0]
+                    
+                    # Store entity embedding in Qdrant
+                    self.storage.save_entity_embedding(entity.id, embedding)
+                    logger.debug(f"Saved embedding for entity '{entity.name}' (ID: {entity.id})")
+                except Exception as e:
+                    logger.error(f"Failed to generate/save embedding for entity '{entity.name}': {e}")
         
         return entity_map
     

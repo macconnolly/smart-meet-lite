@@ -18,6 +18,8 @@ from .models import (
     EntityType,
 )
 from .config import settings
+from .state_normalizer import normalize_state_dict
+from .relationship_normalizer import normalize_relationship_type
 
 
 class MemoryStorage:
@@ -412,11 +414,14 @@ class MemoryStorage:
         return saved_ids
 
     def save_entity_states(self, states: List[EntityState]) -> None:
-        """Save entity states."""
+        """Save entity states with normalization."""
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
 
         for state in states:
+            # Normalize state before saving
+            normalized_state = normalize_state_dict(state.state)
+            
             cursor.execute(
                 """
                 INSERT INTO entity_states 
@@ -426,7 +431,7 @@ class MemoryStorage:
                 (
                     state.id,
                     state.entity_id,
-                    json.dumps(state.state),
+                    json.dumps(normalized_state),
                     state.meeting_id,
                     state.timestamp.isoformat(),
                     state.confidence,
@@ -437,11 +442,14 @@ class MemoryStorage:
         conn.close()
 
     def save_relationships(self, relationships: List[EntityRelationship]) -> None:
-        """Save entity relationships."""
+        """Save entity relationships with normalization."""
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
 
         for rel in relationships:
+            # Normalize relationship type before saving
+            normalized_type = normalize_relationship_type(str(rel.relationship_type))
+            
             cursor.execute(
                 """
                 INSERT INTO entity_relationships 
@@ -453,7 +461,7 @@ class MemoryStorage:
                     rel.id,
                     rel.from_entity_id,
                     rel.to_entity_id,
-                    rel.relationship_type,
+                    normalized_type,
                     json.dumps(rel.attributes),
                     rel.meeting_id,
                     rel.timestamp.isoformat(),
@@ -924,6 +932,26 @@ class MemoryStorage:
         if row:
             return self._row_to_entity(row)
         return None
+    
+    def get_entities_by_type(self, entity_type: EntityType) -> List[Entity]:
+        """Get all entities of a specific type."""
+        conn = sqlite3.connect(self.db_path)
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+        
+        cursor.execute(
+            """
+            SELECT * FROM entities
+            WHERE type = ?
+            ORDER BY name
+            """,
+            (entity_type.value,),
+        )
+        
+        rows = cursor.fetchall()
+        conn.close()
+        
+        return [self._row_to_entity(row) for row in rows]
 
     def get_analytics_data(
         self, metric: str, time_range: Optional[Tuple[datetime, datetime]] = None

@@ -1,23 +1,99 @@
-# Claude Tasks: Smart-Meet Lite Forensic Implementation Plan
+# Claude Tasks: Smart-Meet Lite Implementation Plan
 
-**LAST UPDATED**: 2025-01-04 - FORENSIC AUDIT COMPLETE
+**LAST UPDATED**: 2025-01-07 - QUERY ENGINE MVP FIXES REQUIRED
 
-This document contains the EXACT implementation requirements based on a comprehensive forensic audit of the codebase against the Master Implementation Plan (010_Master_Implementation_Plan.md). Every item includes exact line numbers, exact code to add/remove, and detailed context for implementation.
+This document contains EXACT implementation requirements for fixing critical system issues. The system successfully ingests data but ALL query operations fail with HTTP 500 errors.
 
-## 🚨 CRITICAL: READ THIS FIRST
+## 🚨 CRITICAL: CURRENT PRIORITY - Query Engine MVP Fixes
 
-The system HAS all components but they're NOT properly connected. We need to:
-1. Fix database indexes (wrong names)
-2. Remove brittle regex patterns that break state tracking
-3. Use existing batch operations for performance
-4. Add self-healing validation
-5. Make query engine async
+The Query Engine has 4 critical issues that MUST be fixed first:
+1. **String Formatting Bug** - F-strings crash when entity data contains % characters
+2. **State Storage Chaos** - "in_progress" vs "In Progress" treated as different states
+3. **Bad Entity Matching** - Common words like "What" extracted as entity names
+4. **Verbose Responses** - Users get essays instead of concise answers
 
-**DO NOT** add new features. **DO NOT** refactor working code. Just fix the specific issues listed below.
+Additional issues to fix:
+5. **No Query Caching** - Every identical query costs money
+6. **Async/Await Issues** - Synchronous code in async context
+7. **Database Indexes** - Wrong names prevent optimization
+8. **Duplicate LLM Processor** - Wastes resources
+
+**IMPORTANT**: Follow the implementation in 018_Current_Plan.md for detailed steps.
+
+## ✅ PREREQUISITE: Forensic Implementation Fixes
+
+These fixes should be completed BEFORE the Query Engine fixes if not already done:
 
 ---
 
-## 🔴 PHASE 1: DATABASE INDEX FIXES (30 minutes)
+## 🔴 CURRENT PRIORITY: Query Engine MVP Fixes (6 hours total)
+
+### Overview
+See **018_Current_Plan.md** for the complete implementation guide. This section provides a summary.
+
+### Phase 1: Emergency String Formatting Fix (30 minutes)
+**Problem**: F-strings in query_engine_v2.py interpret % in entity data as format specifiers
+**Solution**: Replace ALL f-strings with string concatenation in 7 methods
+
+**Files to edit**: `src/query_engine_v2.py`
+- Lines ~436-499: `_generate_timeline_response`
+- Lines ~500-556: `_generate_blocker_response` 
+- Lines ~557-636: `_generate_status_response`
+- Lines ~875-936: `_generate_ownership_response`
+- Lines ~1037-1200: `_generate_analytics_response`
+- Lines ~831-874: `_generate_relationship_response`
+- Lines ~747-830: `_generate_search_response`
+
+### Phase 2: State Normalization (1 hour)
+**Problem**: States stored inconsistently ("in_progress", "In Progress", etc.)
+**Solution**: Normalize at storage layer
+
+**New files**:
+- `src/state_normalizer.py` - Normalization utilities
+- `scripts/normalize_existing_states.py` - Migration script
+
+**Files to edit**:
+- `src/storage.py` - Update `save_entity_state` method
+
+### Phase 3: Entity Extraction Fix (45 minutes)
+**Problem**: Common words extracted as entities
+**Solution**: Comprehensive stop word filtering
+
+**Files to edit**:
+- `src/query_engine_v2.py` - Replace entire `_extract_query_entities` method
+
+**New test**: `tests/test_entity_extraction.py`
+
+### Phase 4: Response Conciseness (30 minutes)
+**Problem**: Verbose LLM responses
+**Solution**: Update all prompts to request 1-2 sentence answers
+
+**Files to edit**:
+- `src/query_engine_v2.py` - Update all 7 `_generate_*_response` methods
+
+### Phase 5: Query Caching (1 hour)
+**Problem**: No caching, repeated queries cost money
+**Solution**: In-memory cache with 5-minute TTL
+
+**Files to edit**:
+- `src/query_engine_v2.py` - Add caching to `process_query`
+- `src/api.py` - Add cache endpoints
+
+### Phase 6: Async/Await Fixes (30 minutes)
+**Files to edit**:
+- `src/query_engine_v2.py` - Make all handlers async
+
+### Success Criteria
+- All queries return HTTP 200
+- States are normalized (no capitalization issues)
+- Stop words filtered from entity extraction
+- Responses under 100 words
+- Cache hit rate > 30%
+- 60% cost reduction
+
+---
+
+## 🟡 PHASE 1: DATABASE INDEX FIXES (30 minutes)
 
 ### Task 1.1: Fix Duplicate Index
 **FILE**: `src/storage.py`
@@ -500,6 +576,16 @@ Before considering this complete, verify:
 
 ## 🎯 SUCCESS CRITERIA
 
+### Query Engine MVP Fixes (CURRENT PRIORITY)
+The Query Engine is fixed when:
+1. **No String Format Errors** - Queries with % in entity names work
+2. **Normalized States** - "in_progress" = "In Progress" = "in-progress"
+3. **Smart Entity Extraction** - "What" is not extracted as an entity
+4. **Concise Responses** - All answers under 100 words
+5. **Query Caching Works** - Second identical query is 2x+ faster
+6. **All Tests Pass** - Integration tests show green across the board
+
+### Overall System Health
 The system is working when:
 1. You can ingest a meeting and see entities + state transitions created
 2. You can search for content and get relevant memories back
@@ -507,4 +593,10 @@ The system is working when:
 4. Multiple meetings about the same entities show state progression
 5. No unhandled exceptions in 10 consecutive operations
 
-Remember: We're restoring WORKING functionality, not adding features. Resist the urge to optimize or refactor beyond these specific fixes.
+### Performance Metrics
+- Query response time < 2s (uncached)
+- Cached query response < 0.5s  
+- Cache hit rate > 30% after warm-up
+- 60% reduction in API costs
+
+Remember: We're fixing CRITICAL issues, not adding features. Follow 018_Current_Plan.md exactly.

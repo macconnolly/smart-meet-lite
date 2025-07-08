@@ -29,8 +29,8 @@ class EntityResolver:
                  embeddings: EmbeddingEngine,
                  llm_client: OpenAI,
                  cache_ttl: int = 300,  # 5 minutes
-                 vector_threshold: float = 0.85,
-                 fuzzy_threshold: float = 0.75,
+                 vector_threshold: float = settings.vector_resolution_threshold,
+                 fuzzy_threshold: float = settings.fuzzy_resolution_threshold,
                  use_llm: bool = True):
         self.storage = storage
         self.embeddings = embeddings
@@ -106,42 +106,59 @@ class EntityResolver:
         fuzzy_candidates = {}
         llm_candidates = []
         
+        logger.info(f"[RESOLVER] Resolving {len(query_terms)} terms with {len(entities)} entities in database")
+        
         for term in query_terms:
+            logger.info(f"[RESOLVER] Processing term: '{term}'")
+            
             # Try exact match first (fastest)
             match = self._try_exact_match(term, entities)
             if match:
                 exact_matches[term] = match
                 self._resolution_stats['exact_matches'] += 1
+                logger.info(f"[EXACT MATCH SUCCESS] '{term}' -> '{match.entity.name}'")
                 continue
             
             # Try vector similarity
             vector_match = self._try_vector_match(term, entities)
-            if vector_match and vector_match.confidence >= self.vector_threshold:
-                vector_candidates[term] = vector_match
-                self._resolution_stats['vector_matches'] += 1
-                continue
+            if vector_match:
+                logger.info(f"[VECTOR RESULT] '{term}': confidence={vector_match.confidence:.2f}, threshold={self.vector_threshold}")
+                if vector_match.confidence >= self.vector_threshold:
+                    vector_candidates[term] = vector_match
+                    self._resolution_stats['vector_matches'] += 1
+                    logger.info(f"[VECTOR MATCH SUCCESS] '{term}' -> '{vector_match.entity.name}' (confidence: {vector_match.confidence:.2f})")
+                    continue
             
             # Try fuzzy matching
             fuzzy_match = self._try_fuzzy_match(term, entities)
-            if fuzzy_match and fuzzy_match.confidence >= self.fuzzy_threshold:
-                fuzzy_candidates[term] = fuzzy_match
-                self._resolution_stats['fuzzy_matches'] += 1
-                continue
+            if fuzzy_match:
+                logger.info(f"[FUZZY RESULT] '{term}': confidence={fuzzy_match.confidence:.2f}, threshold={self.fuzzy_threshold}")
+                if fuzzy_match.confidence >= self.fuzzy_threshold:
+                    fuzzy_candidates[term] = fuzzy_match
+                    self._resolution_stats['fuzzy_matches'] += 1
+                    logger.info(f"[FUZZY MATCH SUCCESS] '{term}' -> '{fuzzy_match.entity.name}' (confidence: {fuzzy_match.confidence:.2f})")
+                    continue
             
             # Queue for LLM resolution
+            logger.info(f"[NO MATCH] '{term}' failed all non-LLM methods, queuing for LLM resolution")
             llm_candidates.append(term)
         
         # Batch LLM resolution for remaining terms
         if llm_candidates and self.use_llm:
+            logger.info(f"[LLM RESOLUTION] Sending {len(llm_candidates)} terms to LLM: {llm_candidates}")
             llm_matches = self._resolve_with_llm(llm_candidates, entities, context)
+            
             for term, match in llm_matches.items():
                 if match.entity:
                     self._resolution_stats['llm_matches'] += 1
+                    logger.info(f"[LLM MATCH SUCCESS] '{term}' -> '{match.entity.name}' (confidence: {match.confidence:.2f})")
                 else:
                     self._resolution_stats['no_matches'] += 1
+                    logger.info(f"[LLM NO MATCH] '{term}' could not be resolved by LLM")
             results.update(llm_matches)
         elif llm_candidates:
             # LLM disabled, mark as unresolved
+            logger.warning(f"[LLM DISABLED] {len(llm_candidates)} terms cannot be resolved without LLM")
             for term in llm_candidates:
                 results[term] = EntityMatch(term, None, 0.0, "llm_disabled")
                 self._resolution_stats["no_matches"] += 1
@@ -197,7 +214,7 @@ class EntityResolver:
         return None
     
     def _try_fuzzy_match(self, term: str, entities: List[Entity]) -> Optional[EntityMatch]:
-        """Try fuzzy string matching."""
+        """Try fuzzy string matching with enhanced suffix handling."""
         try:
             from fuzzywuzzy import fuzz
         except ImportError:
@@ -207,38 +224,81 @@ class EntityResolver:
         term_lower = term.lower()
         best_match = None
         best_score = 0.0
+        best_debug_info = {}
+        
+        # Common suffixes to strip for better matching
+        suffixes = ['feature', 'project', 'system', 'module', 'component', 'service', 'app', 'application']
+        
+        # Normalize term by removing common suffixes
+        term_normalized = term_lower
+        for suffix in suffixes:
+            if term_normalized.endswith(' ' + suffix):
+                term_normalized = term_normalized[:-len(suffix)-1].strip()
+                logger.debug(f"[FUZZY] Normalized '{term_lower}' -> '{term_normalized}' (removed '{suffix}')")
+        
+        logger.debug(f"[FUZZY] Checking {len(entities)} entities for fuzzy match with '{term}'")
         
         for entity in entities:
             entity_lower = entity.name.lower()
+            entity_normalized = entity_lower
+            
+            # Normalize entity name by removing common suffixes
+            for suffix in suffixes:
+                if entity_normalized.endswith(' ' + suffix):
+                    entity_normalized = entity_normalized[:-len(suffix)-1].strip()
             
             # Multiple fuzzy strategies
             scores = [
                 fuzz.ratio(term_lower, entity_lower) / 100.0,
                 fuzz.partial_ratio(term_lower, entity_lower) / 100.0,
                 fuzz.token_sort_ratio(term_lower, entity_lower) / 100.0,
-                fuzz.token_set_ratio(term_lower, entity_lower) / 100.0
+                fuzz.token_set_ratio(term_lower, entity_lower) / 100.0,
+                # Add normalized comparison
+                fuzz.ratio(term_normalized, entity_normalized) / 100.0,
+                fuzz.token_set_ratio(term_normalized, entity_normalized) / 100.0
             ]
             
             # Use the best score
             max_score = max(scores)
+            original_score = max_score
             
-            # Boost score if one contains the other
-            if term_lower in entity_lower or entity_lower in term_lower:
-                max_score = min(max_score * 1.2, 1.0)
+            # Boost score if one contains the other or normalized forms match
+            boost_reason = None
+            if term_normalized == entity_normalized:
+                max_score = min(max_score * 1.3, 1.0)
+                boost_reason = "normalized forms match exactly"
+            elif term_lower in entity_lower or entity_lower in term_lower:
+                max_score = min(max_score * 1.3, 1.0)
+                boost_reason = "substring match"
             
             if max_score > best_score:
                 best_score = max_score
                 best_match = entity
+                best_debug_info = {
+                    'entity_name': entity.name,
+                    'scores': scores,
+                    'original_score': original_score,
+                    'boosted_score': max_score,
+                    'boost_reason': boost_reason,
+                    'term_normalized': term_normalized,
+                    'entity_normalized': entity_normalized
+                }
+            
+            # Log high-scoring candidates
+            if max_score > 0.6:
+                logger.debug(f"[FUZZY] '{term}' vs '{entity.name}': score={max_score:.2f}, normalized='{term_normalized}' vs '{entity_normalized}'")
         
         if best_match and best_score > 0.5:
+            logger.info(f"[FUZZY MATCH] '{term}' -> '{best_match.name}' (score: {best_score:.2f}, {best_debug_info.get('boost_reason', 'no boost')})")
             return EntityMatch(
                 query_term=term,
                 entity=best_match,
                 confidence=best_score,
                 match_type='fuzzy',
-                metadata={'fuzzy_score': best_score}
+                metadata={'fuzzy_score': best_score, 'debug': best_debug_info}
             )
         
+        logger.debug(f"[FUZZY] No match found for '{term}' (best score: {best_score:.2f})")
         return None
     
     def _resolve_with_llm(self, 

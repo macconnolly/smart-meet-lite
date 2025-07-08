@@ -219,7 +219,13 @@ Important:
 - "30%" → "30% complete" is NOT a change  
 - But "30%" → "50%" IS a change
 - New fields added or fields removed are changes
-- Look for semantic differences, not just string differences
+- Look for semantic differences, not just string differences.
+- Specifically, for "status" fields, ignore changes in casing (e.g., "In Progress" vs "in progress") or minor formatting (e.g., "in-progress" vs "in_progress") if the core meaning is the same. These are NOT changes.
+- For "progress" fields, treat changes in percentage or phase as significant. Ignore minor rephrasing.
+- For "blockers" fields, treat additions or removals of specific blockers as significant changes.
+- Empty arrays [] and null/None are equivalent for blockers - no change
+- Progress field: "30%" and "30% complete" are the same - no change
+- Progress field: null and "0%" are different - this IS a change
 
 Return a JSON object with a "comparisons" array:
 {{
